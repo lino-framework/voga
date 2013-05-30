@@ -65,13 +65,15 @@ def objects():
           
     
     company = Instantiator('contacts.Company','name city:name').build
-    eupen = company("Lern- und Begenungszentrum","Eupen",
+    eupen = company("Lern- und Begegnungszentrum","Eupen",
       street="Kirchstraße",street_no=39,street_box="/B2")
     yield eupen
-    bbach = Company(name="Bütgenbach")
+    bbach = company("Seniorenheim","Bütgenbach")
     yield bbach
-    kelmis = Company(name="Kelmis")
+    kelmis = company("Zur Klüüs","Kelmis")
     yield kelmis
+    stvith = company("Sport- und Freizeitzentrum","Sankt Vith")
+    yield stvith
     
     topic = Instantiator('school.Topic').build
     line = Instantiator('school.Line','topic').build
@@ -94,6 +96,8 @@ def objects():
     yield comp
     sport = topic(**dd.babelkw('name',de="Sport"))
     yield sport
+    medit = topic(**dd.babelkw('name',de="Meditation"))
+    yield medit
     
     obj = line(comp,**dd.babelkw('name',de="Erste Schritte"))
     yield obj
@@ -121,8 +125,48 @@ def objects():
     
     obj = line(sport,**dd.babelkw('name',de="Funktionsgymnastik"))
     yield obj
-    kw = dict(max_occurences=8)
+    kw = dict(max_occurences=10)
     kw.update(start_date=settings.SITE.demo_date().replace(month=9,day=9))
     yield add_course(obj,eupen,"11:00","12:00",monday=True,**kw)
     yield add_course(obj,eupen,"13:30","14:30",monday=True,**kw)
     
+    obj = line(sport,**dd.babelkw('name',de="Rücken fit durch Schwimmen"))
+    yield obj
+    kw = dict(max_occurences=10)
+    kw.update(start_date=settings.SITE.demo_date().replace(month=9,day=1))
+    yield add_course(obj,eupen,"11:00","12:00",monday=True,**kw)
+    yield add_course(obj,eupen,"13:30","14:30",monday=True,**kw)
+    yield add_course(obj,stvith,"11:00","12:00",tuesday=True,**kw)
+    yield add_course(obj,stvith,"13:30","14:30",tuesday=True,**kw)
+    yield add_course(obj,kelmis,"11:00","12:00",thursday=True,**kw)
+    yield add_course(obj,kelmis,"13:30","14:30",thursday=True,**kw)
+    
+
+    obj = line(sport,**dd.babelkw('name',de="Selbstverteidigung im Alltag"))
+    yield obj
+    kw = dict(max_occurences=10)
+    kw.update(start_date=settings.SITE.demo_date().replace(month=9,day=1))
+    yield add_course(obj,eupen,"18:00","19:00",friday=True,**kw)
+    yield add_course(obj,eupen,"19:00","20:00",friday=True,**kw)
+
+    obj = line(medit,**dd.babelkw('name',de="GuoLin-Qigong"))
+    yield obj
+    kw = dict(max_occurences=10)
+    kw.update(start_date=settings.SITE.demo_date().replace(month=3,day=1))
+    yield add_course(obj,eupen,"18:00","19:30",monday=True,**kw)
+    yield add_course(obj,eupen,"19:00","20:30",friday=True,**kw)
+
+    obj = line(medit,**dd.babelkw('name',de="Den Kopf frei machen - zur inneren Ruhe finden"))
+    yield obj
+    kw = dict(max_occurences=10)
+    kw.update(start_date=settings.SITE.demo_date().replace(month=3,day=1))
+    yield add_course(obj,bbach,"18:00","19:30",monday=True,**kw)
+    yield add_course(obj,bbach,"19:00","20:30",friday=True,**kw)
+
+    obj = line(medit,**dd.babelkw('name',de="Yoga"))
+    yield obj
+    kw = dict(max_occurences=10)
+    kw.update(start_date=settings.SITE.demo_date().replace(month=3,day=1))
+    yield add_course(obj,kelmis,"18:00","19:30",monday=True,**kw)
+    yield add_course(obj,kelmis,"19:00","20:30",friday=True,**kw)
+
