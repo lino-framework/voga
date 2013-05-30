@@ -143,7 +143,7 @@ class TeacherDetail(PersonDetail):
     #~ main = "general more"
     
     #~ lesson = dd.Panel("""
-    #~ owner start_date start_time end_time place 
+    #~ owner start_date start_time end_time room 
     #~ school.PresencesByEvent
     #~ """,label=_("Lesson"))
     
@@ -182,7 +182,7 @@ def site_setup(site):
     site.modules.cal.Events.add_detail_panel('general',"""
     calendar summary user project 
     start end 
-    place priority access_class transparent #rset 
+    room priority access_class transparent #rset 
     owner workflow_buttons
     description cal.GuestsByEvent 
     """,_("General"))

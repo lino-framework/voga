@@ -21,6 +21,8 @@ from lino.utils  import Cycler
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
+from north.dbutils import babelkw
+
 from lino import dd
 
 
@@ -35,6 +37,12 @@ def objects():
     Course = dd.resolve_model('school.Course')
     CourseStates = school.CourseStates
     EnrolmentStates = school.EnrolmentStates
+    
+    we = Company(name="Buche V.o.G.",prefix="Die")
+    yield we
+    settings.SITE.site_config.site_company = we
+    yield settings.SITE.site_config
+    
     
     calendar = Instantiator('cal.Calendar').build
     yield calendar(color=1,**dd.babelkw('name',
@@ -73,27 +81,82 @@ def objects():
     eupen = company("Lern- und Begegnungszentrum","Eupen",
       street="Kirchstraße",street_no=39,street_box="/B2")
     yield eupen
-    bbach = company("Seniorenheim","Bütgenbach")
+    bbach = company("Lern- und Begegnungszentrum","Bütgenbach")
     yield bbach
     kelmis = company("Zur Klüüs","Kelmis")
     yield kelmis
     stvith = company("Sport- und Freizeitzentrum","Sankt Vith")
     yield stvith
     
+    
+    room = Instantiator('cal.Room').build
+    kw = dict(company=eupen)
+    kw.update(babelkw('name',
+          de="Spiegelsaal",
+          fr="Salle mirroitée",
+          en="Mirrored room",
+          ))
+    spiegel = room(**kw)
+    yield spiegel
+    
+    kw.update(babelkw('name',
+          de="Computerraum",
+          fr="Salle ordinateurs",
+          en="Computer room",
+          ))
+    pc_eupen = room(**kw)
+    yield pc_eupen
+    
+    kw = dict(company=bbach)
+    kw.update(babelkw('name',
+          de="Konferenzraum",
+          fr="Salle conférences",
+          en="Conferences room",
+          ))
+    konf = room(**kw)
+    yield konf
+    
+    kw.update(babelkw('name',
+          de="Informatikraum",
+          fr="Salle informatique",
+          en="Computerroom",
+          ))
+    pc_bbach = room(**kw)
+    yield pc_bbach
+    
+    kw = dict(company=kelmis)
+    kw.update(babelkw('name',
+          de="Computerraum",
+          fr="Salle ordinateurs",
+          en="Computer room",
+          ))
+    pc_kelmis = room(**kw)
+    yield pc_kelmis
+    
+    kw = dict(company=stvith)
+    kw.update(babelkw('name',
+          de="Computerraum",
+          fr="Salle ordinateurs",
+          en="Computer room",
+          ))
+    pc_stvith = room(**kw)
+    yield pc_stvith
+    
+    
+    
     topic = Instantiator('school.Topic').build
     line = Instantiator('school.Line','topic').build
-    course = Instantiator('school.Course','line company start_time end_time').build
+    course = Instantiator('school.Course','line room start_time end_time').build
     
-    #~ if Teacher.objects.all().count() == 0:
-        #~ raise Exception(str(settings.INSTALLED_APPS))
     TEACHERS = Cycler(Teacher.objects.all())
     USERS = Cycler(settings.SITE.user_model.objects.all())
-    PLACES = Cycler(cal.Place.objects.all())
+    PLACES = Cycler(cal.Room.objects.all())
     
     def add_course(*args,**kw):
         kw.update(user=USERS.pop())
         kw.update(teacher=TEACHERS.pop())
         kw.update(every=1)
+        kw.update(company=we)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
         return course(*args,**kw)
     
@@ -109,43 +172,43 @@ def objects():
     kw = dict(max_occurences=8)
     kw.update(start_date=settings.SITE.demo_date(-30))
     kw.update(state=school.CourseStates.started)
-    yield add_course(obj,bbach,"13:30","15:00",monday=True,**kw)
-    yield add_course(obj,eupen,"17:30","19:00",wednesday=True,**kw)
-    yield add_course(obj,kelmis,"13:30","15:00",friday=True,**kw)
+    yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
+    yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
+    yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
     
     obj = line(comp,**dd.babelkw('name',de="Internet"))
     yield obj
     kw = dict(max_occurences=8)
     kw.update(start_date=settings.SITE.demo_date(10))
     kw.update(state=school.CourseStates.scheduled)
-    yield add_course(obj,bbach,"13:30","15:00",monday=True,**kw)
-    yield add_course(obj,eupen,"17:30","19:00",wednesday=True,**kw)
-    yield add_course(obj,kelmis,"13:30","15:00",friday=True,**kw)
+    yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
+    yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
+    yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
     
     obj = line(sport,**dd.babelkw('name',de="Bauchtanz"))
     yield obj
     kw = dict(max_occurences=8)
     kw.update(start_date=settings.SITE.demo_date(-20))
     kw.update(state=CourseStates.started)
-    yield add_course(obj,eupen,"19:00","20:00",wednesday=True,**kw)
+    yield add_course(obj,spiegel,"19:00","20:00",wednesday=True,**kw)
     
     obj = line(sport,**dd.babelkw('name',de="Funktionsgymnastik"))
     yield obj
     kw = dict(max_occurences=10,state=CourseStates.started)
     kw.update(start_date=settings.SITE.demo_date(-10))
-    yield add_course(obj,eupen,"11:00","12:00",monday=True,**kw)
-    yield add_course(obj,eupen,"13:30","14:30",monday=True,**kw)
+    yield add_course(obj,spiegel,"11:00","12:00",monday=True,**kw)
+    yield add_course(obj,spiegel,"13:30","14:30",monday=True,**kw)
     
     obj = line(sport,**dd.babelkw('name',de="Rücken fit durch Schwimmen"))
     yield obj
     kw = dict(max_occurences=10,state=CourseStates.ended)
     kw.update(start_date=settings.SITE.demo_date(-100))
-    yield add_course(obj,eupen,"11:00","12:00",monday=True,**kw)
-    yield add_course(obj,eupen,"13:30","14:30",monday=True,**kw)
-    yield add_course(obj,stvith,"11:00","12:00",tuesday=True,**kw)
-    yield add_course(obj,stvith,"13:30","14:30",tuesday=True,**kw)
-    yield add_course(obj,kelmis,"11:00","12:00",thursday=True,**kw)
-    yield add_course(obj,kelmis,"13:30","14:30",thursday=True,**kw)
+    yield add_course(obj,spiegel,"11:00","12:00",monday=True,**kw)
+    yield add_course(obj,spiegel,"13:30","14:30",monday=True,**kw)
+    yield add_course(obj,pc_stvith,"11:00","12:00",tuesday=True,**kw)
+    yield add_course(obj,pc_stvith,"13:30","14:30",tuesday=True,**kw)
+    yield add_course(obj,pc_kelmis,"11:00","12:00",thursday=True,**kw)
+    yield add_course(obj,pc_kelmis,"13:30","14:30",thursday=True,**kw)
     
 
     obj = line(sport,**dd.babelkw('name',de="Selbstverteidigung im Alltag"))
@@ -153,32 +216,32 @@ def objects():
     kw = dict(max_occurences=6)
     kw.update(start_date=settings.SITE.demo_date(-80))
     kw.update(state=CourseStates.ended)
-    yield add_course(obj,eupen,"18:00","19:00",friday=True,**kw)
-    yield add_course(obj,eupen,"19:00","20:00",friday=True,**kw)
+    yield add_course(obj,spiegel,"18:00","19:00",friday=True,**kw)
+    yield add_course(obj,spiegel,"19:00","20:00",friday=True,**kw)
 
     obj = line(medit,**dd.babelkw('name',de="GuoLin-Qigong"))
     yield obj
     kw = dict(max_occurences=10)
     kw.update(start_date=settings.SITE.demo_date(-10))
     kw.update(state=CourseStates.started)
-    yield add_course(obj,eupen,"18:00","19:30",monday=True,**kw)
-    yield add_course(obj,eupen,"19:00","20:30",friday=True,**kw)
+    yield add_course(obj,spiegel,"18:00","19:30",monday=True,**kw)
+    yield add_course(obj,spiegel,"19:00","20:30",friday=True,**kw)
 
     obj = line(medit,**dd.babelkw('name',de="Den Kopf frei machen - zur inneren Ruhe finden"))
     yield obj
     kw = dict(max_occurences=10)
     kw.update(start_date=settings.SITE.demo_date(-10))
     kw.update(state=CourseStates.started)
-    yield add_course(obj,bbach,"18:00","19:30",monday=True,**kw)
-    yield add_course(obj,bbach,"19:00","20:30",friday=True,**kw)
+    yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
+    yield add_course(obj,konf,"19:00","20:30",friday=True,**kw)
 
     obj = line(medit,**dd.babelkw('name',de="Yoga"))
     yield obj
     kw = dict(max_occurences=10)
     kw.update(start_date=settings.SITE.demo_date(60))
     kw.update(state=CourseStates.scheduled)
-    yield add_course(obj,kelmis,"18:00","19:30",monday=True,**kw)
-    yield add_course(obj,kelmis,"19:00","20:30",friday=True,**kw)
+    yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
+    yield add_course(obj,konf,"19:00","20:30",friday=True,**kw)
 
 
     PUPILS = Cycler(Pupil.objects.all())
