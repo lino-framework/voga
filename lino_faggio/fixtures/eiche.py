@@ -64,7 +64,7 @@ def objects():
           ))
           
     
-    company = Instantiator('contacts.Company','name city').build
+    company = Instantiator('contacts.Company','name city:name').build
     eupen = company("Lern- und Begenungszentrum","Eupen",
       street="Kirchstraße",street_no=39,street_box="/B2")
     yield eupen
