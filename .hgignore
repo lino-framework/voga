@@ -1,0 +1,18 @@
+# use glob syntax.
+syntax: glob
+
+*.bat
+*.elc
+*.pyc
+*~
+*.log
+*.zip
+*.doctrees
+tmp
+*/default.db
+docs/media
+docs/api
+
+*/media
+*.egg-info
+.build
