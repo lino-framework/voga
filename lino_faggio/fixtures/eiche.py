@@ -30,6 +30,11 @@ def objects():
     school = dd.resolve_app('school')
     Company = dd.resolve_model('contacts.Company')
     Teacher = dd.resolve_model('school.Teacher')
+    Pupil = dd.resolve_model('school.Pupil')
+    Enrolment = dd.resolve_model('school.Enrolment')
+    Course = dd.resolve_model('school.Course')
+    CourseStates = school.CourseStates
+    EnrolmentStates = school.EnrolmentStates
     
     calendar = Instantiator('cal.Calendar').build
     yield calendar(color=1,**dd.babelkw('name',
@@ -79,8 +84,8 @@ def objects():
     line = Instantiator('school.Line','topic').build
     course = Instantiator('school.Course','line company start_time end_time').build
     
-    if Teacher.objects.all().count() == 0:
-        raise Exception(str(settings.INSTALLED_APPS))
+    #~ if Teacher.objects.all().count() == 0:
+        #~ raise Exception(str(settings.INSTALLED_APPS))
     TEACHERS = Cycler(Teacher.objects.all())
     USERS = Cycler(settings.SITE.user_model.objects.all())
     PLACES = Cycler(cal.Place.objects.all())
@@ -111,7 +116,7 @@ def objects():
     obj = line(comp,**dd.babelkw('name',de="Internet"))
     yield obj
     kw = dict(max_occurences=8)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=1,day=29))
+    kw.update(start_date=settings.SITE.demo_date(10))
     kw.update(state=school.CourseStates.scheduled)
     yield add_course(obj,bbach,"13:30","15:00",monday=True,**kw)
     yield add_course(obj,eupen,"17:30","19:00",wednesday=True,**kw)
@@ -120,20 +125,21 @@ def objects():
     obj = line(sport,**dd.babelkw('name',de="Bauchtanz"))
     yield obj
     kw = dict(max_occurences=8)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=9,day=1))
+    kw.update(start_date=settings.SITE.demo_date(-20))
+    kw.update(state=CourseStates.started)
     yield add_course(obj,eupen,"19:00","20:00",wednesday=True,**kw)
     
     obj = line(sport,**dd.babelkw('name',de="Funktionsgymnastik"))
     yield obj
-    kw = dict(max_occurences=10)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=9,day=9))
+    kw = dict(max_occurences=10,state=CourseStates.started)
+    kw.update(start_date=settings.SITE.demo_date(-10))
     yield add_course(obj,eupen,"11:00","12:00",monday=True,**kw)
     yield add_course(obj,eupen,"13:30","14:30",monday=True,**kw)
     
     obj = line(sport,**dd.babelkw('name',de="Rücken fit durch Schwimmen"))
     yield obj
-    kw = dict(max_occurences=10)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=9,day=1))
+    kw = dict(max_occurences=10,state=CourseStates.ended)
+    kw.update(start_date=settings.SITE.demo_date(-100))
     yield add_course(obj,eupen,"11:00","12:00",monday=True,**kw)
     yield add_course(obj,eupen,"13:30","14:30",monday=True,**kw)
     yield add_course(obj,stvith,"11:00","12:00",tuesday=True,**kw)
@@ -144,29 +150,45 @@ def objects():
 
     obj = line(sport,**dd.babelkw('name',de="Selbstverteidigung im Alltag"))
     yield obj
-    kw = dict(max_occurences=10)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=9,day=1))
+    kw = dict(max_occurences=6)
+    kw.update(start_date=settings.SITE.demo_date(-80))
+    kw.update(state=CourseStates.ended)
     yield add_course(obj,eupen,"18:00","19:00",friday=True,**kw)
     yield add_course(obj,eupen,"19:00","20:00",friday=True,**kw)
 
     obj = line(medit,**dd.babelkw('name',de="GuoLin-Qigong"))
     yield obj
     kw = dict(max_occurences=10)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=3,day=1))
+    kw.update(start_date=settings.SITE.demo_date(-10))
+    kw.update(state=CourseStates.started)
     yield add_course(obj,eupen,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,eupen,"19:00","20:30",friday=True,**kw)
 
     obj = line(medit,**dd.babelkw('name',de="Den Kopf frei machen - zur inneren Ruhe finden"))
     yield obj
     kw = dict(max_occurences=10)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=3,day=1))
+    kw.update(start_date=settings.SITE.demo_date(-10))
+    kw.update(state=CourseStates.started)
     yield add_course(obj,bbach,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,bbach,"19:00","20:30",friday=True,**kw)
 
     obj = line(medit,**dd.babelkw('name',de="Yoga"))
     yield obj
     kw = dict(max_occurences=10)
-    kw.update(start_date=settings.SITE.demo_date().replace(month=3,day=1))
+    kw.update(start_date=settings.SITE.demo_date(60))
+    kw.update(state=CourseStates.scheduled)
     yield add_course(obj,kelmis,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,kelmis,"19:00","20:30",friday=True,**kw)
 
+
+    PUPILS = Cycler(Pupil.objects.all())
+    COURSES = Cycler(Course.objects.all())
+    STATES = Cycler(EnrolmentStates.objects())
+    
+    for i in range(100):
+        kw = dict(
+            user=USERS.pop(),course=COURSES.pop(),
+            pupil=PUPILS.pop())
+        kw.update(request_date=settings.SITE.demo_date(-i))
+        kw.update(state=STATES.pop())
+        yield Enrolment(**kw)
