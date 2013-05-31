@@ -83,7 +83,7 @@ class Site(Site):
         yield 'lino.modlib.users'
         yield 'lino.modlib.countries'
         yield 'lino.modlib.contacts'
-        yield 'lino.modlib.households'
+        #~ yield 'lino.modlib.households'
         yield 'lino.modlib.notes'
         yield 'lino.modlib.uploads'
         yield 'lino.modlib.cal'
@@ -107,4 +107,20 @@ class Site(Site):
         add('100', _("User"),          'U U', name='user')
         add('900', _("Administrator"), 'A A', name='admin')
         
-      
+
+    def get_event_summary(self,event,user):
+        #~ from django.utils.translation import ugettext as _
+        #~ if event.user != user:
+            #~ if event.access_class == self.modules.cal.AccessClasses.show_busy:
+                #~ s = _("Busy")
+            #~ s = event.user.username + ': ' + unicode(s)
+        if event.project is None:
+            return event.summary
+        else:
+            return unicode(event.project)
+        #~ if event.state:
+            #~ s = ("(%s) " % unicode(event.state)) + s
+        #~ n = event.guest_set.all().count()
+        #~ if n:
+            #~ s = ("[%d] " % n) + s
+        #~ return s

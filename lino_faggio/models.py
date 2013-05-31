@@ -24,7 +24,6 @@ from lino import mixins
 
 contacts = dd.resolve_app('contacts')
 #~ cal = dd.resolve_app('cal')
-#~ school = dd.resolve_app('school')
 
 
 class Person(contacts.Person,mixins.Born):
@@ -81,7 +80,6 @@ class PersonDetail(contacts.PersonDetail):
     id language 
     addr1 url
     gender birth_date age:10 personal
-    households.MembersByPerson
     """,label = _("More"))
     
     personal = 'is_pupil is_teacher'
@@ -104,39 +102,18 @@ class PersonDetail(contacts.PersonDetail):
     fax
     gsm
     """
-    
-    
-    #~ def setup_handle(self,lh):
-      
-        #~ lh.contact.label = _("Contact")
-        #~ lh.mails.label = _("Mails")
 
 
 class PupilDetail(PersonDetail):
     
     main = "general more school.EnrolmentsByPupil"
+    personal = 'pupil_type'
 
-    personal = ''
     
 class TeacherDetail(PersonDetail):
     main = "general more school.EventsByTeacher school.CoursesByTeacher"
-    personal = ''
+    personal = 'teacher_type'
 
-#~ class Company(contacts.Partner,contacts.CompanyMixin):
-    #~ class Meta(contacts.CompanyMixin.Meta):
-        #~ app_label = 'contacts'
-        #~ # see :doc:`/tickets/14`
-        #~ verbose_name = _("Company")
-        #~ verbose_name_plural = _("Companies")
-        
-#~ class Event(cal.Event):
-    #~ class Meta(cal.Event.Meta):
-        #~ app_label = 'cal'
-
-#~ class Task(cal.Task):
-    #~ class Meta(cal.Task.Meta):
-        #~ app_label = 'cal'
-        
         
 #~ class EventDetail(cal.EventDetail):
 #~ class EventDetail(dd.FormLayout):
@@ -173,7 +150,7 @@ def site_setup(site):
     site.modules.school.Teachers.set_detail_layout(TeacherDetail())
     site.modules.contacts.Partners.set_detail_layout(bottom_box = """
     remarks 
-    is_person is_company is_household
+    is_person is_company #is_household
     """
 )
     
@@ -193,24 +170,46 @@ def site_setup(site):
     """,_("More"))
     
     
-    
-    # remove `project` field
-    #~ site.modules.cal.Tasks.set_detail_layout("""
-    #~ start_date workflow_buttons due_date done user id
-    #~ summary 
-    #~ calendar owner created:20 modified:20 user_modified  
-    #~ description #notes.NotesByTask    
-    #~ """)
-
-    #~ site.modules.cal.Events.set_detail_layout("general more")
-    
-    
     site.modules.cal.Events.set_insert_layout("""
-    summary 
+    project 
     start end 
-    calendar project 
     """,
     start="start_date start_time",
     end="end_date end_time",
     window_size=(60,'auto'))
     
+
+class ConfirmEnrolment(dd.ChangeStateAction):
+    required = dd.required(states='requested')
+    label = _("Confirm")
+    help_text = _("")
+    
+    def run_from_ui(self,obj,ar,**kw):
+        #~ school = dd.resolve_app('school')
+        #~ assert isinstance(obj,school.Enrolment)
+        #~ course = obj.course
+        #~ obj.course = None
+        
+        def ok():
+            # to avoid UnboundLocalError local variable 'kw' referenced before assignment
+            kw2 = obj.simply_print.run_from_session(ar,**kw)
+            kw2 = super(ConfirmEnrolment,self).run_from_ui(obj,ar,**kw2)
+            kw2.update(refresh_all=True)
+            #~ kw.update(message=_("%(pupil)s has been enrolled to %(course)s") 
+                #~ % dict(pupil=obj.pupil,course=obj.course))
+            return kw2
+        return ar.confirm(ok,
+            _("Print confirmation that <b>%(pupil)s</b> has been enrolled to<br><b>%(course)s</b>") 
+                % dict(pupil=obj.pupil,course=obj.course),
+            _("Are you sure?"))
+    
+
+@dd.receiver(dd.pre_analyze,dispatch_uid='faggio_setup_workflows')
+def faggio_setup_workflows(sender=None,**kw):
+    
+    site = sender
+    school = dd.resolve_app('school')
+
+    #~ from lino.modlib.school import models as school
+    school.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment) # ,auth=False,debug_permissions=20130531)
+

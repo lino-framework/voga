@@ -32,7 +32,9 @@ def objects():
     school = dd.resolve_app('school')
     Company = dd.resolve_model('contacts.Company')
     Teacher = dd.resolve_model('school.Teacher')
+    TeacherType = dd.resolve_model('school.TeacherType')
     Pupil = dd.resolve_model('school.Pupil')
+    PupilType = dd.resolve_model('school.PupilType')
     Enrolment = dd.resolve_model('school.Enrolment')
     Course = dd.resolve_model('school.Course')
     CourseStates = school.CourseStates

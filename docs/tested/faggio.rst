@@ -14,7 +14,7 @@ For example here is how we can verify here that the demo database
 has 23 pupils and 7 teachers:
 
 >>> school.Pupil.objects.count()
-23
+35
 >>> school.Teacher.objects.count()
-7
+8
 
