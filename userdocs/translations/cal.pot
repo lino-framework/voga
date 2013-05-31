@@ -1,0 +1,38 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2013, Luc Saffre
+# This file is distributed under the same license as the Lino-Faggio Benutzerhandbuch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-31 15:30+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../cal.rst:5
+# e4e83a3e04114c9381abe5c6c8191660
+msgid "Le module Calendrier"
+msgstr ""
+
+#: ../cal.rst:16
+# 84f398bae1484b38bbb0e01c2c540cdf
+msgid "Calendar Panel"
+msgstr ""
+
+#: ../cal.rst:18
+# 977f5510faa24da29d485411b57c4d7a
+msgid "The Calendar Panel displays your events in a classical \"calendar view\", with the possibility to switch between daily, weekly, monthly and to toggle the visibility of team events."
+msgstr ""
+
+#: ../cal.rst:28
+# 41968beedc6146478a79aecc23f65081
+msgid "Référence"
+msgstr ""
+

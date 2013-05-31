@@ -179,29 +179,34 @@ def site_setup(site):
     window_size=(60,'auto'))
     
 
-class ConfirmEnrolment(dd.ChangeStateAction):
-    required = dd.required(states='requested')
-    label = _("Confirm")
-    help_text = _("")
+class PrintAndChangeStateAction(dd.ChangeStateAction):
     
     def run_from_ui(self,obj,ar,**kw):
-        #~ school = dd.resolve_app('school')
-        #~ assert isinstance(obj,school.Enrolment)
-        #~ course = obj.course
-        #~ obj.course = None
         
         def ok():
             # to avoid UnboundLocalError local variable 'kw' referenced before assignment
             kw2 = obj.simply_print.run_from_session(ar,**kw)
-            kw2 = super(ConfirmEnrolment,self).run_from_ui(obj,ar,**kw2)
+            kw2 = super(PrintAndChangeStateAction,self).run_from_ui(obj,ar,**kw2)
             kw2.update(refresh_all=True)
-            #~ kw.update(message=_("%(pupil)s has been enrolled to %(course)s") 
-                #~ % dict(pupil=obj.pupil,course=obj.course))
             return kw2
-        return ar.confirm(ok,
-            _("Print confirmation that <b>%(pupil)s</b> has been enrolled to<br><b>%(course)s</b>") 
-                % dict(pupil=obj.pupil,course=obj.course),
-            _("Are you sure?"))
+        msg = self.get_confirmation_message(obj,ar)
+        return ar.confirm(ok, msg, _("Are you sure?"))
+    
+class ConfirmEnrolment(PrintAndChangeStateAction):
+    required = dd.required(states='requested')
+    label = _("Confirm")
+    
+    def get_confirmation_message(self,obj,ar):
+        return _("Confirm enrolment of <b>%(pupil)s</b> to <b>%(course)s</b>.") % dict(
+            pupil=obj.pupil,course=obj.course)        
+    
+class CertifyEnrolment(PrintAndChangeStateAction):
+    required = dd.required(states='confirmed')
+    label = _("Certify")
+    
+    def get_confirmation_message(self,obj,ar):
+        return _("Print certificate for <b>%(pupil)s</b>.") % dict(
+            pupil=obj.pupil,course=obj.course)
     
 
 @dd.receiver(dd.pre_analyze,dispatch_uid='faggio_setup_workflows')
@@ -211,5 +216,6 @@ def faggio_setup_workflows(sender=None,**kw):
     school = dd.resolve_app('school')
 
     #~ from lino.modlib.school import models as school
-    school.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment) # ,auth=False,debug_permissions=20130531)
+    school.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment)
+    school.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
 

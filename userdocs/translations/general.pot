@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2013, Luc Saffre
+# This file is distributed under the same license as the Lino-Faggio Benutzerhandbuch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-31 15:30+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../general.rst:3
+# 146bb25ca5e649c6a809ed6717f085b6
+msgid "Concepts généraux"
+msgstr ""
+
+#: ../general.rst:8
+# d9ec41d0a91a43ca969d153028e527b8
+msgid "Vue tabulaire"
+msgstr ""
+
+#: ../general.rst:10
+# ca98993d577b46fbb90d15c2c7e24974
+msgid "Nous parlons de vue tabullaire quand une série d'enregistrements vous est présentée sous forme de grille. Les colonnes portent des libellés."
+msgstr ""
+
+#: ../general.rst:17
+# aa157a4bb3c24dd3b3d86634de7761cf
+msgid "Vue détaillée"
+msgstr ""
+
+#: ../general.rst:19
+# c9536a20f4824f22b194a62cf5cf633f
+msgid "Nous parlons de vue détaillée quand un seul enregistrement vous est présenté sous forme de formulaire."
+msgstr ""
+
+#: ../general.rst:26
+# b0ccc7905dbe418d921a3779d9d94fd6
+msgid "Enregisterer"
+msgstr ""
+
+#: ../general.rst:28
+# 1f4b9784c62747e9bd26d2c41a21087d
+msgid "Click this button to save your changes in the form."
+msgstr ""
+
+#: ../general.rst:33
+# 599dc3d5115c4b3cbe51df877fc5e6ab
+msgid "Référence"
+msgstr ""
+

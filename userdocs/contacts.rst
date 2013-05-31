@@ -7,7 +7,7 @@ Contacts
 Toute personne physique ou morale est enregistrée 
 dans Lino en tant que :ref:`Partenaire <faggio.contacts.Partners>`.
 
-Lino différencie les types de Partenaires suivants:
+Lino-Faggio différencie les types de Partenaires suivants:
 
 .. django2rst:: contacts.Partner.print_subclasses_graph()
 
@@ -43,5 +43,3 @@ im Parameter-Panel der Liste angekreuzt werden.
 .. actor:: contacts.CompanyTypes
 
 
-.. actor:: households.Households
-.. actor:: households.Types
