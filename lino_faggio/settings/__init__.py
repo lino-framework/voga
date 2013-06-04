@@ -18,10 +18,12 @@ import lino
 
 from lino.projects.std.settings import *
 
-from lino.modlib import cal
+
+#~ from lino.modlib import cal
+from lino.modlib import ledger
 
 #~ class Site(Site,cal.SiteMixin):
-class Site(Site):
+class Site(Site,ledger.SiteMixin):
     #~ title = __name__
     version = "0.0.1"
     verbose_name = "Lino-Faggio"
@@ -83,12 +85,22 @@ class Site(Site):
         yield 'lino.modlib.users'
         yield 'lino.modlib.countries'
         yield 'lino.modlib.contacts'
+        
+        
+        yield 'lino.modlib.products'
+        yield 'lino.modlib.accounts'
+        yield 'lino.modlib.ledger'
+        yield 'lino.modlib.vat'
+        #~ yield 'lino.modlib.declarations'
+        yield 'lino.modlib.sales'
+        yield 'lino.modlib.finan'
+        
         #~ yield 'lino.modlib.households'
-        yield 'lino.modlib.notes'
+        #~ yield 'lino.modlib.notes'
         yield 'lino.modlib.uploads'
         yield 'lino.modlib.cal'
         yield 'lino.modlib.outbox'
-        yield 'lino.modlib.pages'
+        #~ yield 'lino.modlib.pages'
         yield 'lino.modlib.school'
         yield 'lino_faggio'
       

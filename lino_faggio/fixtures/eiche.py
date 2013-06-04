@@ -178,7 +178,23 @@ def objects():
     yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
     yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
     
-    obj = line(comp,**dd.babelkw('name',de="Internet"))
+
+    desc = """
+Behandelte Themengebiete:
+
+- Grundlagen, Voraussetzungen
+- Arbeiten im WWW unter Verwendung eines Browsers
+- Navigieren im WWW
+- Links in die Linkleiste legen
+- aus Webseiten heraus drucken
+- Favoriten bzw. Lesezeichen verwenden
+- Aufgabe und Funktionsweise von Suchmaschinen
+- Elektronische Post: E-Mails verfassen, senden, empfangen, beantworten
+- E-Mails mit Anlagen
+- E-mail Sicherheit
+- Tipps und Tricks    
+"""    
+    obj = line(comp,description=desc,**dd.babelkw('name',de="Internet: World Wide Web für Anfänger"))
     yield obj
     kw = dict(max_occurences=8)
     kw.update(start_date=settings.SITE.demo_date(10))

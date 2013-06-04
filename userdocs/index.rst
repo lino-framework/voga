@@ -13,4 +13,5 @@ Benutzerhandbuch
    cal
    countries
    contacts
+   sales
    school

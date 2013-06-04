@@ -23,6 +23,7 @@ from lino import mixins
 #~ from lino.modlib.cal import models as cal
 
 contacts = dd.resolve_app('contacts')
+ledger = dd.resolve_app('ledger')
 #~ cal = dd.resolve_app('cal')
 
 
@@ -33,7 +34,7 @@ class Person(contacts.Person,mixins.Born):
 
 class CompanyDetail(contacts.CompanyDetail):
     
-    main = 'general more'
+    main = 'general more ledger'
     
     general = dd.Panel("""
     address_box:60 contact_box:30
@@ -65,11 +66,17 @@ class CompanyDetail(contacts.CompanyDetail):
     remarks contacts.RolesByCompany
     """
     
+    ledger = dd.Panel("""
+    ledger.InvoicesByPartner
+    ledger.MovementsByPartner
+    """,label=ledger.MODULE_LABEL)
+    
+    
 class PersonDetail(contacts.PersonDetail):
    
     #~ main = "contact outbox calendar"
     
-    main = 'general more'
+    main = 'general more ledger'
     
     general = dd.Panel("""
     box1 box2
@@ -84,11 +91,6 @@ class PersonDetail(contacts.PersonDetail):
     
     personal = 'is_pupil is_teacher'
     
-    #~ main = dd.Panel("""
-    #~ box1 box2
-    #~ remarks contacts.RolesByPerson #households.MembersByPerson
-    #~ """,label = _("Contact"))
-    
     box1 = """
     last_name first_name:15 #title:10
     country city zip_code:10
@@ -102,16 +104,22 @@ class PersonDetail(contacts.PersonDetail):
     fax
     gsm
     """
+    
+    ledger = dd.Panel("""
+    ledger.InvoicesByPartner
+    ledger.MovementsByPartner
+    """,label=ledger.MODULE_LABEL)
+    
 
 
 class PupilDetail(PersonDetail):
     
-    main = "general more school.EnrolmentsByPupil"
+    main = PersonDetail.main + " school.EnrolmentsByPupil"
     personal = 'pupil_type'
 
     
 class TeacherDetail(PersonDetail):
-    main = "general more school.EventsByTeacher school.CoursesByTeacher"
+    main = PersonDetail.main + " school.EventsByTeacher school.CoursesByTeacher"
     personal = 'teacher_type'
 
         
@@ -210,7 +218,7 @@ class CertifyEnrolment(PrintAndChangeStateAction):
     
 
 @dd.receiver(dd.pre_analyze,dispatch_uid='faggio_setup_workflows')
-def faggio_setup_workflows(sender=None,**kw):
+def faggio_setup_workflows(sender,**kw):
     
     site = sender
     school = dd.resolve_app('school')
@@ -219,3 +227,12 @@ def faggio_setup_workflows(sender=None,**kw):
     school.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment)
     school.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
 
+
+@dd.when_prepared('partners.Person','partners.Organisation')
+def hide_region(model):
+    model.hide_elements('region')
+
+@dd.when_prepared('partners.Person','partners.Organisation')
+def hide_region(model):
+    model.define_action(merge_row=dd.MergeAction(model))
+        

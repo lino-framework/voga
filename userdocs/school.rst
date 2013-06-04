@@ -1,11 +1,8 @@
 .. _faggio.courses:
 
-=====
-Kurse
-=====
-
-
-
+=======
+Courses
+=======
 
 
 .. actors_overview:: 
@@ -17,7 +14,7 @@ Kurse
     school.Teachers
     
 
-Référence
+Reference
 =========
 
 .. actor:: school.Pupils
