@@ -30,6 +30,8 @@ def objects():
     
     cal = dd.resolve_app('cal')
     school = dd.resolve_app('school')
+    
+    Event = dd.resolve_model('cal.Event')
     Company = dd.resolve_model('contacts.Company')
     Teacher = dd.resolve_model('school.Teacher')
     TeacherType = dd.resolve_model('school.TeacherType')
@@ -273,3 +275,12 @@ Behandelte Themengebiete:
         kw.update(request_date=settings.SITE.demo_date(-i))
         kw.update(state=STATES.pop())
         yield Enrolment(**kw)
+        
+    for feast in (
+        (6,1,"Kinderschutztag"),
+        (12,25,"Weihnachten"),
+        (6,24,"Saint-Jean"),
+        (7,21,"Nationalfeiertag"),
+        ):
+        d = settings.SITE.demo_date().replace(month=feast[0],day=feast[1])
+        yield Event(start_date=d,summary=feast[2],user=USERS.pop())

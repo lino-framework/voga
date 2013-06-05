@@ -11,7 +11,7 @@
 import sys, os
 
 from atelier.sphinxconf import configure
-configure(globals(),'lino_faggio.settings.demo')
+configure(globals(),'lino_faggio.settings.test')
 
 
 from django.conf import settings
