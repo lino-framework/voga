@@ -55,6 +55,8 @@ class Site(Site,ledger.SiteMixin):
     override_modlib_models = [
         #~ 'contacts.Partner', 
         'contacts.Person', 
+        'sales.Invoice', 
+        'sales.InvoiceItem', 
         #~ 'contacts.Company',
         #~ 'households.Household',
         ]

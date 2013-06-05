@@ -24,9 +24,32 @@ from lino import mixins
 
 contacts = dd.resolve_app('contacts')
 ledger = dd.resolve_app('ledger')
+sales = dd.resolve_app('sales')
 #~ cal = dd.resolve_app('cal')
+#~ school = dd.resolve_app('school')
 
-
+class Invoice(sales.Invoice):
+    class Meta(sales.Invoice.Meta):
+        app_label = 'sales'
+        verbose_name = _("Invoice")
+        verbose_name_plural = _("Invoices")
+    
+class InvoiceItem(sales.InvoiceItem):
+    class Meta(sales.InvoiceItem.Meta):
+        app_label = 'sales'
+        verbose_name = _("Voucher item")
+        verbose_name_plural = _("Voucher items")
+    #~ course = dd.ForeignKey('school.Course',blank=True,null=True)
+    enrolment = dd.ForeignKey('school.Enrolment',blank=True,null=True)
+    
+    @dd.chooser()
+    def enrolment_choices(self,voucher):
+        Enrolment = dd.resolve_model('school.Enrolment')
+        print 20130605, voucher.partner.pk
+        return Enrolment.objects.filter(pupil__id=voucher.partner.pk).order_by('request_date')
+    
+sales.ItemsByInvoice.column_names = "enrolment product title description:20x1 discount unit_price qty total_incl total_base total_vat"
+    
 class Person(contacts.Person,mixins.Born):
     class Meta(contacts.Person.Meta):
         app_label = 'contacts'
@@ -123,31 +146,6 @@ class TeacherDetail(PersonDetail):
     personal = 'teacher_type'
 
         
-#~ class EventDetail(cal.EventDetail):
-#~ class EventDetail(dd.FormLayout):
-    #~ main = "general more"
-    
-    #~ lesson = dd.Panel("""
-    #~ owner start_date start_time end_time room 
-    #~ school.PresencesByEvent
-    #~ """,label=_("Lesson"))
-    
-  
-    #~ event = dd.Panel("""
-    #~ id:8 user priority access_class transparent #rset 
-    #~ summary state workflow_buttons 
-    #~ calendar created:20 modified:20 
-    #~ description
-    #~ cal.GuestsByEvent 
-    #~ """,label=_("Event"))
-    
-    #~ main = "lesson event"
-
-    #~ def setup_handle(self,lh):
-      
-        #~ lh.lesson.label = _("Lesson")
-        #~ lh.event.label = 
-        #~ lh.notes.label = _("Notes")
 
      
      
@@ -193,7 +191,7 @@ class PrintAndChangeStateAction(dd.ChangeStateAction):
         
         def ok():
             # to avoid UnboundLocalError local variable 'kw' referenced before assignment
-            kw2 = obj.simply_print.run_from_session(ar,**kw)
+            kw2 = obj.do_print.run_from_session(ar,**kw)
             kw2 = super(PrintAndChangeStateAction,self).run_from_ui(obj,ar,**kw2)
             kw2.update(refresh_all=True)
             return kw2
@@ -211,6 +209,8 @@ class ConfirmEnrolment(PrintAndChangeStateAction):
 class CertifyEnrolment(PrintAndChangeStateAction):
     required = dd.required(states='confirmed')
     label = _("Certify")
+    #~ label = _("Award")
+    #~ label = school.EnrolmentStates.award.text
     
     def get_confirmation_message(self,obj,ar):
         return _("Print certificate for <b>%(pupil)s</b>.") % dict(
@@ -226,6 +226,7 @@ def faggio_setup_workflows(sender,**kw):
     #~ from lino.modlib.school import models as school
     school.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment)
     school.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
+    #~ school.EnrolmentStates.abandoned.add_transition() 
 
 
 @dd.when_prepared('partners.Person','partners.Organisation')

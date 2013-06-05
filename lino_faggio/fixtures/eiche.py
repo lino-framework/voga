@@ -173,7 +173,8 @@ def objects():
     
     obj = line(comp,**dd.babelkw('name',de="Erste Schritte"))
     yield obj
-    kw = dict(max_occurences=8)
+    kw = dict(max_events=8)
+    kw.update(max_places=20)
     kw.update(start_date=settings.SITE.demo_date(-30))
     kw.update(state=school.CourseStates.started)
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
@@ -198,7 +199,7 @@ Behandelte Themengebiete:
 """    
     obj = line(comp,description=desc,**dd.babelkw('name',de="Internet: World Wide Web für Anfänger"))
     yield obj
-    kw = dict(max_occurences=8)
+    kw = dict(max_events=8)
     kw.update(start_date=settings.SITE.demo_date(10))
     kw.update(state=school.CourseStates.scheduled)
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
@@ -207,21 +208,22 @@ Behandelte Themengebiete:
     
     obj = line(sport,**dd.babelkw('name',de="Bauchtanz"))
     yield obj
-    kw = dict(max_occurences=8)
+    kw = dict(max_events=8)
+    kw.update(max_places=10)
     kw.update(start_date=settings.SITE.demo_date(-20))
     kw.update(state=CourseStates.started)
     yield add_course(obj,spiegel,"19:00","20:00",wednesday=True,**kw)
     
     obj = line(sport,**dd.babelkw('name',de="Funktionsgymnastik"))
     yield obj
-    kw = dict(max_occurences=10,state=CourseStates.started)
+    kw = dict(max_events=10,state=CourseStates.started)
     kw.update(start_date=settings.SITE.demo_date(-10))
     yield add_course(obj,spiegel,"11:00","12:00",monday=True,**kw)
     yield add_course(obj,spiegel,"13:30","14:30",monday=True,**kw)
     
     obj = line(sport,**dd.babelkw('name',de="Rücken fit durch Schwimmen"))
     yield obj
-    kw = dict(max_occurences=10,state=CourseStates.ended)
+    kw = dict(max_events=10,state=CourseStates.ended)
     kw.update(start_date=settings.SITE.demo_date(-100))
     yield add_course(obj,spiegel,"11:00","12:00",monday=True,**kw)
     yield add_course(obj,spiegel,"13:30","14:30",monday=True,**kw)
@@ -233,7 +235,8 @@ Behandelte Themengebiete:
 
     obj = line(sport,**dd.babelkw('name',de="Selbstverteidigung im Alltag"))
     yield obj
-    kw = dict(max_occurences=6)
+    kw = dict(max_events=6)
+    kw.update(max_places=12)
     kw.update(start_date=settings.SITE.demo_date(-80))
     kw.update(state=CourseStates.ended)
     yield add_course(obj,spiegel,"18:00","19:00",friday=True,**kw)
@@ -241,7 +244,7 @@ Behandelte Themengebiete:
 
     obj = line(medit,**dd.babelkw('name',de="GuoLin-Qigong"))
     yield obj
-    kw = dict(max_occurences=10)
+    kw = dict(max_events=10)
     kw.update(start_date=settings.SITE.demo_date(-10))
     kw.update(state=CourseStates.started)
     yield add_course(obj,spiegel,"18:00","19:30",monday=True,**kw)
@@ -249,7 +252,8 @@ Behandelte Themengebiete:
 
     obj = line(medit,**dd.babelkw('name',de="Den Kopf frei machen - zur inneren Ruhe finden"))
     yield obj
-    kw = dict(max_occurences=10)
+    kw = dict(max_events=10)
+    kw.update(max_places=30)
     kw.update(start_date=settings.SITE.demo_date(-10))
     kw.update(state=CourseStates.started)
     yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
@@ -257,7 +261,7 @@ Behandelte Themengebiete:
 
     obj = line(medit,**dd.babelkw('name',de="Yoga"))
     yield obj
-    kw = dict(max_occurences=10)
+    kw = dict(max_events=10)
     kw.update(start_date=settings.SITE.demo_date(60))
     kw.update(state=CourseStates.scheduled)
     yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
