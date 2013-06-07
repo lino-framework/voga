@@ -12,6 +12,7 @@
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
 from django.db import models
+from django.db.models import loading
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -26,8 +27,11 @@ contacts = dd.resolve_app('contacts')
 ledger = dd.resolve_app('ledger')
 sales = dd.resolve_app('sales')
 #~ cal = dd.resolve_app('cal')
-#~ school = dd.resolve_app('school')
+school = dd.resolve_app('school')
 
+#~ print 20130607, loading.cache.postponed
+
+    
 class Invoice(sales.Invoice):
     class Meta(sales.Invoice.Meta):
         app_label = 'sales'
@@ -45,120 +49,57 @@ class InvoiceItem(sales.InvoiceItem):
     @dd.chooser()
     def enrolment_choices(self,voucher):
         Enrolment = dd.resolve_model('school.Enrolment')
-        print 20130605, voucher.partner.pk
+        #~ print 20130605, voucher.partner.pk
         return Enrolment.objects.filter(pupil__id=voucher.partner.pk).order_by('request_date')
-    
-sales.ItemsByInvoice.column_names = "enrolment product title description:20x1 discount unit_price qty total_incl total_base total_vat"
-    
-class Person(contacts.Person,mixins.Born):
-    class Meta(contacts.Person.Meta):
-        app_label = 'contacts'
-
-
-class CompanyDetail(contacts.CompanyDetail):
-    
-    main = 'general more ledger'
-    
-    general = dd.Panel("""
-    address_box:60 contact_box:30
-    bottom_box
-    """,label = _("General"))
-    
-    more = dd.Panel("""
-    id language type vat_id:12
-    addr1 url
-    school.CoursesByCompany
-    """,label = _("More"))
-    
-    address_box = dd.Panel("""
-    prefix name
-    country city zip_code:10
-    street:25 street_no street_box
-    addr2
-    """) # ,label = _("Address"))
-    
-    contact_box = dd.Panel("""
-    email:40 
-    phone
-    gsm 
-    fax
-    """) # ,label = _("Contact"))
-    
-
-    bottom_box = """
-    remarks contacts.RolesByCompany
-    """
-    
-    ledger = dd.Panel("""
-    ledger.InvoicesByPartner
-    ledger.MovementsByPartner
-    """,label=ledger.MODULE_LABEL)
-    
-    
-class PersonDetail(contacts.PersonDetail):
-   
-    #~ main = "contact outbox calendar"
-    
-    main = 'general more ledger'
-    
-    general = dd.Panel("""
-    box1 box2
-    remarks contacts.RolesByPerson 
-    """,label = _("General"))
-
-    more = dd.Panel("""
-    id language 
-    addr1 url
-    gender birth_date age:10 personal
-    """,label = _("More"))
-    
-    personal = 'is_pupil is_teacher'
-    
-    box1 = """
-    last_name first_name:15 #title:10
-    country city zip_code:10
-    #street_prefix street:25 street_no street_box
-    addr2:40
-    """
-    
-    box2 = """
-    email
-    phone 
-    fax
-    gsm
-    """
-    
-    ledger = dd.Panel("""
-    ledger.InvoicesByPartner
-    ledger.MovementsByPartner
-    """,label=ledger.MODULE_LABEL)
-    
-
-
-class PupilDetail(PersonDetail):
-    
-    main = PersonDetail.main + " school.EnrolmentsByPupil"
-    personal = 'pupil_type'
-
-    
-class TeacherDetail(PersonDetail):
-    main = PersonDetail.main + " school.EventsByTeacher school.CoursesByTeacher"
-    personal = 'teacher_type'
-
         
+    
+class ItemsByInvoice(sales.ItemsByInvoice):
+    app_label = 'sales' # we want to "override" the original table
 
+    column_names = "enrolment product title description:20x1 discount unit_price qty total_incl total_base total_vat"
+    
+    @classmethod
+    def get_choices_text(self,obj,request,field):
+        if field.name == 'enrolment':
+            return unicode(obj.course)
+        raise Exception("20130607 field.name is" % field.name)
+        return super(ItemsByInvoice,self).get_choices_text(obj,field,request)
+    
+class InvoicingsByEnrolment(sales.InvoiceItemsByProduct):
+    app_label = 'sales'
+    master_key = 'enrolment'
+    editable = False
+    
+#~ sales.ItemsByInvoice.column_names = "enrolment product title description:20x1 discount unit_price qty total_incl total_base total_vat"
+    
+
+#~ dd.inject_field('school.Course',
+    #~ 'tariff',
+    #~ models.ForeignKey('products.Product',
+        #~ blank=True,null=True,
+        #~ verbose_name=_("Tariff"),
+        #~ related_name='courses_by_tariff'))
+        #~ 
+#~ class CourseDetail(school.CourseDetail):     
+    #~ main = "general cal.EventsByController"
+    #~ general = dd.Panel("""
+    #~ line teacher start_date start_time room #slot state id:8
+    #~ max_places max_events end_date end_time every_unit every
+    #~ monday tuesday wednesday thursday friday saturday sunday
+    #~ company contact_person user calendar tariff
+    #~ school.EnrolmentsByCourse
+    #~ """,label=_("General"))
+    #~ 
+#~ 
+#~ @dd.receiver(dd.post_analyze)
+#~ def customize_school(sender,**kw):
+    #~ site = sender
+    #~ site.modules.school.Courses.set_detail_layout(CourseDetail())
      
-     
-def site_setup(site):
-    site.modules.contacts.Persons.set_detail_layout(PersonDetail())
-    site.modules.contacts.Companies.set_detail_layout(CompanyDetail())
-    site.modules.school.Pupils.set_detail_layout(PupilDetail())
-    site.modules.school.Teachers.set_detail_layout(TeacherDetail())
-    site.modules.contacts.Partners.set_detail_layout(bottom_box = """
-    remarks 
-    is_person is_company #is_household
-    """
-)
+#~ def site_setup(site):
+@dd.receiver(dd.post_analyze)
+def customize_cal(sender,**kw):
+    site = sender
     
     #~ site.modules.cal.Events.set_detail_layout(EventDetail())
     site.modules.cal.Events.set_detail_layout('general more')
@@ -234,6 +175,6 @@ def hide_region(model):
     model.hide_elements('region')
 
 @dd.when_prepared('partners.Person','partners.Organisation')
-def hide_region(model):
+def add_merge_action(model):
     model.define_action(merge_row=dd.MergeAction(model))
         

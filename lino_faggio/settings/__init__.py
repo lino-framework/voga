@@ -86,7 +86,8 @@ class Site(Site,ledger.SiteMixin):
         yield 'django.contrib.contenttypes'
         yield 'lino.modlib.users'
         yield 'lino.modlib.countries'
-        yield 'lino.modlib.contacts'
+        #~ yield 'lino.modlib.contacts'
+        yield 'lino_faggio.contacts'
         
         
         yield 'lino.modlib.products'

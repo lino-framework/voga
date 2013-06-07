@@ -155,10 +155,12 @@ def objects():
     TEACHERS = Cycler(Teacher.objects.all())
     USERS = Cycler(settings.SITE.user_model.objects.all())
     PLACES = Cycler(cal.Room.objects.all())
+    PRICES = Cycler(20,30,40,50)
     
     def add_course(*args,**kw):
         kw.update(user=USERS.pop())
         kw.update(teacher=TEACHERS.pop())
+        kw.update(price=PRICES.pop())
         kw.update(every=1)
         kw.update(company=we)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
@@ -288,3 +290,24 @@ Behandelte Themengebiete:
         ):
         d = settings.SITE.demo_date().replace(month=feast[0],day=feast[1])
         yield Event(start_date=d,summary=feast[2],user=USERS.pop())
+
+
+
+        
+    #~ productcat = Instantiator('products.ProductCat').build
+#~ 
+    #~ tariffs = productcat(id=1,**babel_values('name',
+        #~ en="Courses",et="Kursused",de="Kurse",fr="Cours"))
+    #~ yield tariffs
+    #~ other = productcat(id=2,**babel_values('name',
+        #~ en="Other",
+        #~ et="Muud",
+        #~ de="Sonstige",
+        #~ fr="Autres"))
+    #~ yield other
+    #~ 
+        #~ 
+    #~ product = Instantiator('products.Product',"price cat name").build
+    #~ yield product("20",tariffs,"20€")
+    #~ yield product("50",tariffs,"50€")
+    #~ yield product("80",tariffs,"80€")
