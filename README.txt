@@ -7,7 +7,8 @@ A Lino application for managing courses, participants and meeting rooms
 Description
 -----------
 
-A Lino application for managing courses, participants and meeting rooms.
+Lino-Faggio is a `Lino <http://www.lino-framework.org>`_ 
+application for managing courses, participants and meeting rooms.
 
 
 

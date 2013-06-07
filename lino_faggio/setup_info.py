@@ -18,7 +18,8 @@ SETUP_INFO = dict(name='lino-faggio',
       test_suite = 'tests',
       description="A Lino application for managing courses, participants and meeting rooms",
       long_description="""\
-A Lino application for managing courses, participants and meeting rooms.
+Lino-Faggio is a `Lino <http://www.lino-framework.org>`_ 
+application for managing courses, participants and meeting rooms.
 
 """,
       author = 'Luc Saffre',
