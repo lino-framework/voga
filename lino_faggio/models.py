@@ -66,7 +66,7 @@ class ItemsByInvoice(sales.ItemsByInvoice):
     def get_choices_text(self,obj,request,field):
         if field.name == 'enrolment':
             return unicode(obj.course)
-        raise Exception("20130607 field.name is" % field.name)
+        #~ raise Exception("20130607 field.name is %r" % field.name)
         return super(ItemsByInvoice,self).get_choices_text(obj,field,request)
     
 class InvoicingsByEnrolment(sales.InvoiceItemsByProduct):
