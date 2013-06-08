@@ -52,6 +52,10 @@ class InvoiceItem(sales.InvoiceItem):
         #~ print 20130605, voucher.partner.pk
         return Enrolment.objects.filter(pupil__id=voucher.partner.pk).order_by('request_date')
         
+    def enrolment_changed(self,ar):
+        if self.enrolment is not None and self.enrolment.course is not None:
+            self.product = self.enrolment.course.tariff
+        self.product_changed(ar)
     
 class ItemsByInvoice(sales.ItemsByInvoice):
     app_label = 'sales' # we want to "override" the original table
@@ -73,28 +77,34 @@ class InvoicingsByEnrolment(sales.InvoiceItemsByProduct):
 #~ sales.ItemsByInvoice.column_names = "enrolment product title description:20x1 discount unit_price qty total_incl total_base total_vat"
     
 
-#~ dd.inject_field('school.Course',
-    #~ 'tariff',
-    #~ models.ForeignKey('products.Product',
-        #~ blank=True,null=True,
-        #~ verbose_name=_("Tariff"),
-        #~ related_name='courses_by_tariff'))
-        #~ 
-#~ class CourseDetail(school.CourseDetail):     
-    #~ main = "general cal.EventsByController"
-    #~ general = dd.Panel("""
-    #~ line teacher start_date start_time room #slot state id:8
-    #~ max_places max_events end_date end_time every_unit every
-    #~ monday tuesday wednesday thursday friday saturday sunday
-    #~ company contact_person user calendar tariff
-    #~ school.EnrolmentsByCourse
-    #~ """,label=_("General"))
-    #~ 
-#~ 
-#~ @dd.receiver(dd.post_analyze)
-#~ def customize_school(sender,**kw):
-    #~ site = sender
-    #~ site.modules.school.Courses.set_detail_layout(CourseDetail())
+dd.inject_field('school.Course',
+    'tariff',
+    models.ForeignKey('products.Product',
+        blank=True,null=True,
+        verbose_name=_("Tariff"),
+        related_name='courses_by_tariff'))
+        
+class ActiveCourses(school.ActiveCourses):
+    app_label = 'school'
+    column_names = 'info tariff max_places enrolments teacher company room'
+    hide_sums = True
+
+class CourseDetail(school.CourseDetail):     
+    main = "general cal.EventsByController"
+    general = dd.Panel("""
+    line teacher start_date start_time room #slot state id:8
+    max_places max_events end_date end_time every_unit every
+    monday tuesday wednesday thursday friday saturday sunday
+    company contact_person user calendar tariff
+    school.EnrolmentsByCourse
+    """,label=_("General"))
+    
+
+@dd.receiver(dd.post_analyze)
+def customize_school(sender,**kw):
+    site = sender
+    site.modules.school.Courses.set_detail_layout(CourseDetail())
+    #~ site.modules.school.ActiveCourses.column_names = 'info tariff max_places enrolments teacher company room'
      
 #~ def site_setup(site):
 @dd.receiver(dd.post_analyze)

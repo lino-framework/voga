@@ -39,6 +39,7 @@ def objects():
     PupilType = dd.resolve_model('school.PupilType')
     Enrolment = dd.resolve_model('school.Enrolment')
     Course = dd.resolve_model('school.Course')
+    Product = dd.resolve_model('products.Product')
     CourseStates = school.CourseStates
     EnrolmentStates = school.EnrolmentStates
     
@@ -46,6 +47,33 @@ def objects():
     yield we
     settings.SITE.site_config.site_company = we
     yield settings.SITE.site_config
+    
+    
+    productcat = Instantiator('products.ProductCat').build
+
+    tariffs = productcat(**babelkw('name',
+        en="Courses",et="Kursused",de="Kurse",fr="Cours"))
+    yield tariffs
+    rent = productcat(**babelkw('name',
+        en="Room renting",et="Ruumiüür",de="Raummiete",fr="Loyer"))
+    yield rent
+    other = productcat(**babelkw('name',
+        en="Other",
+        et="Muud",
+        de="Sonstige",
+        fr="Autres"))
+    yield other
+    
+        
+    product = Instantiator('products.Product',"price cat name").build
+    yield product("20",tariffs,"20€")
+    yield product("50",tariffs,"50€")
+    yield product("80",tariffs,"80€")
+    yield product("20",rent,**babelkw('name',
+        en="Spiegelraum Eupen",et="Spiegelraum Eupen",de="Spiegelraum Eupen",
+        fr="Spiegelraum Eupen"))
+
+    
     
     
     calendar = Instantiator('cal.Calendar').build
@@ -155,12 +183,14 @@ def objects():
     TEACHERS = Cycler(Teacher.objects.all())
     USERS = Cycler(settings.SITE.user_model.objects.all())
     PLACES = Cycler(cal.Room.objects.all())
-    PRICES = Cycler(20,30,40,50)
+    #~ PRICES = Cycler(20,30,40,50)
+    PRICES = Cycler(Product.objects.filter(cat=tariffs))
     
     def add_course(*args,**kw):
         kw.update(user=USERS.pop())
         kw.update(teacher=TEACHERS.pop())
-        kw.update(price=PRICES.pop())
+        #~ kw.update(price=PRICES.pop())
+        kw.update(tariff=PRICES.pop())
         kw.update(every=1)
         kw.update(company=we)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
@@ -294,20 +324,3 @@ Behandelte Themengebiete:
 
 
         
-    #~ productcat = Instantiator('products.ProductCat').build
-#~ 
-    #~ tariffs = productcat(id=1,**babel_values('name',
-        #~ en="Courses",et="Kursused",de="Kurse",fr="Cours"))
-    #~ yield tariffs
-    #~ other = productcat(id=2,**babel_values('name',
-        #~ en="Other",
-        #~ et="Muud",
-        #~ de="Sonstige",
-        #~ fr="Autres"))
-    #~ yield other
-    #~ 
-        #~ 
-    #~ product = Instantiator('products.Product',"price cat name").build
-    #~ yield product("20",tariffs,"20€")
-    #~ yield product("50",tariffs,"50€")
-    #~ yield product("80",tariffs,"80€")
