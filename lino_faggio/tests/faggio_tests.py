@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-## Copyright 2011-2013 Luc Saffre
+## Copyright 2013 Luc Saffre
 ## This file is part of the Lino-Faggio project.
 ## Lino-Faggio is free software; you can redistribute it and/or modify 
 ## it under the terms of the GNU General Public License as published by
@@ -51,15 +51,3 @@ class DemoTest(RemoteAuthTestCase):
     #~ fixtures = 'std demo'.split()
     fixtures = settings.SITE.demo_fixtures
     
-class QuickTest(RemoteAuthTestCase):
-    maxDiff = None
-
-
-    def test00(self):
-        """
-        Initialization.
-        """
-        #~ print "20130321 test00 started"
-        self.user_root = settings.SITE.user_model(username='root',language='en',profile='900')
-        self.user_root.save()
-        

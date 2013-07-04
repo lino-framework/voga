@@ -46,7 +46,7 @@ class Person(Person,mixins.Born):
 
 class MyCompanyDetail(CompanyDetail):
     
-    main = 'general more ledger'
+    main = 'general more sales.InvoiceablesByPartner ledger'
     
     general = dd.Panel("""
     address_box:60 contact_box:30
@@ -88,7 +88,7 @@ class MyPersonDetail(PersonDetail):
    
     #~ main = "contact outbox calendar"
     
-    main = 'general more ledger'
+    main = 'general more sales.InvoiceablesByPartner ledger'
     
     general = dd.Panel("""
     box1 box2

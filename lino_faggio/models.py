@@ -16,7 +16,6 @@ from django.db.models import loading
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import string_concat
 
-from django.contrib.contenttypes.models import ContentType
 
 
 from lino import dd
@@ -35,97 +34,13 @@ school = dd.resolve_app('school')
 #~ print 20130607, loading.cache.postponed
 
     
-class AutoFillAction(dd.RowAction):
-    label = _("Fill")
-    
-    def run_from_ui(self,obj,ar,**kw):
-        L = list(sales.Invoiceable.get_invoiceables_for(obj.partner,obj.date))
-        if len(L) == 0:
-            return ar.error(_("No invoiceables found for %s.") % obj.partner)
-        def ok():
-            for ii in L:
-                i = InvoiceItem(voucher=obj,invoiceable=ii,product=ii.get_invoiceable_product())
-                i.product_changed(ar)
-                i.full_clean()
-                i.save()
-            kw.update(refresh=True)
-            return kw
-        msg = _("This will add %d invoice items.") % len(L)
-        return ar.confirm(ok, msg, _("Are you sure?"))
-    
-    
-class Invoice(sales.Invoice):
-    
-    auto_fill = AutoFillAction()
-    
-    class Meta(sales.Invoice.Meta):
-        app_label = 'sales'
-        verbose_name = _("Invoice")
-        verbose_name_plural = _("Invoices")
-    
-class InvoiceItem(sales.InvoiceItem):
-    
-    invoiceable_label = _("Invoiceable")
-    
-    class Meta(sales.InvoiceItem.Meta):
-        app_label = 'sales'
-        verbose_name = _("Voucher item")
-        verbose_name_plural = _("Voucher items")
-    
-    
-    invoiceable_type = dd.ForeignKey(ContentType,
-        editable=False,blank=True,null=True,
-        verbose_name=string_concat(invoiceable_label,' ',_('(type)')))
-    invoiceable_id = dd.GenericForeignKeyIdField(
-        invoiceable_type,
-        editable=False,blank=True,null=True,
-        verbose_name=string_concat(invoiceable_label,' ',_('(object)')))
-    invoiceable = dd.GenericForeignKey(
-        'invoiceable_type', 'invoiceable_id',
-        verbose_name=invoiceable_label)
-    
-    #~ @dd.chooser()
-    #~ def enrolment_choices(self,voucher):
-        #~ Enrolment = dd.resolve_model('school.Enrolment')
-        #~ # print 20130605, voucher.partner.pk
-        #~ return Enrolment.objects.filter(pupil__id=voucher.partner.pk).order_by('request_date')
-        #~ 
-    #~ def enrolment_changed(self,ar):
-        #~ if self.enrolment is not None and self.enrolment.course is not None:
-            #~ self.product = self.enrolment.course.tariff
-        #~ self.product_changed(ar)
-    
-class ItemsByInvoice(sales.ItemsByInvoice):
-    app_label = 'sales' # we want to "override" the original table
 
-    column_names = "invoiceable product title description:20x1 discount unit_price qty total_incl total_base total_vat"
-    
-    #~ @classmethod
-    #~ def get_choices_text(self,obj,request,field):
-        #~ if field.name == 'enrolment':
-            #~ return unicode(obj.course)
-        #~ # raise Exception("20130607 field.name is %r" % field.name)
-        #~ return super(ItemsByInvoice,self).get_choices_text(obj,field,request)
-    
-#~ class InvoicingsByEnrolment(sales.InvoiceItemsByProduct):
-    #~ app_label = 'sales'
-    #~ master_key = 'enrolment'
-    #~ editable = False
-    #~ 
-class InvoicingsByInvoiceable(sales.InvoiceItemsByProduct):
-    app_label = 'sales'
-    master_key = 'invoiceable'
-    editable = False
-    
-#~ sales.ItemsByInvoice.column_names = "enrolment product title description:20x1 discount unit_price qty total_incl total_base total_vat"
-    
-
-dd.inject_field('school.Course',
-    'tariff',
-    models.ForeignKey('products.Product',
-        blank=True,null=True,
-        verbose_name=_("Tariff"),
-        related_name='courses_by_tariff'))
+#~ dd.inject_field('school.Course',
+    #~ 'tariff',
+    #~ models.ForeignKey('products.Product',
+        #~ blank=True,null=True,
+        #~ verbose_name=_("Tariff"),
+        #~ related_name='courses_by_tariff'))
         
 class ActiveCourses(school.ActiveCourses):
     app_label = 'school'
