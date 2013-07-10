@@ -11,6 +11,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
+"""
+Deserves a docstring.
+"""
+
 from django.db import models
 from django.db.models import loading
 from django.utils.translation import ugettext_lazy as _
@@ -28,44 +32,15 @@ from lino import mixins
 contacts = dd.resolve_app('contacts')
 ledger = dd.resolve_app('ledger')
 #~ cal = dd.resolve_app('cal')
-school = dd.resolve_app('school')
+courses = dd.resolve_app('courses')
 products = dd.resolve_app('products')
 
 #~ print 20130607, loading.cache.postponed
 
     
 
-#~ dd.inject_field('school.Course',
-    #~ 'tariff',
-    #~ models.ForeignKey('products.Product',
-        #~ blank=True,null=True,
-        #~ verbose_name=_("Tariff"),
-        #~ related_name='courses_by_tariff'))
         
         
-        
-class ActiveCourses(school.ActiveCourses):
-    app_label = 'school'
-    column_names = 'info tariff max_places enrolments teacher company room'
-    hide_sums = True
-
-class CourseDetail(school.CourseDetail):     
-    main = "general cal.EventsByController"
-    general = dd.Panel("""
-    line teacher start_date start_time room #slot state id:8
-    max_places max_events end_date end_time every_unit every
-    monday tuesday wednesday thursday friday saturday sunday
-    company contact_person user calendar tariff
-    school.EnrolmentsByCourse
-    """,label=_("General"))
-    
-
-@dd.receiver(dd.post_analyze)
-def customize_school(sender,**kw):
-    site = sender
-    site.modules.school.Courses.set_detail_layout(CourseDetail())
-    #~ site.modules.school.ActiveCourses.column_names = 'info tariff max_places enrolments teacher company room'
-    
 
 #~ from lino.modlib.cal import models as cal
 
@@ -110,12 +85,12 @@ class CertifyEnrolment(PrintAndChangeStateAction):
 def faggio_setup_workflows(sender,**kw):
     
     site = sender
-    school = dd.resolve_app('school')
+    courses = dd.resolve_app('courses')
 
-    #~ from lino.modlib.school import models as school
-    school.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment)
-    school.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
-    #~ school.EnrolmentStates.abandoned.add_transition() 
+    #~ from lino.modlib.courses import models as courses
+    courses.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment)
+    courses.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
+    #~ courses.EnrolmentStates.abandoned.add_transition() 
 
 
 @dd.when_prepared('partners.Person','partners.Organisation')

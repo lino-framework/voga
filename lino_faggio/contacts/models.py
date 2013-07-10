@@ -11,6 +11,11 @@
 ## You should have received a copy of the GNU General Public License
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
+"""
+Deserves a docstring.
+"""
+
+
 
 from django.db import models
 from django.db.models import loading
@@ -35,7 +40,7 @@ from lino.modlib.contacts.models import *
 ledger = dd.resolve_app('ledger')
 #~ sales = dd.resolve_app('sales')
 #~ cal = dd.resolve_app('cal')
-#~ school = dd.resolve_app('school')
+#~ courses = dd.resolve_app('courses')
 
 #~ print 20130607, loading.cache.postponed
 
@@ -56,7 +61,7 @@ class MyCompanyDetail(CompanyDetail):
     more = dd.Panel("""
     id language type vat_id:12
     addr1 url
-    school.CoursesByCompany
+    courses.CoursesByCompany
     """,label = _("More"))
     
     address_box = dd.Panel("""
@@ -126,12 +131,12 @@ class MyPersonDetail(PersonDetail):
 
 class PupilDetail(MyPersonDetail):
     
-    main = MyPersonDetail.main + " school.EnrolmentsByPupil"
+    main = MyPersonDetail.main + " courses.EnrolmentsByPupil"
     personal = 'pupil_type'
 
     
 class TeacherDetail(MyPersonDetail):
-    main = MyPersonDetail.main + " school.EventsByTeacher school.CoursesByTeacher"
+    main = MyPersonDetail.main + " courses.EventsByTeacher courses.CoursesByTeacher"
     personal = 'teacher_type'
 
         
@@ -145,7 +150,7 @@ def customize_contacts(sender,**kw):
     remarks 
     is_person is_company #is_household
     """)
-    site.modules.school.Pupils.set_detail_layout(PupilDetail())
-    site.modules.school.Teachers.set_detail_layout(TeacherDetail())
+    site.modules.courses.Pupils.set_detail_layout(PupilDetail())
+    site.modules.courses.Teachers.set_detail_layout(TeacherDetail())
     
 

@@ -42,7 +42,7 @@ class Site(Site,ledger.SiteMixin):
     
     #~ project_model = 'contacts.Person'
     #~ project_model = 'school.Pupil'
-    project_model = 'school.Course'
+    project_model = 'courses.Course'
     #~ project_model = None
     user_model = 'users.User'
     
@@ -108,7 +108,8 @@ class Site(Site,ledger.SiteMixin):
         yield 'lino_faggio.cal'
         yield 'lino.modlib.outbox'
         #~ yield 'lino.modlib.pages'
-        yield 'lino.modlib.school'
+        #~ yield 'lino.modlib.courses'
+        yield 'lino_faggio.courses'
         yield 'lino_faggio'
       
     def setup_choicelists(self):

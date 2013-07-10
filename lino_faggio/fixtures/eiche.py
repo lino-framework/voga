@@ -29,20 +29,20 @@ from lino import dd
 def objects():
     
     cal = dd.resolve_app('cal')
-    school = dd.resolve_app('school')
+    courses = dd.resolve_app('courses')
     
     Room = dd.resolve_model('cal.Room')
     Event = dd.resolve_model('cal.Event')
     Company = dd.resolve_model('contacts.Company')
-    Teacher = dd.resolve_model('school.Teacher')
-    TeacherType = dd.resolve_model('school.TeacherType')
-    Pupil = dd.resolve_model('school.Pupil')
-    PupilType = dd.resolve_model('school.PupilType')
-    Enrolment = dd.resolve_model('school.Enrolment')
-    Course = dd.resolve_model('school.Course')
+    Teacher = dd.resolve_model('courses.Teacher')
+    TeacherType = dd.resolve_model('courses.TeacherType')
+    Pupil = dd.resolve_model('courses.Pupil')
+    PupilType = dd.resolve_model('courses.PupilType')
+    Enrolment = dd.resolve_model('courses.Enrolment')
+    Course = dd.resolve_model('courses.Course')
     Product = dd.resolve_model('products.Product')
-    CourseStates = school.CourseStates
-    EnrolmentStates = school.EnrolmentStates
+    CourseStates = courses.CourseStates
+    EnrolmentStates = courses.EnrolmentStates
     
     we = Company(name="Buche V.o.G.",prefix="Die")
     yield we
@@ -177,9 +177,9 @@ def objects():
     
     
     
-    topic = Instantiator('school.Topic').build
-    line = Instantiator('school.Line','topic').build
-    course = Instantiator('school.Course','line room start_time end_time').build
+    topic = Instantiator('courses.Topic').build
+    line = Instantiator('courses.Line','topic').build
+    course = Instantiator('courses.Course','line room start_time end_time').build
     
     TEACHERS = Cycler(Teacher.objects.all())
     USERS = Cycler(settings.SITE.user_model.objects.all())
@@ -209,7 +209,7 @@ def objects():
     kw = dict(max_events=8)
     kw.update(max_places=20)
     kw.update(start_date=settings.SITE.demo_date(-30))
-    kw.update(state=school.CourseStates.started)
+    kw.update(state=courses.CourseStates.started)
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
     yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
     yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
@@ -234,7 +234,7 @@ Behandelte Themengebiete:
     yield obj
     kw = dict(max_events=8)
     kw.update(start_date=settings.SITE.demo_date(10))
-    kw.update(state=school.CourseStates.scheduled)
+    kw.update(state=courses.CourseStates.scheduled)
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
     yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
     yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)

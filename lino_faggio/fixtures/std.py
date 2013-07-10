@@ -21,20 +21,20 @@ from django.conf import settings
 from north.dbutils import babelkw
 from lino  import dd
 
-school = dd.resolve_app('school')
+courses = dd.resolve_app('courses')
 
 def objects():
   
-    yield school.PupilType(**babelkw('name',de="LFV"))
-    yield school.PupilType(**babelkw('name',de="COK"))
-    yield school.PupilType(**babelkw('name',de="Buche"))
-    yield school.PupilType(**babelkw('name',de="Gast"))
+    yield courses.PupilType(**babelkw('name',de="LFV"))
+    yield courses.PupilType(**babelkw('name',de="COK"))
+    yield courses.PupilType(**babelkw('name',de="Buche"))
+    yield courses.PupilType(**babelkw('name',de="Gast"))
     
-    yield school.TeacherType(**babelkw('name',de="Selbstständig"))
-    yield school.TeacherType(**babelkw('name',de="Ehrenamtlich pauschal"))
-    yield school.TeacherType(**babelkw('name',de="Ehrenamtlich real"))
-    yield school.TeacherType(**babelkw('name',de="LBA"))
-    yield school.TeacherType(**babelkw('name',de="Sonstige"))
+    yield courses.TeacherType(**babelkw('name',de="Selbstständig"))
+    yield courses.TeacherType(**babelkw('name',de="Ehrenamtlich pauschal"))
+    yield courses.TeacherType(**babelkw('name',de="Ehrenamtlich real"))
+    yield courses.TeacherType(**babelkw('name',de="LBA"))
+    yield courses.TeacherType(**babelkw('name',de="Sonstige"))
     
     mailType = Instantiator('notes.NoteType').build
     

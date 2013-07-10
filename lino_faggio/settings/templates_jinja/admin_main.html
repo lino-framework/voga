@@ -19,7 +19,7 @@
 {% endfor %}
 </p>
 
-{% set T = settings.SITE.modules.school.ActiveCourses %}
+{% set T = settings.SITE.modules.courses.ActiveCourses %}
 <h2>{{T.label}}</h2>
 {{E.tostring(ar.show(T))}}
 
