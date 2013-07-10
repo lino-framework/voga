@@ -57,6 +57,8 @@ class Site(Site,ledger.SiteMixin):
         'contacts.Person', 
         'sales.Invoice', 
         'sales.InvoiceItem', 
+        'cal.Event', 
+        'cal.Room', 
         #~ 'contacts.Company',
         #~ 'households.Household',
         ]
@@ -95,13 +97,15 @@ class Site(Site,ledger.SiteMixin):
         yield 'lino.modlib.ledger'
         yield 'lino.modlib.vat'
         #~ yield 'lino.modlib.declarations'
-        yield 'lino.modlib.sales'
+        #~ yield 'lino.modlib.sales'
+        yield 'lino.modlib.auto.sales'
         yield 'lino.modlib.finan'
         
         #~ yield 'lino.modlib.households'
         #~ yield 'lino.modlib.notes'
         yield 'lino.modlib.uploads'
-        yield 'lino.modlib.cal'
+        #~ yield 'lino.modlib.cal'
+        yield 'lino_faggio.cal'
         yield 'lino.modlib.outbox'
         #~ yield 'lino.modlib.pages'
         yield 'lino.modlib.school'

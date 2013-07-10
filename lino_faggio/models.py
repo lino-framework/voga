@@ -27,9 +27,9 @@ from lino import mixins
 
 contacts = dd.resolve_app('contacts')
 ledger = dd.resolve_app('ledger')
-sales = dd.resolve_app('sales')
 #~ cal = dd.resolve_app('cal')
 school = dd.resolve_app('school')
+products = dd.resolve_app('products')
 
 #~ print 20130607, loading.cache.postponed
 
@@ -41,6 +41,8 @@ school = dd.resolve_app('school')
         #~ blank=True,null=True,
         #~ verbose_name=_("Tariff"),
         #~ related_name='courses_by_tariff'))
+        
+        
         
 class ActiveCourses(school.ActiveCourses):
     app_label = 'school'
@@ -63,37 +65,15 @@ def customize_school(sender,**kw):
     site = sender
     site.modules.school.Courses.set_detail_layout(CourseDetail())
     #~ site.modules.school.ActiveCourses.column_names = 'info tariff max_places enrolments teacher company room'
-     
-#~ def site_setup(site):
-@dd.receiver(dd.post_analyze)
-def customize_cal(sender,**kw):
-    site = sender
-    
-    #~ site.modules.cal.Events.set_detail_layout(EventDetail())
-    site.modules.cal.Events.set_detail_layout('general more')
-    site.modules.cal.Events.add_detail_panel('general',"""
-    calendar summary user project 
-    start end 
-    room priority access_class transparent #rset 
-    owner workflow_buttons
-    description cal.GuestsByEvent 
-    """,_("General"))
-    
-    site.modules.cal.Events.add_detail_panel('more',"""
-    id created:20 modified:20  
-    outbox.MailsByController #postings.PostingsByController
-    """,_("More"))
-    
-    
-    site.modules.cal.Events.set_insert_layout("""
-    project 
-    start end 
-    """,
-    start="start_date start_time",
-    end="end_date end_time",
-    window_size=(60,'auto'))
     
 
+#~ from lino.modlib.cal import models as cal
+
+#~ dd.inject_field('cal.Room','price',dd.PriceField(verbose_name=_("Price"),
+    #~ blank=True,null=True,
+    #~ default=0))
+    
+     
 class PrintAndChangeStateAction(dd.ChangeStateAction):
     
     def run_from_ui(self,obj,ar,**kw):

@@ -31,6 +31,7 @@ def objects():
     cal = dd.resolve_app('cal')
     school = dd.resolve_app('school')
     
+    Room = dd.resolve_model('cal.Room')
     Event = dd.resolve_model('cal.Event')
     Company = dd.resolve_model('contacts.Company')
     Teacher = dd.resolve_model('school.Teacher')
@@ -182,7 +183,7 @@ def objects():
     
     TEACHERS = Cycler(Teacher.objects.all())
     USERS = Cycler(settings.SITE.user_model.objects.all())
-    PLACES = Cycler(cal.Room.objects.all())
+    PLACES = Cycler(Room.objects.all())
     #~ PRICES = Cycler(20,30,40,50)
     PRICES = Cycler(Product.objects.filter(cat=tariffs))
     
