@@ -70,9 +70,12 @@ def objects():
     yield product("20",tariffs,"20€")
     yield product("50",tariffs,"50€")
     yield product("80",tariffs,"80€")
-    yield product("20",rent,**babelkw('name',
-        en="Spiegelraum Eupen",et="Spiegelraum Eupen",de="Spiegelraum Eupen",
-        fr="Spiegelraum Eupen"))
+    rent20 = product("20",rent,"Spiegelraum Eupen")
+    yield rent20
+    rent10 = product("10",rent,**babelkw('name',
+        en="Rent per meeting",et="Ruumi üürimine",de="Raummiete pro Versammlung",
+        fr="Loyer par réunion"))
+    yield rent10
 
     
     
@@ -120,6 +123,10 @@ def objects():
     yield kelmis
     stvith = company("Sport- und Freizeitzentrum","Sankt Vith")
     yield stvith
+    ext1 = company("AA Neudorf","Raeren")
+    yield ext1
+    ext2 = company("Nisperter Schützenverein","Eupen")
+    yield ext2
     
     
     room = Instantiator('cal.Room').build
@@ -129,6 +136,7 @@ def objects():
           fr="Salle mirroitée",
           en="Mirrored room",
           ))
+    kw.update(tariff=rent20)
     spiegel = room(**kw)
     yield spiegel
     
@@ -137,6 +145,7 @@ def objects():
           fr="Salle ordinateurs",
           en="Computer room",
           ))
+    kw.update(tariff=rent10)
     pc_eupen = room(**kw)
     yield pc_eupen
     
@@ -203,6 +212,8 @@ def objects():
     yield sport
     medit = topic(**dd.babelkw('name',de="Meditation"))
     yield medit
+    externe = topic(**dd.babelkw('name',de="Externe"))
+    yield externe
     
     obj = line(comp,**dd.babelkw('name',de="Erste Schritte"))
     yield obj
@@ -299,10 +310,31 @@ Behandelte Themengebiete:
     kw.update(state=CourseStates.scheduled)
     yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,konf,"19:00","20:30",friday=True,**kw)
+    
+    EXTS = Cycler(ext1,ext2)
+    def add_course(*args,**kw):
+        kw.update(user=USERS.pop())
+        #~ kw.update(teacher=TEACHERS.pop())
+        #~ kw.update(price=PRICES.pop())
+        #~ kw.update(tariff=PRICES.pop())
+        kw.update(every=1)
+        kw.update(company=EXTS.pop())
+        kw.update(every_unit=cal.Recurrencies.per_weekday)
+        return course(*args,**kw)
+        
+    obj = line(externe,**dd.babelkw('name',de="Treffen"))
+    yield obj
+    kw = dict(max_events=30)
+    kw.update(start_date=settings.SITE.demo_date(60))
+    kw.update(state=CourseStates.scheduled)
+    yield add_course(obj,konf,"20:00","22:00",tuesday=True,**kw)
+    yield add_course(obj,konf,"20:00","22:00",thursday=True,**kw)
+    
+    
 
 
     PUPILS = Cycler(Pupil.objects.all())
-    COURSES = Cycler(Course.objects.all())
+    COURSES = Cycler(Course.objects.filter(tariff__isnull=False))
     STATES = Cycler(EnrolmentStates.objects())
     
     for i in range(100):

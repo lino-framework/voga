@@ -22,6 +22,26 @@ from django.utils.translation import ugettext_lazy as _
 from lino import dd
 dd.extends_app('lino.modlib.courses',globals())
 
+sales = dd.resolve_app('sales')
+
+class Course(Course,sales.Invoiceable):
+    
+    invoiceable_date_field = 'start_date'
+    invoiceable_partner_field = 'company'
+    
+    def get_invoiceable_product(self): 
+        #~ if self.organizer and self.room: 
+        if self.company and self.room: 
+            if self.company != settings.SITE.site_config.site_company: 
+                return self.room.tariff
+            
+    #~ def get_invoiceable_title(self): 
+        #~ if self.organizer: 
+            #~ return unicode(self.room)
+
+    def get_invoiceable_qty(self): 
+        return self.max_events or 1
+
 class CoursesByTopic(CoursesByTopic):
     column_names = "start_date:8 line:20 room__company__city:10 weekdays_text:10 times_text:10"
         

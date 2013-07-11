@@ -50,6 +50,8 @@ class Site(Site,ledger.SiteMixin):
     
     use_eid_jslib = False
     
+    show_internal_field_names = True
+    
     #~ index_view_action = "dsbe.Home"
     
     override_modlib_models = [
@@ -58,6 +60,7 @@ class Site(Site,ledger.SiteMixin):
         'sales.Invoice', 
         'sales.InvoiceItem', 
         'cal.Event', 
+        'courses.Course', 
         'cal.Room', 
         #~ 'contacts.Company',
         #~ 'households.Household',
