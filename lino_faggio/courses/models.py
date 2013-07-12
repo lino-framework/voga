@@ -20,7 +20,8 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 from lino import dd
-dd.extends_app('lino.modlib.courses',globals())
+#~ dd.extends_app('lino.modlib.courses',globals())
+from lino.modlib.courses.models import *
 
 sales = dd.resolve_app('sales')
 

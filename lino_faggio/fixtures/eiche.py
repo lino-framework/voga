@@ -329,11 +329,10 @@ Behandelte Themengebiete:
     kw.update(state=CourseStates.scheduled)
     yield add_course(obj,konf,"20:00","22:00",tuesday=True,**kw)
     yield add_course(obj,konf,"20:00","22:00",thursday=True,**kw)
-    
-    
 
 
     PUPILS = Cycler(Pupil.objects.all())
+    #~ print 20130712, Pupil.objects.all()
     COURSES = Cycler(Course.objects.filter(tariff__isnull=False))
     STATES = Cycler(EnrolmentStates.objects())
     
@@ -343,6 +342,7 @@ Behandelte Themengebiete:
             pupil=PUPILS.pop())
         kw.update(request_date=settings.SITE.demo_date(-i))
         kw.update(state=STATES.pop())
+        #~ print 20130712, kw
         yield Enrolment(**kw)
         
     for feast in (

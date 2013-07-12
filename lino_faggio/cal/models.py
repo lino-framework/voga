@@ -22,10 +22,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino import dd
 
-dd.extends_app('lino.modlib.cal',globals())
+#~ dd.extends_app('lino.modlib.cal',globals())
 
 #~ PARENT_APP = 'lino.modlib.cal'
-#~ from lino.modlib.cal.models import *
+from lino.modlib.cal.models import *
 
 #~ sales = dd.resolve_app('sales')
 
