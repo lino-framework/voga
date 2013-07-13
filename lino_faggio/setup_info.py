@@ -45,6 +45,7 @@ SETUP_INFO.update(packages=[
   'lino_faggio.contacts',
   'lino_faggio.contacts.fixtures',
   'lino_faggio.courses',
+  'lino_faggio.courses.fixtures',
   'lino_faggio.settings',
   'lino_faggio.fixtures',
   'lino_faggio.tests',

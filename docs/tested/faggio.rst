@@ -22,7 +22,6 @@ has 23 pupils and 7 teachers:
 >>> courses.Teacher.objects.count()
 8
 
-
 A web request
 -------------
 
