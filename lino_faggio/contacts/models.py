@@ -150,6 +150,7 @@ def customize_contacts(sender,**kw):
     remarks 
     is_person is_company #is_household
     """)
+    site.modules.contacts.Partners.add_detail_tab("sales.InvoiceablesByPartner")
     site.modules.courses.Pupils.set_detail_layout(PupilDetail())
     site.modules.courses.Teachers.set_detail_layout(TeacherDetail())
     

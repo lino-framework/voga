@@ -14,4 +14,4 @@ Benutzerhandbuch
    countries
    contacts
    sales
-   school
+   courses
