@@ -54,7 +54,7 @@ class Site(Site,ledger.SiteMixin):
     
     #~ index_view_action = "dsbe.Home"
     
-    override_modlib_models = [
+    override_modlib_models = set([
         #~ 'contacts.Partner', 
         'contacts.Person', 
         'sales.Invoice', 
@@ -64,7 +64,7 @@ class Site(Site,ledger.SiteMixin):
         'cal.Room', 
         #~ 'contacts.Company',
         #~ 'households.Household',
-        ]
+        ])
     
     
     #~ remote_user_header = "REMOTE_USER"
@@ -114,6 +114,10 @@ class Site(Site,ledger.SiteMixin):
         #~ yield 'lino.modlib.courses'
         yield 'lino_faggio.courses'
         yield 'lino_faggio'
+        
+    #~ def setup_workflows(self):
+        #~ 
+        #~ from lino.modlib.cal.workflows import welfare
       
     def setup_choicelists(self):
         """

@@ -27,6 +27,9 @@ from lino import dd
 #~ PARENT_APP = 'lino.modlib.cal'
 from lino.modlib.cal.models import *
 
+from lino.modlib.cal.workflows import faggio
+
+
 #~ sales = dd.resolve_app('sales')
 
 class Room(Room,contacts.ContactRelated):
