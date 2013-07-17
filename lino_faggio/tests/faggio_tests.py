@@ -41,7 +41,7 @@ from lino.utils import i2d
 from djangosite.utils.djangotest import RemoteAuthTestCase
 
 DEMO_OVERVIEW = """\
-19 applications: ui, sessions, about, contenttypes, users, countries, contacts, products, accounts, ledger, vat, sales, finan, uploads, cal, outbox, courses, lino_faggio, djangosite.
+19 applications: sessions, about, contenttypes, system, users, countries, contacts, products, accounts, ledger, vat, sales, finan, uploads, cal, outbox, courses, lino_faggio, djangosite.
 64 models:
 ======================================= ========= =======
  Name                                    #fields   #rows
@@ -49,7 +49,7 @@ DEMO_OVERVIEW = """\
  accounts.Account                        11        9
  accounts.Chart                          3         1
  accounts.Group                          7         6
- cal.Calendar                            16        5
+ cal.Calendar                            15        5
  cal.Event                               24        272
  cal.Guest                               7         0
  cal.GuestRole                           7         0
@@ -101,9 +101,9 @@ DEMO_OVERVIEW = """\
  sales.SalesRule                         4         0
  sales.ShippingMode                      4         0
  sessions.Session                        3         4
- ui.HelpText                             4         2
- ui.SiteConfig                           4         1
- ui.TextFieldTemplate                    6         2
+ system.HelpText                         4         2
+ system.SiteConfig                       4         1
+ system.TextFieldTemplate                6         2
  uploads.Upload                          11        0
  uploads.UploadType                      2         0
  users.Authority                         3         0
@@ -126,4 +126,4 @@ class DemoTest(RemoteAuthTestCase):
 
         s = settings.SITE.get_db_overview_rst()
         print s
-        self.assertEqual(s,DEMO_OVERVIEW)
+        self.assertEqual(DEMO_OVERVIEW,s)
