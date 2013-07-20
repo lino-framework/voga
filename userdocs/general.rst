@@ -32,5 +32,7 @@ Click this button to save your changes in the form.
 Référence
 ---------
 
-.. actor:: ui.HelpTexts
+.. actor:: system.HelpTexts
+.. actor:: system.TextFieldTemplates
+.. actor:: system.SiteConfigs
 
