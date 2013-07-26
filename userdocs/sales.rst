@@ -13,7 +13,7 @@ Reference
 .. actor:: sales.ShippingModes
 .. actor:: sales.PaymentTerms
 .. actor:: sales.InvoicingModes
-.. actor:: sales.InvoiceablePartners
+.. actor:: sales.InvoicesToCreate
 
 .. actor:: products.Products
 .. actor:: products.ProductCats
