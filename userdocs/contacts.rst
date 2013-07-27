@@ -4,8 +4,8 @@
 Contacts
 =========
 
-Toute personne physique ou morale est enregistrée 
-dans Lino en tant que :ref:`Partenaire <faggio.contacts.Partners>`.
+In Lino you register any physical or moral person as a 
+:ref:`Partner <faggio.contacts.Partners>`.
 
 Lino-Faggio différencie les types de Partenaires suivants:
 

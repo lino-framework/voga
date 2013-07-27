@@ -1,18 +1,19 @@
-================================
-Lino-Faggio Technical Reference
-================================
+.. _faggio:
 
-Welcome to the *Lino-Faggio* Technical Reference.
+===========
+Lino-Faggio
+===========
+
+Welcome to the *Lino-Faggio* project homepage.
 
 .. py2rst::
 
   import lino_faggio
   print lino_faggio.SETUP_INFO['long_description']
 
-This document tree is in English and 
-meant for system administrators and other developers.
-The `user manual <http://faggio-user.lino-framework.org/>`__
-is growing in German as a separate document tree.
+This document is meant for system administrators and developers.
+there is also a :ref:`user manual <faggio.userdocs>`,
+which might be better suited for end-users.
 
 
 Content

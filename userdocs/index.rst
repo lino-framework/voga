@@ -1,6 +1,6 @@
 .. _faggio.userdocs:
 
-Benutzerhandbuch
+Lino-Faggio User Manual
 =======================
 
 
@@ -8,6 +8,7 @@ Benutzerhandbuch
 .. toctree::
    :maxdepth: 1
 
+   tour
    general
    users
    cal

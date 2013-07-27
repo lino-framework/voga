@@ -46,7 +46,7 @@ class Site(Site,ledger.SiteMixin):
     #~ project_model = None
     user_model = 'users.User'
     
-    languages = 'de fr'
+    languages = 'en de fr'
     
     use_eid_jslib = False
     

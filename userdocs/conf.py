@@ -45,7 +45,7 @@ primary_domain = 'py'
 
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['.templates']
+#~ templates_path = ['.templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -220,7 +220,7 @@ latex_documents = [
 # If false, no module index is generated.
 #latex_use_modindex = True
 
-language = "fr" # the source language. 
+#~ language = "fr" # the source language. 
 
 #~ show_source = True
 
