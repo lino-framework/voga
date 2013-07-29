@@ -46,60 +46,60 @@ DEMO_OVERVIEW = """\
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
- accounts.Account                        11        9
- accounts.Chart                          3         1
- accounts.Group                          7         6
- cal.Calendar                            15        5
+ accounts.Account                        12        9
+ accounts.Chart                          4         1
+ accounts.Group                          8         6
+ cal.Calendar                            16        5
  cal.Event                               24        272
  cal.Guest                               7         0
- cal.GuestRole                           7         0
- cal.Priority                            4         0
- cal.Room                                7         6
+ cal.GuestRole                           8         0
+ cal.Priority                            5         0
+ cal.Room                                8         6
  cal.Subscription                        4         0
  cal.Task                                20        0
  contacts.Company                        27        19
- contacts.CompanyType                    5         11
+ contacts.CompanyType                    7         16
  contacts.Partner                        23        88
  contacts.Person                         29        69
  contacts.Role                           4         0
- contacts.RoleType                       3         5
+ contacts.RoleType                       4         5
  contenttypes.ConcreteModel              2         0
  contenttypes.ContentType                4         64
  contenttypes.FooWithBrokenAbsoluteUrl   3         0
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
  contenttypes.ProxyModel                 2         0
- countries.City                          7         61
- countries.Country                       5         8
- countries.Language                      4         5
+ countries.City                          8         62
+ countries.Country                       6         8
+ countries.Language                      5         5
  courses.Course                          28        25
  courses.Enrolment                       7         100
- courses.Line                            6         10
+ courses.Line                            8         10
  courses.Pupil                           31        35
- courses.PupilType                       3         4
+ courses.PupilType                       4         4
  courses.Slot                            5         0
  courses.Teacher                         31        8
- courses.TeacherType                     3         5
- courses.Topic                           3         4
+ courses.TeacherType                     4         5
+ courses.Topic                           4         4
  finan.BankStatement                     11        10
  finan.DocItem                           10        43
  ledger.AccountInvoice                   17        10
  ledger.InvoiceItem                      9         19
- ledger.Journal                          12        3
+ ledger.Journal                          14        3
  ledger.Movement                         7         30
  ledger.Voucher                          7         20
  outbox.Attachment                       4         0
  outbox.Mail                             9         0
  outbox.Recipient                        6         0
- products.Product                        10        5
- products.ProductCat                     4         3
+ products.Product                        12        5
+ products.ProductCat                     5         3
  sales.Invoice                           25        0
  sales.InvoiceItem                       16        0
- sales.InvoicingMode                     7         0
- sales.PaymentTerm                       6         0
+ sales.InvoicingMode                     8         0
+ sales.PaymentTerm                       7         0
  sales.ProductDocItem                    12        0
  sales.SalesRule                         4         0
- sales.ShippingMode                      4         0
+ sales.ShippingMode                      5         0
  sessions.Session                        3         4
  system.HelpText                         4         2
  system.SiteConfig                       4         1
@@ -108,8 +108,8 @@ DEMO_OVERVIEW = """\
  uploads.UploadType                      2         0
  users.Authority                         3         0
  users.Membership                        3         0
- users.Team                              3         0
- users.User                              14        2
+ users.Team                              4         0
+ users.User                              14        3
 ======================================= ========= =======
 """
 
