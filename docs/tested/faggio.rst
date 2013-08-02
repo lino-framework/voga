@@ -51,11 +51,12 @@ u'<a href="javascript:Lino.cal.Events.detail.run(null,{ &quot;record_id&quot;: 2
 Printing an invoice
 -------------------
 
->>> obj = sales.Invoice.objects.get(pk=1)
+>>> ses = settings.SITE.login("robin")
+>>> obj = sales.Invoice.objects.get(pk=21)
 >>> obj.clear_cache()
 >>> pprint(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE
-{'message': u'Dokument Budget Nr. 3 f\xfcr Ausdemwald-Charlier wurde generiert.',
- 'open_url': u'/media/userdocs/appyodt/debts.Budget-3.odt',
+{'message': u'Invoice #21 (not registered) printable has been built.',
+ 'open_url': u'/media/userdocs/appyodt/sales.Invoice-21.odt',
  'refresh': True,
  'success': True}
 
