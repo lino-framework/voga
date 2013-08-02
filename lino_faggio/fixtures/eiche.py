@@ -33,6 +33,7 @@ def objects():
     
     Room = dd.resolve_model('cal.Room')
     Event = dd.resolve_model('cal.Event')
+    Partner = dd.resolve_model('contacts.Partner')
     Company = dd.resolve_model('contacts.Company')
     Teacher = dd.resolve_model('courses.Teacher')
     TeacherType = dd.resolve_model('courses.TeacherType')
@@ -94,11 +95,18 @@ def objects():
     
     
     calendar = Instantiator('cal.Calendar').build
-    yield calendar(color=1,**dd.babelkw('name',
-          de=u"Kurse",
-          fr=u"Cours",
-          en=u"Courses",
+    kw = dd.babelkw('name',
+          de="Kurse",
+          fr="Cours",
+          en="Courses",
+          )
+    kw.update(dd.babelkw('event_label',
+          de="Stunde",
+          fr="Heure",
+          en="Hour",
           ))
+    kurse = calendar(color=1,**kw)
+    yield kurse
     
     yield calendar(color=4,**dd.babelkw('name',
           de=u"Seminare",
@@ -214,6 +222,7 @@ def objects():
         kw.update(teacher=TEACHERS.pop())
         #~ kw.update(price=PRICES.pop())
         kw.update(tariff=PRICES.pop())
+        kw.update(calendar=kurse)
         kw.update(every=1)
         kw.update(company=we)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
@@ -334,6 +343,7 @@ Behandelte Themengebiete:
         #~ kw.update(teacher=TEACHERS.pop())
         #~ kw.update(price=PRICES.pop())
         #~ kw.update(tariff=PRICES.pop())
+        kw.update(calendar=kurse)
         kw.update(every=1)
         kw.update(company=EXTS.pop())
         kw.update(every_unit=cal.Recurrencies.per_weekday)
@@ -371,6 +381,14 @@ Behandelte Themengebiete:
         d = settings.SITE.demo_date().replace(month=feast[0],day=feast[1])
         yield Event(start_date=d,summary=feast[2],user=USERS.pop())
 
-
-
+    n = 0
+    ses = settings.SITE.login('rolf')
+    for p in Partner.objects.all():
+        if n > 10:
+            break
+        rc = ses.run(p.create_invoice)
+        #~ print 20130802, rc
+        if rc.get('success',True):
+            n += 1
+        
         

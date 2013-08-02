@@ -52,13 +52,13 @@ class ActiveCourses(ActiveCourses):
     hide_sums = True
 
 class CourseDetail(CourseDetail):     
-    main = "general cal.EventsByController"
+    main = "general courses.EnrolmentsByCourse"
     general = dd.Panel("""
     line teacher start_date start_time room #slot state id:8
     max_places max_events end_date end_time every_unit every
     monday tuesday wednesday thursday friday saturday sunday
     company contact_person user calendar tariff
-    courses.EnrolmentsByCourse
+    cal.EventsByController
     """,label=_("General"))
     
 

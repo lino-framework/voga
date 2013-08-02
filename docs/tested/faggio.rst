@@ -44,5 +44,18 @@ in :func:`lino.modlib.cal.utils.when_text`:
 >>> pprint(len(result['rows']))
 2
 >>> pprint(result['rows'][0][0])
-u'2013 Dez. 25 (Mi.)'
+u'<a href="javascript:Lino.cal.Events.detail.run(null,{ &quot;record_id&quot;: 270 })">2013 Dez. 25 (Mi.)</a>'
+
+
+
+Printing an invoice
+-------------------
+
+>>> obj = sales.Invoice.objects.get(pk=1)
+>>> obj.clear_cache()
+>>> pprint(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE
+{'message': u'Dokument Budget Nr. 3 f\xfcr Ausdemwald-Charlier wurde generiert.',
+ 'open_url': u'/media/userdocs/appyodt/debts.Budget-3.odt',
+ 'refresh': True,
+ 'success': True}
 

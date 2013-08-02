@@ -42,14 +42,14 @@ from djangosite.utils.djangotest import RemoteAuthTestCase
 
 DEMO_OVERVIEW = """\
 19 applications: sessions, about, contenttypes, system, users, countries, contacts, products, accounts, ledger, vat, sales, finan, uploads, cal, outbox, courses, lino_faggio, djangosite.
-63 models:
+62 models:
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
  accounts.Account                        12        9
  accounts.Chart                          4         1
  accounts.Group                          8         6
- cal.Calendar                            16        5
+ cal.Calendar                            19        5
  cal.Event                               24        272
  cal.Guest                               7         0
  cal.GuestRole                           8         0
@@ -64,7 +64,7 @@ DEMO_OVERVIEW = """\
  contacts.Role                           4         0
  contacts.RoleType                       4         5
  contenttypes.ConcreteModel              2         0
- contenttypes.ContentType                4         63
+ contenttypes.ContentType                4         62
  contenttypes.FooWithBrokenAbsoluteUrl   3         0
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
@@ -86,17 +86,16 @@ DEMO_OVERVIEW = """\
  ledger.InvoiceItem                      9         19
  ledger.Journal                          14        3
  ledger.Movement                         7         30
- ledger.Voucher                          7         20
+ ledger.Voucher                          7         31
  outbox.Attachment                       4         0
  outbox.Mail                             9         0
  outbox.Recipient                        6         0
  products.Product                        12        5
  products.ProductCat                     5         3
- sales.Invoice                           25        0
- sales.InvoiceItem                       16        0
+ sales.Invoice                           25        11
+ sales.InvoiceItem                       15        33
  sales.InvoicingMode                     8         0
  sales.PaymentTerm                       7         0
- sales.ProductDocItem                    12        0
  sales.SalesRule                         4         0
  sales.ShippingMode                      5         0
  sessions.Session                        3         4
