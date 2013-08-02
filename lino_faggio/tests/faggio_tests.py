@@ -42,7 +42,7 @@ from djangosite.utils.djangotest import RemoteAuthTestCase
 
 DEMO_OVERVIEW = """\
 19 applications: sessions, about, contenttypes, system, users, countries, contacts, products, accounts, ledger, vat, sales, finan, uploads, cal, outbox, courses, lino_faggio, djangosite.
-64 models:
+63 models:
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
@@ -64,14 +64,13 @@ DEMO_OVERVIEW = """\
  contacts.Role                           4         0
  contacts.RoleType                       4         5
  contenttypes.ConcreteModel              2         0
- contenttypes.ContentType                4         64
+ contenttypes.ContentType                4         63
  contenttypes.FooWithBrokenAbsoluteUrl   3         0
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
  contenttypes.ProxyModel                 2         0
  countries.City                          8         62
  countries.Country                       6         8
- countries.Language                      5         5
  courses.Course                          28        25
  courses.Enrolment                       7         100
  courses.Line                            8         10
@@ -109,7 +108,7 @@ DEMO_OVERVIEW = """\
  users.Authority                         3         0
  users.Membership                        3         0
  users.Team                              4         0
- users.User                              14        3
+ users.User                              15        3
 ======================================= ========= =======
 """
 
