@@ -44,7 +44,7 @@ in :func:`lino.modlib.cal.utils.when_text`:
 >>> pprint(len(result['rows']))
 2
 >>> pprint(result['rows'][0][0])
-u'<a href="javascript:Lino.cal.Events.detail.run(null,{ &quot;record_id&quot;: 270 })">2013 Dez. 25 (Mi.)</a>'
+u'<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: 270 })">2013 Dez. 25 (Mi.)</a>'
 
 
 
