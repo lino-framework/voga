@@ -152,3 +152,8 @@ class Site(Site,ledger.SiteMixin):
         #~ if n:
             #~ s = ("[%d] " % n) + s
         #~ return s
+
+
+    def get_admin_main_items(self,ar):
+        yield self.modules.courses.ActiveCourses
+        
