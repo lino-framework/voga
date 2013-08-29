@@ -269,7 +269,7 @@ Behandelte Themengebiete:
     yield obj
     kw = dict(max_events=8)
     kw.update(start_date=settings.SITE.demo_date(10))
-    kw.update(state=courses.CourseStates.scheduled)
+    kw.update(state=courses.CourseStates.published)
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
     yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
     yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
@@ -333,7 +333,7 @@ Behandelte Themengebiete:
     yield obj
     kw = dict(max_events=10)
     kw.update(start_date=settings.SITE.demo_date(60))
-    kw.update(state=CourseStates.scheduled)
+    kw.update(state=CourseStates.published)
     yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,konf,"19:00","20:30",friday=True,**kw)
     
@@ -353,7 +353,7 @@ Behandelte Themengebiete:
     yield obj
     kw = dict(max_events=30)
     kw.update(start_date=settings.SITE.demo_date(60))
-    kw.update(state=CourseStates.scheduled)
+    kw.update(state=CourseStates.published)
     yield add_course(obj,konf,"20:00","22:00",tuesday=True,**kw)
     yield add_course(obj,konf,"20:00","22:00",thursday=True,**kw)
 

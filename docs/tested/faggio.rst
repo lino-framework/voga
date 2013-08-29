@@ -34,7 +34,7 @@ in :func:`lino.modlib.cal.utils.when_text`:
 >>> d = d.strftime(settings.SITE.date_format_strftime)
 >>> pprint(d)
 '25.12.2013'
->>> url = '/api/cal/MyEvents?fmt=json&limit=15&start=0&pv=%s&pv=%s&pv=&pv=&pv=&pv=false&pv=' % (d,d)
+>>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
 >>> res = client.get(url,REMOTE_USER='rolf')
 >>> pprint(res.status_code)
 200
