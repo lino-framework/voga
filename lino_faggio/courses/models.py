@@ -28,7 +28,13 @@ sales = dd.resolve_app('sales')
 class Course(Course,sales.Invoiceable):
     
     invoiceable_date_field = 'start_date'
-    invoiceable_partner_field = 'company'
+    #~ invoiceable_partner_field = 'company'
+    
+    @classmethod
+    def get_partner_filter(cls,partner):
+        return models.Q(company=partner,invoice__isnull=True)
+    
+    
     
     def get_invoiceable_product(self): 
         #~ if self.organizer and self.room: 

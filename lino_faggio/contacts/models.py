@@ -93,7 +93,7 @@ class MyPersonDetail(PersonDetail):
    
     #~ main = "contact outbox calendar"
     
-    main = 'general more sales.InvoiceablesByPartner ledger'
+    main = 'general more  ledger'
     
     general = dd.Panel("""
     box1 box2
@@ -123,6 +123,8 @@ class MyPersonDetail(PersonDetail):
     """
     
     ledger = dd.Panel("""
+    invoicing_address
+    sales.InvoiceablesByPartner
     ledger.InvoicesByPartner
     ledger.MovementsByPartner
     """,label=ledger.MODULE_LABEL)

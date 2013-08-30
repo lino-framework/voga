@@ -13,6 +13,8 @@
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
 """
+The :xfile:`models.py` module for the :mod:`lino_faggio.cal` app.
+
 This module extends :mod:`lino.modlib.cal.models`
 """
 
