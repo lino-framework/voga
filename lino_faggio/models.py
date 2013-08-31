@@ -51,12 +51,13 @@ products = dd.resolve_app('products')
      
 class PrintAndChangeStateAction(dd.ChangeStateAction):
     
-    def run_from_ui(self,obj,ar,**kw):
+    def run_from_ui(self,ar,**kw):
+        obj = ar.selected_rows[0]
         
         def ok():
             # to avoid UnboundLocalError local variable 'kw' referenced before assignment
             kw2 = obj.do_print.run_from_ui(ar,**kw)
-            kw2 = super(PrintAndChangeStateAction,self).run_from_ui(obj,ar,**kw2)
+            kw2 = super(PrintAndChangeStateAction,self).run_from_ui(ar,**kw2)
             kw2.update(refresh_all=True)
             return kw2
         msg = self.get_confirmation_message(obj,ar)

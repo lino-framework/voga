@@ -386,9 +386,12 @@ Behandelte Themengebiete:
     for p in Partner.objects.all():
         if n > 10:
             break
-        rc = ses.run(p.create_invoice)
-        #~ print 20130802, rc
-        if rc.get('success',True):
-            n += 1
+        try:
+            rc = ses.run(p.create_invoice)
+            #~ print 20130802, rc
+            if rc.get('success',True):
+                n += 1
+        except Warning:
+            pass
         
         
