@@ -4,9 +4,9 @@
 Countries
 =========
 
-.. actor:: countries.Cities
+.. actor:: countries.City
 
-.. actor:: countries.Countries
+.. actor:: countries.Country
 
 
 

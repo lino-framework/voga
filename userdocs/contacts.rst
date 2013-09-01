@@ -4,17 +4,41 @@
 Contacts
 =========
 
-In Lino you register any physical or moral person as a 
-:ref:`Partner <faggio.contacts.Partners>`.
+.. contents:: 
+   :local:
+   :depth: 1
 
-Lino-Faggio différencie les types de Partenaires suivants:
 
-.. django2rst:: contacts.Partner.print_subclasses_graph()
+.. actor:: contacts.Partner
+
+    A Partner is any physical or moral person for which you want to 
+    keep contact data (address, phone numbers, ...).
+
+    :ref:`faggio` differentiates the following subclasses of Partner:
+
+    .. django2rst:: contacts.Partner.print_subclasses_graph()
+    
+    That is: 
+    :ref:`faggio.contacts.Partner`
+    can be also a
+    :ref:`faggio.contacts.Person`
+    or a 
+    :ref:`faggio.contacts.Company`
+    (or both).
+    A :ref:`faggio.contacts.Person`
+    can be also a
+    :ref:`faggio.courses.Pupil`
+    or
+    :ref:`faggio.courses.Teacher`
+    (or both).
+    
+    
+    
+
 
 .. _faggio.contacts.Partner.obsolete:
 
-Veraltete Partner
------------------
+**Veraltete Partner**
 
 Das Attribut "veraltet" bedeutet : 
 
@@ -30,16 +54,43 @@ muss das Ankreuzfeld `Auch veraltete Klienten`
 im Parameter-Panel der Liste angekreuzt werden.
 
 
-.. actor:: contacts.Partners
+.. actor:: contacts.Person
 
-.. actor:: contacts.Persons
+    A Person is a :ref:`faggio.contacts.Partner` which corresponds to 
+    a physical person or human being.
 
-.. actor:: contacts.Companies
 
-.. actor:: contacts.Roles
+.. actor:: contacts.Company
 
-.. actor:: contacts.RoleTypes
+    A Company is a :ref:`faggio.contacts.Partner` which corresponds to 
+    a company or any other type of organization.
 
-.. actor:: contacts.CompanyTypes
+.. actor:: contacts.Role
+
+    A Role is when a given 
+    :ref:`faggio.contacts.Person`
+    plays a given 
+    :ref:`faggio.contacts.RoleType`
+    in a given 
+    :ref:`faggio.contacts.Company`.
+
+.. actor:: contacts.RoleType
+
+    A :ref:`faggio.contacts.RoleType` is 
+    "what a given :ref:`faggio.contacts.Person` can be for a given 
+    :ref:`faggio.contacts.Company`".
+
+    The default database comes with the following list of 
+    :ddref:`contacts.RoleTypes`:
+    
+    .. django2rst:: settings.SITE.login('robin').show(contacts.RoleTypes)
+    
+.. actor:: contacts.CompanyType
+
+    The default database comes with the following list of 
+    organization types:
+    
+    .. django2rst:: settings.SITE.login('robin').show(contacts.CompanyTypes)
+    
 
 

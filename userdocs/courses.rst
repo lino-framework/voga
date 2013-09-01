@@ -17,12 +17,20 @@ Courses
 Reference
 =========
 
-.. actor:: courses.Pupils
-.. actor:: courses.Teachers
-.. actor:: courses.Lines
-.. actor:: courses.Courses
-.. actor:: courses.Topics
-.. actor:: courses.Enrolments
-.. actor:: courses.Slots
-.. actor:: courses.PupilTypes
-.. actor:: courses.TeacherTypes
+.. actor:: courses.Pupil
+.. actor:: courses.Teacher
+.. actor:: courses.Line
+
+    A line (of :ref:`faggio.courses.Courses`) is a series which groups
+    courses into a configurable list of categories. 
+    The default database has  the following list of Course Lines:
+  
+    .. django2rst:: settings.SITE.login('robin').show(courses.Lines)
+  
+  
+.. actor:: courses.Course
+.. actor:: courses.Topic
+.. actor:: courses.Enrolment
+.. actor:: courses.Slot
+.. actor:: courses.PupilType
+.. actor:: courses.TeacherType
