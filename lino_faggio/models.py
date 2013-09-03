@@ -102,4 +102,29 @@ def hide_region(model):
 @dd.when_prepared('partners.Person','partners.Organisation')
 def add_merge_action(model):
     model.define_action(merge_row=dd.MergeAction(model))
+    
+    
+   
+def site_setup(site):
+    site.modules.system.SiteConfigs.set_detail_layout(
+        """
+        site_company next_partner_id:10
+        default_build_method 
+        sales_account
+        """)
+    
+    
         
+
+"""
+The following trick worked but was rather hackerish. 
+Now we have :meth:`lino.modlib.vat.SiteMixin.get_item_vat`.
+"""
+if False:
+
+    sales = dd.resolve_app('sales')
+
+    @dd.receiver(dd.post_init, sender=sales.Invoice)
+    def set_default_item_vat(sender, instance=None,**kwargs):
+        instance.item_vat = True
+

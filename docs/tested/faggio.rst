@@ -55,8 +55,8 @@ Printing an invoice
 >>> obj = sales.Invoice.objects.get(pk=21)
 >>> obj.clear_cache()
 >>> pprint(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE
-{'message': u'Invoice #21 (not registered) printable has been built.',
- 'open_url': u'/media/userdocs/appyodt/sales.Invoice-21.odt',
+{'message': u'#1 (Sales invoices 2013) printable has been built.',
+ 'open_url': u'/media/cache/appypdf/sales.Invoice-21.pdf',
  'refresh': True,
  'success': True}
 

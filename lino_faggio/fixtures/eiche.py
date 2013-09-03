@@ -80,7 +80,7 @@ def objects():
     yield other
     
         
-    product = Instantiator('products.Product',"price cat name").build
+    product = Instantiator('products.Product',"sales_price cat name").build
     yield product("20",tariffs,"20€")
     yield product("50",tariffs,"50€")
     yield product("80",tariffs,"80€")

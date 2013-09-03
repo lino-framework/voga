@@ -46,7 +46,7 @@ DEMO_OVERVIEW = """\
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
- accounts.Account                        12        9
+ accounts.Account                        13        9
  accounts.Chart                          4         1
  accounts.Group                          8         6
  cal.Calendar                            21        5
@@ -72,7 +72,7 @@ DEMO_OVERVIEW = """\
  countries.City                          8         62
  countries.Country                       6         8
  courses.Course                          28        25
- courses.Enrolment                       7         100
+ courses.Enrolment                       9         100
  courses.Line                            8         10
  courses.Pupil                           31        35
  courses.PupilType                       4         4
@@ -82,17 +82,17 @@ DEMO_OVERVIEW = """\
  courses.Topic                           4         4
  finan.BankStatement                     11        10
  finan.DocItem                           10        43
- ledger.AccountInvoice                   17        10
+ ledger.AccountInvoice                   16        10
  ledger.InvoiceItem                      9         19
  ledger.Journal                          14        3
- ledger.Movement                         7         30
+ ledger.Movement                         7         20
  ledger.Voucher                          7         31
  outbox.Attachment                       4         0
  outbox.Mail                             9         0
  outbox.Recipient                        6         0
- products.Product                        12        5
+ products.Product                        11        5
  products.ProductCat                     5         3
- sales.Invoice                           25        11
+ sales.Invoice                           24        11
  sales.InvoiceItem                       15        33
  sales.InvoicingMode                     8         0
  sales.PaymentTerm                       7         0
@@ -100,7 +100,7 @@ DEMO_OVERVIEW = """\
  sales.ShippingMode                      5         0
  sessions.Session                        3         4
  system.HelpText                         4         2
- system.SiteConfig                       4         1
+ system.SiteConfig                       5         1
  system.TextFieldTemplate                6         2
  uploads.Upload                          11        0
  uploads.UploadType                      2         0

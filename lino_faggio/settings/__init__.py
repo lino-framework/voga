@@ -17,6 +17,7 @@ import os
 import lino
 
 from lino.projects.std.settings import *
+from decimal import Decimal
 
 
 #~ from lino.modlib import cal
@@ -124,6 +125,8 @@ class Site(Site,ledger.SiteMixin):
         """
         This defines default user profiles for :mod:`lino_welfare`.
         """
+        super(Site,self).setup_choicelists()
+        
         #~ raise Exception(123)
         from lino import dd
         from django.utils.translation import ugettext_lazy as _
@@ -135,6 +138,7 @@ class Site(Site,ledger.SiteMixin):
         add('100', _("User"),          'U U', name='user')
         add('900', _("Administrator"), 'A A', name='admin')
         
+        self.modules.vat.configure(default_vat_class='exempt')
 
     def get_event_summary(self,event,user):
         #~ from django.utils.translation import ugettext as _
@@ -157,3 +161,13 @@ class Site(Site,ledger.SiteMixin):
     def get_admin_main_items(self,ar):
         yield self.modules.courses.ActiveCourses
         
+
+    #~ def get_vat_rate(self,tt,vc,vr):
+        #~ VAT_RATES = dict(
+          #~ exempt=Decimal(),
+          #~ reduced=Decimal('0.07'),
+          #~ normal=Decimal('0.20')
+        #~ )
+        #~ return VAT_RATES[vc.name]
+
+

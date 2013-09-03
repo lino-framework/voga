@@ -22,4 +22,7 @@ Reference
 .. actor:: accounts.Charts
 .. actor:: ledger.Journals
 
+.. actor:: vat.VatRegimes
+.. actor:: vat.TradeTypes
+
 
