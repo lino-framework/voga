@@ -49,9 +49,11 @@ class Person(Person,mixins.Born):
     pass
 
 
-class MyCompanyDetail(CompanyDetail):
+class MyPartnerDetail(PartnerDetail):
     
-    main = 'general more sales.InvoiceablesByPartner ledger'
+    main = 'general more ledger'
+    
+    #~ general = dd.Panel(PartnerDetail.main,label=_("General"))
     
     general = dd.Panel("""
     address_box:60 contact_box:30
@@ -59,17 +61,55 @@ class MyCompanyDetail(CompanyDetail):
     """,label = _("General"))
     
     more = dd.Panel("""
+    id language 
+    addr1 url
+    #courses.CoursesByCompany
+    """,label = _("More"))
+    
+    
+    ledger = dd.Panel("""
+    sales.InvoiceablesByPartner
+    # ledger.InvoicesByPartner
+    ledger.MovementsByPartner
+    """,label=ledger.MODULE_LABEL)
+    
+    bottom_box = """
+    remarks 
+    is_person is_company #is_household
+    """    
+    
+    address_box = """
+    name
+    country city zip_code:10
+    street:25 street_no street_box
+    addr2
+    """
+    
+    contact_box = """
+    email
+    phone 
+    fax
+    gsm
+    """
+    
+    
+
+class MyCompanyDetail(CompanyDetail,MyPartnerDetail):
+    
+    main = 'general more ledger'
+    
+    more = dd.Panel("""
     id language type vat_id:12
     addr1 url
     courses.CoursesByCompany
     """,label = _("More"))
     
-    address_box = dd.Panel("""
+    address_box = """
     prefix name
     country city zip_code:10
     street:25 street_no street_box
     addr2
-    """) # ,label = _("Address"))
+    """
     
     contact_box = dd.Panel("""
     email:40 
@@ -83,20 +123,16 @@ class MyCompanyDetail(CompanyDetail):
     remarks contacts.RolesByCompany
     """
     
-    ledger = dd.Panel("""
-    ledger.InvoicesByPartner
-    ledger.MovementsByPartner
-    """,label=ledger.MODULE_LABEL)
     
     
-class MyPersonDetail(PersonDetail):
+    
+    
+class MyPersonDetail(PersonDetail,MyPartnerDetail):
    
-    #~ main = "contact outbox calendar"
-    
-    main = 'general more  ledger'
+    main = 'general more ledger'
     
     general = dd.Panel("""
-    box1 box2
+    address_box contact_box
     remarks contacts.RolesByPerson 
     """,label = _("General"))
 
@@ -108,28 +144,13 @@ class MyPersonDetail(PersonDetail):
     
     personal = 'is_pupil is_teacher'
     
-    box1 = """
+    address_box = """
     last_name first_name:15 #title:10
     country city zip_code:10
     #street_prefix street:25 street_no street_box
     addr2:40
     """
     
-    box2 = """
-    email
-    phone 
-    fax
-    gsm
-    """
-    
-    ledger = dd.Panel("""
-    invoicing_address
-    sales.InvoiceablesByPartner
-    ledger.InvoicesByPartner
-    ledger.MovementsByPartner
-    """,label=ledger.MODULE_LABEL)
-    
-
 
 class PupilDetail(MyPersonDetail):
     
@@ -148,11 +169,12 @@ def customize_contacts(sender,**kw):
     site = sender
     site.modules.contacts.Persons.set_detail_layout(MyPersonDetail())
     site.modules.contacts.Companies.set_detail_layout(MyCompanyDetail())
-    site.modules.contacts.Partners.set_detail_layout(bottom_box = """
-    remarks 
-    is_person is_company #is_household
-    """)
-    site.modules.contacts.Partners.add_detail_tab("sales.InvoiceablesByPartner")
+    site.modules.contacts.Partners.set_detail_layout(MyPartnerDetail())
+    #~ site.modules.contacts.Partners.set_detail_layout(bottom_box = """
+    #~ remarks 
+    #~ is_person is_company #is_household
+    #~ """)
+    #~ site.modules.contacts.Partners.add_detail_tab("sales.InvoiceablesByPartner")
     site.modules.courses.Pupils.set_detail_layout(PupilDetail())
     site.modules.courses.Teachers.set_detail_layout(TeacherDetail())
     

@@ -31,8 +31,14 @@ from lino.modlib.cal.models import *
 
 from lino.modlib.cal.workflows import faggio
 
+dd.inject_field('system.SiteConfig','pupil_guestrole',
+    dd.ForeignKey('cal.GuestRole',
+        verbose_name=_("Guest role for pupils"),
+        related_name='pupil_guestroles',
+        blank=True,null=True))    
+    
 
-#~ sales = dd.resolve_app('sales')
+courses = dd.resolve_app('courses')
 
 class Room(Room,contacts.ContactRelated):
     #~ class Meta(Room.Meta):
@@ -85,11 +91,34 @@ class Event(Event):
 
     def get_invoiceable_qty(self): 
         return 1
+        
+    
+    def suggest_guests(self):
+        #~ print "20130722 suggest_guests"
+        for g in super(Event,self).suggest_guests(): 
+            yield g
+        if self.project is None: 
+            return
+        if not settings.SITE.site_config.pupil_guestrole:
+            return
+        Guest = settings.SITE.modules.cal.Guest
+        for obj in self.project.enrolment_set.exclude(state=courses.EnrolmentStates.cancelled):
+            if obj.pupil:
+                yield Guest(event=self,
+                    partner=obj.pupil,
+                    role=settings.SITE.site_config.pupil_guestrole)
+        
+            
+    
+        
     
 #~ def site_setup(site):
 @dd.receiver(dd.post_analyze)
 def customize_cal(sender,**kw):
     site = sender
+    
+    dd.update_field(site.modules.cal.Event,'description',
+        format="plain")
     
     #~ site.modules.cal.Events.set_detail_layout(EventDetail())
     site.modules.cal.Events.set_detail_layout('general more')
@@ -97,13 +126,14 @@ def customize_cal(sender,**kw):
     calendar summary user project 
     start end 
     room priority access_class transparent #rset 
-    owner workflow_buttons
-    description cal.GuestsByEvent 
+    owner:30 workflow_buttons:30
+    description
     """,_("General"))
+    
     
     site.modules.cal.Events.add_detail_panel('more',"""
     id created:20 modified:20  state
-    outbox.MailsByController #postings.PostingsByController
+    #outbox.MailsByController cal.GuestsByEvent notes.NotesByOwner
     """,_("More"))
     
     

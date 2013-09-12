@@ -12,7 +12,8 @@
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
 """
-Deserves a docstring.
+The :xfile:`models.py` for the :mod:`lino_faggio` app.
+
 """
 
 from django.db import models
@@ -34,10 +35,13 @@ ledger = dd.resolve_app('ledger')
 #~ cal = dd.resolve_app('cal')
 courses = dd.resolve_app('courses')
 products = dd.resolve_app('products')
+notes = dd.resolve_app('notes')
 
 #~ print 20130607, loading.cache.postponed
 
     
+#~ notes.Note._meta.verbose_name = _("Note")
+#~ notes.Note._meta.verbose_name_plural = _("Notes")
 
         
         
@@ -110,7 +114,7 @@ def site_setup(site):
         """
         site_company next_partner_id:10
         default_build_method 
-        sales_account
+        sales_account pupil_guestrole
         """)
     
     

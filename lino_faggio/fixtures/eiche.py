@@ -57,8 +57,9 @@ def objects():
     yield TeacherType(**babelkw('name',de="Sonstige",fr="Autre",en="Other"))
     
     
+    company = Instantiator('contacts.Company','name city:name').build
     
-    we = Company(name="Buche V.o.G.",prefix="Die")
+    we = company("Die Buche V.o.G.","Eupen",street="Birkenweg",street_no=5)
     yield we
     settings.SITE.site_config.site_company = we
     yield settings.SITE.site_config

@@ -32,15 +32,16 @@ class Course(Course,sales.Invoiceable):
     
     @classmethod
     def get_partner_filter(cls,partner):
-        return models.Q(company=partner,invoice__isnull=True)
+        q = models.Q(company=partner,invoice__isnull=True)
+        return q
     
     
     
     def get_invoiceable_product(self): 
         #~ if self.organizer and self.room: 
         if self.company and self.room: 
-            if self.company != settings.SITE.site_config.site_company: 
-                return self.room.tariff
+            #~ if self.company != settings.SITE.site_config.site_company: 
+            return self.room.tariff
             
     #~ def get_invoiceable_title(self): 
         #~ if self.organizer: 

@@ -49,6 +49,9 @@ class Site(Site,ledger.SiteMixin):
     
     languages = 'en de fr'
     
+    #~ def get_default_language(self):
+        #~ return 'de'
+    
     use_eid_jslib = False
     
     show_internal_field_names = True
@@ -107,7 +110,7 @@ class Site(Site,ledger.SiteMixin):
         yield 'lino.modlib.finan'
         
         #~ yield 'lino.modlib.households'
-        #~ yield 'lino.modlib.notes'
+        yield 'lino.modlib.notes'
         yield 'lino.modlib.uploads'
         #~ yield 'lino.modlib.cal'
         yield 'lino_faggio.cal'

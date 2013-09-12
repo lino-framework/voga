@@ -14,7 +14,7 @@
 
 SETUP_INFO = dict(name='lino-faggio',
       version='0.0.1', 
-      install_requires=['lino>=1.6.9'],
+      install_requires=['lino'],
       test_suite = 'tests',
       description="A Lino application for managing courses, participants and meeting rooms",
       long_description="""\
