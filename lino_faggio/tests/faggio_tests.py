@@ -41,12 +41,12 @@ from lino.utils import i2d
 from djangosite.utils.djangotest import RemoteAuthTestCase
 
 DEMO_OVERVIEW = """\
-19 applications: sessions, about, contenttypes, system, users, countries, contacts, products, accounts, ledger, vat, sales, finan, uploads, cal, outbox, courses, lino_faggio, djangosite.
-62 models:
+20 applications: sessions, about, contenttypes, system, users, countries, contacts, products, accounts, ledger, vat, sales, finan, notes, uploads, cal, outbox, courses, lino_faggio, djangosite.
+65 models:
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
- accounts.Account                        13        9
+ accounts.Account                        13        10
  accounts.Chart                          4         1
  accounts.Group                          8         6
  cal.Calendar                            21        5
@@ -64,7 +64,7 @@ DEMO_OVERVIEW = """\
  contacts.Role                           4         0
  contacts.RoleType                       4         5
  contenttypes.ConcreteModel              2         0
- contenttypes.ContentType                4         62
+ contenttypes.ContentType                4         65
  contenttypes.FooWithBrokenAbsoluteUrl   3         0
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
@@ -81,26 +81,29 @@ DEMO_OVERVIEW = """\
  courses.TeacherType                     4         5
  courses.Topic                           4         4
  finan.BankStatement                     11        10
- finan.DocItem                           10        43
- ledger.AccountInvoice                   16        10
+ finan.DocItem                           11        43
+ ledger.AccountInvoice                   17        10
  ledger.InvoiceItem                      9         19
- ledger.Journal                          14        3
- ledger.Movement                         7         20
+ ledger.Journal                          16        4
+ ledger.Movement                         9         20
  ledger.Voucher                          7         31
+ notes.EventType                         8         0
+ notes.Note                              15        100
+ notes.NoteType                          11        6
  outbox.Attachment                       4         0
  outbox.Mail                             9         0
  outbox.Recipient                        6         0
  products.Product                        11        5
  products.ProductCat                     5         3
- sales.Invoice                           24        11
- sales.InvoiceItem                       15        33
+ sales.Invoice                           25        11
+ sales.InvoiceItem                       15        17
  sales.InvoicingMode                     8         0
  sales.PaymentTerm                       7         0
  sales.SalesRule                         4         0
  sales.ShippingMode                      5         0
  sessions.Session                        3         4
  system.HelpText                         4         2
- system.SiteConfig                       5         1
+ system.SiteConfig                       7         1
  system.TextFieldTemplate                6         2
  uploads.Upload                          11        0
  uploads.UploadType                      2         0
