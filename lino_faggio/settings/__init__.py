@@ -21,10 +21,11 @@ from decimal import Decimal
 
 
 #~ from lino.modlib import cal
-from lino.modlib import ledger
+#~ from lino.modlib import ledger
+from lino.modlib import vat
 
 #~ class Site(Site,cal.SiteMixin):
-class Site(Site,ledger.SiteMixin):
+class Site(Site,vat.SiteMixin):
     #~ title = __name__
     version = "0.0.1"
     verbose_name = "Lino-Faggio"

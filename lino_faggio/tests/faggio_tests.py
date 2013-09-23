@@ -46,7 +46,7 @@ DEMO_OVERVIEW = """\
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
- accounts.Account                        13        10
+ accounts.Account                        13        11
  accounts.Chart                          4         1
  accounts.Group                          8         6
  cal.Calendar                            21        5
@@ -84,7 +84,7 @@ DEMO_OVERVIEW = """\
  finan.DocItem                           11        43
  ledger.AccountInvoice                   17        10
  ledger.InvoiceItem                      9         19
- ledger.Journal                          16        4
+ ledger.Journal                          17        4
  ledger.Movement                         9         20
  ledger.Voucher                          7         31
  notes.EventType                         8         0

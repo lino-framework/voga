@@ -114,7 +114,9 @@ def site_setup(site):
         """
         site_company next_partner_id:10
         default_build_method 
-        sales_account pupil_guestrole
+        clients_account   sales_account     sales_vat_account
+        suppliers_account purchases_account purchases_vat_account
+        pupil_guestrole
         """)
     
     
