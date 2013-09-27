@@ -42,7 +42,7 @@ from djangosite.utils.djangotest import RemoteAuthTestCase
 
 DEMO_OVERVIEW = """\
 20 applications: sessions, about, contenttypes, system, users, countries, contacts, products, accounts, ledger, vat, sales, finan, notes, uploads, cal, outbox, courses, lino_faggio, djangosite.
-65 models:
+67 models:
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
@@ -64,12 +64,12 @@ DEMO_OVERVIEW = """\
  contacts.Role                           4         0
  contacts.RoleType                       4         5
  contenttypes.ConcreteModel              2         0
- contenttypes.ContentType                4         65
+ contenttypes.ContentType                4         67
  contenttypes.FooWithBrokenAbsoluteUrl   3         0
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
  contenttypes.ProxyModel                 2         0
- countries.City                          8         62
+ countries.City                          8         72
  countries.Country                       6         8
  courses.Course                          28        25
  courses.Enrolment                       9         100
@@ -80,12 +80,14 @@ DEMO_OVERVIEW = """\
  courses.Teacher                         31        8
  courses.TeacherType                     4         5
  courses.Topic                           4         4
- finan.BankStatement                     11        10
+ finan.BankStatement                     12        10
  finan.DocItem                           11        43
+ finan.JournalEntry                      9         10
+ finan.PaymentOrder                      11        0
  ledger.AccountInvoice                   17        10
  ledger.InvoiceItem                      9         19
  ledger.Journal                          17        4
- ledger.Movement                         9         20
+ ledger.Movement                         9         73
  ledger.Voucher                          7         31
  notes.EventType                         8         0
  notes.Note                              15        100
@@ -93,7 +95,7 @@ DEMO_OVERVIEW = """\
  outbox.Attachment                       4         0
  outbox.Mail                             9         0
  outbox.Recipient                        6         0
- products.Product                        11        5
+ products.Product                        12        5
  products.ProductCat                     5         3
  sales.Invoice                           25        11
  sales.InvoiceItem                       15        17
@@ -103,7 +105,7 @@ DEMO_OVERVIEW = """\
  sales.ShippingMode                      5         0
  sessions.Session                        3         4
  system.HelpText                         4         2
- system.SiteConfig                       7         1
+ system.SiteConfig                       12        1
  system.TextFieldTemplate                6         2
  uploads.Upload                          11        0
  uploads.UploadType                      2         0
