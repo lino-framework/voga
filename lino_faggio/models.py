@@ -110,6 +110,13 @@ def add_merge_action(model):
     
    
 def site_setup(site):
+    site.modules.accounts.Accounts.set_detail_layout(
+        """
+        ref:10 name id:5
+        seqno chart group type clearable
+        ledger.MovementsByAccount ledger.DuePaymentsByAccount
+        """)
+    
     site.modules.system.SiteConfigs.set_detail_layout(
         """
         site_company next_partner_id:10
