@@ -12,7 +12,8 @@
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
 """
-Deserves a docstring.
+The :xfile:`models.py` for the :mod:`lino_faggio.contacts` app.
+
 """
 
 
@@ -70,7 +71,7 @@ class MyPartnerDetail(PartnerDetail):
     ledger = dd.Panel("""
     sales.InvoiceablesByPartner
     # ledger.InvoicesByPartner
-    ledger.MovementsByPartner ledger.DuePaymentsByPartner
+    ledger.MovementsByPartner #ledger.DuePaymentsByPartner
     """,label=ledger.MODULE_LABEL)
 
     bottom_box = """

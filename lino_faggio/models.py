@@ -114,7 +114,7 @@ def site_setup(site):
         """
         ref:10 name id:5
         seqno chart group type clearable
-        ledger.MovementsByAccount ledger.DuePaymentsByAccount
+        ledger.MovementsByAccount #ledger.DuePaymentsByAccount
         """)
     
     site.modules.system.SiteConfigs.set_detail_layout(
