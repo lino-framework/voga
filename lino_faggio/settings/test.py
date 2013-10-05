@@ -1,6 +1,5 @@
 from lino_faggio.settings import *
-SITE = Site(globals(),no_local=True,remote_user_header='REMOTE_USER') 
+SITE = Site(globals(),no_local=True,
+    remote_user_header='REMOTE_USER',hidden_languages = 'de fr') 
 DEBUG=True
-
-
 
