@@ -103,6 +103,7 @@ class MyCompanyDetail(CompanyDetail,MyPartnerDetail):
     id language type vat_id:12
     addr1 url
     courses.CoursesByCompany
+    notes.NotesByCompany
     """,label = _("More"))
     
     address_box = """
@@ -141,6 +142,7 @@ class MyPersonDetail(PersonDetail,MyPartnerDetail):
     id language 
     addr1 url
     gender birth_date age:10 personal
+    notes.NotesByPerson
     """,label = _("More"))
     
     personal = 'is_pupil is_teacher'
