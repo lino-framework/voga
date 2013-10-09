@@ -13,7 +13,6 @@
 
 """
 The :xfile:`models.py` for the :mod:`lino_faggio` app.
-
 """
 
 from django.db import models
@@ -53,50 +52,18 @@ notes = dd.resolve_app('notes')
     #~ default=0))
     
      
-class PrintAndChangeStateAction(dd.ChangeStateAction):
-    
-    def run_from_ui(self,ar,**kw):
-        obj = ar.selected_rows[0]
-        
-        def ok():
-            # to avoid UnboundLocalError local variable 'kw' referenced before assignment
-            kw2 = obj.do_print.run_from_ui(ar,**kw)
-            kw2 = super(PrintAndChangeStateAction,self).run_from_ui(ar,**kw2)
-            kw2.update(refresh_all=True)
-            return kw2
-        msg = self.get_confirmation_message(obj,ar)
-        return ar.confirm(ok, msg, _("Are you sure?"))
-    
-class ConfirmEnrolment(PrintAndChangeStateAction):
-    required = dd.required(states='requested')
-    label = _("Confirm")
-    
-    def get_confirmation_message(self,obj,ar):
-        return _("Confirm enrolment of <b>%(pupil)s</b> to <b>%(course)s</b>.") % dict(
-            pupil=obj.pupil,course=obj.course)        
-    
-class CertifyEnrolment(PrintAndChangeStateAction):
-    required = dd.required(states='confirmed')
-    label = _("Certify")
-    #~ label = _("Award")
-    #~ label = school.EnrolmentStates.award.text
-    
-    def get_confirmation_message(self,obj,ar):
-        return _("Print certificate for <b>%(pupil)s</b>.") % dict(
-            pupil=obj.pupil,course=obj.course)
-    
 
-@dd.receiver(dd.pre_analyze,dispatch_uid='faggio_setup_workflows')
-def faggio_setup_workflows(sender,**kw):
+#~ @dd.receiver(dd.pre_analyze,dispatch_uid='faggio_setup_workflows')
+#~ def faggio_setup_workflows(sender,**kw):
+    #~ 
+    #~ site = sender
+    #~ courses = dd.resolve_app('courses')
+#~ 
+    #~ courses.EnrolmentStates.confirmed.add_transition(_("Confirm"))
+    #~ courses.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
     
-    site = sender
-    courses = dd.resolve_app('courses')
-
-    #~ from lino.modlib.courses import models as courses
-    #~ courses.EnrolmentStates.confirmed.add_transition(ConfirmEnrolment)
-    courses.EnrolmentStates.confirmed.add_transition(_("Confirm"))
-    courses.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
-    #~ courses.EnrolmentStates.abandoned.add_transition() 
+from lino.modlib.courses import workflows
+    
 
 
 @dd.when_prepared('partners.Person','partners.Organisation')

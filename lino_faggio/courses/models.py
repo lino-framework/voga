@@ -13,7 +13,8 @@
 ## along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
 """
-Deserves a docstring.
+The :xfile:`models.py` module of the :mod:`lino_faggio.courses` app.
+
 """
 
 from __future__ import unicode_literals
@@ -24,6 +25,30 @@ from lino import dd
 from lino.modlib.courses.models import *
 
 sales = dd.resolve_app('sales')
+
+
+class Teacher(Teacher):
+    class Meta:
+        verbose_name = _("Instructor")
+        verbose_name_plural = _("Instructors")
+        
+    def __unicode__(self):
+        s = super(Teacher,self).__unicode__()
+        if self.teacher_type:
+            s += " (%s)" % self.teacher_type
+        return s 
+
+class Pupil(Pupil):
+    class Meta:
+        verbose_name = _("Participant")
+        verbose_name_plural = _("Participants")
+        
+    def __unicode__(self):
+        s = super(Pupil,self).__unicode__()
+        if self.pupil_type:
+            s += " (%s)" % self.pupil_type
+        return s
+
 
 class Course(Course,sales.Invoiceable):
     
@@ -65,7 +90,8 @@ class CourseDetail(CourseDetail):
     max_places max_events end_date end_time every_unit every
     monday tuesday wednesday thursday friday saturday sunday
     company contact_person user calendar tariff
-    cal.EventsByController
+    # cal.EventsByController
+    courses.EventsByCourse
     """,label=_("General"))
     
 
@@ -73,6 +99,12 @@ class CourseDetail(CourseDetail):
 def customize_courses(sender,**kw):
     site = sender
     site.modules.courses.Courses.set_detail_layout(CourseDetail())
+    #~ site.modules.courses.Enrolments.set_insert_layout("""
+    #~ request_date user
+    #~ course pupil
+    #~ tariff remark
+    #~ """
+    #~ )
     #~ site.modules.courses.ActiveCourses.column_names = 'info tariff max_places enrolments teacher company room'
     
 

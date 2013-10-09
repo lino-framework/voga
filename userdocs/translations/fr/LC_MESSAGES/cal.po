@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 15:30+0300\n"
+"POT-Creation-Date: 2013-10-08 03:13+0300\n"
 "PO-Revision-Date: 2013-05-31 15:29+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -16,28 +16,78 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.0dev-r661\n"
+"Generated-By: Babel 1.0\n"
+
+# 27955af0b2994325ac4b8a10f697e204
+#: ../cal.rst:5
+msgid "Calendar"
+msgstr ""
+
+# a6397fc484f0439c940beafe4e43384c
+#: ../cal.rst:7
+msgid ""
+"Important models are :ddref:`cal.Event` and :ddref:`cal.Guest` and "
+":ddref:`cal.Task`..."
+msgstr ""
+
+# 789e4066755e4e2bb6d3e8a9f255a649
+#: None:2
+msgid "Event (model in app \"cal\")"
+msgstr ""
+
+# 8a3f255a911b4fd09eee7c6afaa23329
+#: None:2
+msgid "Guest (model in app \"cal\")"
+msgstr ""
+
+# 12cc1d6536474887bcc4f86ffd9d0004
+#: None:2
+msgid "Task (model in app \"cal\")"
+msgstr ""
+
+# 0ed4c0ec06e84b37a1c0d3f863c0b4ca
+#: None:2
+msgid "Calendar (model in app \"cal\")"
+msgstr ""
+
+# 793cdcecfa7f487cba520e680f58d90b
+#: None:2
+msgid "Subscription (model in app \"cal\")"
+msgstr ""
+
+# 5bdc4dd5e7d84e2eb21a977682b3f632
+#: None:2
+msgid "Room (model in app \"cal\")"
+msgstr ""
+
+# bb5ccbf310fa40968e78a4ef585b28d8
+#: None:2
+msgid "Priority (model in app \"cal\")"
+msgstr ""
+
+# 10bc37167f1d4ca3ad66c77e19ac7837
+#: None:2
+msgid "Guest Role (model in app \"cal\")"
+msgstr ""
 
 # e4e83a3e04114c9381abe5c6c8191660
-#: ../cal.rst:5
-msgid "Le module Calendrier"
-msgstr ""
+#~ msgid "Le module Calendrier"
+#~ msgstr ""
 
 # 84f398bae1484b38bbb0e01c2c540cdf
-#: ../cal.rst:16
-msgid "Calendar Panel"
-msgstr ""
+#~ msgid "Calendar Panel"
+#~ msgstr ""
 
 # 977f5510faa24da29d485411b57c4d7a
-#: ../cal.rst:18
-msgid ""
-"The Calendar Panel displays your events in a classical \"calendar view\","
-" with the possibility to switch between daily, weekly, monthly and to "
-"toggle the visibility of team events."
-msgstr ""
+#~ msgid ""
+#~ "The Calendar Panel displays your events"
+#~ " in a classical \"calendar view\", "
+#~ "with the possibility to switch between"
+#~ " daily, weekly, monthly and to toggle"
+#~ " the visibility of team events."
+#~ msgstr ""
 
 # 41968beedc6146478a79aecc23f65081
-#: ../cal.rst:28
-msgid "Référence"
-msgstr ""
+#~ msgid "Référence"
+#~ msgstr ""
 

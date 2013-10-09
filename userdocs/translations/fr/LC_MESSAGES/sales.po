@@ -9,27 +9,27 @@ msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-08 03:13+0300\n"
-"PO-Revision-Date: 2013-05-31 15:29+0300\n"
+"PO-Revision-Date: 2013-10-08 03:13+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: de <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0\n"
 
-# 9a0eda2d4f5343ac8044ebcf35ce0e70
-#: ../countries.rst:5
-msgid "Countries"
+# 7901a5988ea44a2fad4e10b175b309d1
+#: ../sales.rst:5
+msgid "Sales"
 msgstr ""
 
-# 1fd362a4cd78454a9b45dda0969a2c1a
-#: None:2
-msgid "Place (model in app \"countries\")"
+# c736390942314d5bb0da85f1a42f6cfb
+#: ../sales.rst:7
+msgid "This is work in progress."
 msgstr ""
 
-# f5a3ab5a390048a1bb1b47e63aa90cc3
-#: None:2
-msgid "Country (model in app \"countries\")"
+# 50b395593baf4409abe815380a012ea9
+#: ../sales.rst:10
+msgid "Reference"
 msgstr ""
 

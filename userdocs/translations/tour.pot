@@ -16,8 +16,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../index.rst:4
-# cc9c4ca7484f4b819768e9f085f9187a
-msgid "Lino-Faggio User Manual"
+#: ../tour.rst:5
+# badacb9fce2148c8a751a5d07e43fb92
+msgid "An introduction to Lino-Faggio"
+msgstr ""
+
+#: ../tour.rst:7
+# bd9da2e7341a4a38925fc952132f7b06
+msgid "Partners"
+msgstr ""
+
+#: ../tour.rst:9
+# 54bfbf906be84a169b85ac4a9c3e9d5b
+msgid "Create some :ref:`faggio.courses.Courses`"
+msgstr ""
+
+#: ../tour.rst:11
+# 86a130565a6d46c0bb4eaa30da30d017
+msgid ":ref:`faggio.sales.InvoicesToCreate`"
 msgstr ""
 

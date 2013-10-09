@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2013, Luc Saffre
+# This file is distributed under the same license as the Lino-Faggio
+# Benutzerhandbuch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-08 03:13+0300\n"
+"PO-Revision-Date: 2013-10-08 03:13+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.0\n"
+
+# 28239bf6fdcf472ea3d99c425a3ccec0
+#: ../courses.rst:5
+msgid "Courses"
+msgstr ""
+
+# ee11fbe9192d4030b442776a4c82aa80
+#: ../courses.rst:18
+msgid "Reference"
+msgstr ""
+
+# 0b43737f1fa7418ab7bbadb2a1f6b8a8
+#: None:2
+msgid "Participant (model in app \"courses\")"
+msgstr ""
+
+# e68f42ebd6c540ef8a31efe2fd84edbc
+#: None:2
+msgid "Instructor (model in app \"courses\")"
+msgstr ""
+
+# 2965d66a8ad645e989f3fe3d457013af
+#: None:2
+msgid "Course Line (model in app \"courses\")"
+msgstr ""
+
+# e5fdd6f571374477b43d226634146505
+#: None:2
+msgid "Course (model in app \"courses\")"
+msgstr ""
+
+# 2dc859db525849b6b2ba9be2b80c648f
+#: None:2
+msgid "Topic (model in app \"courses\")"
+msgstr ""
+
+# f34211eee4fa451e808b090a32f473ff
+#: None:2
+msgid "Enrolment (model in app \"courses\")"
+msgstr ""
+
+# fdb87ea5b01a4b868dd44223d358849b
+#: None:2
+msgid "Timetable Slot (model in app \"courses\")"
+msgstr ""
+
+# c65d1a4d6aca40f69b098a3715f60d8a
+#: None:2
+msgid "Pupil type (model in app \"courses\")"
+msgstr ""
+
+# 2cd13b738f064887a7b6de895db77b79
+#: None:2
+msgid "Teacher type (model in app \"courses\")"
+msgstr ""
+

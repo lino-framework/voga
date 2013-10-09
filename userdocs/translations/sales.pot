@@ -16,8 +16,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../index.rst:4
-# cc9c4ca7484f4b819768e9f085f9187a
-msgid "Lino-Faggio User Manual"
+#: ../sales.rst:5
+# 7901a5988ea44a2fad4e10b175b309d1
+msgid "Sales"
+msgstr ""
+
+#: ../sales.rst:7
+# c736390942314d5bb0da85f1a42f6cfb
+msgid "This is work in progress."
+msgstr ""
+
+#: ../sales.rst:10
+# 50b395593baf4409abe815380a012ea9
+msgid "Reference"
 msgstr ""
 

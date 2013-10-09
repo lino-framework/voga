@@ -92,6 +92,13 @@ class Event(Event):
     def get_invoiceable_qty(self): 
         return 1
         
+    def get_event_summary(self,ar):
+        """Overrides :meth:`lino.modlib.cal.models.Event.get_event_summary`
+        """
+        if self.owner is None:
+            return self.summary
+        else:
+            return unicode(self.owner)
     
     def suggest_guests(self):
         #~ print "20130722 suggest_guests"
@@ -123,7 +130,7 @@ def customize_cal(sender,**kw):
     #~ site.modules.cal.Events.set_detail_layout(EventDetail())
     site.modules.cal.Events.set_detail_layout('general more')
     site.modules.cal.Events.add_detail_panel('general',"""
-    calendar summary user project 
+    calendar summary user course
     start end 
     room priority access_class transparent #rset 
     owner:30 workflow_buttons:30
@@ -138,8 +145,8 @@ def customize_cal(sender,**kw):
     
     
     site.modules.cal.Events.set_insert_layout("""
-    project 
     start end 
+    course 
     """,
     start="start_date start_time",
     end="end_date end_time",

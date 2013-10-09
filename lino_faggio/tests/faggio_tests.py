@@ -42,11 +42,11 @@ from djangosite.utils.djangotest import RemoteAuthTestCase
 
 DEMO_OVERVIEW = """\
 20 applications: sessions, about, contenttypes, system, users, countries, contacts, products, accounts, ledger, vat, sales, finan, notes, uploads, cal, outbox, courses, lino_faggio, djangosite.
-67 models:
+69 models:
 ======================================= ========= =======
  Name                                    #fields   #rows
 --------------------------------------- --------- -------
- accounts.Account                        13        11
+ accounts.Account                        14        12
  accounts.Chart                          4         1
  accounts.Group                          8         6
  cal.Calendar                            21        5
@@ -64,12 +64,12 @@ DEMO_OVERVIEW = """\
  contacts.Role                           4         0
  contacts.RoleType                       4         5
  contenttypes.ConcreteModel              2         0
- contenttypes.ContentType                4         67
+ contenttypes.ContentType                4         69
  contenttypes.FooWithBrokenAbsoluteUrl   3         0
  contenttypes.FooWithUrl                 3         0
  contenttypes.FooWithoutUrl              2         0
  contenttypes.ProxyModel                 2         0
- countries.City                          8         72
+ countries.City                          8         73
  countries.Country                       6         8
  courses.Course                          28        25
  courses.Enrolment                       9         100
@@ -80,25 +80,27 @@ DEMO_OVERVIEW = """\
  courses.Teacher                         31        8
  courses.TeacherType                     4         5
  courses.Topic                           4         4
- finan.BankStatement                     12        10
- finan.DocItem                           11        43
- finan.JournalEntry                      9         10
- finan.PaymentOrder                      11        0
- ledger.AccountInvoice                   17        10
- ledger.InvoiceItem                      9         19
- ledger.Journal                          17        4
- ledger.Movement                         9         73
- ledger.Voucher                          7         31
+ finan.BankStatement                     11        27
+ finan.BankStatementItem                 11        70
+ finan.JournalEntry                      9         0
+ finan.JournalEntryItem                  11        0
+ finan.PaymentOrder                      11        27
+ finan.PaymentOrderItem                  10        135
+ ledger.AccountInvoice                   17        140
+ ledger.InvoiceItem                      9         224
+ ledger.Journal                          17        6
+ ledger.Movement                         9         715
+ ledger.Voucher                          7         251
  notes.EventType                         8         0
  notes.Note                              15        100
- notes.NoteType                          11        6
+ notes.NoteType                          11        7
  outbox.Attachment                       4         0
  outbox.Mail                             9         0
  outbox.Recipient                        6         0
- products.Product                        12        5
+ products.Product                        12        8
  products.ProductCat                     5         3
- sales.Invoice                           25        11
- sales.InvoiceItem                       15        17
+ sales.Invoice                           25        57
+ sales.InvoiceItem                       15        108
  sales.InvoicingMode                     8         0
  sales.PaymentTerm                       7         0
  sales.SalesRule                         4         0

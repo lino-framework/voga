@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 15:30+0300\n"
+"POT-Creation-Date: 2013-10-08 03:13+0300\n"
 "PO-Revision-Date: 2013-05-31 15:29+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -16,53 +16,86 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.0dev-r661\n"
+"Generated-By: Babel 1.0\n"
 
 # 893dcd22784544b5abe9c6c70b69b3c3
 #: ../contacts.rst:5
 msgid "Contacts"
 msgstr ""
 
-# 9da942962e2a4a2fa05bafd0214a641b
-#: ../contacts.rst:7
-msgid ""
-"Toute personne physique ou morale est enregistrée dans Lino en tant que "
-":ref:`Partenaire <faggio.contacts.Partners>`."
-msgstr ""
-
-# 47b73b9e8b2e4fc892cb72a7532e7e31
-#: ../contacts.rst:10
-msgid "Lino-Faggio différencie les types de Partenaires suivants:"
-msgstr ""
-
 # de65d0d5d7b3464aacf6b38b4d344fd6
-#: ../contacts.rst:17
-msgid "Veraltete Partner"
+#: ../contacts.rst:41
+msgid "**Veraltete Partner**"
 msgstr ""
 
 # 425e4a3d143740a2b2e3cae771e14e5b
-#: ../contacts.rst:19
+#: ../contacts.rst:43
 msgid "Das Attribut \"veraltet\" bedeutet :"
 msgstr ""
 
 # adb4238a169c403d8510e3d120ec4a96
-#: ../contacts.rst:21
+#: ../contacts.rst:45
 msgid "die Daten dieses Partners werden nicht mehr gepflegt,"
 msgstr ""
 
 # 2571b022ada14e7581f54490c1c4d94b
-#: ../contacts.rst:22
+#: ../contacts.rst:46
 msgid ""
 "alle Angaben verstehen sich als \"so war es, bevor dieser Partner "
 "aufhörte, uns zu interessieren\"."
 msgstr ""
 
 # 27281ed62acd4b4eb64550a09a6afbae
-#: ../contacts.rst:25
+#: ../contacts.rst:49
 msgid ""
 "Veraltete Partner werden normalerweise in Listen ignoriert, als wären sie"
 " gelöscht. Um sie trotzdem zu sehen, muss das Ankreuzfeld `Auch veraltete"
 " Klienten` (bzw. `Auch veraltete Partner`) im Parameter-Panel der Liste "
 "angekreuzt werden."
 msgstr ""
+
+# c5bca45d0b2740dd966421956f271101
+#: None:2
+msgid "Partner (model in app \"contacts\")"
+msgstr ""
+
+# 8f2d4c25ed944fbfaa55662db71af7a4
+#: None:2
+msgid "Person (model in app \"contacts\")"
+msgstr ""
+
+# 3d805ae97eb24ce59226faff3c3eda01
+#: None:2
+msgid "Company (model in app \"contacts\")"
+msgstr ""
+
+# c9ec0afb055445e797fea73f2e127914
+#: None:2
+msgid "Contact Person (model in app \"contacts\")"
+msgstr ""
+
+# 236c359ffea5428ea02d7837844b7901
+#: None:2
+msgid "Function (model in app \"contacts\")"
+msgstr ""
+
+# 502cbbf1cf5841fe951a0d5e2ef7c703
+#: None:2
+msgid "company type (model in app \"contacts\")"
+msgstr ""
+
+# 9da942962e2a4a2fa05bafd0214a641b
+#~ msgid ""
+#~ "Toute personne physique ou morale est"
+#~ " enregistrée dans Lino en tant que"
+#~ " :ref:`Partenaire <faggio.contacts.Partners>`."
+#~ msgstr ""
+
+# 47b73b9e8b2e4fc892cb72a7532e7e31
+#~ msgid "Lino-Faggio différencie les types de Partenaires suivants:"
+#~ msgstr ""
+
+# de65d0d5d7b3464aacf6b38b4d344fd6
+#~ msgid "Veraltete Partner"
+#~ msgstr ""
 

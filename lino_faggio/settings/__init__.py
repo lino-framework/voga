@@ -44,7 +44,7 @@ class Site(Site,vat.SiteMixin):
     
     #~ project_model = 'contacts.Person'
     #~ project_model = 'school.Pupil'
-    project_model = 'courses.Course'
+    #~ project_model = 'courses.Course'
     #~ project_model = None
     user_model = 'users.User'
     
@@ -59,17 +59,14 @@ class Site(Site,vat.SiteMixin):
     
     #~ index_view_action = "dsbe.Home"
     
-    override_modlib_models = set([
-        #~ 'contacts.Partner', 
-        'contacts.Person', 
-        'sales.Invoice', 
-        'sales.InvoiceItem', 
-        'cal.Event', 
-        'courses.Course', 
-        'cal.Room', 
-        #~ 'contacts.Company',
-        #~ 'households.Household',
-        ])
+    #~ override_modlib_models = set([
+        #~ 'contacts.Person', 
+        #~ 'sales.Invoice', 
+        #~ 'sales.InvoiceItem', 
+        #~ 'cal.Event', 
+        #~ 'courses.Course', 
+        #~ 'cal.Room', 
+        #~ ])
     
     
     #~ remote_user_header = "REMOTE_USER"
@@ -100,6 +97,7 @@ class Site(Site,vat.SiteMixin):
         #~ yield 'lino.modlib.contacts'
         yield 'lino_faggio.contacts'
         
+        yield 'lino_faggio.courses'
         
         yield 'lino.modlib.products'
         yield 'lino.modlib.accounts'
@@ -118,7 +116,6 @@ class Site(Site,vat.SiteMixin):
         yield 'lino.modlib.outbox'
         #~ yield 'lino.modlib.pages'
         #~ yield 'lino.modlib.courses'
-        yield 'lino_faggio.courses'
         yield 'lino_faggio'
         
     #~ def setup_workflows(self):
@@ -143,23 +140,6 @@ class Site(Site,vat.SiteMixin):
         add('900', _("Administrator"), 'A A', name='admin')
         
         self.modules.vat.configure(default_vat_class='exempt')
-
-    def get_event_summary(self,event,user):
-        #~ from django.utils.translation import ugettext as _
-        #~ if event.user != user:
-            #~ if event.access_class == self.modules.cal.AccessClasses.show_busy:
-                #~ s = _("Busy")
-            #~ s = event.user.username + ': ' + unicode(s)
-        if event.project is None:
-            return event.summary
-        else:
-            return unicode(event.project)
-        #~ if event.state:
-            #~ s = ("(%s) " % unicode(event.state)) + s
-        #~ n = event.guest_set.all().count()
-        #~ if n:
-            #~ s = ("[%d] " % n) + s
-        #~ return s
 
 
     def get_admin_main_items(self,ar):

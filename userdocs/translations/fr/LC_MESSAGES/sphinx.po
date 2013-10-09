@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 15:30+0300\n"
+"POT-Creation-Date: 2013-10-08 03:13+0300\n"
 "PO-Revision-Date: 2013-05-31 15:29+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr <LL@li.org>\n"
@@ -16,27 +16,27 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.0dev-r661\n"
+"Generated-By: Babel 1.0\n"
 
-# 978e2410c3ad42789044481a8d9c2329
+# 82cde4e37bcd4b66a9aa939cb028bf35
 #: ../.templates/layout.html:6
 #, python-format
 msgid "&copy; <a href=\"%(path)s\">Copyright</a> %(copyright)s."
 msgstr ""
 
-# f6a26c14f86544bc9318693720060077
+# 7570784e68f844bf845a86018bc5741a
 #: ../.templates/layout.html:8
 #, python-format
 msgid "&copy; Copyright %(copyright)s."
 msgstr ""
 
-# 7d5226608bd849c8b13783ab97cd3e51
+# 684d2f0da589488886e3db48e2ff7e56
 #: ../.templates/layout.html:12
 #, python-format
 msgid "Last updated on %(last_updated)s."
 msgstr ""
 
-# d201097656e04c219413262a878eb3cd
+# e8c9f6d345074da8b37f062179a5f72a
 #: ../.templates/layout.html:15
 #, python-format
 msgid ""
@@ -44,7 +44,7 @@ msgid ""
 "%(sphinx_version)s."
 msgstr ""
 
-# b0539728380d409383574d3a5e208dde
+# ba02ea4984784bc6a1b30e093a89f787
 #: ../.templates/layout.html:18
 msgid "Show Source"
 msgstr ""

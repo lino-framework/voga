@@ -29,6 +29,19 @@ Reference
   
   
 .. actor:: courses.Course
+
+    Notes about automatic event generation:
+    
+    - When an automatically generated event is to be reported to another
+      date, e.g. because it falls into a vacation period,
+      then you simply change it's date. 
+      Lino will automatically adapt all subsequent events.
+      
+    - Marking an automatically generated event as "Cancelled" will not
+      create a replacement event.
+      
+    
+
 .. actor:: courses.Topic
 .. actor:: courses.Enrolment
 .. actor:: courses.Slot

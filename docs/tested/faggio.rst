@@ -53,11 +53,11 @@ Printing an invoice
 -------------------
 
 >>> ses = settings.SITE.login("robin")
->>> obj = sales.Invoice.objects.get(pk=127)
+>>> obj = sales.Invoice.objects.get(pk=216)
 >>> obj.clear_cache()
->>> pprint(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE
-{'message': u'S#127 printable has been built.',
- 'open_url': u'/media/cache/appypdf/sales.Invoice-127.pdf',
+>>> pprint(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+{'message': u'S#... printable has been built.',
+ 'open_url': u'/media/cache/appypdf/sales.Invoice-....pdf',
  'refresh': True,
  'success': True}
 
@@ -76,8 +76,8 @@ Basic truths of accounting
  S                    Sales invoices                  Sales                                               Credit
  P                    Purchase invoices               Purchases                                           Debit
  B                    Bestbank                                     (bestbank) Bestbank                    Debit
+ PO                   Payment Orders                  Purchases    (bestbankpo) Payment Orders Bestbank   Debit
  C                    Cash                                         (cash) Cash                            Debit
- PO                   Payment Orders                               (bestbankpo) Payment Orders Bestbank   Debit
  M                    Miscellaneous Journal Entries                                                       Debit
  **Total (6 rows)**                                                                                       **5**
 ==================== =============================== ============ ====================================== ========

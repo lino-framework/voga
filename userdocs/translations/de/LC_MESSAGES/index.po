@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 15:30+0300\n"
+"POT-Creation-Date: 2013-10-08 03:13+0300\n"
 "PO-Revision-Date: 2013-05-31 15:29+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -16,10 +16,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.0dev-r661\n"
+"Generated-By: Babel 1.0\n"
+
+# cc9c4ca7484f4b819768e9f085f9187a
+#: ../index.rst:4
+msgid "Lino-Faggio User Manual"
+msgstr ""
 
 # e11d16f096f048a48c42e036479c76d9
-#: ../index.rst:4
-msgid "Benutzerhandbuch"
-msgstr ""
+#~ msgid "Benutzerhandbuch"
+#~ msgstr ""
 

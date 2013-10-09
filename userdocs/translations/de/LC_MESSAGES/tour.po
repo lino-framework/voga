@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-10-08 03:13+0300\n"
-"PO-Revision-Date: 2013-05-31 15:29+0300\n"
+"PO-Revision-Date: 2013-10-08 03:13+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -18,18 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.0\n"
 
-# 9a0eda2d4f5343ac8044ebcf35ce0e70
-#: ../countries.rst:5
-msgid "Countries"
+# badacb9fce2148c8a751a5d07e43fb92
+#: ../tour.rst:5
+msgid "An introduction to Lino-Faggio"
 msgstr ""
 
-# 1fd362a4cd78454a9b45dda0969a2c1a
-#: None:2
-msgid "Place (model in app \"countries\")"
+# bd9da2e7341a4a38925fc952132f7b06
+#: ../tour.rst:7
+msgid "Partners"
 msgstr ""
 
-# f5a3ab5a390048a1bb1b47e63aa90cc3
-#: None:2
-msgid "Country (model in app \"countries\")"
+# 54bfbf906be84a169b85ac4a9c3e9d5b
+#: ../tour.rst:9
+msgid "Create some :ref:`faggio.courses.Courses`"
+msgstr ""
+
+# 86a130565a6d46c0bb4eaa30da30d017
+#: ../tour.rst:11
+msgid ":ref:`faggio.sales.InvoicesToCreate`"
 msgstr ""
 

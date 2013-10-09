@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-31 15:30+0300\n"
+"POT-Creation-Date: 2013-10-08 03:13+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,38 +21,58 @@ msgstr ""
 msgid "Contacts"
 msgstr ""
 
-#: ../contacts.rst:7
-# 9da942962e2a4a2fa05bafd0214a641b
-msgid "Toute personne physique ou morale est enregistrée dans Lino en tant que :ref:`Partenaire <faggio.contacts.Partners>`."
-msgstr ""
-
-#: ../contacts.rst:10
-# 47b73b9e8b2e4fc892cb72a7532e7e31
-msgid "Lino-Faggio différencie les types de Partenaires suivants:"
-msgstr ""
-
-#: ../contacts.rst:17
+#: ../contacts.rst:41
 # de65d0d5d7b3464aacf6b38b4d344fd6
-msgid "Veraltete Partner"
+msgid "**Veraltete Partner**"
 msgstr ""
 
-#: ../contacts.rst:19
+#: ../contacts.rst:43
 # 425e4a3d143740a2b2e3cae771e14e5b
 msgid "Das Attribut \"veraltet\" bedeutet :"
 msgstr ""
 
-#: ../contacts.rst:21
+#: ../contacts.rst:45
 # adb4238a169c403d8510e3d120ec4a96
 msgid "die Daten dieses Partners werden nicht mehr gepflegt,"
 msgstr ""
 
-#: ../contacts.rst:22
+#: ../contacts.rst:46
 # 2571b022ada14e7581f54490c1c4d94b
 msgid "alle Angaben verstehen sich als \"so war es, bevor dieser Partner aufhörte, uns zu interessieren\"."
 msgstr ""
 
-#: ../contacts.rst:25
+#: ../contacts.rst:49
 # 27281ed62acd4b4eb64550a09a6afbae
 msgid "Veraltete Partner werden normalerweise in Listen ignoriert, als wären sie gelöscht. Um sie trotzdem zu sehen, muss das Ankreuzfeld `Auch veraltete Klienten` (bzw. `Auch veraltete Partner`) im Parameter-Panel der Liste angekreuzt werden."
+msgstr ""
+
+#: None:2
+# c5bca45d0b2740dd966421956f271101
+msgid "Partner (model in app \"contacts\")"
+msgstr ""
+
+#: None:2
+# 8f2d4c25ed944fbfaa55662db71af7a4
+msgid "Person (model in app \"contacts\")"
+msgstr ""
+
+#: None:2
+# 3d805ae97eb24ce59226faff3c3eda01
+msgid "Company (model in app \"contacts\")"
+msgstr ""
+
+#: None:2
+# c9ec0afb055445e797fea73f2e127914
+msgid "Contact Person (model in app \"contacts\")"
+msgstr ""
+
+#: None:2
+# 236c359ffea5428ea02d7837844b7901
+msgid "Function (model in app \"contacts\")"
+msgstr ""
+
+#: None:2
+# 502cbbf1cf5841fe951a0d5e2ef7c703
+msgid "company type (model in app \"contacts\")"
 msgstr ""
 
