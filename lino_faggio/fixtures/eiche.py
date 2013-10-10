@@ -45,9 +45,10 @@ def objects():
     CourseStates = courses.CourseStates
     EnrolmentStates = courses.EnrolmentStates
     
+    yield PupilType(name="Mitglied")
+    yield PupilType(name="Helfer")
     yield PupilType(name="LFV")
     yield PupilType(name="COK")
-    yield PupilType(name="Buche")
     yield PupilType(name="Gast")
     
     yield TeacherType(**babelkw('name',de="Selbstständig",fr="Indépendant",en="Independant"))
