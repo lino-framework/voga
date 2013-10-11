@@ -42,6 +42,7 @@ Topic :: Office/Business :: Scheduling
 SETUP_INFO.update(packages=[
   'lino_faggio',
   'lino_faggio.cal',
+  'lino_faggio.cal.fixtures',
   'lino_faggio.contacts',
   'lino_faggio.contacts.fixtures',
   'lino_faggio.courses',

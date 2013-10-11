@@ -35,7 +35,7 @@ in :func:`lino.modlib.cal.utils.when_text`:
 >>> d = d.strftime(settings.SITE.date_format_strftime)
 >>> pprint(d)
 '25.12.2013'
->>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
+>>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
 >>> res = client.get(url,REMOTE_USER='rolf')
 >>> pprint(res.status_code)
 200
@@ -45,7 +45,7 @@ in :func:`lino.modlib.cal.utils.when_text`:
 >>> pprint(len(result['rows']))
 2
 >>> pprint(result['rows'][0][0])
-u'<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: 270 })">2013 Dez. 25 (Mi.)</a>'
+u'<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: 40 })">2013 Dez. 25 (Mi.)</a>'
 
 
 

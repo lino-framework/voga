@@ -17,4 +17,7 @@ from lino import ad
 class App(ad.App):
 
     extends = 'lino.modlib.courses'
-    extends_models = ['courses.Teacher',  'courses.Pupil', 'courses.Course']
+    extends_models = [
+      'courses.Teacher',  'courses.Pupil', 
+      'courses.TeacherType',  'courses.PupilType', 
+    'courses.Course']

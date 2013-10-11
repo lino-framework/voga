@@ -32,23 +32,22 @@ class Teacher(Teacher):
         verbose_name = _("Instructor")
         verbose_name_plural = _("Instructors")
         
-    def __unicode__(self):
-        s = super(Teacher,self).__unicode__()
-        if self.teacher_type:
-            s += " (%s)" % self.teacher_type
-        return s 
 
 class Pupil(Pupil):
     class Meta:
         verbose_name = _("Participant")
         verbose_name_plural = _("Participants")
         
-    def __unicode__(self):
-        s = super(Pupil,self).__unicode__()
-        if self.pupil_type:
-            s += " (%s)" % self.pupil_type
-        return s
-
+class TeacherType(TeacherType):
+    class Meta:
+        verbose_name = _("Instructor Type")
+        verbose_name_plural = _("Instructor Types")
+        
+class PupilType(PupilType):
+    class Meta:
+        verbose_name = _("Participant Type")
+        verbose_name_plural = _("Participant Types")
+        
 
 class Course(Course,sales.Invoiceable):
     
@@ -80,19 +79,23 @@ class CoursesByTopic(CoursesByTopic):
         
 
 class ActiveCourses(ActiveCourses):
-    column_names = 'info tariff max_places enrolments teacher company room'
+    column_names = 'info max_places enrolments teacher company room *'
     hide_sums = True
 
 class CourseDetail(CourseDetail):     
-    main = "general courses.EnrolmentsByCourse"
+    main = "general more courses.EnrolmentsByCourse"
     general = dd.Panel("""
-    line teacher start_date start_time room #slot state id:8
-    max_places max_events end_date end_time every_unit every
+    line start_date  start_time end_time max_places
+    teacher room #slot  state
+    every_unit every max_events end_date
     monday tuesday wednesday thursday friday saturday sunday
-    company contact_person user calendar tariff
     # cal.EventsByController
     courses.EventsByCourse
     """,label=_("General"))
+    more = dd.Panel("""
+    company contact_person user id
+    sales.InvoicingsByInvoiceable
+    """,label=_("More"))
     
 
 @dd.receiver(dd.post_analyze)

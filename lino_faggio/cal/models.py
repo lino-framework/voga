@@ -130,7 +130,7 @@ def customize_cal(sender,**kw):
     #~ site.modules.cal.Events.set_detail_layout(EventDetail())
     site.modules.cal.Events.set_detail_layout('general more')
     site.modules.cal.Events.add_detail_panel('general',"""
-    calendar summary user course
+    event_type summary user course
     start end 
     room priority access_class transparent #rset 
     owner:30 workflow_buttons:30

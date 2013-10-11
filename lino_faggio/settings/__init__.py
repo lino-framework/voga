@@ -38,7 +38,8 @@ class Site(Site,vat.SiteMixin):
     
     userdocs_prefix = 'faggio.'
     
-    demo_fixtures = 'std few_countries few_cities few_languages demo eiche demo2'.split()
+    demo_fixtures = 'std few_countries few_cities few_languages demo demo_bookings eiche demo2'.split()
+    #~ demo_fixtures = 'std few_countries few_cities few_languages demo demo_bookings eiche demo2'.split()
     
     ignore_dates_before = None
     

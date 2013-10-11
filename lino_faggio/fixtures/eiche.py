@@ -45,17 +45,17 @@ def objects():
     CourseStates = courses.CourseStates
     EnrolmentStates = courses.EnrolmentStates
     
-    yield PupilType(name="Mitglied")
-    yield PupilType(name="Helfer")
-    yield PupilType(name="LFV")
-    yield PupilType(name="COK")
-    yield PupilType(name="Gast")
+    yield PupilType(ref="M",name="Mitglied")
+    yield PupilType(ref="H",name="Helfer")
+    yield PupilType(ref="L",name="LFV")
+    yield PupilType(ref="C",name="COK")
+    #~ yield PupilType(ref="E",name="Extern")
     
-    yield TeacherType(**babelkw('name',de="Selbstständig",fr="Indépendant",en="Independant"))
-    yield TeacherType(**babelkw('name',de="Ehrenamtlich pauschal",fr="Volontaire (forfait)",en="Voluntary (flat)"))
-    yield TeacherType(**babelkw('name',de="Ehrenamtlich real",fr="Volontaire (réel)",en="Voluntary (real)"))
-    yield TeacherType(**babelkw('name',de="LBA",fr="ALE",en="LEA"))
-    yield TeacherType(**babelkw('name',de="Sonstige",fr="Autre",en="Other"))
+    yield TeacherType(ref="S",**babelkw('name',de="Selbstständig",fr="Indépendant",en="Independant"))
+    yield TeacherType(ref="EP",**babelkw('name',de="Ehrenamtlich pauschal",fr="Volontaire (forfait)",en="Voluntary (flat)"))
+    yield TeacherType(ref="ER",**babelkw('name',de="Ehrenamtlich real",fr="Volontaire (réel)",en="Voluntary (real)"))
+    yield TeacherType(ref="LBA",**babelkw('name',de="LBA",fr="ALE",en="LEA"))
+    #~ yield TeacherType(ref="A",**babelkw('name',de="Andere",fr="Autre",en="Other"))
     
     
     company = Instantiator('contacts.Company','name city:name').build
@@ -94,9 +94,7 @@ def objects():
     yield rent10
 
     
-    
-    
-    calendar = Instantiator('cal.Calendar').build
+    event_type = Instantiator('cal.EventType').build
     kw = dd.babelkw('name',
           de="Kurse",
           fr="Cours",
@@ -107,27 +105,29 @@ def objects():
           fr="Heure",
           en="Hour",
           ))
-    kurse = calendar(color=1,**kw)
+    kurse = event_type(**kw)
     yield kurse
+    settings.SITE.site_config.default_event_type = kurse
+    yield settings.SITE.site_config
     
-    yield calendar(color=4,**dd.babelkw('name',
-          de=u"Seminare",
-          fr=u"Séminaires",
-          en=u"Seminars",
+    yield event_type(**dd.babelkw('name',
+          de="Seminare",
+          fr="Séminaires",
+          en="Seminars",
           ))
     
-    yield calendar(color=8,**dd.babelkw('name',
+    yield event_type(**dd.babelkw('name',
           de="Ausflüge",
           fr="Excursions",
           en="Excursions",
           ))
-    yield calendar(color=12,**dd.babelkw('name',
+    yield event_type(**dd.babelkw('name',
           de="Wanderungen",
           fr="Randonnées",
           en="Hikes",
           ))
           
-    yield calendar(color=16,
+    yield event_type(
         email_template='Team.eml.html',
         **dd.babelkw('name',
           de="Team-Besprechungen",
@@ -135,6 +135,12 @@ def objects():
           en="Team Meetings",
           ))
           
+    #~ yield event_type(**dd.babelkw('name',
+          #~ de="Feiertage",
+          #~ fr="Jours fériés",
+          #~ en="Holidays",
+          #~ ))
+    #~ 
     
     company = Instantiator('contacts.Company','name city:name').build
     eupen = company("Lern- und Begegnungszentrum","Eupen",
@@ -210,7 +216,7 @@ def objects():
     
     
     topic = Instantiator('courses.Topic').build
-    line = Instantiator('courses.Line','topic').build
+    line = Instantiator('courses.Line','topic event_type tariff').build
     course = Instantiator('courses.Course','line room start_time end_time').build
     
     TEACHERS = Cycler(Teacher.objects.all())
@@ -223,8 +229,6 @@ def objects():
         kw.update(user=USERS.pop())
         kw.update(teacher=TEACHERS.pop())
         #~ kw.update(price=PRICES.pop())
-        kw.update(tariff=PRICES.pop())
-        kw.update(calendar=kurse)
         kw.update(every=1)
         kw.update(company=we)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
@@ -239,7 +243,7 @@ def objects():
     externe = topic(name="Externe")
     yield externe
     
-    obj = line(comp,**dd.babelkw('name',de="Erste Schritte",en="First Steps"))
+    obj = line(comp,kurse,PRICES.pop(),**dd.babelkw('name',de="Erste Schritte",en="First Steps"))
     yield obj
     kw = dict(max_events=8)
     kw.update(max_places=20)
@@ -265,7 +269,7 @@ Behandelte Themengebiete:
 - E-mail Sicherheit
 - Tipps und Tricks    
 """    
-    obj = line(comp,description=desc,**dd.babelkw('name',
+    obj = line(comp,kurse,PRICES.pop(),description=desc,**dd.babelkw('name',
         de="Internet: World Wide Web für Anfänger",
         en="Internet for beginners"))
     yield obj
@@ -276,7 +280,7 @@ Behandelte Themengebiete:
     yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
     yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
     
-    obj = line(sport,**dd.babelkw('name',de="Bauchtanz",en="Belly dancing"))
+    obj = line(sport,kurse,PRICES.pop(),**dd.babelkw('name',de="Bauchtanz",en="Belly dancing"))
     yield obj
     kw = dict(max_events=8)
     kw.update(max_places=10)
@@ -284,14 +288,14 @@ Behandelte Themengebiete:
     kw.update(state=CourseStates.started)
     yield add_course(obj,spiegel,"19:00","20:00",wednesday=True,**kw)
     
-    obj = line(sport,**dd.babelkw('name',de="Funktionsgymnastik",en="Functional gymnastics"))
+    obj = line(sport,kurse,PRICES.pop(),**dd.babelkw('name',de="Funktionsgymnastik",en="Functional gymnastics"))
     yield obj
     kw = dict(max_events=10,state=CourseStates.started)
     kw.update(start_date=settings.SITE.demo_date(-10))
     yield add_course(obj,spiegel,"11:00","12:00",monday=True,**kw)
     yield add_course(obj,spiegel,"13:30","14:30",monday=True,**kw)
     
-    obj = line(sport,**dd.babelkw('name',de="Rücken fit durch Schwimmen",en="Swimming"))
+    obj = line(sport,kurse,PRICES.pop(),**dd.babelkw('name',de="Rücken fit durch Schwimmen",en="Swimming"))
     yield obj
     kw = dict(max_events=10,state=CourseStates.ended)
     kw.update(start_date=settings.SITE.demo_date(-100))
@@ -303,7 +307,7 @@ Behandelte Themengebiete:
     yield add_course(obj,pc_kelmis,"13:30","14:30",thursday=True,**kw)
     
 
-    obj = line(sport,**dd.babelkw('name',de="Selbstverteidigung im Alltag",en="Self-defence"))
+    obj = line(sport,kurse,PRICES.pop(),**dd.babelkw('name',de="Selbstverteidigung im Alltag",en="Self-defence"))
     yield obj
     kw = dict(max_events=6)
     kw.update(max_places=12)
@@ -312,7 +316,7 @@ Behandelte Themengebiete:
     yield add_course(obj,spiegel,"18:00","19:00",friday=True,**kw)
     yield add_course(obj,spiegel,"19:00","20:00",friday=True,**kw)
 
-    obj = line(medit,name="GuoLin-Qigong")
+    obj = line(medit,kurse,PRICES.pop(),name="GuoLin-Qigong")
     yield obj
     kw = dict(max_events=10)
     kw.update(start_date=settings.SITE.demo_date(-10))
@@ -320,7 +324,7 @@ Behandelte Themengebiete:
     yield add_course(obj,spiegel,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,spiegel,"19:00","20:30",friday=True,**kw)
 
-    obj = line(medit,**dd.babelkw('name',
+    obj = line(medit,kurse,PRICES.pop(),**dd.babelkw('name',
         de="Den Kopf frei machen - zur inneren Ruhe finden",
         en="Finding your inner peace"))
     yield obj
@@ -331,7 +335,7 @@ Behandelte Themengebiete:
     yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,konf,"19:00","20:30",friday=True,**kw)
 
-    obj = line(medit,name="Yoga")
+    obj = line(medit,kurse,PRICES.pop(),name="Yoga")
     yield obj
     kw = dict(max_events=10)
     kw.update(start_date=settings.SITE.demo_date(60))
@@ -345,13 +349,13 @@ Behandelte Themengebiete:
         #~ kw.update(teacher=TEACHERS.pop())
         #~ kw.update(price=PRICES.pop())
         #~ kw.update(tariff=PRICES.pop())
-        kw.update(calendar=kurse)
+        #~ kw.update(calendar=kurse)
         kw.update(every=1)
         kw.update(company=EXTS.pop())
         kw.update(every_unit=cal.Recurrencies.per_weekday)
         return course(*args,**kw)
         
-    obj = line(externe,**dd.babelkw('name',de="Treffen",en="Meeting"))
+    obj = line(externe,kurse,PRICES.pop(),**dd.babelkw('name',de="Treffen",en="Meeting"))
     yield obj
     kw = dict(max_events=30)
     kw.update(start_date=settings.SITE.demo_date(60))
@@ -362,7 +366,7 @@ Behandelte Themengebiete:
 
     PUPILS = Cycler(Pupil.objects.all())
     #~ print 20130712, Pupil.objects.all()
-    COURSES = Cycler(Course.objects.filter(tariff__isnull=False))
+    COURSES = Cycler(Course.objects.filter(line__tariff__isnull=False))
     STATES = Cycler(EnrolmentStates.objects())
     
     for i in range(100):
@@ -374,14 +378,14 @@ Behandelte Themengebiete:
         #~ print 20130712, kw
         yield Enrolment(**kw)
         
-    for feast in (
-        (6,1,"Kinderschutztag"),
-        (12,25,"Weihnachten"),
-        (6,24,"Saint-Jean"),
-        (7,21,"Nationalfeiertag"),
-        ):
-        d = settings.SITE.demo_date().replace(month=feast[0],day=feast[1])
-        yield Event(start_date=d,summary=feast[2],user=USERS.pop())
+    #~ for feast in (
+        #~ (6,1,"Kinderschutztag"),
+        #~ (12,25,"Weihnachten"),
+        #~ (6,24,"Saint-Jean"),
+        #~ (7,21,"Nationalfeiertag"),
+        #~ ):
+        #~ d = settings.SITE.demo_date().replace(month=feast[0],day=feast[1])
+        #~ yield Event(start_date=d,summary=feast[2],user=USERS.pop())
 
     n = 0
     ses = settings.SITE.login('rolf')
