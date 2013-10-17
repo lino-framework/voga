@@ -132,13 +132,13 @@ class Site(Site,vat.SiteMixin):
         #~ raise Exception(123)
         from lino import dd
         from django.utils.translation import ugettext_lazy as _
-        dd.UserProfiles.reset('* office')
+        dd.UserProfiles.reset('* office accounts')
         add = dd.UserProfiles.add_item
         
-        add('000', _("Anonymous"),     '_ _', name='anonymous',
+        add('000', _("Anonymous"),     '_ _ _', name='anonymous',
             readonly=True,authenticated=False)
-        add('100', _("User"),          'U U', name='user')
-        add('900', _("Administrator"), 'A A', name='admin')
+        add('100', _("User"),          'U U U', name='user')
+        add('900', _("Administrator"), 'A A A', name='admin')
         
         self.modules.vat.configure(default_vat_class='exempt')
 

@@ -85,9 +85,9 @@ class ActiveCourses(ActiveCourses):
 class CourseDetail(CourseDetail):     
     main = "general more courses.EnrolmentsByCourse"
     general = dd.Panel("""
-    line start_date  start_time end_time max_places
+    line start_date start_time end_date end_time max_places
     teacher room #slot  state
-    every_unit every max_events end_date
+    every_unit every max_events max_date
     monday tuesday wednesday thursday friday saturday sunday
     # cal.EventsByController
     courses.EventsByCourse

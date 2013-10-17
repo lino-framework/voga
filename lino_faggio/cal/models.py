@@ -131,7 +131,7 @@ def customize_cal(sender,**kw):
     site.modules.cal.Events.set_detail_layout('general more')
     site.modules.cal.Events.add_detail_panel('general',"""
     event_type summary user course
-    start end 
+    start end subscription
     room priority access_class transparent #rset 
     owner:30 workflow_buttons:30
     description
