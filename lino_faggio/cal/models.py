@@ -26,6 +26,8 @@ from lino import dd
 
 #~ dd.extends_app('lino.modlib.cal',globals())
 
+contacts = dd.resolve_app('contacts')
+
 #~ PARENT_APP = 'lino.modlib.cal'
 from lino.modlib.cal.models import *
 
@@ -49,11 +51,19 @@ class Room(Room,contacts.ContactRelated):
         verbose_name=_("Tariff"),
         related_name='rooms_by_tariff')
         
+    calendar = dd.ForeignKey('cal.Calendar',
+        verbose_name=_("Calendar where events in this room are published."),
+        related_name='room_calendars',
+        blank=True,null=True)
+
     def __unicode__(self):
         s = dd.BabelNamed.__unicode__(self)
         if self.company and self.company.city: 
             s = '%s (%s)' % (self.company.city,s)
         return s
+        
+        
+        
         
 class Rooms(Rooms):
     detail_layout = """
@@ -116,6 +126,9 @@ class Event(Event):
                     role=settings.SITE.site_config.pupil_guestrole)
         
             
+    def get_calendar(self):
+        if self.room is not None:
+            return self.room.calendar
     
         
     
@@ -131,7 +144,7 @@ def customize_cal(sender,**kw):
     site.modules.cal.Events.set_detail_layout('general more')
     site.modules.cal.Events.add_detail_panel('general',"""
     event_type summary user course
-    start end subscription
+    start end 
     room priority access_class transparent #rset 
     owner:30 workflow_buttons:30
     description

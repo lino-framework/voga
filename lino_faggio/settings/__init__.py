@@ -28,7 +28,7 @@ from lino.modlib import vat
 class Site(Site,vat.SiteMixin):
     #~ title = __name__
     version = "0.0.1"
-    verbose_name = "Lino-Faggio"
+    verbose_name = "Lino Faggio"
     url = "http://faggio.lino-framework.org"
     #~ author = "Luc Saffre"
     #~ author_email = "luc.saffre@gmx.net"
@@ -38,8 +38,8 @@ class Site(Site,vat.SiteMixin):
     
     userdocs_prefix = 'faggio.'
     
+    #~ demo_fixtures = 'std few_countries few_cities few_languages demo eiche demo2'.split()
     demo_fixtures = 'std few_countries few_cities few_languages demo demo_bookings eiche demo2'.split()
-    #~ demo_fixtures = 'std few_countries few_cities few_languages demo demo_bookings eiche demo2'.split()
     
     ignore_dates_before = None
     

@@ -12,7 +12,16 @@
 ## You should have received a copy of the GNU General Public License
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
+"""
+
+demo data specific for :ref:`faggio`.
+"""
+
 from __future__ import unicode_literals
+
+import logging
+logger = logging.getLogger(__name__)
+
 
 #~ from lino import dd
 from lino.utils.instantiator import Instantiator, i2d
@@ -220,6 +229,7 @@ def objects():
     course = Instantiator('courses.Course','line room start_time end_time').build
     
     TEACHERS = Cycler(Teacher.objects.all())
+    COMPANIES = Cycler(Company.objects.all())
     USERS = Cycler(settings.SITE.user_model.objects.all())
     PLACES = Cycler(Room.objects.all())
     #~ PRICES = Cycler(20,30,40,50)
@@ -229,9 +239,6 @@ def objects():
         kw.update(user=USERS.pop())
         kw.update(teacher=TEACHERS.pop())
         #~ kw.update(price=PRICES.pop())
-        kw.update(every=1)
-        kw.update(company=we)
-        kw.update(every_unit=cal.Recurrencies.per_weekday)
         return course(*args,**kw)
     
     comp = topic(name="Computer")
@@ -249,6 +256,10 @@ def objects():
     kw.update(max_places=20)
     kw.update(start_date=settings.SITE.demo_date(-30))
     kw.update(state=courses.CourseStates.started)
+    kw.update(every=1)
+    kw.update(company=we)
+    kw.update(every_unit=cal.Recurrencies.per_weekday)
+    
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
     yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
     yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
@@ -355,14 +366,20 @@ Behandelte Themengebiete:
         kw.update(every_unit=cal.Recurrencies.per_weekday)
         return course(*args,**kw)
         
-    obj = line(externe,kurse,PRICES.pop(),**dd.babelkw('name',de="Treffen",en="Meeting"))
+    obj = line(externe,kurse,PRICES.pop(),**dd.babelkw('name',
+        de="Raumbuchung",en="Room booking"))
     yield obj
-    kw = dict(max_events=30)
+    kw = dict(max_events=10)
     kw.update(start_date=settings.SITE.demo_date(60))
     kw.update(state=CourseStates.published)
+    kw.update(company=COMPANIES.pop())
     yield add_course(obj,konf,"20:00","22:00",tuesday=True,**kw)
+    kw.update(company=COMPANIES.pop())
     yield add_course(obj,konf,"20:00","22:00",thursday=True,**kw)
 
+    kw.update(company=COMPANIES.pop())
+    kw.update(every_unit=cal.Recurrencies.once)
+    yield add_course(obj,konf,"10:00","14:00",**kw)
 
     PUPILS = Cycler(Pupil.objects.all())
     #~ print 20130712, Pupil.objects.all()
@@ -401,3 +418,15 @@ Behandelte Themengebiete:
             pass
         
         
+    Calendar = dd.resolve_model('cal.Calendar')
+    #~ from lino.modlib.cal.models_calendar import COLOR_CHOICES
+
+    COLORS = Cycler(Calendar.COLOR_CHOICES)
+    
+    for u in Room.objects.all():
+        obj = Calendar(name=unicode(u),color=COLORS.pop())
+        yield obj
+        #~ logger.info("20131018 %s", obj)
+        u.calendar = obj
+        u.save()
+
