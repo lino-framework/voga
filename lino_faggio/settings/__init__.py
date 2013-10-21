@@ -49,6 +49,8 @@ class Site(Site,vat.SiteMixin):
     #~ project_model = None
     user_model = 'users.User'
     
+    #~ ldap_auth_server = 'DOMAIN_NAME SERVER_DNS'
+    
     languages = 'en de fr'
     
     #~ def get_default_language(self):

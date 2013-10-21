@@ -91,7 +91,7 @@ def site_setup(site):
         clients_account   sales_account     sales_vat_account
         suppliers_account purchases_account purchases_vat_account
         pupil_guestrole
-        max_auto_events farest_future default_event_type holiday_event_type
+        max_auto_events farest_future default_event_type site_calendar
         """)
     
     

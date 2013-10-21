@@ -127,8 +127,12 @@ class Event(Event):
         
             
     def get_calendar(self):
-        if self.room is not None:
+        """
+        This is how :ref:`faggio` 
+        """
+        if self.room is not None and self.room.calendar is not None:
             return self.room.calendar
+        return settings.SITE.site_config.site_calendar
     
         
     
