@@ -52,7 +52,7 @@ class Room(Room,contacts.ContactRelated):
         related_name='rooms_by_tariff')
         
     calendar = dd.ForeignKey('cal.Calendar',
-        verbose_name=_("Calendar where events in this room are published."),
+        help_text=_("Calendar where events in this room are published."),
         related_name='room_calendars',
         blank=True,null=True)
 
@@ -67,7 +67,7 @@ class Room(Room,contacts.ContactRelated):
         
 class Rooms(Rooms):
     detail_layout = """
-    id name 
+    id name calendar
     tariff company contact_person contact_role
     cal.EventsByRoom
     """
