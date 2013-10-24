@@ -39,6 +39,7 @@ def objects():
     
     cal = dd.resolve_app('cal')
     courses = dd.resolve_app('courses')
+    rooms = dd.resolve_app('rooms')
     
     Room = dd.resolve_model('cal.Room')
     Event = dd.resolve_model('cal.Event')
@@ -53,6 +54,7 @@ def objects():
     Product = dd.resolve_model('products.Product')
     CourseStates = courses.CourseStates
     EnrolmentStates = courses.EnrolmentStates
+    BookingStates = rooms.BookingStates
     
     yield PupilType(ref="M",name="Mitglied")
     yield PupilType(ref="H",name="Helfer")
@@ -119,11 +121,12 @@ def objects():
     settings.SITE.site_config.default_event_type = kurse
     yield settings.SITE.site_config
     
-    yield event_type(**dd.babelkw('name',
+    seminare = event_type(**dd.babelkw('name',
           de="Seminare",
           fr="Séminaires",
           en="Seminars",
           ))
+    yield seminare
     
     yield event_type(**dd.babelkw('name',
           de="Ausflüge",
@@ -134,6 +137,12 @@ def objects():
           de="Wanderungen",
           fr="Randonnées",
           en="Hikes",
+          ))
+          
+    yield event_type(**dd.babelkw('name',
+          de="Versammlungen",
+          fr="Réunions",
+          en="Meetings",
           ))
           
     yield event_type(
@@ -227,6 +236,7 @@ def objects():
     topic = Instantiator('courses.Topic').build
     line = Instantiator('courses.Line','topic event_type tariff').build
     course = Instantiator('courses.Course','line room start_time end_time').build
+    booking = Instantiator('rooms.Booking','room start_time end_time').build
     
     TEACHERS = Cycler(Teacher.objects.all())
     COMPANIES = Cycler(Company.objects.all())
@@ -257,7 +267,7 @@ def objects():
     kw.update(start_date=settings.SITE.demo_date(-30))
     kw.update(state=courses.CourseStates.started)
     kw.update(every=1)
-    kw.update(company=we)
+    #~ kw.update(company=we)
     kw.update(every_unit=cal.Recurrencies.per_weekday)
     
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
@@ -354,32 +364,38 @@ Behandelte Themengebiete:
     yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,konf,"19:00","20:30",friday=True,**kw)
     
+    
+    
     EXTS = Cycler(ext1,ext2)
-    def add_course(*args,**kw):
+    def add_booking(*args,**kw):
         kw.update(user=USERS.pop())
-        #~ kw.update(teacher=TEACHERS.pop())
+        kw.update(event_type=seminare)
         #~ kw.update(price=PRICES.pop())
         #~ kw.update(tariff=PRICES.pop())
         #~ kw.update(calendar=kurse)
         kw.update(every=1)
         kw.update(company=EXTS.pop())
-        kw.update(every_unit=cal.Recurrencies.per_weekday)
-        return course(*args,**kw)
+        return booking(*args,**kw)
         
-    obj = line(externe,kurse,PRICES.pop(),**dd.babelkw('name',
-        de="Raumbuchung",en="Room booking"))
-    yield obj
+    #~ obj = line(externe,kurse,PRICES.pop(),**dd.babelkw('name',
+        #~ de="Raumbuchung",en="Room booking"))
+    #~ yield obj
     kw = dict(max_events=10)
+    kw.update(every_unit=cal.Recurrencies.per_weekday)
     kw.update(start_date=settings.SITE.demo_date(60))
-    kw.update(state=CourseStates.published)
+    kw.update(state=BookingStates.booked)
     kw.update(company=COMPANIES.pop())
-    yield add_course(obj,konf,"20:00","22:00",tuesday=True,**kw)
+    yield add_booking(konf,"20:00","22:00",tuesday=True,**kw)
     kw.update(company=COMPANIES.pop())
-    yield add_course(obj,konf,"20:00","22:00",thursday=True,**kw)
+    yield add_booking(konf,"20:00","22:00",thursday=True,**kw)
 
+    kw = dict(max_events=1)
+    kw.update(every_unit=cal.Recurrencies.once)
     kw.update(company=COMPANIES.pop())
     kw.update(every_unit=cal.Recurrencies.once)
-    yield add_course(obj,konf,"10:00","14:00",**kw)
+    yield add_booking(konf,"10:00","14:00",**kw)
+    
+    
 
     PUPILS = Cycler(Pupil.objects.all())
     #~ print 20130712, Pupil.objects.all()
@@ -395,17 +411,14 @@ Behandelte Themengebiete:
         #~ print 20130712, kw
         yield Enrolment(**kw)
         
-    #~ for feast in (
-        #~ (6,1,"Kinderschutztag"),
-        #~ (12,25,"Weihnachten"),
-        #~ (6,24,"Saint-Jean"),
-        #~ (7,21,"Nationalfeiertag"),
-        #~ ):
-        #~ d = settings.SITE.demo_date().replace(month=feast[0],day=feast[1])
-        #~ yield Event(start_date=d,summary=feast[2],user=USERS.pop())
+    ses = settings.SITE.login('rolf')
+    
+    for b in Course.objects.all():
+        rc = ses.run(b.do_update_reminders)
+        if not rc.get('success',False):
+            raise Exception("update_reminders on %s returned %s" % (b,rc))
 
     n = 0
-    ses = settings.SITE.login('rolf')
     for p in Partner.objects.all():
         if n > 10:
             break

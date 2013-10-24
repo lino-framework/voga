@@ -24,9 +24,6 @@ from lino import dd
 #~ dd.extends_app('lino.modlib.courses',globals())
 from lino.modlib.courses.models import *
 
-sales = dd.resolve_app('sales')
-
-
 class Teacher(Teacher):
     class Meta:
         verbose_name = _("Instructor")
@@ -49,37 +46,13 @@ class PupilType(PupilType):
         verbose_name_plural = _("Participant Types")
         
 
-class Course(Course,sales.Invoiceable):
-    
-    invoiceable_date_field = 'start_date'
-    #~ invoiceable_partner_field = 'company'
-    
-    @classmethod
-    def get_partner_filter(cls,partner):
-        q = models.Q(company=partner,invoice__isnull=True)
-        return q
-    
-    
-    
-    def get_invoiceable_product(self): 
-        #~ if self.organizer and self.room: 
-        if self.company and self.room: 
-            #~ if self.company != settings.SITE.site_config.site_company: 
-            return self.room.tariff
-            
-    #~ def get_invoiceable_title(self): 
-        #~ if self.organizer: 
-            #~ return unicode(self.room)
-
-    def get_invoiceable_qty(self): 
-        return self.max_events or 1
 
 class CoursesByTopic(CoursesByTopic):
     column_names = "start_date:8 line:20 room__company__city:10 weekdays_text:10 times_text:10"
         
 
 class ActiveCourses(ActiveCourses):
-    column_names = 'info max_places enrolments teacher company room *'
+    column_names = 'info max_places enrolments teacher room *'
     hide_sums = True
 
 class CourseDetail(CourseDetail):     
@@ -93,7 +66,8 @@ class CourseDetail(CourseDetail):
     courses.EventsByCourse
     """,label=_("General"))
     more = dd.Panel("""
-    company contact_person user id
+    # company contact_person 
+    user id
     sales.InvoicingsByInvoiceable
     """,label=_("More"))
     

@@ -49,16 +49,16 @@ DEMO_OVERVIEW = """\
  accounts.Account                        14        12
  accounts.Chart                          4         1
  accounts.Group                          8         6
- cal.Calendar                            6         6
- cal.Event                               23        314
- cal.EventType                           15        6
+ cal.Calendar                            6         7
+ cal.Event                               23        265
+ cal.EventType                           17        6
  cal.Guest                               7         0
  cal.GuestRole                           8         0
  cal.Priority                            5         9
  cal.RecurrentEvent                      19        9
  cal.RemoteCalendar                      7         0
  cal.Room                                9         6
- cal.Subscription                        4         18
+ cal.Subscription                        4         21
  cal.Task                                17        0
  contacts.Company                        27        19
  contacts.CompanyType                    7         16
@@ -76,7 +76,7 @@ DEMO_OVERVIEW = """\
  countries.Country                       6         8
  courses.Course                          27        26
  courses.Enrolment                       9         100
- courses.Line                            10        10
+ courses.Line                            12        10
  courses.Pupil                           31        35
  courses.PupilType                       5         4
  courses.Slot                            5         0

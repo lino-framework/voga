@@ -65,6 +65,7 @@ class MyPartnerDetail(PartnerDetail):
     id language 
     addr1 url
     #courses.CoursesByCompany
+    rooms.BookingsByCompany
     """,label = _("More"))
     
     
@@ -102,7 +103,7 @@ class MyCompanyDetail(CompanyDetail,MyPartnerDetail):
     more = dd.Panel("""
     id language type vat_id:12
     addr1 url
-    courses.CoursesByCompany
+    rooms.BookingsByCompany
     notes.NotesByCompany
     """,label = _("More"))
     
