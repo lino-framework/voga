@@ -5,61 +5,56 @@ Faggio
 
 .. include:: /include/tested.rst
 
-The following statement imports a set of often-used global names::
 
 >>> from django.conf import settings
 >>> from lino.runtime import *
 >>> from lino import dd
->>> from pprint import pprint
 >>> from django.test.client import Client
 >>> import json
 
-We can now refer to every installed app via it's `app_label`.
-For example here is how we can verify here that the demo database 
-has 23 pupils and 7 teachers:
-
->>> courses.Pupil.objects.count()
-35
->>> courses.Teacher.objects.count()
-8
 
 A web request
 -------------
 
 The following snippet reproduces a one-day bug 
 discovered 2013-06-04 
-in :func:`lino.modlib.cal.utils.when_text`:
+in :func:`lino.modlib.cal.utils.when_text` 
+on calendar events whos **time** fields are empty.
 
 >>> client = Client()
 >>> d = settings.SITE.demo_date().replace(month=12,day=25)
 >>> d = d.strftime(settings.SITE.date_format_strftime)
->>> pprint(d)
-'25.12.2013'
+>>> print(d)
+25.12.2013
 >>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
 >>> res = client.get(url,REMOTE_USER='rolf')
->>> pprint(res.status_code)
+>>> print(res.status_code)
 200
 >>> result = json.loads(res.content)
->>> pprint(result.keys())
+>>> print(result.keys())
 [u'count', u'rows', u'success', u'no_data_text', u'title', u'param_values']
->>> pprint(len(result['rows']))
+>>> print(len(result['rows']))
 2
->>> pprint(result['rows'][0][0])
-u'<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: 40 })">2013 Dez. 25 (Mi.)</a>'
+>>> print(result['rows'][0][0])
+<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: 40 })">2013 Dez. 25 (Mi.)</a>
 
 
 
 Printing an invoice
 -------------------
 
+We take a sales invoice, clear the cache, ask Lino to print it and 
+check whether we get the expected response.
+
 >>> ses = settings.SITE.login("robin")
->>> obj = sales.Invoice.objects.get(pk=216)
+>>> obj = sales.Invoice.objects.get(pk=1)
 >>> obj.clear_cache()
->>> pprint(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-{'message': u'S#... printable has been built.',
- 'open_url': u'/media/cache/appypdf/sales.Invoice-....pdf',
- 'refresh': True,
- 'success': True}
+>>> print(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+{'refresh': True, 'open_url': u'/media/cache/appypdf/sales.Invoice-1.pdf', 'message': u'S#1 printable has been built.', 'success': True}
+ 
+Note that this test should fail if you run the test suite without a 
+LibreOffice server running.
+
 
 Basic truths of accounting
 --------------------------
@@ -82,3 +77,4 @@ Basic truths of accounting
  **Total (6 rows)**                                                                                       **5**
 ==================== =============================== ============ ====================================== ========
 <BLANKLINE>
+

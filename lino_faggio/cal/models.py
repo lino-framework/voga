@@ -64,7 +64,6 @@ class Room(Room,contacts.ContactRelated):
         
         
         
-        
 class Rooms(Rooms):
     column_names = "name calendar tariff company company__city *"
     detail_layout = """

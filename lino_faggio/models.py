@@ -21,60 +21,34 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import string_concat
 
 
-
 from lino import dd
-from lino import mixins
-#~ from lino.models import SiteConfig
-
-#~ from lino.modlib.contacts import models as contacts
-#~ from lino.modlib.cal import models as cal
-
-contacts = dd.resolve_app('contacts')
-ledger = dd.resolve_app('ledger')
-#~ cal = dd.resolve_app('cal')
-courses = dd.resolve_app('courses')
-products = dd.resolve_app('products')
-notes = dd.resolve_app('notes')
 
 #~ print 20130607, loading.cache.postponed
-
-    
-#~ notes.Note._meta.verbose_name = _("Note")
-#~ notes.Note._meta.verbose_name_plural = _("Notes")
-
-        
-        
-
-#~ from lino.modlib.cal import models as cal
-
-#~ dd.inject_field('cal.Room','price',dd.PriceField(verbose_name=_("Price"),
-    #~ blank=True,null=True,
-    #~ default=0))
-    
-     
-
-#~ @dd.receiver(dd.pre_analyze,dispatch_uid='faggio_setup_workflows')
-#~ def faggio_setup_workflows(sender,**kw):
-    #~ 
-    #~ site = sender
-    #~ courses = dd.resolve_app('courses')
-#~ 
-    #~ courses.EnrolmentStates.confirmed.add_transition(_("Confirm"))
-    #~ courses.EnrolmentStates.certified.add_transition(CertifyEnrolment) 
     
 from lino.modlib.courses import workflows
-    
+
+#~ contacts = dd.resolve_app('contacts')
 
 
-@dd.when_prepared('partners.Person','partners.Organisation')
+@dd.when_prepared('contacts.Person','contacts.Company')
 def hide_region(model):
     model.hide_elements('region')
 
-@dd.when_prepared('partners.Person','partners.Organisation')
-def add_merge_action(model):
-    model.define_action(merge_row=dd.MergeAction(model))
+if False:
+    # 20131025 fails because MergeAction.__init__ tries to use _lino_ddh
+    # which hasn't yet been installed
     
+    @dd.when_prepared('contacts.Person','contacts.Company')
+    def add_merge_action(model):
+        model.define_action(merge_row=dd.MergeAction(model))
+
+else:    
     
+    @dd.receiver(dd.pre_analyze)
+    def add_merge_action(sender,**kw):
+        apps = sender.modules
+        for m in (apps.contacts.Person,apps.contacts.Company):
+            m.define_action(merge_row=dd.MergeAction(m))
    
 def site_setup(site):
     site.modules.accounts.Accounts.set_detail_layout(

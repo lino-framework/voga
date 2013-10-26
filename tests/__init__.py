@@ -31,6 +31,7 @@ class DemoTests(BaseTestCase):
 class DocsTests(BaseTestCase):
     
 
+    def test_general(self): return self.run_docs_doctests('tested/general.rst')
     def test_faggio(self): return self.run_docs_doctests('tested/faggio.rst')
 
 

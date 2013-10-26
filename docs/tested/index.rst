@@ -13,6 +13,7 @@ using `manage.py run`.
 .. toctree::
    :maxdepth: 1
   
+   general
    faggio
 
 

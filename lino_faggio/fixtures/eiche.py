@@ -41,6 +41,7 @@ def objects():
     courses = dd.resolve_app('courses')
     rooms = dd.resolve_app('rooms')
     
+    Booking = dd.resolve_model('rooms.Booking')
     Room = dd.resolve_model('cal.Room')
     Event = dd.resolve_model('cal.Event')
     Partner = dd.resolve_model('contacts.Partner')
@@ -296,7 +297,7 @@ Behandelte Themengebiete:
     yield obj
     kw = dict(max_events=8)
     kw.update(start_date=settings.SITE.demo_date(10))
-    kw.update(state=courses.CourseStates.published)
+    kw.update(state=courses.CourseStates.registered)
     yield add_course(obj,pc_bbach,"13:30","15:00",monday=True,**kw)
     yield add_course(obj,pc_eupen,"17:30","19:00",wednesday=True,**kw)
     yield add_course(obj,pc_kelmis,"13:30","15:00",friday=True,**kw)
@@ -360,7 +361,7 @@ Behandelte Themengebiete:
     yield obj
     kw = dict(max_events=10)
     kw.update(start_date=settings.SITE.demo_date(60))
-    kw.update(state=CourseStates.published)
+    kw.update(state=CourseStates.registered)
     yield add_course(obj,konf,"18:00","19:30",monday=True,**kw)
     yield add_course(obj,konf,"19:00","20:30",friday=True,**kw)
     
@@ -383,7 +384,7 @@ Behandelte Themengebiete:
     kw = dict(max_events=10)
     kw.update(every_unit=cal.Recurrencies.per_weekday)
     kw.update(start_date=settings.SITE.demo_date(60))
-    kw.update(state=BookingStates.booked)
+    kw.update(state=BookingStates.registered)
     kw.update(company=COMPANIES.pop())
     yield add_booking(konf,"20:00","22:00",tuesday=True,**kw)
     kw.update(company=COMPANIES.pop())
@@ -413,10 +414,11 @@ Behandelte Themengebiete:
         
     ses = settings.SITE.login('rolf')
     
-    for b in Course.objects.all():
-        rc = ses.run(b.do_update_reminders)
-        if not rc.get('success',False):
-            raise Exception("update_reminders on %s returned %s" % (b,rc))
+    for model in (Course, Booking):
+        for obj in model.objects.all():
+            rc = ses.run(obj.do_update_reminders)
+            if not rc.get('success',False):
+                raise Exception("update_reminders on %s returned %s" % (obj,rc))
 
     n = 0
     for p in Partner.objects.all():
