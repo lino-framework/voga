@@ -72,7 +72,7 @@ class MyPartnerDetail(PartnerDetail):
     ledger = dd.Panel("""
     sales.InvoiceablesByPartner
     # ledger.InvoicesByPartner
-    ledger.MovementsByPartner #ledger.DuePaymentsByPartner
+    ledger.MovementsByPartner
     """,label=ledger.MODULE_LABEL)
 
     bottom_box = """

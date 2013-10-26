@@ -31,6 +31,8 @@ class Booking(Booking,sales.Invoiceable):
     invoiceable_date_field = 'start_date'
     #~ invoiceable_partner_field = 'company'
     
+    create_invoice = sales.CreateInvoice()
+    
     @classmethod
     def get_partner_filter(cls,partner):
         q = models.Q(company=partner,invoice__isnull=True)
