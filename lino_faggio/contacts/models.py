@@ -12,7 +12,7 @@
 ## along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
 """
-The :xfile:`models.py` for the :mod:`lino_faggio.contacts` app.
+The :xfile:`models` module for the :mod:`lino_faggio.contacts` app.
 
 """
 

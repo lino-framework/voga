@@ -48,7 +48,7 @@ Test whether :meth:`get_db_overview_rst
  cal.Guest                  7         0
  cal.GuestRole              8         0
  cal.Priority               5         9
- cal.RecurrentEvent         19        9
+ cal.RecurrentEvent         21        9
  cal.RemoteCalendar         7         0
  cal.Room                   9         6
  cal.Subscription           4         21

@@ -42,7 +42,7 @@ class Site(Site,vat.SiteMixin):
     calendar_end_hour = 21
     
     #~ demo_fixtures = 'std few_countries few_cities few_languages demo eiche demo2'.split()
-    demo_fixtures = 'std few_countries few_cities few_languages demo demo_bookings eiche demo2'.split()
+    demo_fixtures = 'std few_countries few_cities few_languages demo demo_bookings faggio demo2'.split()
     
     start_year = 2013
     
