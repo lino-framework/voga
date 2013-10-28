@@ -5,7 +5,6 @@ Faggio
 
 .. include:: /include/tested.rst
 
-
 >>> from django.conf import settings
 >>> from lino.runtime import *
 >>> from lino import dd
@@ -19,7 +18,7 @@ A web request
 The following snippet reproduces a one-day bug 
 discovered 2013-06-04 
 in :func:`lino.modlib.cal.utils.when_text` 
-on calendar events whos **time** fields are empty.
+on calendar events whose **time** fields are empty.
 
 >>> client = Client()
 >>> d = settings.SITE.demo_date().replace(month=12,day=25)

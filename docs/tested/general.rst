@@ -135,7 +135,7 @@ Rolf is the local system administrator, he has a complete menu:
   - System : Site-Parameter, Benutzer, Teams, Inhaltstypen, Hilfetexte
   - Kontakte : Länder, Orte, Organisationsarten, Funktionen
   - Kurse : Instructor Types, Participant Types, Themen, Kurs-Serien, Timetable Slots
-  - Kalender : Kalenderliste, Meine Abonnements, Räume, Prioritäten, Periodische Termine, Gastrollen, Ereignisarten, Externe Kalender
+  - Kalender : Kalenderliste, Räume, Prioritäten, Periodische Termine, Gastrollen, Ereignisarten, Externe Kalender
   - Buchhaltung : Kontenpläne, Kontengruppen, Konten, Journale
   - Verkauf : Fakturationsmodi, Lieferarten, Zahlungsbedingungen
 - Explorer :
