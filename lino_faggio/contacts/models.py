@@ -68,12 +68,11 @@ class MyPartnerDetail(PartnerDetail):
     rooms.BookingsByCompany
     """,label = _("More"))
     
-    
     ledger = dd.Panel("""
     sales.InvoiceablesByPartner
     # ledger.InvoicesByPartner
     ledger.MovementsByPartner
-    """,label=ledger.MODULE_LABEL)
+    """, label=ledger.MODULE_LABEL)
 
     bottom_box = """
     remarks 
