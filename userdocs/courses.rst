@@ -5,14 +5,6 @@ Courses
 =======
 
 
-.. actors_overview:: 
-    courses.Courses
-    courses.Lines
-    courses.Topics
-    courses.Enrolments
-    courses.Pupils
-    courses.Teachers
-    
 
 Reference
 =========
@@ -21,7 +13,7 @@ Reference
 .. actor:: courses.Teacher
 .. actor:: courses.Line
 
-    A line (of :ref:`faggio.courses.Courses`) is a series which groups
+    A line (of :ddref:`courses.Course`) is a series which groups
     courses into a configurable list of categories. 
     The default database has  the following list of Course Lines:
   

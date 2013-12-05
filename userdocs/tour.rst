@@ -6,6 +6,6 @@ An introduction to Lino-Faggio
 
 - Partners
 
-- Create some :ref:`faggio.courses.Courses`
+- Create some :ddref:`courses.Course`
 
-- :ref:`faggio.sales.InvoicesToCreate`
+- :ddref:`sales.InvoicesToCreate`

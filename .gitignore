@@ -9,10 +9,9 @@ syntax: glob
 *.zip
 *.doctrees
 tmp
-*/default.db
-docs/media
+default.db
+media
 docs/api
 
-*/media
 *.egg-info
 .build

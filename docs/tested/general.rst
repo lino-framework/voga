@@ -39,11 +39,11 @@ Test whether :meth:`get_db_overview_rst
 ========================== ========= =======
  Name                       #fields   #rows
 -------------------------- --------- -------
- accounts.Account           14        12
+ accounts.Account           13        12
  accounts.Chart             4         1
- accounts.Group             8         6
+ accounts.Group             7         6
  cal.Calendar               6         7
- cal.Event                  23        315
+ cal.Event                  23        318
  cal.EventType              17        7
  cal.Guest                  7         0
  cal.GuestRole              8         0
@@ -60,7 +60,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.Role              4         0
  contacts.RoleType          4         5
  contenttypes.ContentType   4         68
- countries.City             8         73
+ countries.City             8         75
  countries.Country          6         8
  courses.Course             23        23
  courses.Enrolment          9         100
@@ -72,19 +72,19 @@ Test whether :meth:`get_db_overview_rst
  courses.TeacherType        5         4
  courses.Topic              4         4
  finan.BankStatement        11        3
- finan.BankStatementItem    11        9
+ finan.BankStatementItem    11        21
  finan.JournalEntry         9         0
  finan.JournalEntryItem     11        0
  finan.PaymentOrder         11        3
- finan.PaymentOrderItem     10        15
+ finan.PaymentOrderItem     10        18
  ledger.AccountInvoice      17        20
  ledger.InvoiceItem         9         32
  ledger.Journal             17        6
- ledger.Movement            9         98
+ ledger.Movement            9         113
  ledger.Voucher             7         45
  notes.EventType            8         0
  notes.Note                 14        100
- notes.NoteType             11        7
+ notes.NoteType             11        6
  outbox.Attachment          4         0
  outbox.Mail                8         0
  outbox.Recipient           6         0
@@ -146,5 +146,6 @@ Rolf is the local system administrator, he has a complete menu:
   - Kalender : Aufgaben, Gäste, Abonnements, Termin-Zustände, Gast-Zustände, Aufgaben-Zustände
   - Buchhaltung : Rechnungen, Belege, VoucherTypes, Bewegungen, Geschäftsjahre
   - MWSt. : VatRegimes, TradeTypes, VatClasses
+  - Financial : Kontoauszüge, Diverse Buchungen, Zahlungsaufträge
 - Site : Info
 

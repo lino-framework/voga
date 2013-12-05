@@ -14,5 +14,7 @@ Lino-Faggio User Manual
    cal
    countries
    contacts
+   products
    sales
    courses
+   system

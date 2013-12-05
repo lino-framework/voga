@@ -34,8 +34,9 @@ on calendar events whose **time** fields are empty.
 [u'count', u'rows', u'success', u'no_data_text', u'title', u'param_values']
 >>> print(len(result['rows']))
 2
->>> print(result['rows'][0][0])
-<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: 40 })">2013 Dez. 25 (Mi.)</a>
+>>> print(result['rows'][0][0]) 
+... #doctest: +ELLIPSIS
+<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: ... })">2013 Dez. 25 (Mi.)</a>
 
 
 
