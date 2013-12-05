@@ -20,12 +20,7 @@ from lino.projects.std.settings import *
 from decimal import Decimal
 
 
-#~ from lino.modlib import cal
-#~ from lino.modlib import ledger
-from lino.modlib import vat
-
-#~ class Site(Site,cal.SiteMixin):
-class Site(Site,vat.SiteMixin):
+class Site(Site):
     #~ title = __name__
     version = "0.0.1"
     verbose_name = "Lino Faggio"
@@ -146,14 +141,13 @@ class Site(Site,vat.SiteMixin):
         add = dd.UserProfiles.add_item
         
         add('000', _("Anonymous"),     '_ _ _', name='anonymous',
-            readonly=True,authenticated=False)
+            readonly=True, authenticated=False)
         add('100', _("User"),          'U U U', name='user')
         add('900', _("Administrator"), 'A A A', name='admin')
         
         self.modules.vat.configure(default_vat_class='exempt')
 
-
-    def get_admin_main_items(self,ar):
+    def get_admin_main_items(self, ar):
         yield self.modules.courses.ActiveCourses
         
 

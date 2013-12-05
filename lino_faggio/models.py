@@ -71,15 +71,4 @@ def site_setup(site):
     
         
 
-"""
-The following trick worked but was rather hackerish. 
-Now we have :meth:`lino.modlib.vat.SiteMixin.get_item_vat`.
-"""
-if False:
-
-    sales = dd.resolve_app('sales')
-
-    @dd.receiver(dd.post_init, sender=sales.Invoice)
-    def set_default_item_vat(sender, instance=None,**kwargs):
-        instance.item_vat = True
 
