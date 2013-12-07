@@ -387,7 +387,6 @@ class Loader2(Loader1):
         yield add_course(obj,self.konf,"19:00","20:30",friday=True,**kw)
         
         
-        
         EXTS = Cycler(self.ext1,self.ext2)
         def add_booking(*args,**kw):
             kw.update(user=USERS.pop())

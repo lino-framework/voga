@@ -103,6 +103,7 @@ class Site(Site):
         
         yield 'lino_faggio.courses'
         yield 'lino_faggio.cal'
+        yield 'lino.apps.extensible'
         yield 'lino_faggio.rooms'
         
         yield 'lino.modlib.products'

@@ -15,7 +15,7 @@
 """
 The :xfile:`models.py` module for the :mod:`lino_faggio.cal` app.
 
-This module extends :mod:`lino.modlib.cal.models`
+This module extends :mod:`lino.apps.cal.models`
 """
 
 from __future__ import unicode_literals
@@ -24,14 +24,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino import dd
 
-#~ dd.extends_app('lino.modlib.cal',globals())
 
 contacts = dd.resolve_app('contacts')
 
-#~ PARENT_APP = 'lino.modlib.cal'
-from lino.modlib.cal.models import *
+from lino.apps.cal.models import *
 
-from lino.modlib.cal.workflows import faggio
+from lino.apps.cal.workflows import faggio
 
 dd.inject_field('system.SiteConfig','pupil_guestrole',
     dd.ForeignKey('cal.GuestRole',

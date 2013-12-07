@@ -149,7 +149,7 @@ def objects():
     yield Loader1().objects()
 
     # this will create subscriptions for each user and calendar
-    from lino.modlib.cal.fixtures.demo2 import subscribe_all
+    from lino.apps.cal.fixtures.demo2 import subscribe_all
     yield subscribe_all()
 
     if False:

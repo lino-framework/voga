@@ -23,30 +23,12 @@ from django.db.models import loading
 from django.utils.translation import ugettext_lazy as _
 
 
-#~ from lino import dd
-#~ from lino import mixins
-#~ from lino.models import SiteConfig
-
-#~ from lino.modlib.contacts import models as contacts
-#~ from lino.modlib.cal import models as cal
-
-#~ from lino.modlib.contacts.models import models as contacts
 from lino.modlib.contacts.models import *
 
-#~ print dd
-
-#~ PartnerField = contacts.PartnerField
-
-#~ contacts = dd.resolve_app('contacts')
 ledger = dd.resolve_app('ledger')
-#~ sales = dd.resolve_app('sales')
-#~ cal = dd.resolve_app('cal')
-#~ courses = dd.resolve_app('courses')
-
-#~ print 20130607, loading.cache.postponed
 
     
-class Person(Person,mixins.Born):
+class Person(Person, mixins.Born):
     pass
 
 

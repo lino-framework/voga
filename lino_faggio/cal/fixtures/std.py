@@ -1,2 +1,2 @@
-from lino.modlib.cal.fixtures.std import objects
+from lino.apps.cal.fixtures.std import objects
 
