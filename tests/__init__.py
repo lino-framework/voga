@@ -21,6 +21,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.settings.test"
 
 class BaseTestCase(TestCase):
     project_root = ROOTDIR
+    demo_settings_module = 'lino_faggio.settings.test'
     
     
 class DocsTests(BaseTestCase):

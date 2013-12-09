@@ -9,17 +9,26 @@ Faggio
 >>> from lino.runtime import *
 >>> from lino import dd
 >>> from django.test.client import Client
+>>> from django.utils.translation import get_language
+>>> from django.utils import translation
 >>> import json
+
+>>> print(settings.SETTINGS_MODULE)
+lino_faggio.settings.test
+>>> print([lng.name for lng in settings.SITE.languages])
+['en', 'de', 'fr']
 
 
 A web request
 -------------
 
 The following snippet reproduces a one-day bug 
-discovered 2013-06-04 
-in :func:`lino.modlib.cal.utils.when_text` 
 on calendar events whose **time** fields are empty.
+Fixed 2013-06-04 
+in :func:`lino.apps.cal.utils.when_text`.
 
+>>> print(get_language())
+en
 >>> client = Client()
 >>> d = settings.SITE.demo_date().replace(month=12,day=25)
 >>> d = d.strftime(settings.SITE.date_format_strftime)
@@ -38,6 +47,12 @@ on calendar events whose **time** fields are empty.
 ... #doctest: +ELLIPSIS
 <a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: ... })">2013 Dez. 25 (Mi.)</a>
 
+Note that the language remains "de" because the web request caused it to
+switch to rolf's language:
+
+>>> print(get_language())
+de
+
 
 
 Printing an invoice
@@ -49,8 +64,10 @@ check whether we get the expected response.
 >>> ses = settings.SITE.login("robin")
 >>> obj = sales.Invoice.objects.get(pk=1)
 >>> obj.clear_cache()
+>>> translation.activate('en')
 >>> print(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-{'refresh': True, 'open_url': u'/media/cache/appypdf/sales.Invoice-1.pdf', 'message': u'S#1 printable has been built.', 'success': True}
+{'refresh': True, 'open_url': u'/media/cache/appypdf/sales.Invoice-1.pdf', 
+'message': u'S#1 printable has been built.', 'success': True}
  
 Note that this test should fail if you run the test suite without a 
 LibreOffice server running.

@@ -12,10 +12,10 @@
 ## You should have received a copy of the GNU General Public License
 ## along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
-from lino import ad
+from lino.apps.cal import App
 
 
-class App(ad.App):
+class App(App):
 
     extends = 'lino.apps.cal'
     extends_models = ['cal.Event', 'cal.Room']

@@ -63,36 +63,8 @@ class Site(Site):
     
     #~ index_view_action = "dsbe.Home"
     
-    #~ override_modlib_models = set([
-        #~ 'contacts.Person', 
-        #~ 'sales.Invoice', 
-        #~ 'sales.InvoiceItem', 
-        #~ 'cal.Event', 
-        #~ 'courses.Course', 
-        #~ 'cal.Room', 
-        #~ ])
-    
-    
-    #~ remote_user_header = "REMOTE_USER"
-    
-       
-    #~ def get_main_action(self,user):
-        #~ return self.modules.ui.Home.default_action
-        
-    #~ def get_application_info(self):
-        #~ return (__name__,__version__,__url__)
-        
-        
-    #~ def setup_quicklinks(self,ui,user,tb):
-        #~ tb.add_action(self.modules.contacts.Persons.detail_action)
-        #~ if self.use_extensible:
-            #~ tb.add_action(self.modules.cal.Panel)
-        #~ tb.add_action(self.modules.dsbe.MyPersons)
-        #~ tb.add_action(self.modules.isip.MyContracts)
-        #~ tb.add_action(self.modules.jobs.MyContracts)
-        
     def get_installed_apps(self):
-        for a in super(Site,self).get_installed_apps():
+        for a in super(Site, self).get_installed_apps():
             yield a
         yield 'django.contrib.contenttypes'
         yield 'lino.modlib.system'
