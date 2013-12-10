@@ -54,7 +54,8 @@ class PupilType(PupilType):
 
 
 class CoursesByTopic(CoursesByTopic):
-    column_names = "start_date:8 line:20 room__company__city:10 weekdays_text:10 times_text:10"
+    column_names = "start_date:8 line:20 \
+    room__company__city:10 weekdays_text:10 times_text:10"
 
 
 class ActiveCourses(ActiveCourses):
@@ -65,8 +66,8 @@ class ActiveCourses(ActiveCourses):
 class CourseDetail(CourseDetail):
     main = "general more courses.EnrolmentsByCourse"
     general = dd.Panel("""
-    line start_date start_time end_date end_time max_places
-    teacher room #slot  state
+    line start_date end_date start_time end_time max_places
+    teacher room workflow_buttons
     every_unit every max_events max_date
     monday tuesday wednesday thursday friday saturday sunday
     # cal.EventsByController
