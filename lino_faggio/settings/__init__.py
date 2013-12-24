@@ -12,5 +12,4 @@
 # You should have received a copy of the GNU General Public License
 # along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
-
 from .faggio_site import *

@@ -22,14 +22,15 @@ from decimal import Decimal
 
 class Site(Site):
     #~ title = __name__
-    version = "0.0.1"
+    version = "0.0.2"
     verbose_name = "Lino Faggio"
     url = "http://faggio.lino-framework.org"
     #~ author = "Luc Saffre"
     #~ author_email = "luc.saffre@gmx.net"
 
     #~ help_url = "http://lino.saffre-rumma.net/az/index.html"
-    #~ migration_module = 'lino.projects.az.migrate'
+
+    migration_module = 'lino_faggio.migrate'
 
     userdocs_prefix = 'faggio.'
 

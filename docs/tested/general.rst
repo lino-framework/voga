@@ -60,7 +60,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.Role              4         0
  contacts.RoleType          4         5
  contenttypes.ContentType   4         68
- countries.City             8         75
+ countries.Place            8         75
  countries.Country          6         8
  courses.Course             23        23
  courses.Enrolment          9         100

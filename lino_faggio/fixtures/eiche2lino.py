@@ -112,8 +112,8 @@ class MyBook():
             kw.update(title=title)
         city_name = city_name.strip()
         if city_name:
-            #~ countries.City.objects.get(name)
-            kw.update(city=countries.City.lookup_or_create(
+            #~ countries.Place.objects.get(name)
+            kw.update(city=countries.Place.lookup_or_create(
                 'name', city_name, country=self.country))
         #~ print birth_date
         kw.update(birth_date=self.date_converter(birth_date))
