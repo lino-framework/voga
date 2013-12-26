@@ -15,7 +15,7 @@
 from lino import ad
 
 
-class App(ad.App):
+class Plugin(ad.Plugin):
 
     extends = 'lino.modlib.contacts'
     extends_models = ['contacts.Person']
