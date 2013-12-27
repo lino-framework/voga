@@ -43,7 +43,7 @@ Test whether :meth:`get_db_overview_rst
  accounts.Chart             4         1
  accounts.Group             7         6
  cal.Calendar               6         7
- cal.Event                  23        318
+ cal.Event                  23        ...
  cal.EventType              17        7
  cal.Guest                  7         0
  cal.GuestRole              8         0
@@ -60,8 +60,8 @@ Test whether :meth:`get_db_overview_rst
  contacts.Role              4         0
  contacts.RoleType          4         5
  contenttypes.ContentType   4         68
- countries.Place            8         75
  countries.Country          6         8
+ countries.Place            8         75
  courses.Course             23        23
  courses.Enrolment          9         100
  courses.Line               12        9
@@ -120,7 +120,7 @@ Rolf is the local system administrator, he has a complete menu:
 >>> with translation.override('de'):
 ...     ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Kontakte : Personen, Organisationen, Partner, Kursleiter, Teilnehmer
+- Kontakte : Personen, Gruppen, Partner, Kursleiter, Teilnehmer
 - Kurse : Kurse, Offene Einschreibungsanfragen, Auszustellende Teilnahmebescheinigungen
 - Kalender : Kalender, Meine Termine, Meine Aufgaben, Meine Gäste, Meine Anwesenheiten, Buchungen
 - Produkte : Produkte, Produktkategorien
@@ -133,7 +133,7 @@ Rolf is the local system administrator, he has a complete menu:
 - Konfigurierung :
   - Büro : Meine Einfügetexte, Notizarten, Ereignisarten, Upload-Arten
   - System : Site-Parameter, Benutzer, Teams, Inhaltstypen, Hilfetexte
-  - Kontakte : Länder, Orte, Organisationsarten, Funktionen
+  - Kontakte : Länder, Orte, Gruppenarten, Funktionen
   - Kurse : Instructor Types, Participant Types, Themen, Kurs-Serien, Timetable Slots
   - Kalender : Kalenderliste, Räume, Prioritäten, Periodische Termine, Gastrollen, Ereignisarten, Externe Kalender
   - Buchhaltung : Kontenpläne, Kontengruppen, Konten, Journale

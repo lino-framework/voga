@@ -65,8 +65,7 @@ class Site(Site):
     #~ index_view_action = "dsbe.Home"
 
     def get_installed_apps(self):
-        for a in super(Site, self).get_installed_apps():
-            yield a
+        yield super(Site, self).get_installed_apps()
         yield 'django.contrib.contenttypes'
         yield 'lino.modlib.system'
         yield 'lino.modlib.users'

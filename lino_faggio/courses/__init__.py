@@ -12,10 +12,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
-from lino import ad
+from lino.modlib.courses import Plugin
 
 
-class Plugin(ad.Plugin):
+class Plugin(Plugin):
 
     extends = 'lino.modlib.courses'
     extends_models = [
