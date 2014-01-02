@@ -33,7 +33,7 @@ en
 >>> d = settings.SITE.demo_date().replace(month=12,day=25)
 >>> d = d.strftime(settings.SITE.date_format_strftime)
 >>> print(d)
-25.12.2013
+25.12.2014
 >>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
 >>> res = client.get(url,REMOTE_USER='rolf')
 >>> print(res.status_code)
@@ -45,7 +45,7 @@ en
 2
 >>> print(result['rows'][0][0]) 
 ... #doctest: +ELLIPSIS
-<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: ... })">2013 Dez. 25 (Mi.)</a>
+<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: ... })">2014 Dez. 25 (Do.)</a>
 
 Note that the language remains "de" because the web request caused it to
 switch to rolf's language:
@@ -55,19 +55,29 @@ de
 
 
 
-Printing an invoice
--------------------
+Printing invoices and events
+----------------------------
 
 We take a sales invoice, clear the cache, ask Lino to print it and 
 check whether we get the expected response.
 
 >>> ses = settings.SITE.login("robin")
+>>> translation.activate('en')
 >>> obj = sales.Invoice.objects.get(pk=1)
 >>> obj.clear_cache()
->>> translation.activate('en')
 >>> print(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 {'refresh': True, 'open_url': u'/media/cache/appypdf/sales.Invoice-1.pdf', 
 'message': u'S#1 printable has been built.', 'success': True}
+
+Same for a calendar Event. 
+This is mainly to see whether the templates directory has been inherited.
+Note that the first few dozen events have no `user` and would currently 
+fail to print
+
+>>> obj = cal.Event.objects.get(pk=100)
+>>> obj.clear_cache()
+>>> print(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+{'refresh': True, 'open_url': u'/media/userdocs/appyodt/cal.Event-100.odt', 'message': u'Event #100 printable has been built.', 'success': True}
  
 Note that this test should fail if you run the test suite without a 
 LibreOffice server running.

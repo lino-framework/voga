@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # This file is part of the Lino-Faggio project.
 # Lino-Faggio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from lino import dd
-
 
 contacts = dd.resolve_app('contacts')
 
@@ -144,8 +143,8 @@ def customize_cal(sender, **kw):
     site.modules.cal.Events.set_detail_layout('general more')
     site.modules.cal.Events.add_detail_panel('general', """
     event_type summary user course
-    start end 
-    room priority access_class transparent #rset 
+    start end
+    room priority access_class transparent #rset
     owner:30 workflow_buttons:30
     description
     """, _("General"))
@@ -156,8 +155,8 @@ def customize_cal(sender, **kw):
     """, _("More"))
 
     site.modules.cal.Events.set_insert_layout("""
-    start end 
-    course 
+    start end
+    course
     """,
                                               start="start_date start_time",
                                               end="end_date end_time",
