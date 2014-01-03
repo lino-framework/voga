@@ -34,6 +34,9 @@ from lino import dd
 
 
 def migrate_from_0_0_1(globals_dict):
+    """
+    - Renamed `countries.City` to `countries.Place`
+    """
     countries_Place = resolve_model("countries.Place")
     globals_dict.update(countries_City=countries_Place)
     return '0.0.2'

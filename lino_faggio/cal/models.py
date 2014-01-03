@@ -15,7 +15,7 @@
 """
 The :xfile:`models.py` module for the :mod:`lino_faggio.cal` app.
 
-This module extends :mod:`lino.apps.cal.models`
+This module extends :mod:`lino.modlib.cal.models`
 """
 
 from __future__ import unicode_literals
@@ -26,9 +26,9 @@ from lino import dd
 
 contacts = dd.resolve_app('contacts')
 
-from lino.apps.cal.models import *
+from lino.modlib.cal.models import *
 
-from lino.apps.cal.workflows import faggio
+from lino.modlib.cal.workflows import faggio
 
 dd.inject_field('system.SiteConfig', 'pupil_guestrole',
                 dd.ForeignKey('cal.GuestRole',

@@ -1,1 +1,1 @@
-from lino.apps.cal.fixtures.demo2 import *
+from lino.modlib.cal.fixtures.demo2 import *
