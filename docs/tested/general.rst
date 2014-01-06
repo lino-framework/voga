@@ -1,5 +1,6 @@
 .. _faggio.tested.general:
 
+=======
 General
 =======
 
@@ -8,9 +9,6 @@ General
 The following statements import a set of often-used global names::
 
 >>> from __future__ import print_function
->>> import json
->>> from pprint import pprint
->>> from django.conf import settings
 >>> from django.utils import translation
 >>> from django.test.client import Client
 >>> from lino import dd
@@ -26,7 +24,7 @@ has 23 pupils and 7 teachers:
 8
 
 
-The test database
+The demo database
 -----------------
 
 Test whether :meth:`get_db_overview_rst 
@@ -111,8 +109,11 @@ Test whether :meth:`get_db_overview_rst
 
 
 
-User profiles
--------------
+Menus
+-----
+
+System administrator
+--------------------
 
 Rolf is the local system administrator, he has a complete menu:
 
@@ -129,7 +130,7 @@ Rolf is the local system administrator, he has a complete menu:
 - Financial : Bestbank (B), Cash (C), Miscellaneous Journal Entries (M)
 - Büro : Meine Notizen, Mein E-Mail-Ausgang
 - Berichte :
-  - Buchhaltung : Tätigkeitsbericht
+  - Buchhaltung : Situation, Tätigkeitsbericht, Schuldner, Gläubiger
 - Konfigurierung :
   - Büro : Meine Einfügetexte, Notizarten, Ereignisarten, Upload-Arten
   - System : Site-Parameter, Benutzer, Teams, Inhaltstypen, Hilfetexte

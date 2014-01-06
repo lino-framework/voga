@@ -15,6 +15,7 @@ using `manage.py run`.
   
    general
    faggio
+   ledger
 
 
 
