@@ -1,4 +1,4 @@
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # This file is part of the Lino-Faggio project.
 # Lino-Faggio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -43,10 +43,9 @@ class MyPartnerDetail(PartnerDetail):
     """, label=_("General"))
 
     more = dd.Panel("""
-    id language 
+    id language
     addr1 url
     #courses.CoursesByCompany
-    rooms.BookingsByCompany
     """, label=_("More"))
 
     ledger = dd.Panel("""
@@ -82,7 +81,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     more = dd.Panel("""
     id language type vat_id:12
     addr1 url
-    rooms.BookingsByCompany
+    rooms.BookingsByCompany lists.MembersByCompany
     notes.NotesByCompany
     """, label=_("More"))
 
@@ -111,14 +110,14 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
     general = dd.Panel("""
     address_box contact_box
-    remarks contacts.RolesByPerson 
+    remarks contacts.RolesByPerson
     """, label=_("General"))
 
     more = dd.Panel("""
     id language 
     addr1 url
     gender birth_date age:10 personal
-    notes.NotesByPerson
+    notes.NotesByPerson  lists.MembersByPerson
     """, label=_("More"))
 
     personal = 'is_pupil is_teacher'
