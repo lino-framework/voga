@@ -32,14 +32,14 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-21 applications: about, contenttypes, system, users, countries, contacts, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, notes, uploads, outbox, lino_faggio, djangosite.
-67 models:
+22 apps: about, contenttypes, system, users, countries, contacts, lists, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, notes, uploads, outbox, lino_faggio, djangosite.
+69 models:
 ========================== ========= =======
  Name                       #fields   #rows
 -------------------------- --------- -------
  accounts.Account           13        12
  accounts.Chart             4         1
- accounts.Group             7         6
+ accounts.Group             7         7
  cal.Calendar               6         7
  cal.Event                  23        ...
  cal.EventType              17        7
@@ -51,13 +51,13 @@ Test whether :meth:`get_db_overview_rst
  cal.Room                   9         6
  cal.Subscription           4         21
  cal.Task                   17        0
- contacts.Company           27        19
+ contacts.Company           26        19
  contacts.CompanyType       7         16
  contacts.Partner           23        88
  contacts.Person            29        69
  contacts.Role              4         0
  contacts.RoleType          4         5
- contenttypes.ContentType   4         68
+ contenttypes.ContentType   4         70
  countries.Country          6         8
  countries.Place            8         75
  courses.Course             23        23
@@ -70,16 +70,19 @@ Test whether :meth:`get_db_overview_rst
  courses.TeacherType        5         4
  courses.Topic              4         4
  finan.BankStatement        11        3
- finan.BankStatementItem    11        21
+ finan.BankStatementItem    11        9
  finan.JournalEntry         9         0
  finan.JournalEntryItem     11        0
  finan.PaymentOrder         11        3
- finan.PaymentOrderItem     10        18
- ledger.AccountInvoice      17        20
+ finan.PaymentOrderItem     10        15
+ ledger.AccountInvoice      18        20
  ledger.InvoiceItem         9         32
  ledger.Journal             17        6
- ledger.Movement            9         113
+ ledger.Movement            9         98
  ledger.Voucher             7         45
+ lists.List                 7         0
+ lists.ListType             4         0
+ lists.Member               7         0
  notes.EventType            8         0
  notes.Note                 14        100
  notes.NoteType             11        6
@@ -89,11 +92,9 @@ Test whether :meth:`get_db_overview_rst
  products.Product           12        8
  products.ProductCat        5         3
  rooms.Booking              24        3
- sales.Invoice              25        19
+ sales.Invoice              24        19
  sales.InvoiceItem          15        31
  sales.InvoicingMode        8         0
- sales.PaymentTerm          7         0
- sales.SalesRule            4         0
  sales.ShippingMode         5         0
  system.HelpText            4         2
  system.SiteConfig          16        1
@@ -104,6 +105,7 @@ Test whether :meth:`get_db_overview_rst
  users.Membership           3         0
  users.Team                 4         0
  users.User                 15        3
+ vat.PaymentTerm            7         0
 ========================== ========= =======
 <BLANKLINE>
 
@@ -121,28 +123,29 @@ Rolf is the local system administrator, he has a complete menu:
 >>> with translation.override('de'):
 ...     ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Kontakte : Personen, Gruppen, Partner, Kursleiter, Teilnehmer
+- Kontakte : Personen, Organisationen, Partner, Partnerlisten, Kursleiter, Teilnehmer
 - Kurse : Kurse, Offene Einschreibungsanfragen, Auszustellende Teilnahmebescheinigungen
 - Kalender : Kalender, Meine Termine, Meine Aufgaben, Meine Gäste, Meine Anwesenheiten, Buchungen
 - Produkte : Produkte, Produktkategorien
 - Verkauf : Verkaufsrechnungen (S), Zu fakturieren
 - Einkauf : Einkaufsrechnungen (P), Zahlungsaufträge (PO)
-- Financial : Bestbank (B), Cash (C), Miscellaneous Journal Entries (M)
+- Financial : Bestbank (B), Kasse (C), Diverse Buchungen (M)
 - Büro : Meine Notizen, Mein E-Mail-Ausgang
 - Berichte :
   - Buchhaltung : Situation, Tätigkeitsbericht, Schuldner, Gläubiger
 - Konfigurierung :
   - Büro : Meine Einfügetexte, Notizarten, Ereignisarten, Upload-Arten
   - System : Site-Parameter, Benutzer, Teams, Inhaltstypen, Hilfetexte
-  - Kontakte : Länder, Orte, Gruppenarten, Funktionen
+  - Kontakte : Länder, Orte, Organisationsarten, Funktionen, Listenarten
   - Kurse : Instructor Types, Participant Types, Themen, Kurs-Serien, Timetable Slots
   - Kalender : Kalenderliste, Räume, Prioritäten, Periodische Termine, Gastrollen, Ereignisarten, Externe Kalender
   - Buchhaltung : Kontenpläne, Kontengruppen, Konten, Journale
-  - Verkauf : Fakturationsmodi, Lieferarten, Zahlungsbedingungen
-- Explorer :
+  - MWSt. : Zahlungsbedingungen
+  - Verkauf : Lieferarten
+ - Explorer :
   - Büro : Einfügetexte, Notizen, Uploads, E-Mail-Ausgänge, Anhänge
   - System : Vollmachten, Benutzergruppen, Benutzer-Levels, Benutzerprofile
-  - Kontakte : Kontaktpersonen
+  - Kontakte : Kontaktpersonen, Listenmitglieder
   - Kurse : Einschreibungen, Einschreibungs-Zustände
   - Kalender : Aufgaben, Gäste, Abonnements, Termin-Zustände, Gast-Zustände, Aufgaben-Zustände
   - Buchhaltung : Rechnungen, Belege, VoucherTypes, Bewegungen, Geschäftsjahre
