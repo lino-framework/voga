@@ -28,7 +28,8 @@ contacts = dd.resolve_app('contacts')
 
 from lino.modlib.cal.models import *
 
-from lino.modlib.cal.workflows import faggio
+# must import this to activate these workflow definitions:
+from lino.modlib.cal.workflows import faggio  
 
 dd.inject_field('system.SiteConfig', 'pupil_guestrole',
                 dd.ForeignKey('cal.GuestRole',
@@ -41,19 +42,17 @@ courses = dd.resolve_app('courses')
 
 
 class Room(Room, contacts.ContactRelated):
-    #~ class Meta(Room.Meta):
-        #~ app_label = 'cal'
 
     tariff = dd.ForeignKey('products.Product',
                            blank=True, null=True,
                            verbose_name=_("Tariff"),
                            related_name='rooms_by_tariff')
 
-    calendar = dd.ForeignKey('cal.Calendar',
-                             help_text=_(
-                                 "Calendar where events in this room are published."),
-                             related_name='room_calendars',
-                             blank=True, null=True)
+    calendar = dd.ForeignKey(
+        'cal.Calendar',
+        help_text=_("Calendar where events in this room are published."),
+        related_name='room_calendars',
+        blank=True, null=True)
 
     def __unicode__(self):
         s = dd.BabelNamed.__unicode__(self)
@@ -71,28 +70,16 @@ class Rooms(Rooms):
     """
 
 
-#~ class Event(Event,sales.Invoiceable):
 class Event(Event):
 
-    #~ class Meta(Event.Meta):
-        #~ app_label = 'cal'
-
-    #~ organizer = dd.ForeignKey('contacts.Partner',
-        #~ verbose_name=_("Organizer"),
-        #~ blank=True,null=True)
-
     invoiceable_date_field = 'start_date'
-    #~ invoiceable_partner_field = 'organizer'
     invoiceable_partner_field = 'company'
 
     def get_invoiceable_product(self):
-        #~ if self.organizer and self.room:
         if self.company and self.room:
-            # ~ return products.Product.objects.get(pk=1) # todo : Tarife Raummiete
             return self.room.tariff
 
     def get_invoiceable_title(self):
-        #~ if self.organizer:
         if self.company:
             return unicode(self.room)
 

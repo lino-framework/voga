@@ -79,7 +79,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     main = 'general more ledger'
 
     more = dd.Panel("""
-    id language type vat_id:12
+    id language type
     addr1 url
     rooms.BookingsByCompany lists.MembersByCompany
     notes.NotesByCompany

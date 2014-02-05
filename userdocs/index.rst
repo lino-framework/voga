@@ -10,6 +10,7 @@ Lino-Faggio User Manual
 
    tour
    general
+   faq
    users
    cal
    countries

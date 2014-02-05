@@ -4,6 +4,65 @@
 Courses
 =======
 
+
+Anleitung zum Erstellen von Kursserien
+======================================
+
+- Menü :menuselection:`Konfiguration --> Kurse --> Kurs-Serien`
+
+- Icon "+": Neuen Datensatz erstellen
+
+- Bezeichnung: Kurstitel eingeben (Bsp. "Ubuntu 14.04 leicht gemacht")
+
+- Im Feld :ddref:`courses.Line.every_unit` kommt die
+  Wiederholungsmethode zu stehen, die Lino für alle neuen Kurse 
+  dieser Serie als Standard vorschlagen soll.
+
+  Die häufigste Methode ist "Pro Wochentag".
+  Siehe auch :ref:`faq.weekday`.
+  
+
+- Schaltfläche "Erstellen" klicken. Lino öffnet ein neues Fenster
+
+- Teilnahmegebühr: Produkt auswählen
+
+- Ereignisart: Kurse
+
+- Icon "Speichern"
+
+
+
+- Beginnt am: Doppelklick auf leerem Feld
+
+- Startdatum eingeben: Beginnt am tt.mm.jjjj
+
+- Kursleiter auswählen
+
+- Schaltfläche "Erstellen" klicken.
+
+Neues Fenster
+
+- Uhrzeiten eingeben: Beginn-Ende (Dropdown-Menü)
+  Siehe auch :ref:`faq.timefield`.
+
+- Kursleiter auswählen
+
+- Entweder in :ddref:`courses.Course.max_events` die Anzahl der
+  Termine oder in :ddref:`courses.Course.max_date` ein Enddatum
+  eingeben.  Wenn Sie beide Felder ausfüllen, werden nur Termine
+  generiert bis zur ersten Grenze.
+
+-  Wochentag auswählen
+
+- Icon "Änderungen in diesem Datensatz speichern"
+
+- Schaltfläche "Registriert" klicken
+
+- Icon "Blitz" (Termine generierenaktualisieren) klicken
+
+- Vorgeschlagene Termine überprüfen
+
+
 Benutzerfragen
 ==============
 
@@ -52,8 +111,6 @@ Reference
       
     - Marking an automatically generated event as "Cancelled" will not
       create a replacement event.
-
-
 
 
 .. actor:: courses.Topic

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # This file is part of the Lino project.
 # Lino is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 from lino import dd
-#~ dd.extends_app('lino.modlib.courses',globals())
+
 from lino.modlib.courses.models import *
 
 
@@ -82,12 +82,4 @@ class CourseDetail(CourseDetail):
 
 @dd.receiver(dd.post_analyze)
 def customize_courses(sender, **kw):
-    site = sender
-    site.modules.courses.Courses.set_detail_layout(CourseDetail())
-    #~ site.modules.courses.Enrolments.set_insert_layout("""
-    #~ request_date user
-    #~ course pupil
-    #~ tariff remark
-    #~ """
-    #~ )
-    #~ site.modules.courses.ActiveCourses.column_names = 'info tariff max_places enrolments teacher company room'
+    dd.modules.courses.Courses.set_detail_layout(CourseDetail())
