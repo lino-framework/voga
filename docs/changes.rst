@@ -27,6 +27,15 @@ Version 0.0.2 (in development)
   "Stornieren" (d.h. man sieht exakt den Namen des Zustands, in den
   der Kurs durch Klick versetzt werden soll)
 
+- Wenn man den Zustand eines Kurses (Arbeitsablauf) ändert, dann wird
+  jetzt automatisch der "Blitz" ausgeführt.
+
+  N.B. Wenn man eine Stunde verschiebt, dann muss man auch jetzt noch
+  selber auf den Blitz klicken, um die anderen Termine
+  anzupassen. (Denn wenn ich das auch dort immer automatisch nach
+  jeder Änderung aufriefe, könnte das möglicherweise irritierende oder
+  lästige Auswirkungen haben. à suivre.)
+
 
 Version 0.0.1 (released :blogref:`20131210`)
 ============================================

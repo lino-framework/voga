@@ -11,10 +11,11 @@ Welcome to the *Lino-Faggio* project homepage.
   import lino_faggio
   print(lino_faggio.SETUP_INFO['long_description'])
 
-This document is meant for system administrators and developers.
-there is also a :ref:`user manual <faggio.userdocs>`,
-which might be better suited for end-users.
+This document is meant for system administrators and 
+developers. Other resources about *Lino-Faggio* are:
 
+- :ref:`User Manual <faggio.userdocs>`
+- `Official Online demo <http://faggio-demo.lino-framework.org/>`_
 
 Content
 ========

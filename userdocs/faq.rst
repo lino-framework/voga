@@ -95,3 +95,42 @@ Javascript-Console Ihres Browsers öffnen, auf den Blitz klicken (um
 die Aktion nochmals auszuführen) und schauen, was er in die Konsole
 schreibt. Dort berichtet Lino, was er sich beim Generieren der Termine
 gedacht hat.
+
+.. _faq.delete_event:
+
+Einzelne Termine ausfallen lassen
+---------------------------------
+
+Wie kann ich Lino daran hindern, am Karnevalstag einen Termin zu
+generieren?  Lino generiert beharrlich einen Termin am 5. März
+(Karneval) jedesmal wieder neu, wenn ich ihn lösche.
+
+Löschen reicht nicht, dann generiert er ihn neu. Aber die Idee ist
+gut: wenn man einen automatisch generierten Termin löscht, dann sollte
+Lino dies als "Stunde fällt aus, ist aber nicht storniert, sondern
+wird in der Woche darauf nachgeholt" verstehen und automatisch die
+folgenden Termine neu nummerieren.
+
+Momentan musst du:
+
+- in der Tabellenansicht aufs Datumsfeld klicken
+- [F2] drücken um zu sagen "Ich will das Feld bearbeiten"
+- [Alt+PfeilNachUnten] um den Auswahlkalender aufzuklappen
+- [PfeilNachUnten] um auf die Woche danach zu springen
+- [Enter] um das neue Datum auszuwählen
+- [Enter] oder [Tab] um die Feldbearbeitung zu beenden
+
+Oder noch besser: gehe in `Konfigurierung --> Kalender --> Periodische
+Termine` und sage dort, dass Karneval ein Feiertag ist:
+
+- Auf `+` klicken oder Doppelklick auf der leeren untersten Zeile
+- Im Feld :ddref:`cal.RecurrentEvents.name` z.B. "Karneval" eingeben
+- Im Feld :ddref:`cal.RecurrentEvents.event_type` "Feiertag" auswählen
+- [Enter] drücken (oder auf `Erstellen` klicken), um das Dialogfenster zu
+  schließen. Lino zeigt nun die neu erstellte Terminvorlage im Detail.
+- Im Feld :ddref:`cal.RecurrentEvents.every_unit` "once" auswählen.
+  (eine Regel "40 Tage vor Ostern" hat Lino noch nicht, deshalb müssen
+  Ostern und Karneval jedes Jahr manuell erstellt werden)
+- Auf den Blitz klicken, um den eigentlichen Termin zu generieren.
+
+
