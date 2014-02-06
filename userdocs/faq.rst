@@ -86,7 +86,7 @@ Wieso überspringt Lino das Datum X beim Generieren meiner Termine?
 Mögliche Gründe:
 
 - Ist das Datum ein Feiertag?
-  (:menuselection:`Konfigurierung --> Kalender --> Feiertage`)
+  (:menuselection:`Konfigurierung --> Kalender --> Periodische Termine`)
 
 - Findet an dem Tag ein anderer Termin im gleichen Raum statt?
 

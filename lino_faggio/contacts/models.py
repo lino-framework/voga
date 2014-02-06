@@ -17,23 +17,23 @@ The :xfile:`models` module for the :mod:`lino_faggio.contacts` app.
 """
 
 
-from django.db import models
-from django.db.models import loading
 from django.utils.translation import ugettext_lazy as _
-
 
 from lino.modlib.contacts.models import *
 
+from lino.modlib.sales import models as sales
+
 ledger = dd.resolve_app('ledger')
+
 
 
 class Person(Person, mixins.Born):
     pass
 
 
-class MyPartnerDetail(PartnerDetail):
+class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
 
-    main = 'general more ledger'
+    main = 'general more sales ledger'
 
     #~ general = dd.Panel(PartnerDetail.main,label=_("General"))
 
@@ -55,7 +55,7 @@ class MyPartnerDetail(PartnerDetail):
     """, label=ledger.MODULE_LABEL)
 
     bottom_box = """
-    remarks 
+    remarks
     is_person is_company #is_household
     """
 
@@ -68,7 +68,7 @@ class MyPartnerDetail(PartnerDetail):
 
     contact_box = """
     email
-    phone 
+    phone
     fax
     gsm
     """
@@ -76,10 +76,10 @@ class MyPartnerDetail(PartnerDetail):
 
 class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
 
-    main = 'general more ledger'
+    # main = 'general more ledger'
 
     more = dd.Panel("""
-    id language type
+    id language type vat_id
     addr1 url
     rooms.BookingsByCompany lists.MembersByCompany
     notes.NotesByCompany
@@ -93,9 +93,9 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     """
 
     contact_box = dd.Panel("""
-    email:40 
+    email:40
     phone
-    gsm 
+    gsm
     fax
     """)  # ,label = _("Contact"))
 
@@ -106,7 +106,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
 
 class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
-    main = 'general more ledger'
+    # main = 'general more ledger'
 
     general = dd.Panel("""
     address_box contact_box
@@ -114,7 +114,7 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     """, label=_("General"))
 
     more = dd.Panel("""
-    id language 
+    id language
     addr1 url
     gender birth_date age:10 personal
     notes.NotesByPerson  lists.MembersByPerson

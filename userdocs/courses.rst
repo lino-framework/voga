@@ -8,7 +8,7 @@ Courses
 Anleitung zum Erstellen von Kursserien
 ======================================
 
-- Menü :menuselection:`Konfiguration --> Kurse --> Kurs-Serien`
+- Menü :menuselection:`Konfiguration --> Kurse --> Kursserien`
 
 - Icon "+": Neuen Datensatz erstellen
 
@@ -66,9 +66,11 @@ Neues Fenster
 Benutzerfragen
 ==============
 
-"In den Terminen eines Kurses habe ich versehentlich einen Termin 
-auf "Stattgefunden" gesetzt. 
-Wie kann ich ihn wieder auf "Entwurf" setzen?"
+"In den Terminen eines Kurses habe ich versehentlich einen Termin auf
+"Stattgefunden" gesetzt.  Wie kann ich ihn wieder auf "Entwurf"
+setzen?"
+
+- Ab Version 0.0.2 erübrigt sich die Frage.
 
 - Ins Detail des Termins gehen, den Reiter "Mehr" aktivieren, 
   Feld "Zustand" manuell auf "Vorgeschlagen" setzen, Speichern.
