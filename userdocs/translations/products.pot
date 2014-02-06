@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2013, Luc Saffre
+# This file is distributed under the same license as the Lino-Faggio Benutzerhandbuch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../products.rst:5
+# 6bff6c4bfa084b0191f12bf86687e5a1
+msgid "Products"
+msgstr ""
+
+#: ../products.rst:0
+# 1b228339ddfa4befa007bb5ee9a6ce84
+msgid "Product (model)"
+msgstr ""
+
+#: ../products.rst:0
+# 03cec7615edb433589ce136059f3ea34
+msgid "Product Category (model)"
+msgstr ""
+
+#: None:2
+# a168e17b67884ec08f20053e1d71d2b5
+msgid "Product (model in products)"
+msgstr ""
+
+#: None:2
+# d0ae7a96ac674a2d9d094cbfc75caac9
+msgid "Product Category (model in products)"
+msgstr ""
+

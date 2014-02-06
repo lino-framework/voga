@@ -53,8 +53,8 @@ Test whether :meth:`get_db_overview_rst
  cal.Task                   17        0
  contacts.Company           26        19
  contacts.CompanyType       7         16
- contacts.Partner           23        88
- contacts.Person            29        69
+ contacts.Partner           22        88
+ contacts.Person            28        69
  contacts.Role              4         0
  contacts.RoleType          4         5
  contenttypes.ContentType   4         70
@@ -63,10 +63,10 @@ Test whether :meth:`get_db_overview_rst
  courses.Course             23        23
  courses.Enrolment          9         100
  courses.Line               12        9
- courses.Pupil              31        35
+ courses.Pupil              30        35
  courses.PupilType          5         4
  courses.Slot               5         0
- courses.Teacher            31        8
+ courses.Teacher            30        8
  courses.TeacherType        5         4
  courses.Topic              4         4
  finan.BankStatement        11        3
@@ -137,7 +137,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Büro : Meine Einfügetexte, Notizarten, Ereignisarten, Upload-Arten
   - System : Site-Parameter, Benutzer, Teams, Inhaltstypen, Hilfetexte
   - Kontakte : Länder, Orte, Organisationsarten, Funktionen, Listenarten
-  - Kurse : Instructor Types, Participant Types, Themen, Kurs-Serien, Timetable Slots
+  - Kurse : Kursleiterarten, Teilnehmerarten, Themen, Kursserien, Timetable Slots
   - Kalender : Kalenderliste, Räume, Prioritäten, Periodische Termine, Gastrollen, Ereignisarten, Externe Kalender
   - Buchhaltung : Kontenpläne, Kontengruppen, Konten, Journale
   - MWSt. : Zahlungsbedingungen

@@ -24,9 +24,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino import dd
 
-contacts = dd.resolve_app('contacts')
-
 from lino.modlib.cal.models import *
+
+contacts = dd.resolve_app('contacts')
+courses = dd.resolve_app('courses')
 
 # must import this to activate these workflow definitions:
 from lino.modlib.cal.workflows import faggio  
@@ -36,9 +37,6 @@ dd.inject_field('system.SiteConfig', 'pupil_guestrole',
                               verbose_name=_("Guest role for pupils"),
                               related_name='pupil_guestroles',
                               blank=True, null=True))
-
-
-courses = dd.resolve_app('courses')
 
 
 class Room(Room, contacts.ContactRelated):

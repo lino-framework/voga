@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2013, Luc Saffre
+# This file is distributed under the same license as the Lino-Faggio Benutzerhandbuch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../system.rst:5
+# 71d78093b7d547d594914c656cf0745b
+msgid "System"
+msgstr ""
+
+#: ../system.rst:0
+# a527e8ffff2649f0a693aab2080c0e6d
+msgid "content type (model)"
+msgstr ""
+
+#: ../system.rst:0
+# 536ab4c45f7b47b8bfbc80e6ec628c79
+msgid "Site configuration (model)"
+msgstr ""
+
+#: ../system.rst:0
+# 64ec3858bcaa467ca3943da30c333004
+msgid "Event Type (model)"
+msgstr ""
+
+#: ../system.rst:0
+# e7c89a25a2a144579aace1c47184ea79
+msgid "Note Type (model)"
+msgstr ""
+
+#: ../system.rst:0
+# 56473040f8ae4561b83558ab9e155631
+msgid "Note (model)"
+msgstr ""
+
+#: ../system.rst:0
+# c8ce3f0a9cec4e2b8047b2085b5875ab
+msgid "Upload (model)"
+msgstr ""
+
+#: ../system.rst:0
+# 37a193f3380b4d79a9e10376d6ac3cb4
+msgid "Upload Type (model)"
+msgstr ""
+
+#: None:2
+# e2942cc390ac4baca9908d67c299879f
+msgid "content type (model in contenttypes)"
+msgstr ""
+
+#: None:2
+# 84890789b6b8482b8af5d2067f288b4a
+msgid "Site configuration (model in system)"
+msgstr ""
+
+#: None:2
+# 6380a044cec8491182356fceef02bc9c
+msgid "Event Type (model in notes)"
+msgstr ""
+
+#: None:2
+# 334d3f20ed734ab4ba1e0f3ea4312b91
+msgid "Note Type (model in notes)"
+msgstr ""
+
+#: None:2
+# 8306ab7e49d04410bbfdbada86463eec
+msgid "Note (model in notes)"
+msgstr ""
+
+#: None:2
+# 9dd2f636a0e24bc7ad7ffa6955103119
+msgid "Upload (model in uploads)"
+msgstr ""
+
+#: None:2
+# d0d38fc18ca94d3c8ad7c0b152f00eaf
+msgid "Upload Type (model in uploads)"
+msgstr ""
+

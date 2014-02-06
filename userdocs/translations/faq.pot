@@ -1,0 +1,253 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2013, Luc Saffre
+# This file is distributed under the same license as the Lino-Faggio Benutzerhandbuch package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../faq.rst:3
+# 30ae062405af4481902b076b0c7ef182
+msgid "FAQ (Frequently Asked Questions)"
+msgstr ""
+
+#: ../faq.rst:12
+# f764bafa4da14202b85f3e6977a7b9e2
+msgid "Wie kann ich Uhrzeiten per Tastatur eingeben?"
+msgstr ""
+
+#: ../faq.rst:14
+# 89554e85df524effb0e338a7a605b8be
+msgid "In allen Uhrzeit-Feldern kann man auch per Tastatur eingeben. Wichtig ist, die Eingabe nicht mit ENTER zu beenden, sondern mit der TAB-Taste oder durch Klick in ein anderes Eingabefeld."
+msgstr ""
+
+#: ../faq.rst:19
+# a2c34783d65e4257aff52af01d18e071
+msgid "Eingabe"
+msgstr ""
+
+#: ../faq.rst:19
+# 10494780faa449d1a6753ba53a749cc7
+msgid "Resultat"
+msgstr ""
+
+#: ../faq.rst:21
+# f2d317dfe4f648b980b6157354502942
+msgid "825"
+msgstr ""
+
+#: ../faq.rst:21
+# f7e70214ff9441dbb17196d087846796
+msgid "08:25"
+msgstr ""
+
+#: ../faq.rst:22
+# 9f4e2511ccf640339f5d60081e2bdaa6
+msgid "030"
+msgstr ""
+
+#: ../faq.rst:22
+# 5fe2f0e49539424ebce5a39a1e1105d3
+msgid "00:30"
+msgstr ""
+
+#: ../faq.rst:23
+# 4214fae6a9e14a598e1d2d3e6f64f56d
+msgid "2350"
+msgstr ""
+
+#: ../faq.rst:23
+# b065c9f0991942b487fdb6d8d48cb340
+msgid "23:50"
+msgstr ""
+
+#: ../faq.rst:30
+# 09ff70a43d3f45398e4093b4d3df6ae0
+msgid "Was ist der Unterschied zwischen \"Pro Wochentag\" und \"Wöchentlich\"?"
+msgstr ""
+
+#: ../faq.rst:32
+# 0965149af8764ad28bb76aecb3077fe0
+msgid "Die häufigste Wiederholungsmethode bei Kursen ist \"Pro Wochentag\". Nur dann sind die darunterstehenden Ankreuzfelder aktiviert, mit denen Sie einen oder mehrere Wochentage eingeben können. Das Datum des ersten Termins entspricht dann nicht unbedingt dem Beginndatum des Kurses, sondern Lino nimmt den ersten passenden Wochentag **ab** diesem Datum."
+msgstr ""
+
+#: ../faq.rst:39
+# 15ea8ec54e344c9dad50d1d746015cc7
+msgid "Alle anderen Methoden bedeuten, dass das Beginndatum den Wochentag bestimmt."
+msgstr ""
+
+#: ../faq.rst:45
+# d15055706f7c408ba55e03432ceeeb33
+msgid "Nach welcher Logik ist das Hauptmenü strukturiert?"
+msgstr ""
+
+#: ../faq.rst:47
+# 6bf355527720430ea5a91ae387d9f8e7
+msgid "Zur Struktur des Menüs:"
+msgstr ""
+
+#: ../faq.rst:49
+# c61c548c2f41405bbed965f7e9dfaa49
+msgid "Alle Benutzer haben eigentlich das gleiche Menü, aber die einzelnen Untermenüs \"wachsen\" oder \"schrumpfen\" je nach den Zugriffsrechten."
+msgstr ""
+
+#: ../faq.rst:52
+# 97e0c51e8268429d9e854d8ef5013b00
+msgid "Wir unterscheiden **drei Arten von Menü-Titeln**. Zunächst haben wir pro \"funktionaler Gruppe\" jeweils einen Titel mit \"täglichen\" Befehlen:"
+msgstr ""
+
+#: ../faq.rst:56
+# 963c876622f9446f91880a51c9c3e292
+msgid ":menuselection:`Kontakte`, :menuselection:`Kurse`, :menuselection:`Kalender`, :menuselection:`Produkte` usw."
+msgstr ""
+
+#: ../faq.rst:60
+# 0b879d9e49ea4f22b2f55af2de64e0f1
+msgid "Darauf folgen drei besondere Titel \":menuselection:`Berichte`\" \":menuselection:`Konfigurierung`\" und \":menuselection:`Explorer`\" weniger alltäglichen Befehlen:"
+msgstr ""
+
+#: ../faq.rst:64
+# 574b1c26937943ea88ca94563106a32e
+msgid ":menuselection:`Berichte` enthält auswertende oder zusammenfassende Ansichten."
+msgstr ""
+
+#: ../faq.rst:67
+# 6256a44d19984d7ea3c8e4d1df3ca8cb
+msgid ":menuselection:`Konfigurierung` enthält Befehle zur Konfigurierung des Gesamtsystems."
+msgstr ""
+
+#: ../faq.rst:70
+# 6a7dc47b1ec24b158aec649adfdfa793
+msgid ":menuselection:`Explorer` zeigt Gesamtansichten gewisser Tabellen, die theoretisch nicht nötig sind, sondern eher \"für Neugierige\" dort sind und in Ausnahmesituationen nützlich sein können."
+msgstr ""
+
+#: ../faq.rst:75
+# 7bb85995fa744665a1b1e6d361a69050
+msgid "Diese drei Titel sind *jeweils wieder pro funktionaler Gruppe unterteilt*."
+msgstr ""
+
+#: ../faq.rst:78
+# f61413a559e145e8b23fc04f8bea5d8b
+msgid "Sowie die drei speziellen Titel :menuselection:`Site`, :menuselection:`Startseite` und das \"Benutzermenü\" oben rechts (das den Namen des Benutzers anzeigt)."
+msgstr ""
+
+#: ../faq.rst:84
+# 108f05003bb04bce993cc25413e34567
+msgid "Wieso überspringt Lino das Datum X beim Generieren meiner Termine?"
+msgstr ""
+
+#: ../faq.rst:86
+# 9247a38a40bf462387dd39866645506a
+msgid "Mögliche Gründe:"
+msgstr ""
+
+#: ../faq.rst:88
+# 5392e2a9cc50482c802069293b565e82
+msgid "Ist das Datum ein Feiertag? (:menuselection:`Konfigurierung --> Kalender --> Periodische Termine`)"
+msgstr ""
+
+#: ../faq.rst:91
+# 26256fde339c44adaaa1dc3585770734
+msgid "Findet an dem Tag ein anderer Termin im gleichen Raum statt?"
+msgstr ""
+
+#: ../faq.rst:93
+# 2a3e6dccfa22426e91a22b3ef1fe713c
+msgid "Falls das noch nicht hilft, können Sie (mit Firefox oder Chromium) die Javascript-Console Ihres Browsers öffnen, auf den Blitz klicken (um die Aktion nochmals auszuführen) und schauen, was er in die Konsole schreibt. Dort berichtet Lino, was er sich beim Generieren der Termine gedacht hat."
+msgstr ""
+
+#: ../faq.rst:102
+# cba7cf828a444fedb06853e8daa1ca3c
+msgid "Einzelne Termine ausfallen lassen"
+msgstr ""
+
+#: ../faq.rst:104
+# ac4311c63e04426a963cfa86b8f89e9d
+msgid "Wie kann ich Lino daran hindern, am Karnevalstag einen Termin zu generieren?  Lino generiert beharrlich einen Termin am 5. März (Karneval) jedesmal wieder neu, wenn ich ihn lösche."
+msgstr ""
+
+#: ../faq.rst:108
+# a819902134004628b14a514c89544b57
+msgid "Löschen reicht nicht, dann generiert er ihn neu. Aber die Idee ist gut: wenn man einen automatisch generierten Termin löscht, dann sollte Lino dies als \"Stunde fällt aus, ist aber nicht storniert, sondern wird in der Woche darauf nachgeholt\" verstehen und automatisch die folgenden Termine neu nummerieren."
+msgstr ""
+
+#: ../faq.rst:114
+# 62e837a79fd94295ba18451fa6d67347
+msgid "Momentan musst du:"
+msgstr ""
+
+#: ../faq.rst:116
+# f47b8f8a2593412bb94ce934da4907ac
+msgid "in der Tabellenansicht aufs Datumsfeld klicken"
+msgstr ""
+
+#: ../faq.rst:117
+# 7532a70af0364834a3b27de741306c4d
+msgid "[F2] drücken um zu sagen \"Ich will das Feld bearbeiten\""
+msgstr ""
+
+#: ../faq.rst:118
+# e94b399924f341cabcd32d49c94f4ffe
+msgid "[Alt+PfeilNachUnten] um den Auswahlkalender aufzuklappen"
+msgstr ""
+
+#: ../faq.rst:119
+# 76c11137acb740528ee49e00ac3d5ea9
+msgid "[PfeilNachUnten] um auf die Woche danach zu springen"
+msgstr ""
+
+#: ../faq.rst:120
+# 6cbf863a964c4fe0aa34d2f34fc729b3
+msgid "[Enter] um das neue Datum auszuwählen"
+msgstr ""
+
+#: ../faq.rst:121
+# 15c4bbb7fefb4f91b6d6bd5a69954cb4
+msgid "[Enter] oder [Tab] um die Feldbearbeitung zu beenden"
+msgstr ""
+
+#: ../faq.rst:123
+# f239064f50c4464bb5c0c724c043d154
+msgid "Oder noch besser: gehe in `Konfigurierung --> Kalender --> Periodische Termine` und sage dort, dass Karneval ein Feiertag ist:"
+msgstr ""
+
+#: ../faq.rst:126
+# e61edd79efa9470e8e32b8a89bbc1b3b
+msgid "Auf `+` klicken oder Doppelklick auf der leeren untersten Zeile"
+msgstr ""
+
+#: ../faq.rst:127
+# a4b34511a6134413bb0d1726d3daf7e5
+msgid "Im Feld :ddref:`cal.RecurrentEvents.name` z.B. \"Karneval\" eingeben"
+msgstr ""
+
+#: ../faq.rst:128
+# c29d61c56ebf427b91d9bf681013360d
+msgid "Im Feld :ddref:`cal.RecurrentEvents.event_type` \"Feiertag\" auswählen"
+msgstr ""
+
+#: ../faq.rst:129
+# 6250d806ba94490f95c9e5c30421edb8
+msgid "[Enter] drücken (oder auf `Erstellen` klicken), um das Dialogfenster zu schließen. Lino zeigt nun die neu erstellte Terminvorlage im Detail."
+msgstr ""
+
+#: ../faq.rst:131
+# 656cd2c6886a405590e80884e7db444b
+msgid "Im Feld :ddref:`cal.RecurrentEvents.every_unit` \"once\" auswählen. (eine Regel \"40 Tage vor Ostern\" hat Lino noch nicht, deshalb müssen Ostern und Karneval jedes Jahr manuell erstellt werden)"
+msgstr ""
+
+#: ../faq.rst:134
+# 6d1d6c3a7b224299b173ca0ecf7f8b2b
+msgid "Auf den Blitz klicken, um den eigentlichen Termin zu generieren."
+msgstr ""
+
