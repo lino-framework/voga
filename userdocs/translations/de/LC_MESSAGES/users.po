@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-08 03:13+0300\n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
 "PO-Revision-Date: 2013-05-31 15:29+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -16,96 +16,151 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.0\n"
+"Generated-By: Babel 1.3\n"
+
+# d39e5b2f9d004a3a9e5b343fa619c5bb
+#: ../users.rst:5
+msgid "Users"
+msgstr ""
+
+# b3ab876507154794b986c11c8c076990
+#: ../users.rst:0
+msgid "User (model)"
+msgstr ""
+
+# 304b37db4e734750b95547a33d15802d
+#: ../users.rst:0
+msgid "User Profile (field)"
+msgstr ""
+
+# af27c571dd0e4f919d2ac843d58fcbf6
+#: ../users.rst:0
+msgid "Authority (model)"
+msgstr ""
+
+# 295a4ee5eca3428086c1f77394dc54a1
+#: ../users.rst:0
+msgid "Team (model)"
+msgstr ""
+
+# bcaffce09a2f4ffa901e53eee61b6bd3
+#: ../users.rst:0
+msgid "Teams (view)"
+msgstr ""
+
+# fcf2063ce3734ebdbf5e94442c789b51
+#: ../users.rst:0
+msgid "Membership (model)"
+msgstr ""
+
+# 91a146b225fb4a5dbc6d7a383da4521e
+#: ../users.rst:0
+msgid "User Profiles (view)"
+msgstr ""
+
+# c1997be43113418d9c2b729432fd88af
+#: None:2
+msgid "User (model in users)"
+msgstr ""
+
+# 9e32aa8353ff4900957926ddaa51f5ae
+#: None:2
+msgid "User Profile (field in :ref:`User <faggio.users.user>`)"
+msgstr ""
+
+# 306981c157254e5c93f6bef32b8185c9
+#: None:2
+msgid "Authority (model in users)"
+msgstr ""
+
+# 032e11a7b87f459f8ff5b1ac6944e932
+#: None:2
+msgid "Team (model in users)"
+msgstr ""
+
+# 7b7921e6197346f794ed7ba6903aab24
+#: None:2
+msgid "Membership (model in users)"
+msgstr ""
 
 # 88e6d22a135748aebb0fea24aad2431a
-#: ../users.rst:5
-msgid "Gestion des utilisateurs"
-msgstr ""
+#~ msgid "Gestion des utilisateurs"
+#~ msgstr ""
 
 # 422c9dd353d14a68b67244a4a8731314
 # 76fe13264f144cd383b50025083e9e4b
-#: ../users.rst:9 ../users.rst:82
-msgid "Référence"
-msgstr ""
+#~ msgid "Référence"
+#~ msgstr ""
 
 # a36cfdb7c7434eb08e64be5d9667cea3
-#: ../users.rst:19
-msgid "The profile of a user"
-msgstr ""
+#~ msgid "The profile of a user"
+#~ msgstr ""
 
 # ee3d8b55d16e4cf38b4eb458f6b1d32c
-#: ../users.rst:21
-msgid ""
-"Each user must have a profile in order to be active. Users with an empty "
-":ref:`faggio.users.User.profile` field are considered inactive and cannot"
-" log in."
-msgstr ""
+#~ msgid ""
+#~ "Each user must have a profile in"
+#~ " order to be active. Users with "
+#~ "an empty :ref:`faggio.users.User.profile` field "
+#~ "are considered inactive and cannot log"
+#~ " in."
+#~ msgstr ""
 
 # 05e9ae4d5dbd42138775305dba3fee75
-#: ../users.rst:28
-msgid "Team"
-msgstr ""
+#~ msgid "Team"
+#~ msgstr ""
 
 # 2b5737afb804482ea9542f7307412439
-#: ../users.rst:30
-msgid ""
-"The permissions do not depend on the Team, they depend on the "
-":ref:`faggio.users.UserProfile`. Belonging to a user group or not has no "
-"influence on access permissions"
-msgstr ""
+#~ msgid ""
+#~ "The permissions do not depend on "
+#~ "the Team, they depend on the "
+#~ ":ref:`faggio.users.UserProfile`. Belonging to a "
+#~ "user group or not has no influence"
+#~ " on access permissions"
+#~ msgstr ""
 
 # 732efb6d92fe441b81c2895362bb2f8a
-#: ../users.rst:36
-msgid "Teams"
-msgstr ""
+#~ msgid "Teams"
+#~ msgstr ""
 
 # 2b3f3406df5c4774bd28f4c3bb07b969
-#: ../users.rst:39
-msgid "The table of available :ref:`faggio.users.Team` records on this site."
-msgstr ""
+#~ msgid "The table of available :ref:`faggio.users.Team` records on this site."
+#~ msgstr ""
 
 # 740b5d1849c546c9854a382ae24a83f2
-#: ../users.rst:41
-msgid "The demo site has the following teams:"
-msgstr ""
+#~ msgid "The demo site has the following teams:"
+#~ msgstr ""
 
 # 29d2ce21cc364bf793861fc8a75a41dd
-#: ../users.rst:48
-msgid "Membership"
-msgstr ""
+#~ msgid "Membership"
+#~ msgstr ""
 
 # a35b8e85a3bf467b8828b1b2bd287f79
-#: ../users.rst:51
-msgid ""
-"A membership is when a given :ref:`faggio.users.User` belongs to a given "
-":ref:`faggio.users.Team`."
-msgstr ""
+#~ msgid ""
+#~ "A membership is when a given "
+#~ ":ref:`faggio.users.User` belongs to a given"
+#~ " :ref:`faggio.users.Team`."
+#~ msgstr ""
 
 # 73e1901ad2fb4ffb96451104722f6779
-#: ../users.rst:59
-msgid "User Profile"
-msgstr ""
+#~ msgid "User Profile"
+#~ msgstr ""
 
 # 96f77257d6f14d7a9db86ab2c508f5a9
-#: ../users.rst:61
-msgid "A user profile is a combination of access rights and permission sets."
-msgstr ""
+#~ msgid "A user profile is a combination of access rights and permission sets."
+#~ msgstr ""
 
 # d62107960f8e4b64997080300fe44a11
-#: ../users.rst:69
-msgid "User Profiles"
-msgstr ""
+#~ msgid "User Profiles"
+#~ msgstr ""
 
 # f164daeae14045579e2f2285299c5f7d
-#: ../users.rst:71
-msgid "The list of user profiles available on this site."
-msgstr ""
+#~ msgid "The list of user profiles available on this site."
+#~ msgstr ""
 
 # ebbe1c139a0b4b3591406948cf73ab9c
-#: ../users.rst:73
-msgid ""
-"In the demo database, alice and hubert share the same profile while "
-"melanie has a different profile."
-msgstr ""
+#~ msgid ""
+#~ "In the demo database, alice and "
+#~ "hubert share the same profile while "
+#~ "melanie has a different profile."
+#~ msgstr ""
 

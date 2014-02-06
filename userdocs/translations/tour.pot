@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-08 03:13+0300\n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,22 +17,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../tour.rst:5
-# badacb9fce2148c8a751a5d07e43fb92
+# 2caa1eb40efd45dab698281c6c7e223e
 msgid "An introduction to Lino-Faggio"
 msgstr ""
 
 #: ../tour.rst:7
-# bd9da2e7341a4a38925fc952132f7b06
+# a18368b9901147dcb470870556f5d6db
 msgid "Partners"
 msgstr ""
 
 #: ../tour.rst:9
-# 54bfbf906be84a169b85ac4a9c3e9d5b
-msgid "Create some :ref:`faggio.courses.Courses`"
+# 7a21607b505043cf98f1922dd5e244c8
+msgid "Create some :ddref:`courses.Course`"
 msgstr ""
 
 #: ../tour.rst:11
-# 86a130565a6d46c0bb4eaa30da30d017
-msgid ":ref:`faggio.sales.InvoicesToCreate`"
+# 84c73495f1be4100913c0805cca3c533
+msgid ":ddref:`sales.InvoicesToCreate`"
 msgstr ""
 

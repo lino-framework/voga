@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-08 03:13+0300\n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,17 +17,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../countries.rst:5
-# 9a0eda2d4f5343ac8044ebcf35ce0e70
+# 444cf2d1ebe74b7c8471f4b8f297d20e
 msgid "Countries"
 msgstr ""
 
-#: None:2
-# 1fd362a4cd78454a9b45dda0969a2c1a
-msgid "Place (model in app \"countries\")"
+#: ../countries.rst:0
+# c4f7fa86f6e147f39faaad349cc01b92
+msgid "Place (model)"
+msgstr ""
+
+#: ../countries.rst:0
+# 84c5dfcf58f0486ab03024ec84f7a37f
+msgid "Country (model)"
 msgstr ""
 
 #: None:2
-# f5a3ab5a390048a1bb1b47e63aa90cc3
-msgid "Country (model in app \"countries\")"
+# b3829f540ab6455b89bf8353078d851e
+msgid "Place (model in countries)"
+msgstr ""
+
+#: None:2
+# 869c2de9201c4e2bac72ba317f732fa4
+msgid "Country (model in countries)"
 msgstr ""
 

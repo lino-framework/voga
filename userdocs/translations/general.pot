@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-08 03:13+0300\n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,42 +17,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../general.rst:3
-# 146bb25ca5e649c6a809ed6717f085b6
+# 3474bd6c9cc34014a20074b160c12335
 msgid "Concepts généraux"
 msgstr ""
 
 #: ../general.rst:8
-# d9ec41d0a91a43ca969d153028e527b8
+# d4339a84c0d84e8f8cbc8334be2854ca
 msgid "Vue tabulaire"
 msgstr ""
 
 #: ../general.rst:10
-# ca98993d577b46fbb90d15c2c7e24974
+# d8f006f7da334a08bb2ea238941759d2
 msgid "Nous parlons de vue tabullaire quand une série d'enregistrements vous est présentée sous forme de grille. Les colonnes portent des libellés."
 msgstr ""
 
 #: ../general.rst:17
-# aa157a4bb3c24dd3b3d86634de7761cf
+# 49a6fa65ca754fb59fdf6b9f63ad4db3
 msgid "Vue détaillée"
 msgstr ""
 
 #: ../general.rst:19
-# c9536a20f4824f22b194a62cf5cf633f
+# 7590b1bde91c4ab78d8af102b8a9b744
 msgid "Nous parlons de vue détaillée quand un seul enregistrement vous est présenté sous forme de formulaire."
 msgstr ""
 
 #: ../general.rst:26
-# b0ccc7905dbe418d921a3779d9d94fd6
+# 39221baca3ae47928e58ca5061d63857
 msgid "Enregisterer"
 msgstr ""
 
 #: ../general.rst:28
-# 1f4b9784c62747e9bd26d2c41a21087d
+# e7c7bbab4bb34a79910a901edee6a886
 msgid "Click this button to save your changes in the form."
 msgstr ""
 
 #: ../general.rst:33
-# 599dc3d5115c4b3cbe51df877fc5e6ab
+# 0ad62b0fe6064fef82fdaee5a350765d
 msgid "Référence"
+msgstr ""
+
+#: ../general.rst:0
+# a986420f2bbb48eb93dc9fcec7d3bdad
+msgid "Help Texts (view)"
+msgstr ""
+
+#: ../general.rst:0
+# 8161ce176c3843b68b7b10849d575891
+msgid "Text Field Templates (view)"
+msgstr ""
+
+#: ../general.rst:0
+# 65bee49fc4ce44aa9dcd0328bfb9c9e2
+msgid "Site configurations (view)"
 msgstr ""
 

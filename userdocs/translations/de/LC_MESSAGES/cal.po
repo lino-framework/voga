@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lino-Faggio Benutzerhandbuch 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-08 03:13+0300\n"
+"POT-Creation-Date: 2014-02-06 09:52+0200\n"
 "PO-Revision-Date: 2013-05-31 15:29+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
@@ -16,58 +16,155 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.0\n"
+"Generated-By: Babel 1.3\n"
 
-# 27955af0b2994325ac4b8a10f697e204
+# 365f593c41054e3ba3650431fad59145
 #: ../cal.rst:5
 msgid "Calendar"
 msgstr ""
 
-# a6397fc484f0439c940beafe4e43384c
-#: ../cal.rst:7
+# 1d7720e75806436f8d76136a11e5d700
+#: ../../../welfare/userdocs/include/cal.rst:4
 msgid ""
 "Important models are :ddref:`cal.Event` and :ddref:`cal.Guest` and "
 ":ddref:`cal.Task`..."
 msgstr ""
 
-# 789e4066755e4e2bb6d3e8a9f255a649
-#: None:2
-msgid "Event (model in app \"cal\")"
+# 07fdb0b9aa2244e8b9ab2c723fbbc08f
+#: ../cal.rst:0
+msgid "Calendar (view)"
 msgstr ""
 
-# 8a3f255a911b4fd09eee7c6afaa23329
-#: None:2
-msgid "Guest (model in app \"cal\")"
+# 595a6398741241aa9f743ee6ad3f163f
+#: ../cal.rst:0
+msgid "Event (model)"
 msgstr ""
 
-# 12cc1d6536474887bcc4f86ffd9d0004
-#: None:2
-msgid "Task (model in app \"cal\")"
+# 8b60942a96e249bda5ff07dd51c60d13
+#: ../cal.rst:0
+msgid "Events (view)"
 msgstr ""
 
-# 0ed4c0ec06e84b37a1c0d3f863c0b4ca
-#: None:2
-msgid "Calendar (model in app \"cal\")"
+# 524450d3d0ef4747a8ed9284726151c7
+#: ../cal.rst:0
+msgid "Guest (model)"
 msgstr ""
 
-# 793cdcecfa7f487cba520e680f58d90b
-#: None:2
-msgid "Subscription (model in app \"cal\")"
+# 9d6cb849ca6f4681af86b6cbb70f64ae
+#: ../cal.rst:0
+msgid "Task (model)"
 msgstr ""
 
-# 5bdc4dd5e7d84e2eb21a977682b3f632
-#: None:2
-msgid "Room (model in app \"cal\")"
+# 5a4f0ddf0f0b4388b2ac5f66cc1ba197
+#: ../cal.rst:0
+msgid "State (field)"
 msgstr ""
 
-# bb5ccbf310fa40968e78a4ef585b28d8
-#: None:2
-msgid "Priority (model in app \"cal\")"
+# f6c908a1dbe14af298c8e30693f0d6ba
+#: ../cal.rst:0
+msgid "Calendar (model)"
 msgstr ""
 
-# 10bc37167f1d4ca3ad66c77e19ac7837
+# 6d6a34cf04fd4bcbbe0231c75a36c039
+#: ../cal.rst:0
+msgid "Subscription (model)"
+msgstr ""
+
+# 59d3676a67fd4f45bbc4db9cb5249750
+#: ../cal.rst:0
+msgid "Room (model)"
+msgstr ""
+
+# af74aaf4dfdf43b9a7d284436d002d5c
+#: ../cal.rst:0
+msgid "Priority (model)"
+msgstr ""
+
+# 2c4fdd70aad34640984f7d93f7677099
+#: ../cal.rst:0
+msgid "Guest Role (model)"
+msgstr ""
+
+# ff2b7fb43948406faec945ee7bc56d44
+#: ../cal.rst:0
+msgid "Event Type (model)"
+msgstr ""
+
+# ed91407a5f114cdb9f9ad3e5285baa79
+#: ../cal.rst:11
+msgid "Anonymous calendar events"
+msgstr ""
+
+# 81005db39adb46509f2e115e9054b62b
+#: ../cal.rst:13
+msgid ""
+"A calendar event with an empty :ddref:`cal.Event.user` field is called "
+"\"anonymous\" or \"public\"."
+msgstr ""
+
+# 024cf3cba1474436aa8adea62c3b161d
+#: ../cal.rst:18
+msgid "Site parameters"
+msgstr ""
+
+# f02c3f6add884fedbd38b1e82c20eae9
+#: ../cal.rst:20
+msgid ":ddref:`system.SiteConfig.max_auto_events`"
+msgstr ""
+
+# 8a0c2faf694f448ea33f862f26a7e9b2
+#: ../cal.rst:22
+msgid "farest_future default_calendar holiday_calendar"
+msgstr ""
+
+# 9358cb67ba624fbda793aa7950ad4008
 #: None:2
-msgid "Guest Role (model in app \"cal\")"
+msgid "Event (model in cal)"
+msgstr ""
+
+# b0ec448e7af040fa8e18fdd55c4ba80c
+#: None:2
+msgid "Guest (model in cal)"
+msgstr ""
+
+# 6fabdf93184446d099c2f129017b38e7
+#: None:2
+msgid "Task (model in cal)"
+msgstr ""
+
+# 7b99bebc30ac4e44a59b2a1db155a197
+#: None:2
+msgid "State (field in :ref:`Task <faggio.cal.task>`)"
+msgstr ""
+
+# 0b2d0a4484bb4c0787ceff19a3cab433
+#: None:2
+msgid "Calendar (model in cal)"
+msgstr ""
+
+# f6687ce7159d4e86a42b2904f2788df3
+#: None:2
+msgid "Subscription (model in cal)"
+msgstr ""
+
+# 054452f727c1455caeea1dcbaf14cccc
+#: None:2
+msgid "Room (model in cal)"
+msgstr ""
+
+# c956d497cd294f528fa9a0c1135d4927
+#: None:2
+msgid "Priority (model in cal)"
+msgstr ""
+
+# 07f4cdb8615b4ed79fe5ea861d97e5b7
+#: None:2
+msgid "Guest Role (model in cal)"
+msgstr ""
+
+# 811cc51c7def43adb698c3f489cd6af1
+#: None:2
+msgid "Event Type (model in cal)"
 msgstr ""
 
 # e4e83a3e04114c9381abe5c6c8191660
@@ -80,14 +177,41 @@ msgstr ""
 
 # 977f5510faa24da29d485411b57c4d7a
 #~ msgid ""
-#~ "The Calendar Panel displays your events"
-#~ " in a classical \"calendar view\", "
-#~ "with the possibility to switch between"
-#~ " daily, weekly, monthly and to toggle"
-#~ " the visibility of team events."
 #~ msgstr ""
 
 # 41968beedc6146478a79aecc23f65081
 #~ msgid "Référence"
+#~ msgstr ""
+
+# 789e4066755e4e2bb6d3e8a9f255a649
+#~ msgid "Event (model in app \"cal\")"
+#~ msgstr ""
+
+# 8a3f255a911b4fd09eee7c6afaa23329
+#~ msgid "Guest (model in app \"cal\")"
+#~ msgstr ""
+
+# 12cc1d6536474887bcc4f86ffd9d0004
+#~ msgid "Task (model in app \"cal\")"
+#~ msgstr ""
+
+# 0ed4c0ec06e84b37a1c0d3f863c0b4ca
+#~ msgid "Calendar (model in app \"cal\")"
+#~ msgstr ""
+
+# 793cdcecfa7f487cba520e680f58d90b
+#~ msgid "Subscription (model in app \"cal\")"
+#~ msgstr ""
+
+# 5bdc4dd5e7d84e2eb21a977682b3f632
+#~ msgid "Room (model in app \"cal\")"
+#~ msgstr ""
+
+# bb5ccbf310fa40968e78a4ef585b28d8
+#~ msgid "Priority (model in app \"cal\")"
+#~ msgstr ""
+
+# 10bc37167f1d4ca3ad66c77e19ac7837
+#~ msgid "Guest Role (model in app \"cal\")"
 #~ msgstr ""
 
