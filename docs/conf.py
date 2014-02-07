@@ -13,9 +13,12 @@ import sys, os
 from atelier.sphinxconf import configure
 configure(globals(), 'lino_faggio.settings.test')
 
+extensions += ['atelier.sphinxconf.blog']
+extensions += ['lino.utils.actordoc']
+extensions += ['sphinxcontrib.taglist']
 
 from django.conf import settings
-settings.SITE.title = "Lino-Faggio Reference Manual"
+settings.SITE.title = "Lino Faggio Reference Manual"
 
 
 # If your extensions are in another directory, add it here. If the directory
@@ -26,25 +29,7 @@ settings.SITE.title = "Lino-Faggio Reference Manual"
 # General configuration
 # ---------------------
 
-# Add any Sphinx extension module names here, as strings. They can be extensions
-# coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-#~ extensions = [
-  #~ 'sphinx.ext.autodoc',
-  #~ 'sphinx.ext.autosummary',
-  # 'sphinx.ext.inheritance_diagram',
-  # 'sphinx.ext.todo',
-  #~ 'sphinx.ext.extlinks',
-  #~ 'sphinx.ext.graphviz',
-  #~ 'sphinx.ext.intersphinx',
-  #~ 'sphinx.ext.doctest',
-#~ ]
-
-#~ extensions.append('sphinxcontrib.autorun')
-
-
 primary_domain = 'py'
-
-
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['.templates']
@@ -196,16 +181,6 @@ htmlhelp_basename = 'faggio'
 #~ srcref_base_uri="http://code.google.com/lino"
 #~ srcref_base_uri="http://code.google.com/p/lino/source/browse/#hg" 
 
-
-extlinks = {
-  'issue': ('http://code.google.com/p/lino/issues/detail?id=%s', 'Issue '),
-  'checkin': ('http://code.google.com/p/lino-faggio/source/detail?r=%s', 'Checkin '),
-  'srcref': ('http://code.google.com/p/lino-faggio/source/browse%s', ''),
-  'extjs': ('http://www.sencha.com/deploy/dev/docs/?class=%s', ''),
-  'extux': ('http://extjs-ux.org/ext-docs/?class=%s', ''),
-  'djangoticket': ('http://code.djangoproject.com/ticket/%s', 'Django ticket #'),
-  'lino': ('http://www.lino-framework.org%s.html', ''),
-}
 
 
 #~ nitpicky = True # use -n in Makefile instead

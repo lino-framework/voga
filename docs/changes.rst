@@ -10,8 +10,8 @@ The final truth about what's going on is only
 `The Source Code <http://code.google.com/p/lino-faggio/source/list>`_.
 
 
-Version 0.0.2 (in development)
-==============================
+Version 0.0.2 (released :blogref:`20140206`)
+============================================
 
 - Termine kann man jetzt "Zurücksetzen" (nützlich z.B. wenn man
   versehentlich auf "Stattgefunden" geklickt hatte).
@@ -35,6 +35,15 @@ Version 0.0.2 (in development)
   anzupassen. (Denn wenn ich das auch dort immer automatisch nach
   jeder Änderung aufriefe, könnte das möglicherweise irritierende oder
   lästige Auswirkungen haben. à suivre.)
+
+- Bei Auswahl Kursleiter steht jetzt nicht mehr die Kursleiterart in
+  Klammern hinter dem Namen.
+- Kursserie einfügen: auch Felder "Thema" und "Kursleiter"
+- Neue Partner (Kursleiter, Schüler, Organisationen, sonstige) haben
+  jetzt par défaut "Belgien" als Land (genauer gesagt das Land des
+  Site-Besitzers (:ddref:`system.SiteConfig.site_company`)
+
+
 
 
 Version 0.0.1 (released :blogref:`20131210`)
