@@ -1,10 +1,10 @@
 .. _faggio:
 
 ===========
-Lino-Faggio
+Lino Faggio
 ===========
 
-Welcome to the *Lino-Faggio* project homepage.
+Welcome to the *Lino Faggio* project homepage.
 
 .. py2rst::
 
