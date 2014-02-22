@@ -23,16 +23,15 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-#~ from lino import dd
 from lino.utils.instantiator import Instantiator, i2d
 from lino.utils import Cycler
-#~ from lino.core.dbutils import resolve_model
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-
+from atelier.utils import date_offset
 from north.dbutils import babelkw
-
 from lino import dd
+
+DEMO_REF_DATE = i2d(20140101)
 
 
 cal = dd.resolve_app('cal')
@@ -55,6 +54,10 @@ CourseStates = courses.CourseStates
 EnrolmentStates = courses.EnrolmentStates
 BookingStates = rooms.BookingStates
 Calendar = dd.resolve_model('cal.Calendar')
+
+
+def demo_date(*args, **kw):
+    return date_offset(DEMO_REF_DATE, *args, **kw)
 
 
 class Loader1(object):
@@ -263,7 +266,6 @@ class Loader2(Loader1):
         TEACHERS = Cycler(Teacher.objects.all())
         COMPANIES = Cycler(Company.objects.all())
         USERS = Cycler(settings.SITE.user_model.objects.all())
-        PLACES = Cycler(Room.objects.all())
 
         def add_course(*args, **kw):
             kw.update(user=USERS.pop())
@@ -285,14 +287,17 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=20)
-        kw.update(start_date=settings.SITE.demo_date(-30))
+        kw.update(start_date=demo_date(-30))
         kw.update(state=courses.CourseStates.started)
         kw.update(every=1)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
 
-        yield add_course(obj, self.pc_bbach, "13:30", "15:00", monday=True, **kw)
-        yield add_course(obj, self.pc_eupen, "17:30", "19:00", wednesday=True, **kw)
-        yield add_course(obj, self.pc_kelmis, "13:30", "15:00", friday=True, **kw)
+        yield add_course(obj, self.pc_bbach, "13:30", "15:00",
+                         monday=True, **kw)
+        yield add_course(obj, self.pc_eupen, "17:30", "19:00",
+                         wednesday=True, **kw)
+        yield add_course(obj, self.pc_kelmis, "13:30", "15:00",
+                         friday=True, **kw)
 
         desc = """
     Behandelte Themengebiete:
@@ -307,35 +312,42 @@ class Loader2(Loader1):
     - Elektronische Post: E-Mails verfassen, senden, empfangen, beantworten
     - E-Mails mit Anlagen
     - E-mail Sicherheit
-    - Tipps und Tricks    
+    - Tipps und Tricks
     """
         obj = line(
             comp, self.kurse, self.PRICES.pop(
-            ), description=desc, **dd.babelkw('name',
-                                              de="Internet: World Wide Web für Anfänger",
-                                              en="Internet for beginners"))
+            ), description=desc, **dd.babelkw(
+                'name',
+                de="Internet: World Wide Web für Anfänger",
+                en="Internet for beginners"))
         yield obj
         kw = dict(max_events=8)
-        kw.update(start_date=settings.SITE.demo_date(10))
+        kw.update(start_date=demo_date(10))
         kw.update(state=courses.CourseStates.registered)
-        yield add_course(obj, self.pc_bbach, "13:30", "15:00", monday=True, **kw)
-        yield add_course(obj, self.pc_eupen, "17:30", "19:00", wednesday=True, **kw)
-        yield add_course(obj, self.pc_kelmis, "13:30", "15:00", friday=True, **kw)
+        yield add_course(obj, self.pc_bbach, "13:30", "15:00",
+                         monday=True, **kw)
+        yield add_course(obj, self.pc_eupen, "17:30", "19:00",
+                         wednesday=True, **kw)
+        yield add_course(obj, self.pc_kelmis, "13:30", "15:00",
+                         friday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    **dd.babelkw('name', de="Bauchtanz", en="Belly dancing"))
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=10)
-        kw.update(start_date=settings.SITE.demo_date(-20))
+        kw.update(start_date=demo_date(-20))
         kw.update(state=CourseStates.started)
-        yield add_course(obj, self.spiegel, "19:00", "20:00", wednesday=True, **kw)
+        yield add_course(obj, self.spiegel, "19:00", "20:00",
+                         wednesday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
-                   **dd.babelkw('name', de="Funktionsgymnastik", en="Functional gymnastics"))
+                   **dd.babelkw('name',
+                                de="Funktionsgymnastik",
+                                en="Functional gymnastics"))
         yield obj
         kw = dict(max_events=10, state=CourseStates.started)
-        kw.update(start_date=settings.SITE.demo_date(-10))
+        kw.update(start_date=demo_date(-10))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
 
@@ -343,7 +355,7 @@ class Loader2(Loader1):
                    **dd.babelkw('name', de="Rücken fit durch Schwimmen", en="Swimming"))
         yield obj
         kw = dict(max_events=10, state=CourseStates.ended)
-        kw.update(start_date=settings.SITE.demo_date(-100))
+        kw.update(start_date=demo_date(-100))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
         yield add_course(obj, self.pc_stvith, "11:00", "12:00", tuesday=True, **kw)
@@ -356,7 +368,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=6)
         kw.update(max_places=12)
-        kw.update(start_date=settings.SITE.demo_date(-80))
+        kw.update(start_date=demo_date(-80))
         kw.update(state=CourseStates.ended)
         yield add_course(obj, self.spiegel, "18:00", "19:00", friday=True, **kw)
         yield add_course(obj, self.spiegel, "19:00", "20:00", friday=True, **kw)
@@ -364,18 +376,22 @@ class Loader2(Loader1):
         obj = line(medit, self.kurse, self.PRICES.pop(), name="GuoLin-Qigong")
         yield obj
         kw = dict(max_events=10)
-        kw.update(start_date=settings.SITE.demo_date(-10))
+        kw.update(start_date=demo_date(-10))
         kw.update(state=CourseStates.started)
-        yield add_course(obj, self.spiegel, "18:00", "19:30", monday=True, **kw)
-        yield add_course(obj, self.spiegel, "19:00", "20:30", friday=True, **kw)
+        yield add_course(obj, self.spiegel, "18:00", "19:30",
+                         monday=True, **kw)
+        yield add_course(obj, self.spiegel, "19:00", "20:30",
+                         friday=True, **kw)
 
-        obj = line(medit, self.kurse, self.PRICES.pop(), **dd.babelkw('name',
-                                                                      de="Den Kopf frei machen - zur inneren Ruhe finden",
-                                                                      en="Finding your inner peace"))
+        obj = line(medit, self.kurse, self.PRICES.pop(),
+                   **dd.babelkw(
+                       'name',
+                       de="Den Kopf frei machen - zur inneren Ruhe finden",
+                       en="Finding your inner peace"))
         yield obj
         kw = dict(max_events=10)
         kw.update(max_places=30)
-        kw.update(start_date=settings.SITE.demo_date(-10))
+        kw.update(start_date=demo_date(-10))
         kw.update(state=CourseStates.started)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
@@ -383,7 +399,7 @@ class Loader2(Loader1):
         obj = line(medit, self.kurse, self.PRICES.pop(), name="Yoga")
         yield obj
         kw = dict(max_events=10)
-        kw.update(start_date=settings.SITE.demo_date(60))
+        kw.update(start_date=demo_date(60))
         kw.update(state=CourseStates.registered)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
@@ -405,7 +421,7 @@ class Loader2(Loader1):
         #~ yield obj
         kw = dict(max_events=10)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
-        kw.update(start_date=settings.SITE.demo_date(60))
+        kw.update(start_date=demo_date(60))
         kw.update(state=BookingStates.registered)
         kw.update(company=COMPANIES.pop())
         yield add_booking(self.konf, "20:00", "22:00", tuesday=True, **kw)
@@ -427,7 +443,7 @@ class Loader2(Loader1):
             kw = dict(
                 user=USERS.pop(), course=COURSES.pop(),
                 pupil=PUPILS.pop())
-            kw.update(request_date=settings.SITE.demo_date(-i))
+            kw.update(request_date=demo_date(-i))
             kw.update(state=STATES.pop())
             #~ print 20130712, kw
             yield Enrolment(**kw)

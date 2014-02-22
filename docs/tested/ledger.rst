@@ -15,6 +15,7 @@ Ledger
 Journals
 --------
 
+>>> ses = settings.SITE.login('robin')
 >>> ses.show(ledger.Journals,column_names="ref name trade_type account dc")
 ==================== =============================== ============ ====================================== ========
  ref                  Designation                     Trade Type   Account                                dc
