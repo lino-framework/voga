@@ -49,6 +49,8 @@ class QuickTest(RemoteAuthTestCase):
 
         self.assertEqual(settings.SITE.kernel.__class__.__name__, 'Kernel')
         self.assertEqual(settings.SITE.kernel.site, settings.SITE)
+        self.assertEqual(settings.SITE, dd.site)
+        # self.assertEqual(settings.SITE.plugins, dd.apps)
         self.assertEqual(settings.SITE.plugins.extjs, dd.apps.extjs)
 
         settings.SITE.verbose_client_info_message = True
