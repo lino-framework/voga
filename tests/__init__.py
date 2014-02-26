@@ -22,8 +22,8 @@ os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.settings.test"
 class BaseTestCase(TestCase):
     project_root = ROOTDIR
     demo_settings_module = 'lino_faggio.settings.test'
-    
-    
+
+
 class DocsTests(BaseTestCase):
     def test_ledger(self):
         return self.run_docs_doctests('tested/ledger.rst')
@@ -45,7 +45,7 @@ class DemoTests(BaseTestCase):
     """
     $ python setup.py test -s tests.DemoTests.test_admin
     """
-    #~ demo_settings_module = "lino_faggio.settings.demo"
+
     def test_admin(self):
         self.run_django_manage_test()
 
