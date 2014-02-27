@@ -92,6 +92,12 @@ class Event(Event):
         else:
             return unicode(self.owner)
 
+    def __unicode__(self):
+        if self.owner is None:
+            return super(self).__unicode__()
+        owner = self.owner._meta.verbose_name + " #" + str(self.owner.pk)
+        return "%s %s" % (owner, self.summary)
+
     def suggest_guests(self):
         #~ print "20130722 suggest_guests"
         for g in super(Event, self).suggest_guests():
@@ -101,7 +107,8 @@ class Event(Event):
         if not settings.SITE.site_config.pupil_guestrole:
             return
         Guest = settings.SITE.modules.cal.Guest
-        for obj in self.project.enrolment_set.exclude(state=courses.EnrolmentStates.cancelled):
+        for obj in self.project.enrolment_set.exclude(
+                state=courses.EnrolmentStates.cancelled):
             if obj.pupil:
                 yield Guest(event=self,
                             partner=obj.pupil,

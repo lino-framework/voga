@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # This file is part of the Lino-Faggio project.
 # Lino-Faggio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -453,7 +453,7 @@ class Loader2(Loader1):
 
         for model in (Course, Booking):
             for obj in model.objects.all():
-                rc = ses.run(obj.do_update_reminders)
+                rc = ses.run(obj.do_update_events)
                 if not rc.get('success', False):
                     raise Exception("update_reminders on %s returned %s" %
                                     (obj, rc))
