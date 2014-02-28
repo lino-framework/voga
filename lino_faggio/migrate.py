@@ -75,3 +75,8 @@ def migrate_from_0_0_1(globals_dict):
     globals_dict.update(create_contacts_partner=create_contacts_partner)
 
     return '0.0.2'
+
+
+def migrate_from_0_0_2(globals_dict):
+    "No changes that need explicit migration actions."
+    return '0.0.3'

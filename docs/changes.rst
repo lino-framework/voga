@@ -10,6 +10,16 @@ The final truth about what's going on is only
 `The Source Code <http://code.google.com/p/lino-faggio/source/list>`_.
 
 
+Version 0.0.3 (not yet released)
+============================================
+
+- Beim Generieren von Terminen (Eingabe der Kurse) waren noch einige
+  Bugs im Algoritmus selber sowie der Berichterstattung (d.h. er
+  Rückmeldung an den Benutzer).
+
+- 
+
+
 Version 0.0.2 (released :blogref:`20140206`)
 ============================================
 

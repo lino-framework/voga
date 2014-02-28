@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # This file is part of the Lino-Faggio project.
 # Lino-Faggio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -12,21 +12,23 @@
 # You should have received a copy of the GNU General Public License
 # along with Lino-Faggio; if not, see <http://www.gnu.org/licenses/>.
 
-SETUP_INFO = dict(name='lino-faggio',
-                  version='0.0.1',
-                  install_requires=['lino'],
-                  test_suite='tests',
-                  description="A Lino application for managing courses, participants and meeting rooms",
-      long_description="""\
-Lino-Faggio is a `Lino <http://www.lino-framework.org>`_ 
+SETUP_INFO = dict(
+    name='lino-faggio',
+    version='0.0.3',
+    install_requires=['lino'],
+    test_suite='tests',
+    description="A Lino application for managing courses, "
+    "participants and meeting rooms",
+
+    long_description="""Lino-Faggio is a `Lino <http://www.lino-framework.org>`_
 application for managing courses, participants and meeting rooms.
 
 """,
-                  author='Luc Saffre',
-                  author_email='luc.saffre@gmail.com',
-                  url="http://faggio.lino-framework.org",
-                  license='GPL',
-      classifiers="""\
+    author='Luc Saffre',
+    author_email='luc.saffre@gmail.com',
+    url="http://faggio.lino-framework.org",
+    license='GPL',
+    classifiers="""\
 Programming Language :: Python
 Programming Language :: Python :: 2
 Development Status :: 1 - Planning

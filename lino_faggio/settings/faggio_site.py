@@ -15,11 +15,12 @@
 
 from lino.projects.std.settings import *
 
+from lino_faggio import SETUP_INFO
 
 class Site(Site):
-    version = "0.0.2"
+    version = SETUP_INFO['version']
     verbose_name = "Lino Faggio"
-    url = "http://faggio.lino-framework.org"
+    url = SETUP_INFO['url']
 
     #~ help_url = "http://lino.saffre-rumma.net/az/index.html"
 
