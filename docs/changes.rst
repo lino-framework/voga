@@ -17,7 +17,20 @@ Version 0.0.3 (not yet released)
   Bugs im Algoritmus selber sowie der Berichterstattung (d.h. er
   Rückmeldung an den Benutzer).
 
-- 
+- Den Blitz-Button müsst ihr auch jetzt noch klicken, damit er die
+  Termine neu berechnet.
+
+- Um den Termin "ausfallen zu lasssen", d.h. das Datum auf die Woche
+  danach zu verlegen, kannst du jetzt rechten Mausklick machen und im
+  Kontextmenü "Move down" wählen.
+
+- Das Datum eines Termins (in der Liste der Termine pro Kurs) ist
+  jetzt anklickbar und führt zu einer Tabelle mit allen Terminen an
+  diesem Tag.  Schien mir praktisch.
+
+- Bei Konflikten meldet er jetzt ein bisschen deutlicher, welche
+  Termine sich beissen.
+
 
 
 Version 0.0.2 (released :blogref:`20140206`)
