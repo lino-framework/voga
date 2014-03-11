@@ -101,18 +101,17 @@ Update Events for First Line (1/10/14 First Room)...
 """)
 
         """Now we want to skip the 2nd event.  We click on "Move next" on
-        this event.  This will
+        this event.
 
         """
-
-
         e = cal.Event.objects.get(course=obj, start_date=i2d(20140120))
         self.assertEqual(e.state, cal.EventStates.suggested)
+        #
         res = ses.run(e.move_next)
 
         self.assertEqual(res['success'], True)
         expected = """\
-Move down for Event #2...
+Course #1 Appointment 2
 1 event(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
 

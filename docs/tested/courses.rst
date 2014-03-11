@@ -46,19 +46,11 @@ remain unchanged (if the following fails, make sure you've run
 >>> import logging
 >>> logger = logging.getLogger('lino')
 >>> logger.setLevel('DEBUG')
->>> res = ses.run(obj.do_update_reminders)
+>>> res = ses.run(obj.do_update_events)
 >>> res['success']
 True
 >>> print(res['info_message'])
 Updating events for First Steps (12/2/13 Butgenbach (Computerroom))...
-get_next_date() per_weekday 2013-12-02 --> 2013-12-09.
-get_next_date() per_weekday 2013-12-09 --> 2013-12-16.
-get_next_date() per_weekday 2013-12-16 --> 2013-12-23.
-get_next_date() per_weekday 2013-12-23 --> 2013-12-30.
-get_next_date() per_weekday 2013-12-30 --> 2014-01-06.
-get_next_date() per_weekday 2014-01-06 --> 2014-01-13.
-get_next_date() per_weekday 2014-01-13 --> 2014-01-20.
-get_next_date() per_weekday 2014-01-20 --> 2014-01-27.
 8 reminder(s) have been updated.
 >>> ses.show(courses.EventsByCourse, obj, column_names="when_text state")
 ============================= ===========
@@ -120,7 +112,7 @@ We have now two events on 20131230:
 
 To solve that, we must click on the lightning button:
 
->>> res = ses.run(obj.do_update_reminders)
+>>> res = ses.run(obj.do_update_events)
 >>> res['success']
 True
 
@@ -148,7 +140,7 @@ Click on the "Reset" button:
 
 Re-run UpdateEvents to restore original state:
 
->>> res = ses.run(obj.do_update_reminders)
+>>> res = ses.run(obj.do_update_events)
 >>> res['success']
 True
 >>> ses.show(courses.EventsByCourse, obj, column_names="when_text state")
