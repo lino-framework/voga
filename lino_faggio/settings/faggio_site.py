@@ -24,7 +24,7 @@ class Site(Site):
 
     #~ help_url = "http://lino.saffre-rumma.net/az/index.html"
 
-    migration_module = 'lino_faggio.migrate'
+    migration_class = 'lino_faggio.migrate.Migrator'
 
     userdocs_prefix = 'faggio.'
 
