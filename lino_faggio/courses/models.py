@@ -165,8 +165,8 @@ class CourseDetail(CourseDetail):
     teacher room workflow_buttons
     every_unit every max_events max_date
     monday tuesday wednesday thursday friday saturday sunday
-    # cal.EventsByController
-    courses.EventsByCourse
+    cal.EventsByController
+    # courses.EventsByCourse
     """, label=_("General"))
     more = dd.Panel("""
     # company contact_person 

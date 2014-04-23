@@ -81,5 +81,7 @@ class Migrator(Migrator):
         return '0.0.2'
 
     def migrate_from_0_0_2(globals_dict):
-        "No changes that need explicit migration actions."
+        """\
+- removed field `cal.Event.course`
+        """
         return '0.0.3'

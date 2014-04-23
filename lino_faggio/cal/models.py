@@ -123,7 +123,6 @@ class Event(Event):
         return settings.SITE.site_config.site_calendar
 
 
-#~ def site_setup(site):
 @dd.receiver(dd.post_analyze)
 def customize_cal(sender, **kw):
     site = sender
@@ -131,10 +130,9 @@ def customize_cal(sender, **kw):
     dd.update_field(site.modules.cal.Event, 'description',
                     format="plain")
 
-    #~ site.modules.cal.Events.set_detail_layout(EventDetail())
     site.modules.cal.Events.set_detail_layout('general more')
     site.modules.cal.Events.add_detail_panel('general', """
-    event_type summary user course
+    event_type summary user
     start end
     room priority access_class transparent #rset
     owner:30 workflow_buttons:30
@@ -146,10 +144,11 @@ def customize_cal(sender, **kw):
     #outbox.MailsByController cal.GuestsByEvent notes.NotesByOwner
     """, _("More"))
 
-    site.modules.cal.Events.set_insert_layout("""
-    start end
-    course
-    """,
-                                              start="start_date start_time",
-                                              end="end_date end_time",
-                                              window_size=(60, 'auto'))
+    site.modules.cal.Events.set_insert_layout(
+        """
+        start end
+        room
+        """,
+        start="start_date start_time",
+        end="end_date end_time",
+        window_size=(60, 'auto'))
