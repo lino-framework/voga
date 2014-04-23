@@ -63,6 +63,7 @@ class Site(Site):
         #~ yield 'lino.modlib.sales'
         yield 'lino.modlib.auto.sales'
         yield 'lino.modlib.finan'
+        yield 'lino.modlib.iban'
 
         #~ yield 'lino.modlib.households'
         yield 'lino.modlib.notes'
