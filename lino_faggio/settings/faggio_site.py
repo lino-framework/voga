@@ -75,6 +75,8 @@ class Site(Site):
         #~ yield 'lino.modlib.courses'
         yield 'lino_faggio'
 
+        yield 'lino.modlib.appypod'
+
     def setup_choicelists(self):
         """
         This defines default user profiles for :mod:`lino_welfare`.
