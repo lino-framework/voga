@@ -26,11 +26,6 @@ from lino.modlib.sales import models as sales
 ledger = dd.resolve_app('ledger')
 
 
-
-class Person(Person, mixins.Born):
-    pass
-
-
 class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
 
     main = 'general more sales ledger'

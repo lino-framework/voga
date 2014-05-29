@@ -76,6 +76,7 @@ class Site(Site):
         yield 'lino_faggio'
 
         yield 'lino.modlib.appypod'
+        yield 'lino.modlib.export_excel'
 
     def setup_choicelists(self):
         """
