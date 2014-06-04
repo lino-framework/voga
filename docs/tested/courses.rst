@@ -41,7 +41,7 @@ First Steps (12/2/13 Butgenbach (Computerroom))
 
 We run the UpdateEvents action a first time and verify that the events
 remain unchanged (if the following fails, make sure you've run
-:fab:`initdb`).
+:cmd:`fab initdb`).
 
 >>> import logging
 >>> logger = logging.getLogger('lino')
