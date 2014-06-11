@@ -85,3 +85,9 @@ class Migrator(Migrator):
 - removed field `cal.Event.course`
         """
         return '0.0.3'
+
+    def migrate_from_0_0_3(globals_dict):
+        """
+- renamed field `Partner.invoicing_address` to `invoice_recipient`
+        """
+        return '0.0.4'
