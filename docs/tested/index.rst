@@ -17,7 +17,5 @@ using `manage.py run`.
    faggio
    ledger
    courses
-   misc
-
 
 
