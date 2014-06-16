@@ -14,13 +14,13 @@
 
 SETUP_INFO = dict(
     name='lino-faggio',
-    version='0.0.3',
+    version='0.0.4',
     install_requires=['lino'],
     test_suite='tests',
     description="A Lino application for managing courses, "
     "participants and meeting rooms",
 
-    long_description="""Lino-Faggio is a `Lino <http://www.lino-framework.org>`_
+    long_description="""Lino Faggio is a `Lino <http://www.lino-framework.org>`_
 application for managing courses, participants and meeting rooms.
 
 """,
