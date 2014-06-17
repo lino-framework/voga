@@ -24,7 +24,7 @@ The first demo course starts on December 2, 2013:
 First Steps (12/2/13 Butgenbach (Computerroom))
 
 >>> ses = settings.SITE.login('robin')
->>> ses.show(courses.EventsByCourse, obj, column_names="when_text state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ============================= ===========
  When                          State
 ----------------------------- -----------

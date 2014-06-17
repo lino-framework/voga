@@ -83,9 +83,10 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(res['success'], True)
         expected = """\
 Update Events for First Line (1/10/14 First Room)...
-5 event(s) have been updated."""
+Generating events between 2014-01-13 and 2019-06-15.
+5 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
-        ar = ses.spawn(courses.EventsByCourse, master_instance=obj)
+        ar = ses.spawn(cal.EventsByController, master_instance=obj)
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
@@ -104,22 +105,27 @@ Update Events for First Line (1/10/14 First Room)...
         this event.
 
         """
-        e = cal.Event.objects.get(course=obj, start_date=i2d(20140120))
+        # e = cal.Event.objects.get(owner=obj, start_date=i2d(20140120))
+        ar = cal.EventsByController.request(
+            master_instance=obj,
+            known_values=dict(
+                start_date=i2d(20140120)))
+        e = ar.data_iterator[0]
         self.assertEqual(e.state, cal.EventStates.suggested)
         #
         res = ses.run(e.move_next)
 
         self.assertEqual(res['success'], True)
         expected = """\
-Course #1 Appointment 2
-1 event(s) have been updated."""
+Move down for Course #1 Appointment 2...
+1 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
 
         self.assertEqual(e.state, cal.EventStates.draft)
         e.full_clean()
         e.save()
         
-        ar = ses.spawn(courses.EventsByCourse, master_instance=obj)
+        ar = ses.spawn(cal.EventsByController, master_instance=obj)
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
@@ -147,9 +153,9 @@ Update Events for First Line (1/10/14 First Room)...
 3 : 2014-01-27 -> 2014-02-03
 4 : 2014-02-03 -> 2014-02-10
 5 : 2014-02-10 -> 2014-02-17
-5 event(s) have been updated."""
+5 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
-        ar = ses.spawn(courses.EventsByCourse, master_instance=obj)
+        ar = ses.spawn(cal.EventsByController, master_instance=obj)
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\

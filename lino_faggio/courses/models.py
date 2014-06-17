@@ -170,7 +170,7 @@ class CourseDetail(CourseDetail):
     """, label=_("General"))
     more = dd.Panel("""
     # company contact_person 
-    user id
+    user id events_text
     sales.InvoicingsByInvoiceable
     """, label=_("More"))
 

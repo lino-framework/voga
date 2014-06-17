@@ -37,8 +37,6 @@ class Site(Site):
 
     languages = 'en de fr'
 
-    use_eid_jslib = False
-
     show_internal_field_names = True
 
     def get_installed_apps(self):
@@ -80,7 +78,7 @@ class Site(Site):
 
     def setup_choicelists(self):
         """
-        This defines default user profiles for :mod:`lino_welfare`.
+        This defines default user profiles for :ref:`faggio`.
         """
         super(Site, self).setup_choicelists()
 
