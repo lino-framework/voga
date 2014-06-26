@@ -65,9 +65,13 @@ check whether we get the expected response.
 >>> translation.activate('en')
 >>> obj = sales.Invoice.objects.get(pk=1)
 >>> obj.clear_cache()
->>> print(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-{'refresh': True, 'open_url': u'/media/cache/appypdf/sales.Invoice-1.pdf', 
-'message': u'S#1 printable has been built.', 'success': True}
+>>> rv = ses.run(obj.do_print) 
+>>> print(rv['success']) 
+True
+>>> print(rv['open_url']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+/media/cache/appypdf/sales.Invoice-1.pdf
+>>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+sales.Invoice-1.pdf has been built.
 
 Same for a calendar Event. 
 This is mainly to see whether the templates directory has been inherited.

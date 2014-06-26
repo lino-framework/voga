@@ -31,8 +31,6 @@ class Site(Site):
     demo_fixtures = 'std few_languages demo demo_bookings faggio demo2'.split()
     start_year = 2013
 
-    ignore_dates_before = None
-
     user_model = 'users.User'
 
     languages = 'en de fr'
@@ -69,6 +67,7 @@ class Site(Site):
         #~ yield 'lino.modlib.cal'
 
         yield 'lino.modlib.outbox'
+        yield 'lino.modlib.excerpts'
         #~ yield 'lino.modlib.pages'
         #~ yield 'lino.modlib.courses'
         yield 'lino_faggio'

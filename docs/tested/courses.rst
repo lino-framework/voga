@@ -23,7 +23,18 @@ The first demo course starts on December 2, 2013:
 >>> print(obj)
 First Steps (12/2/13 Butgenbach (Computerroom))
 
->>> ses = settings.SITE.login('robin')
+>>> ses = dd.login('robin')
+
+..
+
+    Repair from previous incomplete test runs.
+
+    >>> res = obj.do_update_events(ses)
+    >>> res['success']
+    True
+
+
+
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ============================= ===========
  When                          State
@@ -50,9 +61,10 @@ remain unchanged (if the following fails, make sure you've run
 >>> res['success']
 True
 >>> print(res['info_message'])
-Updating events for First Steps (12/2/13 Butgenbach (Computerroom))...
-8 reminder(s) have been updated.
->>> ses.show(courses.EventsByCourse, obj, column_names="when_text state")
+Update Events for First Steps (12/2/13 Butgenbach (Computerroom))...
+Generating events between 2013-12-02 and 2019-06-25.
+8 row(s) have been updated.
+>>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ============================= ===========
  When                          State
 ----------------------------- -----------
@@ -68,9 +80,10 @@ Updating events for First Steps (12/2/13 Butgenbach (Computerroom))...
 <BLANKLINE>
 
 
-We select the event no 4 (20131223):
+We select the event no 4 (2013-12-23):
 
->>> e = cal.Event.objects.get(course=obj, start_date=i2d(20131223))
+>>> qs = obj.get_existing_auto_events()
+>>> e = qs.get(start_date=i2d(20131223))
 
 Yes, the state is "suggested":
 
@@ -79,14 +92,12 @@ suggested
 
 Now we move that to the week after:
 
->>> e.move_next(ses)
->>> res = ses.response
->>> print res
-g
+>>> res = e.move_next(ses)
 >>> res['success']
 True
 >>> print(res['info_message'])
-get_next_date() per_weekday 2013-12-23 --> 2013-12-30.
+Move down for Course #1 Heure 4...
+1 row(s) have been updated.
 
 The state is now "draft":
 
@@ -95,7 +106,7 @@ draft
 
 We have now two events on 20131230:
 
->>> ses.show(courses.EventsByCourse, obj, column_names="when_text state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ============================= ===========
  When                          State
 ----------------------------- -----------
@@ -103,35 +114,33 @@ We have now two events on 20131230:
  **2013 Dec 09 (Mon) 13:30**   Suggested
  **2013 Dec 16 (Mon) 13:30**   Suggested
  **2013 Dec 30 (Mon) 13:30**   Draft
- **2013 Jan 06 (Mon) 13:30**   Suggested
+ **2013 Dec 30 (Mon) 13:30**   Suggested
+ **2014 Jan 06 (Mon) 13:30**   Suggested
  **2014 Jan 13 (Mon) 13:30**   Suggested
  **2014 Jan 20 (Mon) 13:30**   Suggested
- **2014 Jan 27 (Mon) 13:30**   Suggested
 ============================= ===========
 <BLANKLINE>
 
 To solve that, we must click on the lightning button:
 
->>> res = ses.run(obj.do_update_events)
+>>> res = obj.do_update_events(ses)
 >>> res['success']
 True
 
-
->>> ses.show(courses.EventsByCourse, obj, column_names="when_text state")
-=============================
- When
------------------------------
- **2013 Dec 02 (Mon) 13:30**
- **2013 Dec 09 (Mon) 13:30**
- **2013 Dec 16 (Mon) 13:30**
- **2013 Dec 30 (Mon) 13:30**
- **2014 Jan 06 (Mon) 13:30**
- **2014 Jan 13 (Mon) 13:30**
- **2014 Jan 20 (Mon) 13:30**
- **2014 Jan 27 (Mon) 13:30**
-=============================
+>>> ses.show(cal.EventsByController, obj, column_names="when_text state")
+============================= ===========
+ When                          State
+----------------------------- -----------
+ **2013 Dec 02 (Mon) 13:30**   Suggested
+ **2013 Dec 09 (Mon) 13:30**   Suggested
+ **2013 Dec 16 (Mon) 13:30**   Suggested
+ **2013 Dec 30 (Mon) 13:30**   Draft
+ **2014 Jan 06 (Mon) 13:30**   Suggested
+ **2014 Jan 13 (Mon) 13:30**   Suggested
+ **2014 Jan 20 (Mon) 13:30**   Suggested
+ **2014 Jan 27 (Mon) 13:30**   Suggested
+============================= ===========
 <BLANKLINE>
-
 
 Click on the "Reset" button:
 
@@ -143,18 +152,18 @@ Re-run UpdateEvents to restore original state:
 >>> res = ses.run(obj.do_update_events)
 >>> res['success']
 True
->>> ses.show(courses.EventsByCourse, obj, column_names="when_text state")
-=============================
- When
------------------------------
- **2013 Dec 02 (Mon) 13:30**
- **2013 Dec 09 (Mon) 13:30**
- **2013 Dec 16 (Mon) 13:30**
- **2013 Dec 23 (Mon) 13:30**
- **2013 Dec 30 (Mon) 13:30**
- **2014 Jan 06 (Mon) 13:30**
- **2014 Jan 13 (Mon) 13:30**
- **2014 Jan 20 (Mon) 13:30**
-=============================
+>>> ses.show(cal.EventsByController, obj, column_names="when_text state")
+============================= ===========
+ When                          State
+----------------------------- -----------
+ **2013 Dec 02 (Mon) 13:30**   Suggested
+ **2013 Dec 09 (Mon) 13:30**   Suggested
+ **2013 Dec 16 (Mon) 13:30**   Suggested
+ **2013 Dec 23 (Mon) 13:30**   Suggested
+ **2013 Dec 30 (Mon) 13:30**   Suggested
+ **2014 Jan 06 (Mon) 13:30**   Suggested
+ **2014 Jan 13 (Mon) 13:30**   Suggested
+ **2014 Jan 20 (Mon) 13:30**   Suggested
+============================= ===========
 <BLANKLINE>
 
