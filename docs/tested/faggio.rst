@@ -73,10 +73,9 @@ True
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 sales.Invoice-1.pdf has been built.
 
-Same for a calendar Event. 
-This is mainly to see whether the templates directory has been inherited.
-Note that the first few dozen events have no `user` and would currently 
-fail to print
+Same for a calendar Event.  This is mainly to see whether the
+templates directory has been inherited.  Note that the first few dozen
+events have no `user` and would currently fail to print
 
 >>> obj = cal.Event.objects.get(pk=100)
 >>> obj.clear_cache()
