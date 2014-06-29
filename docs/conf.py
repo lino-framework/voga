@@ -8,17 +8,19 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+extensions = []
 
 from atelier.sphinxconf import configure
 configure(globals(), 'lino_faggio.settings.test')
 
 extensions += ['atelier.sphinxconf.blog']
-extensions += ['lino.utils.actordoc']
+extensions += ['lino.sphinxcontrib.actordoc']
+extensions += ['lino.sphinxcontrib.logo']
 extensions += ['sphinxcontrib.taglist']
+extensions += ['atelier.sphinxconf.centeredlogo']
 
 from django.conf import settings
-settings.SITE.title = "Lino Faggio Reference Manual"
+settings.SITE.title = "Lino Faggio Reference"
 
 
 # If your extensions are in another directory, add it here. If the directory
@@ -45,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = settings.SITE.title
-copyright = u'2012-2013, Luc Saffre'
+copyright = u'2012-2014, Luc Saffre'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -114,17 +116,12 @@ html_style = 'default.css'
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #~ html_logo = 'logo.jpg'
-html_logo = 'lino-logo-2.png'
+# html_logo = 'logo.png'
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
 # pixels large.
 # html_favicon = 'favicon.ico'
-
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['.static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.

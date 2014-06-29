@@ -12,7 +12,7 @@ Welcome to the *Lino Faggio* project homepage.
   print(lino_faggio.SETUP_INFO['long_description'])
 
 This document is meant for system administrators and 
-developers. Other resources about *Lino-Faggio* are:
+developers. Other resources about *Lino Faggio* are:
 
 - :ref:`User Manual <faggio.userdocs>`
 - `Official Online demo <http://faggio-demo.lino-framework.org/>`_
