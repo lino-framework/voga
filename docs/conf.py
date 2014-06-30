@@ -17,7 +17,6 @@ extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.actordoc']
 extensions += ['lino.sphinxcontrib.logo']
 extensions += ['sphinxcontrib.taglist']
-extensions += ['atelier.sphinxconf.centeredlogo']
 
 from django.conf import settings
 settings.SITE.title = "Lino Faggio Reference"

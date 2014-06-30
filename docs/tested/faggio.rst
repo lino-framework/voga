@@ -35,7 +35,7 @@ en
 >>> print(d)
 25.12.2014
 >>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
->>> res = client.get(url,REMOTE_USER='rolf')
+>>> res = client.get(url, REMOTE_USER='rolf')
 >>> print(res.status_code)
 200
 >>> result = json.loads(res.content)
@@ -79,9 +79,12 @@ events have no `user` and would currently fail to print
 
 >>> obj = cal.Event.objects.get(pk=100)
 >>> obj.clear_cache()
->>> print(ses.run(obj.do_print)) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-{'refresh': True, 'open_url': u'/media/userdocs/appyodt/cal.Event-100.odt', 'message': u'Event #100 printable has been built.', 'success': True}
- 
+>>> rv = ses.run(obj.do_print)
+>>> print(rv['success'])
+True
+>>> print(rv['message'])
+cal.Event-100.pdf has been built.
+
 Note that this test should fail if you run the test suite without a 
 LibreOffice server running.
 

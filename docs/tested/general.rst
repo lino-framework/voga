@@ -6,6 +6,11 @@ General
 
 .. include:: /include/tested.rst
 
+..
+  To run only this test::
+
+  $ python setup.py test -s tests.DocsTests.test_general
+
 The following statements import a set of often-used global names::
 
 >>> from __future__ import print_function
@@ -32,7 +37,7 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-22 apps: about, contenttypes, system, users, countries, contacts, lists, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, notes, uploads, outbox, lino_faggio, djangosite.
+26 apps: about, contenttypes, system, users, countries, contacts, lists, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, appypod, export_excel, djangosite.
 69 models:
 ========================== ========= =======
  Name                       #fields   #rows
@@ -41,34 +46,36 @@ Test whether :meth:`get_db_overview_rst
  accounts.Chart             4         1
  accounts.Group             7         7
  cal.Calendar               6         7
- cal.Event                  23        ...
- cal.EventType              17        7
- cal.Guest                  7         0
- cal.GuestRole              8         0
+ cal.Event                  23        320
+ cal.EventType              16        7
+ cal.Guest                  6         0
+ cal.GuestRole              6         0
  cal.Priority               5         9
  cal.RecurrentEvent         21        9
  cal.RemoteCalendar         7         0
  cal.Room                   9         6
- cal.Subscription           4         21
+ cal.Subscription           4         0
  cal.Task                   17        0
- contacts.Company           26        19
+ contacts.Company           28        19
  contacts.CompanyType       7         16
- contacts.Partner           22        88
- contacts.Person            28        69
+ contacts.Partner           24        88
+ contacts.Person            31        69
  contacts.Role              4         0
  contacts.RoleType          4         5
  contenttypes.ContentType   4         70
  countries.Country          6         8
- countries.Place            8         75
+ countries.Place            8         76
  courses.Course             23        23
  courses.Enrolment          9         100
- courses.Line               12        9
- courses.Pupil              30        35
+ courses.Line               13        9
+ courses.Pupil              33        35
  courses.PupilType          5         4
  courses.Slot               5         0
- courses.Teacher            30        8
+ courses.Teacher            33        8
  courses.TeacherType        5         4
  courses.Topic              4         4
+ excerpts.Excerpt           11        0
+ excerpts.ExcerptType       14        1
  finan.BankStatement        11        3
  finan.BankStatementItem    11        9
  finan.JournalEntry         9         0
@@ -84,8 +91,8 @@ Test whether :meth:`get_db_overview_rst
  lists.ListType             4         0
  lists.Member               7         0
  notes.EventType            8         0
- notes.Note                 14        100
- notes.NoteType             11        6
+ notes.Note                 16        100
+ notes.NoteType             10        6
  outbox.Attachment          4         0
  outbox.Mail                8         0
  outbox.Recipient           6         0
@@ -93,17 +100,15 @@ Test whether :meth:`get_db_overview_rst
  products.ProductCat        5         3
  rooms.Booking              24        3
  sales.Invoice              24        19
- sales.InvoiceItem          15        31
+ sales.InvoiceItem          15        32
  sales.InvoicingMode        8         0
  sales.ShippingMode         5         0
  system.HelpText            4         2
- system.SiteConfig          16        1
- system.TextFieldTemplate   6         2
- uploads.Upload             11        0
- uploads.UploadType         2         0
+ system.SiteConfig          15        1
+ system.TextFieldTemplate   5         2
+ uploads.Upload             9         0
+ uploads.UploadType         7         0
  users.Authority            3         0
- users.Membership           3         0
- users.Team                 4         0
  users.User                 15        3
  vat.PaymentTerm            7         0
 ========================== ========= =======
@@ -130,20 +135,21 @@ Rolf is the local system administrator, he has a complete menu:
 - Verkauf : Verkaufsrechnungen (S), Zu fakturieren
 - Einkauf : Einkaufsrechnungen (P), Zahlungsaufträge (PO)
 - Financial : Bestbank (B), Kasse (C), Diverse Buchungen (M)
-- Büro : Meine Notizen, Mein E-Mail-Ausgang
+- Büro : Meine Notizen, Meine Uploads, Mein E-Mail-Ausgang, Meine Auszüge
 - Berichte :
   - Buchhaltung : Situation, Tätigkeitsbericht, Schuldner, Gläubiger
 - Konfigurierung :
-  - Büro : Meine Einfügetexte, Notizarten, Ereignisarten, Upload-Arten
-  - System : Site-Parameter, Benutzer, Teams, Inhaltstypen, Hilfetexte
-  - Kontakte : Länder, Orte, Organisationsarten, Funktionen, Listenarten
+  - Büro : Meine Einfügetexte, Notizarten, Ereignisarten, Upload-Arten, Auszugsarten
+  - System : Site-Parameter, Benutzer, Inhaltstypen, Hilfetexte
+  - Orte : Länder, Orte
+  - Kontakte : Organisationsarten, Funktionen, Listenarten
   - Kurse : Kursleiterarten, Teilnehmerarten, Themen, Kursserien, Timetable Slots
   - Kalender : Kalenderliste, Räume, Prioritäten, Periodische Termine, Gastrollen, Ereignisarten, Externe Kalender
   - Buchhaltung : Kontenpläne, Kontengruppen, Konten, Journale
   - MWSt. : Zahlungsbedingungen
   - Verkauf : Lieferarten
  - Explorer :
-  - Büro : Einfügetexte, Notizen, Uploads, E-Mail-Ausgänge, Anhänge
+  - Büro : Einfügetexte, Notizen, Uploads, Upload-Bereiche, E-Mail-Ausgänge, Anhänge, Auszüge
   - System : Vollmachten, Benutzergruppen, Benutzer-Levels, Benutzerprofile
   - Kontakte : Kontaktpersonen, Listenmitglieder
   - Kurse : Einschreibungen, Einschreibungs-Zustände

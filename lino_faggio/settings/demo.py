@@ -5,6 +5,7 @@ import datetime
 
 from lino_faggio.settings import *
 
+
 class Site(Site):
 
     title = "Lino Faggio demo"
@@ -13,8 +14,6 @@ class Site(Site):
     ignore_dates_before = None
     the_demo_date = datetime.date(2014, 06, 15)
     ignore_dates_after = datetime.date(2019, 05, 22)
-
-
 
 
 SITE = Site(globals())

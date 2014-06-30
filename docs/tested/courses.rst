@@ -62,7 +62,7 @@ remain unchanged (if the following fails, make sure you've run
 True
 >>> print(res['info_message'])
 Update Events for First Steps (12/2/13 Butgenbach (Computerroom))...
-Generating events between 2013-12-02 and 2019-06-25.
+Generating events between 2013-12-02 and 2019-05-22.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ============================= ===========
