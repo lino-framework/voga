@@ -94,7 +94,7 @@ class Event(Event):
 
     def __unicode__(self):
         if self.owner is None:
-            return super(self).__unicode__()
+            return super(Event, self).__unicode__()
         owner = self.owner._meta.verbose_name + " #" + str(self.owner.pk)
         return "%s %s" % (owner, self.summary)
 
