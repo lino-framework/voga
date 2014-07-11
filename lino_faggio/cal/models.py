@@ -115,9 +115,6 @@ class Event(Event):
                             role=settings.SITE.site_config.pupil_guestrole)
 
     def get_calendar(self):
-        """
-        This is how :ref:`faggio` 
-        """
         if self.room is not None and self.room.calendar is not None:
             return self.room.calendar
         return settings.SITE.site_config.site_calendar
