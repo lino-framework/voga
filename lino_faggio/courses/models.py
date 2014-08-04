@@ -149,9 +149,9 @@ class CoursesByTopic(CoursesByTopic):
     room__company__city:10 weekdays_text:10 times_text:10"
 
 
-class ActiveCourses(ActiveCourses):
-    column_names = 'line room info max_places enrolments teacher *'
-    hide_sums = True
+# class ActiveCourses(ActiveCourses):
+#     column_names = 'info max_places enrolments teacher line room *'
+#     hide_sums = True
 
 
 class CourseDetail(CourseDetail):
