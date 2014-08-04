@@ -150,7 +150,7 @@ class CoursesByTopic(CoursesByTopic):
 
 
 class ActiveCourses(ActiveCourses):
-    column_names = 'line room info max_places enrolments teacher  *'
+    column_names = 'line room info max_places enrolments teacher *'
     hide_sums = True
 
 
