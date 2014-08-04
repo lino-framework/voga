@@ -144,17 +144,13 @@ class PupilsByType(Pupils):
     master_key = 'pupil_type'
 
 
-
-
-
-
 class CoursesByTopic(CoursesByTopic):
     column_names = "start_date:8 line:20 \
     room__company__city:10 weekdays_text:10 times_text:10"
 
 
 class ActiveCourses(ActiveCourses):
-    column_names = 'info max_places enrolments teacher room *'
+    column_names = 'line room info max_places enrolments teacher  *'
     hide_sums = True
 
 
@@ -163,7 +159,7 @@ class CourseDetail(CourseDetail):
     general = dd.Panel("""
     line start_date end_date start_time end_time max_places
     teacher room workflow_buttons
-    every_unit every max_events max_date
+    every_unit every max_events max_date name
     monday tuesday wednesday thursday friday saturday sunday
     cal.EventsByController
     # courses.EventsByCourse

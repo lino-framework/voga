@@ -109,9 +109,8 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     """, label=_("General"))
 
     more = dd.Panel("""
-    id language
-    addr1 url
-    gender birth_date age:10 personal
+    id language url
+    addr1 addr2
     notes.NotesByPerson  lists.MembersByPerson
     """, label=_("More"))
 
@@ -121,7 +120,7 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     last_name first_name:15 #title:10
     country city zip_code:10
     #street_prefix street:25 street_no street_box
-    addr2:40
+    gender birth_date age:10 personal
     """
 
 
