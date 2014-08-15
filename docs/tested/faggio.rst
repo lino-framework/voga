@@ -25,7 +25,7 @@ A web request
 The following snippet reproduces a one-day bug 
 on calendar events whose **time** fields are empty.
 Fixed 2013-06-04 
-in :func:`lino.apps.cal.utils.when_text`.
+in :func:`lino.modlib.cal.utils.when_text`.
 
 >>> print(get_language())
 en
