@@ -126,8 +126,14 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
 class PupilDetail(MyPersonDetail):
 
-    main = MyPersonDetail.main + " courses.EnrolmentsByPupil"
+    main = MyPersonDetail.main + " courses"
+
     personal = 'pupil_type'
+
+    courses = dd.Panel("""
+    courses.ActiveCoursesByPupil
+    courses.EnrolmentsByPupil
+    """, label=dd.plugins.courses.verbose_name)
 
 
 class TeacherDetail(MyPersonDetail):
