@@ -148,10 +148,5 @@ def customize_contacts(sender, **kw):
     site.modules.contacts.Persons.set_detail_layout(MyPersonDetail())
     site.modules.contacts.Companies.set_detail_layout(MyCompanyDetail())
     site.modules.contacts.Partners.set_detail_layout(MyPartnerDetail())
-    #~ site.modules.contacts.Partners.set_detail_layout(bottom_box = """
-    #~ remarks
-    # ~ is_person is_company #is_household
-    #~ """)
-    #~ site.modules.contacts.Partners.add_detail_tab("sales.InvoiceablesByPartner")
     site.modules.courses.Pupils.set_detail_layout(PupilDetail())
     site.modules.courses.Teachers.set_detail_layout(TeacherDetail())

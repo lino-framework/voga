@@ -207,7 +207,6 @@ def setup_main_menu(site, ui, profile, main):
     m.add_action(PendingConfirmedEnrolments)
 
 
-
 def setup_config_menu(site, ui, profile, m):
     m = m.add_menu("courses", config.verbose_name)
     #~ m.add_action(Rooms)
