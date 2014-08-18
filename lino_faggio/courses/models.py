@@ -109,6 +109,8 @@ class Pupil(Person):
 
     pupil_type = dd.ForeignKey('courses.PupilType', blank=True, null=True)
 
+    suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
+
     def __unicode__(self):
         s = self.get_full_name(salutation=False)
         if self.pupil_type:

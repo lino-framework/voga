@@ -131,7 +131,7 @@ class PupilDetail(MyPersonDetail):
     personal = 'pupil_type'
 
     courses = dd.Panel("""
-    courses.ActiveCoursesByPupil
+    courses.SuggestedCoursesByPupil
     courses.EnrolmentsByPupil
     """, label=dd.plugins.courses.verbose_name)
 
