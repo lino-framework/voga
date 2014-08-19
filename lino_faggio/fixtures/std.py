@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # This file is part of the Lino-Faggio project.
 # Lino-Faggio is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,13 +14,9 @@
 
 from __future__ import unicode_literals
 
-from lino.utils.instantiator import Instantiator, i2d
-from django.utils.translation import ugettext_lazy as _
+from lino.utils.instantiator import Instantiator
 
-
-from django.conf import settings
 from north.dbutils import babelkw
-from lino import dd
 
 
 def objects():

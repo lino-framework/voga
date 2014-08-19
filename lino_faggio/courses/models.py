@@ -157,17 +157,27 @@ class CoursesByTopic(CoursesByTopic):
 
 
 class CourseDetail(CourseDetail):
-    main = "general more courses.EnrolmentsByCourse"
+    main = "general events enrolments more"
     general = dd.Panel("""
-    line start_date end_date start_time end_time max_places
-    teacher room workflow_buttons
-    every_unit every max_events max_date name
+    line teacher name workflow_buttons
+    start_date end_date start_time end_time max_places
+    # courses.EventsByCourse
+    remark #OptionsByCourse
+    """, label=_("General"))
+
+    events = dd.Panel("""
+    room every_unit every max_date max_events
     monday tuesday wednesday thursday friday saturday sunday
     cal.EventsByController
-    # courses.EventsByCourse
-    """, label=_("General"))
+
+    """, label=_("Events"))
+
+    enrolments = dd.Panel("""
+    EnrolmentsByCourse:40
+    """, label=_("Enrolments"))
+
     more = dd.Panel("""
-    # company contact_person 
+    # company contact_person
     user id events_text
     sales.InvoicingsByInvoiceable
     """, label=_("More"))

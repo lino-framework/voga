@@ -86,12 +86,26 @@ class Loader1(object):
 
         productcat = Instantiator('products.ProductCat').build
 
-        tariffs = productcat(**babelkw('name',
-                                       en="Courses", et="Kursused", de="Kurse", fr="Cours"))
+        tariffs = productcat(
+            **babelkw('name',
+                      en="Courses", et="Kursused", de="Kurse", fr="Cours"))
         yield tariffs
 
-        rent = productcat(**babelkw('name',
-                                    en="Room renting", et="Ruumiüür", de="Raummiete", fr="Loyer"))
+        trips = productcat(
+            **babelkw('name',
+                      en="Trips", et="Väljasõidud",
+                      de="Ausflüge", fr="Excursions"))
+        yield trips
+
+        kw = dd.str2kw('name', _("Journeys"))
+        self.journeys_cat = productcat(**kw)
+        yield self.journeys_cat
+
+        self.journey_tariff = Product(cat=self.journeys_cat, **kw)
+
+        rent = productcat(
+            **babelkw('name',
+                      en="Room renting", et="Ruumiüür", de="Raummiete", fr="Loyer"))
         yield rent
         other = productcat(**babelkw('name',
                                      en="Other",
@@ -105,11 +119,14 @@ class Loader1(object):
         yield product("20", tariffs, "20€")
         yield product("50", tariffs, "50€")
         yield product("80", tariffs, "80€")
+
         rent20 = product("20", rent, "Spiegelraum Eupen")
         yield rent20
-        rent10 = product("10", rent, **babelkw('name',
-                                               en="Rent per meeting", et="Ruumi üürimine", de="Raummiete pro Versammlung",
-                                               fr="Loyer par réunion"))
+        rent10 = product("10", rent, **babelkw(
+            'name',
+            en="Rent per meeting", et="Ruumi üürimine",
+            de="Raummiete pro Versammlung",
+            fr="Loyer par réunion"))
         yield rent10
 
         self.PRICES = Cycler(Product.objects.filter(cat=tariffs))
@@ -130,11 +147,7 @@ class Loader1(object):
         settings.SITE.site_config.default_event_type = self.kurse
         yield settings.SITE.site_config
 
-        self.seminare = event_type(**dd.babelkw('name',
-                                                de="Seminare",
-                                                fr="Séminaires",
-                                                en="Seminars",
-                                                ))
+        self.seminare = event_type(**dd.str2kw('name', _("Seminars")))
         yield self.seminare
 
         yield event_type(**dd.babelkw('name',
@@ -272,6 +285,46 @@ class Loader2(Loader1):
             kw.update(teacher=TEACHERS.pop())
             #~ kw.update(price=PRICES.pop())
             return course(*args, **kw)
+
+        Product = dd.modules.products.Product
+        ProductCat = dd.modules.products.ProductCat
+
+        journey_options = ProductCat(**dd.str2kw(
+            'name', _("Journey options")))
+        yield journey_options
+        option = Instantiator(Product, cat=journey_options).build
+        yield option(**dd.str2kw('name', _("Shower")))
+        yield option(**dd.str2kw('name', _("Single room")))
+        yield option(**dd.str2kw('name', _("Night club")))
+
+        trip_options = ProductCat(**dd.str2kw('name', _("Trip options")))
+        yield trip_options
+        option = Instantiator(Product, cat=trip_options).build
+        yield option(name="Eupen Oberstadt")
+        yield option(name="Eupen Unterstadt")
+        yield option(name="Raeren")
+        yield option(name="Kelmis")
+        yield option(name="Büllingen")
+
+        journey = Instantiator(
+            'courses.Course', 'line name start_date end_date').build
+
+        def add_journey(*args, **kw):
+            kw.update(user=USERS.pop())
+            kw.update(teacher=TEACHERS.pop())
+            return journey(*args, **kw)
+
+        self.journeys_topic = topic(**dd.str2kw('name', _("Journeys")))
+        yield self.journeys_topic
+        europe = line(self.journeys_topic, None, self.journey_tariff,
+                      options_cat=journey_options,
+                      **dd.str2kw('name', _("Europe")))
+
+        yield europe
+        yield add_journey(europe, "Griechenland 2014",
+                          i2d(20140814), i2d(20140820))
+        yield add_journey(europe, "London 2014",
+                          i2d(20140714), i2d(20140720))
 
         comp = topic(name="Computer")
         yield comp
