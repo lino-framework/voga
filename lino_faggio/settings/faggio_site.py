@@ -12,10 +12,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
-
 from lino.projects.std.settings import *
 
 from lino_faggio import SETUP_INFO
+
 
 class Site(Site):
     version = SETUP_INFO['version']

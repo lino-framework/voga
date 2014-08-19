@@ -201,21 +201,22 @@ dd.inject_field(
         help_text=_("Whether this Person is also a Pupil.")))
 
 
-
-
 @dd.receiver(dd.post_analyze)
 def customize_courses(sender, **kw):
     dd.modules.courses.Courses.set_detail_layout(CourseDetail())
 
 
 def setup_main_menu(site, ui, profile, main):
-    m = main.get_item("contacts")
-    m.add_action('courses.Teachers')
-    m.add_action('courses.Pupils')
+    # m = main.get_item("contacts")
     m = main.add_menu("courses", config.verbose_name)
-    m.add_action(Courses)
+    m.add_action('courses.Pupils')
+    m.add_action('courses.Teachers')
+    m.add_separator()
+    m.add_action('courses.Courses')
+    m.add_action('courses.Lines')
     #~ m.add_action(Teachers)
     #~ m.add_action(Pupils)
+    m.add_separator()
     m.add_action(PendingRequestedEnrolments)
     m.add_action(PendingConfirmedEnrolments)
 
@@ -225,6 +226,6 @@ def setup_config_menu(site, ui, profile, m):
     #~ m.add_action(Rooms)
     m.add_action('courses.TeacherTypes')
     m.add_action('courses.PupilTypes')
-    m.add_action(Topics)
-    m.add_action(Lines)
-    m.add_action(Slots)
+    m.add_action('courses.Topics')
+    m.add_action('courses.Lines')
+    m.add_action('courses.Slots')
