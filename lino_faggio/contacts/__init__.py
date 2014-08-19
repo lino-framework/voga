@@ -12,11 +12,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Lino; if not, see <http://www.gnu.org/licenses/>.
 
-#from lino import ad
-
 from lino.modlib.contacts import Plugin
 
 
-# class Plugin(Plugin):
+class Plugin(Plugin):
 
-#     extends_models = ['contacts.Person']
+    extends_models = ['contacts.Person']

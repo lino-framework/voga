@@ -23,7 +23,13 @@ from lino.modlib.contacts.models import *
 
 from lino.modlib.sales import models as sales
 
-ledger = dd.resolve_app('ledger')
+beid = dd.resolve_app('beid')
+
+from lino.modlib.beid.mixins import BeIdCardHolder
+
+
+class Person(Person, BeIdCardHolder):
+    pass
 
 
 class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
@@ -47,7 +53,7 @@ class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
     sales.InvoiceablesByPartner
     # ledger.InvoicesByPartner
     ledger.MovementsByPartner
-    """, label=ledger.MODULE_LABEL)
+    """, label=dd.plugins.ledger.verbose_name)
 
     bottom_box = """
     remarks
@@ -101,7 +107,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
 
 class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
-    # main = 'general more ledger'
+    main = 'general sales ledger more'
 
     general = dd.Panel("""
     address_box contact_box
@@ -110,7 +116,7 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
     more = dd.Panel("""
     id language url
-    addr1 addr2
+    addr1 addr2 national_id
     notes.NotesByPerson  lists.MembersByPerson
     """, label=_("More"))
 
@@ -126,7 +132,7 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
 class PupilDetail(MyPersonDetail):
 
-    main = MyPersonDetail.main + " courses"
+    main = 'general courses sales ledger more'
 
     personal = 'pupil_type'
 

@@ -30,9 +30,9 @@ from lino.modlib.courses import workflows
 #~ contacts = dd.resolve_app('contacts')
 
 
-@dd.when_prepared('contacts.Person', 'contacts.Company')
-def hide_region(model):
-    model.hide_elements('region')
+# @dd.when_prepared('contacts.Person', 'contacts.Company')
+# def hide_region(model):
+#     model.hide_elements('region')
 
 if False:
     # 20131025 fails because MergeAction.__init__ tries to use _lino_ddh

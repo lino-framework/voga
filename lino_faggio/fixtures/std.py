@@ -14,22 +14,42 @@
 
 from __future__ import unicode_literals
 
+from django.contrib.contenttypes.models import ContentType
+from django.utils.translation import ugettext_lazy as _
 from lino.utils.instantiator import Instantiator
 
-from north.dbutils import babelkw
+from lino import dd
+
+
+def excerpt_types():  # also used for database migration
+
+    etype = Instantiator('excerpts.ExcerptType',
+                         # build_method='appypdf',
+                         email_template='Default.eml.html').build
+
+    yield etype(
+        build_method='appypdf',
+        template='Confirmation.odt',
+        backward_compat=True,
+        content_type=ContentType.objects.get_for_model(
+            dd.modules.courses.Enrolment),
+        **dd.str2kw('name', _("Confirmation")))
+
+    yield etype(
+        build_method='appypdf',
+        template='Certificate.odt',
+        backward_compat=True,
+        content_type=ContentType.objects.get_for_model(
+            dd.modules.courses.Enrolment),
+        **dd.str2kw('name', _("Certificate")))
 
 
 def objects():
 
     mailType = Instantiator('notes.NoteType').build
 
-    yield mailType(**babelkw('name',
-                             en="Enrolment",
-                             fr=u'Inscription',
-                             de=u"Einschreibeformular"))
-    yield mailType(**babelkw('name',
-                             en="Timetable",
-                             fr=u'Horaire', de=u"Stundenplan"))
-    yield mailType(**babelkw('name',
-                             en="Letter",
-                             fr=u'Lettre', de=u"Brief"))
+    yield mailType(**dd.str2kw('name', _("Enrolment")))
+    yield mailType(**dd.str2kw('name', _("Timetable")))
+    yield mailType(**dd.str2kw('name', _("Letter")))
+
+    yield excerpt_types()

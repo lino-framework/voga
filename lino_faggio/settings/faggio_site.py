@@ -45,6 +45,7 @@ class Site(Site):
         yield 'lino.modlib.countries'
         yield 'lino_faggio.contacts'
         yield 'lino.modlib.lists'
+        # yield 'lino.modlib.beid'
 
         yield 'lino_faggio.courses'
         yield 'lino.modlib.extensible'

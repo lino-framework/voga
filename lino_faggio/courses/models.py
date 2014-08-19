@@ -160,19 +160,20 @@ class CourseDetail(CourseDetail):
     main = "general events enrolments more"
     general = dd.Panel("""
     line teacher name workflow_buttons
-    start_date end_date start_time end_time max_places
+    room start_date end_date start_time end_time
     # courses.EventsByCourse
     remark #OptionsByCourse
     """, label=_("General"))
 
     events = dd.Panel("""
-    room every_unit every max_date max_events
+    every_unit every max_date max_events
     monday tuesday wednesday thursday friday saturday sunday
     cal.EventsByController
 
     """, label=_("Events"))
 
     enrolments = dd.Panel("""
+    max_places enrolments_until tariff
     EnrolmentsByCourse:40
     """, label=_("Enrolments"))
 
