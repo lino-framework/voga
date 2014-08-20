@@ -20,7 +20,6 @@ Anleitung zum Erstellen von Kursserien
 
   Die häufigste Methode ist "Pro Wochentag".
   Siehe auch :ref:`faq.weekday`.
-  
 
 - Schaltfläche "Erstellen" klicken. Lino öffnet ein neues Fenster
 
@@ -29,8 +28,6 @@ Anleitung zum Erstellen von Kursserien
 - Ereignisart: Kurse
 
 - Icon "Speichern"
-
-
 
 - Beginnt am: Doppelklick auf leerem Feld
 
@@ -99,7 +96,7 @@ Reference
     courses into a configurable list of categories. 
     The default database has  the following list of Course Lines:
   
-    .. django2rst:: settings.SITE.login('robin').show(courses.Lines)
+    .. django2rst:: dd.login('robin').show(courses.Lines)
   
   
 .. actor:: courses.Course

@@ -1,5 +1,7 @@
-/home/luc/hgwork/faggio/docs/api/lino_faggio.fixtures.rst:7: WARNING: autodoc: failed to import module u'lino_faggio.fixtures.eiche'; the following exception was raised:
-Traceback (most recent call last):
-  File "/home/luc/pythonenvs/py27/local/lib/python2.7/site-packages/sphinx/ext/autodoc.py", line 326, in import_object
-    __import__(self.modname)
-ImportError: No module named eiche
+/home/luc/hgwork/faggio/docs/userman/contacts.rst:1: SEVERE: Title overline & underline mismatch.
+
+=================================================
+ Designation
+-------------------------------------------------
+../../welfare/userdocs/include/contacts.rst:11: WARNING: Block quote ends without a blank line; unexpected unindent.
+None:31: WARNING: undefined label: faggio.excerpts.excerpt (if the link has no caption the label must precede a section header)

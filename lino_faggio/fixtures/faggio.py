@@ -84,41 +84,34 @@ class Loader1(object):
         settings.SITE.site_config.site_company = we
         yield settings.SITE.site_config
 
-        productcat = Instantiator('products.ProductCat').build
+        ProductCat = dd.modules.products.ProductCat
+        # productcat = Instantiator('products.ProductCat').build
 
-        tariffs = productcat(
-            **babelkw('name',
-                      en="Courses", et="Kursused", de="Kurse", fr="Cours"))
-        yield tariffs
+        course_fees = ProductCat(**dd.str2kw('name', _("Participation fees")))
+        yield course_fees
 
-        trips = productcat(
-            **babelkw('name',
-                      en="Trips", et="Väljasõidud",
-                      de="Ausflüge", fr="Excursions"))
+        trips = ProductCat(**dd.str2kw('name', _("Trips")))
+        # et="Väljasõidud", de="Ausflüge", fr="Excursions"))
         yield trips
 
         kw = dd.str2kw('name', _("Journeys"))
-        self.journeys_cat = productcat(**kw)
+        self.journeys_cat = ProductCat(**kw)
         yield self.journeys_cat
 
         self.journey_tariff = Product(cat=self.journeys_cat, **kw)
 
-        rent = productcat(
-            **babelkw('name',
-                      en="Room renting", et="Ruumiüür", de="Raummiete", fr="Loyer"))
+        rent = ProductCat(**dd.str2kw('name', _("Room renting")))
+        # et="Ruumiüür", de="Raummiete", fr="Loyer"))
         yield rent
-        other = productcat(**babelkw('name',
-                                     en="Other",
-                                     et="Muud",
-                                     de="Sonstige",
-                                     fr="Autres"))
-        yield other
+        # other = ProductCat(**dd.str2kw('name', _("Other")))
+        # et="Muud", de="Sonstige", fr="Autres"))
+        # yield other
 
         product = Instantiator(
             'products.Product', "sales_price cat name").build
-        yield product("20", tariffs, "20€")
-        yield product("50", tariffs, "50€")
-        yield product("80", tariffs, "80€")
+        yield product("20", course_fees, "20€")
+        yield product("50", course_fees, "50€")
+        yield product("80", course_fees, "80€")
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
         yield rent20
@@ -129,7 +122,7 @@ class Loader1(object):
             fr="Loyer par réunion"))
         yield rent10
 
-        self.PRICES = Cycler(Product.objects.filter(cat=tariffs))
+        self.PRICES = Cycler(Product.objects.filter(cat=course_fees))
 
         event_type = Instantiator('cal.EventType').build
         kw = dd.babelkw('name',

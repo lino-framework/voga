@@ -1,7 +1,7 @@
 .. _faggio.tour:
 
 ==============================
-An introduction to Lino-Faggio
+An introduction to Lino Faggio
 ==============================
 
 - Partners

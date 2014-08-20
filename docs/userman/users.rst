@@ -1,4 +1,4 @@
-.. _patrols.users:
+.. _faggio.users:
 
 =====
 Users

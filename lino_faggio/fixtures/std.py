@@ -21,7 +21,7 @@ from lino.utils.instantiator import Instantiator
 from lino import dd
 
 
-def excerpt_types():  # also used for database migration
+def excerpt_types():
 
     etype = Instantiator('excerpts.ExcerptType',
                          # build_method='appypdf',
