@@ -331,6 +331,7 @@ class Loader2(Loader1):
         yield externe
 
         obj = line(comp, self.kurse, self.PRICES.pop(),
+                   ref="comp",
                    **dd.babelkw('name', de="Erste Schritte", en="First Steps"))
         yield obj
         kw = dict(max_events=8)
@@ -363,8 +364,9 @@ class Loader2(Loader1):
     - Tipps und Tricks
     """
         obj = line(
-            comp, self.kurse, self.PRICES.pop(
-            ), description=desc, **dd.babelkw(
+            comp, self.kurse, self.PRICES.pop(),
+            ref="WWW",
+            description=desc, **dd.babelkw(
                 'name',
                 de="Internet: World Wide Web für Anfänger",
                 en="Internet for beginners"))
@@ -380,16 +382,18 @@ class Loader2(Loader1):
                          friday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
+                   ref="BT",
                    **dd.babelkw('name', de="Bauchtanz", en="Belly dancing"))
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=10)
-        kw.update(start_date=demo_date(-20))
+        kw.update(start_date=demo_date(20))
         kw.update(state=CourseStates.registered)
         yield add_course(obj, self.spiegel, "19:00", "20:00",
                          wednesday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
+                   ref="FG",
                    **dd.babelkw('name',
                                 de="Funktionsgymnastik",
                                 en="Functional gymnastics"))
@@ -400,6 +404,7 @@ class Loader2(Loader1):
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
+                   ref="Rücken",
                    **dd.babelkw('name', de="Rücken fit durch Schwimmen", en="Swimming"))
         yield obj
         kw = dict(max_events=10, state=CourseStates.registered)
@@ -412,6 +417,7 @@ class Loader2(Loader1):
         yield add_course(obj, self.pc_kelmis, "13:30", "14:30", thursday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
+                   ref="SV",
                    **dd.babelkw('name', de="Selbstverteidigung im Alltag", en="Self-defence"))
         yield obj
         kw = dict(max_events=6)
@@ -421,7 +427,9 @@ class Loader2(Loader1):
         yield add_course(obj, self.spiegel, "18:00", "19:00", friday=True, **kw)
         yield add_course(obj, self.spiegel, "19:00", "20:00", friday=True, **kw)
 
-        obj = line(medit, self.kurse, self.PRICES.pop(), name="GuoLin-Qigong")
+        obj = line(medit, self.kurse, self.PRICES.pop(),
+                   ref="GLQ",
+                   name="GuoLin-Qigong")
         yield obj
         kw = dict(max_events=10)
         kw.update(start_date=demo_date(-10))
@@ -432,6 +440,7 @@ class Loader2(Loader1):
                          friday=True, **kw)
 
         obj = line(medit, self.kurse, self.PRICES.pop(),
+                   ref="MED",
                    **dd.babelkw(
                        'name',
                        de="Den Kopf frei machen - zur inneren Ruhe finden",
