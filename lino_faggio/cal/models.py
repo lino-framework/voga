@@ -120,6 +120,10 @@ class Event(Event):
         return settings.SITE.site_config.site_calendar
 
 
+class MyEvents(MyEvents):
+    column_names = 'when_text summary room owner workflow_buttons *'
+
+
 @dd.receiver(dd.post_analyze)
 def customize_cal(sender, **kw):
     site = sender
