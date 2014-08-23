@@ -14,7 +14,7 @@ Faggio
 >>> import json
 
 >>> print(settings.SETTINGS_MODULE)
-lino_faggio.settings.test
+lino_faggio.settings.doctests
 >>> print([lng.name for lng in settings.SITE.languages])
 ['en', 'de', 'fr']
 

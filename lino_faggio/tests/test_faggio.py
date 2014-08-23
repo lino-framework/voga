@@ -15,8 +15,8 @@
 """This module contains "quick" tests that are run on a demo database
 without any fixture. You can run only these tests by issuing::
 
-  python manage.py test lino_faggio.tests.QuickTest
-  python manage.py test lino_faggio.tests.DemoTest
+  python manage.py test lino_faggio.tests.test_faggio.QuickTest
+  python manage.py test lino_faggio.tests.test_faggio.DemoTest
 
 """
 
@@ -90,15 +90,15 @@ Generating events between 2014-01-13 and 2019-05-22.
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
-======================= ===========
- When                    State
------------------------ -----------
- **2014 Jan 13 (Mon)**   Suggested
- **2014 Jan 20 (Mon)**   Suggested
- **2014 Jan 27 (Mon)**   Suggested
- **2014 Feb 03 (Mon)**   Suggested
- **2014 Feb 10 (Mon)**   Suggested
-======================= ===========
+============= ===========
+ When          State
+------------- -----------
+ Mon 1/13/14   Suggested
+ Mon 1/20/14   Suggested
+ Mon 1/27/14   Suggested
+ Mon 2/3/14    Suggested
+ Mon 2/10/14   Suggested
+============= ===========
 """)
 
         """Now we want to skip the 2nd event.  We click on "Move next" on
@@ -129,15 +129,15 @@ Move down for Course #1 Appointment 2...
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
-======================= ===========
- When                    State
------------------------ -----------
- **2014 Jan 13 (Mon)**   Suggested
- **2014 Jan 27 (Mon)**   Draft
- **2014 Jan 27 (Mon)**   Suggested
- **2014 Feb 03 (Mon)**   Suggested
- **2014 Feb 10 (Mon)**   Suggested
-======================= ===========
+============= ===========
+ When          State
+------------- -----------
+ Mon 1/13/14   Suggested
+ Mon 1/27/14   Draft
+ Mon 1/27/14   Suggested
+ Mon 2/3/14    Suggested
+ Mon 2/10/14   Suggested
+============= ===========
 """)
 
 
@@ -160,15 +160,15 @@ Generating events between 2014-01-13 and 2019-05-22.
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
-======================= ===========
- When                    State
------------------------ -----------
- **2014 Jan 13 (Mon)**   Suggested
- **2014 Jan 27 (Mon)**   Draft
- **2014 Feb 03 (Mon)**   Suggested
- **2014 Feb 10 (Mon)**   Suggested
- **2014 Feb 17 (Mon)**   Suggested
-======================= ===========
+============= ===========
+ When          State
+------------- -----------
+ Mon 1/13/14   Suggested
+ Mon 1/27/14   Draft
+ Mon 2/3/14    Suggested
+ Mon 2/10/14   Suggested
+ Mon 2/17/14   Suggested
+============= ===========
 """)
 
 

@@ -16,12 +16,12 @@ execfile(ROOTDIR.child('lino_faggio', 'project_info.py'), globals())
 from djangosite.utils.pythontest import TestCase
 
 import os
-os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.settings.test"
+os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.settings.doctests"
 
 
 class BaseTestCase(TestCase):
     project_root = ROOTDIR
-    demo_settings_module = 'lino_faggio.settings.test'
+    demo_settings_module = 'lino_faggio.settings.doctests'
 
 
 class DocsTests(BaseTestCase):

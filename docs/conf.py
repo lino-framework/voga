@@ -11,7 +11,7 @@
 extensions = []
 
 from atelier.sphinxconf import configure
-configure(globals(), 'lino_faggio.settings.test')
+configure(globals(), 'lino_faggio.settings.doctests')
 
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.actordoc']
