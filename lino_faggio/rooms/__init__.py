@@ -17,4 +17,4 @@ from lino.modlib.rooms import Plugin
 
 class Plugin(Plugin):
 
-    extends_models = ['rooms.Booking']
+    extends_models = ['Booking']

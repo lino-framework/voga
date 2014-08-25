@@ -17,4 +17,4 @@ from lino.modlib.cal import Plugin
 
 class Plugin(Plugin):
 
-    extends_models = ['cal.Event', 'cal.Room']
+    extends_models = ['Event', 'Room']

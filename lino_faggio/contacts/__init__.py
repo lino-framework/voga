@@ -17,4 +17,4 @@ from lino.modlib.contacts import Plugin
 
 class Plugin(Plugin):
 
-    extends_models = ['contacts.Person']
+    extends_models = ['Person']

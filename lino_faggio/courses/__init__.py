@@ -16,10 +16,5 @@ from lino.modlib.courses import Plugin
 
 class Plugin(Plugin):
 
-    # extends_models = [
-    #     'courses.Teacher',  'courses.Pupil',
-    #     'courses.TeacherType',  'courses.PupilType',
-    # ]
-
     teacher_model = 'courses.Teacher'
     pupil_model = 'courses.Pupil'

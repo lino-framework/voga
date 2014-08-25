@@ -29,7 +29,7 @@ from lino.modlib.courses.models import *
 class TeacherType(dd.Referrable, dd.BabelNamed, dd.Printable):
 
     class Meta:
-        abstract = settings.SITE.is_abstract_model('courses.TeacherType')
+        abstract = dd.is_abstract_model(__name__, 'TeacherType')
         # verbose_name = _("Teacher type")
         # verbose_name_plural = _('Teacher types')
         verbose_name = _("Instructor Type")
@@ -48,7 +48,7 @@ class TeacherTypes(dd.Table):
 class Teacher(Person):
 
     class Meta:
-        abstract = settings.SITE.is_abstract_model('courses.Teacher')
+        abstract = dd.is_abstract_model(__name__, 'Teacher')
         verbose_name = _("Instructor")
         verbose_name_plural = _("Instructors")
 
@@ -82,7 +82,7 @@ class TeachersByType(Teachers):
 class PupilType(dd.Referrable, dd.BabelNamed, dd.Printable):
 
     class Meta:
-        abstract = settings.SITE.is_abstract_model('courses.PupilType')
+        abstract = dd.is_abstract_model(__name__, 'PupilType')
         # verbose_name = _("Pupil type")
         # verbose_name_plural = _('Pupil types')
         verbose_name = _("Participant Type")
@@ -101,7 +101,7 @@ class PupilTypes(dd.Table):
 class Pupil(Person):
 
     class Meta:
-        abstract = settings.SITE.is_abstract_model('courses.Pupil')
+        abstract = dd.is_abstract_model(__name__, 'Pupil')
         verbose_name = _("Participant")
         verbose_name_plural = _("Participants")
         # verbose_name = _("Pupil")
