@@ -95,7 +95,7 @@ class Site(Site):
 
         self.modules.vat.configure(default_vat_class='exempt')
 
-    def get_admin_main_items(self, ar):
+    def get_admin_main_items(self):
         yield self.modules.courses.DraftCourses
         # yield self.modules.courses.ActiveCourses
 
