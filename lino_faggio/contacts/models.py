@@ -82,7 +82,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     more = dd.Panel("""
     id language type vat_id
     addr1 url
-    rooms.BookingsByCompany lists.MembersByCompany
+    rooms.BookingsByCompany lists.MembersByPartner
     notes.NotesByCompany
     """, label=_("More"))
 
@@ -117,7 +117,7 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     more = dd.Panel("""
     id language url
     addr1 addr2 national_id
-    notes.NotesByPerson  lists.MembersByPerson
+    notes.NotesByPerson  lists.MembersByPartner
     """, label=_("More"))
 
     personal = 'is_pupil is_teacher'
