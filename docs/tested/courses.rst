@@ -21,7 +21,7 @@ The first demo course starts on December 2, 2013:
 
 >>> obj = courses.Course.objects.get(pk=3)
 >>> print(obj)
-First Steps (12/2/13 Butgenbach (Computerroom))
+comp (12/2/13 Butgenbach (Computer room))
 
 >>> ses = dd.login('robin')
 
@@ -36,23 +36,24 @@ First Steps (12/2/13 Butgenbach (Computerroom))
 
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-============================= ===========
- When                          State
------------------------------ -----------
- **2013 Dec 02 (Mon) 13:30**   Suggested
- **2013 Dec 09 (Mon) 13:30**   Suggested
- **2013 Dec 16 (Mon) 13:30**   Suggested
- **2013 Dec 23 (Mon) 13:30**   Suggested
- **2013 Dec 30 (Mon) 13:30**   Suggested
- **2014 Jan 06 (Mon) 13:30**   Suggested
- **2014 Jan 13 (Mon) 13:30**   Suggested
- **2014 Jan 20 (Mon) 13:30**   Suggested
-============================= ===========
+====================== ===========
+ When                   State
+---------------------- -----------
+ Mon 12/2/13 (13:30)    Suggested
+ Mon 12/9/13 (13:30)    Suggested
+ Mon 12/16/13 (13:30)   Suggested
+ Mon 12/23/13 (13:30)   Suggested
+ Mon 12/30/13 (13:30)   Suggested
+ Mon 1/6/14 (13:30)     Suggested
+ Mon 1/13/14 (13:30)    Suggested
+ Mon 1/20/14 (13:30)    Suggested
+====================== ===========
 <BLANKLINE>
+
 
 We run the UpdateEvents action a first time and verify that the events
 remain unchanged (if the following fails, make sure you've run
-:cmd:`fab initdb`).
+:cmd:`fab initdb` before running :cmd:`fab test`).
 
 >>> import logging
 >>> logger = logging.getLogger('lino')
@@ -61,7 +62,7 @@ remain unchanged (if the following fails, make sure you've run
 >>> res['success']
 True
 >>> print(res['info_message'])
-Update Events for First Steps (12/2/13 Butgenbach (Computerroom))...
+Update Events for comp (12/2/13 Butgenbach (Computer room))...
 Generating events between 2013-12-02 and 2019-05-22.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")

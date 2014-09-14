@@ -28,7 +28,7 @@ class Site(Site):
 
     userdocs_prefix = 'faggio.'
 
-    demo_fixtures = 'std few_languages demo demo_bookings faggio demo2'.split()
+    demo_fixtures = 'std few_languages demo demo_bookings buche faggio demo2'.split()
     start_year = 2013
 
     user_model = 'users.User'

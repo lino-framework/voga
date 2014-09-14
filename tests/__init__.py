@@ -10,18 +10,17 @@ from unipath import Path
 
 ROOTDIR = Path(__file__).parent.parent
 
-# load  SETUP_INFO:
-execfile(ROOTDIR.child('lino_faggio', 'project_info.py'), globals())
+import lino_faggio
 
 from djangosite.utils.pythontest import TestCase
 
 import os
-os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.settings.doctests"
+os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.projects.docs.settings.doctests"
 
 
 class BaseTestCase(TestCase):
     project_root = ROOTDIR
-    demo_settings_module = 'lino_faggio.settings.doctests'
+    demo_settings_module = 'lino_faggio.projects.docs.settings.doctests'
 
 
 class DocsTests(BaseTestCase):
@@ -38,7 +37,7 @@ class DocsTests(BaseTestCase):
         return self.run_docs_doctests('tested/general.rst')
 
     def test_packages(self):
-        self.run_packages_test(SETUP_INFO['packages'])
+        self.run_packages_test(lino_faggio.SETUP_INFO['packages'])
 
 
 class DemoTests(BaseTestCase):
@@ -47,6 +46,8 @@ class DemoTests(BaseTestCase):
     """
 
     def test_admin(self):
-        self.run_django_manage_test()
+        self.run_django_manage_test('lino_faggio/projects/docs')
+        self.run_django_manage_test('lino_faggio/projects/roger')
+        self.run_django_manage_test('lino_faggio/projects/edmund')
 
 

@@ -7,8 +7,8 @@ from lino_faggio.projects.base import *
 
 class Site(Site):
 
-    title = "Lino Faggio demo"
-    is_demo_site = True
+    languages = 'en de fr'
+    title = "Lino Faggio Reference"
 
     ignore_dates_before = None
     the_demo_date = datetime.date(2014, 06, 15)

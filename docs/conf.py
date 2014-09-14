@@ -11,7 +11,7 @@
 extensions = []
 
 from atelier.sphinxconf import configure
-configure(globals(), 'lino_faggio.settings.doctests')
+configure(globals(), 'lino_faggio.projects.docs.settings.doctests')
 
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.actordoc']
@@ -19,7 +19,6 @@ extensions += ['lino.sphinxcontrib.logo']
 extensions += ['sphinxcontrib.taglist']
 
 from django.conf import settings
-settings.SITE.title = "Lino Faggio Reference"
 
 
 # If your extensions are in another directory, add it here. If the directory

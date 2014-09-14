@@ -193,56 +193,32 @@ class Loader1(object):
 
         room = Instantiator('cal.Room').build
         kw = dict(company=eupen)
-        kw.update(babelkw('name',
-                          de="Spiegelsaal",
-                          fr="Salle mirroitée",
-                          en="Mirrored room",
-                          ))
+        kw.update(dd.str2kw('name', _("Mirrored room")))
         kw.update(tariff=rent20)
         self.spiegel = room(**kw)
         yield self.spiegel
 
-        kw.update(babelkw('name',
-                          de="Computerraum",
-                          fr="Salle ordinateurs",
-                          en="Computer room",
-                          ))
+        kw.update(dd.str2kw('name', _("Computer room")))
         kw.update(tariff=rent10)
         self.pc_eupen = room(**kw)
         yield self.pc_eupen
 
         kw = dict(company=bbach)
-        kw.update(babelkw('name',
-                          de="Konferenzraum",
-                          fr="Salle conférences",
-                          en="Conferences room",
-                          ))
+        kw.update(dd.str2kw('name', _("Conferences room")))
         self.konf = room(**kw)
         yield self.konf
 
-        kw.update(babelkw('name',
-                          de="Informatikraum",
-                          fr="Salle informatique",
-                          en="Computerroom",
-                          ))
+        kw.update(dd.str2kw('name', _("Computer room")))
         self.pc_bbach = room(**kw)
         yield self.pc_bbach
 
         kw = dict(company=kelmis)
-        kw.update(babelkw('name',
-                          de="Computerraum",
-                          fr="Salle ordinateurs",
-                          en="Computer room",
-                          ))
+        kw.update(dd.str2kw('name', _("Computer room")))
         self.pc_kelmis = room(**kw)
         yield self.pc_kelmis
 
         kw = dict(company=stvith)
-        kw.update(babelkw('name',
-                          de="Computerraum",
-                          fr="Salle ordinateurs",
-                          en="Computer room",
-                          ))
+        kw.update(dd.str2kw('name', _("Computer room")))
         self.pc_stvith = room(**kw)
         yield self.pc_stvith
 
