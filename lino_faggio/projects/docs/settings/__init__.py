@@ -1,9 +1,8 @@
 """
-The settings used for building `/docs` and `/userdocs`
+The settings used to build the docs
 """
 import datetime
-
-from lino_faggio.settings import *
+from lino_faggio.projects.base import *
 
 
 class Site(Site):
@@ -15,7 +14,3 @@ class Site(Site):
     the_demo_date = datetime.date(2014, 06, 15)
     ignore_dates_after = datetime.date(2019, 05, 22)
 
-
-SITE = Site(globals())
-# the following line should not be active in a checked-in version
-#~ DATABASES['default']['NAME'] = ':memory:'

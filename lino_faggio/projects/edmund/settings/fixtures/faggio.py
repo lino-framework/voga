@@ -14,7 +14,7 @@
 
 """
 
-demo data specific for :ref:`faggio`.
+demo data specific for :ref:`faggio` à la Edmund
 """
 
 from __future__ import unicode_literals
@@ -64,27 +64,30 @@ class Loader1(object):
 
     def objects(self):
 
-        yield PupilType(ref="M", name="Mitglied")
-        yield PupilType(ref="H", name="Helfer")
-        yield PupilType(ref="L", name="LFV")
-        yield PupilType(ref="C", name="COK")
-        #~ yield PupilType(ref="E",name="Extern")
+        PlaceTypes = dd.modules.countries.PlaceTypes
+        ProductCat = dd.modules.products.ProductCat
 
-        yield TeacherType(ref="S", **babelkw('name', de="Selbstständig", fr="Indépendant", en="Independant"))
-        yield TeacherType(ref="EP", **babelkw('name', de="Ehrenamtlich pauschal", fr="Volontaire (forfait)", en="Voluntary (flat)"))
-        yield TeacherType(ref="ER", **babelkw('name', de="Ehrenamtlich real", fr="Volontaire (réel)", en="Voluntary (real)"))
-        yield TeacherType(ref="LBA", **babelkw('name', de="LBA", fr="ALE", en="LEA"))
-        #~ yield TeacherType(ref="A",**babelkw('name',de="Andere",fr="Autre",en="Other"))
+        yield PupilType(ref="M", name="Liige")
+        yield PupilType(ref="H", name="Abistaja")
+        yield PupilType(ref="L", name="Muu")
+
+        yield TeacherType(ref="IN", **dd.str2kw('name', _("Independant")))
+        yield TeacherType(ref="VL", **dd.str2kw('name', _("Voluntary")))
+        yield TeacherType(ref="ETC", **dd.str2kw('name', _("Other")))
 
         company = Instantiator('contacts.Company', 'name city:name').build
 
-        we = company("Die Buche V.o.G.", "Eupen",
-                     street="Birkenweg", street_no=5)
+        tallinn = PlaceTypes.town.find("Tallinn")
+        tartu = PlaceTypes.town.find("Tartu")
+        rapla = PlaceTypes.town.find("Rapla")
+        parnu = PlaceTypes.town.find("Pärnu")
+
+        we = company("Juku õpib MTÜ", tallinn,
+                     street="Tartu mnt", street_no=2)
         yield we
         settings.SITE.site_config.site_company = we
         yield settings.SITE.site_config
 
-        ProductCat = dd.modules.products.ProductCat
         # productcat = Instantiator('products.ProductCat').build
 
         course_fees = ProductCat(**dd.str2kw('name', _("Participation fees")))
@@ -115,11 +118,8 @@ class Loader1(object):
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
         yield rent20
-        rent10 = product("10", rent, **babelkw(
-            'name',
-            en="Rent per meeting", et="Ruumi üürimine",
-            de="Raummiete pro Versammlung",
-            fr="Loyer par réunion"))
+        rent10 = product(
+            "10", rent, **dd.str2kw('name', _("Rent per meeting")))
         yield rent10
 
         self.PRICES = Cycler(Product.objects.filter(cat=course_fees))
@@ -176,19 +176,19 @@ class Loader1(object):
         #~
 
         company = Instantiator('contacts.Company', 'name city:name').build
-        eupen = company("Lern- und Begegnungszentrum", "Eupen",
+        eupen = company("Lern- und Begegnungszentrum", tallinn,
                         street="Kirchstraße", street_no=39, street_box="/B2")
         yield eupen
-        bbach = company("Lern- und Begegnungszentrum", "Bütgenbach")
+        bbach = company("Lern- und Begegnungszentrum", tallinn)
         yield bbach
-        kelmis = company("Zur Klüüs", "Kelmis")
+        kelmis = company("Zur Klüüs", tartu)
         yield kelmis
-        stvith = company("Sport- und Freizeitzentrum", "Sankt Vith")
+        stvith = company("Sport- und Freizeitzentrum", rapla)
         yield stvith
 
-        self.ext1 = company("AA Neudorf", "Raeren")
+        self.ext1 = company("AA Neudorf", tartu)
         yield self.ext1
-        self.ext2 = company("Nisperter Schützenverein", "Eupen")
+        self.ext2 = company("Nisperter Schützenverein", parnu)
         yield self.ext2
 
         room = Instantiator('cal.Room').build
