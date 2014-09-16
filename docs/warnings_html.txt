@@ -1,0 +1,20 @@
+/home/luc/hgwork/faggio/docs/api/lino_faggio.project_info.rst:4: WARNING: autodoc: failed to import module u'lino_faggio.project_info'; the following exception was raised:
+Traceback (most recent call last):
+  File "/home/luc/repositories/sphinx/sphinx/ext/autodoc.py", line 367, in import_object
+    __import__(self.modname)
+ImportError: No module named project_info
+/home/luc/hgwork/faggio/docs/api/lino_faggio.projects.roger.fixtures.rst:4: WARNING: autodoc: failed to import module u'lino_faggio.projects.roger.fixtures'; the following exception was raised:
+Traceback (most recent call last):
+  File "/home/luc/repositories/sphinx/sphinx/ext/autodoc.py", line 367, in import_object
+    __import__(self.modname)
+ImportError: No module named fixtures
+/home/luc/hgwork/faggio/docs/api/lino_faggio.projects.roger.fixtures.eiche2lino.rst:4: WARNING: autodoc: failed to import module u'lino_faggio.projects.roger.fixtures.eiche2lino'; the following exception was raised:
+Traceback (most recent call last):
+  File "/home/luc/repositories/sphinx/sphinx/ext/autodoc.py", line 367, in import_object
+    __import__(self.modname)
+ImportError: No module named fixtures.eiche2lino
+/home/luc/hgwork/faggio/docs/api/lino_faggio.projects.roger.fixtures.faggio.rst:4: WARNING: autodoc: failed to import module u'lino_faggio.projects.roger.fixtures.faggio'; the following exception was raised:
+Traceback (most recent call last):
+  File "/home/luc/repositories/sphinx/sphinx/ext/autodoc.py", line 367, in import_object
+    __import__(self.modname)
+ImportError: No module named fixtures.faggio
