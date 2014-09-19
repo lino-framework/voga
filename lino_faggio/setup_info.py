@@ -17,7 +17,7 @@ application for managing courses, participants and meeting rooms.
     author='Luc Saffre',
     author_email='luc.saffre@gmail.com',
     url="http://faggio.lino-framework.org",
-    license='GPL',
+    license='BSD License',
     classifiers="""\
 Programming Language :: Python
 Programming Language :: Python :: 2
@@ -26,7 +26,7 @@ Environment :: Web Environment
 Framework :: Django
 Intended Audience :: Developers
 Intended Audience :: System Administrators
-License :: OSI Approved :: GNU General Public License (GPL)
+License :: OSI Approved :: BSD License
 Operating System :: OS Independent
 Topic :: Office/Business :: Scheduling
 """.splitlines())
