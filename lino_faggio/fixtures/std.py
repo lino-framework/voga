@@ -8,7 +8,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 from lino.utils.instantiator import Instantiator
 
-from lino import dd
+from lino import dd, rt
 
 
 def excerpt_types():
@@ -22,7 +22,7 @@ def excerpt_types():
         template='Confirmation.odt',
         backward_compat=True,
         content_type=ContentType.objects.get_for_model(
-            dd.modules.courses.Enrolment),
+            rt.modules.courses.Enrolment),
         **dd.str2kw('name', _("Confirmation")))
 
     yield etype(
@@ -30,7 +30,7 @@ def excerpt_types():
         template='Certificate.odt',
         backward_compat=True,
         content_type=ContentType.objects.get_for_model(
-            dd.modules.courses.Enrolment),
+            rt.modules.courses.Enrolment),
         **dd.str2kw('name', _("Certificate")))
 
 

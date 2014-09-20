@@ -19,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from atelier.utils import date_offset
 from north.dbutils import babelkw
-from lino import dd
+from lino import dd, rt
 
 DEMO_REF_DATE = i2d(20140101)
 
@@ -54,8 +54,8 @@ class Loader1(object):
 
     def objects(self):
 
-        PlaceTypes = dd.modules.countries.PlaceTypes
-        ProductCat = dd.modules.products.ProductCat
+        PlaceTypes = rt.modules.countries.PlaceTypes
+        ProductCat = rt.modules.products.ProductCat
 
         yield PupilType(ref="M", name="Liige")
         yield PupilType(ref="H", name="Abistaja")
@@ -245,8 +245,8 @@ class Loader2(Loader1):
             #~ kw.update(price=PRICES.pop())
             return course(*args, **kw)
 
-        Product = dd.modules.products.Product
-        ProductCat = dd.modules.products.ProductCat
+        Product = rt.modules.products.Product
+        ProductCat = rt.modules.products.ProductCat
 
         journey_options = ProductCat(**dd.str2kw(
             'name', _("Hotel options")))

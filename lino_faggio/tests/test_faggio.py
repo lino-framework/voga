@@ -21,7 +21,7 @@ from lino.runtime import users
 # from lino.runtime import rooms
 from django.conf import settings
 
-from lino import dd
+from lino import dd, rt
 from lino.utils import i2d
 from djangosite.utils.djangotest import RemoteAuthTestCase
 

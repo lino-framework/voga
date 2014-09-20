@@ -22,7 +22,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 from lino.core.dbutils import resolve_model
-from lino import dd
+from lino import dd, rt
 
 from north.dpy import Migrator
 

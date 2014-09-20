@@ -73,7 +73,7 @@ class Site(Site):
         super(Site, self).setup_choicelists()
 
         #~ raise Exception(123)
-        from lino import dd
+        from lino import dd, rt
         from django.utils.translation import ugettext_lazy as _
         dd.UserProfiles.reset('* office accounts')
         add = dd.UserProfiles.add_item

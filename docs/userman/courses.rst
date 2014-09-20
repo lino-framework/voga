@@ -96,7 +96,7 @@ Reference
     courses into a configurable list of categories. 
     The default database has  the following list of Course Lines:
   
-    .. django2rst:: dd.login('robin').show(courses.Lines)
+    .. django2rst:: rt.login('robin').show(courses.Lines)
   
   
 .. actor:: courses.Course

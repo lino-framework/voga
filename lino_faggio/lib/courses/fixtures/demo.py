@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 
 import datetime
 
-from lino import dd
+from lino import dd, rt
 from lino.utils import mti, Cycler
 from django.utils.translation import ugettext_lazy as _
 
