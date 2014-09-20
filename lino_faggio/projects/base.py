@@ -72,8 +72,7 @@ class Site(Site):
         """
         super(Site, self).setup_choicelists()
 
-        #~ raise Exception(123)
-        from lino import dd, rt
+        from lino import dd
         from django.utils.translation import ugettext_lazy as _
         dd.UserProfiles.reset('* office accounts')
         add = dd.UserProfiles.add_item
@@ -82,8 +81,6 @@ class Site(Site):
             readonly=True, authenticated=False)
         add('100', _("User"),          'U U U', name='user')
         add('900', _("Administrator"), 'A A A', name='admin')
-
-        self.modules.vat.configure(default_vat_class='exempt')
 
     def get_admin_main_items(self):
         yield self.modules.courses.DraftCourses
@@ -96,4 +93,5 @@ class Site(Site):
         """
         self.plugins.extensible.configure(calendar_start_hour=9)
         self.plugins.extensible.configure(calendar_end_hour=21)
+        self.plugins.vat.configure(default_vat_class='exempt')
         super(Site, self).setup_plugins()
