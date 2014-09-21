@@ -44,14 +44,16 @@ SETUP_INFO.update(packages=[
     'lino_faggio.lib.courses.fixtures',
     'lino_faggio.lib.rooms',
     'lino_faggio.projects',
+    'lino_faggio.projects.docs',
     'lino_faggio.projects.docs.settings',
+    'lino_faggio.projects.docs.tests',
     'lino_faggio.projects.edmund',
     'lino_faggio.projects.edmund.settings',
     'lino_faggio.projects.edmund.settings.fixtures',
     'lino_faggio.projects.roger',
     'lino_faggio.projects.roger.settings',
+    'lino_faggio.projects.roger.settings.fixtures',
     'lino_faggio.fixtures',
-    'lino_faggio.tests',
 ])
 
 SETUP_INFO.update(message_extractors={

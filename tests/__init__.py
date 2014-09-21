@@ -24,6 +24,9 @@ class BaseTestCase(TestCase):
 
 
 class DocsTests(BaseTestCase):
+    def test_cal(self):
+        return self.run_docs_doctests('tested/cal.rst')
+
     def test_ledger(self):
         return self.run_docs_doctests('tested/ledger.rst')
 

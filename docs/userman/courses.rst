@@ -44,10 +44,11 @@ Neues Fenster
 
 - Kursleiter auswählen
 
-- Entweder in :ddref:`courses.Course.max_events` die Anzahl der
-  Termine oder in :ddref:`courses.Course.max_date` ein Enddatum
-  eingeben.  Wenn Sie beide Felder ausfüllen, werden nur Termine
-  generiert bis zur ersten Grenze.
+- Entweder in :attr:`max_events <courses.Course.max_events>` die
+  Anzahl der Termine oder in :attr:`max_date
+  <courses.Course.max_date>` ein Enddatum eingeben.  Wenn Sie beide
+  Felder ausfüllen, werden nur Termine generiert bis zur ersten
+  Grenze.
 
 -  Wochentag auswählen
 
@@ -84,36 +85,10 @@ setzen?"
 
 
 
+Kursserien
+==========
 
-Reference
-=========
-
-.. actor:: courses.Pupil
-.. actor:: courses.Teacher
-.. actor:: courses.Line
-
-    A line (of :ddref:`courses.Course`) is a series which groups
-    courses into a configurable list of categories. 
-    The default database has  the following list of Course Lines:
-  
-    .. django2rst:: rt.login('robin').show(courses.Lines)
-  
-  
-.. actor:: courses.Course
-
-    Notes about automatic event generation:
-    
-    - When an automatically generated event is to be reported to another
-      date, e.g. because it falls into a vacation period,
-      then you simply change it's date. 
-      Lino will automatically adapt all subsequent events.
-      
-    - Marking an automatically generated event as "Cancelled" will not
-      create a replacement event.
+.. django2rst:: rt.login('robin').show(courses.Lines)
 
 
-.. actor:: courses.Topic
-.. actor:: courses.Enrolment
-.. actor:: courses.Slot
-.. actor:: courses.PupilType
-.. actor:: courses.TeacherType
+

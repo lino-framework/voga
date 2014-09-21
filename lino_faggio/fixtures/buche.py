@@ -169,7 +169,7 @@ class Loader1(object):
         eupen = company("Lern- und Begegnungszentrum", "Eupen",
                         street="Kirchstraße", street_no=39, street_box="/B2")
         yield eupen
-        bbach = company("Lern- und Begegnungszentrum", "Bütgenbach")
+        bbach = company("Lern- und Begegnungszentrum", "Butgenbach")
         yield bbach
         kelmis = company("Zur Klüüs", "Kelmis")
         yield kelmis
@@ -213,6 +213,12 @@ class Loader1(object):
         kw.update(dd.str2kw('name', _("Computer room")))
         self.pc_stvith = room(**kw)
         yield self.pc_stvith
+
+        # a room without company
+        kw = dict()
+        kw.update(dd.str2kw('name', _("Outside")))
+        self.outside = room(**kw)
+        yield self.outside
 
         COLORS = Cycler(Calendar.COLOR_CHOICES)
 

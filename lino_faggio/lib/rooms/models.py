@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -8,9 +8,6 @@ The :xfile:`models` module of the :mod:`lino_faggio.rooms` app.
 """
 
 from __future__ import unicode_literals
-
-from django.utils.translation import ugettext_lazy as _
-from lino import dd, rt
 
 from lino.modlib.rooms.models import *
 

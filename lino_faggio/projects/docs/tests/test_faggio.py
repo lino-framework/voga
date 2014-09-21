@@ -2,11 +2,11 @@
 # Copyright 2013-2014 Luc Saffre
 # License: BSD (see file COPYING for details)
 
-"""This module contains "quick" tests that are run on a demo database
-without any fixture. You can run only these tests by issuing::
+"""
+To run just this test:
 
-  python manage.py test lino_faggio.tests.test_faggio.QuickTest
-  python manage.py test lino_faggio.tests.test_faggio.DemoTest
+  $ cd lino_faggio/projects/docs
+  $ python manage.py test
 
 """
 
@@ -21,7 +21,7 @@ from lino.runtime import users
 # from lino.runtime import rooms
 from django.conf import settings
 
-from lino import dd, rt
+from lino import dd
 from lino.utils import i2d
 from djangosite.utils.djangotest import RemoteAuthTestCase
 
@@ -163,15 +163,3 @@ Generating events between 2014-01-13 and 2019-05-22.
 
 
 
-
-class DemoTest(RemoteAuthTestCase):
-    maxDiff = None
-    fixtures = settings.SITE.demo_fixtures
-
-    def test001(self):
-        """
-        test whether the demo fixtures load correctly.
-        """
-
-
-__all__ = ['QuickTest', 'DemoTest']
