@@ -15,10 +15,8 @@ from lino.modlib.sales import models as sales
 
 beid = dd.resolve_app('beid')
 
-from lino.modlib.beid.mixins import BeIdCardHolder
 
-
-class Person(Person, BeIdCardHolder):
+class Person(Person, beid.BeIdCardHolder):
     pass
 
 
@@ -58,6 +56,7 @@ class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
     """
 
     contact_box = """
+    mti_navigator
     email
     phone
     fax
@@ -84,6 +83,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     """
 
     contact_box = dd.Panel("""
+    mti_navigator
     email:40
     phone
     gsm
