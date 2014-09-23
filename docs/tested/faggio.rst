@@ -3,11 +3,15 @@
 Faggio
 =======
 
+..
+  To run only this test::
+
+  $ python setup.py test -s tests.DocsTests.test_faggio
+
 .. include:: /include/tested.rst
 
 >>> from django.conf import settings
 >>> from lino.runtime import *
->>> from lino import dd
 >>> from django.test.client import Client
 >>> from django.utils.translation import get_language
 >>> from django.utils import translation
@@ -16,7 +20,7 @@ Faggio
 >>> print(settings.SETTINGS_MODULE)
 lino_faggio.projects.docs.settings.doctests
 >>> print([lng.name for lng in settings.SITE.languages])
-['en', 'de', 'fr']
+['en']
 
 
 A web request
@@ -34,8 +38,8 @@ en
 >>> d = d.strftime(settings.SITE.date_format_strftime)
 >>> print(d)
 25.12.2014
->>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
->>> res = client.get(url, REMOTE_USER='rolf')
+>>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
+>>> res = client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200
 >>> result = json.loads(res.content)
@@ -45,14 +49,7 @@ en
 2
 >>> print(result['rows'][0][0]) 
 ... #doctest: +ELLIPSIS
-<a href="javascript:Lino.cal.OneEvent.detail.run(null,{ &quot;record_id&quot;: ... })">2014 Dez. 25 (Do.)</a>
-
-Note that the language remains "de" because the web request caused it to
-switch to rolf's language:
-
->>> print(get_language())
-de
-
+Thu 12/25/14
 
 
 Printable documents
