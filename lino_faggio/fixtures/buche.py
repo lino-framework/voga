@@ -115,16 +115,8 @@ class Loader1(object):
         self.PRICES = Cycler(Product.objects.filter(cat=course_fees))
 
         event_type = Instantiator('cal.EventType').build
-        kw = dd.babelkw('name',
-                        de="Kurse",
-                        fr="Cours",
-                        en="Courses",
-                        )
-        kw.update(dd.babelkw('event_label',
-                             de="Stunde",
-                             fr="Heure",
-                             en="Hour",
-                             ))
+        kw = dd.str2kw('name', _("Courses"))
+        kw.update(dd.str2kw('event_label', _("Hour")))
         self.kurse = event_type(**kw)
         yield self.kurse
         settings.SITE.site_config.default_event_type = self.kurse
@@ -133,30 +125,26 @@ class Loader1(object):
         self.seminare = event_type(**dd.str2kw('name', _("Seminars")))
         yield self.seminare
 
-        yield event_type(**dd.babelkw('name',
-                                      de="Ausflüge",
-                                      fr="Excursions",
-                                      en="Excursions",
-                                      ))
-        yield event_type(**dd.babelkw('name',
-                                      de="Wanderungen",
-                                      fr="Randonnées",
-                                      en="Hikes",
-                                      ))
+        yield event_type(**dd.str2kw('name', _("Excursions")))
+                                     # de="Ausflüge",
+                                     #  fr="Excursions",
+                                     #  en="Excursions",
+        yield event_type(**dd.str2kw('name', _("Hikes")))
+                                      # de="Wanderungen",
+                                      # fr="Randonnées",
+                                      # en="Hikes",
 
-        yield event_type(**dd.babelkw('name',
-                                      de="Versammlungen",
-                                      fr="Réunions",
-                                      en="Meetings",
-                                      ))
+        yield event_type(**dd.str2kw('name', _("Meetings")))
+                                      # de="Versammlungen",
+                                      # fr="Réunions",
+                                      # en="Meetings",
 
         yield event_type(
             email_template='Team.eml.html',
-            **dd.babelkw('name',
-                         de="Team-Besprechungen",
-                         fr="Coordinations en équipe",
-                         en="Team Meetings",
-                         ))
+            **dd.str2kw('name', _("Team Meetings")))
+                         # de="Team-Besprechungen",
+                         # fr="Coordinations en équipe",
+                         # en="Team Meetings",
 
         #~ yield event_type(**dd.babelkw('name',
               #~ de="Feiertage",

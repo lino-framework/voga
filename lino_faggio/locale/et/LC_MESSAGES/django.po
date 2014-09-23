@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: lino-faggio 0.0.4\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-13 03:35+0300\n"
-"PO-Revision-Date: 2014-09-13 03:37+0300\n"
+"PO-Revision-Date: 2014-09-23 16:16+0300\n"
 "Last-Translator: Luc Saffre <luc.saffre@gmx.net>\n"
 "Language-Team: et <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -102,23 +102,23 @@ msgstr ""
 
 #: lino_faggio/fixtures/faggio.py:90
 msgid "Participation fees"
-msgstr ""
+msgstr "Osavõtumaksud"
 
 #: lino_faggio/fixtures/faggio.py:93
 msgid "Trips"
-msgstr ""
+msgstr "Matkad"
 
 #: lino_faggio/fixtures/faggio.py:97 lino_faggio/fixtures/faggio.py:312
 msgid "Journeys"
-msgstr ""
+msgstr "Reisid"
 
 #: lino_faggio/fixtures/faggio.py:103
 msgid "Room renting"
-msgstr ""
+msgstr "Ruumi üür"
 
 #: lino_faggio/fixtures/faggio.py:143
 msgid "Seminars"
-msgstr ""
+msgstr "Seminarid"
 
 #: lino_faggio/fixtures/faggio.py:286
 msgid "Hotel options"
