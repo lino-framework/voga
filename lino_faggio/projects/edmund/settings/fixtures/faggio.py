@@ -313,7 +313,6 @@ class Loader2(Loader1):
                          friday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
-                   ref="BT",
                    **dd.str2kw('name', _("Belly dancing")))
         yield obj
         kw = dict(max_events=8)
@@ -324,7 +323,6 @@ class Loader2(Loader1):
                          wednesday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
-                   ref="FG",
                    **dd.str2kw('name', _("Functional gymnastics")))
         yield obj
         kw = dict(max_events=10, state=CourseStates.registered)
@@ -333,7 +331,6 @@ class Loader2(Loader1):
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
-                   ref="Rücken",
                    **dd.str2kw('name', _("Swimming")))
         yield obj
         kw = dict(max_events=10, state=CourseStates.registered)
@@ -346,7 +343,6 @@ class Loader2(Loader1):
         yield add_course(obj, self.pc_kelmis, "13:30", "14:30", thursday=True, **kw)
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
-                   ref="SV",
                    **dd.str2kw('name', "Self-defence"))
         yield obj
         kw = dict(max_events=6)
