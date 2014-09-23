@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: lino-faggio 0.0.4\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2014-09-13 03:35+0300\n"
-"PO-Revision-Date: 2014-09-23 16:16+0300\n"
+"PO-Revision-Date: 2014-09-23 19:51+0300\n"
 "Last-Translator: Luc Saffre <luc.saffre@gmx.net>\n"
 "Language-Team: et <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -62,19 +62,19 @@ msgstr "Õpetajad"
 
 #: lino_faggio/courses/models.py:88
 msgid "Participant Type"
-msgstr "Osalejaliik"
+msgstr "Osavõtjaliik"
 
 #: lino_faggio/courses/models.py:89
 msgid "Participant Types"
-msgstr "Osalejaliigid"
+msgstr "Osavõtjaliigid"
 
 #: lino_faggio/courses/models.py:105
 msgid "Participant"
-msgstr "Osaleja"
+msgstr "Osavõtja"
 
 #: lino_faggio/courses/models.py:106
 msgid "Participants"
-msgstr "Osalejad"
+msgstr "Osavõtjad"
 
 #: lino_faggio/courses/models.py:173
 msgid "Events"
@@ -94,7 +94,7 @@ msgstr ""
 
 #: lino_faggio/courses/models.py:200
 msgid "is a pupil"
-msgstr "on osaleja"
+msgstr "on osavõtja"
 
 #: lino_faggio/courses/models.py:201
 msgid "Whether this Person is also a Pupil."

@@ -7,6 +7,7 @@ import datetime
 
 from lino_faggio.projects.base import *
 
+
 class Site(Site):
 
     title = "Lino Faggio all'estone"
@@ -14,4 +15,3 @@ class Site(Site):
 
     demo_fixtures = """std few_languages few_countries eesti few_cities
     demo faggio demo2""".split()
-

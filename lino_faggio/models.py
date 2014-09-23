@@ -1,4 +1,4 @@
-# Copyright 2013 Luc Saffre
+# Copyright 2013-2014 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -11,18 +11,13 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import string_concat
 
 
-from lino import dd, rt
+from lino import dd
 
 #~ print 20130607, loading.cache.postponed
 
 from lino.modlib.courses import workflows
 
-#~ contacts = dd.resolve_app('contacts')
 
-
-# @dd.when_prepared('contacts.Person', 'contacts.Company')
-# def hide_region(model):
-#     model.hide_elements('region')
 
 if False:
     # 20131025 fails because MergeAction.__init__ tries to use _lino_ddh
@@ -52,7 +47,7 @@ def site_setup(site):
     site.modules.system.SiteConfigs.set_detail_layout(
         """
         site_company next_partner_id:10
-        default_build_method 
+        default_build_method
         clients_account   sales_account     sales_vat_account
         suppliers_account purchases_account purchases_vat_account
         pupil_guestrole

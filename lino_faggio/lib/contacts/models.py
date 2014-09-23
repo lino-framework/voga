@@ -50,7 +50,7 @@ class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
 
     address_box = """
     name
-    country city zip_code:10
+    country region city zip_code:10
     street:25 street_no street_box
     addr2
     """
@@ -77,7 +77,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
 
     address_box = """
     prefix name
-    country city zip_code:10
+    country region city zip_code:10
     street:25 street_no street_box
     addr2
     """
@@ -114,7 +114,7 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
     address_box = """
     last_name first_name:15 #title:10
-    country city zip_code:10
+    country region city zip_code:10
     #street_prefix street:25 street_no street_box
     gender birth_date age:10 personal
     """

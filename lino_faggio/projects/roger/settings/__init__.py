@@ -13,3 +13,11 @@ class Site(Site):
     title = "Lino Faggio à la Roger"
     languages = "en de fr"
     demo_fixtures = 'std few_languages demo buche demo2'.split()
+
+    def setup_plugins(self):
+        """
+        Change the default value of certain plugin settings.
+       
+        """
+        self.plugins.contacts.configure(hide_region=True)
+        super(Site, self).setup_plugins()
