@@ -177,8 +177,6 @@ class Loader1(object):
         yield self.spiegel
 
         kw.update(dd.str2kw('name', _("Computer room")))
-                          # de="Computerraum",
-                          # fr="Salle ordinateurs",
         kw.update(tariff=rent10)
         self.pc_eupen = room(**kw)
         yield self.pc_eupen

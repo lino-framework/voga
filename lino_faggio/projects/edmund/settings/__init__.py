@@ -11,7 +11,7 @@ from lino_faggio.projects.base import *
 class Site(Site):
 
     title = "Lino Faggio all'estone"
-    languages = "en et"
+    languages = "et en"
 
     demo_fixtures = """std few_languages few_countries eesti few_cities
     demo faggio demo2""".split()

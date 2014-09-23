@@ -18,7 +18,6 @@ from lino.utils import Cycler
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from atelier.utils import date_offset
-from north.dbutils import babelkw
 from lino import dd, rt
 
 DEMO_REF_DATE = i2d(20140101)
@@ -115,16 +114,8 @@ class Loader1(object):
         self.PRICES = Cycler(Product.objects.filter(cat=course_fees))
 
         event_type = Instantiator('cal.EventType').build
-        kw = dd.babelkw('name',
-                        de="Kurse",
-                        fr="Cours",
-                        en="Courses",
-                        )
-        kw.update(dd.babelkw('event_label',
-                             de="Stunde",
-                             fr="Heure",
-                             en="Hour",
-                             ))
+        kw = dd.str2kw('name', _("Courses"))
+        kw.update(dd.str2kw('event_label', _("Hour")))
         self.kurse = event_type(**kw)
         yield self.kurse
         settings.SITE.site_config.default_event_type = self.kurse
@@ -133,47 +124,23 @@ class Loader1(object):
         self.seminare = event_type(**dd.str2kw('name', _("Seminars")))
         yield self.seminare
 
-        yield event_type(**dd.babelkw('name',
-                                      de="Ausflüge",
-                                      fr="Excursions",
-                                      en="Excursions",
-                                      ))
-        yield event_type(**dd.babelkw('name',
-                                      de="Wanderungen",
-                                      fr="Randonnées",
-                                      en="Hikes",
-                                      ))
-
-        yield event_type(**dd.babelkw('name',
-                                      de="Versammlungen",
-                                      fr="Réunions",
-                                      en="Meetings",
-                                      ))
+        yield event_type(**dd.str2kw('name', _("Excursions")))
+        yield event_type(**dd.str2kw('name', _("Hikes")))
+        yield event_type(**dd.str2kw('name', _("Meetings")))
 
         yield event_type(
             email_template='Team.eml.html',
-            **dd.babelkw('name',
-                         de="Team-Besprechungen",
-                         fr="Coordinations en équipe",
-                         en="Team Meetings",
-                         ))
-
-        #~ yield event_type(**dd.babelkw('name',
-              #~ de="Feiertage",
-              #~ fr="Jours fériés",
-              #~ en="Holidays",
-              #~ ))
-        #~
+            **dd.str2kw('name', _("Team Meetings")))
 
         company = Instantiator('contacts.Company', 'name city:name').build
-        eupen = company("Lern- und Begegnungszentrum", tallinn,
-                        street="Kirchstraße", street_no=39, street_box="/B2")
+        eupen = company("Rüütli õpekeskus", tallinn,
+                        street="Rüütli", street_no=39, street_box="/B2")
         yield eupen
-        bbach = company("Lern- und Begegnungszentrum", tallinn)
+        bbach = company("Õpekeskus", tallinn)
         yield bbach
-        kelmis = company("Zur Klüüs", tartu)
+        kelmis = company("Ülikooli", tartu)
         yield kelmis
-        stvith = company("Sport- und Freizeitzentrum", rapla)
+        stvith = company("Spordi- ja vabaajakeskus", rapla)
         yield stvith
 
         self.ext1 = company("AA Neudorf", tartu)
@@ -298,7 +265,7 @@ class Loader2(Loader1):
 
         obj = line(comp, self.kurse, self.PRICES.pop(),
                    ref="comp",
-                   **dd.babelkw('name', de="Erste Schritte", en="First Steps"))
+                   **dd.str2kw('name', _("First Steps")))
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=20)
@@ -332,10 +299,8 @@ class Loader2(Loader1):
         obj = line(
             comp, self.kurse, self.PRICES.pop(),
             ref="WWW",
-            description=desc, **dd.babelkw(
-                'name',
-                de="Internet: World Wide Web für Anfänger",
-                en="Internet for beginners"))
+            description=desc, **dd.str2kw(
+                'name', _("Internet for beginners")))
         yield obj
         kw = dict(max_events=8)
         kw.update(start_date=demo_date(10))
@@ -349,7 +314,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="BT",
-                   **dd.babelkw('name', de="Bauchtanz", en="Belly dancing"))
+                   **dd.str2kw('name', _("Belly dancing")))
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=10)
@@ -360,9 +325,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="FG",
-                   **dd.babelkw('name',
-                                de="Funktionsgymnastik",
-                                en="Functional gymnastics"))
+                   **dd.str2kw('name', _("Functional gymnastics")))
         yield obj
         kw = dict(max_events=10, state=CourseStates.registered)
         kw.update(start_date=demo_date(-10))
@@ -371,7 +334,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="Rücken",
-                   **dd.babelkw('name', de="Rücken fit durch Schwimmen", en="Swimming"))
+                   **dd.str2kw('name', _("Swimming")))
         yield obj
         kw = dict(max_events=10, state=CourseStates.registered)
         kw.update(start_date=demo_date(-100))
@@ -384,7 +347,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="SV",
-                   **dd.babelkw('name', de="Selbstverteidigung im Alltag", en="Self-defence"))
+                   **dd.str2kw('name', "Self-defence"))
         yield obj
         kw = dict(max_events=6)
         kw.update(max_places=12)
@@ -407,10 +370,7 @@ class Loader2(Loader1):
 
         obj = line(medit, self.kurse, self.PRICES.pop(),
                    ref="MED",
-                   **dd.babelkw(
-                       'name',
-                       de="Den Kopf frei machen - zur inneren Ruhe finden",
-                       en="Finding your inner peace"))
+                   **dd.str2kw('name', _("Finding your inner peace")))
         yield obj
         kw = dict(max_events=10)
         kw.update(max_places=30)
