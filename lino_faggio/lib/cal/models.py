@@ -46,6 +46,22 @@ class Room(Room, contacts.ContactRelated):
             s = '%s (%s)' % (self.company.city, s)
         return s
 
+    def save(self, *args, **kwargs):
+        super(Room, self). save(*args, **kwargs)
+
+        if not self.calendar:
+            return
+
+        if not settings.SITE.loading_from_dump:
+
+            profiles = set()
+            for p in dd.UserProfiles.items():
+                if p.office_level:
+                    profiles.add(p)
+            User = settings.SITE.user_model
+            for u in User.objects.filter(profile__in=profiles):
+                check_subscription(u, self.calendar)
+
 
 class Rooms(Rooms):
     column_names = "name calendar tariff company company__city *"

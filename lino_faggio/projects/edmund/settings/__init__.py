@@ -15,3 +15,7 @@ class Site(Site):
 
     demo_fixtures = """std few_languages few_countries eesti few_cities
     demo faggio demo2""".split()
+
+    ignore_dates_before = None
+    the_demo_date = datetime.date(2014, 9, 26)
+    ignore_dates_after = datetime.date(2019, 05, 22)
