@@ -6,5 +6,5 @@ env.demo_databases.append('lino_faggio.projects.edmund.settings.demo')
 #~ env.django_databases.append('userdocs')
 env.tolerate_sphinx_warnings = False
 
-#~ env.languages = 'en de fr'.split()
+env.languages = 'en de fr et'.split()
 env.use_mercurial = False

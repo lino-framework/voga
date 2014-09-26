@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lino-faggio 0.0.4\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-09-13 03:35+0300\n"
-"PO-Revision-Date: 2014-09-23 19:51+0300\n"
+"POT-Creation-Date: 2014-09-26 11:03+0300\n"
+"PO-Revision-Date: 2014-09-26 11:04+0300\n"
 "Last-Translator: Luc Saffre <luc.saffre@gmx.net>\n"
 "Language-Team: et <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -20,154 +20,261 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "Language: et\n"
 
-#: lino_faggio/cal/models.py:37
-msgid "Guest role for pupils"
+#: lino_faggio/fixtures/buche.py:63
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:63
+msgid "Independant"
 msgstr ""
 
-#: lino_faggio/cal/models.py:46
-msgid "Tariff"
-msgstr ""
-
-#: lino_faggio/cal/models.py:51
-msgid "Calendar where events in this room are published."
-msgstr ""
-
-#: lino_faggio/cal/models.py:141 lino_faggio/contacts/models.py:44
-#: lino_faggio/contacts/models.py:115 lino_faggio/courses/models.py:65
-#: lino_faggio/courses/models.py:124 lino_faggio/courses/models.py:166
-msgid "General"
-msgstr ""
-
-#: lino_faggio/cal/models.py:146 lino_faggio/contacts/models.py:50
-#: lino_faggio/contacts/models.py:87 lino_faggio/contacts/models.py:121
-#: lino_faggio/courses/models.py:184
-msgid "More"
-msgstr ""
-
-#: lino_faggio/courses/models.py:35
-msgid "Instructor Type"
-msgstr "Õpetajaliik"
-
-#: lino_faggio/courses/models.py:36
-msgid "Instructor Types"
-msgstr "Õpetajaliigid"
-
-#: lino_faggio/courses/models.py:52
-msgid "Instructor"
-msgstr "Õpetaja"
-
-#: lino_faggio/courses/models.py:53
-msgid "Instructors"
-msgstr "Õpetajad"
-
-#: lino_faggio/courses/models.py:88
-msgid "Participant Type"
-msgstr "Osavõtjaliik"
-
-#: lino_faggio/courses/models.py:89
-msgid "Participant Types"
-msgstr "Osavõtjaliigid"
-
-#: lino_faggio/courses/models.py:105
-msgid "Participant"
-msgstr "Osavõtja"
-
-#: lino_faggio/courses/models.py:106
-msgid "Participants"
-msgstr "Osavõtjad"
-
-#: lino_faggio/courses/models.py:173
-msgid "Events"
-msgstr ""
-
-#: lino_faggio/courses/models.py:178
-msgid "Enrolments"
-msgstr ""
-
-#: lino_faggio/courses/models.py:192
-msgid "is a teacher"
-msgstr "on õpetaja"
-
-#: lino_faggio/courses/models.py:193
-msgid "Whether this Person is also a Teacher."
-msgstr ""
-
-#: lino_faggio/courses/models.py:200
-msgid "is a pupil"
-msgstr "on osavõtja"
-
-#: lino_faggio/courses/models.py:201
-msgid "Whether this Person is also a Pupil."
-msgstr ""
-
-#: lino_faggio/fixtures/faggio.py:90
+#: lino_faggio/fixtures/buche.py:80
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:82
 msgid "Participation fees"
 msgstr "Osavõtumaksud"
 
-#: lino_faggio/fixtures/faggio.py:93
+#: lino_faggio/fixtures/buche.py:83
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:85
 msgid "Trips"
 msgstr "Matkad"
 
-#: lino_faggio/fixtures/faggio.py:97 lino_faggio/fixtures/faggio.py:312
+#: lino_faggio/fixtures/buche.py:87 lino_faggio/fixtures/buche.py:272
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:89
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:245
 msgid "Journeys"
 msgstr "Reisid"
 
-#: lino_faggio/fixtures/faggio.py:103
+#: lino_faggio/fixtures/buche.py:93
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:95
 msgid "Room renting"
 msgstr "Ruumi üür"
 
-#: lino_faggio/fixtures/faggio.py:143
+#: lino_faggio/fixtures/buche.py:118
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:117
+#, fuzzy
+msgid "Courses"
+msgstr "Reisid"
+
+#: lino_faggio/fixtures/buche.py:119
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:118
+msgid "Hour"
+msgstr "tund"
+
+#: lino_faggio/fixtures/buche.py:125
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:124
 msgid "Seminars"
 msgstr "Seminarid"
 
-#: lino_faggio/fixtures/faggio.py:286
+#: lino_faggio/fixtures/buche.py:128
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:127
+msgid "Excursions"
+msgstr "Väljasõidud"
+
+#: lino_faggio/fixtures/buche.py:132
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:128
+msgid "Hikes"
+msgstr "Matkad"
+
+#: lino_faggio/fixtures/buche.py:137
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:129
+msgid "Meetings"
+msgstr "Koosolekud"
+
+#: lino_faggio/fixtures/buche.py:144
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:133
+msgid "Team Meetings"
+msgstr ""
+
+#: lino_faggio/fixtures/buche.py:174
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:153
+msgid "Mirrored room"
+msgstr "Peeglisaal"
+
+#: lino_faggio/fixtures/buche.py:179 lino_faggio/fixtures/buche.py:189
+#: lino_faggio/fixtures/buche.py:194 lino_faggio/fixtures/buche.py:199
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:158
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:168
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:173
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:178
+msgid "Computer room"
+msgstr "Arvutiklass"
+
+#: lino_faggio/fixtures/buche.py:185
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:164
+msgid "Conferences room"
+msgstr ""
+
+#: lino_faggio/fixtures/buche.py:205
+msgid "Outside"
+msgstr ""
+
+#: lino_faggio/fixtures/buche.py:246
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:219
 msgid "Hotel options"
 msgstr ""
 
-#: lino_faggio/fixtures/faggio.py:289
+#: lino_faggio/fixtures/buche.py:249
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:222
 msgid "Single room"
 msgstr ""
 
-#: lino_faggio/fixtures/faggio.py:290
+#: lino_faggio/fixtures/buche.py:250
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:223
 msgid "Double room"
 msgstr ""
 
-#: lino_faggio/fixtures/faggio.py:291
+#: lino_faggio/fixtures/buche.py:251
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:224
 msgid "Triple room"
 msgstr ""
 
-#: lino_faggio/fixtures/faggio.py:316
+#: lino_faggio/fixtures/buche.py:276
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:249
 msgid "Europe"
 msgstr ""
 
-#: lino_faggio/fixtures/std.py:36
+#: lino_faggio/fixtures/std.py:26
 msgid "Confirmation"
 msgstr ""
 
-#: lino_faggio/fixtures/std.py:44
+#: lino_faggio/fixtures/std.py:34
 msgid "Certificate"
 msgstr ""
 
-#: lino_faggio/fixtures/std.py:51
+#: lino_faggio/fixtures/std.py:41
 msgid "Enrolment"
 msgstr ""
 
-#: lino_faggio/fixtures/std.py:52
+#: lino_faggio/fixtures/std.py:42
 msgid "Timetable"
 msgstr ""
 
-#: lino_faggio/fixtures/std.py:53
+#: lino_faggio/fixtures/std.py:43
 msgid "Letter"
 msgstr ""
 
-#: lino_faggio/settings/__init__.py:91
+#: lino_faggio/lib/cal/models.py:25
+msgid "Guest role for pupils"
+msgstr ""
+
+#: lino_faggio/lib/cal/models.py:34
+msgid "Tariff"
+msgstr ""
+
+#: lino_faggio/lib/cal/models.py:39
+msgid "Calendar where events in this room are published."
+msgstr ""
+
+#: lino_faggio/lib/cal/models.py:145 lino_faggio/lib/contacts/models.py:32
+#: lino_faggio/lib/contacts/models.py:105 lino_faggio/lib/courses/models.py:55
+#: lino_faggio/lib/courses/models.py:114 lino_faggio/lib/courses/models.py:156
+msgid "General"
+msgstr ""
+
+#: lino_faggio/lib/cal/models.py:150 lino_faggio/lib/contacts/models.py:38
+#: lino_faggio/lib/contacts/models.py:76
+#: lino_faggio/lib/contacts/models.py:111
+#: lino_faggio/lib/courses/models.py:174
+msgid "More"
+msgstr ""
+
+#: lino_faggio/lib/courses/models.py:25
+msgid "Instructor Type"
+msgstr "Õpetajaliik"
+
+#: lino_faggio/lib/courses/models.py:26
+msgid "Instructor Types"
+msgstr "Õpetajaliigid"
+
+#: lino_faggio/lib/courses/models.py:42
+msgid "Instructor"
+msgstr "Õpetaja"
+
+#: lino_faggio/lib/courses/models.py:43
+msgid "Instructors"
+msgstr "Õpetajad"
+
+#: lino_faggio/lib/courses/models.py:78
+msgid "Participant Type"
+msgstr "Osavõtjaliik"
+
+#: lino_faggio/lib/courses/models.py:79
+msgid "Participant Types"
+msgstr "Osavõtjaliigid"
+
+#: lino_faggio/lib/courses/models.py:95
+msgid "Participant"
+msgstr "Osavõtja"
+
+#: lino_faggio/lib/courses/models.py:96
+msgid "Participants"
+msgstr "Osavõtjad"
+
+#: lino_faggio/lib/courses/models.py:163
+msgid "Events"
+msgstr ""
+
+#: lino_faggio/lib/courses/models.py:168
+msgid "Enrolments"
+msgstr ""
+
+#: lino_faggio/lib/courses/models.py:182
+msgid "is a teacher"
+msgstr "on õpetaja"
+
+#: lino_faggio/lib/courses/models.py:183
+msgid "Whether this Person is also a Teacher."
+msgstr ""
+
+#: lino_faggio/lib/courses/models.py:190
+msgid "is a pupil"
+msgstr "on osavõtja"
+
+#: lino_faggio/lib/courses/models.py:191
+msgid "Whether this Person is also a Pupil."
+msgstr ""
+
+#: lino_faggio/projects/base.py:80
 msgid "Anonymous"
 msgstr ""
 
-#: lino_faggio/settings/__init__.py:93
+#: lino_faggio/projects/base.py:82
 msgid "User"
 msgstr ""
 
-#: lino_faggio/settings/__init__.py:94
+#: lino_faggio/projects/base.py:83
 msgid "Administrator"
+msgstr ""
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:64
+msgid "Voluntary"
+msgstr ""
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:65
+msgid "Other"
+msgstr ""
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:111
+msgid "Rent per meeting"
+msgstr ""
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:268
+msgid "First Steps"
+msgstr ""
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:303
+msgid "Internet for beginners"
+msgstr ""
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:316
+msgid "Belly dancing"
+msgstr "Kõhutants"
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:326
+msgid "Functional gymnastics"
+msgstr ""
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:334
+msgid "Swimming"
+msgstr "Ujumine"
+
+#: lino_faggio/projects/edmund/settings/fixtures/faggio.py:369
+msgid "Finding your inner peace"
 msgstr ""
