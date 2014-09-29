@@ -37,7 +37,7 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-28 apps: about, bootstrap3, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, appypod, export_excel, djangosite.
+29 apps: about, bootstrap3, lino, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, appypod, export_excel, djangosite.
 69 models:
 ========================== ========= =======
  Name                       #fields   #rows
@@ -50,11 +50,11 @@ Test whether :meth:`get_db_overview_rst
  cal.EventType              12        7
  cal.Guest                  6         0
  cal.GuestRole              2         0
- cal.Priority               3         9
+ cal.Priority               3         4
  cal.RecurrentEvent         19        9
  cal.RemoteCalendar         7         0
  cal.Room                   7         7
- cal.Subscription           4         0
+ cal.Subscription           4         7
  cal.Task                   17        0
  contacts.Company           28        19
  contacts.CompanyType       3         16
@@ -64,7 +64,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.RoleType          2         5
  contenttypes.ContentType   4         70
  countries.Country          4         8
- countries.Place            6         76
+ countries.Place            6         78
  courses.Course             27        25
  courses.Enrolment          13        100
  courses.Line               13        10
