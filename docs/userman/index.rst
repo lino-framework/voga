@@ -27,7 +27,6 @@ Reference:
 .. toctree::
    :maxdepth: 1
 
-   users
    cal
    countries
    contacts

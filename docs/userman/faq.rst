@@ -124,11 +124,11 @@ Oder noch besser: gehe in `Konfigurierung --> Kalender --> Periodische
 Termine` und sage dort, dass Karneval ein Feiertag ist:
 
 - Auf `+` klicken oder Doppelklick auf der leeren untersten Zeile
-- Im Feld :ddref:`cal.RecurrentEvents.name` z.B. "Karneval" eingeben
-- Im Feld :ddref:`cal.RecurrentEvents.event_type` "Feiertag" auswählen
+- Im Feld :attr:`ml.cal.RecurrentEvents.name` z.B. "Karneval" eingeben
+- Im Feld :attr:`ml.cal.RecurrentEvents.event_type` "Feiertag" auswählen
 - [Enter] drücken (oder auf `Erstellen` klicken), um das Dialogfenster zu
   schließen. Lino zeigt nun die neu erstellte Terminvorlage im Detail.
-- Im Feld :ddref:`cal.RecurrentEvents.every_unit` "once" auswählen.
+- Im Feld :attr:`ml.cal.RecurrentEvents.every_unit` "once" auswählen.
   (eine Regel "40 Tage vor Ostern" hat Lino noch nicht, deshalb müssen
   Ostern und Karneval jedes Jahr manuell erstellt werden)
 - Auf den Blitz klicken, um den eigentlichen Termin zu generieren.

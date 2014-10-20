@@ -6,6 +6,6 @@ An introduction to Lino Faggio
 
 - Partners
 
-- Create some :ddref:`courses.Course`
+- Create some courses 
 
-- :ddref:`sales.InvoicesToCreate`
+- :class:`ml.sales.InvoicesToCreate`

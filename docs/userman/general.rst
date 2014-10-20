@@ -28,11 +28,3 @@ Enregisterer
 Click this button to save your changes in the form.
 
 
-
-Référence
----------
-
-.. actor:: system.HelpTexts
-.. actor:: system.TextFieldTemplates
-.. actor:: system.SiteConfigs
-

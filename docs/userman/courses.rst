@@ -14,7 +14,7 @@ Anleitung zum Erstellen von Kursserien
 
 - Bezeichnung: Kurstitel eingeben (Bsp. "Ubuntu 14.04 leicht gemacht")
 
-- Im Feld :ddref:`courses.Line.every_unit` kommt die
+- Im Feld :attr:`ml.courses.Line.every_unit` kommt die
   Wiederholungsmethode zu stehen, die Lino für alle neuen Kurse 
   dieser Serie als Standard vorschlagen soll.
 
@@ -44,9 +44,9 @@ Neues Fenster
 
 - Kursleiter auswählen
 
-- Entweder in :attr:`max_events <courses.Course.max_events>` die
+- Entweder in :attr:`max_events <ml.courses.Course.max_events>` die
   Anzahl der Termine oder in :attr:`max_date
-  <courses.Course.max_date>` ein Enddatum eingeben.  Wenn Sie beide
+  <ml.courses.Course.max_date>` ein Enddatum eingeben.  Wenn Sie beide
   Felder ausfüllen, werden nur Termine generiert bis zur ersten
   Grenze.
 
@@ -88,7 +88,7 @@ setzen?"
 Kursserien
 ==========
 
-.. django2rst:: rt.login('robin').show(courses.Lines)
+.. django2rst:: rt.show(courses.Lines)
 
 
 

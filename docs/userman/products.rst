@@ -5,7 +5,3 @@ Products
 ========
 
 
-.. actor:: products.Product
-
-.. actor:: products.ProductCat
-
