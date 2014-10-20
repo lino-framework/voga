@@ -74,8 +74,8 @@ Test whether :meth:`get_db_overview_rst
  courses.Teacher            41        8
  courses.TeacherType        3         4
  courses.Topic              2         5
- excerpts.Excerpt           7         1
- excerpts.ExcerptType       13        3
+ excerpts.Excerpt           10        1
+ excerpts.ExcerptType       15        3
  finan.BankStatement        11        3
  finan.BankStatementItem    11        9
  finan.JournalEntry         9         0

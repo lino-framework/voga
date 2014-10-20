@@ -68,7 +68,11 @@ True
 >>> print(rv['open_url']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 /media/cache/appypdf/sales.Invoice-1.pdf
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-sales.Invoice-1.pdf has been built.
+Your printable document (filename sales.Invoice-1.pdf) should now open
+in a new browser window. If it doesn't, please consult <a
+href="http://www.lino-framework.org/help/print.html"
+target="_blank">the documentation</a> or ask your system
+administrator.
 
 Same for a calendar Event.  This is mainly to see whether the
 templates directory has been inherited.  Note that the first few dozen
@@ -79,8 +83,12 @@ events have no `user` and would currently fail to print
 >>> rv = ses.run(obj.do_print)
 >>> print(rv['success'])
 True
->>> print(rv['message'])
-cal.Event-100.pdf has been built.
+>>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+Your printable document (filename cal.Event-100.pdf) should now open
+in a new browser window. If it doesn't, please consult <a
+href="http://www.lino-framework.org/help/print.html"
+target="_blank">the documentation</a> or ask your system
+administrator.
 
 Note that this test should fail if you run the test suite without a 
 LibreOffice server running.
