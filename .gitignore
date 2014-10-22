@@ -16,4 +16,4 @@ docs/api
 *.egg-info
 .build
 .DS_Store
-
+.idea
