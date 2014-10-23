@@ -152,7 +152,7 @@ Rolf is the local system administrator, he has a complete menu:
   - System : Authorities, User Groups, User Levels, User Profiles
   - Contacts : Contact Persons, List memberships
   - Courses : Enrolments, Enrolment states
-  - Calendar : Tasks, Guests, Subscriptions, Event states, Guest states, Task states
+  - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Invoices, Vouchers, VoucherTypes, Movements, Fiscal Years
   - VAT : VatRegimes, TradeTypes, VatClasses
   - Financial : Bank Statements, Journal Entries, Payment Orders
