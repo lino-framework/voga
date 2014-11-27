@@ -1,10 +1,10 @@
 from atelier.fablib import *
-setup_from_project('lino_faggio', 'lino_faggio.projects.docs.settings.demo')
+setup_from_project('lino_faggio')
 
-env.demo_databases.append('lino_faggio.projects.roger.settings.demo')
-env.demo_databases.append('lino_faggio.projects.edmund.settings.demo')
-#~ env.django_databases.append('userdocs')
+add_demo_database('lino_faggio.projects.docs.settings.demo')
+add_demo_database('lino_faggio.projects.roger.settings.demo')
+add_demo_database('lino_faggio.projects.edmund.settings.demo')
+
 env.tolerate_sphinx_warnings = False
-
 env.languages = 'en de fr et'.split()
 env.use_mercurial = False
