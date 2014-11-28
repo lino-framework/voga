@@ -72,10 +72,11 @@ class Site(Site):
         """
         super(Site, self).setup_choicelists()
 
-        from lino import dd
+        from lino.modlib.users.mixins import UserProfiles
         from django.utils.translation import ugettext_lazy as _
-        dd.UserProfiles.reset('* office accounts')
-        add = dd.UserProfiles.add_item
+
+        UserProfiles.reset('* office accounts')
+        add = UserProfiles.add_item
 
         add('000', _("Anonymous"),     '_ _ _', name='anonymous',
             readonly=True, authenticated=False)

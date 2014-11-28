@@ -65,7 +65,7 @@ Test whether :meth:`get_db_overview_rst
  contenttypes.ContentType   4         70
  countries.Country          4         8
  countries.Place            6         78
- courses.Course             27        25
+ courses.Course             28        25
  courses.Enrolment          13        100
  courses.Line               13        10
  courses.Pupil              41        35

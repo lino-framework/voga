@@ -14,6 +14,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino.modlib.cal.models import *
 
+from lino.modlib.users.mixins import UserProfiles
+
 contacts = dd.resolve_app('contacts')
 courses = dd.resolve_app('courses')
 
@@ -55,7 +57,7 @@ class Room(Room, contacts.ContactRelated):
         if not settings.SITE.loading_from_dump:
 
             profiles = set()
-            for p in dd.UserProfiles.items():
+            for p in UserProfiles.items():
                 if p.office_level:
                     profiles.add(p)
             User = settings.SITE.user_model

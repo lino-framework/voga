@@ -18,12 +18,11 @@ logger = logging.getLogger(__name__)
 from lino.runtime import cal
 from lino.runtime import courses
 from lino.runtime import users
-# from lino.runtime import rooms
 from django.conf import settings
 
-from lino import dd
-from lino.utils import i2d
 from djangosite.utils.djangotest import RemoteAuthTestCase
+from lino.utils import i2d
+from lino.modlib.users.mixins import UserProfiles
 
 
 def create(model, **kwargs):
@@ -61,7 +60,7 @@ class QuickTest(RemoteAuthTestCase):
 
         settings.SITE.verbose_client_info_message = True
         users.User(username="robin",
-                   profile=dd.UserProfiles.admin,
+                   profile=UserProfiles.admin,
                    language="en").save()
         ses = settings.SITE.login('robin')
 
