@@ -16,7 +16,7 @@ from lino.utils import mti
 from lino.modlib.courses.models import *
 
 
-class TeacherType(dd.Referrable, dd.BabelNamed, dd.Printable):
+class TeacherType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
     class Meta:
         abstract = dd.is_abstract_model(__name__, 'TeacherType')
@@ -69,7 +69,7 @@ class TeachersByType(Teachers):
     master_key = 'teacher_type'
 
 
-class PupilType(dd.Referrable, dd.BabelNamed, dd.Printable):
+class PupilType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
     class Meta:
         abstract = dd.is_abstract_model(__name__, 'PupilType')

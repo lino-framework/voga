@@ -43,7 +43,7 @@ class Room(Room, contacts.ContactRelated):
         blank=True, null=True)
 
     def __unicode__(self):
-        s = dd.BabelNamed.__unicode__(self)
+        s = mixins.BabelNamed.__unicode__(self)
         if self.company and self.company.city:
             s = '%s (%s)' % (self.company.city, s)
         return s

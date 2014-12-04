@@ -95,9 +95,9 @@ class MyBook():
         kw.update(street2kw(street))
 
         if title == "Herr":
-            kw.update(gender=dd.Genders.male)
+            kw.update(gender=mixins.Genders.male)
         elif title == "Frau":
-            kw.update(gender=dd.Genders.female)
+            kw.update(gender=mixins.Genders.female)
         elif title:
             kw.update(title=title)
         city_name = city_name.strip()
