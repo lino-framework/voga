@@ -18,7 +18,6 @@ from lino.utils import Cycler
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from atelier.utils import date_offset
-from north.dbutils import babelkw
 from lino import dd, rt
 
 DEMO_REF_DATE = i2d(20140101)
@@ -61,10 +60,10 @@ class Loader1(object):
         #~ yield PupilType(ref="E",name="Extern")
 
         yield TeacherType(ref="S", **dd.str2kw('name', _("Independant")))
-        yield TeacherType(ref="EP", **babelkw('name', de="Ehrenamtlich pauschal", fr="Volontaire (forfait)", en="Voluntary (flat)"))
-        yield TeacherType(ref="ER", **babelkw('name', de="Ehrenamtlich real", fr="Volontaire (réel)", en="Voluntary (real)"))
-        yield TeacherType(ref="LBA", **babelkw('name', de="LBA", fr="ALE", en="LEA"))
-        #~ yield TeacherType(ref="A",**babelkw('name',de="Andere",fr="Autre",en="Other"))
+        yield TeacherType(ref="EP", **dd.babelkw('name', de="Ehrenamtlich pauschal", fr="Volontaire (forfait)", en="Voluntary (flat)"))
+        yield TeacherType(ref="ER", **dd.babelkw('name', de="Ehrenamtlich real", fr="Volontaire (réel)", en="Voluntary (real)"))
+        yield TeacherType(ref="LBA", **dd.babelkw('name', de="LBA", fr="ALE", en="LEA"))
+        #~ yield TeacherType(ref="A",**dd.babelkw('name',de="Andere",fr="Autre",en="Other"))
 
         company = Instantiator('contacts.Company', 'name city:name').build
 
@@ -105,7 +104,7 @@ class Loader1(object):
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
         yield rent20
-        rent10 = product("10", rent, **babelkw(
+        rent10 = product("10", rent, **dd.babelkw(
             'name',
             en="Rent per meeting", et="Ruumi üürimine",
             de="Raummiete pro Versammlung",

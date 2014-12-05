@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 from lino.core.dbutils import resolve_model
 from lino import dd, rt
 
-from north.dpy import Migrator
+from lino.utils.dpy import Migrator
 
 
 class Migrator(Migrator):
