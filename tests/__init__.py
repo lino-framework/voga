@@ -12,7 +12,7 @@ ROOTDIR = Path(__file__).parent.parent
 
 import lino_faggio
 
-from djangosite.utils.pythontest import TestCase
+from lino.utils.pythontest import TestCase
 
 import os
 os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.projects.docs.settings.doctests"

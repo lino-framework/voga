@@ -20,7 +20,7 @@ from lino.runtime import courses
 from lino.runtime import users
 from django.conf import settings
 
-from djangosite.utils.djangotest import RemoteAuthTestCase
+from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils import i2d
 from lino.modlib.users.mixins import UserProfiles
 
