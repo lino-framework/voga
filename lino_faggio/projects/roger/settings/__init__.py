@@ -12,7 +12,9 @@ class Site(Site):
 
     title = "Lino Faggio à la Roger"
     languages = "en de fr"
-    demo_fixtures = 'std few_languages demo buche demo2'.split()
+
+    demo_fixtures = """std few_languages few_countries euvatrates
+    demo buche demo2""".split()
 
     def setup_plugins(self):
         """
@@ -20,4 +22,5 @@ class Site(Site):
        
         """
         self.plugins.contacts.configure(hide_region=True)
+        self.plugins.vat.configure(country_code='BE')
         super(Site, self).setup_plugins()
