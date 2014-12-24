@@ -24,3 +24,4 @@ class Site(Site):
         self.plugins.contacts.configure(hide_region=True)
         self.plugins.vat.configure(country_code='BE')
         super(Site, self).setup_plugins()
+

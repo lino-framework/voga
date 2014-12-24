@@ -7,4 +7,4 @@ add_demo_database('lino_faggio.projects.edmund.settings.demo')
 
 env.tolerate_sphinx_warnings = False
 env.languages = 'en de fr et'.split()
-env.use_mercurial = False
+env.revision_control_system = 'git'
