@@ -1,5 +1,5 @@
 from atelier.fablib import *
-setup_from_project('lino_faggio')
+setup_from_fabfile(globals(), 'lino_faggio')
 
 add_demo_database('lino_faggio.projects.docs.settings.demo')
 add_demo_database('lino_faggio.projects.roger.settings.demo')
