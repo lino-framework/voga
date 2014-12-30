@@ -18,9 +18,6 @@ import os
 import logging
 logger = logging.getLogger(__name__)
 
-
-import sys
-
 from dateutil.parser import parse as parse_date
 
 from lino.utils import iif
@@ -30,8 +27,8 @@ from xlrd import open_workbook, xldate_as_tuple
 from lino.modlib.contacts.utils import street2kw
 
 from lino.runtime import *
-from lino import dd, rt
-from djangosite.dbutils import is_valid_email
+from lino import dd
+from lino.core.dbutils import is_valid_email
 
 
 def string2date(s):
