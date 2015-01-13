@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino.modlib.cal.models import *
 
-from lino.modlib.users.mixins import UserProfiles
+from lino.modlib.users.choicelists import UserProfiles
 
 contacts = dd.resolve_app('contacts')
 courses = dd.resolve_app('courses')

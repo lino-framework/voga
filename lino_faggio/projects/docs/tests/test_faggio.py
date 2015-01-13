@@ -22,7 +22,7 @@ from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils import i2d
-from lino.modlib.users.mixins import UserProfiles
+from lino.modlib.users.choicelists import UserProfiles
 
 
 def create(model, **kwargs):

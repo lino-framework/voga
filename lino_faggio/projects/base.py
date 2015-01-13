@@ -72,7 +72,7 @@ class Site(Site):
         """
         super(Site, self).setup_choicelists()
 
-        from lino.modlib.users.mixins import UserProfiles
+        from lino.modlib.users.choicelists import UserProfiles
         from django.utils.translation import ugettext_lazy as _
 
         UserProfiles.reset('* office accounts')
