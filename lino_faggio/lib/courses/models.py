@@ -196,7 +196,7 @@ def customize_courses(sender, **kw):
     rt.modules.courses.Courses.set_detail_layout(CourseDetail())
 
 
-def setup_main_menu(site, ui, profile, main):
+def setup_main_menu(config, site, profile, main):
     # m = main.get_item("contacts")
     m = main.add_menu("courses", config.verbose_name)
     m.add_action('courses.Pupils')
@@ -211,7 +211,7 @@ def setup_main_menu(site, ui, profile, main):
     m.add_action(PendingConfirmedEnrolments)
 
 
-def setup_config_menu(site, ui, profile, m):
+def setup_config_menu(config, site, profile, m):
     m = m.add_menu("courses", config.verbose_name)
     #~ m.add_action(Rooms)
     m.add_action('courses.TeacherTypes')
