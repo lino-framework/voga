@@ -21,8 +21,6 @@ class Site(Site):
     demo_fixtures = 'std demo demo_bookings buche faggio demo2'.split()
     start_year = 2013
 
-    user_model = 'users.User'
-
     languages = 'en de et'
 
     show_internal_field_names = True
