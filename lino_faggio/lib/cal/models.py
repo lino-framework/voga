@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2014 Luc Saffre
+# Copyright 2013-2015 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -16,7 +16,9 @@ from lino.modlib.cal.models import *
 
 from lino.modlib.users.choicelists import UserProfiles
 
-contacts = dd.resolve_app('contacts')
+from lino.modlib.contacts.mixins import ContactRelated
+from lino.modlib.courses.choicelists import EnrolmentStates
+
 courses = dd.resolve_app('courses')
 
 # must import this to activate these workflow definitions:
@@ -29,7 +31,7 @@ dd.inject_field('system.SiteConfig', 'pupil_guestrole',
                               blank=True, null=True))
 
 
-class Room(Room, contacts.ContactRelated):
+class Room(Room, ContactRelated):
 
     tariff = dd.ForeignKey('products.Product',
                            blank=True, null=True,
@@ -114,7 +116,7 @@ class Event(Event):
             return
         Guest = settings.SITE.modules.cal.Guest
         for obj in self.project.enrolment_set.exclude(
-                state=courses.EnrolmentStates.cancelled):
+                state=EnrolmentStates.cancelled):
             if obj.pupil:
                 yield Guest(event=self,
                             partner=obj.pupil,

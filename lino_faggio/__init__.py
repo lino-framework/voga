@@ -2,6 +2,19 @@
 # Copyright 2013-2014 Luc Saffre
 # License: BSD (see file COPYING for details)
 
+"""
+The main module of :ref:`faggio`.
+
+.. autosummary::
+   :toctree:
+
+    lib
+    models
+    migrate
+    projects
+
+"""
+
 import os
 
 execfile(os.path.join(os.path.dirname(__file__), 'setup_info.py'))

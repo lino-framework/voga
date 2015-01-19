@@ -22,7 +22,7 @@ Content
 
    install
    tested/index
-   API <api/lino_faggio>
+   api/index
    todo
    changes
    userman/index

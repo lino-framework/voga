@@ -1,4 +1,4 @@
-# Copyright 2013-2014 Luc Saffre
+# Copyright 2013-2015 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -12,11 +12,10 @@ from django.utils.translation import ugettext_lazy as _
 from lino.modlib.contacts.models import *
 
 from lino.modlib.sales import models as sales
+from lino.modlib.beid.mixins import BeIdCardHolder
 
-beid = dd.resolve_app('beid')
 
-
-class Person(Person, beid.BeIdCardHolder):
+class Person(Person, BeIdCardHolder):
     pass
 
 

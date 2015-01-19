@@ -3,8 +3,8 @@ Examples how to run these tests::
 
   $ python setup.py test
   $ python setup.py test -s tests.DocsTests
-  $ python setup.py test -s tests.DocsTests.test_debts
-  $ python setup.py test -s tests.DocsTests.test_docs
+  $ python setup.py test -s tests.DocsTests.test_cal
+
 """
 from unipath import Path
 

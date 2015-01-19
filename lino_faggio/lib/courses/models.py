@@ -196,26 +196,3 @@ def customize_courses(sender, **kw):
     rt.modules.courses.Courses.set_detail_layout(CourseDetail())
 
 
-def setup_main_menu(config, site, profile, main):
-    # m = main.get_item("contacts")
-    m = main.add_menu("courses", config.verbose_name)
-    m.add_action('courses.Pupils')
-    m.add_action('courses.Teachers')
-    m.add_separator()
-    m.add_action('courses.Courses')
-    m.add_action('courses.Lines')
-    #~ m.add_action(Teachers)
-    #~ m.add_action(Pupils)
-    m.add_separator()
-    m.add_action(PendingRequestedEnrolments)
-    m.add_action(PendingConfirmedEnrolments)
-
-
-def setup_config_menu(config, site, profile, m):
-    m = m.add_menu("courses", config.verbose_name)
-    #~ m.add_action(Rooms)
-    m.add_action('courses.TeacherTypes')
-    m.add_action('courses.PupilTypes')
-    m.add_action('courses.Topics')
-    m.add_action('courses.Lines')
-    m.add_action('courses.Slots')
