@@ -20,7 +20,7 @@ os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.projects.docs.settings.docte
 
 class BaseTestCase(TestCase):
     project_root = ROOTDIR
-    demo_settings_module = 'lino_faggio.projects.docs.settings.doctests'
+    django_settings_module = 'lino_faggio.projects.docs.settings.doctests'
 
 
 class DocsTests(BaseTestCase):

@@ -64,11 +64,11 @@ class Site(Site):
         yield 'lino.modlib.appypod'
         yield 'lino.modlib.export_excel'
 
-    def setup_choicelists(self):
+    def setup_user_profiles(self):
         """
         This defines default user profiles for :ref:`faggio`.
         """
-        super(Site, self).setup_choicelists()
+        super(Site, self).setup_user_profiles()
 
         from lino.modlib.users.choicelists import UserProfiles
         from django.utils.translation import ugettext_lazy as _
