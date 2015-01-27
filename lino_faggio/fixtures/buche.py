@@ -18,7 +18,7 @@ from lino.utils import Cycler
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from atelier.utils import date_offset
-from lino import dd, rt
+from lino.api import dd, rt
 
 DEMO_REF_DATE = i2d(20140101)
 

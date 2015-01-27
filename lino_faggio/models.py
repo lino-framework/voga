@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import string_concat
 
 
-from lino import dd
+from lino.api import dd
 
 #~ print 20130607, loading.cache.postponed
 

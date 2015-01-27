@@ -10,7 +10,7 @@ The :xfile:`models.py` module of the :mod:`lino_faggio.courses` app.
 from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
-from lino import dd, rt
+from lino.api import dd, rt
 from lino.utils import mti
 
 from lino.modlib.courses.models import *

@@ -8,7 +8,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
 from lino.utils.instantiator import Instantiator
 
-from lino import dd, rt
+from lino.api import dd, rt
 
 
 def excerpt_types():
