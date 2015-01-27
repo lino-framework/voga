@@ -27,5 +27,5 @@ class Site(Site):
         Change the default value of certain plugin settings.
        
         """
-        self.plugins.vat.configure(country_code='EE')
         super(Site, self).setup_plugins()
+        self.plugins.countries.configure(country_code='EE')
