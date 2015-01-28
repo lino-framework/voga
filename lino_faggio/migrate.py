@@ -21,7 +21,7 @@ can provide automatic data migrations for :ref:`dpy`.
 import logging
 logger = logging.getLogger(__name__)
 
-from lino.core.dbutils import resolve_model
+from lino.core.utils import resolve_model
 from lino.api import dd, rt
 
 from lino.utils.dpy import Migrator
