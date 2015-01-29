@@ -77,17 +77,17 @@ Test whether :meth:`get_db_overview_rst
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.ExcerptsByX           11        1
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        3
- finan.BankStatement        finan.BankStatements           11        3
- finan.BankStatementItem    finan.BankStatementItemTable   11        9
+ finan.BankStatement        finan.BankStatements           11        0
+ finan.BankStatementItem    finan.BankStatementItemTable   11        0
  finan.JournalEntry         finan.JournalEntries           9         0
  finan.JournalEntryItem     finan.JournalEntryItemTable    11        0
- finan.PaymentOrder         finan.PaymentOrders            11        3
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        15
+ finan.PaymentOrder         finan.PaymentOrders            11        0
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
  ledger.AccountInvoice      ledger.Invoices                18        20
  ledger.InvoiceItem         ledger.InvoiceItemTable        9         32
  ledger.Journal             ledger.Journals                13        6
- ledger.Movement            ledger.Movements               9         98
- ledger.Voucher             ledger.Vouchers                7         45
+ ledger.Movement            ledger.Movements               9         28
+ ledger.Voucher             ledger.Vouchers                7         39
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -107,14 +107,13 @@ Test whether :meth:`get_db_overview_rst
  system.SiteConfig          system.SiteConfigs             17        1
  system.TextFieldTemplate   system.TextFieldTemplates      5         2
  uploads.Upload             uploads.Uploads                9         0
- uploads.UploadType         uploads.UploadTypes            5         0
+ uploads.UploadType         uploads.UploadTypes            6         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    15        1
  vat.PaymentTerm            vat.PaymentTerms               5         0
- vat.VatRate                vat.VatRates                   9         0
+ vat.VatRule                vat.VatRules                   9         0
 ========================== ============================== ========= =======
 <BLANKLINE>
-
 
 
 Menus
@@ -147,7 +146,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Courses : Instructor Types, Participant Types, Topics, Course Lines, Timetable Slots
   - Calendar : Calendars, Rooms, Priorities, Recurrent Events, Guest Roles, Event Types, Remote Calendars
   - Accounting : Account Charts, Account Groups, Accounts, Journals
-  - VAT : Payment Terms, VAT rates
+  - VAT : Payment Terms, VAT rules
   - Sales : Shipping Modes
 - Explorer :
   - System : content types, Authorities, User Groups, User Levels, User Profiles

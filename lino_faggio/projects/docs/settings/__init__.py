@@ -7,6 +7,9 @@ from lino_faggio.projects.base import *
 
 class Site(Site):
 
+    project_name = 'faggio_std'  # avoid name clash with
+                                 # `lino/projects/docs`.
+
     languages = 'en'
     # languages = 'en de fr'
     title = "Lino Faggio Reference"
@@ -16,5 +19,5 @@ class Site(Site):
     ignore_dates_after = datetime.date(2019, 05, 22)
 
     def setup_plugins(self):
-        self.plugins.vat.configure(country_code='BE')
         super(Site, self).setup_plugins()
+        self.plugins.countries.configure(country_code='BE')
