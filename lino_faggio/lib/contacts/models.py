@@ -44,7 +44,6 @@ class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
 
     bottom_box = """
     remarks
-    is_person is_company #is_household
     """
 
     address_box = """

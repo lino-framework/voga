@@ -174,23 +174,6 @@ class CourseDetail(CourseDetail):
     """, label=_("More"))
 
 
-dd.inject_field(
-    'contacts.Person',
-    'is_teacher',
-    mti.EnableChild(
-        'courses.Teacher',
-        verbose_name=_("is a teacher"),
-        help_text=_("Whether this Person is also a Teacher.")))
-
-dd.inject_field(
-    'contacts.Person',
-    'is_pupil',
-    mti.EnableChild(
-        'courses.Pupil',
-        verbose_name=_("is a pupil"),
-        help_text=_("Whether this Person is also a Pupil.")))
-
-
 @dd.receiver(dd.post_analyze)
 def customize_courses(sender, **kw):
     rt.modules.courses.Courses.set_detail_layout(CourseDetail())
