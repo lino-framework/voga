@@ -1,4 +1,4 @@
-from ..settings import *
+from lino_faggio.projects.docs.settings import *
 
 SITE = Site(globals(), is_demo_site=True)  #, use_java=False)
 
