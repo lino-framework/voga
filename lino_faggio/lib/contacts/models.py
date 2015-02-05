@@ -108,7 +108,7 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     notes.NotesByPerson  lists.MembersByPartner
     """, label=_("More"))
 
-    personal = 'is_pupil is_teacher'
+    personal = ''
 
     address_box = """
     last_name first_name:15 #title:10
