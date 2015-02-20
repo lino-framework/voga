@@ -129,7 +129,7 @@ Rolf is the local system administrator, he has a complete menu:
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
 - Courses : Participants, Instructors, -, Courses, Course Lines, -, Pending requested enrolments, Pending confirmed enrolments
-- Calendar : Calendar, My events, My tasks, My guests, My presences, Bookings
+- Calendar : Calendar, My appointments, My tasks, My guests, My presences, Bookings
 - Products : Products, Product Categories
 - Sales : Sales invoices (S), Invoices to create
 - Purchases : Purchase invoices (P), Payment Orders (PO)
