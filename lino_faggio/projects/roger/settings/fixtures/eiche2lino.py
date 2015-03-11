@@ -26,7 +26,7 @@ from xlrd import open_workbook, xldate_as_tuple
 
 from lino.modlib.contacts.utils import street2kw
 
-from lino.runtime import *
+from lino.api.shell import *
 from lino.api import dd
 from lino.core.utils import is_valid_email
 

@@ -5,7 +5,7 @@ Ledger
 
 .. include:: /include/tested.rst
 
->>> from lino.runtime import *
+>>> from lino.api.shell import *
 >>> from lino import dd
 >>> from django.test.client import Client
 >>> from django.utils.translation import get_language

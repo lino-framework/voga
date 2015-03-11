@@ -17,7 +17,7 @@ The following statements import a set of often-used global names::
 >>> from django.utils import translation
 >>> from django.test.client import Client
 >>> from lino import dd
->>> from lino.runtime import *
+>>> from lino.api.shell import *
 
 We can now refer to every installed app via it's `app_label`.
 For example here is how we can verify here that the demo database 

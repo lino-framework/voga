@@ -15,9 +15,9 @@ from __future__ import unicode_literals
 import logging
 logger = logging.getLogger(__name__)
 
-from lino.runtime import cal
-from lino.runtime import courses
-from lino.runtime import users
+from lino.api.shell import cal
+from lino.api.shell import courses
+from lino.api.shell import users
 from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase
@@ -36,7 +36,7 @@ class QuickTest(RemoteAuthTestCase):
     maxDiff = None
 
     def test01(self):
-        # from lino.runtime import courses, users, settings
+        # from lino.api.shell import courses, users, settings
         room = create(cal.Room, name="First Room")
         et = create(cal.EventType, name="Lesson")
 

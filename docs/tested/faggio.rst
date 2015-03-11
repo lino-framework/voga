@@ -11,7 +11,7 @@ Faggio
 .. include:: /include/tested.rst
 
 >>> from django.conf import settings
->>> from lino.runtime import *
+>>> from lino.api.shell import *
 >>> from django.test.client import Client
 >>> from django.utils.translation import get_language
 >>> from django.utils import translation

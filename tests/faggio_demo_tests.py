@@ -14,7 +14,7 @@ To run only this test::
 """
 from lino.utils.test import DemoTestCase
 from django.contrib.contenttypes.models import ContentType
-from lino.runtime import *
+from lino.api.shell import *
 
 
 class MyTestCase(DemoTestCase):
