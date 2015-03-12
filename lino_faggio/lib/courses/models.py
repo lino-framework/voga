@@ -14,6 +14,7 @@ from lino.api import dd, rt
 from lino.utils import mti
 
 from lino.modlib.courses.models import *
+from lino_faggio.lib.contacts.models import Person
 
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):

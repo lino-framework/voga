@@ -16,7 +16,7 @@ The following statements import a set of often-used global names::
 >>> from __future__ import print_function
 >>> from django.utils import translation
 >>> from django.test.client import Client
->>> from lino import dd
+>>> from lino.api import dd
 >>> from lino.api.shell import *
 
 We can now refer to every installed app via it's `app_label`.
@@ -38,7 +38,7 @@ Test whether :meth:`get_db_overview_rst
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 28 apps: about, bootstrap3, lino, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, appypod, export_excel.
-70 models:
+73 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -47,7 +47,7 @@ Test whether :meth:`get_db_overview_rst
  accounts.Group             accounts.Groups                5         7
  cal.Calendar               cal.Calendars                  4         8
  cal.Event                  cal.OneEvent                   23        296
- cal.EventType              cal.EventTypes                 12        7
+ cal.EventType              cal.EventTypes                 12        8
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 2         0
  cal.Priority               cal.Priorities                 3         4
@@ -62,7 +62,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.Person            contacts.Persons               39        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   contenttypes.ContentTypes      4         71
+ contenttypes.ContentType   contenttypes.ContentTypes      4         74
  contenttypes.HelpText      contenttypes.HelpTexts         4         2
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
@@ -77,17 +77,20 @@ Test whether :meth:`get_db_overview_rst
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.ExcerptsByX           11        1
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        3
- finan.BankStatement        finan.BankStatements           11        0
- finan.BankStatementItem    finan.BankStatementItemTable   11        0
- finan.JournalEntry         finan.JournalEntries           9         0
+ finan.BankStatement        finan.BankStatements           11        15
+ finan.BankStatementItem    finan.BankStatementItemTable   11        24
+ finan.Grouper              finan.Groupers                 10        0
+ finan.GrouperItem          finan.GrouperItemTable         10        0
+ finan.JournalEntry         finan.FinancialVouchers        9         0
  finan.JournalEntryItem     finan.JournalEntryItemTable    11        0
- finan.PaymentOrder         finan.PaymentOrders            11        0
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
- ledger.AccountInvoice      ledger.Invoices                18        20
- ledger.InvoiceItem         ledger.InvoiceItemTable        9         32
+ finan.PaymentOrder         finan.PaymentOrders            11        15
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        75
+ ledger.AccountInvoice      ledger.AccountInvoices         18        80
+ ledger.InvoiceItem         ledger.InvoiceItemTable        9         128
  ledger.Journal             ledger.Journals                13        6
- ledger.Movement            ledger.Movements               9         28
- ledger.Voucher             ledger.Vouchers                7         39
+ ledger.MatchRule           ledger.MatchRules              3         10
+ ledger.Movement            ledger.Movements               9         235
+ ledger.Voucher             ledger.Vouchers                7         147
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -100,8 +103,8 @@ Test whether :meth:`get_db_overview_rst
  products.Product           products.Products              8         11
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.Invoice              sales.Invoices                 24        19
- sales.InvoiceItem          sales.InvoiceItemTable         15        26
+ sales.Invoice              sales.Invoices                 24        37
+ sales.InvoiceItem          sales.InvoiceItemTable         15        62
  sales.InvoicingMode        sales.InvoicingModes           6         0
  sales.ShippingMode         sales.ShippingModes            3         0
  system.SiteConfig          system.SiteConfigs             17        1
@@ -136,7 +139,7 @@ Rolf is the local system administrator, he has a complete menu:
 - Financial : Bestbank (B), Cash (C), Miscellaneous Journal Entries (M)
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
-  - System : Stale Controllables
+  - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
 - Configure :
   - System : Help Texts, Site Parameters, Users
@@ -156,5 +159,5 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Invoices, Vouchers, VoucherTypes, Movements, Fiscal Years
   - VAT : VatRegimes, TradeTypes, VatClasses
-  - Financial : Bank Statements, Journal Entries, Payment Orders
+  - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
 - Site : About

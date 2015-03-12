@@ -181,8 +181,8 @@ htmlhelp_basename = 'faggio'
 #~ nitpicky = True # use -n in Makefile instead
 
 # http://sphinx.pocoo.org/theming.html
-#~ html_theme = "default"
-html_theme_options = dict(collapsiblesidebar=True,externalrefs=True)
+# html_theme = "classic"
+# html_theme_options = dict(collapsiblesidebar=True,externalrefs=True)
 
 #~ todo_include_todos = True
 
