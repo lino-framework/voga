@@ -30,8 +30,9 @@ class DocsTests(BaseTestCase):
     def test_ledger(self):
         return self.run_docs_doctests('tested/ledger.rst')
 
-    def test_courses(self):
-        return self.run_docs_doctests('tested/courses.rst')
+    # TODO: convert this to a Django test
+    # def test_courses(self):
+    #     return self.run_docs_doctests('tested/courses.rst')
 
     def test_faggio(self):
         return self.run_docs_doctests('tested/faggio.rst')
