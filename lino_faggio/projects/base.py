@@ -81,7 +81,7 @@ class Site(Site):
         add('100', _("User"),          'U U U', name='user')
         add('900', _("Administrator"), 'A A A', name='admin')
 
-    def get_admin_main_items(self):
+    def get_admin_main_items(self, ar):
         yield self.modules.courses.DraftCourses
         # yield self.modules.courses.ActiveCourses
 
