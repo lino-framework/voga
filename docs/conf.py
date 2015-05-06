@@ -8,6 +8,12 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
+from django.utils.importlib import import_module
+intersphinx_mapping = {}
+for n in 'atelier lino'.split():
+    m = import_module(n)
+    intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
+
 extensions = []
 
 from atelier.sphinxconf import configure
