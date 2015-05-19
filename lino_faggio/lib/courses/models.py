@@ -142,6 +142,24 @@ class CoursesByTopic(CoursesByTopic):
     room__company__city:10 weekdays_text:10 times_text:10"
 
 
+class CoursesByLine(CoursesByLine):
+    """Like :class:`lino.modlib.courses.CoursesByLine`, but with other
+    default values in the filter parameters. In Faggio we want to see
+    only courses for which new enrolments can happen.
+    
+    TODO: when Lino gets class-based user roles, move this back to the
+    library table and show all courses only for users with profile
+    `courses.CourseManager`.
+
+    """
+    @classmethod
+    def param_defaults(self, ar, **kw):
+        kw = super(CoursesByLine, self).param_defaults(ar, **kw)
+        kw.update(state=CourseStates.registered)
+        kw.update(active=dd.YesNo.yes)
+        return kw
+
+
 # class ActiveCourses(ActiveCourses):
 #     column_names = 'info max_places enrolments teacher line room *'
 #     hide_sums = True
