@@ -16,6 +16,8 @@ from lino.utils import mti
 from lino.modlib.courses.models import *
 from lino_faggio.lib.contacts.models import Person
 
+contacts = dd.resolve_app('contacts')
+
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
