@@ -14,7 +14,7 @@ class Site(Site):
     languages = "en de fr"
 
     demo_fixtures = """std few_languages few_countries euvatrates
-    demo buche demo2""".split()
+    minimal_ledger demo buche demo2""".split()
 
     def setup_plugins(self):
         """
