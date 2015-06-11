@@ -45,11 +45,6 @@ en
 >>> result = json.loads(res.content)
 >>> print(result.keys())
 [u'count', u'rows', u'success', u'no_data_text', u'title', u'param_values']
->>> print(len(result['rows']))
-2
->>> print(result['rows'][0][0]) 
-... #doctest: +ELLIPSIS
-Thu 12/25/14
 
 
 Printable documents
@@ -66,9 +61,9 @@ check whether we get the expected response.
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-/media/cache/appypdf/sales.Invoice-1.pdf
+/media/userdocs/appyodt/sales.Invoice-1.odt
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename sales.Invoice-1.pdf) should now open
+Your printable document (filename sales.Invoice-1.odt) should now open
 in a new browser window. If it doesn't, please consult <a
 href="http://www.lino-framework.org/help/print.html"
 target="_blank">the documentation</a> or ask your system
@@ -84,7 +79,7 @@ events have no `user` and would currently fail to print
 >>> print(rv['success'])
 True
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename cal.Event-100.pdf) should now open
+Your printable document (filename cal.Event-100.odt) should now open
 in a new browser window. If it doesn't, please consult <a
 href="http://www.lino-framework.org/help/print.html"
 target="_blank">the documentation</a> or ask your system

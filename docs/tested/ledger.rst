@@ -18,15 +18,14 @@ Journals
 >>> ses = settings.SITE.login('robin')
 >>> ses.show(ledger.Journals,column_names="ref name trade_type account dc")
 ==================== =============================== ============ ====================================== ========
- ref                  Designation                     Trade Type   Account                                dc
+ Reference            Designation                     Trade Type   Account                                dc
 -------------------- ------------------------------- ------------ -------------------------------------- --------
- S                    Sales invoices                  Sales                                               Credit
- P                    Purchase invoices               Purchases                                           Debit
- B                    Bestbank                                     (bestbank) Bestbank                    Debit
- PO                   Payment Orders                  Purchases    (bestbankpo) Payment Orders Bestbank   Debit
- C                    Cash                                         (cash) Cash                            Debit
- M                    Miscellaneous Journal Entries                                                       Debit
+ SLS                  Sales invoices                  Sales                                               Credit
+ PRC                  Purchase invoices               Purchases                                           Debit
+ BNK                  Bestbank                        Purchases    (bestbank) Bestbank                    Debit
+ PMO                  Payment Orders                  Purchases    (bestbankpo) Payment Orders Bestbank   Debit
+ CSH                  Cash                                         (cash) Cash                            Debit
+ MSG                  Miscellaneous Journal Entries                (cash) Cash                            Debit
  **Total (6 rows)**                                                                                       **5**
 ==================== =============================== ============ ====================================== ========
 <BLANKLINE>
-

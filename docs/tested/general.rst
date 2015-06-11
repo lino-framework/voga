@@ -37,13 +37,12 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-28 apps: about, bootstrap3, lino, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, appypod, export_excel.
-73 models:
+29 apps: staticfiles, about, bootstrap3, lino, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, appypod, export_excel.
+71 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
  accounts.Account           accounts.Accounts              12        12
- accounts.Chart             accounts.Charts                2         1
  accounts.Group             accounts.Groups                5         7
  cal.Calendar               cal.Calendars                  4         8
  cal.Event                  cal.OneEvent                   23        296
@@ -62,13 +61,13 @@ Test whether :meth:`get_db_overview_rst
  contacts.Person            contacts.Persons               39        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   contenttypes.ContentTypes      4         74
+ contenttypes.ContentType   contenttypes.ContentTypes      4         72
  contenttypes.HelpText      contenttypes.HelpTexts         4         2
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
- courses.Enrolment          courses.Enrolments             13        100
- courses.Line               courses.Lines                  13        10
+ courses.Enrolment          courses.Enrolments             14        100
+ courses.Line               courses.Lines                  14        10
  courses.Pupil              courses.Pupils                 41        35
  courses.PupilType          courses.PupilTypes             3         4
  courses.Slot               courses.Slots                  5         0
@@ -76,44 +75,43 @@ Test whether :meth:`get_db_overview_rst
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.ExcerptsByX           11        1
- excerpts.ExcerptType       excerpts.ExcerptTypes          15        3
+ excerpts.ExcerptType       excerpts.ExcerptTypes          15        4
  finan.BankStatement        finan.BankStatements           11        15
- finan.BankStatementItem    finan.BankStatementItemTable   11        24
+ finan.BankStatementItem    finan.BankStatementItemTable   10        24
  finan.Grouper              finan.Groupers                 10        0
- finan.GrouperItem          finan.GrouperItemTable         10        0
+ finan.GrouperItem          finan.GrouperItemTable         9         0
  finan.JournalEntry         finan.FinancialVouchers        9         0
- finan.JournalEntryItem     finan.JournalEntryItemTable    11        0
+ finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            11        15
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        75
- ledger.AccountInvoice      ledger.AccountInvoices         18        80
- ledger.InvoiceItem         ledger.InvoiceItemTable        9         128
- ledger.Journal             ledger.Journals                13        6
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    9         75
+ ledger.Journal             ledger.Journals                14        6
  ledger.MatchRule           ledger.MatchRules              3         10
- ledger.Movement            ledger.Movements               9         235
- ledger.Voucher             ledger.Vouchers                7         147
+ ledger.Movement            ledger.Movements               10        235
+ ledger.PaymentTerm         ledger.PaymentTerms            5         0
+ ledger.Voucher             ledger.Vouchers                8         147
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
  notes.EventType            notes.EventTypes               4         0
  notes.Note                 notes.Notes                    16        100
- notes.NoteType             notes.NoteTypes                8         6
+ notes.NoteType             notes.NoteTypes                9         6
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
  products.Product           products.Products              8         11
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.Invoice              sales.Invoices                 24        37
+ sales.Invoice              sales.Invoices                 25        37
  sales.InvoiceItem          sales.InvoiceItemTable         15        62
  sales.InvoicingMode        sales.InvoicingModes           6         0
  sales.ShippingMode         sales.ShippingModes            3         0
  system.SiteConfig          system.SiteConfigs             17        1
- system.TextFieldTemplate   system.TextFieldTemplates      5         2
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    15        1
- vat.PaymentTerm            vat.PaymentTerms               5         0
+ vat.AccountInvoice         vat.AccountInvoices            19        80
+ vat.InvoiceItem            vat.InvoiceItemTable           9         128
  vat.VatRule                vat.VatRules                   9         0
 ========================== ============================== ========= =======
 <BLANKLINE>
@@ -131,33 +129,33 @@ Rolf is the local system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Courses : Participants, Instructors, -, Courses, Course Lines, -, Pending requested enrolments, Pending confirmed enrolments
+- Courses : Participants, Instructors, -, Courses, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Calendar : Calendar, My appointments, My tasks, My guests, My presences, Bookings
 - Products : Products, Product Categories
-- Sales : Sales invoices (S), Invoices to create
-- Purchases : Purchase invoices (P), Payment Orders (PO)
-- Financial : Bestbank (B), Cash (C), Miscellaneous Journal Entries (M)
+- Sales : Sales invoices (SLS), Invoices to create
+- Purchases : Purchase invoices (PRC)
+- Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
 - Configure :
   - System : Help Texts, Site Parameters, Users
-  - Office : My Text Field Templates, Note Types, Event Types, Upload Types, Excerpt Types
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
-  - Courses : Instructor Types, Participant Types, Topics, Course Lines, Timetable Slots
-  - Calendar : Calendars, Rooms, Priorities, Recurrent Events, Guest Roles, Event Types, Remote Calendars
-  - Accounting : Account Charts, Account Groups, Accounts, Journals
-  - VAT : Payment Terms, VAT rules
+  - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
+  - Calendar : Calendars, Rooms, Priorities, Recurrent Events, Guest Roles, Calendar Event Types, Remote Calendars
+  - Accounting : Account Charts, Account Groups, Accounts, Journals, Payment Terms
+  - VAT : VAT rules
   - Sales : Shipping Modes
+  - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
   - System : content types, Authorities, User Groups, User Levels, User Profiles
-  - Office : Text Field Templates, Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
   - Contacts : Contact Persons, List memberships
   - Courses : Enrolments, Enrolment states
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
-  - Accounting : Invoices, Vouchers, VoucherTypes, Movements, Fiscal Years
-  - VAT : VatRegimes, TradeTypes, VatClasses
+  - Accounting : Vouchers, VoucherTypes, Movements, Fiscal Years, TradeTypes
+  - VAT : VatRegimes, VatClasses
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
+  - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About
