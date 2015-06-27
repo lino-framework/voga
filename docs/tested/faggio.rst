@@ -55,17 +55,17 @@ check whether we get the expected response.
 
 >>> ses = settings.SITE.login("robin")
 >>> translation.activate('en')
->>> obj = sales.Invoice.objects.get(pk=1)
+>>> obj = sales.VatProductInvoice.objects.get(pk=1)
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print) 
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-/media/userdocs/appyodt/sales.Invoice-1.odt
+/media/userdocs/appyodt/sales.VatProductInvoice-1.odt
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename sales.Invoice-1.odt) should now open
-in a new browser window. If it doesn't, please consult <a
-href="http://www.lino-framework.org/help/print.html"
+Your printable document (filename sales.VatProductInvoice-1.odt)
+should now open in a new browser window. If it doesn't, please consult
+<a href="http://www.lino-framework.org/help/print.html"
 target="_blank">the documentation</a> or ask your system
 administrator.
 

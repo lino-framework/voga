@@ -98,7 +98,7 @@ Test whether :meth:`get_db_overview_rst
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- products.Product           products.Products              8         11
+ products.Product           products.Products              9         11
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
  sales.InvoiceItem          sales.InvoiceItemTable         15        62
