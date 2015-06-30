@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2014 Luc Saffre
+# Copyright 2012-2015 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 from lino.projects.std.settings import *
@@ -63,23 +63,6 @@ class Site(Site):
 
         yield 'lino.modlib.appypod'
         yield 'lino.modlib.export_excel'
-
-    def setup_user_profiles(self):
-        """
-        This defines default user profiles for :ref:`faggio`.
-        """
-        super(Site, self).setup_user_profiles()
-
-        from lino.modlib.users.choicelists import UserProfiles
-        from django.utils.translation import ugettext_lazy as _
-
-        UserProfiles.reset('* office accounts')
-        add = UserProfiles.add_item
-
-        add('000', _("Anonymous"),     '_ _ _', name='anonymous',
-            readonly=True, authenticated=False)
-        add('100', _("User"),          'U U U', name='user')
-        add('900', _("Administrator"), 'A A A', name='admin')
 
     def get_admin_main_items(self, ar):
         yield self.modules.courses.DraftCourses

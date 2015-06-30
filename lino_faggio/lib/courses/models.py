@@ -31,7 +31,6 @@ class TeacherType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
 class TeacherTypes(dd.Table):
     model = 'courses.TeacherType'
-    required = dd.required(user_level='manager')
     detail_layout = """
     id name
     courses.TeachersByType
@@ -84,7 +83,6 @@ class PupilType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
 class PupilTypes(dd.Table):
     model = 'courses.PupilType'
-    required = dd.required(user_level='manager')
     detail_layout = """
     id name
     courses.PupilsByType

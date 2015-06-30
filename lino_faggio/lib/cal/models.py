@@ -22,7 +22,10 @@ from lino.modlib.courses.choicelists import EnrolmentStates
 courses = dd.resolve_app('courses')
 
 # must import this to activate these workflow definitions:
+
 from lino.modlib.cal.workflows import faggio  
+from lino.modlib.office.roles import OfficeUser
+
 
 dd.inject_field('system.SiteConfig', 'pupil_guestrole',
                 dd.ForeignKey('cal.GuestRole',
@@ -60,7 +63,7 @@ class Room(Room, ContactRelated):
 
             profiles = set()
             for p in UserProfiles.items():
-                if p.office_level:
+                if isinstance(p.role, OfficeUser):
                     profiles.add(p)
             User = settings.SITE.user_model
             for u in User.objects.filter(profile__in=profiles):
