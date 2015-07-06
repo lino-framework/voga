@@ -37,7 +37,7 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-29 apps: staticfiles, about, bootstrap3, lino, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, appypod, export_excel.
+30 apps: staticfiles, about, bootstrap3, lino, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, appypod, printing, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
 71 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -74,7 +74,7 @@ Test whether :meth:`get_db_overview_rst
  courses.Teacher            courses.Teachers               41        8
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
- excerpts.Excerpt           excerpts.ExcerptsByX           11        1
+ excerpts.Excerpt           excerpts.Excerpts              11        1
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        4
  finan.BankStatement        finan.BankStatements           11        15
  finan.BankStatementItem    finan.BankStatementItemTable   10        24

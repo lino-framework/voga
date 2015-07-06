@@ -61,7 +61,7 @@ class Site(Site):
         #~ yield 'lino.modlib.courses'
         yield 'lino_faggio'
 
-        yield 'lino.modlib.appypod'
+        # yield 'lino.modlib.appypod'
         yield 'lino.modlib.export_excel'
 
     def get_admin_main_items(self, ar):
