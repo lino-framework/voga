@@ -18,6 +18,8 @@ class Site(Site):
 
     userdocs_prefix = 'faggio.'
 
+    user_profiles_module = 'lino_faggio.projects.roles'
+
     demo_fixtures = 'std minimal_ledger demo demo_bookings buche faggio demo2'.split()
     start_year = 2013
 

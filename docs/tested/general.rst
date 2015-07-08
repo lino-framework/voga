@@ -150,7 +150,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Shipping Modes
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : content types, Authorities, User Groups, User Levels, User Profiles
+  - System : content types, Authorities, User Profiles
   - Contacts : Contact Persons, List memberships
   - Courses : Enrolments, Enrolment states
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
