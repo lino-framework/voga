@@ -4,20 +4,16 @@
 General
 =======
 
-.. include:: /include/tested.rst
+.. To run only this test::
 
-..
-  To run only this test::
+    $ python setup.py test -s tests.DocsTests.test_general
 
-  $ python setup.py test -s tests.DocsTests.test_general
 
-The following statements import a set of often-used global names::
-
->>> from __future__ import print_function
->>> from django.utils import translation
->>> from django.test.client import Client
->>> from lino.api import dd
->>> from lino.api.shell import *
+    >>> from __future__ import print_function
+    >>> from django.utils import translation
+    >>> from django.test.client import Client
+    >>> from lino.api import dd
+    >>> from lino.api.shell import *
 
 We can now refer to every installed app via it's `app_label`.
 For example here is how we can verify here that the demo database 
@@ -37,7 +33,7 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-30 apps: staticfiles, about, bootstrap3, lino, contenttypes, system, users, countries, contacts, lists, beid, courses, extensible, appypod, printing, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
+30 apps: staticfiles, about, bootstrap3, lino, appypod, printing, system, contenttypes, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
 71 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -140,7 +136,7 @@ Rolf is the local system administrator, he has a complete menu:
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
 - Configure :
-  - System : Help Texts, Site Parameters, Users
+  - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
   - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
@@ -150,7 +146,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Shipping Modes
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : content types, Authorities, User Profiles
+  - System : Authorities, User Profiles, content types
   - Contacts : Contact Persons, List memberships
   - Courses : Enrolments, Enrolment states
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
