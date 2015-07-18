@@ -136,7 +136,7 @@ Rolf is the local system administrator, he has a complete menu:
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
 - Configure :
-  - System : Site Parameters, Users, Help Texts
+  - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
   - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
@@ -146,7 +146,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Shipping Modes
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User Profiles, content types
+  - System : content types, Authorities, User Profiles
   - Contacts : Contact Persons, List memberships
   - Courses : Enrolments, Enrolment states
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states

@@ -9,7 +9,7 @@ See also :attr:`lino.core.site.Site.user_profiles_module`.
 
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
-from lino.modlib.accounts.roles import AccountingReader
+from lino.modlib.ledger.roles import AccountingReader
 
 
 class SiteUser(OfficeUser):
@@ -31,9 +31,7 @@ from django.utils.translation import ugettext_lazy as _
 from lino.modlib.users.choicelists import UserProfiles
 UserProfiles.clear()
 add = UserProfiles.add_item
-add('000', _("Anonymous"), UserRole, name='anonymous',
-    readonly=True,
-    authenticated=False)
+add('000', _("Anonymous"), UserRole, name='anonymous', readonly=True)
 add('100', _("User"), SiteUser, name='user')
 add('500', _("Developer"), Developer, name='developer')
 add('510', _("Senior Developer"), SeniorDeveloper, name='senior')
