@@ -63,7 +63,7 @@ Test whether :meth:`get_db_overview_rst
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
  courses.Enrolment          courses.Enrolments             14        100
- courses.Line               courses.Lines                  14        10
+ courses.Line               courses.Lines                  15        10
  courses.Pupil              courses.Pupils                 41        35
  courses.PupilType          courses.PupilTypes             3         4
  courses.Slot               courses.Slots                  5         0
