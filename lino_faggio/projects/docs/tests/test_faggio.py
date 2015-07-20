@@ -98,6 +98,7 @@ Update Guests for Course #1  5...
  Mon 2/3/14    Suggested
  Mon 2/10/14   Suggested
 ============= ===========
+
 """)
 
         """Now we want to skip the 2nd event.  We click on "Move next" on
@@ -137,6 +138,7 @@ Move down for Course #1  2...
  Mon 2/3/14    Suggested
  Mon 2/10/14   Suggested
 ============= ===========
+
 """)
 
 
@@ -168,6 +170,7 @@ Generating events between 2014-01-13 and 2019-05-22.
  Mon 2/10/14   Suggested
  Mon 2/17/14   Suggested
 ============= ===========
+
 """)
 
 
