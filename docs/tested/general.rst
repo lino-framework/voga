@@ -8,6 +8,7 @@ General
 
     $ python setup.py test -s tests.DocsTests.test_general
 
+    doctest init:
 
     >>> from __future__ import print_function
     >>> from django.utils import translation
@@ -33,8 +34,8 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-30 apps: staticfiles, about, bootstrap3, lino, appypod, printing, system, contenttypes, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, iban, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
-71 models:
+30 apps: staticfiles, about, bootstrap3, lino, appypod, printing, system, contenttypes, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, sepa, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
+72 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -51,38 +52,38 @@ Test whether :meth:`get_db_overview_rst
  cal.Room                   cal.Rooms                      7         7
  cal.Subscription           cal.Subscriptions              4         7
  cal.Task                   cal.Tasks                      17        0
- contacts.Company           contacts.Companies             28        19
+ contacts.Company           contacts.Companies             26        29
  contacts.CompanyType       contacts.CompanyTypes          3         16
- contacts.Partner           contacts.Partners              24        88
- contacts.Person            contacts.Persons               39        69
+ contacts.Partner           contacts.Partners              22        98
+ contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   contenttypes.ContentTypes      4         72
+ contenttypes.ContentType   contenttypes.ContentTypes      4         73
  contenttypes.HelpText      contenttypes.HelpTexts         4         2
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
  courses.Enrolment          courses.Enrolments             14        100
  courses.Line               courses.Lines                  15        10
- courses.Pupil              courses.Pupils                 41        35
+ courses.Pupil              courses.Pupils                 39        35
  courses.PupilType          courses.PupilTypes             3         4
  courses.Slot               courses.Slots                  5         0
- courses.Teacher            courses.Teachers               41        8
+ courses.Teacher            courses.Teachers               39        8
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        1
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        4
  finan.BankStatement        finan.BankStatements           11        15
- finan.BankStatementItem    finan.BankStatementItemTable   10        24
+ finan.BankStatementItem    finan.BankStatementItemTable   10        99
  finan.Grouper              finan.Groupers                 10        0
  finan.GrouperItem          finan.GrouperItemTable         9         0
  finan.JournalEntry         finan.FinancialVouchers        9         0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            11        15
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    9         75
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
  ledger.Journal             ledger.Journals                14        6
  ledger.MatchRule           ledger.MatchRules              3         10
- ledger.Movement            ledger.Movements               10        235
+ ledger.Movement            ledger.Movements               9         235
  ledger.PaymentTerm         ledger.PaymentTerms            5         0
  ledger.Voucher             ledger.Vouchers                8         147
  lists.List                 lists.Lists                    5         8
@@ -100,14 +101,15 @@ Test whether :meth:`get_db_overview_rst
  sales.InvoiceItem          sales.InvoiceItemTable         15        62
  sales.InvoicingMode        sales.InvoicingModes           6         0
  sales.ShippingMode         sales.ShippingModes            3         0
- sales.VatProductInvoice    sales.Invoices                 25        37
+ sales.VatProductInvoice    sales.Invoices                 26        37
+ sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    15        1
  vat.InvoiceItem            vat.InvoiceItemTable           9         128
- vat.VatAccountInvoice      vat.Invoices                   19        80
+ vat.VatAccountInvoice      vat.Invoices                   20        80
  vat.VatRule                vat.VatRules                   9         0
 ========================== ============================== ========= =======
 <BLANKLINE>
@@ -128,9 +130,11 @@ Rolf is the local system administrator, he has a complete menu:
 - Courses : Participants, Instructors, -, Courses, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Calendar : Calendar, My appointments, My tasks, My guests, My presences, Bookings
 - Products : Products, Product Categories
-- Sales : Sales invoices (SLS), Invoices to create
-- Purchases : Purchase invoices (PRC)
-- Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
+- Accounting :
+  - Sales : Sales invoices (SLS)
+  - Purchases : Purchase invoices (PRC)
+  - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
+- Sales : Invoices to create
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
   - System : Broken GFKs
@@ -150,8 +154,9 @@ Rolf is the local system administrator, he has a complete menu:
   - Contacts : Contact Persons, List memberships
   - Courses : Enrolments, Enrolment states
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
-  - Accounting : Vouchers, VoucherTypes, Movements, Fiscal Years, TradeTypes
-  - VAT : VatRegimes, VatClasses
+  - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
+  - VAT : VAT regimes, VAT Classes
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
+  - SEPA : Accounts
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About
