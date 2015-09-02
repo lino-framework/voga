@@ -9,14 +9,14 @@ See also :attr:`lino.core.site.Site.user_profiles_module`.
 
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
-from lino.modlib.ledger.roles import AccountingReader
+from lino.modlib.ledger.roles import LedgerUser, LedgerStaff
 
 
-class SiteUser(OfficeUser):
+class SiteUser(OfficeUser, LedgerUser):
     pass
 
 
-class SiteAdmin(SiteAdmin, OfficeStaff, AccountingReader):
+class SiteAdmin(SiteAdmin, OfficeStaff, LedgerStaff):
     pass
 
 
