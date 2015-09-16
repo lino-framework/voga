@@ -3,7 +3,7 @@
 # License: BSD (see file COPYING for details)
 
 """
-The :xfile:`models.py` module of the :mod:`lino_faggio.courses` app.
+Database models for `lino_faggio.lib.courses`.
 
 """
 
@@ -137,34 +137,6 @@ class PupilsByType(Pupils):
     master_key = 'pupil_type'
 
 
-class CoursesByTopic(CoursesByTopic):
-    column_names = "start_date:8 line:20 \
-    room__company__city:10 weekdays_text:10 times_text:10"
-
-
-class CoursesByLine(CoursesByLine):
-    """Like :class:`lino.modlib.courses.CoursesByLine`, but with other
-    default values in the filter parameters. In Faggio we want to see
-    only courses for which new enrolments can happen.
-    
-    TODO: when Lino gets class-based user roles, move this back to the
-    library table and show all courses only for users with profile
-    `courses.CourseManager`.
-
-    """
-    @classmethod
-    def param_defaults(self, ar, **kw):
-        kw = super(CoursesByLine, self).param_defaults(ar, **kw)
-        kw.update(state=CourseStates.registered)
-        kw.update(active=dd.YesNo.yes)
-        return kw
-
-
-# class ActiveCourses(ActiveCourses):
-#     column_names = 'info max_places enrolments teacher line room *'
-#     hide_sums = True
-
-
 class CourseDetail(CourseDetail):
     main = "general events enrolments more"
     general = dd.Panel("""
@@ -197,4 +169,83 @@ class CourseDetail(CourseDetail):
 def customize_courses(sender, **kw):
     rt.modules.courses.Courses.set_detail_layout(CourseDetail())
 
+if False:
+
+    # Exception: Cannot reuse detail_layout of <class
+    # 'lino.modlib.courses.models.CoursesByTeacher'> for <class
+    # 'lino.modlib.courses.models.CoursesBySlot'>
+
+    class Courses(Courses):
+
+        parameters = dict(Courses.parameters,
+            city=models.ForeignKey('countries.Place', blank=True, null=True))
+
+        params_layout = """topic line city teacher user state active:10"""
+
+        @classmethod
+        def get_request_queryset(self, ar):
+            qs = super(Courses, self).get_request_queryset(ar)
+            if ar.param_values.city:
+                flt = Q(room__isnull=True)
+                flt |= Q(room__company__city=ar.param_values.city)
+                qs = qs.filter(flt)
+            return qs
+
+        @classmethod
+        def get_title_tags(self, ar):
+            for t in super(Courses, self).get_title_tags(ar):
+                yield t
+            if ar.param_values.city:
+                yield _("in %s") % ar.param_values.city
+
+        @dd.chooser()
+        def city_choices(cls):
+            Place = rt.modules.countries.Place
+            Room = rt.modules.cal.Room
+            places = set([
+                obj.company.city.id
+                for obj in Room.objects.filter(company__isnull=False)])
+            # logger.info("20140822 city_choices %s", places)
+            return Place.objects.filter(id__in=places)
+
+
+    class SuggestedCoursesByPupil(SuggestedCoursesByPupil):
+        params_layout = 'topic line city teacher active'
+
+        @classmethod
+        def param_defaults(self, ar, **kw):
+            kw = super(SuggestedCoursesByPupil, self).param_defaults(ar, **kw)
+            # kw.update(active=dd.YesNo.yes)
+            pupil = ar.master_instance
+            if pupil and pupil.city:
+                kw.update(city=pupil.city)
+            return kw
+
+
+class CoursesByTopic(CoursesByTopic):
+    column_names = "start_date:8 line:20 \
+    room__company__city:10 weekdays_text:10 times_text:10"
+
+
+class CoursesByLine(CoursesByLine):
+    """Like :class:`lino.modlib.courses.CoursesByLine`, but with other
+    default values in the filter parameters. In Faggio we want to see
+    only courses for which new enrolments can happen.
+    
+    TODO: when Lino gets class-based user roles, move this back to the
+    library table and show all courses only for users with profile
+    `courses.CourseManager`.
+
+    """
+    @classmethod
+    def param_defaults(self, ar, **kw):
+        kw = super(CoursesByLine, self).param_defaults(ar, **kw)
+        kw.update(state=CourseStates.registered)
+        kw.update(active=dd.YesNo.yes)
+        return kw
+
+
+# class ActiveCourses(ActiveCourses):
+#     column_names = 'info max_places enrolments teacher line room *'
+#     hide_sums = True
 

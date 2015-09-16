@@ -35,7 +35,7 @@ Test whether :meth:`get_db_overview_rst
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 31 apps: staticfiles, about, bootstrap3, lino_startup, appypod, printing, system, contenttypes, gfks, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, sepa, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
-72 models:
+74 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -58,7 +58,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   gfks.ContentTypes              4         73
+ contenttypes.ContentType   gfks.ContentTypes              4         75
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
@@ -103,6 +103,8 @@ Test whether :meth:`get_db_overview_rst
  sales.ShippingMode         sales.ShippingModes            3         0
  sales.VatProductInvoice    sales.Invoices                 26        37
  sepa.Account               sepa.Accounts                  6         17
+ sepa.Movement              sepa.MovementTable             2         0
+ sepa.Statement             sepa.StatementTable            2         0
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
