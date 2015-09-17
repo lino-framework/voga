@@ -193,4 +193,5 @@ htmlhelp_basename = 'faggio'
 #~ todo_include_todos = True
 
 
-
+extlinks = dict()
+extlinks.update(ticket=('http://bugs.lino-framework.org/tickets/Ticket/%s', '#'))
