@@ -1,7 +1,7 @@
 # Copyright 2013-2015 Luc Saffre
 # License: BSD (see file COPYING for details)
 
-"""Extends :mod:`lino.modlib.courses` for :ref:`faggio`.
+"""Extends :mod:`lino_cosi.lib.courses` for :ref:`faggio`.
 
 .. autosummary::
    :toctree:
@@ -12,7 +12,7 @@
 """
 
 
-from lino.modlib.courses import Plugin
+from lino_cosi.lib.courses import Plugin
 
 
 class Plugin(Plugin):

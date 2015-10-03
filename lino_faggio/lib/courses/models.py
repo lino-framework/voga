@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 from lino.api import dd, rt
 from lino.utils import mti
 
-from lino.modlib.courses.models import *
+from lino_cosi.lib.courses.models import *
 from lino_faggio.lib.contacts.models import Person
 
 contacts = dd.resolve_app('contacts')
@@ -172,8 +172,8 @@ def customize_courses(sender, **kw):
 if False:
 
     # Exception: Cannot reuse detail_layout of <class
-    # 'lino.modlib.courses.models.CoursesByTeacher'> for <class
-    # 'lino.modlib.courses.models.CoursesBySlot'>
+    # 'lino_cosi.lib.courses.models.CoursesByTeacher'> for <class
+    # 'lino_cosi.lib.courses.models.CoursesBySlot'>
 
     class Courses(Courses):
 
@@ -228,7 +228,7 @@ class CoursesByTopic(CoursesByTopic):
 
 
 class CoursesByLine(CoursesByLine):
-    """Like :class:`lino.modlib.courses.CoursesByLine`, but with other
+    """Like :class:`lino_cosi.lib.courses.CoursesByLine`, but with other
     default values in the filter parameters. In Faggio we want to see
     only courses for which new enrolments can happen.
     

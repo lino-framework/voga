@@ -15,7 +15,7 @@ from lino.api import dd
 
 #~ print 20130607, loading.cache.postponed
 
-from lino.modlib.courses import workflows
+from lino_cosi.lib.courses import workflows
 
 
 

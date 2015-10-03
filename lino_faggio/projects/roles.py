@@ -9,7 +9,7 @@ See also :attr:`lino.core.site.Site.user_profiles_module`.
 
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
-from lino.modlib.ledger.roles import LedgerUser, LedgerStaff
+from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
 
 
 class SiteUser(OfficeUser, LedgerUser):

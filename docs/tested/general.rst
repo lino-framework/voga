@@ -34,7 +34,7 @@ Test whether :meth:`get_db_overview_rst
 
 >>> print(settings.SITE.get_db_overview_rst()) 
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-31 apps: staticfiles, about, bootstrap3, lino_startup, appypod, printing, system, contenttypes, gfks, users, countries, contacts, lists, beid, courses, extensible, cal, rooms, products, accounts, ledger, vat, sales, finan, sepa, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
+32 apps: staticfiles, about, bootstrap3, lino_startup, appypod, printing, system, contenttypes, gfks, users, countries, contacts, lists, beid, cal, extensible, rooms, products, cosi, accounts, ledger, vat, sales, finan, sepa, courses, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
 74 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -103,8 +103,8 @@ Test whether :meth:`get_db_overview_rst
  sales.ShippingMode         sales.ShippingModes            3         0
  sales.VatProductInvoice    sales.Invoices                 26        37
  sepa.Account               sepa.Accounts                  6         17
- sepa.Movement              sepa.MovementTable             2         0
- sepa.Statement             sepa.StatementTable            2         0
+ sepa.Movement              sepa.Movements                 9         0
+ sepa.Statement             sepa.Statements                9         0
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
@@ -129,14 +129,14 @@ Rolf is the local system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Courses : Participants, Instructors, -, Courses, Course series, -, Pending requested enrolments, Pending confirmed enrolments
-- Calendar : Calendar, My appointments, My tasks, My guests, My presences, Bookings
+- Calendar : My appointments, My tasks, My guests, My presences, Calendar, Bookings
 - Products : Products, Product Categories
 - Accounting :
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
 - Sales : Invoices to create
+- Courses : Participants, Instructors, -, Courses, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
   - System : Broken GFKs
@@ -145,20 +145,20 @@ Rolf is the local system administrator, he has a complete menu:
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
-  - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
   - Calendar : Calendars, Rooms, Priorities, Recurrent Events, Guest Roles, Calendar Event Types, Remote Calendars
   - Accounting : Account Charts, Account Groups, Accounts, Journals, Payment Terms
   - VAT : VAT rules
   - Sales : Shipping Modes
+  - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
   - System : content types, Authorities, User Profiles
   - Contacts : Contact Persons, List memberships
-  - Courses : Enrolments, Enrolment states
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
   - VAT : VAT regimes, VAT Classes
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
   - SEPA : Accounts
+  - Courses : Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About

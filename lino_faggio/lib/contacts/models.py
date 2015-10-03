@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino.modlib.contacts.models import *
 
-from lino.modlib.sales import models as sales
+from lino_cosi.lib.sales import models as sales
 from lino.modlib.beid.mixins import BeIdCardHolder
 
 
