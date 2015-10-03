@@ -158,7 +158,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
   - VAT : VAT regimes, VAT Classes
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
-  - SEPA : Accounts
+  - SEPA : Accounts, Statements, Movements
   - Courses : Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About

@@ -1,7 +1,7 @@
 # Copyright 2015 Luc Saffre
 # License: BSD (see file COPYING for details)
 
-"""Defines the standard user roles for `lino.projects.docs`.
+"""Defines the standard user roles for Lino Faggio.
 
 See also :attr:`lino.core.site.Site.user_profiles_module`.
 
@@ -10,13 +10,14 @@ See also :attr:`lino.core.site.Site.user_profiles_module`.
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
+from lino_cosi.lib.sepa.roles import SepaStaff
 
 
 class SiteUser(OfficeUser, LedgerUser):
     pass
 
 
-class SiteAdmin(SiteAdmin, OfficeStaff, LedgerStaff):
+class SiteAdmin(SiteAdmin, OfficeStaff, LedgerStaff, SepaStaff):
     pass
 
 

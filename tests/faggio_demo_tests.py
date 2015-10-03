@@ -27,6 +27,6 @@ class MyTestCase(DemoTestCase):
 
         self.demo_get(
             'robin',
-            'api/courses/CoursesByLine', json_fields, 1, mt=mt, mk=1, **kw)
+            'api/courses/CoursesByLine', json_fields, 3, mt=mt, mk=1, **kw)
 
 
