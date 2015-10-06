@@ -22,7 +22,7 @@ configure(globals(), 'lino_faggio.projects.docs.settings.doctests')
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.actordoc']
 extensions += ['lino.sphinxcontrib.logo']
-extensions += ['sphinxcontrib.taglist']
+# extensions += ['sphinxcontrib.taglist']
 
 from django.conf import settings
 
