@@ -146,7 +146,6 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Calendars, Rooms, Priorities, Recurrent Events, Guest Roles, Calendar Event Types, Remote Calendars
   - Accounting : Account Charts, Account Groups, Accounts, Journals, Payment Terms
   - VAT : VAT rules
-  - Sales : Shipping Modes
   - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
