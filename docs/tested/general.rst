@@ -29,13 +29,11 @@ has 23 pupils and 7 teachers:
 The demo database
 -----------------
 
-Test whether :meth:`get_db_overview_rst 
-<lino_site.Site.get_db_overview_rst>` returns the expected result:
-
->>> print(settings.SITE.get_db_overview_rst()) 
+>>> from lino.utils.diag import analyzer
+>>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 32 apps: staticfiles, about, bootstrap3, lino_startup, appypod, printing, system, contenttypes, gfks, users, countries, contacts, lists, beid, cal, extensible, rooms, products, cosi, accounts, ledger, vat, sales, finan, sepa, courses, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
-74 models:
+73 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -58,7 +56,7 @@ Test whether :meth:`get_db_overview_rst
  contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   gfks.ContentTypes              4         75
+ contenttypes.ContentType   gfks.ContentTypes              4         74
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
@@ -71,7 +69,7 @@ Test whether :meth:`get_db_overview_rst
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        1
- excerpts.ExcerptType       excerpts.ExcerptTypes          15        4
+ excerpts.ExcerptType       excerpts.ExcerptTypes          15        5
  finan.BankStatement        finan.BankStatements           11        15
  finan.BankStatementItem    finan.BankStatementItemTable   10        99
  finan.Grouper              finan.Groupers                 10        0
@@ -81,7 +79,7 @@ Test whether :meth:`get_db_overview_rst
  finan.PaymentOrder         finan.PaymentOrders            11        15
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
  gfks.HelpText              gfks.HelpTexts                 4         2
- ledger.Journal             ledger.Journals                14        6
+ ledger.Journal             ledger.Journals                15        6
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         235
  ledger.PaymentTerm         ledger.PaymentTerms            5         0
@@ -98,12 +96,11 @@ Test whether :meth:`get_db_overview_rst
  products.Product           products.Products              9         11
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.InvoiceItem          sales.InvoiceItemTable         15        62
+ sales.InvoiceItem          sales.InvoiceItemTable         17        62
  sales.InvoicingMode        sales.InvoicingModes           6         0
- sales.ShippingMode         sales.ShippingModes            3         0
- sales.VatProductInvoice    sales.Invoices                 26        37
+ sales.VatProductInvoice    sales.Invoices                 24        37
  sepa.Account               sepa.Accounts                  6         17
- sepa.Movement              sepa.Movements                 9         0
+ sepa.Movement              sepa.Movements                 19        0
  sepa.Statement             sepa.Statements                9         0
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
@@ -135,6 +132,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
+  - Orphaned bank accounts
 - Sales : Invoices to create
 - Courses : Participants, Instructors, -, Courses, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
