@@ -82,7 +82,7 @@ The demo database
  ledger.Journal             ledger.Journals                15        6
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         235
- ledger.PaymentTerm         ledger.PaymentTerms            5         0
+ ledger.PaymentTerm         ledger.PaymentTerms            6         7
  ledger.Voucher             ledger.Vouchers                8         147
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
@@ -96,7 +96,7 @@ The demo database
  products.Product           products.Products              9         11
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.InvoiceItem          sales.InvoiceItemTable         17        62
+ sales.InvoiceItem          sales.InvoiceItems             15        62
  sales.InvoicingMode        sales.InvoicingModes           6         0
  sales.VatProductInvoice    sales.Invoices                 24        37
  sepa.Account               sepa.Accounts                  6         17
@@ -154,6 +154,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
   - VAT : VAT regimes, VAT Classes
+  - Sales : Voucher items
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
   - SEPA : Accounts, Statements, Movements
   - Courses : Enrolments, Enrolment states
