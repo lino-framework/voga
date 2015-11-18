@@ -5,18 +5,9 @@
 The :xfile:`models.py` for the :mod:`lino_faggio` app.
 """
 
-from django.db import models
-from django.db.models import loading
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import string_concat
-
-
 from lino.api import dd
 
-#~ print 20130607, loading.cache.postponed
-
 from lino_cosi.lib.courses import workflows
-
 
 
 if False:

@@ -88,6 +88,7 @@ class Loader1(object):
         yield self.journeys_cat
 
         self.journey_tariff = Product(cat=self.journeys_cat, **kw)
+        yield self.journey_tariff
 
         rent = ProductCat(**dd.str2kw('name', _("Room renting")))
         # et="Ruumiüür", de="Raummiete", fr="Loyer"))
