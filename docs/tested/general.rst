@@ -32,7 +32,7 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-32 apps: staticfiles, about, bootstrap3, lino_startup, appypod, printing, system, contenttypes, gfks, users, countries, contacts, lists, beid, cal, extensible, rooms, products, cosi, accounts, ledger, vat, sales, finan, sepa, courses, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
+35 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, extensible, rooms, products, cosi, accounts, ledger, vat, sales, finan, sepa, courses, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
 73 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -56,7 +56,7 @@ The demo database
  contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   gfks.ContentTypes              4         74
+ contenttypes.ContentType   gfks.ContentTypes              3         74
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
@@ -82,7 +82,7 @@ The demo database
  ledger.Journal             ledger.Journals                15        6
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         235
- ledger.PaymentTerm         ledger.PaymentTerms            5         0
+ ledger.PaymentTerm         ledger.PaymentTerms            6         7
  ledger.Voucher             ledger.Vouchers                8         147
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
@@ -93,15 +93,15 @@ The demo database
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- products.Product           products.Products              9         11
+ products.Product           products.Products              9         12
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.InvoiceItem          sales.InvoiceItemTable         17        62
+ sales.InvoiceItem          sales.InvoiceItems             15        62
  sales.InvoicingMode        sales.InvoicingModes           6         0
  sales.VatProductInvoice    sales.Invoices                 24        37
  sepa.Account               sepa.Accounts                  6         17
  sepa.Movement              sepa.Movements                 19        0
- sepa.Statement             sepa.Statements                9         0
+ sepa.Statement             sepa.Statements                10        0
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
@@ -154,6 +154,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
   - VAT : VAT regimes, VAT Classes
+  - Sales : Voucher items
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
   - SEPA : Accounts, Statements, Movements
   - Courses : Enrolments, Enrolment states
