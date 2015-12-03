@@ -8,7 +8,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-from django.utils.importlib import import_module
+from importlib import import_module
 intersphinx_mapping = {}
 for n in 'atelier lino'.split():
     m = import_module(n)

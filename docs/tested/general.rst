@@ -33,7 +33,7 @@ The demo database
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 35 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, extensible, rooms, products, cosi, accounts, ledger, vat, sales, finan, sepa, courses, notes, uploads, outbox, excerpts, lino_faggio, export_excel.
-73 models:
+71 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -56,7 +56,7 @@ The demo database
  contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   gfks.ContentTypes              3         74
+ contenttypes.ContentType   gfks.ContentTypes              3         72
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
@@ -100,8 +100,6 @@ The demo database
  sales.InvoicingMode        sales.InvoicingModes           6         0
  sales.VatProductInvoice    sales.Invoices                 24        37
  sepa.Account               sepa.Accounts                  6         17
- sepa.Movement              sepa.Movements                 19        0
- sepa.Statement             sepa.Statements                10        0
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
@@ -132,7 +130,6 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
-  - Orphaned bank accounts
 - Sales : Invoices to create
 - Courses : Participants, Instructors, -, Courses, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
@@ -156,7 +153,6 @@ Rolf is the local system administrator, he has a complete menu:
   - VAT : VAT regimes, VAT Classes
   - Sales : Voucher items
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
-  - SEPA : Accounts, Statements, Movements
-  - Courses : Enrolments, Enrolment states
+  - Courses : Courses, Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About

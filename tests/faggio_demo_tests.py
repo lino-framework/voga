@@ -13,7 +13,6 @@ To run only this test::
 
 """
 from lino.utils.test import DemoTestCase
-from django.contrib.contenttypes.models import ContentType
 from lino.api.shell import *
 
 
@@ -21,6 +20,7 @@ class MyTestCase(DemoTestCase):
     
     def test_001(self):
         
+        ContentType = rt.modules.contenttypes.ContentType
         json_fields = 'count rows title success no_data_text param_values'
         kw = dict(fmt='json', limit=10, start=0)
         mt = ContentType.objects.get_for_model(courses.Line).pk
