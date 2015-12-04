@@ -17,7 +17,7 @@ for n in 'atelier lino'.split():
 extensions = []
 
 from atelier.sphinxconf import configure
-configure(globals(), 'lino_faggio.projects.docs.settings.doctests')
+configure(globals(), 'lino_voga.projects.docs.settings.doctests')
 
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.actordoc']
@@ -172,7 +172,7 @@ html_use_opensearch = ''
 #html_file_suffix = ''
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'faggio'
+htmlhelp_basename = 'voga'
 
 
 #language="de"

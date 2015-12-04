@@ -1,17 +1,17 @@
-.. _faggio.userdocs:
+.. _voga.userdocs:
 
-Lino Faggio User Manual
+Lino Voga User Manual
 =======================
 
-Welcome to the official *Lino Faggio* User Manual.
+Welcome to the official *Lino Voga* User Manual.
 
 .. py2rst::
 
-  import lino_faggio
-  print(lino_faggio.SETUP_INFO['long_description'])
+  import lino_voga
+  print(lino_voga.SETUP_INFO['long_description'])
 
 See also the `Official Online demo
-<http://faggio-demo.lino-framework.org/>`_
+<http://voga-demo.lino-framework.org/>`_
 
 Topic guides:
 

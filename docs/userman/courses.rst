@@ -1,4 +1,4 @@
-.. _faggio.courses:
+.. _voga.courses:
 
 =======
 Courses

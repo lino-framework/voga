@@ -1,4 +1,4 @@
-.. _faggio.tested:
+.. _voga.tested:
 
 Tested documents
 ================
@@ -14,7 +14,7 @@ using `manage.py run`.
    :maxdepth: 1
   
    general
-   faggio
+   voga
    ledger
    courses
    cal

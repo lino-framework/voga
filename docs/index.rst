@@ -1,18 +1,18 @@
-.. _faggio:
+.. _voga:
 
 ===========
-Lino Faggio
+Lino Voga
 ===========
 
-Welcome to the *Lino Faggio* project homepage.
+Welcome to the *Lino Voga* project homepage.
 
 .. py2rst::
 
-  import lino_faggio
-  print(lino_faggio.SETUP_INFO['long_description'])
+  import lino_voga
+  print(lino_voga.SETUP_INFO['long_description'])
 
 See also the `Official Online demo
-<http://faggio-demo.lino-framework.org/>`_
+<http://voga-demo.lino-framework.org/>`_
 
 Content
 ========

@@ -10,17 +10,17 @@ from unipath import Path
 
 ROOTDIR = Path(__file__).parent.parent
 
-import lino_faggio
+import lino_voga
 
 from lino.utils.pythontest import TestCase
 
 import os
-os.environ['DJANGO_SETTINGS_MODULE'] = "lino_faggio.projects.docs.settings.doctests"
+os.environ['DJANGO_SETTINGS_MODULE'] = "lino_voga.projects.docs.settings.doctests"
 
 
 class BaseTestCase(TestCase):
     project_root = ROOTDIR
-    django_settings_module = 'lino_faggio.projects.docs.settings.doctests'
+    django_settings_module = 'lino_voga.projects.docs.settings.doctests'
 
 
 class DocsTests(BaseTestCase):
@@ -33,14 +33,14 @@ class DocsTests(BaseTestCase):
     def test_courses(self):
         return self.run_simple_doctests('docs/tested/courses.rst')
 
-    def test_faggio(self):
-        return self.run_docs_doctests('tested/faggio.rst')
+    def test_voga(self):
+        return self.run_docs_doctests('tested/voga.rst')
 
     def test_general(self):
         return self.run_docs_doctests('tested/general.rst')
 
     def test_packages(self):
-        self.run_packages_test(lino_faggio.SETUP_INFO['packages'])
+        self.run_packages_test(lino_voga.SETUP_INFO['packages'])
 
 
 class DemoTests(BaseTestCase):
@@ -49,8 +49,8 @@ class DemoTests(BaseTestCase):
     """
 
     def test_admin(self):
-        self.run_django_manage_test('lino_faggio/projects/docs')
-        self.run_django_manage_test('lino_faggio/projects/roger')
-        self.run_django_manage_test('lino_faggio/projects/edmund')
+        self.run_django_manage_test('lino_voga/projects/docs')
+        self.run_django_manage_test('lino_voga/projects/roger')
+        self.run_django_manage_test('lino_voga/projects/edmund')
 
 

@@ -1,4 +1,4 @@
-.. _faggio.countries:
+.. _voga.countries:
 
 =========
 Countries

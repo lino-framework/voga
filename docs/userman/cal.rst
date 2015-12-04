@@ -1,4 +1,4 @@
-.. _faggio.cal:
+.. _voga.cal:
 
 ========
 Calendar

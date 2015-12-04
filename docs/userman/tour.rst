@@ -1,7 +1,7 @@
-.. _faggio.tour:
+.. _voga.tour:
 
 ==============================
-An introduction to Lino Faggio
+An introduction to Lino Voga
 ==============================
 
 - Partners

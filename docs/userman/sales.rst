@@ -1,4 +1,4 @@
-.. _faggio.sales:
+.. _voga.sales:
 
 =======
 Verkauf

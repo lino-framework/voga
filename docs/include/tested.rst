@@ -4,6 +4,6 @@
   re-play the instructions on this page in your own database, 
   either interactively in a Django `manage.py shell`, 
   or by writing a script and run it using `manage.py run`.
-  It must be of course a Lino-Faggio application, 
-  installed as explained in :ref:`faggio.install`.
+  It must be of course a Lino-Voga application, 
+  installed as explained in :ref:`voga.install`.
   

@@ -1,4 +1,4 @@
-.. _faggio.tested.ledger:
+.. _voga.tested.ledger:
 
 Ledger
 =======

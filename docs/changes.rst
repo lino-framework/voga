@@ -1,13 +1,13 @@
-.. _faggio.changes: 
+.. _voga.changes: 
 
 ========================
-Changes in Lino-Faggio
+Changes in Lino-Voga
 ========================
 
 See the author's :ref:`Developer Blog <blog>`
 to get detailed news.
 The final truth about what's going on is only 
-`The Source Code <http://code.google.com/p/lino-faggio/source/list>`_.
+`The Source Code <https://github.com/lsaffre/voga>`_.
 
 
 Version 0.0.3 (not yet released)
