@@ -11,10 +11,9 @@ General
     doctest init:
 
     >>> from __future__ import print_function
-    >>> from django.utils import translation
-    >>> from django.test.client import Client
-    >>> from lino.api import dd
-    >>> from lino.api.shell import *
+    >>> import lino
+    >>> lino.startup('lino_voga.projects.roger.settings.doctest')
+    >>> from lino.api.doctest import *
 
 We can now refer to every installed app via it's `app_label`.
 For example here is how we can verify here that the demo database 
@@ -70,20 +69,20 @@ The demo database
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        1
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        5
- finan.BankStatement        finan.BankStatements           11        15
- finan.BankStatementItem    finan.BankStatementItemTable   10        99
+ finan.BankStatement        finan.BankStatements           11        28
+ finan.BankStatementItem    finan.BankStatementItemTable   10        130
  finan.Grouper              finan.Groupers                 10        0
  finan.GrouperItem          finan.GrouperItemTable         9         0
  finan.JournalEntry         finan.FinancialVouchers        9         0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
- finan.PaymentOrder         finan.PaymentOrders            11        15
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
+ finan.PaymentOrder         finan.PaymentOrders            11        28
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        140
  gfks.HelpText              gfks.HelpTexts                 4         2
  ledger.Journal             ledger.Journals                15        6
  ledger.MatchRule           ledger.MatchRules              3         10
- ledger.Movement            ledger.Movements               9         235
+ ledger.Movement            ledger.Movements               9         620
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
- ledger.Voucher             ledger.Vouchers                8         147
+ ledger.Voucher             ledger.Vouchers                8         361
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -93,20 +92,20 @@ The demo database
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- products.Product           products.Products              9         12
+ products.Product           products.Products              9         9
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.InvoiceItem          sales.InvoiceItems             15        62
+ sales.InvoiceItem          sales.InvoiceItems             15        299
  sales.InvoicingMode        sales.InvoicingModes           6         0
- sales.VatProductInvoice    sales.Invoices                 24        37
+ sales.VatProductInvoice    sales.Invoices                 24        155
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    15        1
- vat.InvoiceItem            vat.InvoiceItemTable           9         128
- vat.VatAccountInvoice      vat.Invoices                   20        80
+ vat.InvoiceItem            vat.InvoiceItemTable           9         240
+ vat.VatAccountInvoice      vat.Invoices                   20        150
  vat.VatRule                vat.VatRules                   9         0
 ========================== ============================== ========= =======
 <BLANKLINE>
@@ -153,6 +152,7 @@ Rolf is the local system administrator, he has a complete menu:
   - VAT : VAT regimes, VAT Classes
   - Sales : Voucher items
   - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
+  - SEPA : Accounts
   - Courses : Courses, Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About
