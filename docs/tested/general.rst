@@ -32,7 +32,7 @@ The demo database
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 35 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, extensible, rooms, products, cosi, accounts, ledger, vat, sales, finan, sepa, courses, notes, uploads, outbox, excerpts, lino_voga, export_excel.
-71 models:
+69 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -55,7 +55,7 @@ The demo database
  contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   gfks.ContentTypes              3         72
+ contenttypes.ContentType   gfks.ContentTypes              3         70
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
@@ -71,8 +71,6 @@ The demo database
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        5
  finan.BankStatement        finan.BankStatements           11        28
  finan.BankStatementItem    finan.BankStatementItemTable   10        130
- finan.Grouper              finan.Groupers                 10        0
- finan.GrouperItem          finan.GrouperItemTable         9         0
  finan.JournalEntry         finan.FinancialVouchers        9         0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            11        28
@@ -151,7 +149,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
   - VAT : VAT regimes, VAT Classes
   - Sales : Voucher items
-  - Financial : Bank Statements, Journal Entries, Payment Orders, Groupers
+  - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Accounts
   - Courses : Courses, Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
