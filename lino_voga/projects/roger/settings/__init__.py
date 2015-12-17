@@ -3,8 +3,6 @@
 from __future__ import unicode_literals
 from __future__ import print_function
 
-import datetime
-
 from lino_voga.projects.base import *
 
 
@@ -14,7 +12,7 @@ class Site(Site):
     languages = "en de fr"
 
     demo_fixtures = """std few_languages few_countries euvatrates
-    minimal_ledger demo buche demo2""".split()
+    minimal_ledger demo demo_bookings buche demo2""".split()
 
     def setup_plugins(self):
         """

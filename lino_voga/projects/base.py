@@ -21,7 +21,6 @@ class Site(Site):
     user_profiles_module = 'lino_voga.projects.roles'
 
     demo_fixtures = 'std minimal_ledger demo demo_bookings buche voga demo2'.split()
-    start_year = 2013
 
     languages = 'en de et'
 
@@ -79,4 +78,6 @@ class Site(Site):
         self.plugins.extensible.configure(calendar_start_hour=9)
         self.plugins.extensible.configure(calendar_end_hour=21)
         self.plugins.vat.configure(default_vat_class='exempt')
+        self.plugins.ledger.configure(start_year=2015)
         super(Site, self).setup_plugins()
+

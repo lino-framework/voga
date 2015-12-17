@@ -67,7 +67,7 @@ The demo database
  courses.Teacher            courses.Teachers               39        8
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
- excerpts.Excerpt           excerpts.Excerpts              11        1
+ excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        5
  finan.BankStatement        finan.BankStatements           11        28
  finan.BankStatementItem    finan.BankStatementItemTable   10        130
