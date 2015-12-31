@@ -7,8 +7,8 @@ from lino_voga.projects.base import *
 
 class Site(Site):
 
-    project_name = 'voga_std'  # avoid name clash with
-                                 # `lino/projects/docs`.
+    # avoid name clash with `lino/projects/docs`:
+    project_name = 'voga_std'
 
     languages = 'en'
     # languages = 'en de fr'
@@ -21,3 +21,4 @@ class Site(Site):
     def setup_plugins(self):
         super(Site, self).setup_plugins()
         self.plugins.countries.configure(country_code='BE')
+        self.plugins.ledger.configure(start_year=2014)
