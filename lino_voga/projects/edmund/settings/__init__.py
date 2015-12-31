@@ -29,3 +29,4 @@ class Site(Site):
         """
         super(Site, self).setup_plugins()
         self.plugins.countries.configure(country_code='EE')
+        self.plugins.ledger.configure(start_year=2014)
