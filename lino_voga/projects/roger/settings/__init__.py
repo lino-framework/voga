@@ -22,4 +22,5 @@ class Site(Site):
         super(Site, self).setup_plugins()
         self.plugins.contacts.configure(hide_region=True)
         self.plugins.countries.configure(country_code='BE')
+        self.plugins.ledger.configure(start_year=2014)
 

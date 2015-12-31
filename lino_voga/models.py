@@ -28,12 +28,12 @@ else:
 
 
 def site_setup(site):
-    site.modules.accounts.Accounts.set_detail_layout(
-        """
-        ref:10 name id:5
-        seqno chart group type clearable
-        ledger.MovementsByAccount
-        """)
+    # site.modules.accounts.Accounts.set_detail_layout(
+    #     """
+    #     ref:10 name id:5
+    #     seqno group type clearable
+    #     ledger.MovementsByAccount
+    #     """)
 
     site.modules.system.SiteConfigs.set_detail_layout(
         """
