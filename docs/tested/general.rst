@@ -37,7 +37,7 @@ The demo database
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
  accounts.Account           accounts.Accounts              12        12
- accounts.Group             accounts.Groups                5         7
+ accounts.Group             accounts.Groups                4         7
  cal.Calendar               cal.Calendars                  4         8
  cal.Event                  cal.OneEvent                   23        296
  cal.EventType              cal.EventTypes                 12        8
@@ -67,20 +67,20 @@ The demo database
  courses.Teacher            courses.Teachers               39        8
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
- excerpts.Excerpt           excerpts.Excerpts              11        0
+ excerpts.Excerpt           excerpts.Excerpts              11        1
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        5
- finan.BankStatement        finan.BankStatements           11        28
- finan.BankStatementItem    finan.BankStatementItemTable   10        130
- finan.JournalEntry         finan.FinancialVouchers        9         0
+ finan.BankStatement        finan.BankStatements           12        0
+ finan.BankStatementItem    finan.BankStatementItemTable   10        0
+ finan.JournalEntry         finan.FinancialVouchers        10        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
- finan.PaymentOrder         finan.PaymentOrders            11        28
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        140
+ finan.PaymentOrder         finan.PaymentOrders            12        0
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
  gfks.HelpText              gfks.HelpTexts                 4         2
- ledger.Journal             ledger.Journals                15        6
+ ledger.Journal             ledger.Journals                14        6
  ledger.MatchRule           ledger.MatchRules              3         10
- ledger.Movement            ledger.Movements               9         620
+ ledger.Movement            ledger.Movements               9         0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
- ledger.Voucher             ledger.Vouchers                8         361
+ ledger.Voucher             ledger.Vouchers                9         70
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -93,17 +93,17 @@ The demo database
  products.Product           products.Products              9         9
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.InvoiceItem          sales.InvoiceItems             15        299
+ sales.InvoiceItem          sales.InvoiceItems             15        68
  sales.InvoicingMode        sales.InvoicingModes           6         0
- sales.VatProductInvoice    sales.Invoices                 24        155
+ sales.VatProductInvoice    sales.Invoices                 25        40
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    15        1
- vat.InvoiceItem            vat.InvoiceItemTable           9         240
- vat.VatAccountInvoice      vat.Invoices                   20        150
+ vat.InvoiceItem            vat.InvoiceItemTable           9         48
+ vat.VatAccountInvoice      vat.Invoices                   21        30
  vat.VatRule                vat.VatRules                   9         0
 ========================== ============================== ========= =======
 <BLANKLINE>
@@ -138,7 +138,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Priorities, Recurrent Events, Guest Roles, Calendar Event Types, Remote Calendars
-  - Accounting : Account Charts, Account Groups, Accounts, Journals, Payment Terms
+  - Accounting : Account Groups, Accounts, Journals, Payment Terms
   - VAT : VAT rules
   - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
@@ -150,7 +150,7 @@ Rolf is the local system administrator, he has a complete menu:
   - VAT : VAT regimes, VAT Classes
   - Sales : Voucher items
   - Financial : Bank Statements, Journal Entries, Payment Orders
-  - SEPA : Accounts
+  - SEPA : Bank accounts
   - Courses : Courses, Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About
