@@ -8,5 +8,6 @@ This package contains apps which are specific to :ref:`voga`.
     contacts
     courses
     rooms
+    voga
 
 """

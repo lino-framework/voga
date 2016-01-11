@@ -42,6 +42,8 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.contacts.management.commands',
     'lino_voga.lib.courses',
     'lino_voga.lib.courses.fixtures',
+    'lino_voga.lib.voga',
+    'lino_voga.lib.voga.fixtures',
     'lino_voga.lib.rooms',
     'lino_voga.projects',
     'lino_voga.projects.docs',
@@ -53,7 +55,6 @@ SETUP_INFO.update(packages=[
     'lino_voga.projects.roger',
     'lino_voga.projects.roger.settings',
     'lino_voga.projects.roger.settings.fixtures',
-    'lino_voga.fixtures',
 ])
 
 SETUP_INFO.update(message_extractors={

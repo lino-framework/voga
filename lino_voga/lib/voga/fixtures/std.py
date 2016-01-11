@@ -36,10 +36,10 @@ def excerpt_types():
 
 def objects():
 
-    mailType = Instantiator('notes.NoteType').build
+    # mailType = Instantiator('notes.NoteType').build
 
-    yield mailType(**dd.str2kw('name', _("Enrolment")))
-    yield mailType(**dd.str2kw('name', _("Timetable")))
-    yield mailType(**dd.str2kw('name', _("Letter")))
+    # yield mailType(**dd.str2kw('name', _("Enrolment")))
+    # yield mailType(**dd.str2kw('name', _("Timetable")))
+    # yield mailType(**dd.str2kw('name', _("Letter")))
 
     yield excerpt_types()

@@ -1,11 +1,11 @@
-# Copyright 2013-2014 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
 Custom-specific script to import data into :ref:`voga`
 from an .xls file. To be invoked using something like::
 
-  python manage.py run /path/lino/blog/2013/1002.py Input_file.xls
+  python manage.py run /path/to/this/file.py Input_file.xls
   
 
 
@@ -132,8 +132,8 @@ class MyBook():
 
 def objects():
 
-    # this wil create rooms and calendars :
-    from lino_voga.fixtures.voga import Loader1
+    # this will create rooms and calendars :
+    from lino_voga.lib.voga.fixtures.buche import Loader1
     yield Loader1().objects()
 
     # this will create subscriptions for each user and calendar

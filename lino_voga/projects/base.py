@@ -61,7 +61,7 @@ class Site(Site):
         yield 'lino.modlib.excerpts'
         #~ yield 'lino.modlib.pages'
         #~ yield 'lino_cosi.lib.courses'
-        yield 'lino_voga'
+        yield 'lino_voga.lib.voga'
 
         # yield 'lino.modlib.appypod'
         yield 'lino.modlib.export_excel'
