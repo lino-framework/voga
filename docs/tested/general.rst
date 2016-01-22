@@ -86,7 +86,7 @@ The demo database
  lists.Member               lists.Members                  5         0
  notes.EventType            notes.EventTypes               4         0
  notes.Note                 notes.Notes                    16        100
- notes.NoteType             notes.NoteTypes                9         6
+ notes.NoteType             notes.NoteTypes                9         3
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
