@@ -9,8 +9,6 @@ The main module of :ref:`voga`.
    :toctree:
 
     lib
-    models
-    migrate
     projects
 
 """

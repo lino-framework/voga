@@ -1,7 +1,7 @@
-lino_voga.models
-================
+lino_voga.lib.voga.models
+=========================
 
-.. automodule:: lino_voga.models
+.. automodule:: lino_voga.lib.voga.models
 
    
    

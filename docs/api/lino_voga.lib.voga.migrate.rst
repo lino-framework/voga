@@ -1,7 +1,7 @@
-lino_voga.migrate
-=================
+lino_voga.lib.voga.migrate
+==========================
 
-.. automodule:: lino_voga.migrate
+.. automodule:: lino_voga.lib.voga.migrate
 
    
    
