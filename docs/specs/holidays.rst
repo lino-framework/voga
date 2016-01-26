@@ -8,20 +8,26 @@ Defining holidays
 
    $ python setup.py test -s tests.DocsTests.test_holidays
 
-Some initialization:
+See also :ref:`lino.specs.holidays`.
 
->>> from lino import startup
->>> startup('lino_voga.projects.roger.settings.demo')
->>> from lino.api.doctest import *
->>> settings.SITE.verbose_client_info_message = True
->>> from lino.api import rt, _
->>> from atelier.utils import i2d
->>> RecurrentEvent = cal.RecurrentEvent
->>> Recurrencies = cal.Recurrencies
+..  Some initialization:
+
+    >>> from lino import startup
+    >>> startup('lino_voga.projects.roger.settings.demo')
+    >>> from lino.api.doctest import *
+    >>> settings.SITE.verbose_client_info_message = True
+    >>> from lino.api import rt, _
+    >>> from atelier.utils import i2d
+    >>> RecurrentEvent = cal.RecurrentEvent
+    >>> Recurrencies = cal.Recurrencies
 
 
-Here are the standard holidays, defined by
-:mod:`lino.modlib.cal.fixtures.std`::
+Recurrent event rules
+=====================
+
+Here are the default holidays defined as recurrent event rules
+:class:`RecurrentEvent <lino.modlib.cal.models.RecurrentEvent>` by
+:mod:`lino.modlib.cal.fixtures.std`:
 
 >>> rt.show(cal.RecurrentEvents)
 ============ ========== ============================ ==================== =================================== ==================== =====================
@@ -47,62 +53,3 @@ Here are the standard holidays, defined by
 <BLANKLINE>
 
 
-Let's look at one of them, Ash Wednesday::
-
->>> ash_wednesday = RecurrentEvent.objects.get(**dd.str2kw('name', _("Ash Wednesday")))
-
-The :mod:`lino.modlib.cal.fixtures.std` fixture generates
-automatically all Ash Wednesday in a given range of years:
-
->>> rt.show(cal.EventsByController, master_instance=ash_wednesday)
-============= =============== ===============
- When          Summary         Workflow
-------------- --------------- ---------------
- Wed 2/13/13   Ash Wednesday   **Suggested**
- Wed 3/5/14    Ash Wednesday   **Suggested**
- Wed 2/18/15   Ash Wednesday   **Suggested**
- Wed 2/10/16   Ash Wednesday   **Suggested**
- Wed 3/1/17    Ash Wednesday   **Suggested**
- Wed 2/14/18   Ash Wednesday   **Suggested**
- Wed 3/6/19    Ash Wednesday   **Suggested**
-============= =============== ===============
-<BLANKLINE>
-
-That given range of years depends on some configuration variables:
-
-- :attr:`ignore_dates_before <lino.core.site.Site.ignore_dates_before>`
-- :attr:`ignore_dates_after <lino.core.site.Site.ignore_dates_after>`
-- :attr:`lino.modlib.system.SiteConfig.max_auto_events`
-
-
-.. verify that no events have actually been saved:
-   >>> cal.Event.objects.count()
-   368
-
-We can add our own local custom holidays which depend on easter.
-
-We create one recurrent event for it and specify `Recurrencies.easter`
-as recurrency:
-
->>> holidays = cal.EventType.objects.get(**dd.str2kw('name', _("Holidays")))
->>> obj = RecurrentEvent(name="Karneval in Kettenis",
-...     every_unit=Recurrencies.easter,
-...     start_date=i2d(20160209), event_type=holidays)
->>> obj.full_clean()
->>> obj.find_start_date(i2d(20160209))
-datetime.date(2016, 2, 9)
-
->>> ar = rt.login()
->>> wanted = obj.get_wanted_auto_events(ar)
->>> len(wanted)
-4
->>> print(ar.response['info_message'])
-Generating events between 2016-02-09 and 2019-05-22.
-Reached upper date limit 2019-05-22
-
->>> wanted[1]
-Event(owner_type=20,start_date=2016-02-09,summary='Karneval in Kettenis',auto_type=1,event_type=1,state=<EventStates.suggested:10>)
-
-.. verify that no events have actually been saved:
-   >>> cal.Event.objects.count()
-   368
