@@ -39,12 +39,12 @@ The demo database
  accounts.Account           accounts.Accounts              12        12
  accounts.Group             accounts.Groups                4         7
  cal.Calendar               cal.Calendars                  4         8
- cal.Event                  cal.OneEvent                   23        296
+ cal.Event                  cal.OneEvent                   23        344
  cal.EventType              cal.EventTypes                 12        8
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 2         0
  cal.Priority               cal.Priorities                 3         4
- cal.RecurrentEvent         cal.RecurrentEvents            19        9
+ cal.RecurrentEvent         cal.RecurrentEvents            19        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
  cal.Room                   cal.Rooms                      7         7
  cal.Subscription           cal.Subscriptions              4         7

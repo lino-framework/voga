@@ -3,10 +3,9 @@
 Voga
 =======
 
-..
-  To run only this test::
+.. To run only this test::
 
-  $ python setup.py test -s tests.DocsTests.test_voga
+   $ python setup.py test -s tests.DocsTests.test_voga
 
 .. include:: /include/tested.rst
 
@@ -53,7 +52,7 @@ Printable documents
 We take a sales invoice, clear the cache, ask Lino to print it and 
 check whether we get the expected response.
 
->>> ses = settings.SITE.login("robin")
+>>> ses = rt.login("robin")
 >>> translation.activate('en')
 >>> obj = sales.VatProductInvoice.objects.get(pk=1)
 >>> obj.clear_cache()

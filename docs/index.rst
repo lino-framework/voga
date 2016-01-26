@@ -21,7 +21,7 @@ Content
    :maxdepth: 1
 
    install
-   tested/index
+   specs/index
    api/index
    todo
    changes

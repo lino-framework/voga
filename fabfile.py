@@ -9,3 +9,4 @@ env.tolerate_sphinx_warnings = False
 env.languages = 'en de fr et'.split()
 env.revision_control_system = 'git'
 env.cleanable_files = ['docs/api/lino_voga.*']
+env.locale_dir = 'lino_voga/lib/voga/locale'

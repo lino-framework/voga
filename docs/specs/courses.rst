@@ -1,4 +1,4 @@
-.. _voga.tested.courses:
+.. _voga.specs.courses:
 
 Courses
 =======
@@ -177,4 +177,19 @@ True
 The following is waiting for :ticket:`526` before it can work:
 
 >>> # demo_get('robin', 'choices/courses/Courses/city', 'bla', 0)
+
+
+There are three courses in the course line "Europe":
+
+>>> courses.Line.objects.get(pk=1)
+Line #1 (u'Europe')
+        
+>>> ContentType = rt.modules.contenttypes.ContentType
+>>> json_fields = 'count rows title success no_data_text param_values'
+>>> kw = dict(fmt='json', limit=10, start=0)
+>>> mt = ContentType.objects.get_for_model(courses.Line).pk
+>>> demo_get('robin',
+...          'api/courses/CoursesByLine', json_fields, 3, mt=mt, mk=1, **kw)
+
+
 
