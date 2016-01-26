@@ -55,6 +55,7 @@ check whether we get the expected response.
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
 >>> obj = sales.VatProductInvoice.objects.get(pk=1)
+
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print) 
 >>> print(rv['success']) 
@@ -68,9 +69,14 @@ should now open in a new browser window. If it doesn't, please consult
 target="_blank">the documentation</a> or ask your system
 administrator.
 
+Note that we must clear the print cache because leaving the excerpt
+there would break a test case in :doc:`general`.
+
+>>> obj.clear_cache()
+
 Same for a calendar Event.  This is mainly to see whether the
 templates directory has been inherited.  Note that the first few dozen
-events have no `user` and would currently fail to print
+events have no `user` and would currently fail to print.
 
 >>> obj = cal.Event.objects.get(pk=100)
 >>> obj.clear_cache()

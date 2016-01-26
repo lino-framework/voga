@@ -25,6 +25,13 @@ has 23 pupils and 7 teachers:
 8
 
 
+.. Note that there are no excerpts
+
+   >>> rt.show(excerpts.Excerpts)
+   No data to display
+
+
+
 The demo database
 -----------------
 
@@ -67,7 +74,7 @@ The demo database
  courses.Teacher            courses.Teachers               39        8
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
- excerpts.Excerpt           excerpts.Excerpts              11        1
+ excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        5
  finan.BankStatement        finan.BankStatements           12        0
  finan.BankStatementItem    finan.BankStatementItemTable   10        0
@@ -137,7 +144,7 @@ Rolf is the local system administrator, he has a complete menu:
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
-  - Calendar : Calendars, Rooms, Priorities, Recurrent Events, Guest Roles, Calendar Event Types, Remote Calendars
+  - Calendar : Calendars, Rooms, Priorities, Recurrent event rules, Guest Roles, Calendar Event Types, Remote Calendars
   - Accounting : Account Groups, Accounts, Journals, Payment Terms
   - VAT : VAT rules
   - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
@@ -154,3 +161,6 @@ Rolf is the local system administrator, he has a complete menu:
   - Courses : Courses, Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About
+
+
+
