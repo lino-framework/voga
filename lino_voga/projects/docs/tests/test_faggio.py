@@ -173,5 +173,53 @@ Generating events between 2014-01-13 and 2019-06-15.
 
 """)
 
+        # Now we imagine that February 2 is the National Day in our
+        # country. And we create the rule for generating it only now.
+        # So we have a conflict because Lino created an appointment on
+        # that date. But the National Day must *not* move to an
+        # alternative date.
 
+        et = create(cal.EventType, name="Holiday")
+        obj = create(
+            cal.RecurrentEvent,
+            name="National Day", event_type=et,
+            start_date=i2d(20140203),
+            every_unit=cal.Recurrencies.yearly)
+
+        res = ses.run(obj.do_update_events)
+        self.assertEqual(res['success'], True)
+        expected = """\
+Update Events for National Day...
+Generating events between 2014-02-03 and 2019-06-15.
+Reached upper date limit 2019-06-15
+Update Guests for Recurrent event rule #1 National Day...
+0 row(s) have been updated.
+Update Guests for Recurrent event rule #1 National Day...
+0 row(s) have been updated.
+Update Guests for Recurrent event rule #1 National Day...
+0 row(s) have been updated.
+Update Guests for Recurrent event rule #1 National Day...
+0 row(s) have been updated.
+Update Guests for Recurrent event rule #1 National Day...
+0 row(s) have been updated.
+Update Guests for Recurrent event rule #1 National Day...
+0 row(s) have been updated.
+6 row(s) have been updated."""
+        self.assertEqual(res['info_message'], expected)
+        ar = ses.spawn(cal.EventsByController, master_instance=obj)
+        s = ar.to_rst(column_names="when_text state")
+        # print s
+        self.assertEqual(s, """\
+============ ===========
+ When         State
+------------ -----------
+ Mon 2/3/14   Suggested
+ Tue 2/3/15   Suggested
+ Wed 2/3/16   Suggested
+ Fri 2/3/17   Suggested
+ Sat 2/3/18   Suggested
+ Sun 2/3/19   Suggested
+============ ===========
+
+""")
 
