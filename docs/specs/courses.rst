@@ -64,7 +64,7 @@ remain unchanged (if the following fails, make sure you've run
 True
 >>> print(res['info_message'])
 Update Events for comp (12/2/13 Butgenbach (Computer room))...
-Generating events between 2013-12-02 and 2019-05-22.
+Generating events between 2013-12-02 and 2019-06-15.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ====================== ===========
@@ -98,7 +98,7 @@ Now we move that to the week after:
 True
 >>> print(ses.response['info_message'])
 Update Events for comp (12/2/13 Butgenbach (Computer room))...
-Generating events between 2013-12-02 and 2019-05-22.
+Generating events between 2013-12-02 and 2019-06-15.
 8 row(s) have been updated.
 Move down for Course #3 Hour 4...
 1 row(s) have been updated.

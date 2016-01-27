@@ -46,7 +46,7 @@ The demo database
  accounts.Account           accounts.Accounts              12        12
  accounts.Group             accounts.Groups                4         7
  cal.Calendar               cal.Calendars                  4         8
- cal.Event                  cal.OneEvent                   23        344
+ cal.Event                  cal.OneEvent                   23        346
  cal.EventType              cal.EventTypes                 12        8
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 2         0

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2015 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -72,7 +72,7 @@ class QuickTest(RemoteAuthTestCase):
         self.assertEqual(res['success'], True)
         expected = """\
 Update Events for First Line (1/10/14 First Room)...
-Generating events between 2014-01-13 and 2019-05-22.
+Generating events between 2014-01-13 and 2019-06-15.
 Update Guests for Course #1  1...
 0 row(s) have been updated.
 Update Guests for Course #1  2...
@@ -150,7 +150,7 @@ Move down for Course #1  2...
         self.assertEqual(res['success'], True)
         expected = """\
 Update Events for First Line (1/10/14 First Room)...
-Generating events between 2014-01-13 and 2019-05-22.
+Generating events between 2014-01-13 and 2019-06-15.
 2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
 3 : 2014-01-27 -> 2014-02-03
 4 : 2014-02-03 -> 2014-02-10

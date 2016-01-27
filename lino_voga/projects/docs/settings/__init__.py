@@ -14,9 +14,9 @@ class Site(Site):
     # languages = 'en de fr'
     title = "Lino Voga Reference"
 
-    ignore_dates_before = None
+    # ignore_dates_before = None
     the_demo_date = datetime.date(2014, 06, 15)
-    ignore_dates_after = datetime.date(2019, 05, 22)
+    # ignore_dates_after = datetime.date(2019, 05, 22)
 
     def setup_plugins(self):
         super(Site, self).setup_plugins()
