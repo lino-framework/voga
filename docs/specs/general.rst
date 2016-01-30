@@ -135,7 +135,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
 - Sales : Invoices to create
-- Courses : Participants, Instructors, -, Courses, Course series, -, Pending requested enrolments, Pending confirmed enrolments
+- Courses : Participants, Instructors, -, Topics, Course series, Courses, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
   - System : Broken GFKs
@@ -147,7 +147,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Calendars, Rooms, Priorities, Recurrent event rules, Guest Roles, Calendar Event Types, Remote Calendars
   - Accounting : Account Groups, Accounts, Journals, Payment Terms
   - VAT : VAT rules
-  - Courses : Instructor Types, Participant Types, Topics, Course series, Timetable Slots
+  - Courses : Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
   - System : content types, Authorities, User Profiles
