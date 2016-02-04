@@ -39,6 +39,7 @@ lino_voga.lib.courses.models
       CreateInvoiceForEnrolment
       Decimal
       DraftCourses
+      Duplicable
       Enrolment
       EnrolmentStates
       Enrolments
