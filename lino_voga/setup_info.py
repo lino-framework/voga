@@ -58,6 +58,8 @@ SETUP_INFO.update(packages=[
     'lino_voga.projects.roger.lib',
     'lino_voga.projects.roger.lib.courses',
     'lino_voga.projects.roger.lib.courses.fixtures',
+    'lino_voga.projects.roger.lib.courses.management',
+    'lino_voga.projects.roger.lib.courses.management.commands',
 ])
 
 SETUP_INFO.update(message_extractors={

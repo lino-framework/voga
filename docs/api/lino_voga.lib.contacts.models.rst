@@ -55,14 +55,12 @@ lino_voga.lib.contacts.models
       Person
       PersonDetail
       Persons
-      PupilDetail
       Role
       RoleType
       RoleTypes
       Roles
       RolesByCompany
       RolesByPerson
-      TeacherDetail
    
    
 

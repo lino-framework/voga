@@ -9,7 +9,6 @@ lino_voga.lib.courses.models
 
    .. autosummary::
    
-      customize_courses
       join_elems
       parse_name
       pgettext
@@ -51,6 +50,7 @@ lino_voga.lib.courses.models
       Line
       Lines
       LinesByTopic
+      MyPersonDetail
       PendingConfirmedEnrolments
       PendingRequestedEnrolments
       Person

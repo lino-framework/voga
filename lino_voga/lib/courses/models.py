@@ -55,24 +55,6 @@ class Teacher(Person):
         return self.get_full_name(salutation=False)
 
 
-class TeacherDetail(contacts.PersonDetail):
-    general = dd.Panel(contacts.PersonDetail.main, label=_("General"))
-    box5 = "remarks"
-    main = "general courses.CoursesByTeacher \
-    courses.EventsByTeacher cal.GuestsByPartner"
-
-
-class Teachers(contacts.Persons):
-    model = 'courses.Teacher'
-    #~ detail_layout = TeacherDetail()
-    column_names = 'name_column address_column teacher_type *'
-    auto_fit_column_widths = True
-
-
-class TeachersByType(Teachers):
-    master_key = 'teacher_type'
-
-
 class PupilType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
     class Meta:
@@ -113,26 +95,52 @@ class Pupil(Person):
         return s
 
 
-class PupilDetail(contacts.PersonDetail):
-    main = "general courses.EnrolmentsByPupil"
+from lino_voga.lib.contacts.models import MyPersonDetail
 
-    general = dd.Panel(contacts.PersonDetail.main, label=_("General"))
-    box5 = "remarks"
 
-    #~ pupil = dd.Panel("""
-    #~ EnrolmentsByPupil
-    #~ """,label = _("Pupil"))
+class PupilDetail(MyPersonDetail):
 
-    #~ def setup_handle(self,lh):
+    main = 'general courses sales ledger more'
 
-        #~ lh.general.label = _("General")
-        #~ lh.courses.label = _("School")
-        #~ lh.notes.label = _("Notes")
+    personal = 'pupil_type'
+
+    courses = dd.Panel("""
+    courses.SuggestedCoursesByPupil
+    courses.EnrolmentsByPupil
+    """, label=dd.plugins.courses.verbose_name)
+
+
+class TeacherDetail(MyPersonDetail):
+    main = MyPersonDetail.main + " courses"
+    personal = 'teacher_type'
+
+    courses = dd.Panel("""
+    courses.EventsByTeacher
+    courses.CoursesByTeacher
+    """, label=dd.plugins.courses.verbose_name)
+
+
+# class TeacherDetail(contacts.PersonDetail):
+#     general = dd.Panel(contacts.PersonDetail.main, label=_("General"))
+#     box5 = "remarks"
+#     main = "general courses.CoursesByTeacher \
+#     courses.EventsByTeacher cal.GuestsByPartner"
+
+
+class Teachers(contacts.Persons):
+    model = 'courses.Teacher'
+    detail_layout = TeacherDetail()
+    column_names = 'name_column address_column teacher_type *'
+    auto_fit_column_widths = True
+
+
+class TeachersByType(Teachers):
+    master_key = 'teacher_type'
 
 
 class Pupils(contacts.Persons):
     model = 'courses.Pupil'
-    #~ detail_layout = PupilDetail()
+    detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'
     auto_fit_column_widths = True
 
@@ -169,9 +177,11 @@ class CourseDetail(CourseDetail):
     """, label=_("More"))
 
 
-@dd.receiver(dd.post_analyze)
-def customize_courses(sender, **kw):
-    rt.modules.courses.Courses.set_detail_layout(CourseDetail())
+Courses.detail_layout = CourseDetail()
+
+# @dd.receiver(dd.post_analyze)
+# def customize_courses(sender, **kw):
+#     rt.modules.courses.Courses.set_detail_layout(CourseDetail())
 
 if False:
 

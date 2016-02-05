@@ -18,10 +18,15 @@
 """
 An extension of :mod:`lino_voga.lib.courses`
 
+.. autosummary::
+   :toctree:
+
+    management.commands.eiche2lino
+
 """
 
 from lino_voga.lib.courses import Plugin
 
 
 class Plugin(Plugin):
-    extends_models = ['Pupil', 'Enrolment']
+    extends_models = ['Pupil', 'Course', 'Enrolment']

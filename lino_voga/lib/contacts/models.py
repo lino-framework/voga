@@ -118,29 +118,11 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     """
 
 
-class PupilDetail(MyPersonDetail):
-
-    main = 'general courses sales ledger more'
-
-    personal = 'pupil_type'
-
-    courses = dd.Panel("""
-    courses.SuggestedCoursesByPupil
-    courses.EnrolmentsByPupil
-    """, label=dd.plugins.courses.verbose_name)
-
-
-class TeacherDetail(MyPersonDetail):
-    main = MyPersonDetail.main + \
-        " courses.EventsByTeacher courses.CoursesByTeacher"
-    personal = 'teacher_type'
-
-
 @dd.receiver(dd.post_analyze)
 def customize_contacts(sender, **kw):
     site = sender
     site.modules.contacts.Persons.set_detail_layout(MyPersonDetail())
     site.modules.contacts.Companies.set_detail_layout(MyCompanyDetail())
     site.modules.contacts.Partners.set_detail_layout(MyPartnerDetail())
-    site.modules.courses.Pupils.set_detail_layout(PupilDetail())
-    site.modules.courses.Teachers.set_detail_layout(TeacherDetail())
+    # site.modules.courses.Pupils.set_detail_layout(PupilDetail())
+    # site.modules.courses.Teachers.set_detail_layout(TeacherDetail())

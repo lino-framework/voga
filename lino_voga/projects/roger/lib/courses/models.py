@@ -26,8 +26,26 @@ from __future__ import print_function
 from lino.api import dd, rt, _
 
 from lino.mixins.periods import DatePeriod
+from lino.mixins import Referrable
 
 from lino_voga.lib.courses.models import *
+
+
+class Sections(dd.ChoiceList):
+    verbose_name = _("Section")
+    verbose_name_plural = _("Sections")
+    
+add = Sections.add_item
+
+names = """Eupen Nidrum Walhorn Herresbach Eynatten Kelmis Hergenrath
+Hauset Elsenborn Weywertz"""
+
+for i, name in enumerate(names.split()):
+    add(name.lower(), name, name.lower())
+# add("01", "Eupen", "eupen")
+# add("02", "Nidrum", "nidrum")
+# add("03", "Walhorn", "walhorn")
+add("etc", "Sonstige", "etc")
 
 
 class Pupil(Pupil):
@@ -39,6 +57,47 @@ class Pupil(Pupil):
 
     legacy_id = models.CharField(
         _("Legacy ID"), max_length=12, blank=True)
+
+    section = Sections.field(blank=True)
+
+    is_ckk = models.BooleanField(_("CKK"), default=False)
+    is_raviva = models.BooleanField(_("Raviva"), default=False)
+    is_member = models.BooleanField(_("Member"), default=False)
+
+
+class PupilDetail(PupilDetail):
+    # main = "general courses.EnrolmentsByPupil"
+    # main = contacts.PersonDetail.main + ' courses_tab'
+
+    # general = dd.Panel(contacts.PersonDetail.main, label=_("General"))
+    # box5 = "remarks"
+
+    courses = dd.Panel("""
+    legacy_id is_member section is_ckk is_raviva
+    courses.SuggestedCoursesByPupil
+    courses.EnrolmentsByPupil
+    """, label=dd.plugins.courses.verbose_name)
+
+
+Pupils.detail_layout = PupilDetail()
+
+
+class Course(Course, Referrable):
+    class Meta:
+        app_label = 'courses'
+        abstract = dd.is_abstract_model(__name__, 'Course')
+
+
+class CourseDetail(CourseDetail):
+    general = dd.Panel("""
+    ref line teacher name workflow_buttons
+    room start_date end_date start_time end_time
+    # courses.EventsByCourse
+    remark #OptionsByCourse
+    """, label=_("General"))
+
+
+Courses.detail_layout = CourseDetail()
 
 
 class Enrolment(Enrolment, DatePeriod):
