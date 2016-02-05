@@ -1,16 +1,14 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
-The Lino application for :ref:`eiche`.
+Custom plugins for :mod:`lino_voga.projects.roger`.
 
 .. autosummary::
    :toctree:
 
-    lib
-    settings
-    test
+    courses
 
 """
 

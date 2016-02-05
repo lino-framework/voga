@@ -22,6 +22,7 @@ contacts = dd.resolve_app('contacts')
 class TeacherType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
     class Meta:
+        app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'TeacherType')
         # verbose_name = _("Teacher type")
         # verbose_name_plural = _('Teacher types')
@@ -40,6 +41,7 @@ class TeacherTypes(dd.Table):
 class Teacher(Person):
 
     class Meta:
+        app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Teacher')
         verbose_name = _("Instructor")
         verbose_name_plural = _("Instructors")
@@ -74,6 +76,7 @@ class TeachersByType(Teachers):
 class PupilType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
 
     class Meta:
+        app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'PupilType')
         # verbose_name = _("Pupil type")
         # verbose_name_plural = _('Pupil types')
@@ -92,6 +95,7 @@ class PupilTypes(dd.Table):
 class Pupil(Person):
 
     class Meta:
+        app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Pupil')
         verbose_name = _("Participant")
         verbose_name_plural = _("Participants")

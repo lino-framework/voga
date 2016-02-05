@@ -23,6 +23,12 @@ class BaseTestCase(TestCase):
     django_settings_module = 'lino_voga.projects.docs.settings.doctests'
 
 
+class PackagesTests(TestCase):
+
+    def test_packages(self):
+        self.run_packages_test(lino_voga.SETUP_INFO['packages'])
+
+
 class DocsTests(BaseTestCase):
     def test_cal(self):
         return self.run_simple_doctests('docs/specs/cal.rst')
@@ -41,9 +47,6 @@ class DocsTests(BaseTestCase):
 
     def test_general(self):
         return self.run_docs_doctests('specs/general.rst')
-
-    def test_packages(self):
-        self.run_packages_test(lino_voga.SETUP_INFO['packages'])
 
 
 class DemoTests(BaseTestCase):

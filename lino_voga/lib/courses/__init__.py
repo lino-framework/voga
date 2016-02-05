@@ -1,4 +1,4 @@
-# Copyright 2013-2015 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """Extends :mod:`lino_cosi.lib.courses` for :ref:`voga`.
@@ -19,6 +19,7 @@ class Plugin(Plugin):
 
     teacher_model = 'courses.Teacher'
     pupil_model = 'courses.Pupil'
+    extends_models = []
 
     def setup_main_menu(self, site, profile, m):
         m = m.add_menu(self.app_label, self.verbose_name)
