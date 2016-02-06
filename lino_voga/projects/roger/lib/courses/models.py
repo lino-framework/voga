@@ -82,7 +82,7 @@ class PupilDetail(PupilDetail):
 Pupils.detail_layout = PupilDetail()
 
 
-class Course(Course, Referrable):
+class Course(Referrable, Course):
     """Adds a :attr:`ref` field.
     """
     class Meta:
@@ -90,6 +90,17 @@ class Course(Course, Referrable):
         abstract = dd.is_abstract_model(__name__, 'Course')
         verbose_name = _("Course")
         verbose_name_plural = _("Courses")
+
+    def update_cal_summary(self, i):
+        label = dd.babelattr(self.line.event_type, 'event_label')
+        if self.ref:
+            label = self.ref + ' ' + label
+        return "%s %d" % (label, i)
+
+    def __unicode__(self):
+        if self.ref and self.line:
+            return "{0} {1}".format(self.ref, self.line)
+        return super(Course, self).__unicode__()
 
 Course.set_widget_options('ref', preferred_with=6)
 
