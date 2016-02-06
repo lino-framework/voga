@@ -107,7 +107,7 @@ Course.set_widget_options('ref', preferred_with=6)
 
 class CourseDetail(CourseDetail):
     general = dd.Panel("""
-    ref line teacher name workflow_buttons
+    ref line teacher workflow_buttons
     room start_date end_date start_time end_time
     # courses.EventsByCourse
     remark #OptionsByCourse
@@ -127,6 +127,8 @@ class Enrolment(Enrolment, DatePeriod):
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Enrolment')
+        verbose_name = _("Enrolment")
+        verbose_name_plural = _("Enrolments")
 
     # def suggest_guest_for(self, event):
     #     return self.state in GUEST_ENROLMENT_STATES
@@ -141,4 +143,7 @@ confirmation_details sales.InvoicingsByInvoiceable
 
 EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
                                  'workflow_buttons *'
+
+EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
+                                  'option remark amount workflow_buttons *'
 

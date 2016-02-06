@@ -68,6 +68,7 @@ class Site(Site):
         # yield 'lino.modlib.appypod'
         yield 'lino.modlib.export_excel'
         yield 'lino.modlib.extensible'
+        yield 'lino.modlib.wkhtmltopdf'
 
     def get_admin_main_items(self, ar):
         yield self.modules.courses.DraftCourses
