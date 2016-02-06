@@ -83,9 +83,15 @@ Pupils.detail_layout = PupilDetail()
 
 
 class Course(Course, Referrable):
+    """Adds a :attr:`ref` field.
+    """
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
+        verbose_name = _("Course")
+        verbose_name_plural = _("Courses")
+
+Course.set_widget_options('ref', preferred_with=6)
 
 
 class CourseDetail(CourseDetail):
@@ -98,6 +104,9 @@ class CourseDetail(CourseDetail):
 
 
 Courses.detail_layout = CourseDetail()
+Courses.order_by = ['ref', '-start_date', '-start_time']
+Courses.column_names = "ref start_date enrolments_until line room teacher " \
+                       "workflow_buttons *"
 
 
 class Enrolment(Enrolment, DatePeriod):

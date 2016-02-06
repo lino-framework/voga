@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2014 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -179,9 +179,16 @@ class CourseDetail(CourseDetail):
 
 Courses.detail_layout = CourseDetail()
 
-# @dd.receiver(dd.post_analyze)
+# class Courses(Courses):
+#     # detail_layout = CourseDetail()
+#     order_by = ['ref', '-start_date', '-start_time']
+#     column_names = "ref start_date enrolments_until line room teacher " \
+#                    "workflow_buttons *"
+
+
+# @dd.receiver(dd.pre_analyze)
 # def customize_courses(sender, **kw):
-#     rt.modules.courses.Courses.set_detail_layout(CourseDetail())
+#     sender.modules.courses.Courses.set_detail_layout(CourseDetail())
 
 if False:
 

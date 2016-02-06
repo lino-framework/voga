@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2015 Luc Saffre
+# Copyright 2012-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 from lino.projects.std.settings import *
@@ -37,20 +37,22 @@ class Site(Site):
         yield 'lino.modlib.beid'
 
         yield 'lino_voga.lib.cal'
-        yield 'lino.modlib.extensible'
+        # yield 'lino.modlib.extensible'
         yield 'lino_voga.lib.rooms'
 
-        yield 'lino.modlib.products'
-        yield 'lino_cosi.lib.accounts'
-        yield 'lino_cosi.lib.ledger'
-        yield 'lino_cosi.lib.vat'
+        yield 'lino_voga.lib.courses'
+
+        # yield 'lino.modlib.products'
+        # yield 'lino_cosi.lib.accounts'
+        # yield 'lino_cosi.lib.ledger'
+        # yield 'lino_cosi.lib.vat'
         #~ yield 'lino_cosi.lib.declarations'
         #~ yield 'lino_cosi.lib.sales'
-        yield 'lino_cosi.lib.auto.sales'
+        # yield 'lino_cosi.lib.auto.sales'
         yield 'lino_cosi.lib.finan'
         yield 'lino_cosi.lib.sepa'
 
-        yield 'lino_voga.lib.courses'
+        # yield 'lino_voga.lib.courses'
 
         #~ yield 'lino.modlib.households'
         yield 'lino.modlib.notes'
@@ -65,6 +67,7 @@ class Site(Site):
 
         # yield 'lino.modlib.appypod'
         yield 'lino.modlib.export_excel'
+        yield 'lino.modlib.extensible'
 
     def get_admin_main_items(self, ar):
         yield self.modules.courses.DraftCourses
