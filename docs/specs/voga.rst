@@ -60,7 +60,7 @@ check whether we get the expected response.
 >>> rv = ses.run(obj.do_print) 
 >>> print(rv['success']) 
 True
->>> print(rv['open_url']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
+>>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 /media/userdocs/appyodt/sales.VatProductInvoice-1.odt
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 Your printable document (filename sales.VatProductInvoice-1.odt)

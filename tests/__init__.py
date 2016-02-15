@@ -14,9 +14,6 @@ import lino_voga
 
 from lino.utils.pythontest import TestCase
 
-# import os
-# os.environ['DJANGO_SETTINGS_MODULE'] = "lino_voga.projects.docs.settings.doctests"
-
 
 class BaseTestCase(TestCase):
     project_root = ROOTDIR

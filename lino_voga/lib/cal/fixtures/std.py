@@ -5,8 +5,13 @@
 
 from lino.api import dd, rt, _
 
+from lino.modlib.cal.fixtures.std import objects as lib_objects
+
 
 def objects():
+
+    yield lib_objects()
+
     GuestRole = rt.modules.cal.GuestRole
     yield GuestRole(**dd.str2kw('name', _("Participant")))
     yield GuestRole(**dd.str2kw('name', _("Guide")))

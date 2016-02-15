@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2014 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
@@ -10,11 +10,13 @@ The :xfile:`models` module of the :mod:`lino_voga.rooms` app.
 from __future__ import unicode_literals
 
 from lino.modlib.rooms.models import *
+from lino.api import rt
+from lino_cosi.lib.auto.sales.mixins import Invoiceable
 
 sales = dd.resolve_app('sales')
 
 
-class Booking(Booking, sales.Invoiceable):
+class Booking(Booking, Invoiceable):
 
     invoiceable_date_field = 'start_date'
     #~ invoiceable_partner_field = 'company'
@@ -22,7 +24,12 @@ class Booking(Booking, sales.Invoiceable):
     create_invoice = sales.CreateInvoice()
 
     @classmethod
-    def get_partner_filter(cls, partner):
+    def get_invoiceables_for_partner(cls, partner, max_date=None):
+        if isinstance(partner, rt.modules.contacts.Company):
+            return cls.objects.filter(company=partner, invoice__isnull=True)
+
+    @classmethod
+    def unused_get_partner_filter(cls, partner):
         q = models.Q(company=partner, invoice__isnull=True)
         return q
 

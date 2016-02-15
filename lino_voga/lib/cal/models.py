@@ -1,9 +1,9 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2015 Luc Saffre
+# Copyright 2013-2016 Luc Saffre
 # License: BSD (see file COPYING for details)
 
 """
-The :xfile:`models.py` module for the :mod:`lino_voga.cal` app.
+The :xfile:`models.py` module for :mod:`lino_voga.lib.cal`.
 
 This module extends :mod:`lino.modlib.cal.models`
 """
@@ -19,11 +19,11 @@ from lino.modlib.users.choicelists import UserProfiles
 from lino.modlib.contacts.mixins import ContactRelated
 from lino_cosi.lib.courses.choicelists import EnrolmentStates
 
-courses = dd.resolve_app('courses')
+# courses = dd.resolve_app('courses')
 
 # must import this to activate these workflow definitions:
-
 from lino.modlib.cal.workflows import voga  
+
 from lino.modlib.office.roles import OfficeUser
 
 
@@ -47,11 +47,11 @@ class Room(Room, ContactRelated):
         related_name='room_calendars',
         blank=True, null=True)
 
-    def __unicode__(self):
-        s = mixins.BabelNamed.__unicode__(self)
-        if self.company and self.company.city:
-            s = '%s (%s)' % (self.company.city, s)
-        return s
+    # def __unicode__(self):
+    #     s = mixins.BabelNamed.__unicode__(self)
+    #     if self.company and self.company.city:
+    #         s = '%s (%s)' % (self.company.city, s)
+    #     return s
 
     def save(self, *args, **kwargs):
         super(Room, self). save(*args, **kwargs)
