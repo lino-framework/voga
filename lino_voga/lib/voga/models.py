@@ -46,7 +46,7 @@ def site_setup(site):
         """)
 
     site.modules.products.Products.set_detail_layout("""
-    id ref cat #vat_class sales_price number_of_events:10 min_asset:10
+    id cat vat_class sales_price number_of_events:10 min_asset:10
     name
     description
     """)
