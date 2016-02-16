@@ -162,7 +162,7 @@ class Enrolment(Enrolment, Invoiceable):
         if not self.state.invoiceable:
             return
         tariff = self.course.tariff or self.course.line.tariff
-        if not tariff.number_of_events:
+        if not tariff or not tariff.number_of_events:
             return tariff
         qs = self.course.events_by_course.filter(
             start_date__gte=self.start_date,
