@@ -61,9 +61,9 @@ check whether we get the expected response.
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-/media/userdocs/appyodt/sales.VatProductInvoice-1.odt
+/media/cache/wkhtmltopdf/sales.VatProductInvoice-1.pdf
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename sales.VatProductInvoice-1.odt)
+Your printable document (filename sales.VatProductInvoice-1.pdf)
 should now open in a new browser window. If it doesn't, please consult
 <a href="http://www.lino-framework.org/help/print.html"
 target="_blank">the documentation</a> or ask your system
@@ -84,7 +84,7 @@ events have no `user` and would currently fail to print.
 >>> print(rv['success'])
 True
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename cal.Event-100.odt) should now open
+Your printable document (filename cal.Event-100.pdf) should now open
 in a new browser window. If it doesn't, please consult <a
 href="http://www.lino-framework.org/help/print.html"
 target="_blank">the documentation</a> or ask your system

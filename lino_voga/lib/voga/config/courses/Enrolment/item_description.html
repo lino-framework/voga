@@ -1,5 +1,8 @@
-Das wird ja immer *schöner* hier!
+{% if obj.pupil.id == item.voucher.partner.id %}
+Ihre Einschreibung 
+{% else %}
+Einschreibung {{obj.pupil.id}}
+{% endif %}
+zum Kurs {{obj.course}}.
+{{fds(obj.start_date)}}
 
-Ihre Einschreibung zum Kurs {{obj}}.
-
-{{item}}.
