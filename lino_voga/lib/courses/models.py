@@ -10,6 +10,7 @@ Database models for `lino_voga.lib.courses`.
 from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
+from lino.utils.mti import get_child
 from lino.api import dd, rt
 from lino.utils import mti
 
@@ -134,10 +135,17 @@ class Enrolment(Enrolment, Invoiceable):
         self.amount = getattr(tariff, 'sales_price', ZERO)
 
     @classmethod
+    def get_invoiceable_partners(cls):
+        return rt.modules.courses.Pupil.objects.all()
+
+    @classmethod
     def get_invoiceables_for_partner(cls, partner, max_date=None):
+
+        pupil = get_child(partner, rt.modules.courses.Pupil)
+        # pupil = partner.get_mti_child('pupil')
         # dd.logger.info('20160216 get_invoiceables_for_partner %s', partner.__class__)
-        if True:  # isinstance(partner, rt.modules.courses.Pupil):
-            q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=partner)
+        if pupil:  # isinstance(partner, rt.modules.courses.Pupil):
+            q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=pupil)
             q2 = models.Q(pupil__invoice_recipient=partner)
             return cls.objects.filter(models.Q(q1 | q2, invoice__isnull=True))
 

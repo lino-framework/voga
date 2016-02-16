@@ -9,6 +9,7 @@ The :xfile:`models` module of the :mod:`lino_voga.rooms` app.
 
 from __future__ import unicode_literals
 
+from lino.utils.mti import get_child
 from lino.modlib.rooms.models import *
 from lino.api import rt
 from lino_cosi.lib.auto.sales.mixins import Invoiceable
@@ -25,8 +26,10 @@ class Booking(Booking, Invoiceable):
 
     @classmethod
     def get_invoiceables_for_partner(cls, partner, max_date=None):
-        if True:  # isinstance(partner, rt.modules.contacts.Company):
-            return cls.objects.filter(company=partner, invoice__isnull=True)
+        # company = partner.get_mti_child(rt.modules.contacts.Company)
+        company = get_child(partner, rt.modules.contacts.Company)
+        if company:
+            return cls.objects.filter(company=company, invoice__isnull=True)
 
     @classmethod
     def unused_get_partner_filter(cls, partner):
