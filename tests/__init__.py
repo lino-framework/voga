@@ -34,16 +34,16 @@ class DocsTests(BaseTestCase):
         return self.run_simple_doctests('docs/specs/holidays.rst')
 
     def test_ledger(self):
-        return self.run_docs_doctests('specs/ledger.rst')
+        return self.run_simple_doctests('docs/specs/ledger.rst')
 
     def test_courses(self):
         return self.run_simple_doctests('docs/specs/courses.rst')
 
     def test_voga(self):
-        return self.run_docs_doctests('specs/voga.rst')
+        return self.run_simple_doctests('docs/specs/voga.rst')
 
     def test_general(self):
-        return self.run_docs_doctests('specs/general.rst')
+        return self.run_simple_doctests('docs/specs/general.rst')
 
 
 class DemoTests(BaseTestCase):

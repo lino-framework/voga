@@ -10,24 +10,21 @@ General
 
     doctest init:
 
-    >>> from __future__ import print_function
     >>> import lino
-    >>> lino.startup('lino_voga.projects.roger.settings.doctest')
+    >>> lino.startup('lino_voga.projects.docs.settings.doctests')
     >>> from lino.api.doctest import *
 
-We can now refer to every installed app via it's `app_label`.
-For example here is how we can verify here that the demo database 
-has 23 pupils and 7 teachers:
+The demo database has 35 pupils and 8 teachers:
 
->>> courses.Pupil.objects.count()
+>>> rt.modules.courses.Pupil.objects.count()
 35
->>> courses.Teacher.objects.count()
+>>> rt.modules.courses.Teacher.objects.count()
 8
 
 
 .. Note that there are no excerpts
 
-   >>> rt.show(excerpts.Excerpts)
+   >>> rt.show(rt.modules.excerpts.Excerpts)
    No data to display
 
 
@@ -38,7 +35,7 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-35 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, extensible, rooms, products, cosi, accounts, ledger, vat, sales, finan, sepa, courses, notes, uploads, outbox, excerpts, voga, export_excel.
+36 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, rooms, products, cosi, accounts, ledger, vat, sales, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf.
 69 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -49,7 +46,7 @@ The demo database
  cal.Event                  cal.OneEvent                   23        346
  cal.EventType              cal.EventTypes                 12        8
  cal.Guest                  cal.Guests                     6         0
- cal.GuestRole              cal.GuestRoles                 2         0
+ cal.GuestRole              cal.GuestRoles                 2         3
  cal.Priority               cal.Priorities                 3         4
  cal.RecurrentEvent         cal.RecurrentEvents            19        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
@@ -87,7 +84,7 @@ The demo database
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
- ledger.Voucher             ledger.Vouchers                9         70
+ ledger.Voucher             ledger.Vouchers                9         59
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -100,9 +97,9 @@ The demo database
  products.Product           products.Products              9         9
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 24        3
- sales.InvoiceItem          sales.InvoiceItems             15        68
+ sales.InvoiceItem          sales.InvoiceItems             15        57
  sales.InvoicingMode        sales.InvoicingModes           6         0
- sales.VatProductInvoice    sales.Invoices                 25        40
+ sales.VatProductInvoice    sales.Invoices                 25        29
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
@@ -128,7 +125,7 @@ Rolf is the local system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Calendar : My appointments, My tasks, My guests, My presences, Calendar, Bookings
+- Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Products : Products, Product Categories
 - Accounting :
   - Sales : Sales invoices (SLS)
@@ -156,9 +153,9 @@ Rolf is the local system administrator, he has a complete menu:
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
   - VAT : VAT regimes, VAT Classes
   - Sales : Voucher items
+  - Courses : Courses, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
-  - Courses : Courses, Enrolments, Enrolment states
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
 - Site : About
 
