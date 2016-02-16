@@ -17,6 +17,7 @@ from lino_cosi.lib.courses.models import *
 from lino_voga.lib.contacts.models import Person
 
 contacts = dd.resolve_app('contacts')
+sales = dd.resolve_app('sales')
 
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
@@ -93,6 +94,101 @@ class Pupil(Person):
         if self.pupil_type:
             s += " (%s)" % self.pupil_type.ref
         return s
+
+from lino_cosi.lib.auto.sales.mixins import Invoiceable
+from lino_cosi.lib.auto.sales.models import CreateInvoice
+
+
+class CreateInvoiceForEnrolment(CreateInvoice):
+
+    def get_partners(self, ar):
+        return [o.pupil for o in ar.selected_rows]
+
+
+class Enrolment(Enrolment, Invoiceable):
+    """Adds"""
+    class Meta:
+        app_label = 'courses'
+        abstract = dd.is_abstract_model(__name__, 'Enrolment')
+        verbose_name = _("Enrolment")
+        verbose_name_plural = _("Enrolments")
+
+    amount = dd.PriceField(_("Participation fee"), blank=True, null=True)
+
+    create_invoice = CreateInvoiceForEnrolment()
+
+    def full_clean(self, *args, **kwargs):
+        if self.amount is None:
+            self.compute_amount()
+        super(Enrolment, self).full_clean(*args, **kwargs)
+
+    def pupil_changed(self, ar):
+        self.compute_amount()
+
+    def compute_amount(self):
+        #~ if self.course is None:
+            #~ return
+        tariff = self.get_invoiceable_product()
+        # When `products` is not installed, then tariff may be None
+        # because it is a DummyField.
+        self.amount = getattr(tariff, 'sales_price', ZERO)
+
+    @classmethod
+    def get_invoiceables_for_partner(cls, partner, max_date=None):
+        if isinstance(partner, rt.modules.courses.Pupil):
+            q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=partner)
+            q2 = models.Q(pupil__invoice_recipient=partner)
+            return cls.objects.filter(models.Q(q1 | q2, invoice__isnull=True))
+
+    @classmethod
+    def unsued_get_partner_filter(cls, partner):
+        q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=partner)
+        q2 = models.Q(pupil__invoice_recipient=partner)
+        return models.Q(q1 | q2, invoice__isnull=True)
+
+    def get_invoiceable_amount(self):
+        return self.amount
+
+    def get_invoiceable_product(self):
+        #~ if self.course is not None:
+        if self.state.invoiceable:
+            return self.course.tariff or self.course.line.tariff
+
+    def get_invoiceable_title(self):
+        #~ if self.course is not None:
+        return self.course
+
+    def get_invoiceable_qty(self):
+        return self.places
+
+
+Enrolments.detail_layout = """
+    request_date user
+    course pupil
+    remark amount workflow_buttons
+    confirmation_details sales.InvoicingsByInvoiceable
+    """
+
+
+class EnrolmentsByOption(Enrolments):
+    master_key = 'option'
+    column_names = 'course pupil remark amount request_date *'
+    order_by = ['request_date']
+    
+
+class PendingRequestedEnrolments(PendingRequestedEnrolments):
+    column_names = 'request_date course pupil remark user ' \
+                   'amount workflow_buttons'
+
+
+class EnrolmentsByPupil(EnrolmentsByPupil):
+    column_names = 'request_date course user:10 remark ' \
+                   'amount:10 workflow_buttons *'
+
+
+class EnrolmentsByCourse(EnrolmentsByCourse):
+    column_names = 'request_date pupil_info option remark ' \
+                   'amount:10 workflow_buttons *'
 
 
 from lino_voga.lib.contacts.models import MyPersonDetail

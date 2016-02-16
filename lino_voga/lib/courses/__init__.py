@@ -19,7 +19,8 @@ class Plugin(Plugin):
 
     teacher_model = 'courses.Teacher'
     pupil_model = 'courses.Pupil'
-    extends_models = []
+    extends_models = ['Enrolment']
+    needs_plugins = ['lino.modlib.cal', 'lino_cosi.lib.auto.sales']
 
     def setup_main_menu(self, site, profile, m):
         m = m.add_menu(self.app_label, self.verbose_name)

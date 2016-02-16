@@ -33,6 +33,9 @@ class DocsTests(BaseTestCase):
     def test_holidays(self):
         return self.run_simple_doctests('docs/specs/holidays.rst')
 
+    def test_sales(self):
+        return self.run_simple_doctests('docs/specs/sales.rst')
+
     def test_ledger(self):
         return self.run_simple_doctests('docs/specs/ledger.rst')
 

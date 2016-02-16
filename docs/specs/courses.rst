@@ -7,10 +7,8 @@ Courses
 
     $ python setup.py test -s tests.DocsTests.test_courses
 
-    >>> from django.conf import settings
-    >>> import os
-    >>> os.environ['DJANGO_SETTINGS_MODULE'] = \
-    ...    'lino_voga.projects.docs.settings.doctests'
+    >>> from lino import startup
+    >>> startup('lino_voga.projects.docs.settings.doctests')
     >>> from lino.api.doctest import *
     
     
