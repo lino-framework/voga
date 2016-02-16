@@ -63,7 +63,7 @@ The demo database
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
- courses.Enrolment          courses.Enrolments             14        100
+ courses.Enrolment          courses.Enrolments             13        100
  courses.Line               courses.Lines                  15        10
  courses.Pupil              courses.Pupils                 39        35
  courses.PupilType          courses.PupilTypes             3         4
@@ -84,7 +84,7 @@ The demo database
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
- ledger.Voucher             ledger.Vouchers                9         59
+ ledger.Voucher             ledger.Vouchers                9         70
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -94,12 +94,12 @@ The demo database
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- products.Product           products.Products              9         9
+ products.Product           products.Products              11        9
  products.ProductCat        products.ProductCats           3         5
- rooms.Booking              rooms.Bookings                 24        3
- sales.InvoiceItem          sales.InvoiceItems             15        57
+ rooms.Booking              rooms.Bookings                 23        3
+ sales.InvoiceItem          sales.InvoiceItems             15        68
  sales.InvoicingMode        sales.InvoicingModes           6         0
- sales.VatProductInvoice    sales.Invoices                 25        29
+ sales.VatProductInvoice    sales.Invoices                 25        40
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0

@@ -29,7 +29,7 @@ class Booking(Booking, Invoiceable):
         # company = partner.get_mti_child(rt.modules.contacts.Company)
         company = get_child(partner, rt.modules.contacts.Company)
         if company:
-            return cls.objects.filter(company=company, invoice__isnull=True)
+            return cls.objects.filter(company=company)  #, invoice__isnull=True)
 
     @classmethod
     def unused_get_partner_filter(cls, partner):
@@ -37,9 +37,10 @@ class Booking(Booking, Invoiceable):
         return q
 
     def get_invoiceable_product(self):
-        #~ if self.organizer and self.room:
         if self.company and self.room:
-            #~ if self.company != settings.SITE.site_config.site_company:
+            if self.get_invoicings().count() > 0:
+                return
+            # if self.company != settings.SITE.site_config.site_company:
             return self.room.tariff
 
     #~ def get_invoiceable_title(self):

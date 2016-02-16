@@ -44,3 +44,9 @@ def site_setup(site):
         pupil_guestrole
         max_auto_events default_event_type site_calendar
         """)
+
+    site.modules.products.Products.set_detail_layout("""
+    id ref cat #vat_class sales_price number_of_events:10 min_asset:10
+    name
+    description
+    """)

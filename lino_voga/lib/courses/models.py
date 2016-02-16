@@ -140,31 +140,42 @@ class Enrolment(Enrolment, Invoiceable):
 
     @classmethod
     def get_invoiceables_for_partner(cls, partner, max_date=None):
-
         pupil = get_child(partner, rt.modules.courses.Pupil)
         # pupil = partner.get_mti_child('pupil')
         # dd.logger.info('20160216 get_invoiceables_for_partner %s', partner.__class__)
         if pupil:  # isinstance(partner, rt.modules.courses.Pupil):
             q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=pupil)
             q2 = models.Q(pupil__invoice_recipient=partner)
-            return cls.objects.filter(models.Q(q1 | q2, invoice__isnull=True))
+            return cls.objects.filter(models.Q(q1 | q2))
+            # ,invoice__isnull=True))
 
     @classmethod
     def unsued_get_partner_filter(cls, partner):
         q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=partner)
         q2 = models.Q(pupil__invoice_recipient=partner)
-        return models.Q(q1 | q2, invoice__isnull=True)
+        return models.Q(q1 | q2)  # , invoice__isnull=True)
 
     def get_invoiceable_amount(self):
         return self.amount
 
     def get_invoiceable_product(self):
-        #~ if self.course is not None:
-        if self.state.invoiceable:
-            return self.course.tariff or self.course.line.tariff
+        if not self.state.invoiceable:
+            return
+        tariff = self.course.tariff or self.course.line.tariff
+        if not tariff.number_of_events:
+            return tariff
+        qs = self.course.events_by_course.filter(
+            start_date__gte=self.start_date,
+            state=rt.modules.cal.EventStates.took_place)
+        if self.end_date:
+            qs = qs.filter(end_date__lte=self.end_date)
+        used_events = qs.count()
+        paid_events = self.get_invoicings().count() * tariff.number_of_events
+        asset = paid_events - used_events
+        if asset < tariff.min_asset:
+            return tariff
 
     def get_invoiceable_title(self):
-        #~ if self.course is not None:
         return self.course
 
     def get_invoiceable_qty(self):
@@ -375,3 +386,15 @@ class CoursesByLine(CoursesByLine):
 #     column_names = 'info max_places enrolments teacher line room *'
 #     hide_sums = True
 
+
+dd.inject_field(
+    'products.Product', 'number_of_events',
+    models.IntegerField(
+        _("Number of events"), null=True, blank=True,
+        help_text=_("Number of events paid per invoicing.")))
+
+dd.inject_field(
+    'products.Product', 'min_asset',
+    models.IntegerField(
+        _("Invoice threshold"), null=True, blank=True,
+        help_text=_("Minimum number of events to pay in advance.")))

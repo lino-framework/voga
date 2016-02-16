@@ -31,7 +31,45 @@ and a field :attr:`invoiceable` per invoice item.
 <CreateInvoiceForPartner create_invoice (u'Create invoice')>
 
 >>> rt.show('sales.InvoicesToCreate')
-No data to display
+===================== =========== =================================== ============== ========================
+ First date            Last date   Partner                             Amount         Actions
+--------------------- ----------- ----------------------------------- -------------- ------------------------
+ 9/26/13               9/26/13     Östges Otto                         50,00          **Invoices to create**
+ 9/29/13               9/29/13     Radermacher Hedi                    20,00          **Invoices to create**
+ 10/2/13               10/2/13     Radermacher Christian               50,00          **Invoices to create**
+ 10/5/13               10/5/13     Meier Marie-Louise                  50,00          **Invoices to create**
+ 10/8/13               10/8/13     Kaivers Karl                        20,00          **Invoices to create**
+ 10/11/13              10/11/13    Hilgers Hildegard                   50,00          **Invoices to create**
+ 10/14/13              10/14/13    Engels Edgar                        20,00          **Invoices to create**
+ 10/17/13              10/17/13    Dobbelstein-Demeulenaere Dorothée                  **Invoices to create**
+ 10/20/13              10/20/13    Charlier Ulrike                     80,00          **Invoices to create**
+ 10/23/13              10/23/13    Arens Annette                       20,00          **Invoices to create**
+ 10/26/13              10/26/13    Lahm Lisa                           80,00          **Invoices to create**
+ 10/29/13              10/29/13    Dupont Jean                         50,00          **Invoices to create**
+ 11/1/13               11/1/13     di Rupo Didier                      50,00          **Invoices to create**
+ 11/4/13               11/4/13     Radermacher Guido                   80,00          **Invoices to create**
+ 11/7/13               11/7/13     Radermacher Alfons                  50,00          **Invoices to create**
+ 11/10/13              11/10/13    Leffin Josefine                     20,00          **Invoices to create**
+ 11/13/13              11/13/13    Jonas Josef                         80,00          **Invoices to create**
+ 11/16/13              11/16/13    Groteclaes Gregory                  50,00          **Invoices to create**
+ 11/19/13              11/19/13    Emonts Daniel                       80,00          **Invoices to create**
+ 11/22/13              11/22/13    Demeulenaere Dorothée               50,00          **Invoices to create**
+ 11/25/13              11/25/13    Bastiaensen Laurent                 50,00          **Invoices to create**
+ 11/28/13              11/28/13    Jeanémart Jérôme                    20,00          **Invoices to create**
+ 12/1/13               12/1/13     Vandenmeulenbos Marie-Louise        50,00          **Invoices to create**
+ 12/4/13               12/4/13     Ärgerlich Erna                      20,00          **Invoices to create**
+ 12/7/13               12/7/13     Radermacher Jean                                   **Invoices to create**
+ 12/10/13              12/10/13    Radermacher Edgard                  50,00          **Invoices to create**
+ 12/13/13              12/13/13    Emonts-Gast Erna                    20,00          **Invoices to create**
+ 12/16/13              12/16/13    Laschet Laura                       50,00          **Invoices to create**
+ 12/19/13              12/19/13    Jacobs Jacqueline                   50,00          **Invoices to create**
+ 12/22/13              12/22/13    Faymonville Luc                     20,00          **Invoices to create**
+ 12/25/13              12/25/13    Evers Eberhart                      50,00          **Invoices to create**
+ 12/28/13              12/28/13    Dericum Daniel                      20,00          **Invoices to create**
+ 12/31/13              12/31/13    Altenberg Hans                                     **Invoices to create**
+ **Total (33 rows)**                                                   **1 350,00**
+===================== =========== =================================== ============== ========================
+<BLANKLINE>
 
 
 On the API level it defines the :class:`Invoiceable
@@ -44,14 +82,28 @@ It also defines two utility functions :func:`get_invoiceables_for
 
 >>> alf = rt.modules.courses.Pupil.objects.get(pk=152)
 >>> alf
->>> for inv in rt.modules.courses.get_invoiceables_for(alf)):
+Pupil #152 (u'Alfons Radermacher')
+
+>>> for inv in rt.modules.sales.get_invoiceables_for(alf):
 ...     print(inv)
+WWW (1/11/14 Computer room) / Alfons Radermacher
 
 
 Lino Voga uses this functionality by extending :class:`Enrolment
 <lino_cosi.lib.courses.models.Enrolment>` so that it inherits from
 :class:`Invoiceable <lino_cosi.lib.auto.sales.mixins.Invoiceable>`. In
 Lino Voga, enrolments are the things for which they write invoices.
+
+Another invoiceable thing in Lino Voga is when they rent a room to a
+third-party organisation. This is called a :class:`Booking
+<lino_voga.lib.rooms.models.Booking>`.
+
+>>> rt.models_by_base(rt.modules.sales.Invoiceable)
+[<class 'lino_voga.projects.roger.lib.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
+
+
+Subscription courses are courses for which the customer pays a given
+number of events.
 
 An important new challenge appeared when I was in Belgium: they
 recently started to have a new invoicing method which they name
