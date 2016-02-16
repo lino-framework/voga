@@ -26,6 +26,8 @@ class Site(Site):
 
     show_internal_field_names = True
 
+    default_build_method = "wkhtmltopdf"
+
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
         yield 'lino.modlib.gfks'

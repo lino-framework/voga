@@ -181,6 +181,10 @@ class Enrolment(Enrolment, Invoiceable):
     def get_invoiceable_qty(self):
         return self.places
 
+    def setup_invoice_item(self, item):
+        item.description = dd.plugins.jinja.render_from_request(
+            None, 'courses/Enrolment/item_description.html',
+            obj=self, item=item)
 
 Enrolments.detail_layout = """
     request_date user
