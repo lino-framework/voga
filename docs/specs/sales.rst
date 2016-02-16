@@ -42,6 +42,12 @@ It also defines two utility functions :func:`get_invoiceables_for
 :func:`create_invoice_for
 <lino_cosi.lib.auto.sales.models.create_invoice_for>`.
 
+>>> alf = rt.modules.courses.Pupil.objects.get(pk=152)
+>>> alf
+>>> for inv in rt.modules.courses.get_invoiceables_for(alf)):
+...     print(inv)
+
+
 Lino Voga uses this functionality by extending :class:`Enrolment
 <lino_cosi.lib.courses.models.Enrolment>` so that it inherits from
 :class:`Invoiceable <lino_cosi.lib.auto.sales.mixins.Invoiceable>`. In

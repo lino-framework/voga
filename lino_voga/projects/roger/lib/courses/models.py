@@ -142,7 +142,7 @@ confirmation_details sales.InvoicingsByInvoiceable
 
 
 EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
-                                 'workflow_buttons *'
+                                 'amount workflow_buttons *'
 
 EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
                                   'option remark amount workflow_buttons *'

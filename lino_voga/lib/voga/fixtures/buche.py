@@ -76,12 +76,13 @@ class Loader1(object):
         ProductCat = rt.modules.products.ProductCat
         # productcat = Instantiator('products.ProductCat').build
 
-        course_fees = ProductCat(**dd.str2kw('name', _("Participation fees")))
-        yield course_fees
+        self.course_fees = ProductCat(**dd.str2kw(
+            'name', _("Participation fees")))
+        yield self.course_fees
 
-        trips = ProductCat(**dd.str2kw('name', _("Trips")))
+        self.trips = ProductCat(**dd.str2kw('name', _("Trips")))
         # et="Väljasõidud", de="Ausflüge", fr="Excursions"))
-        yield trips
+        yield self.trips
 
         kw = dd.str2kw('name', _("Journeys"))
         self.journeys_cat = ProductCat(**kw)
@@ -99,9 +100,9 @@ class Loader1(object):
 
         product = Instantiator(
             'products.Product', "sales_price cat name").build
-        yield product("20", course_fees, "20€")
-        yield product("50", course_fees, "50€")
-        yield product("80", course_fees, "80€")
+        yield product("20", self.course_fees, "20€")
+        yield product("50", self.course_fees, "50€")
+        yield product("80", self.course_fees, "80€")
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
         yield rent20
@@ -112,7 +113,7 @@ class Loader1(object):
             fr="Loyer par réunion"))
         yield rent10
 
-        self.PRICES = Cycler(Product.objects.filter(cat=course_fees))
+        self.PRICES = Cycler(Product.objects.filter(cat=self.course_fees))
 
         event_type = Instantiator('cal.EventType').build
         kw = dd.str2kw('name', _("Courses"))
@@ -273,6 +274,7 @@ class Loader2(Loader1):
         yield self.journeys_topic
         europe = line(self.journeys_topic, None, self.journey_tariff,
                       options_cat=journey_options,
+                      fees_cat=self.journeys_cat,
                       **dd.str2kw('name', _("Europe")))
 
         yield europe
@@ -291,6 +293,7 @@ class Loader2(Loader1):
         yield externe
 
         obj = line(comp, self.kurse, self.PRICES.pop(),
+                   fees_cat=self.course_fees,
                    ref="comp",
                    **dd.babelkw('name', de="Erste Schritte", en="First Steps"))
         yield obj
@@ -326,6 +329,7 @@ class Loader2(Loader1):
         obj = line(
             comp, self.kurse, self.PRICES.pop(),
             ref="WWW",
+            fees_cat=self.course_fees,
             description=desc, **dd.babelkw(
                 'name',
                 de="Internet: World Wide Web für Anfänger",
@@ -343,6 +347,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="BT",
+                   fees_cat=self.course_fees,
                    **dd.babelkw('name', de="Bauchtanz", en="Belly dancing"))
         yield obj
         kw = dict(max_events=8)
@@ -354,6 +359,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="FG",
+                   fees_cat=self.course_fees,
                    **dd.babelkw('name',
                                 de="Funktionsgymnastik",
                                 en="Functional gymnastics"))
@@ -365,6 +371,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="Rücken",
+                   fees_cat=self.course_fees,
                    **dd.babelkw('name', de="Rücken fit durch Schwimmen", en="Swimming"))
         yield obj
         kw = dict(max_events=10, state=CourseStates.registered)
@@ -378,6 +385,7 @@ class Loader2(Loader1):
 
         obj = line(sport, self.kurse, self.PRICES.pop(),
                    ref="SV",
+                   fees_cat=self.course_fees,
                    **dd.babelkw('name', de="Selbstverteidigung im Alltag", en="Self-defence"))
         yield obj
         kw = dict(max_events=6)
@@ -389,6 +397,7 @@ class Loader2(Loader1):
 
         obj = line(medit, self.kurse, self.PRICES.pop(),
                    ref="GLQ",
+                   fees_cat=self.course_fees,
                    name="GuoLin-Qigong")
         yield obj
         kw = dict(max_events=10)
@@ -401,6 +410,7 @@ class Loader2(Loader1):
 
         obj = line(medit, self.kurse, self.PRICES.pop(),
                    ref="MED",
+                   fees_cat=self.course_fees,
                    **dd.babelkw(
                        'name',
                        de="Den Kopf frei machen - zur inneren Ruhe finden",

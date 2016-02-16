@@ -135,7 +135,8 @@ class Enrolment(Enrolment, Invoiceable):
 
     @classmethod
     def get_invoiceables_for_partner(cls, partner, max_date=None):
-        if isinstance(partner, rt.modules.courses.Pupil):
+        # dd.logger.info('20160216 get_invoiceables_for_partner %s', partner.__class__)
+        if True:  # isinstance(partner, rt.modules.courses.Pupil):
             q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=partner)
             q2 = models.Q(pupil__invoice_recipient=partner)
             return cls.objects.filter(models.Q(q1 | q2, invoice__isnull=True))

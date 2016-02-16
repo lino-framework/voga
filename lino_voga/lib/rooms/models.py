@@ -25,7 +25,7 @@ class Booking(Booking, Invoiceable):
 
     @classmethod
     def get_invoiceables_for_partner(cls, partner, max_date=None):
-        if isinstance(partner, rt.modules.contacts.Company):
+        if True:  # isinstance(partner, rt.modules.contacts.Company):
             return cls.objects.filter(company=partner, invoice__isnull=True)
 
     @classmethod
