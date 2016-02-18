@@ -1,0 +1,44 @@
+<html>
+<meta charset="UTF-8"> 
+<body>
+<h1>{{obj}}</h1>
+<ul>
+{% for k in ['ref', 'line', 'teacher', 'room', 'start_date'] %}
+<li>{{obj._meta.get_field(k).verbose_name}} : {{getattr(obj, k)}}</li>
+{% endfor %}
+</ul>
+{% set events = obj.events_by_course.order_by('start_date') %}
+<table border="1" width="100%">
+<tr>
+<td>Name</td>
+{% for e in  events %}
+<td>{{dd.plugins.courses.day_and_month(e.start_date)}}</td>
+{% endfor %}
+<td>Bemerkung</td>
+</tr>
+
+{% for enrolment in obj.enrolments %}
+<tr>
+<td>{{enrolment.pupil}}</td>
+{% for e in  events %}
+<td>&nbsp;</td>
+{% endfor %}
+<td>{{enrolment.remark}}</td>
+</tr>
+{% endfor %}
+
+
+{% for i in range(9) %}
+<tr>
+<td></td>
+{% for e in  events %}
+<td>&nbsp;</td>
+{% endfor %}
+<td></td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>

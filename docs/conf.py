@@ -8,16 +8,18 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-from django.utils.importlib import import_module
+from importlib import import_module
 intersphinx_mapping = {}
-for n in 'atelier lino'.split():
+for n in 'atelier lino lino_cosi'.split():
     m = import_module(n)
+    n = n.replace('_', "")
     intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
 
+extlinks = {}
 extensions = []
 
 from atelier.sphinxconf import configure
-configure(globals(), 'lino_faggio.projects.docs.settings.doctests')
+configure(globals(), 'lino_voga.projects.docs.settings.doctests')
 
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.actordoc']
@@ -51,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = settings.SITE.title
-copyright = u'2012-2014, Luc Saffre'
+copyright = u'2012-2016, Luc Saffre'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -108,7 +110,7 @@ pygments_style = 'sphinx'
 # The style sheet to use for HTML and HTML Help pages. A file of that name
 # must exist either in Sphinx' static/ path, or in one of the custom paths
 # given in html_static_path.
-html_style = 'default.css'
+# html_style = 'default.css'
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -172,7 +174,7 @@ html_use_opensearch = ''
 #html_file_suffix = ''
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'faggio'
+htmlhelp_basename = 'voga'
 
 
 #language="de"

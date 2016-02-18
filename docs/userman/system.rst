@@ -1,4 +1,4 @@
-.. _faggio.system:
+.. _voga.system:
 
 ======
 System

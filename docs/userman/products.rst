@@ -1,4 +1,4 @@
-.. _faggio.products:
+.. _voga.products:
 
 ========
 Products

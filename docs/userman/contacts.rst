@@ -1,10 +1,10 @@
-.. _faggio.contacts:
+.. _voga.contacts:
 
 ========
 Contacts
 ========
 
-Faggio-specific notes about the contacts module
+Voga-specific notes about the contacts module
 -----------------------------------------------
 
 `courses.Pupil` and `courses.Teacher` are subclasses of

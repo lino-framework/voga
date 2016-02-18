@@ -3,5 +3,5 @@ API
 ===
 
 
-.. automodule:: lino_faggio
+.. automodule:: lino_voga
 
