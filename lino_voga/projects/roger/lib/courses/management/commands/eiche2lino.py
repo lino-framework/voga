@@ -18,9 +18,11 @@ from __future__ import unicode_literals, print_function
 
 # from optparse import make_option
 
+import datetime
+
 from dateutil.parser import parse as parse_date
 # from django.utils import translation
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from django.core.exceptions import ValidationError
 
 from lino.api import rt
@@ -188,6 +190,10 @@ class MyBook2016(MyBook):
         Place = rt.modules.countries.Place
         Pupil = rt.modules.courses.Pupil
         Sections = rt.modules.courses.Sections
+        MEMBER_UNTIL = datetime.date(2016, 12, 31)
+
+        update_fields = (
+            'is_lfv', 'is_raviva', 'is_ckk', 'section', 'member_until')
 
         kw = dict(last_name=last_name, first_name=first_name)
 
@@ -195,7 +201,9 @@ class MyBook2016(MyBook):
             kw.update(legacy_id=legacy_id)
         kw.update(is_raviva=raviva)
         kw.update(is_ckk=ckk)
+        kw.update(is_lfv=lfv)
         kw.update(is_member=eiche_mg)
+        kw.update(member_until=MEMBER_UNTIL if eiche_mg else None)
         kw.update(national_id=national_id)
 
         sektion = sektion.strip().lower()
@@ -243,7 +251,9 @@ class MyBook2016(MyBook):
 
         try:
             obj = Pupil.objects.get(legacy_id=legacy_id)
-            for k, v in kw.items():
+            # for k, v in kw.items():
+            for k in update_fields:
+                v = kw[k]
                 setattr(obj, k, v)
             dd.logger.info("Updated %s", obj)
         except Pupil.DoesNotExist:
@@ -271,12 +281,16 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
+        if len(args) == 0:
+            raise CommandError(self.help)
+
         Pupil = rt.modules.courses.Pupil
         qs = Pupil.objects.all()
-        dd.logger.info("Delete %d pupils", qs.count())
-        qs.delete()
-        # for obj in Pupil.objects.all():
-        #     obj.delete()
+        if False:
+            dd.logger.info("Delete %d pupils", qs.count())
+            qs.delete()
+            # for obj in Pupil.objects.all():
+            #     obj.delete()
 
         for pth in args:
             book = MyBook2016(pth)

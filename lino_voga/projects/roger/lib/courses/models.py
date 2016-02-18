@@ -60,9 +60,11 @@ class Pupil(Pupil):
 
     section = Sections.field(blank=True)
 
+    is_lfv = models.BooleanField(_("LFV"), default=False)
     is_ckk = models.BooleanField(_("CKK"), default=False)
     is_raviva = models.BooleanField(_("Raviva"), default=False)
     is_member = models.BooleanField(_("Member"), default=False)
+    member_until = models.DateField(_("Mitglied bis"), blank=True, null=True)
 
 
 class PupilDetail(PupilDetail):
@@ -73,7 +75,7 @@ class PupilDetail(PupilDetail):
     # box5 = "remarks"
 
     courses = dd.Panel("""
-    legacy_id is_member section is_ckk is_raviva
+    legacy_id member_until section is_lfv is_ckk is_raviva
     courses.SuggestedCoursesByPupil
     courses.EnrolmentsByPupil
     """, label=dd.plugins.courses.verbose_name)

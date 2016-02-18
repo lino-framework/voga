@@ -9,12 +9,6 @@ lino_voga.projects.roger.test
 
    
    
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      WebIndexTestCase
-   
    
 
    

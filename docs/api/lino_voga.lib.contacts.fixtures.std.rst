@@ -5,12 +5,6 @@ lino_voga.lib.contacts.fixtures.std
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      objects
-   
    
 
    

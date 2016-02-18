@@ -15,13 +15,6 @@ lino_voga.lib.courses.fixtures.demo
 
    
    
-   .. rubric:: Classes
-
-   .. autosummary::
-   
-      Cycler
-      Person
-   
    
 
    

@@ -9,13 +9,7 @@ lino_voga.projects.roger.lib.courses.management.commands.eiche2lino
 
    .. autosummary::
    
-      iif
-      is_valid_email
-      open_workbook
-      parse_date
-      street2kw
       string2date
-      xldate_as_tuple
    
    
 
@@ -25,21 +19,12 @@ lino_voga.projects.roger.lib.courses.management.commands.eiche2lino
 
    .. autosummary::
    
-      BaseCommand
       Command
-      IncompleteDate
       MyBook
       MyBook2016
    
    
 
    
-   
-   .. rubric:: Exceptions
-
-   .. autosummary::
-   
-      ValidationError
-      XLDateError
    
    
