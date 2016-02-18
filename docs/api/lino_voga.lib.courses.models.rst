@@ -9,6 +9,7 @@ lino_voga.lib.courses.models
 
    .. autosummary::
    
+      get_child
       join_elems
       parse_name
       pgettext
@@ -35,7 +36,9 @@ lino_voga.lib.courses.models
       CoursesBySlot
       CoursesByTeacher
       CoursesByTopic
+      CreateInvoice
       CreateInvoiceForEnrolment
+      CreateInvoicesForCourse
       Decimal
       DraftCourses
       Duplicable
@@ -47,6 +50,7 @@ lino_voga.lib.courses.models
       EnrolmentsByPupil
       EventsByTeacher
       ExcerptTitle
+      Invoiceable
       Line
       Lines
       LinesByTopic

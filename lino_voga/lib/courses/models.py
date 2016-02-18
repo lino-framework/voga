@@ -15,7 +15,11 @@ from lino.api import dd, rt
 from lino.utils import mti
 
 from lino_cosi.lib.courses.models import *
+from lino_cosi.lib.auto.sales.mixins import Invoiceable
+from lino_cosi.lib.auto.sales.models import CreateInvoice
+
 from lino_voga.lib.contacts.models import Person
+from lino_voga.lib.contacts.models import MyPersonDetail
 
 contacts = dd.resolve_app('contacts')
 sales = dd.resolve_app('sales')
@@ -96,8 +100,27 @@ class Pupil(Person):
             s += " (%s)" % self.pupil_type.ref
         return s
 
-from lino_cosi.lib.auto.sales.mixins import Invoiceable
-from lino_cosi.lib.auto.sales.models import CreateInvoice
+
+class CreateInvoicesForCourse(CreateInvoice):
+    """
+    Create invoices for all participants of this course.
+    """
+    def get_partners(self, ar):
+        course = ar.selected_rows[0]
+        return [obj.pupil for obj in course.enrolment_set.filter(
+            state=EnrolmentStates.confirmed)]
+        
+
+class Course(Course):
+    """Extends the standard model by adding an action.
+
+    """
+    class Meta(Course.Meta):
+        app_label = 'courses'
+        abstract = dd.is_abstract_model(__name__, 'Course')
+
+    create_invoices = CreateInvoicesForCourse()
+    """See :class:`CreateInvoicesForCourse`."""
 
 
 class CreateInvoiceForEnrolment(CreateInvoice):
@@ -162,7 +185,14 @@ class Enrolment(Enrolment, Invoiceable):
         if not self.state.invoiceable:
             return
         tariff = self.course.tariff or self.course.line.tariff
-        if not tariff or not tariff.number_of_events:
+        if not tariff:
+            return
+        invoiced_qty = ZERO
+        for obj in self.get_invoicings():
+            invoiced_qty += obj.qty
+        if not tariff.number_of_events:
+            if invoiced_qty:
+                return
             return tariff
         qs = self.course.events_by_course.filter(
             start_date__gte=self.start_date,
@@ -170,7 +200,7 @@ class Enrolment(Enrolment, Invoiceable):
         if self.end_date:
             qs = qs.filter(end_date__lte=self.end_date)
         used_events = qs.count()
-        paid_events = self.get_invoicings().count() * tariff.number_of_events
+        paid_events = invoiced_qty * tariff.number_of_events
         asset = paid_events - used_events
         if asset < tariff.min_asset:
             return tariff
@@ -214,8 +244,6 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     column_names = 'request_date pupil_info option remark ' \
                    'amount:10 workflow_buttons *'
 
-
-from lino_voga.lib.contacts.models import MyPersonDetail
 
 
 class PupilDetail(MyPersonDetail):
