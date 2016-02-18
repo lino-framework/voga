@@ -193,7 +193,7 @@ class MyBook2016(MyBook):
         MEMBER_UNTIL = datetime.date(2016, 12, 31)
 
         update_fields = (
-            'is_lfv', 'is_raviva', 'is_ckk', 'sektion', 'member_until')
+            'is_lfv', 'is_raviva', 'is_ckk', 'section', 'member_until')
 
         kw = dict(last_name=last_name, first_name=first_name)
 
@@ -253,8 +253,9 @@ class MyBook2016(MyBook):
             obj = Pupil.objects.get(legacy_id=legacy_id)
             # for k, v in kw.items():
             for k in update_fields:
-                v = kw[k]
-                setattr(obj, k, v)
+                if k in kw:
+                    v = kw[k]
+                    setattr(obj, k, v)
             dd.logger.info("Updated %s", obj)
         except Pupil.DoesNotExist:
             obj = Pupil(**kw)
