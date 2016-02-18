@@ -193,7 +193,7 @@ class MyBook2016(MyBook):
         MEMBER_UNTIL = datetime.date(2016, 12, 31)
 
         update_fields = (
-            'is_lfv', 'is_raviva', 'is_ckk', 'section', 'member_until')
+            'is_lfv', 'is_raviva', 'is_ckk', 'sektion', 'member_until')
 
         kw = dict(last_name=last_name, first_name=first_name)
 
