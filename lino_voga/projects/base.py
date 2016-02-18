@@ -53,6 +53,7 @@ class Site(Site):
         yield 'lino.modlib.beid'
 
         yield 'lino_voga.lib.cal'
+        yield 'lino_voga.lib.products'
         # yield 'lino.modlib.extensible'
         yield 'lino_voga.lib.rooms'
 

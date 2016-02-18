@@ -31,7 +31,7 @@ application for managing courses, participants and meeting rooms.
     author='Luc Saffre',
     author_email='luc.saffre@gmail.com',
     url="http://voga.lino-framework.org",
-    license='BSD License',
+    license='GNU Affero General Public License v3',
     classifiers="""\
 Programming Language :: Python
 Programming Language :: Python :: 2
@@ -56,6 +56,7 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.contacts.management.commands',
     'lino_voga.lib.courses',
     'lino_voga.lib.courses.fixtures',
+    'lino_voga.lib.products',
     'lino_voga.lib.voga',
     'lino_voga.lib.voga.fixtures',
     'lino_voga.lib.rooms',

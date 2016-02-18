@@ -35,7 +35,7 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-36 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, rooms, products, cosi, accounts, ledger, vat, sales, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf.
+36 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, appypod, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, products, rooms, cosi, accounts, ledger, vat, sales, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf.
 69 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -94,7 +94,7 @@ The demo database
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- products.Product           products.Products              11        9
+ products.Product           products.Products              10        9
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 23        3
  sales.InvoiceItem          sales.InvoiceItems             15        68
@@ -126,7 +126,6 @@ Rolf is the local system administrator, he has a complete menu:
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
 - Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
-- Products : Products, Product Categories
 - Accounting :
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
@@ -142,6 +141,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Priorities, Recurrent event rules, Guest Roles, Calendar Event Types, Remote Calendars
+  - Tariffs : Tariffs, Tariff Categories
   - Accounting : Account Groups, Accounts, Journals, Payment Terms
   - VAT : VAT rules
   - Courses : Instructor Types, Participant Types, Timetable Slots

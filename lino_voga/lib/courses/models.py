@@ -433,14 +433,14 @@ class CoursesByLine(CoursesByLine):
 #     hide_sums = True
 
 
-dd.inject_field(
-    'products.Product', 'number_of_events',
-    models.IntegerField(
-        _("Number of events"), null=True, blank=True,
-        help_text=_("Number of events paid per invoicing.")))
+# dd.inject_field(
+#     'products.Product', 'number_of_events',
+#     models.IntegerField(
+#         _("Number of events"), null=True, blank=True,
+#         help_text=_("Number of events paid per invoicing.")))
 
-dd.inject_field(
-    'products.Product', 'min_asset',
-    models.IntegerField(
-        _("Invoice threshold"), null=True, blank=True,
-        help_text=_("Minimum number of events to pay in advance.")))
+# dd.inject_field(
+#     'products.Product', 'min_asset',
+#     models.IntegerField(
+#         _("Invoice threshold"), null=True, blank=True,
+#         help_text=_("Minimum number of events to pay in advance.")))
