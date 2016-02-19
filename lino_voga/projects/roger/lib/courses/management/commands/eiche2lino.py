@@ -252,11 +252,13 @@ class MyBook2016(MyBook):
         try:
             obj = Pupil.objects.get(legacy_id=legacy_id)
             # for k, v in kw.items():
+            changed = dict()
             for k in update_fields:
                 if k in kw:
                     v = kw[k]
                     setattr(obj, k, v)
-            dd.logger.info("Updated %s", obj)
+                    changed[k] = v
+            dd.logger.info("Updated %s (%s)", obj, changed)
         except Pupil.DoesNotExist:
             obj = Pupil(**kw)
             dd.logger.info("Created %s", obj)
