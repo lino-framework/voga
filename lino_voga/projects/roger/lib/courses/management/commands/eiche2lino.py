@@ -89,11 +89,17 @@ class MyBook():
         self.country = Country.objects.get(isocode="BE")
         self.book = open_workbook(self.filename)
         s = self.book.sheet_by_index(0)
-        #~ print 'Sheet:',s.name
+        # print 'Sheet:',s.name
         found = False
         ncols = len(self.column_headers)
-        for row in range(s.nrows):
-            values = [s.cell(row, col).value for col in range(ncols)]
+        for rowx in range(s.nrows):
+            row = s.row(rowx)
+            values = [c.value for c in row]
+            if len(values) != ncols:
+                dd.logger.warning(
+                    "Expected %d values in row %d but got %s",
+                    ncols, rowx, values)
+            # values = [s.cell(row, col).value for col in range(ncols)]
             if found:
                 obj = self.row2instance(*values)
 
@@ -193,7 +199,7 @@ class MyBook2016(MyBook):
         MEMBER_UNTIL = datetime.date(2016, 12, 31)
 
         update_fields = (
-            'is_lfv', 'is_raviva', 'is_ckk', 'section', 'member_until')
+            'member_until', 'section', 'is_ckk', 'is_lfv', 'is_raviva')
 
         kw = dict(last_name=last_name, first_name=first_name)
 
@@ -252,13 +258,14 @@ class MyBook2016(MyBook):
         try:
             obj = Pupil.objects.get(legacy_id=legacy_id)
             # for k, v in kw.items():
-            changed = dict()
+            changed = []
             for k in update_fields:
                 if k in kw:
                     v = kw[k]
                     setattr(obj, k, v)
-                    changed[k] = v
-            dd.logger.info("Updated %s (%s)", obj, changed)
+                    changed.append(v)
+            uvalues = [eiche_mg, sektion, ckk, lfv, raviva]
+            dd.logger.info("Updated %s (%s from %s)", obj, changed, uvalues)
         except Pupil.DoesNotExist:
             obj = Pupil(**kw)
             dd.logger.info("Created %s", obj)

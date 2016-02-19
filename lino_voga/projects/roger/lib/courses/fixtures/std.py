@@ -34,3 +34,9 @@ def objects():
         content_type=ContentType.objects.get_for_model(Course),
         **dd.str2kw('name', _("Presence sheet")))
 
+    yield ExcerptType(
+        template='overview.wk.html',
+        build_method='wkhtmltopdf',
+        content_type=ContentType.objects.get_for_model(Course),
+        **dd.str2kw('name', _("Overview")))
+
