@@ -8,7 +8,7 @@ Defining holidays
 
    $ python setup.py test -s tests.DocsTests.test_holidays
 
-See also :ref:`lino.specs.holidays`.
+See also :ref:`xl.specs.holidays`.
 
 ..  Some initialization:
 

@@ -17,10 +17,10 @@
 # <http://www.gnu.org/licenses/>.
 
 """
-The :ref:`voga` extension of :mod:`lino.modlib.products`.
+The :ref:`voga` extension of :mod:`lino_xl.lib.products`.
 """
 
-from lino.modlib.products import Plugin, _
+from lino_xl.lib.products import Plugin, _
 
 
 class Plugin(Plugin):

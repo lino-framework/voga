@@ -34,7 +34,7 @@ class Plugin(Plugin):
     teacher_model = 'courses.Teacher'
     pupil_model = 'courses.Pupil'
     extends_models = ['Enrolment', 'Course']
-    needs_plugins = ['lino.modlib.cal', 'lino_cosi.lib.auto.sales']
+    needs_plugins = ['lino_xl.lib.cal', 'lino_cosi.lib.auto.sales']
 
     def setup_main_menu(self, site, profile, m):
         m = m.add_menu(self.app_label, self.verbose_name)

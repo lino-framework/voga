@@ -16,7 +16,7 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-"""Extends :mod:`lino.modlib.cal` for :ref:`voga`.
+"""Extends :mod:`lino_xl.lib.cal` for :ref:`voga`.
 
 .. autosummary::
    :toctree:
@@ -28,7 +28,7 @@
 """
 
 
-from lino.modlib.cal import Plugin
+from lino_xl.lib.cal import Plugin
 
 
 class Plugin(Plugin):

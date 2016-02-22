@@ -68,7 +68,7 @@ def objects():
         PUPILS = Cycler(courses.Pupil.objects.all())
         #~ Event = settings.SITE.modules.cal.Event
 
-        #~ from lino.modlib.cal.utils import DurationUnit
+        #~ from lino_xl.lib.cal.utils import DurationUnit
 
         year = settings.SITE.demo_date().year
         if settings.SITE.demo_date().month < 7:

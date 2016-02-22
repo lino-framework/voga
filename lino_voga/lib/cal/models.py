@@ -19,14 +19,14 @@
 """
 The :xfile:`models.py` module for :mod:`lino_voga.lib.cal`.
 
-This module extends :mod:`lino.modlib.cal.models`
+This module extends :mod:`lino_xl.lib.cal.models`
 """
 
 from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from lino.modlib.cal.models import *
+from lino_xl.lib.cal.models import *
 
 from lino.modlib.users.choicelists import UserProfiles
 
@@ -36,7 +36,7 @@ from lino_cosi.lib.courses.choicelists import EnrolmentStates
 # courses = dd.resolve_app('courses')
 
 # must import this to activate these workflow definitions:
-from lino.modlib.cal.workflows import voga  
+from lino_xl.lib.cal.workflows import voga  
 
 from lino.modlib.office.roles import OfficeUser
 
@@ -110,7 +110,7 @@ class Event(Event):
         return 1
 
     def get_event_summary(self, ar):
-        """Overrides :meth:`lino.modlib.cal.models.Event.get_event_summary`
+        """Overrides :meth:`lino_xl.lib.cal.models.Event.get_event_summary`
         """
         if self.owner is None:
             return self.summary

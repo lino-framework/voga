@@ -24,7 +24,7 @@ The :xfile:`models` module of the :mod:`lino_voga.rooms` app.
 from __future__ import unicode_literals
 
 from lino.utils.mti import get_child
-from lino.modlib.rooms.models import *
+from lino_xl.lib.rooms.models import *
 from lino.api import rt
 from lino_cosi.lib.auto.sales.mixins import Invoiceable
 

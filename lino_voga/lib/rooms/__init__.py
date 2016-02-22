@@ -16,7 +16,7 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-from lino.modlib.rooms import Plugin
+from lino_xl.lib.rooms import Plugin
 
 
 class Plugin(Plugin):

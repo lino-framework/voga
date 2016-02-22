@@ -19,7 +19,7 @@
 
 from lino.api import dd, rt, _
 
-from lino.modlib.cal.fixtures.std import objects as lib_objects
+from lino_xl.lib.cal.fixtures.std import objects as lib_objects
 
 
 def objects():
