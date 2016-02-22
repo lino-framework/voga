@@ -27,7 +27,7 @@ configuration menu.
 
 from __future__ import unicode_literals
 
-from lino.modlib.products.models import *
+from lino_xl.lib.products.models import *
 from lino.api import _
 
 

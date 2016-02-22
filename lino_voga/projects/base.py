@@ -49,17 +49,17 @@ class Site(Site):
         yield 'lino.modlib.users'
         yield 'lino.modlib.countries'
         yield 'lino_voga.lib.contacts'
-        yield 'lino.modlib.lists'
-        yield 'lino.modlib.beid'
+        yield 'lino_xl.lib.lists'
+        yield 'lino_xl.lib.beid'
 
         yield 'lino_voga.lib.cal'
         yield 'lino_voga.lib.products'
-        # yield 'lino.modlib.extensible'
+        # yield 'lino_xl.lib.extensible'
         yield 'lino_voga.lib.rooms'
 
         yield 'lino_voga.lib.courses'
 
-        # yield 'lino.modlib.products'
+        # yield 'lino_xl.lib.products'
         # yield 'lino_cosi.lib.accounts'
         # yield 'lino_cosi.lib.ledger'
         # yield 'lino_cosi.lib.vat'
@@ -71,21 +71,21 @@ class Site(Site):
 
         # yield 'lino_voga.lib.courses'
 
-        #~ yield 'lino.modlib.households'
-        yield 'lino.modlib.notes'
+        #~ yield 'lino_xl.lib.households'
+        yield 'lino_xl.lib.notes'
         yield 'lino.modlib.uploads'
-        #~ yield 'lino.modlib.cal'
+        #~ yield 'lino_xl.lib.cal'
 
-        yield 'lino.modlib.outbox'
-        yield 'lino.modlib.excerpts'
-        #~ yield 'lino.modlib.pages'
+        yield 'lino_xl.lib.outbox'
+        yield 'lino_xl.lib.excerpts'
+        #~ yield 'lino_xl.lib.pages'
         #~ yield 'lino_cosi.lib.courses'
         yield 'lino_voga.lib.voga'
 
-        # yield 'lino.modlib.appypod'
         yield 'lino.modlib.export_excel'
-        yield 'lino.modlib.extensible'
+        yield 'lino_xl.lib.extensible'
         yield 'lino.modlib.wkhtmltopdf'
+        yield 'lino_xl.lib.appypod'
 
     def get_admin_main_items(self, ar):
         yield self.modules.courses.DraftCourses

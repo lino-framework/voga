@@ -19,14 +19,14 @@
 """
 The :xfile:`models.py` module for :mod:`lino_voga.lib.cal`.
 
-This module extends :mod:`lino.modlib.cal.models`
+This module extends :mod:`lino_xl.lib.cal.models`
 """
 
 from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from lino.modlib.cal.models import *
+from lino_xl.lib.cal.models import *
 
 from lino.modlib.users.choicelists import UserProfiles
 
@@ -36,7 +36,7 @@ from lino_cosi.lib.courses.choicelists import EnrolmentStates
 # courses = dd.resolve_app('courses')
 
 # must import this to activate these workflow definitions:
-from lino.modlib.cal.workflows import voga  
+from lino_xl.lib.cal.workflows import voga  
 
 from lino.modlib.office.roles import OfficeUser
 
@@ -50,10 +50,10 @@ dd.inject_field('system.SiteConfig', 'pupil_guestrole',
 
 class Room(Room, ContactRelated):
 
-    tariff = dd.ForeignKey('products.Product',
-                           blank=True, null=True,
-                           verbose_name=_("Tariff"),
-                           related_name='rooms_by_tariff')
+    fee = dd.ForeignKey('products.Product',
+                        blank=True, null=True,
+                        verbose_name=_("Tariff"),
+                        related_name='rooms_by_fee')
 
     calendar = dd.ForeignKey(
         'cal.Calendar',
@@ -85,10 +85,10 @@ class Room(Room, ContactRelated):
 
 
 class Rooms(Rooms):
-    column_names = "name calendar tariff company company__city *"
+    column_names = "name calendar fee company company__city *"
     detail_layout = """
     id name calendar
-    tariff company contact_person contact_role
+    fee company contact_person contact_role
     cal.EventsByRoom
     """
 
@@ -100,7 +100,7 @@ class Event(Event):
 
     def get_invoiceable_product(self):
         if self.company and self.room:
-            return self.room.tariff
+            return self.room.fee
 
     def get_invoiceable_title(self):
         if self.company:
@@ -110,7 +110,7 @@ class Event(Event):
         return 1
 
     def get_event_summary(self, ar):
-        """Overrides :meth:`lino.modlib.cal.models.Event.get_event_summary`
+        """Overrides :meth:`lino_xl.lib.cal.models.Event.get_event_summary`
         """
         if self.owner is None:
             return self.summary

@@ -24,7 +24,7 @@ The :xfile:`models` module of the :mod:`lino_voga.rooms` app.
 from __future__ import unicode_literals
 
 from lino.utils.mti import get_child
-from lino.modlib.rooms.models import *
+from lino_xl.lib.rooms.models import *
 from lino.api import rt
 from lino_cosi.lib.auto.sales.mixins import Invoiceable
 
@@ -55,7 +55,7 @@ class Booking(Booking, Invoiceable):
             if self.get_invoicings().count() > 0:
                 return
             # if self.company != settings.SITE.site_config.site_company:
-            return self.room.tariff
+            return self.room.fee
 
     #~ def get_invoiceable_title(self):
         #~ if self.organizer:
