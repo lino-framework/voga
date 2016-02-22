@@ -123,7 +123,7 @@ class CreateInvoicesForCourse(CreateInvoice):
         course = ar.selected_rows[0]
         return [obj.pupil for obj in course.enrolment_set.filter(
             state=EnrolmentStates.confirmed)]
-        
+
 
 class Course(Course):
     """Extends the standard model by adding an action.
@@ -153,23 +153,12 @@ class Enrolment(Enrolment, Invoiceable):
 
     amount = dd.PriceField(_("Participation fee"), blank=True, null=True)
 
+    fee = dd.ForeignKey('products.Product',
+                        blank=True, null=True,
+                        verbose_name=_("Participation fee"),
+                        related_name='enrolments_by_fee')
+
     create_invoice = CreateInvoiceForEnrolment()
-
-    def full_clean(self, *args, **kwargs):
-        if self.amount is None:
-            self.compute_amount()
-        super(Enrolment, self).full_clean(*args, **kwargs)
-
-    def pupil_changed(self, ar):
-        self.compute_amount()
-
-    def compute_amount(self):
-        #~ if self.course is None:
-            #~ return
-        tariff = self.get_invoiceable_product()
-        # When `products` is not installed, then tariff may be None
-        # because it is a DummyField.
-        self.amount = getattr(tariff, 'sales_price', ZERO)
 
     @classmethod
     def get_invoiceable_partners(cls):
@@ -192,32 +181,66 @@ class Enrolment(Enrolment, Invoiceable):
         q2 = models.Q(pupil__invoice_recipient=partner)
         return models.Q(q1 | q2)  # , invoice__isnull=True)
 
+    @dd.chooser()
+    def fee_choices(cls, course):
+        Product = rt.modules.products.Product
+        if not course or not course.line or not course.line.fees_cat:
+            return Product.objects.none()
+        return Product.objects.filter(cat=course.line.fees_cat)
+
+    def full_clean(self, *args, **kwargs):
+        if self.fee_id is None and self.course_id is not None:
+            self.fee_id = self.course.fee_id
+            if self.fee_id is None and self.course.line_id is not None:
+                self.fee_id = self.course.line.fee_id
+        if self.amount is None:
+            self.compute_amount()
+        super(Enrolment, self).full_clean(*args, **kwargs)
+
+    def pupil_changed(self, ar):
+        self.compute_amount()
+
     def get_invoiceable_amount(self):
         return self.amount
+
+    def compute_amount(self):
+        #~ if self.course is None:
+            #~ return
+        if self.places is None:
+            return
+        # fee = self.course.fee or self.course.line.fee
+        # fee = self.get_invoiceable_product()
+        if self.fee is None:
+            return
+        # When `products` is not installed, then fee may be None
+        # because it is a DummyField.
+        price = getattr(self.fee, 'sales_price') or ZERO
+        self.amount = price * self.places
 
     def get_invoiceable_product(self):
         if not self.state.invoiceable:
             return
-        tariff = self.course.tariff or self.course.line.tariff
-        if not tariff:
+        fee = self.fee
+        # fee = self.course.fee or self.course.line.fee
+        if not fee:
             return
         invoiced_qty = ZERO
         for obj in self.get_invoicings():
             invoiced_qty += obj.qty
-        if not tariff.number_of_events:
+        if not fee.number_of_events:
             if invoiced_qty:
                 return
-            return tariff
+            return fee
         qs = self.course.events_by_course.filter(
             start_date__gte=self.start_date,
             state=rt.modules.cal.EventStates.took_place)
         if self.end_date:
             qs = qs.filter(end_date__lte=self.end_date)
         used_events = qs.count()
-        paid_events = invoiced_qty * tariff.number_of_events
+        paid_events = invoiced_qty * fee.number_of_events
         asset = paid_events - used_events
-        if asset < tariff.min_asset:
-            return tariff
+        if asset < fee.min_asset:
+            return fee
 
     def get_invoiceable_title(self):
         return self.course
@@ -231,8 +254,8 @@ class Enrolment(Enrolment, Invoiceable):
             obj=self, item=item)
 
 Enrolments.detail_layout = """
-    request_date user
-    course pupil
+    request_date user course
+    pupil places fee option
     remark amount workflow_buttons
     confirmation_details sales.InvoicingsByInvoiceable
     """
@@ -255,9 +278,8 @@ class EnrolmentsByPupil(EnrolmentsByPupil):
 
 
 class EnrolmentsByCourse(EnrolmentsByCourse):
-    column_names = 'request_date pupil_info option remark ' \
+    column_names = 'request_date pupil_info places fee option remark ' \
                    'amount:10 workflow_buttons *'
-
 
 
 class PupilDetail(MyPersonDetail):
@@ -328,7 +350,7 @@ class CourseDetail(CourseDetail):
     """, label=_("Events"))
 
     enrolments = dd.Panel("""
-    max_places enrolments_until tariff
+    max_places enrolments_until fee
     EnrolmentsByCourse:40
     """, label=_("Enrolments"))
 

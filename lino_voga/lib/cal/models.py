@@ -50,10 +50,10 @@ dd.inject_field('system.SiteConfig', 'pupil_guestrole',
 
 class Room(Room, ContactRelated):
 
-    tariff = dd.ForeignKey('products.Product',
-                           blank=True, null=True,
-                           verbose_name=_("Tariff"),
-                           related_name='rooms_by_tariff')
+    fee = dd.ForeignKey('products.Product',
+                        blank=True, null=True,
+                        verbose_name=_("Tariff"),
+                        related_name='rooms_by_fee')
 
     calendar = dd.ForeignKey(
         'cal.Calendar',
@@ -85,10 +85,10 @@ class Room(Room, ContactRelated):
 
 
 class Rooms(Rooms):
-    column_names = "name calendar tariff company company__city *"
+    column_names = "name calendar fee company company__city *"
     detail_layout = """
     id name calendar
-    tariff company contact_person contact_role
+    fee company contact_person contact_role
     cal.EventsByRoom
     """
 
@@ -100,7 +100,7 @@ class Event(Event):
 
     def get_invoiceable_product(self):
         if self.company and self.room:
-            return self.room.tariff
+            return self.room.fee
 
     def get_invoiceable_title(self):
         if self.company:

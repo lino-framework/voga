@@ -102,8 +102,8 @@ class Loader1(object):
         self.journeys_cat = ProductCat(**kw)
         yield self.journeys_cat
 
-        self.journey_tariff = Product(cat=self.journeys_cat, **kw)
-        yield self.journey_tariff
+        self.journey_fee = Product(cat=self.journeys_cat, **kw)
+        yield self.journey_fee
 
         rent = ProductCat(**dd.str2kw('name', _("Room renting")))
         # et="Ruumiüür", de="Raummiete", fr="Loyer"))
@@ -187,12 +187,12 @@ class Loader1(object):
         room = Instantiator('cal.Room').build
         kw = dict(company=eupen)
         kw.update(dd.str2kw('name', _("Mirrored room")))
-        kw.update(tariff=rent20)
+        kw.update(fee=rent20)
         self.spiegel = room(**kw)
         yield self.spiegel
 
         kw.update(dd.str2kw('name', _("Computer room")))
-        kw.update(tariff=rent10)
+        kw.update(fee=rent10)
         self.pc_eupen = room(**kw)
         yield self.pc_eupen
 
@@ -238,7 +238,7 @@ class Loader2(Loader1):
         yield super(Loader2, self).objects()
 
         topic = Instantiator('courses.Topic').build
-        line = Instantiator('courses.Line', 'topic event_type tariff').build
+        line = Instantiator('courses.Line', 'topic event_type fee').build
         course = Instantiator(
             'courses.Course', 'line room start_time end_time').build
         booking = Instantiator(
@@ -286,7 +286,7 @@ class Loader2(Loader1):
 
         self.journeys_topic = topic(**dd.str2kw('name', _("Journeys")))
         yield self.journeys_topic
-        europe = line(self.journeys_topic, None, self.journey_tariff,
+        europe = line(self.journeys_topic, None, self.journey_fee,
                       options_cat=journey_options,
                       fees_cat=self.journeys_cat,
                       **dd.str2kw('name', _("Europe")))
@@ -451,7 +451,7 @@ class Loader2(Loader1):
             kw.update(user=USERS.pop())
             kw.update(event_type=self.seminare)
             #~ kw.update(price=PRICES.pop())
-            #~ kw.update(tariff=PRICES.pop())
+            #~ kw.update(fee=PRICES.pop())
             #~ kw.update(calendar=self.kurse)
             kw.update(every=1)
             kw.update(company=EXTS.pop())
@@ -477,7 +477,7 @@ class Loader2(Loader1):
 
         PUPILS = Cycler(Pupil.objects.all())
         #~ print 20130712, Pupil.objects.all()
-        COURSES = Cycler(Course.objects.filter(line__tariff__isnull=False))
+        COURSES = Cycler(Course.objects.filter(line__fee__isnull=False))
         STATES = Cycler(EnrolmentStates.objects())
 
         for i in range(100):
