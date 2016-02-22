@@ -128,13 +128,36 @@ class CreateInvoicesForCourse(CreateInvoice):
 class Course(Course):
     """Extends the standard model by adding an action.
 
+    .. attribute:: fee
+
+        The default participation fee to apply for new enrolments.
+
+
     """
     class Meta(Course.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
 
+    fee = dd.ForeignKey('products.Product',
+                        blank=True, null=True,
+                        verbose_name=_("Default participation fee"),
+                        related_name='courses_by_fee')
+
     create_invoices = CreateInvoicesForCourse()
     """See :class:`CreateInvoicesForCourse`."""
+
+    @classmethod
+    def get_registrable_fields(cls, site):
+        for f in super(Course, cls).get_registrable_fields(site):
+            yield f
+        yield 'fee'
+
+    @dd.chooser()
+    def fee_choices(cls, line):
+        Product = rt.modules.products.Product
+        if not line or not line.fees_cat:
+            return Product.objects.none()
+        return Product.objects.filter(cat=line.fees_cat)
 
 
 class CreateInvoiceForEnrolment(CreateInvoice):
@@ -144,14 +167,26 @@ class CreateInvoiceForEnrolment(CreateInvoice):
 
 
 class Enrolment(Enrolment, Invoiceable):
-    """Adds"""
+    """Adds
+
+    .. attribute:: fee
+
+        The participation fee to apply for this enrolment.
+
+
+    .. attribute:: amount
+
+        The total amount to pay for this enrolment. This is
+        :attr:`places` * :attr:`fee`.
+
+    """
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Enrolment')
         verbose_name = _("Enrolment")
         verbose_name_plural = _("Enrolments")
 
-    amount = dd.PriceField(_("Participation fee"), blank=True, null=True)
+    amount = dd.PriceField(_("Amount"), blank=True, null=True)
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
@@ -198,6 +233,9 @@ class Enrolment(Enrolment, Invoiceable):
         super(Enrolment, self).full_clean(*args, **kwargs)
 
     def pupil_changed(self, ar):
+        self.compute_amount()
+
+    def places_changed(self, ar):
         self.compute_amount()
 
     def get_invoiceable_amount(self):
@@ -278,8 +316,8 @@ class EnrolmentsByPupil(EnrolmentsByPupil):
 
 
 class EnrolmentsByCourse(EnrolmentsByCourse):
-    column_names = 'request_date pupil_info places fee option remark ' \
-                   'amount:10 workflow_buttons *'
+    column_names = 'request_date pupil_info places ' \
+                   'fee option remark amount:10 workflow_buttons *'
 
 
 class PupilDetail(MyPersonDetail):
