@@ -111,8 +111,9 @@ class CourseDetail(CourseDetail):
     general = dd.Panel("""
     ref line teacher workflow_buttons
     room start_date end_date start_time end_time
-    # courses.EventsByCourse
+    name
     remark #OptionsByCourse
+    # courses.EventsByCourse
     """, label=_("General"))
 
 

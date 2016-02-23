@@ -200,21 +200,17 @@ class Enrolment(Enrolment, Invoiceable):
         return rt.modules.courses.Pupil.objects.all()
 
     @classmethod
-    def get_invoiceables_for_partner(cls, partner, max_date=None):
+    def get_invoiceables_for_partner(cls, partner, max_date):
         pupil = get_child(partner, rt.modules.courses.Pupil)
         # pupil = partner.get_mti_child('pupil')
-        # dd.logger.info('20160216 get_invoiceables_for_partner %s', partner.__class__)
         if pupil:  # isinstance(partner, rt.modules.courses.Pupil):
             q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=pupil)
             q2 = models.Q(pupil__invoice_recipient=partner)
-            return cls.objects.filter(models.Q(q1 | q2))
-            # ,invoice__isnull=True))
-
-    @classmethod
-    def unsued_get_partner_filter(cls, partner):
-        q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=partner)
-        q2 = models.Q(pupil__invoice_recipient=partner)
-        return models.Q(q1 | q2)  # , invoice__isnull=True)
+            qs = cls.objects.filter(models.Q(q1 | q2))
+            qs = qs.filter(**{cls.invoiceable_date_field + '__lte': max_date})
+            for obj in qs.order_by(cls.invoiceable_date_field):
+                # dd.logger.info('20160223 %s', obj)
+                yield obj
 
     @dd.chooser()
     def fee_choices(cls, course):
@@ -238,6 +234,9 @@ class Enrolment(Enrolment, Invoiceable):
     def places_changed(self, ar):
         self.compute_amount()
 
+    def fee_changed(self, ar):
+        self.compute_amount()
+
     def get_invoiceable_amount(self):
         return self.amount
 
@@ -246,8 +245,6 @@ class Enrolment(Enrolment, Invoiceable):
             #~ return
         if self.places is None:
             return
-        # fee = self.course.fee or self.course.line.fee
-        # fee = self.get_invoiceable_product()
         if self.fee is None:
             return
         # When `products` is not installed, then fee may be None
@@ -256,6 +253,9 @@ class Enrolment(Enrolment, Invoiceable):
         self.amount = price * self.places
 
     def get_invoiceable_product(self):
+        # dd.logger.info('20160223 %s', self.course)
+        if not self.course.state.invoiceable:
+            return
         if not self.state.invoiceable:
             return
         fee = self.fee
@@ -265,18 +265,18 @@ class Enrolment(Enrolment, Invoiceable):
         invoiced_qty = ZERO
         for obj in self.get_invoicings():
             invoiced_qty += obj.qty
-        if not fee.number_of_events:
-            if invoiced_qty:
-                return
-            return fee
-        qs = self.course.events_by_course.filter(
-            start_date__gte=self.start_date,
-            state=rt.modules.cal.EventStates.took_place)
-        if self.end_date:
-            qs = qs.filter(end_date__lte=self.end_date)
-        used_events = qs.count()
-        paid_events = invoiced_qty * fee.number_of_events
-        asset = paid_events - used_events
+        if fee.number_of_events:
+            qs = self.course.events_by_course.filter(
+                start_date__gte=self.start_date,
+                state=rt.modules.cal.EventStates.took_place)
+            if self.end_date:
+                qs = qs.filter(end_date__lte=self.end_date)
+            used_events = qs.count()
+            paid_events = invoiced_qty * fee.number_of_events
+            asset = paid_events - used_events
+        else:
+            asset = invoiced_qty
+        # dd.logger.info("20160223 %s %s %s", self, asset, fee.min_asset)
         if asset < fee.min_asset:
             return fee
 
@@ -388,7 +388,7 @@ class CourseDetail(CourseDetail):
     """, label=_("Events"))
 
     enrolments = dd.Panel("""
-    max_places enrolments_until fee
+    enrolments_until fee max_places:8 free_places
     EnrolmentsByCourse:40
     """, label=_("Enrolments"))
 

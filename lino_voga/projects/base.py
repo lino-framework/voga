@@ -89,7 +89,7 @@ class Site(Site):
 
     def get_admin_main_items(self, ar):
         yield self.modules.courses.DraftCourses
-        # yield self.modules.courses.ActiveCourses
+        yield self.modules.courses.ActiveCourses
 
     def setup_plugins(self):
         """

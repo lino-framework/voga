@@ -30,7 +30,7 @@ and a field :attr:`invoiceable` per invoice item.
 >>> rt.modules.contacts.Partner.create_invoice
 <CreateInvoiceForPartner create_invoice (u'Create invoice')>
 
->>> rt.show('sales.InvoicesToCreate')
+>>> rt.show('sales.InvoicesToCreate')  #doctest: +REPORT_UDIFF
 ===================== =========== ============================== ============ ========================
  First date            Last date   Partner                        Amount       Actions
 --------------------- ----------- ------------------------------ ------------ ------------------------

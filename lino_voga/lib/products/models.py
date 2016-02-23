@@ -52,7 +52,7 @@ class Product(Product):
 
     .. attribute:: min_asset
 
-        Minimum number of events to pay in advance.
+        Minimum quantity required to trigger an invoice.
 
     """
 
@@ -67,5 +67,5 @@ class Product(Product):
         help_text=_("Number of calendar events paid per invoicing."))
 
     min_asset = models.IntegerField(
-        _("Invoice threshold"), null=True, blank=True,
-        help_text=_("Minimum number of events to pay in advance."))
+        _("Invoice threshold"), blank=True, default=1,
+        help_text=_("Minimum quantity to pay in advance."))
