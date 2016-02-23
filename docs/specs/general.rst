@@ -101,7 +101,7 @@ The demo database
  sales.InvoicingMode        sales.InvoicingModes           6         0
  sales.VatProductInvoice    sales.Invoices                 25        40
  sepa.Account               sepa.Accounts                  6         17
- system.SiteConfig          system.SiteConfigs             17        1
+ system.SiteConfig          system.SiteConfigs             18        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            6         0
  users.Authority            users.Authorities              3         0
@@ -131,7 +131,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
 - Sales : Invoices to create
-- Courses : Participants, Instructors, -, Topics, Course series, Courses, -, Pending requested enrolments, Pending confirmed enrolments
+- Courses : Participants, Instructors, -, Topics, Course series, Draft courses, Active courses, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
   - System : Broken GFKs

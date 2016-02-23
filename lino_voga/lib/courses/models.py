@@ -180,6 +180,9 @@ class Enrolment(Enrolment, Invoiceable):
         :attr:`places` * :attr:`fee`.
 
     """
+
+    invoiceable_date_field = 'request_date'
+
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Enrolment')
@@ -450,7 +453,6 @@ if False:
                 for obj in Room.objects.filter(company__isnull=False)])
             # logger.info("20140822 city_choices %s", places)
             return Place.objects.filter(id__in=places)
-
 
     class SuggestedCoursesByPupil(SuggestedCoursesByPupil):
         params_layout = 'topic line city teacher active'
