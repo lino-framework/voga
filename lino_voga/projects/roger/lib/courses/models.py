@@ -111,8 +111,9 @@ class CourseDetail(CourseDetail):
     general = dd.Panel("""
     ref line teacher workflow_buttons
     room start_date end_date start_time end_time
-    # courses.EventsByCourse
+    name
     remark #OptionsByCourse
+    # courses.EventsByCourse
     """, label=_("General"))
 
 
@@ -136,16 +137,17 @@ class Enrolment(Enrolment, DatePeriod):
     #     return self.state in GUEST_ENROLMENT_STATES
 
 Enrolments.detail_layout = """
-request_date start_date end_date user
-course pupil
-remark amount workflow_buttons printed
+id course pupil request_date user
+start_date end_date places fee option amount
+remark workflow_buttons printed
 confirmation_details sales.InvoicingsByInvoiceable
 """
 
 
 EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
-                                 'places fee amount workflow_buttons *'
+                                 'places remark amount workflow_buttons *'
 
 EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
-                                  'option remark amount workflow_buttons *'
+                                  'places remark fee option amount ' \
+                                  'workflow_buttons *'
 

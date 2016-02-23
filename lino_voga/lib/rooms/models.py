@@ -39,16 +39,14 @@ class Booking(Booking, Invoiceable):
     create_invoice = sales.CreateInvoice()
 
     @classmethod
-    def get_invoiceables_for_partner(cls, partner, max_date=None):
+    def get_invoiceables_for_partner(cls, partner, max_date):
         # company = partner.get_mti_child(rt.modules.contacts.Company)
         company = get_child(partner, rt.modules.contacts.Company)
         if company:
-            return cls.objects.filter(company=company)  #, invoice__isnull=True)
-
-    @classmethod
-    def unused_get_partner_filter(cls, partner):
-        q = models.Q(company=partner, invoice__isnull=True)
-        return q
+            qs = cls.objects.filter(company=company)
+            qs = qs.filter(**{cls.invoiceable_date_field + '__lte': max_date})
+            for obj in qs.order_by(cls.invoiceable_date_field):
+                yield obj
 
     def get_invoiceable_product(self):
         if self.company and self.room:

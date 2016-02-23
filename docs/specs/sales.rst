@@ -30,7 +30,7 @@ and a field :attr:`invoiceable` per invoice item.
 >>> rt.modules.contacts.Partner.create_invoice
 <CreateInvoiceForPartner create_invoice (u'Create invoice')>
 
->>> rt.show('sales.InvoicesToCreate')
+>>> rt.show('sales.InvoicesToCreate')  #doctest: +REPORT_UDIFF
 ===================== =========== ============================== ============ ========================
  First date            Last date   Partner                        Amount       Actions
 --------------------- ----------- ------------------------------ ------------ ------------------------
@@ -39,7 +39,6 @@ and a field :attr:`invoiceable` per invoice item.
  10/2/13               10/2/13     Radermacher Christian          50,00        **Invoices to create**
  10/5/13               10/5/13     Meier Marie-Louise             50,00        **Invoices to create**
  10/8/13               10/8/13     Kaivers Karl                   20,00        **Invoices to create**
- 10/11/13              10/11/13    Hilgers Hildegard              50,00        **Invoices to create**
  10/26/13              10/26/13    Lahm Lisa                      80,00        **Invoices to create**
  10/29/13              10/29/13    Dupont Jean                    50,00        **Invoices to create**
  11/1/13               11/1/13     di Rupo Didier                 50,00        **Invoices to create**
@@ -47,16 +46,14 @@ and a field :attr:`invoiceable` per invoice item.
  11/7/13               11/7/13     Radermacher Alfons             50,00        **Invoices to create**
  11/10/13              11/10/13    Leffin Josefine                20,00        **Invoices to create**
  11/13/13              11/13/13    Jonas Josef                    80,00        **Invoices to create**
- 11/16/13              11/16/13    Groteclaes Gregory             50,00        **Invoices to create**
  11/28/13              11/28/13    Jeanémart Jérôme               20,00        **Invoices to create**
  12/1/13               12/1/13     Vandenmeulenbos Marie-Louise   50,00        **Invoices to create**
  12/4/13               12/4/13     Ärgerlich Erna                 20,00        **Invoices to create**
- 12/7/13               12/7/13     Radermacher Jean                            **Invoices to create**
  12/10/13              12/10/13    Radermacher Edgard             50,00        **Invoices to create**
  12/13/13              12/13/13    Emonts-Gast Erna               20,00        **Invoices to create**
  12/16/13              12/16/13    Laschet Laura                  50,00        **Invoices to create**
  12/19/13              12/19/13    Jacobs Jacqueline              50,00        **Invoices to create**
- **Total (22 rows)**                                              **960,00**
+ **Total (19 rows)**                                              **860,00**
 ===================== =========== ============================== ============ ========================
 <BLANKLINE>
 
