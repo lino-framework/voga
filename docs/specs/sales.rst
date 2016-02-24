@@ -11,7 +11,8 @@ Sales
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
-    >>> from lino.api.doctest import *
+    >>> from lino.api.shell import *
+    >>> #from lino.api.doctest import *
     
 
 How Lino Voga generates invoices
@@ -87,15 +88,36 @@ third-party organisation. This is called a :class:`Booking
 >>> rt.models_by_base(rt.modules.sales.Invoiceable)
 [<class 'lino_voga.projects.roger.lib.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
 
+Invoicings
+==========
 
-Subscription courses are courses for which the customer pays a given
-number of events.
+The detail window of an enrolment shows all invoicings of that
+enrolment:
 
-An important new challenge appeared when I was in Belgium: they
-recently started to have a new invoicing method which they name
-"Abo-Kurse" ("Subscription courses"). :ticket:`766` is to implement a
-first proof of concept. A subscription course does not end and start
-at a given date, the course itself is continously being
-given. Participants can start on any time of the year. They usually
-pay for 12 sessions in advance (the first invoice for that enrolment),
-and Lino must write a new invoice every 12 weeks.
+>>> obj = courses.Enrolment.objects.get(pk=83)
+>>> rt.show('sales.InvoicingsByInvoiceable', obj)  #doctest: +REPORT_UDIFF
++--------------------+----------+-----------------------------+-------------------------+------------+-----------------+
+| Invoice            | Quantity | Heading                     | Description             | Unit price | Total incl. VAT |
++====================+==========+=============================+=========================+============+=================+
+| SLS#68             | 1        | WWW (1/11/14 Computer room) | Ihre Einschreibung 50€. |            | 50,00           |
+|                    |          |                             | Angefragt 10/11/13.     |            |                 |
++--------------------+----------+-----------------------------+-------------------------+------------+-----------------+
+| **Total (1 rows)** | **1**    |                             |                         |            | **50,00**       |
++--------------------+----------+-----------------------------+-------------------------+------------+-----------------+
+<BLANKLINE>
+
+
+Subscription courses
+====================
+
+Subscription courses are courses for which the customer pays *a given
+number of events*, not simply all events of that course. This means
+that the presences for these courses must have been entered.
+
+A subscription course does not end and start at a given date, the
+course itself is continously being given. Participants can start on
+any time of the year. They usually pay for 12 sessions in advance (the
+first invoice for that enrolment), and Lino must write a new invoice
+every 12 weeks.
+
+
