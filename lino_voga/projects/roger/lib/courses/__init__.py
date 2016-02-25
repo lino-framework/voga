@@ -29,4 +29,5 @@ from lino_voga.lib.courses import Plugin
 
 
 class Plugin(Plugin):
-    extends_models = ['Pupil', 'Course', 'Enrolment']
+    # extends_models = ['Pupil', 'Course', 'Enrolment']
+    extends_models = ['Pupil', 'Course', 'Enrolment', 'Line']

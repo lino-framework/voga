@@ -499,17 +499,16 @@ class Loader2(Loader1):
                     raise Exception("update_reminders on %s returned %s" %
                                     (obj, rc))
 
-        n = 0
-        for p in Partner.objects.all():
-            if n > 10:
-                break
-            try:
-                rc = ses.run(p.create_invoice)
-                #~ print 20130802, rc
-                if rc.get('success', True):
-                    n += 1
-            except Warning:
-                pass
+        # n = 0
+        # for p in Partner.objects.all():
+        #     if n > 10:
+        #         break
+        #     try:
+        #         rc = ses.run(p.create_invoice)
+        #         if rc.get('success', True):
+        #             n += 1
+        #     except Warning:
+        #         pass
 
 
 objects = Loader2().objects
