@@ -29,8 +29,9 @@ from lino.api import dd, rt
 from lino.utils import mti
 
 from lino_cosi.lib.courses.models import *
-from lino_cosi.lib.auto.sales.mixins import Invoiceable
-from lino_cosi.lib.auto.sales.models import CreateInvoice
+from lino_cosi.lib.invoicing.mixins import Invoiceable
+# from lino_cosi.lib.auto.sales.mixins import Invoiceable
+# from lino_cosi.lib.auto.sales.models import CreateInvoice
 
 from lino_voga.lib.contacts.models import Person
 from lino_voga.lib.contacts.models import MyPersonDetail
@@ -115,14 +116,40 @@ class Pupil(Person):
         return s
 
 
-class CreateInvoicesForCourse(CreateInvoice):
+# class CreateInvoicesForCourse(CreateInvoice):
+#     """
+#     Create invoices for all participants of this course.
+#     """
+#     def get_partners(self, ar):
+#         course = ar.selected_rows[0]
+#         return [obj.pupil for obj in course.enrolment_set.filter(
+#             state=EnrolmentStates.confirmed)]
+
+
+class CourseType(mixins.Referrable, mixins.BabelNamed):
+
+    class Meta:
+        app_label = 'courses'
+        abstract = dd.is_abstract_model(__name__, 'CourseType')
+        verbose_name = _("Course type")
+        verbose_name_plural = _('Course types')
+
+
+class CourseTypes(dd.Table):
+    model = 'courses.CourseType'
+    detail_layout = """
+    id name
+    courses.LinesByType
     """
-    Create invoices for all participants of this course.
-    """
-    def get_partners(self, ar):
-        course = ar.selected_rows[0]
-        return [obj.pupil for obj in course.enrolment_set.filter(
-            state=EnrolmentStates.confirmed)]
+
+
+class Line(Line):
+
+    class Meta(Line.Meta):
+        app_label = 'courses'
+        abstract = dd.is_abstract_model(__name__, 'Line')
+
+    course_type = dd.ForeignKey('courses.CourseType', blank=True, null=True)
 
 
 class Course(Course):
@@ -143,9 +170,6 @@ class Course(Course):
                         verbose_name=_("Default participation fee"),
                         related_name='courses_by_fee')
 
-    create_invoices = CreateInvoicesForCourse()
-    """See :class:`CreateInvoicesForCourse`."""
-
     @classmethod
     def get_registrable_fields(cls, site):
         for f in super(Course, cls).get_registrable_fields(site):
@@ -160,10 +184,10 @@ class Course(Course):
         return Product.objects.filter(cat=line.fees_cat)
 
 
-class CreateInvoiceForEnrolment(CreateInvoice):
+# class CreateInvoiceForEnrolment(CreateInvoice):
 
-    def get_partners(self, ar):
-        return [o.pupil for o in ar.selected_rows]
+#     def get_partners(self, ar):
+#         return [o.pupil for o in ar.selected_rows]
 
 
 class Enrolment(Enrolment, Invoiceable):
@@ -196,24 +220,36 @@ class Enrolment(Enrolment, Invoiceable):
                         verbose_name=_("Participation fee"),
                         related_name='enrolments_by_fee')
 
-    create_invoice = CreateInvoiceForEnrolment()
+    # create_invoice = CreateInvoiceForEnrolment()
+
+    def get_invoiceable_partner(self):
+        return self.pupil
+
+    # @classmethod
+    # def get_invoiceable_partners(cls):
+    #     return rt.modules.courses.Pupil.objects.all()
 
     @classmethod
-    def get_invoiceable_partners(cls):
-        return rt.modules.courses.Pupil.objects.all()
+    def get_invoiceables_for_plan(cls, plan, partner=None):
 
-    @classmethod
-    def get_invoiceables_for_partner(cls, partner, max_date):
-        pupil = get_child(partner, rt.modules.courses.Pupil)
-        # pupil = partner.get_mti_child('pupil')
-        if pupil:  # isinstance(partner, rt.modules.courses.Pupil):
-            q1 = models.Q(pupil__invoice_recipient__isnull=True, pupil=pupil)
-            q2 = models.Q(pupil__invoice_recipient=partner)
-            qs = cls.objects.filter(models.Q(q1 | q2))
-            qs = qs.filter(**{cls.invoiceable_date_field + '__lte': max_date})
-            for obj in qs.order_by(cls.invoiceable_date_field):
-                # dd.logger.info('20160223 %s', obj)
-                yield obj
+        qs = cls.objects.filter(**{
+            cls.invoiceable_date_field + '__lte': plan.max_date})
+        qs = qs.filter(course__state=EnrolmentStates.confirmed)
+        if partner is None:
+            partner = plan.partner
+        if partner:
+            pupil = get_child(partner, rt.modules.courses.Pupil)
+            # pupil = partner.get_mti_child('pupil')
+            if pupil:  # isinstance(partner, rt.modules.courses.Pupil):
+                q1 = models.Q(
+                    pupil__invoice_recipient__isnull=True, pupil=pupil)
+                q2 = models.Q(pupil__invoice_recipient=partner)
+                qs = cls.objects.filter(models.Q(q1 | q2))
+            else:
+                return
+        for obj in qs.order_by(cls.invoiceable_date_field):
+            # dd.logger.info('20160223 %s', obj)
+            yield obj
 
     @dd.chooser()
     def fee_choices(cls, course):
@@ -298,7 +334,7 @@ Enrolments.detail_layout = """
     request_date user course
     pupil places fee option
     remark amount workflow_buttons
-    confirmation_details sales.InvoicingsByInvoiceable
+    confirmation_details invoicing.InvoicingsByInvoiceable
     """
 
 
@@ -398,7 +434,7 @@ class CourseDetail(CourseDetail):
     more = dd.Panel("""
     # company contact_person
     user id events_text
-    sales.InvoicingsByInvoiceable
+    invoicing.InvoicingsByInvoiceable
     """, label=_("More"))
 
 
@@ -488,6 +524,10 @@ class CoursesByLine(CoursesByLine):
         kw.update(state=CourseStates.registered)
         kw.update(active=dd.YesNo.yes)
         return kw
+
+
+class LinesByType(Lines):
+    master_key = 'course_type'
 
 
 # class ActiveCourses(ActiveCourses):

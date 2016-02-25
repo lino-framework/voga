@@ -84,6 +84,16 @@ class PupilDetail(PupilDetail):
 Pupils.detail_layout = PupilDetail()
 
 
+class Line(Line):
+    # this is here just because is_abstract_model does not yet work as
+    # expected: if you subclass a plugin which extends a given model
+    # then you must also extend all models in your plugin.
+
+    class Meta(Line.Meta):
+        app_label = 'courses'
+        abstract = dd.is_abstract_model(__name__, 'Line')
+
+
 class Course(Referrable, Course):
     """Adds a :attr:`ref` field.
     """
@@ -140,7 +150,7 @@ Enrolments.detail_layout = """
 id course pupil request_date user
 start_date end_date places fee option amount
 remark workflow_buttons printed
-confirmation_details sales.InvoicingsByInvoiceable
+confirmation_details invoicing.InvoicingsByInvoiceable
 """
 
 

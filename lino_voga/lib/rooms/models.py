@@ -26,9 +26,9 @@ from __future__ import unicode_literals
 from lino.utils.mti import get_child
 from lino_xl.lib.rooms.models import *
 from lino.api import rt
-from lino_cosi.lib.auto.sales.mixins import Invoiceable
+from lino_cosi.lib.invoicing.mixins import Invoiceable
 
-sales = dd.resolve_app('sales')
+# sales = dd.resolve_app('sales')
 
 
 class Booking(Booking, Invoiceable):
@@ -36,17 +36,20 @@ class Booking(Booking, Invoiceable):
     invoiceable_date_field = 'start_date'
     #~ invoiceable_partner_field = 'company'
 
-    create_invoice = sales.CreateInvoice()
+    # create_invoice = sales.CreateInvoice()
 
     @classmethod
-    def get_invoiceables_for_partner(cls, partner, max_date):
-        # company = partner.get_mti_child(rt.modules.contacts.Company)
-        company = get_child(partner, rt.modules.contacts.Company)
-        if company:
-            qs = cls.objects.filter(company=company)
-            qs = qs.filter(**{cls.invoiceable_date_field + '__lte': max_date})
-            for obj in qs.order_by(cls.invoiceable_date_field):
-                yield obj
+    def get_invoiceables_for_plan(cls, plan, partner=None):
+        qs = cls.objects.filter(**{
+            cls.invoiceable_date_field + '__lte': plan.max_date})
+        if partner:
+            company = get_child(partner, rt.modules.contacts.Company)
+            if company:
+                qs = qs.filter(company=company)
+            else:
+                return
+        for obj in qs.order_by(cls.invoiceable_date_field):
+            yield obj
 
     def get_invoiceable_product(self):
         if self.company and self.room:

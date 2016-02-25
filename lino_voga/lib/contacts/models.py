@@ -51,7 +51,7 @@ class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
     """, label=_("More"))
 
     ledger = dd.Panel("""
-    sales.InvoiceablesByPartner
+    # sales.InvoiceablesByPartner
     # ledger.InvoicesByPartner
     ledger.MovementsByPartner
     """, label=dd.plugins.ledger.verbose_name)
