@@ -152,6 +152,16 @@ class Line(Line):
     course_type = dd.ForeignKey('courses.CourseType', blank=True, null=True)
 
 
+Lines.detail_layout = """
+    id name ref
+    #course_area topic fees_cat fee options_cat body_template
+    course_type event_type guest_role every_unit every
+    description
+    excerpt_title
+    courses.CoursesByLine
+    """
+
+
 class Course(Course):
     """Extends the standard model by adding an action.
 

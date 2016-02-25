@@ -54,6 +54,7 @@ class Plugin(Plugin):
 
     def setup_config_menu(self, site, profile, m):
         m = m.add_menu(self.app_label, self.verbose_name)
+        m.add_action('courses.CourseTypes')
         m.add_action('courses.TeacherTypes')
         m.add_action('courses.PupilTypes')
         m.add_action('courses.Slots')
