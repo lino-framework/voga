@@ -15,14 +15,16 @@ lino_voga.lib.courses.models
    
       Course
       CourseDetail
+      CourseType
+      CourseTypes
       CoursesByLine
       CoursesByTopic
-      CreateInvoiceForEnrolment
-      CreateInvoicesForCourse
       Enrolment
       EnrolmentsByCourse
       EnrolmentsByOption
       EnrolmentsByPupil
+      Line
+      LinesByType
       PendingRequestedEnrolments
       Pupil
       PupilDetail

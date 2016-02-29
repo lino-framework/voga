@@ -19,73 +19,79 @@ How Lino Voga generates invoices
 ================================
 
 The general functionality for automatically generating invoices is in
-:mod:`lino_cosi.lib.auto.sales` which extends
-:mod:`lino_cosi.lib.sales`.
+:mod:`lino_cosi.lib.invoicing`.
 
-On the user-visible level it adds a :class:`CreateInvoice
-<lino_cosi.lib.auto.sales.models.CreateInvoice>` action per partner, a
-table :class:`InvoicesToCreate
-<lino_cosi.lib.auto.sales.models.InvoicesToCreate>` to the main menu,
-and a field :attr:`invoiceable` per invoice item.
+On the user-visible level this plugin adds an action of type
+:class:`StartInvoicingBase
+<lino_cosi.lib.invoicing.actions.StartInvoicingBase>` (with a basket
+as icon, referring to a shopping basket) to every *partner* and to
+every *invoices journal*.
 
->>> rt.modules.contacts.Partner.create_invoice
-<CreateInvoiceForPartner create_invoice (u'Create invoice')>
+>>> rt.modules.contacts.Partner.start_invoicing
+<StartInvoicingForPartner start_invoicing (u'Create invoices')>
+>>> print(rt.modules.contacts.Partner.start_invoicing.icon_name)
+basket
 
->>> rt.show('sales.InvoicesToCreate')  #doctest: +REPORT_UDIFF
-===================== =========== ============================== ============ ========================
- First date            Last date   Partner                        Amount       Actions
---------------------- ----------- ------------------------------ ------------ ------------------------
- 9/26/13               9/26/13     Östges Otto                    50,00        **Invoices to create**
- 9/29/13               9/29/13     Radermacher Hedi               20,00        **Invoices to create**
- 10/2/13               10/2/13     Radermacher Christian          50,00        **Invoices to create**
- 10/5/13               10/5/13     Meier Marie-Louise             50,00        **Invoices to create**
- 10/8/13               10/8/13     Kaivers Karl                   20,00        **Invoices to create**
- 10/26/13              10/26/13    Lahm Lisa                      80,00        **Invoices to create**
- 10/29/13              10/29/13    Dupont Jean                    50,00        **Invoices to create**
- 11/1/13               11/1/13     di Rupo Didier                 50,00        **Invoices to create**
- 11/4/13               11/4/13     Radermacher Guido              80,00        **Invoices to create**
- 11/7/13               11/7/13     Radermacher Alfons             50,00        **Invoices to create**
- 11/10/13              11/10/13    Leffin Josefine                20,00        **Invoices to create**
- 11/13/13              11/13/13    Jonas Josef                    80,00        **Invoices to create**
- 11/28/13              11/28/13    Jeanémart Jérôme               20,00        **Invoices to create**
- 12/1/13               12/1/13     Vandenmeulenbos Marie-Louise   50,00        **Invoices to create**
- 12/4/13               12/4/13     Ärgerlich Erna                 20,00        **Invoices to create**
- 12/10/13              12/10/13    Radermacher Edgard             50,00        **Invoices to create**
- 12/13/13              12/13/13    Emonts-Gast Erna               20,00        **Invoices to create**
- 12/16/13              12/16/13    Laschet Laura                  50,00        **Invoices to create**
- 12/19/13              12/19/13    Jacobs Jacqueline              50,00        **Invoices to create**
- **Total (19 rows)**                                              **860,00**
-===================== =========== ============================== ============ ========================
+The demo database contains exactly one plan:
+
+>>> obj = rt.modules.invoicing.Plan.objects.all()[0]
+
+>>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
+========== ============================== ======== ============== =========
+ Selected   Partner                        Number   Amount         Invoice
+---------- ------------------------------ -------- -------------- ---------
+ Yes        Östges Otto                    1        50,00          SLS#58
+ Yes        Radermacher Hedi               1        20,00          SLS#59
+ Yes        Radermacher Christian          1        50,00          SLS#60
+ Yes        Meier Marie-Louise             1        50,00          SLS#61
+ Yes        Kaivers Karl                   1        20,00          SLS#62
+ Yes        Hilgers Hildegard              1        50,00          SLS#63
+ Yes        Engels Edgar                   1        20,00          SLS#64
+ Yes        Charlier Ulrike                1        80,00          SLS#65
+ Yes        Arens Annette                  1        20,00          SLS#66
+ Yes        Lahm Lisa                      1        80,00
+ Yes        Dupont Jean                    1        50,00
+ Yes        di Rupo Didier                 1        50,00
+ Yes        Radermacher Guido              1        80,00
+ Yes        Radermacher Alfons             1        50,00
+ Yes        Leffin Josefine                1        20,00
+ Yes        Jonas Josef                    1        80,00
+ Yes        Groteclaes Gregory             1        50,00
+ Yes        Emonts Daniel                  1        80,00
+ Yes        Demeulenaere Dorothée          1        50,00
+ Yes        Bastiaensen Laurent            1        50,00
+ Yes        Jeanémart Jérôme               1        20,00
+ Yes        Vandenmeulenbos Marie-Louise   1        50,00
+ Yes        Ärgerlich Erna                 1        20,00
+ Yes        Radermacher Edgard             1        50,00
+ Yes        Emonts-Gast Erna               1        20,00
+ Yes        Laschet Laura                  1        50,00
+ Yes        Jacobs Jacqueline              1        50,00
+ Yes        Faymonville Luc                1        20,00
+ Yes        Evers Eberhart                 1        50,00
+ Yes        Dericum Daniel                 1        20,00
+ **30**                                    **30**   **1 350,00**
+========== ============================== ======== ============== =========
 <BLANKLINE>
 
-
 On the API level it defines the :class:`Invoiceable
-<lino_cosi.lib.auto.sales.mixins.Invoiceable>` mixin.
-
-It also defines two utility functions :func:`get_invoiceables_for
-<lino_cosi.lib.auto.sales.models.get_invoiceables_for>` and
-:func:`create_invoice_for
-<lino_cosi.lib.auto.sales.models.create_invoice_for>`.
-
->>> alf = rt.modules.courses.Pupil.objects.get(pk=152)
->>> alf
-Pupil #152 (u'Alfons Radermacher')
-
->>> for inv in rt.modules.sales.get_invoiceables_for(alf):
-...     print(inv)
-WWW (1/11/14 Computer room) / Alfons Radermacher
-
+<lino_cosi.lib.invoicing.mixins.Invoiceable>` mixin.
 
 Lino Voga uses this functionality by extending :class:`Enrolment
 <lino_cosi.lib.courses.models.Enrolment>` so that it inherits from
-:class:`Invoiceable <lino_cosi.lib.auto.sales.mixins.Invoiceable>`. In
+:class:`Invoiceable <lino_cosi.lib.invoicing.mixins.Invoiceable>`. In
 Lino Voga, enrolments are the things for which they write invoices.
 
 Another invoiceable thing in Lino Voga is when they rent a room to a
 third-party organisation. This is called a :class:`Booking
 <lino_voga.lib.rooms.models.Booking>`.
 
->>> rt.models_by_base(rt.modules.sales.Invoiceable)
+IOW, in Lino Voga both :class:`Enrolment
+<lino_cosi.lib.courses.models.Enrolment>` and :class:`Booking
+<lino_voga.lib.rooms.models.Booking>` are :class:`Invoiceable
+<lino_cosi.lib.invoicing.mixins.Invoiceable>`:
+
+>>> rt.models_by_base(rt.modules.invoicing.Invoiceable)
 [<class 'lino_voga.projects.roger.lib.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
 
 Invoicings
@@ -95,11 +101,11 @@ The detail window of an enrolment shows all invoicings of that
 enrolment:
 
 >>> obj = courses.Enrolment.objects.get(pk=83)
->>> rt.show('sales.InvoicingsByInvoiceable', obj)  #doctest: +REPORT_UDIFF
+>>> rt.show('invoicing.InvoicingsByInvoiceable', obj)  #doctest: +REPORT_UDIFF
 +--------------------+----------+-----------------------------+-------------------------+------------+-----------------+
 | Invoice            | Quantity | Heading                     | Description             | Unit price | Total incl. VAT |
 +====================+==========+=============================+=========================+============+=================+
-| SLS#68             | 1        | WWW (1/11/14 Computer room) | Ihre Einschreibung 50€. |            | 50,00           |
+| SLS#63             | 1        | WWW (1/11/14 Computer room) | Ihre Einschreibung 50€. |            | 50,00           |
 |                    |          |                             | Angefragt 10/11/13.     |            |                 |
 +--------------------+----------+-----------------------------+-------------------------+------------+-----------------+
 | **Total (1 rows)** | **1**    |                             |                         |            | **50,00**       |
