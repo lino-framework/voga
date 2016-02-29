@@ -35,8 +35,8 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-36 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, products, rooms, cosi, accounts, ledger, vat, sales, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
-69 models:
+37 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
+72 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -59,12 +59,13 @@ The demo database
  contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   gfks.ContentTypes              3         70
+ contenttypes.ContentType   gfks.ContentTypes              3         73
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
+ courses.CourseType         courses.CourseTypes            3         0
  courses.Enrolment          courses.Enrolments             14        100
- courses.Line               courses.Lines                  15        10
+ courses.Line               courses.Lines                  16        10
  courses.Pupil              courses.Pupils                 39        35
  courses.PupilType          courses.PupilTypes             3         4
  courses.Slot               courses.Slots                  5         0
@@ -80,11 +81,14 @@ The demo database
  finan.PaymentOrder         finan.PaymentOrders            12        0
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
  gfks.HelpText              gfks.HelpTexts                 4         2
+ invoicing.Item             invoicing.Items                9         30
+ invoicing.Plan             invoicing.Plans                6         1
+ ledger.AccountingPeriod    ledger.AccountingPeriods       6         6
  ledger.Journal             ledger.Journals                14        6
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
- ledger.Voucher             ledger.Vouchers                9         70
+ ledger.Voucher             ledger.Vouchers                9         68
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -97,9 +101,8 @@ The demo database
  products.Product           products.Products              10        9
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        68
- sales.InvoicingMode        sales.InvoicingModes           6         0
- sales.VatProductInvoice    sales.Invoices                 25        40
+ sales.InvoiceItem          sales.InvoiceItems             15        66
+ sales.VatProductInvoice    sales.Invoices                 25        38
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             18        1
  uploads.Upload             uploads.Uploads                9         0
@@ -130,7 +133,6 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
-- Sales : Invoices to create
 - Courses : Participants, Instructors, -, Topics, Course series, Draft courses, Active courses, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
@@ -142,9 +144,9 @@ Rolf is the local system administrator, he has a complete menu:
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Priorities, Recurrent event rules, Guest Roles, Calendar Event Types, Remote Calendars
   - Tariffs : Tariffs, Tariff Categories
-  - Accounting : Account Groups, Accounts, Journals, Payment Terms
+  - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment Terms
   - VAT : VAT rules
-  - Courses : Instructor Types, Participant Types, Timetable Slots
+  - Courses : Course types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
   - System : content types, Authorities, User Profiles
@@ -152,7 +154,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
   - VAT : VAT regimes, VAT Classes
-  - Sales : Voucher items
+  - Sales : invoice items
   - Courses : Courses, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts

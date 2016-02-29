@@ -17,3 +17,4 @@ docs/api/lino_faggio.*
 .build
 .DS_Store
 .idea
+.coverage
