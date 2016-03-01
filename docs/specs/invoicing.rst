@@ -1,7 +1,8 @@
+.. _voga.specs.invoicing:
 .. _voga.specs.sales:
 
-Sales
-=====
+How Lino Voga generates invoices
+================================
 
 .. to test only this doc:
 
@@ -15,11 +16,8 @@ Sales
     >>> #from lino.api.doctest import *
     
 
-How Lino Voga generates invoices
-================================
-
-The general functionality for automatically generating invoices is in
-:mod:`lino_cosi.lib.invoicing`.
+The general functionality for automatically generating invoices is
+defined in :mod:`lino_cosi.lib.invoicing`.
 
 On the user-visible level this plugin adds an action of type
 :class:`StartInvoicingBase
