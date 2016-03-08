@@ -18,5 +18,5 @@ specifications. One of their goal is to get tested.
    courses
    cal
    holidays
-   sales
+   invoicing
 

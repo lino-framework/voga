@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lino_voga 0.0.4\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-02-23 03:46+0200\n"
+"POT-Creation-Date: 2016-03-08 14:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,18 +30,18 @@ msgid "Calendar where events in this room are published."
 msgstr ""
 
 #: lino_voga/lib/cal/models.py:166 lino_voga/lib/contacts/models.py:45
-#: lino_voga/lib/contacts/models.py:117 lino_voga/lib/courses/models.py:381
-#: lino_voga/projects/roger/lib/courses/models.py:116
+#: lino_voga/lib/contacts/models.py:117 lino_voga/lib/courses/models.py:430
+#: lino_voga/projects/roger/lib/courses/models.py:127
 msgid "General"
 msgstr ""
 
 #: lino_voga/lib/cal/models.py:171 lino_voga/lib/contacts/models.py:51
 #: lino_voga/lib/contacts/models.py:88 lino_voga/lib/contacts/models.py:123
-#: lino_voga/lib/courses/models.py:399
+#: lino_voga/lib/courses/models.py:448
 msgid "More"
 msgstr ""
 
-#: lino_voga/lib/cal/fixtures/std.py:30 lino_voga/lib/courses/models.py:102
+#: lino_voga/lib/cal/fixtures/std.py:30 lino_voga/lib/courses/models.py:103
 #: lino_voga/projects/roger/lib/courses/models.py:55
 msgid "Participant"
 msgstr ""
@@ -54,62 +54,70 @@ msgstr ""
 msgid "Teacher"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:49
+#: lino_voga/lib/courses/models.py:50
 msgid "Instructor Type"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:50
+#: lino_voga/lib/courses/models.py:51
 msgid "Instructor Types"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:66
+#: lino_voga/lib/courses/models.py:67
 msgid "Instructor"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:67
+#: lino_voga/lib/courses/models.py:68
 msgid "Instructors"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:85
+#: lino_voga/lib/courses/models.py:86
 msgid "Participant Type"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:86
+#: lino_voga/lib/courses/models.py:87
 msgid "Participant Types"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:103
+#: lino_voga/lib/courses/models.py:104
 #: lino_voga/projects/roger/lib/courses/models.py:56
 msgid "Participants"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:143
+#: lino_voga/lib/courses/models.py:134
+msgid "Course type"
+msgstr ""
+
+#: lino_voga/lib/courses/models.py:135
+msgid "Course types"
+msgstr ""
+
+#: lino_voga/lib/courses/models.py:180
 msgid "Default participation fee"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:186
-#: lino_voga/projects/roger/lib/courses/models.py:132
+#: lino_voga/lib/courses/models.py:223
+#: lino_voga/projects/roger/lib/courses/models.py:143
 msgid "Enrolment"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:187 lino_voga/lib/courses/models.py:393
-#: lino_voga/projects/roger/lib/courses/models.py:133
+#: lino_voga/lib/courses/models.py:224 lino_voga/lib/courses/models.py:442
+#: lino_voga/projects/roger/lib/courses/models.py:144
 msgid "Enrolments"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:189
+#: lino_voga/lib/courses/models.py:226
 msgid "Amount"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:193
+#: lino_voga/lib/courses/models.py:230
 msgid "Participation fee"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:388
+#: lino_voga/lib/courses/models.py:437
 msgid "Events"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:442
+#: lino_voga/lib/courses/models.py:491
 #, python-format
 msgid "in %s"
 msgstr ""
@@ -139,7 +147,7 @@ msgid "Invoice threshold"
 msgstr ""
 
 #: lino_voga/lib/products/models.py:71
-msgid "Minimum number of events to pay in advance."
+msgid "Minimum quantity to pay in advance."
 msgstr ""
 
 #: lino_voga/lib/voga/fixtures/buche.py:76
@@ -171,7 +179,7 @@ msgstr ""
 
 #: lino_voga/lib/voga/fixtures/buche.py:133
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:132
-#: lino_voga/projects/roger/lib/courses/models.py:94
+#: lino_voga/projects/roger/lib/courses/models.py:104
 msgid "Courses"
 msgstr ""
 
@@ -351,7 +359,7 @@ msgstr ""
 msgid "Mitglied bis"
 msgstr ""
 
-#: lino_voga/projects/roger/lib/courses/models.py:93
+#: lino_voga/projects/roger/lib/courses/models.py:103
 msgid "Course"
 msgstr ""
 
