@@ -87,7 +87,7 @@ We select the event no 4 (2013-12-23):
 Yes, the state is "suggested":
 
 >>> print(e.state)
-suggested
+Suggested
 
 Now we move that to the week after:
 
@@ -105,7 +105,7 @@ Move down for Course #3 Hour 4...
 The state is now "draft":
 
 >>> print(e.state)
-draft
+Draft
 
 We have now two events on 20131230:
 
@@ -180,7 +180,7 @@ The following is waiting for :ticket:`526` before it can work:
 There are three courses in the course line "Europe":
 
 >>> courses.Line.objects.get(pk=1)
-Line #1 (u'Europe')
+Line #1 ('Europe')
         
 >>> ContentType = rt.modules.contenttypes.ContentType
 >>> json_fields = 'count rows title success no_data_text param_values'

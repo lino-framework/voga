@@ -74,16 +74,16 @@ The demo database
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        5
- finan.BankStatement        finan.BankStatements           12        0
+ finan.BankStatement        finan.BankStatements           14        0
  finan.BankStatementItem    finan.BankStatementItemTable   10        0
- finan.JournalEntry         finan.FinancialVouchers        10        0
+ finan.JournalEntry         finan.FinancialVouchers        12        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
- finan.PaymentOrder         finan.PaymentOrders            12        0
+ finan.PaymentOrder         finan.PaymentOrders            14        0
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
  gfks.HelpText              gfks.HelpTexts                 4         2
  invoicing.Item             invoicing.Items                9         30
  invoicing.Plan             invoicing.Plans                6         1
- ledger.AccountingPeriod    ledger.AccountingPeriods       6         6
+ ledger.AccountingPeriod    ledger.AccountingPeriods       7         6
  ledger.Journal             ledger.Journals                14        6
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         0
@@ -102,7 +102,7 @@ The demo database
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 23        3
  sales.InvoiceItem          sales.InvoiceItems             15        66
- sales.VatProductInvoice    sales.Invoices                 25        38
+ sales.VatProductInvoice    sales.Invoices                 23        38
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             18        1
  uploads.Upload             uploads.Uploads                9         0
@@ -110,7 +110,7 @@ The demo database
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    15        1
  vat.InvoiceItem            vat.InvoiceItemTable           9         48
- vat.VatAccountInvoice      vat.Invoices                   21        30
+ vat.VatAccountInvoice      vat.Invoices                   19        30
  vat.VatRule                vat.VatRules                   9         0
 ========================== ============================== ========= =======
 <BLANKLINE>
@@ -152,7 +152,7 @@ Rolf is the local system administrator, he has a complete menu:
   - System : content types, Authorities, User Profiles
   - Contacts : Contact Persons, List memberships
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
-  - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types
+  - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes
   - Sales : invoice items
   - Courses : Courses, Enrolments, Enrolment states
