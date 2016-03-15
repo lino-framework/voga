@@ -4,7 +4,7 @@ Ihre Einschreibung {{obj.fee}}
 Einschreibung {{obj.pupil}} {{obj.fee}}
 {%- endif %}
 zum Kurs {{obj.course}} {{obj.course.line}}.
-Angefragt {{fds(obj.request_date)}} bei {{fds(obj.user)}}.
+Angefragt {{fds(obj.request_date)}} ({{obj.user.initials}}).
 {% if obj.start_date %}
 Beginndatum {{fds(obj.start_date)}}.
 Termine:
