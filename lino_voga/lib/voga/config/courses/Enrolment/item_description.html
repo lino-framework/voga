@@ -1,12 +1,24 @@
 {%- if obj.pupil.id == item.voucher.partner.id -%}
-Ihre Einschreibung {{obj.fee}}.
+Ihre Einschreibung {{obj.fee}}
 {%- else -%}
-Einschreibung {{obj.pupil}} {{obj.fee}}.
+Einschreibung {{obj.pupil}} {{obj.fee}}
 {%- endif %}
-Angefragt {{fds(obj.request_date)}}.
+zum Kurs {{obj.course}} {{obj.course.line}}.
+Angefragt {{fds(obj.request_date)}} bei {{fds(obj.user)}}.
 {% if obj.start_date %}
 Beginndatum {{fds(obj.start_date)}}.
+Termine:
+{% for evt in obj.course.events_by_course.filter(start_date__gte=obj.start_date).order_by('start_date') %}
+{{fds(evt.start_date)}} / 
+{% endfor %}
+{%- else %}
+Termine:
+{% for evt in obj.course.events_by_course.order_by('start_date') %}
+{{fds(evt.start_date)}} / 
+{% endfor %}
 {%- endif %}
 {% if obj.options %}
 {{obj.options}}.
 {%- endif %}
+
+
