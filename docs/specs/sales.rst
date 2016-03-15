@@ -13,3 +13,4 @@ Sales
     
 This document is currently empty. Previous content has been moved to
 :doc:`invoicing`. But we should write some content in the future.
+
