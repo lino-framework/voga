@@ -1,5 +1,4 @@
 .. _voga.specs.invoicing:
-.. _voga.specs.sales:
 
 How Lino Voga generates invoices
 ================================
