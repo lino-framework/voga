@@ -8,14 +8,14 @@ Angefragt {{fds(obj.request_date)}} ({{obj.user.initials}}).
 {% if obj.start_date %}
 Beginndatum {{fds(obj.start_date)}}.
 Termine:
-{% for evt in obj.course.events_by_course.filter(start_date__gte=obj.start_date).order_by('start_date') %}
+{%- for evt in obj.course.events_by_course.filter(start_date__gte=obj.start_date).order_by('start_date') -%}
 {{fds(evt.start_date)}} / 
-{% endfor %}
+{%- endfor %}
 {%- else %}
 Termine:
-{% for evt in obj.course.events_by_course.order_by('start_date') %}
+{% for evt in obj.course.events_by_course.order_by('start_date') -%}
 {{fds(evt.start_date)}} / 
-{% endfor %}
+{%- endfor %}
 {%- endif %}
 {% if obj.options %}
 {{obj.options}}.
