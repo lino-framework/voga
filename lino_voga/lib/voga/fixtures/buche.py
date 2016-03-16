@@ -17,8 +17,8 @@
 # <http://www.gnu.org/licenses/>.
 
 """
-
-demo data specific for :ref:`voga`.
+Demo data specific for :ref:`voga`.
+See also :doc:`/specs/courses`.
 """
 
 from __future__ import unicode_literals
@@ -67,10 +67,13 @@ class Loader1(object):
 
     def objects(self):
 
-        yield PupilType(ref="M", name="Mitglied")
-        yield PupilType(ref="H", name="Helfer")
-        yield PupilType(ref="L", name="LFV")
-        yield PupilType(ref="C", name="COK")
+        # yield PupilType(ref="M", name="Mitglied")
+        # yield PupilType(ref="H", name="Helfer")
+        yield PupilType(ref="M", **dd.str2kw('name', _("Member")))
+        yield PupilType(ref="H", **dd.str2kw('name', _("Helper")))
+        yield PupilType(ref="N", **dd.str2kw('name', _("Non-member")))
+        # yield PupilType(ref="L", name="LFV")
+        # yield PupilType(ref="C", name="COK")
         #~ yield PupilType(ref="E",name="Extern")
 
         yield TeacherType(ref="S", **dd.str2kw('name', _("Independant")))
