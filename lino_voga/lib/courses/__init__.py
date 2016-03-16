@@ -32,7 +32,15 @@ from lino_cosi.lib.courses import Plugin
 class Plugin(Plugin):
 
     teacher_model = 'courses.Teacher'
+    """The name of the model to be used for "teachers" (i.e. the person
+    who is responsible for a course).
+
+    """
     pupil_model = 'courses.Pupil'
+    """The name of the model to be used for "pupils" (i.e. the persons who
+    participate in a course).
+
+    """
     extends_models = ['Enrolment', 'Course', 'Line']
     needs_plugins = [
         'lino_xl.lib.cal', 'lino_cosi.lib.invoicing', 'lino_cosi.lib.sales']

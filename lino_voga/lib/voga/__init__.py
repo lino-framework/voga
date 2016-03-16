@@ -25,6 +25,8 @@ specializations under :mod:`lino_voga.lib`
 
     models
     migrate
+    fixtures.buche
+    fixtures.eiche2lino
 
 """
 

@@ -16,6 +16,13 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
+"""
+How to test just this file::
+
+  $ python setup.py test -s tests.PackagesTests
+
+"""
+
 SETUP_INFO = dict(
     name='lino_voga',
     version='0.0.4',
@@ -57,6 +64,7 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.courses',
     'lino_voga.lib.courses.fixtures',
     'lino_voga.lib.products',
+    'lino_voga.lib.sales',
     'lino_voga.lib.voga',
     'lino_voga.lib.voga.fixtures',
     'lino_voga.lib.rooms',

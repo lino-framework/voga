@@ -67,7 +67,7 @@ The demo database
  courses.Enrolment          courses.Enrolments             14        100
  courses.Line               courses.Lines                  16        10
  courses.Pupil              courses.Pupils                 39        35
- courses.PupilType          courses.PupilTypes             3         4
+ courses.PupilType          courses.PupilTypes             3         3
  courses.Slot               courses.Slots                  5         0
  courses.Teacher            courses.Teachers               39        8
  courses.TeacherType        courses.TeacherTypes           3         4
@@ -154,7 +154,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes
-  - Sales : invoice items
+  - Sales : Product invoice items, Invoicing plans
   - Courses : Courses, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
