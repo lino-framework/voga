@@ -62,7 +62,7 @@ class QuickTest(RemoteAuthTestCase):
             room=room,
             max_events=5,
             monday=True,
-            state=courses.CourseStates.registered,
+            state=courses.CourseStates.active,
             start_date=i2d(20140110))
         self.assertEqual(unicode(obj), "First Line (1/10/14 First Room)")
 

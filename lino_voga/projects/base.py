@@ -40,7 +40,8 @@ class Site(Site):
 
     show_internal_field_names = True
 
-    default_build_method = "wkhtmltopdf"
+    # default_build_method = "wkhtmltopdf"
+    default_build_method = "appypdf"
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
@@ -89,8 +90,12 @@ class Site(Site):
         yield 'lino_xl.lib.appypod'
 
     def get_admin_main_items(self, ar):
-        yield self.modules.courses.DraftCourses
-        yield self.modules.courses.ActiveCourses
+        """Defines the story to be displayed on the admin main page.
+
+        """
+        yield self.modules.courses.StatusReport
+        # yield self.modules.courses.DraftCourses
+        # yield self.modules.courses.ActiveCourses
 
     def setup_plugins(self):
         """

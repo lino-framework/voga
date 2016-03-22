@@ -53,9 +53,12 @@ class Plugin(Plugin):
         m.add_separator()
         m.add_action('courses.Topics')
         m.add_action('courses.Lines')
+        m.add_separator()
         # m.add_action('courses.Courses')
         m.add_action('courses.DraftCourses')
+        m.add_action('courses.InactiveCourses')
         m.add_action('courses.ActiveCourses')
+        m.add_action('courses.ClosedCourses')
         m.add_separator()
         m.add_action('courses.PendingRequestedEnrolments')
         m.add_action('courses.PendingConfirmedEnrolments')
@@ -66,3 +69,7 @@ class Plugin(Plugin):
         m.add_action('courses.TeacherTypes')
         m.add_action('courses.PupilTypes')
         m.add_action('courses.Slots')
+
+    def setup_reports_menu(self, site, profile, m):
+        m = m.add_menu(self.app_label, self.verbose_name)
+        m.add_action('courses.StatusReport')

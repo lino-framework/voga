@@ -133,11 +133,12 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
-- Courses : Participants, Instructors, -, Topics, Course series, Draft courses, Active courses, -, Pending requested enrolments, Pending confirmed enrolments
+- Courses : Participants, Instructors, -, Topics, Course series, -, Draft courses, Inactive courses, Active courses, Closed courses, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
+  - Courses : Status Report
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places

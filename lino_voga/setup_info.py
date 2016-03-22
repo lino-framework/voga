@@ -16,12 +16,11 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-"""
-How to test just this file::
+# This file may not have a docstring because it is being `exec`ed from
+# the __init__.py file.
+# How to test just this file:
+#   $ python setup.py test -s tests.PackagesTests
 
-  $ python setup.py test -s tests.PackagesTests
-
-"""
 
 SETUP_INFO = dict(
     name='lino_voga',
