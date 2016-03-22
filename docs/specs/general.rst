@@ -138,6 +138,7 @@ Rolf is the local system administrator, he has a complete menu:
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
+  - Courses : Status Report
 - Configure :
   - System : Site Parameters, Help Texts, Users
   - Places : Countries, Places

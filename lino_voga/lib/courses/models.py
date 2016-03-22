@@ -22,12 +22,15 @@ Database models for `lino_voga.lib.courses`.
 """
 
 from __future__ import unicode_literals
+from builtins import str
+import datetime
 
 from django.utils.translation import ugettext_lazy as _
 from lino.utils.mti import get_child
 from lino.api import dd, rt
 from lino.utils import mti
 
+from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
 # from lino_cosi.lib.auto.sales.mixins import Invoiceable
@@ -40,7 +43,7 @@ contacts = dd.resolve_app('contacts')
 sales = dd.resolve_app('sales')
 
 
-class TeacherType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
+class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
 
     class Meta:
         app_label = 'courses'
@@ -76,7 +79,7 @@ class Teacher(Person):
         return self.get_full_name(salutation=False)
 
 
-class PupilType(mixins.Referrable, mixins.BabelNamed, mixins.Printable):
+class PupilType(mixins.Referrable, mixins.BabelNamed, Printable):
 
     class Meta:
         app_label = 'courses'
@@ -556,3 +559,50 @@ class LinesByType(Lines):
 #     models.IntegerField(
 #         _("Invoice threshold"), null=True, blank=True,
 #         help_text=_("Minimum number of events to pay in advance.")))
+
+
+from lino.utils.report import Report
+from lino.mixins import ObservedPeriod
+
+
+class StatusCoursesByTopic(CoursesByTopic):
+    order_by = ["ref"]
+    column_names = "info line:20 \
+    room__company__city:10 weekdays_text:10 times_text:10 enrolments max_places:8 free_places"
+
+    @classmethod
+    def param_defaults(self, ar, **kw):
+        kw = super(StatusCoursesByTopic, self).param_defaults(ar, **kw)
+        kw.update(can_enroll=dd.YesNo.yes)
+        return kw
+
+
+class StatusReport(Report):
+    """Gives an overview about what's up today .
+
+    """
+
+    label = _("Status Report")
+
+    # parameters = ObservedPeriod(
+    #     detailed=models.BooleanField(
+    #         verbose_name=_("Detailed"), default=False),
+    # )
+
+    # params_layout = "start_date end_date detailed"
+
+    # @classmethod
+    # def param_defaults(self, ar, **kw):
+    #     D = datetime.date
+    #     kw.update(start_date=D(D.today().year, 1, 1))
+    #     kw.update(end_date=D(D.today().year, 12, 31))
+    #     return kw
+
+    @classmethod
+    def get_story(cls, self, ar):
+        for topic in rt.modules.courses.Topic.objects.all():
+            yield E.h3(str(topic))
+            yield ar.spawn(StatusCoursesByTopic, master_instance=topic)
+            # ar = StatusCoursesByTopic.request(master_instance=topic)
+            # yield ar
+

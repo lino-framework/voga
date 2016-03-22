@@ -69,3 +69,7 @@ class Plugin(Plugin):
         m.add_action('courses.TeacherTypes')
         m.add_action('courses.PupilTypes')
         m.add_action('courses.Slots')
+
+    def setup_reports_menu(self, site, profile, m):
+        m = m.add_menu(self.app_label, self.verbose_name)
+        m.add_action('courses.StatusReport')

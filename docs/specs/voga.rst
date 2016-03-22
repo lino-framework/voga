@@ -7,19 +7,15 @@ Voga
 
    $ python setup.py test -s tests.DocsTests.test_voga
 
-.. include:: /include/tested.rst
+    >>> from lino import startup
+    >>> startup('lino_voga.projects.docs.settings.doctests')
+    >>> from lino.api.doctest import *
+    >>> from django.utils.translation import get_language
 
->>> from django.conf import settings
->>> from lino.api.shell import *
->>> from django.test.client import Client
->>> from django.utils.translation import get_language
->>> from django.utils import translation
->>> import json
-
->>> print(settings.SETTINGS_MODULE)
-lino_voga.projects.docs.settings.doctests
->>> print([lng.name for lng in settings.SITE.languages])
-['en']
+    >>> print(settings.SETTINGS_MODULE)
+    lino_voga.projects.docs.settings.doctests
+    >>> print([lng.name for lng in settings.SITE.languages])
+    ['en']
 
 
 A web request
@@ -61,7 +57,7 @@ check whether we get the expected response.
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-/media/cache/wkhtmltopdf/sales.VatProductInvoice-1.pdf
+/media/cache/appypdf/sales.VatProductInvoice-1.pdf
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
 Your printable document (filename sales.VatProductInvoice-1.pdf)
 should now open in a new browser window. If it doesn't, please consult
