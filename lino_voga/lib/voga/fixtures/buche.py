@@ -317,7 +317,7 @@ class Loader2(Loader1):
         kw = dict(max_events=8)
         kw.update(max_places=20)
         kw.update(start_date=demo_date(-30))
-        kw.update(state=courses.CourseStates.registered)
+        kw.update(state=courses.CourseStates.active)
         kw.update(every=1)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
 
@@ -354,7 +354,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=8)
         kw.update(start_date=demo_date(10))
-        kw.update(state=courses.CourseStates.registered)
+        kw.update(state=courses.CourseStates.active)
         yield add_course(obj, self.pc_bbach, "13:30", "15:00",
                          monday=True, **kw)
         yield add_course(obj, self.pc_eupen, "17:30", "19:00",
@@ -370,7 +370,7 @@ class Loader2(Loader1):
         kw = dict(max_events=8)
         kw.update(max_places=10)
         kw.update(start_date=demo_date(20))
-        kw.update(state=CourseStates.registered)
+        kw.update(state=CourseStates.active)
         yield add_course(obj, self.spiegel, "19:00", "20:00",
                          wednesday=True, **kw)
 
@@ -381,7 +381,7 @@ class Loader2(Loader1):
                                 de="Funktionsgymnastik",
                                 en="Functional gymnastics"))
         yield obj
-        kw = dict(max_events=10, state=CourseStates.registered)
+        kw = dict(max_events=10, state=CourseStates.active)
         kw.update(start_date=demo_date(-10))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
@@ -391,7 +391,7 @@ class Loader2(Loader1):
                    fees_cat=self.course_fees,
                    **dd.babelkw('name', de="Rücken fit durch Schwimmen", en="Swimming"))
         yield obj
-        kw = dict(max_events=10, state=CourseStates.registered)
+        kw = dict(max_events=10, state=CourseStates.active)
         kw.update(start_date=demo_date(-100))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
@@ -408,7 +408,7 @@ class Loader2(Loader1):
         kw = dict(max_events=6)
         kw.update(max_places=12)
         kw.update(start_date=demo_date(-80))
-        kw.update(state=CourseStates.registered)
+        kw.update(state=CourseStates.active)
         yield add_course(obj, self.spiegel, "18:00", "19:00", friday=True, **kw)
         yield add_course(obj, self.spiegel, "19:00", "20:00", friday=True, **kw)
 
@@ -419,7 +419,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=10)
         kw.update(start_date=demo_date(-10))
-        kw.update(state=CourseStates.registered)
+        kw.update(state=CourseStates.active)
         yield add_course(obj, self.spiegel, "18:00", "19:30",
                          monday=True, **kw)
         yield add_course(obj, self.spiegel, "19:00", "20:30",
@@ -436,7 +436,7 @@ class Loader2(Loader1):
         kw = dict(max_events=10)
         kw.update(max_places=30)
         kw.update(start_date=demo_date(-10))
-        kw.update(state=CourseStates.registered)
+        kw.update(state=CourseStates.active)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
 
@@ -444,7 +444,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=10)
         kw.update(start_date=demo_date(60))
-        kw.update(state=CourseStates.registered)
+        kw.update(state=CourseStates.active)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
 

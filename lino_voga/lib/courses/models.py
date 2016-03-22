@@ -531,8 +531,8 @@ class CoursesByLine(CoursesByLine):
     @classmethod
     def param_defaults(self, ar, **kw):
         kw = super(CoursesByLine, self).param_defaults(ar, **kw)
-        kw.update(state=CourseStates.registered)
-        kw.update(active=dd.YesNo.yes)
+        kw.update(state=CourseStates.active)
+        kw.update(can_enroll=dd.YesNo.yes)
         return kw
 
 
