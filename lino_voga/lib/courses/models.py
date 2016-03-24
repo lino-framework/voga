@@ -318,6 +318,8 @@ class Enrolment(Enrolment, Invoiceable):
         for obj in self.get_invoicings():
             invoiced_qty += obj.qty
         if fee.number_of_events:
+            if not self.start_date:
+                return
             qs = self.course.events_by_course.filter(
                 start_date__gte=self.start_date,
                 state=rt.modules.cal.EventStates.took_place)
