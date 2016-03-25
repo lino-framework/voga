@@ -368,6 +368,16 @@ class EnrolmentsByPupil(EnrolmentsByPupil):
 
 
 class EnrolmentsByCourse(EnrolmentsByCourse):
+    """The Voga version of :class:`EnrolmentsByCourse
+    <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
+
+    .. attribute:: pupil_info
+
+        Show the name and address of the participant.  Overrides
+        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
+        in order to add the *pupil type* after the name.
+
+    """
     column_names = 'request_date pupil_info places ' \
                    'fee option remark amount:10 workflow_buttons *'
 
