@@ -24,17 +24,15 @@ Database models for `lino_voga.lib.courses`.
 from __future__ import unicode_literals
 from builtins import str
 import datetime
+import six
 
 from django.utils.translation import ugettext_lazy as _
 from lino.utils.mti import get_child
 from lino.api import dd, rt
-from lino.utils import mti
 
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
-# from lino_cosi.lib.auto.sales.mixins import Invoiceable
-# from lino_cosi.lib.auto.sales.models import CreateInvoice
 
 from lino_voga.lib.contacts.models import Person
 from lino_voga.lib.contacts.models import MyPersonDetail
@@ -372,6 +370,18 @@ class EnrolmentsByPupil(EnrolmentsByPupil):
 class EnrolmentsByCourse(EnrolmentsByCourse):
     column_names = 'request_date pupil_info places ' \
                    'fee option remark amount:10 workflow_buttons *'
+
+    @dd.virtualfield(dd.HtmlBox(_("Participant")))
+    def pupil_info(cls, self, ar):
+        elems = [ar.obj2html(self.pupil,
+                             self.pupil.get_full_name(nominative=True))]
+        if self.pupil.pupil_type:
+            elems += [" ({})".format(self.pupil.pupil_type.ref)]
+        elems += [', ']
+        elems += join_elems(
+            list(self.pupil.address_location_lines()),
+            sep=', ')
+        return E.p(*elems)
 
 
 class PupilDetail(MyPersonDetail):
