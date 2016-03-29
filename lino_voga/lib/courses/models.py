@@ -110,6 +110,10 @@ class Pupil(Person):
 
     suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
 
+    def get_enrolment_info(self):
+        if self.pupil_type:
+            return self.pupil_type.ref
+
     def __unicode__(self):
         s = self.get_full_name(salutation=False)
         if self.pupil_type:
@@ -375,7 +379,8 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
 
         Show the name and address of the participant.  Overrides
         :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
-        in order to add the *pupil type* after the name.
+        in order to add (between parentheses after the name) some
+        information needed to compute the price.
 
     """
     column_names = 'request_date pupil_info places ' \
@@ -385,8 +390,10 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     def pupil_info(cls, self, ar):
         elems = [ar.obj2html(self.pupil,
                              self.pupil.get_full_name(nominative=True))]
-        if self.pupil.pupil_type:
-            elems += [" ({})".format(self.pupil.pupil_type.ref)]
+        info = self.pupil.get_enrolment_info()
+        if info:
+            # elems += [" ({})".format(self.pupil.pupil_type.ref)]
+            elems += [" ({})".format(info)]
         elems += [', ']
         elems += join_elems(
             list(self.pupil.address_location_lines()),
@@ -439,6 +446,9 @@ class Pupils(contacts.Persons):
     detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'
     auto_fit_column_widths = True
+    # parameters = mixins.ObservedPeriod()
+
+    params_layout = "aged_from aged_to gender"
 
 
 class PupilsByType(Pupils):

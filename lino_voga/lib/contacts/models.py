@@ -25,8 +25,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino.modlib.contacts.models import *
 
-from lino_cosi.lib.sales import models as sales
 from lino_xl.lib.beid.mixins import BeIdCardHolder
+from lino_xl.lib.appypod.mixins import PrintLabelsAction
+from lino_cosi.lib.sales import models as sales
 
 
 class Person(Person, BeIdCardHolder):
@@ -132,8 +133,14 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     """
 
 
+@dd.receiver(dd.pre_analyze)
+def customize_contacts1(sender, **kw):
+    sender.modules.contacts.Partner.define_action(
+        print_labels=PrintLabelsAction())
+
+
 @dd.receiver(dd.post_analyze)
-def customize_contacts(sender, **kw):
+def customize_contacts2(sender, **kw):
     site = sender
     site.modules.contacts.Persons.set_detail_layout(MyPersonDetail())
     site.modules.contacts.Companies.set_detail_layout(MyCompanyDetail())

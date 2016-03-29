@@ -23,6 +23,8 @@ Does some adaptions.
 from __future__ import unicode_literals
 from __future__ import print_function
 
+import datetime
+
 from lino.api import dd, rt, _
 
 from lino.mixins.periods import DatePeriod
@@ -49,6 +51,18 @@ add("etc", "Sonstige", "etc")
 
 
 class Pupil(Pupil):
+    """The Roger variant of Lino Voga adds a few very specific fields
+    which are being used for filtering, and they may influence the
+    price of an enrolment.
+
+    .. attribute:: legacy_id
+    .. attribute:: section
+    .. attribute:: is_lfv
+    .. attribute:: is_ckk
+    .. attribute:: is_raviva
+    .. attribute:: member_until
+
+    """
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Pupil')
@@ -65,6 +79,42 @@ class Pupil(Pupil):
     is_raviva = models.BooleanField(_("Raviva"), default=False)
     is_member = models.BooleanField(_("Member"), default=False)
     member_until = models.DateField(_("Mitglied bis"), blank=True, null=True)
+
+    def get_enrolment_info(self):
+        """Return a short text to be displayed between parentheses
+        in `lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`.
+        """
+        if self.member_until is None:
+            s = "NM"
+        elif self.member_until >= datetime.date.today():
+            s = "OM"
+        else:
+            s = "!M"
+        if self.is_lfv:
+            s += "+L"
+        if self.is_ckk:
+            s += "+C"
+        if self.is_raviva:
+            s += "+R"
+        if self.section:
+            s += " " + self.section
+        return s
+
+    # TODO:
+    # @classmethod
+    # def get_parameter_fields(cls, **fields):
+    #     fields.update(is_member=models.BooleanField(_("is member")))
+    #     return super(Pupil, cls).get_parameter_fields(**fields)
+
+    # @classmethod
+    # def get_request_queryset(cls, ar):
+    #     qs = super(Pupil, cls).get_request_queryset(ar)
+        
+    #     return qs
+
+    # @classmethod
+    # def get_title_tags(self, ar):
+    #     return []
 
 
 class PupilDetail(PupilDetail):
