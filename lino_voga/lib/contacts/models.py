@@ -133,10 +133,10 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
     """
 
 
-@dd.receiver(dd.pre_analyze)
-def customize_contacts1(sender, **kw):
-    sender.modules.contacts.Partner.define_action(
-        print_labels=PrintLabelsAction())
+# @dd.receiver(dd.pre_analyze)
+# def customize_contacts1(sender, **kw):
+#     sender.modules.contacts.Partner.define_action(
+#         print_labels=PrintLabelsAction())
 
 
 @dd.receiver(dd.post_analyze)
