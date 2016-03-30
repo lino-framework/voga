@@ -85,17 +85,17 @@ class Pupil(Pupil):
         in `lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`.
         """
         if self.member_until is None:
-            s = "NM"
+            s = ""
         elif self.member_until >= datetime.date.today():
-            s = "OM"
+            s = "E"
         else:
-            s = "!M"
+            s = "e"
         if self.is_lfv:
-            s += "+L"
+            s += "L"
         if self.is_ckk:
-            s += "+C"
+            s += "C"
         if self.is_raviva:
-            s += "+R"
+            s += "R"
         if self.section:
             s += " " + self.section
         return s
