@@ -25,6 +25,8 @@ from __future__ import print_function
 
 import datetime
 
+from django.db.models import Q
+
 from lino.api import dd, rt, _
 
 from lino.mixins.periods import DatePeriod
@@ -101,20 +103,43 @@ class Pupil(Pupil):
         return s
 
     # TODO:
-    # @classmethod
-    # def get_parameter_fields(cls, **fields):
-    #     fields.update(is_member=models.BooleanField(_("is member")))
-    #     return super(Pupil, cls).get_parameter_fields(**fields)
+    @classmethod
+    def get_parameter_fields(cls, **fields):
+        fields.update(
+            show_members=dd.YesNo.field(
+                _("Members"), blank=True,
+                help_text=_(
+                    "Show those whose 'Member until' is after today.")),
+            show_ckk=dd.YesNo.field(_("CKK"), blank=True),
+            show_lfv=dd.YesNo.field(_("LFV"), blank=True),
+            show_raviva=dd.YesNo.field(_("Raviva"), blank=True))
 
-    # @classmethod
-    # def get_request_queryset(cls, ar):
-    #     qs = super(Pupil, cls).get_request_queryset(ar)
-        
-    #     return qs
+        return super(Pupil, cls).get_parameter_fields(**fields)
 
-    # @classmethod
-    # def get_title_tags(self, ar):
-    #     return []
+    @classmethod
+    def get_request_queryset(cls, ar):
+        qs = super(Pupil, cls).get_request_queryset(ar)
+        pv = ar.param_values
+        if pv.show_members == dd.YesNo.no:
+            qs = qs.filter(
+                Q(member_until__isnull=True) | Q(member_until__lt=dd.today()))
+        elif pv.show_members == dd.YesNo.yes:
+            qs = qs.filter(Q(member_until__gte=dd.today()))
+        for k in ('ckk', 'raviva', 'lfv'):
+            v = pv['show_' + k]
+            if v:
+                qs = qs.filter(**{'is_' + k: v == dd.YesNo.yes})
+        return qs
+
+    @classmethod
+    def get_title_tags(self, ar):
+        for t in super(Pupil, self).get_title_tags(ar):
+            yield t
+        pv = ar.param_values
+        if pv.show_members:
+            yield "{0}:{1}".format(_("Members"), pv.show_members)
+        if pv.show_members:
+            yield "{0}:{1}".format(_("Members"), pv.show_members)
 
 
 class PupilDetail(PupilDetail):
@@ -132,6 +157,8 @@ class PupilDetail(PupilDetail):
 
 
 Pupils.detail_layout = PupilDetail()
+Pupils.params_layout = "aged_from aged_to gender "\
+                       "show_members show_lfv show_ckk show_raviva"
 
 
 class Line(Line):

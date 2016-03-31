@@ -36,14 +36,18 @@ class Person(Person, BeIdCardHolder):
 
 class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
 
-    main = 'general more sales ledger'
+    main = 'general address more sales ledger'
 
     #~ general = dd.Panel(PartnerDetail.main,label=_("General"))
 
     general = dd.Panel("""
-    address_box:60 contact_box:30
+    overview:30 contact_box:30 lists.MembersByPartner:20
     bottom_box
     """, label=_("General"))
+
+    address = dd.Panel("""
+    address_box
+    """, label=_("Address"))
 
     more = dd.Panel("""
     id language
@@ -69,10 +73,10 @@ class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
     """
 
     contact_box = """
-    mti_navigator
+    #mti_navigator
     email
     phone
-    fax
+    #fax
     gsm
     """
 
@@ -81,10 +85,15 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
 
     # main = 'general more ledger'
 
+    address = dd.Panel("""
+    address_box
+    contacts.RolesByCompany
+    """, label=_("Address"))
+
     more = dd.Panel("""
     id language type vat_id
     addr1 url
-    rooms.BookingsByCompany lists.MembersByPartner
+    rooms.BookingsByCompany
     notes.NotesByCompany
     """, label=_("More"))
 
@@ -96,7 +105,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     """
 
     contact_box = dd.Panel("""
-    mti_navigator
+    #mti_navigator
     email:40
     phone
     gsm
@@ -104,32 +113,37 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     """)  # ,label = _("Contact"))
 
     bottom_box = """
-    remarks contacts.RolesByCompany
+    remarks
     """
 
 
 class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
-    main = 'general sales ledger more'
+    main = 'general address sales ledger more'
 
     general = dd.Panel("""
-    address_box contact_box
-    remarks contacts.RolesByPerson
+    overview contact_box lists.MembersByPartner
+    remarks
     """, label=_("General"))
+
+    address = dd.Panel("""
+    address_box
+    contacts.RolesByPerson
+    """, label=_("Address"))
 
     more = dd.Panel("""
     id language url
     addr1 addr2 national_id
-    notes.NotesByPerson  lists.MembersByPartner
+    notes.NotesByPerson
     """, label=_("More"))
 
     personal = ''
 
     address_box = """
-    last_name first_name:15 #title:10
+    last_name first_name:15 #title:10 gender
     country region city zip_code:10
     #street_prefix street:25 street_no street_box
-    gender birth_date age:10 personal
+    birth_date age:10 personal
     """
 
 

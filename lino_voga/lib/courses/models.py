@@ -403,7 +403,7 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
 
 class PupilDetail(MyPersonDetail):
 
-    main = 'general courses sales ledger more'
+    main = 'general address courses sales ledger more'
 
     personal = 'pupil_type'
 
