@@ -9,7 +9,7 @@ lino_voga.lib.contacts.models
 
    .. autosummary::
    
-      customize_contacts
+      customize_contacts2
    
    
 
