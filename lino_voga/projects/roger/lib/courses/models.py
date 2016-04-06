@@ -99,7 +99,7 @@ class Pupil(Pupil):
         if self.is_raviva:
             s += "R"
         if self.section:
-            s += " " + self.section
+            s += " {0}".format(self.section)
         return s
 
     # TODO:
