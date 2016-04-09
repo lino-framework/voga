@@ -29,7 +29,6 @@ from django.db.models import Q
 
 from lino.api import dd, rt, _
 
-from lino.mixins.periods import DatePeriod
 from lino.mixins import Referrable
 
 from lino_voga.lib.courses.models import *
@@ -210,31 +209,31 @@ Courses.column_names = "ref start_date enrolments_until line room teacher " \
                        "workflow_buttons *"
 
 
-class Enrolment(Enrolment, DatePeriod):
-    """
+# class Enrolment(Enrolment, DatePeriod):
+#     """
     
-    """
-    class Meta:
-        app_label = 'courses'
-        abstract = dd.is_abstract_model(__name__, 'Enrolment')
-        verbose_name = _("Enrolment")
-        verbose_name_plural = _("Enrolments")
+#     """
+#     class Meta:
+#         app_label = 'courses'
+#         abstract = dd.is_abstract_model(__name__, 'Enrolment')
+#         verbose_name = _("Enrolment")
+#         verbose_name_plural = _("Enrolments")
 
     # def suggest_guest_for(self, event):
     #     return self.state in GUEST_ENROLMENT_STATES
 
-Enrolments.detail_layout = """
-id course pupil request_date user
-start_date end_date places fee option amount
-remark workflow_buttons printed
-confirmation_details invoicing.InvoicingsByInvoiceable
-"""
+# Enrolments.detail_layout = """
+# id course pupil request_date user
+# start_date end_date places fee option amount
+# remark workflow_buttons printed
+# confirmation_details invoicing.InvoicingsByInvoiceable
+# """
 
 
-EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
-                                 'places remark amount workflow_buttons *'
+# EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
+#                                  'places remark amount workflow_buttons *'
 
-EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
-                                  'places remark fee option amount ' \
-                                  'workflow_buttons *'
+# EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
+#                                   'places remark fee option amount ' \
+#                                   'workflow_buttons *'
 

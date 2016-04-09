@@ -66,7 +66,7 @@ def demo_date(*args, **kw):
 class Loader1(object):
 
     def objects(self):
-
+        VatClasses = rt.modules.vat.VatClasses
         # yield PupilType(ref="M", name="Mitglied")
         # yield PupilType(ref="H", name="Helfer")
         yield PupilType(ref="M", **dd.str2kw('name', _("Member")))
@@ -116,9 +116,12 @@ class Loader1(object):
         # yield other
 
         product = Instantiator(
-            'products.Product', "sales_price cat name").build
+            'products.Product', "sales_price cat name",
+            vat_class=VatClasses.normal).build
         yield product("20", self.course_fees, "20€")
-        yield product("50", self.course_fees, "50€")
+        yield product(
+            "50", self.course_fees, "50€/12 hours",
+            number_of_events=12, min_asset=4)
         yield product("80", self.course_fees, "80€")
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
@@ -484,13 +487,18 @@ class Loader2(Loader1):
         STATES = Cycler(EnrolmentStates.objects())
 
         for i in range(100):
+            course = COURSES.pop()
             kw = dict(
-                user=USERS.pop(), course=COURSES.pop(),
+                user=USERS.pop(), course=course,
                 pupil=PUPILS.pop())
             kw.update(request_date=demo_date(-i))
             kw.update(state=STATES.pop())
             #~ print 20130712, kw
-            yield Enrolment(**kw)
+            obj = Enrolment(**kw)
+            obj.full_clean()
+            if obj.fee.number_of_events:
+                obj.start_date = demo_date(-i)
+            yield obj
 
         #~ ses = settings.SITE.login('rolf')
         ses = settings.SITE.login()

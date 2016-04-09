@@ -64,7 +64,7 @@ The demo database
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
  courses.CourseType         courses.CourseTypes            3         0
- courses.Enrolment          courses.Enrolments             14        100
+ courses.Enrolment          courses.Enrolments             16        100
  courses.Line               courses.Lines                  16        10
  courses.Pupil              courses.Pupils                 39        35
  courses.PupilType          courses.PupilTypes             3         3
@@ -133,6 +133,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
   - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
+  - Create invoices
 - Courses : Participants, Instructors, -, Topics, Course series, -, Draft courses, Inactive courses, Active courses, Closed courses, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
@@ -154,8 +155,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Contacts : Contact Persons, List memberships
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
-  - VAT : VAT regimes, VAT Classes
-  - Sales : Product invoice items, Invoicing plans
+  - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
   - Courses : Courses, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts

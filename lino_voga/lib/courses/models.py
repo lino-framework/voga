@@ -33,6 +33,7 @@ from lino.api import dd, rt
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
+from lino.mixins.periods import DatePeriod
 
 from lino_voga.lib.contacts.models import Person
 from lino_voga.lib.contacts.models import MyPersonDetail
@@ -205,7 +206,7 @@ class Course(Course):
 #         return [o.pupil for o in ar.selected_rows]
 
 
-class Enrolment(Enrolment, Invoiceable):
+class Enrolment(Enrolment, Invoiceable, DatePeriod):
     """Adds
 
     .. attribute:: fee
@@ -224,7 +225,7 @@ class Enrolment(Enrolment, Invoiceable):
 
     class Meta:
         app_label = 'courses'
-        abstract = dd.is_abstract_model(__name__, 'Enrolment')
+        abstract = False  # dd.is_abstract_model(__name__, 'Enrolment')
         verbose_name = _("Enrolment")
         verbose_name_plural = _("Enrolments")
 
@@ -347,12 +348,20 @@ class Enrolment(Enrolment, Invoiceable):
             None, 'courses/Enrolment/item_description.html',
             obj=self, item=item)
 
+# Enrolments.detail_layout = """
+#     request_date user course
+#     pupil places fee option
+#     remark amount workflow_buttons
+#     confirmation_details invoicing.InvoicingsByInvoiceable
+#     """
+
 Enrolments.detail_layout = """
-    request_date user course
-    pupil places fee option
-    remark amount workflow_buttons
-    confirmation_details invoicing.InvoicingsByInvoiceable
-    """
+id course pupil request_date user
+start_date end_date places fee option amount
+remark workflow_buttons printed
+confirmation_details invoicing.InvoicingsByInvoiceable
+"""
+
 
 
 class EnrolmentsByOption(Enrolments):
@@ -367,8 +376,11 @@ class PendingRequestedEnrolments(PendingRequestedEnrolments):
 
 
 class EnrolmentsByPupil(EnrolmentsByPupil):
-    column_names = 'request_date course user:10 remark ' \
-                   'amount:10 workflow_buttons *'
+    column_names = 'request_date course start_date end_date '\
+                   'places remark amount workflow_buttons *'
+
+    # column_names = 'request_date course user:10 remark ' \
+    #                'amount:10 workflow_buttons *'
 
 
 class EnrolmentsByCourse(EnrolmentsByCourse):
@@ -383,8 +395,13 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
         information needed to compute the price.
 
     """
-    column_names = 'request_date pupil_info places ' \
-                   'fee option remark amount:10 workflow_buttons *'
+
+    column_names = 'request_date pupil_info start_date end_date '\
+                   'places remark fee option amount ' \
+                   'workflow_buttons *'
+
+    # column_names = 'request_date pupil_info places ' \
+    #                'fee option remark amount:10 workflow_buttons *'
 
     @dd.virtualfield(dd.HtmlBox(_("Participant")))
     def pupil_info(cls, self, ar):

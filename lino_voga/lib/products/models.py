@@ -54,6 +54,8 @@ class Product(Product):
 
         Minimum quantity required to trigger an invoice.
 
+    
+
     """
 
     class Meta(Product.Meta):
