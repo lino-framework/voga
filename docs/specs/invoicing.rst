@@ -19,10 +19,12 @@ The general functionality for automatically generating invoices is
 defined in :mod:`lino_cosi.lib.invoicing`.
 
 On the user-visible level this plugin adds an action of type
-:class:`StartInvoicingBase
-<lino_cosi.lib.invoicing.actions.StartInvoicingBase>` (with a basket
-as icon, referring to a shopping basket) to every *partner* and to
-every *invoices journal*.
+:class:`StartInvoicing
+<lino_cosi.lib.invoicing.actions.StartInvoicing>` (with a basket as
+icon, referring to a shopping basket) at three places: 
+- on a *partner* 
+- on every *invoices journal*
+- 
 
 >>> rt.modules.contacts.Partner.start_invoicing
 <StartInvoicingForPartner start_invoicing (u'Create invoices')>
