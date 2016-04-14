@@ -58,9 +58,9 @@ class Booking(Booking, Invoiceable):
             # if self.company != settings.SITE.site_config.site_company:
             return self.room.fee
 
-    #~ def get_invoiceable_title(self):
-        #~ if self.organizer:
-            #~ return unicode(self.room)
+    # def get_invoiceable_title(self, invoice):
+        # if self.organizer:
+            # return unicode(self.room)
 
     def get_invoiceable_qty(self):
         return self.max_events or 1

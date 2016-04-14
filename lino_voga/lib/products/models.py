@@ -71,3 +71,21 @@ class Product(Product):
     min_asset = models.IntegerField(
         _("Invoice threshold"), blank=True, default=1,
         help_text=_("Minimum quantity to pay in advance."))
+
+
+class ProductDetail(dd.DetailLayout):
+
+    main = "general courses"
+    general = dd.Panel("""
+    id cat vat_class sales_price number_of_events:10 min_asset:10
+    name
+    description
+    """, _("General"))
+
+    courses = dd.Panel("""
+    courses.EnrolmentsByFee
+    courses.EnrolmentsByOption
+    """, _("Enrolments"))
+
+
+Products.detail_layout = ProductDetail()

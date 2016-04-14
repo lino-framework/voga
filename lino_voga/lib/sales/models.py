@@ -36,7 +36,7 @@ class InvoiceItem(InvoiceItem):
 
     def full_clean(self):
         if self.invoiceable_id and not self.title:
-            self.title = self.invoiceable.get_invoiceable_title()
+            self.title = self.invoiceable.get_invoiceable_title(self.voucher)
             self.invoiceable.setup_invoice_item(self)
         super(InvoiceItem, self).full_clean()
 
