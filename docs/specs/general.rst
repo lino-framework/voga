@@ -73,7 +73,7 @@ The demo database
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
- excerpts.ExcerptType       excerpts.ExcerptTypes          15        10
+ excerpts.ExcerptType       excerpts.ExcerptTypes          15        8
  finan.BankStatement        finan.BankStatements           15        0
  finan.BankStatementItem    finan.BankStatementItemTable   10        0
  finan.JournalEntry         finan.FinancialVouchers        13        0
@@ -88,7 +88,7 @@ The demo database
  ledger.MatchRule           ledger.MatchRules              3         10
  ledger.Movement            ledger.Movements               9         0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
- ledger.Voucher             ledger.Vouchers                10        68
+ ledger.Voucher             ledger.Vouchers                9         68
  lists.List                 lists.Lists                    5         8
  lists.ListType             lists.ListTypes                2         3
  lists.Member               lists.Members                  5         0
@@ -110,7 +110,7 @@ The demo database
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    15        1
  vat.InvoiceItem            vat.InvoiceItemTable           9         48
- vat.VatAccountInvoice      vat.Invoices                   20        30
+ vat.VatAccountInvoice      vat.Invoices                   19        30
  vat.VatRule                vat.VatRules                   9         0
 ========================== ============================== ========= =======
 <BLANKLINE>
