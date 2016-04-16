@@ -42,6 +42,7 @@ class Site(Site):
 
     # default_build_method = "wkhtmltopdf"
     default_build_method = "appypdf"
+    auto_configure_logger_names = 'lino lino_xl lino_cosi lino_voga'
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()

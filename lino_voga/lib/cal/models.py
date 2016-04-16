@@ -102,7 +102,7 @@ class Event(Event):
         if self.company and self.room:
             return self.room.fee
 
-    def get_invoiceable_title(self):
+    def get_invoiceable_title(self, invoice):
         if self.company:
             return unicode(self.room)
 

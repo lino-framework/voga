@@ -2,14 +2,11 @@
 Ihre Einschreibung 
 {%- else -%}
 Einschreibung {{obj.pupil}}
-{%- endif %}
-zum Kurs {{obj.course}} {{obj.course.line}}.
-Zeit: {{obj.course.start_time}}
-{% if obj.start_date %}
-Beginndatum {{fds(obj.start_date)}}.
-Termine:
-{%- for evt in obj.course.events_by_course.filter(start_date__gte=obj.start_date).order_by('start_date') -%}
-{{fds(evt.start_date)}}, {% endfor %}
+{%- endif %} zum Kurs **{{obj.course.ref}} {{obj.course.name}} {{obj.course.line}}**.
+Zeit: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
+Tarif: {{obj.fee}}.
+{% if obj.fee.number_of_events %}
+Ihr Beginndatum: {{fds(obj.start_date)}}.
 {%- else %}
 Termine:
 {% for evt in obj.course.events_by_course.order_by('start_date') -%}
@@ -18,5 +15,6 @@ Termine:
 {% if obj.options %}
 {{obj.options}}.
 {%- endif %}
-Angefragt am {{fds(obj.request_date)}} ({{obj.user.initials}}). Tarif: {{obj.fee}}.
+Angefragt am {{fds(obj.request_date)}} 
+({{obj.user.initials or obj.user.first_name}}). 
 

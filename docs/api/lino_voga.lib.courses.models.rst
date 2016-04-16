@@ -32,6 +32,8 @@ lino_voga.lib.courses.models
       PupilTypes
       Pupils
       PupilsByType
+      StatusCoursesByTopic
+      StatusReport
       Teacher
       TeacherDetail
       TeacherType

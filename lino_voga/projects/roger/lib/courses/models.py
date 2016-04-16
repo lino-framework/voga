@@ -23,9 +23,12 @@ Does some adaptions.
 from __future__ import unicode_literals
 from __future__ import print_function
 
+import datetime
+
+from django.db.models import Q
+
 from lino.api import dd, rt, _
 
-from lino.mixins.periods import DatePeriod
 from lino.mixins import Referrable
 
 from lino_voga.lib.courses.models import *
@@ -49,6 +52,18 @@ add("etc", "Sonstige", "etc")
 
 
 class Pupil(Pupil):
+    """The Roger variant of Lino Voga adds a few very specific fields
+    which are being used for filtering, and they may influence the
+    price of an enrolment.
+
+    .. attribute:: legacy_id
+    .. attribute:: section
+    .. attribute:: is_lfv
+    .. attribute:: is_ckk
+    .. attribute:: is_raviva
+    .. attribute:: member_until
+
+    """
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Pupil')
@@ -66,6 +81,65 @@ class Pupil(Pupil):
     is_member = models.BooleanField(_("Member"), default=False)
     member_until = models.DateField(_("Mitglied bis"), blank=True, null=True)
 
+    def get_enrolment_info(self):
+        """Return a short text to be displayed between parentheses
+        in `lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`.
+        """
+        if self.member_until is None:
+            s = ""
+        elif self.member_until >= datetime.date.today():
+            s = "E"
+        else:
+            s = "e"
+        if self.is_lfv:
+            s += "L"
+        if self.is_ckk:
+            s += "C"
+        if self.is_raviva:
+            s += "R"
+        if self.section:
+            s += " {0}".format(self.section)
+        return s
+
+    # TODO:
+    @classmethod
+    def get_parameter_fields(cls, **fields):
+        fields.update(
+            show_members=dd.YesNo.field(
+                _("Members"), blank=True,
+                help_text=_(
+                    "Show those whose 'Member until' is after today.")),
+            show_ckk=dd.YesNo.field(_("CKK"), blank=True),
+            show_lfv=dd.YesNo.field(_("LFV"), blank=True),
+            show_raviva=dd.YesNo.field(_("Raviva"), blank=True))
+
+        return super(Pupil, cls).get_parameter_fields(**fields)
+
+    @classmethod
+    def get_request_queryset(cls, ar):
+        qs = super(Pupil, cls).get_request_queryset(ar)
+        pv = ar.param_values
+        if pv.show_members == dd.YesNo.no:
+            qs = qs.filter(
+                Q(member_until__isnull=True) | Q(member_until__lt=dd.today()))
+        elif pv.show_members == dd.YesNo.yes:
+            qs = qs.filter(Q(member_until__gte=dd.today()))
+        for k in ('ckk', 'raviva', 'lfv'):
+            v = pv['show_' + k]
+            if v:
+                qs = qs.filter(**{'is_' + k: v == dd.YesNo.yes})
+        return qs
+
+    @classmethod
+    def get_title_tags(self, ar):
+        for t in super(Pupil, self).get_title_tags(ar):
+            yield t
+        pv = ar.param_values
+        if pv.show_members:
+            yield "{0}:{1}".format(_("Members"), pv.show_members)
+        if pv.show_members:
+            yield "{0}:{1}".format(_("Members"), pv.show_members)
+
 
 class PupilDetail(PupilDetail):
     # main = "general courses.EnrolmentsByPupil"
@@ -82,6 +156,8 @@ class PupilDetail(PupilDetail):
 
 
 Pupils.detail_layout = PupilDetail()
+Pupils.params_layout = "aged_from aged_to gender "\
+                       "show_members show_lfv show_ckk show_raviva"
 
 
 class Line(Line):
@@ -133,31 +209,31 @@ Courses.column_names = "ref start_date enrolments_until line room teacher " \
                        "workflow_buttons *"
 
 
-class Enrolment(Enrolment, DatePeriod):
-    """
+# class Enrolment(Enrolment, DatePeriod):
+#     """
     
-    """
-    class Meta:
-        app_label = 'courses'
-        abstract = dd.is_abstract_model(__name__, 'Enrolment')
-        verbose_name = _("Enrolment")
-        verbose_name_plural = _("Enrolments")
+#     """
+#     class Meta:
+#         app_label = 'courses'
+#         abstract = dd.is_abstract_model(__name__, 'Enrolment')
+#         verbose_name = _("Enrolment")
+#         verbose_name_plural = _("Enrolments")
 
     # def suggest_guest_for(self, event):
     #     return self.state in GUEST_ENROLMENT_STATES
 
-Enrolments.detail_layout = """
-id course pupil request_date user
-start_date end_date places fee option amount
-remark workflow_buttons printed
-confirmation_details invoicing.InvoicingsByInvoiceable
-"""
+# Enrolments.detail_layout = """
+# id course pupil request_date user
+# start_date end_date places fee option amount
+# remark workflow_buttons printed
+# confirmation_details invoicing.InvoicingsByInvoiceable
+# """
 
 
-EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
-                                 'places remark amount workflow_buttons *'
+# EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
+#                                  'places remark amount workflow_buttons *'
 
-EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
-                                  'places remark fee option amount ' \
-                                  'workflow_buttons *'
+# EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
+#                                   'places remark fee option amount ' \
+#                                   'workflow_buttons *'
 

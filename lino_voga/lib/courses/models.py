@@ -24,17 +24,16 @@ Database models for `lino_voga.lib.courses`.
 from __future__ import unicode_literals
 from builtins import str
 import datetime
+import six
 
 from django.utils.translation import ugettext_lazy as _
 from lino.utils.mti import get_child
 from lino.api import dd, rt
-from lino.utils import mti
 
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
-# from lino_cosi.lib.auto.sales.mixins import Invoiceable
-# from lino_cosi.lib.auto.sales.models import CreateInvoice
+from lino.mixins.periods import DatePeriod
 
 from lino_voga.lib.contacts.models import Person
 from lino_voga.lib.contacts.models import MyPersonDetail
@@ -111,6 +110,10 @@ class Pupil(Person):
     pupil_type = dd.ForeignKey('courses.PupilType', blank=True, null=True)
 
     suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
+
+    def get_enrolment_info(self):
+        if self.pupil_type:
+            return self.pupil_type.ref
 
     def __unicode__(self):
         s = self.get_full_name(salutation=False)
@@ -203,7 +206,76 @@ class Course(Course):
 #         return [o.pupil for o in ar.selected_rows]
 
 
-class Enrolment(Enrolment, Invoiceable):
+class InvoicingInfo(object):
+    invoiceable_fee = None
+    invoiced_events = 0
+    used_events = []
+    invoicings = None
+
+    def __init__(self, enr):
+        self.enrolment = enr
+        fee = enr.fee
+        # fee = enr.course.fee or enr.course.line.fee
+        if not fee:
+            return
+        self.invoiced_qty = ZERO
+        invoiced_events = 0
+        # history = []
+        state_field = dd.plugins.invoicing.voucher_model._meta.get_field(
+            'state')
+        vstates = [s for s in state_field.choicelist.objects()
+                   if not s.editable]
+        self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
+        for obj in self.invoicings:
+            self.invoiced_qty += obj.qty
+            invoiced_events += obj.qty * obj.product.number_of_events
+            # history.append("".format())
+        # print("20160414", self.invoicings, self.invoiced_qty)
+        start_date = enr.start_date or enr.course.start_date
+        # print("20160414 a", fee.number_of_events)
+        if fee.number_of_events:
+            # print("20160414 b", start_date)
+            if not start_date:
+                return
+            qs = enr.course.events_by_course.filter(
+                start_date__gte=start_date,
+                state=rt.modules.cal.EventStates.took_place)
+            if enr.end_date:
+                qs = qs.filter(end_date__lte=enr.end_date)
+            self.used_events = qs
+            # print("20160414 c", self.used_events)
+            # used_events = qs.count()
+            # paid_events = invoiced_qty * fee.number_of_events
+            asset = invoiced_events - self.used_events.count()
+        else:
+            asset = self.invoiced_qty
+        # dd.logger.info("20160223 %s %s %s", enr, asset, fee.min_asset)
+        if asset < fee.min_asset:
+            self.invoiceable_fee = fee
+            self.invoiced_events = invoiced_events
+
+    def as_html(self, ar):
+        elems = []
+        day_and_month = dd.plugins.courses.day_and_month
+        for i, ev in enumerate(self.used_events):
+            txt = day_and_month(ev.start_date)
+            if i >= self.invoiced_events:
+                txt = E.b(txt)
+            elems.append(ar.obj2html(ev, txt))
+        return E.p(*join_elems(elems, sep=', '))
+
+    def invoice_number(self, voucher):
+        if self.invoicings is None:
+            return 0
+        n = 1
+        for item in self.invoicings:
+            n += 1
+            if item.voucher.id == voucher.id:
+                break
+        return n
+
+
+class Enrolment(Enrolment, Invoiceable, DatePeriod):
     """Adds
 
     .. attribute:: fee
@@ -222,7 +294,7 @@ class Enrolment(Enrolment, Invoiceable):
 
     class Meta:
         app_label = 'courses'
-        abstract = dd.is_abstract_model(__name__, 'Enrolment')
+        abstract = False  # dd.is_abstract_model(__name__, 'Enrolment')
         verbose_name = _("Enrolment")
         verbose_name_plural = _("Enrolments")
 
@@ -304,35 +376,14 @@ class Enrolment(Enrolment, Invoiceable):
         price = getattr(self.fee, 'sales_price') or ZERO
         self.amount = price * self.places
 
-    def get_invoiceable_product(self):
-        # dd.logger.info('20160223 %s', self.course)
-        if not self.course.state.invoiceable:
-            return
-        if not self.state.invoiceable:
-            return
-        fee = self.fee
-        # fee = self.course.fee or self.course.line.fee
-        if not fee:
-            return
-        invoiced_qty = ZERO
-        for obj in self.get_invoicings():
-            invoiced_qty += obj.qty
-        if fee.number_of_events:
-            qs = self.course.events_by_course.filter(
-                start_date__gte=self.start_date,
-                state=rt.modules.cal.EventStates.took_place)
-            if self.end_date:
-                qs = qs.filter(end_date__lte=self.end_date)
-            used_events = qs.count()
-            paid_events = invoiced_qty * fee.number_of_events
-            asset = paid_events - used_events
-        else:
-            asset = invoiced_qty
-        # dd.logger.info("20160223 %s %s %s", self, asset, fee.min_asset)
-        if asset < fee.min_asset:
-            return fee
+    def get_invoicing_info(self):
+        return InvoicingInfo(self)
 
-    def get_invoiceable_title(self):
+    def get_invoiceable_title(self, invoice):
+        if self.fee.number_of_events:
+            info = self.get_invoicing_info()
+            return "{0}, Rg. {1}".format(
+                self.course, info.invoice_number(invoice))
         return self.course
 
     def get_invoiceable_qty(self):
@@ -343,19 +394,42 @@ class Enrolment(Enrolment, Invoiceable):
             None, 'courses/Enrolment/item_description.html',
             obj=self, item=item)
 
+    def get_invoiceable_product(self):
+        # dd.logger.info('20160223 %s', self.course)
+        if not self.course.state.invoiceable:
+            return
+        if not self.state.invoiceable:
+            return
+        return self.get_invoicing_info().invoiceable_fee
+
+    @dd.displayfield(_("Invoicing info"))
+    def invoicing_info(self, ar):
+        if ar is None:
+            return ''
+        info = self.get_invoicing_info()
+        return info.as_html(ar)
+
+# Enrolments.detail_layout = """
+#     request_date user course
+#     pupil places fee option
+#     remark amount workflow_buttons
+#     confirmation_details invoicing.InvoicingsByInvoiceable
+#     """
+
 Enrolments.detail_layout = """
-    request_date user course
-    pupil places fee option
-    remark amount workflow_buttons
-    confirmation_details invoicing.InvoicingsByInvoiceable
-    """
+id course pupil request_date user
+start_date end_date places fee option amount
+remark workflow_buttons printed invoicing_info
+confirmation_details invoicing.InvoicingsByInvoiceable
+"""
 
 
-class EnrolmentsByOption(Enrolments):
-    master_key = 'option'
-    column_names = 'course pupil remark amount request_date *'
-    order_by = ['request_date']
-    
+from lino_cosi.lib.invoicing.models import InvoicingsByInvoiceable
+
+InvoicingsByInvoiceable.column_names = (
+    "voucher title qty voucher__voucher_date "
+    "voucher__state product__number_of_events *")
+
 
 class PendingRequestedEnrolments(PendingRequestedEnrolments):
     column_names = 'request_date course pupil remark user ' \
@@ -363,18 +437,56 @@ class PendingRequestedEnrolments(PendingRequestedEnrolments):
 
 
 class EnrolmentsByPupil(EnrolmentsByPupil):
-    column_names = 'request_date course user:10 remark ' \
-                   'amount:10 workflow_buttons *'
+    column_names = 'request_date course start_date end_date '\
+                   'places remark amount workflow_buttons *'
+
+    # column_names = 'request_date course user:10 remark ' \
+    #                'amount:10 workflow_buttons *'
 
 
 class EnrolmentsByCourse(EnrolmentsByCourse):
-    column_names = 'request_date pupil_info places ' \
-                   'fee option remark amount:10 workflow_buttons *'
+    """The Voga version of :class:`EnrolmentsByCourse
+    <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
+
+    .. attribute:: pupil_info
+
+        Show the name and address of the participant.  Overrides
+        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
+        in order to add (between parentheses after the name) some
+        information needed to compute the price.
+
+    """
+
+    column_names = 'request_date pupil_info start_date end_date '\
+                   'places remark fee option amount ' \
+                   'workflow_buttons *'
+
+    # column_names = 'request_date pupil_info places ' \
+    #                'fee option remark amount:10 workflow_buttons *'
+
+    @dd.virtualfield(dd.HtmlBox(_("Participant")))
+    def pupil_info(cls, self, ar):
+        elems = [ar.obj2html(self.pupil,
+                             self.pupil.get_full_name(nominative=True))]
+        info = self.pupil.get_enrolment_info()
+        if info:
+            # elems += [" ({})".format(self.pupil.pupil_type.ref)]
+            elems += [" ({})".format(info)]
+        elems += [', ']
+        elems += join_elems(self.pupil.address_location_lines(), sep=', ')
+        return E.p(*elems)
+
+
+class EnrolmentsByFee(EnrolmentsByCourse):
+    label = _("Enrolments using this fee")
+    master_key = "fee"
+    column_names = 'course request_date pupil_info start_date end_date '\
+                   'places remark option amount *'
 
 
 class PupilDetail(MyPersonDetail):
 
-    main = 'general courses sales ledger more'
+    main = 'general address courses sales ledger more'
 
     personal = 'pupil_type'
 
@@ -417,6 +529,9 @@ class Pupils(contacts.Persons):
     detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'
     auto_fit_column_widths = True
+    # parameters = mixins.ObservedPeriod()
+
+    params_layout = "aged_from aged_to gender"
 
 
 class PupilsByType(Pupils):

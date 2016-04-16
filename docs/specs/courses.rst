@@ -268,3 +268,20 @@ Line #1 ('Europe')
 
 
 
+Filtering pupils
+================
+
+>>> print(rt.modules.courses.Pupils.params_layout.main)
+aged_from aged_to gender
+
+There are 36 pupils (21 men and 15 women) in our database:
+
+>>> json_fields = 'count rows title success no_data_text param_values'
+>>> kwargs = dict(fmt='json', limit=10, start=0)
+>>> demo_get('robin', 'api/courses/Pupils', json_fields, 36, **kwargs)
+
+>>> kwargs.update(pv=['', '', 'M'])
+>>> demo_get('robin', 'api/courses/Pupils', json_fields, 21, **kwargs)
+
+>>> kwargs.update(pv=['', '', 'F'])
+>>> demo_get('robin', 'api/courses/Pupils', json_fields, 15, **kwargs)
