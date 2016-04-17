@@ -228,7 +228,8 @@ class InvoicingInfo(object):
         self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
         for obj in self.invoicings:
             self.invoiced_qty += obj.qty
-            invoiced_events += obj.qty * obj.product.number_of_events
+            if obj.product.number_of_events:
+                invoiced_events += obj.qty * obj.product.number_of_events
             # history.append("".format())
         # print("20160414", self.invoicings, self.invoiced_qty)
         start_date = enr.start_date or enr.course.start_date
