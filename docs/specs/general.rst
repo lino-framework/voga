@@ -132,7 +132,7 @@ Rolf is the local system administrator, he has a complete menu:
 - Accounting :
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
-  - Financial : Bestbank (BNK), Payment Orders (PMO), Cash (CSH), Miscellaneous Journal Entries (MSG)
+  - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
 - Courses : Participants, Instructors, -, Topics, Course series, -, Draft courses, Inactive courses, Active courses, Closed courses, -, Pending requested enrolments, Pending confirmed enrolments
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
