@@ -39,7 +39,7 @@ from lino_voga.lib.contacts.models import Person
 from lino_voga.lib.contacts.models import MyPersonDetail
 
 contacts = dd.resolve_app('contacts')
-sales = dd.resolve_app('sales')
+# sales = dd.resolve_app('sales')
 
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
@@ -562,7 +562,7 @@ class CourseDetail(CourseDetail):
 
     more = dd.Panel("""
     # company contact_person
-    user id events_text
+    state user id events_text
     invoicing.InvoicingsByInvoiceable
     """, label=_("More"))
 
