@@ -24,6 +24,8 @@ This module extends :mod:`lino_xl.lib.cal.models`
 
 from __future__ import unicode_literals
 
+import six
+
 from django.utils.translation import ugettext_lazy as _
 
 from lino_xl.lib.cal.models import *
@@ -120,11 +122,12 @@ class Event(Event):
 
     def __str__(self):
         if self.owner is None:
-            # return super(Event, self).__str__()
-            # super() fails because of python_2_unicode_compatible, so
-            # we replicate the code:
-            return settings.SITE.babelattr(self, 'event_label') \
-                or settings.SITE.babelattr(self, 'name')
+            if six.PY2:
+                return super(Event, self).__unicode__()
+            else:
+                return super(Event, self).__str__()
+            # a simple super() fails because of
+            # python_2_unicode_compatible
         owner = self.owner._meta.verbose_name + " #" + str(self.owner.pk)
         return "%s %s" % (owner, self.summary)
 
