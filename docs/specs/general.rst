@@ -35,7 +35,7 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-37 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
+38 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, xl, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
 72 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -128,7 +128,7 @@ Rolf is the local system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
+- Calendar : My appointments, Overdue appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS)
   - Purchases : Purchase invoices (PRC)
