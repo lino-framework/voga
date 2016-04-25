@@ -24,6 +24,8 @@ This module extends :mod:`lino_xl.lib.cal.models`
 
 from __future__ import unicode_literals
 
+import six
+
 from django.utils.translation import ugettext_lazy as _
 
 from lino_xl.lib.cal.models import *
@@ -52,7 +54,7 @@ class Room(Room, ContactRelated):
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
-                        verbose_name=_("Tariff"),
+                        # verbose_name=_("Tariff"),
                         related_name='rooms_by_fee')
 
     calendar = dd.ForeignKey(
@@ -93,6 +95,7 @@ class Rooms(Rooms):
     """
 
 
+@dd.python_2_unicode_compatible
 class Event(Event):
 
     invoiceable_date_field = 'start_date'
@@ -117,14 +120,19 @@ class Event(Event):
         else:
             return unicode(self.owner)
 
-    def __unicode__(self):
+    def __str__(self):
         if self.owner is None:
-            return super(Event, self).__unicode__()
+            if six.PY2:
+                return super(Event, self).__unicode__()
+            else:
+                return super(Event, self).__str__()
+            # a simple super() fails because of
+            # python_2_unicode_compatible
         owner = self.owner._meta.verbose_name + " #" + str(self.owner.pk)
         return "%s %s" % (owner, self.summary)
 
     def suggest_guests(self):
-        #~ print "20130722 suggest_guests"
+        # print "20130722 suggest_guests"
         for g in super(Event, self).suggest_guests():
             yield g
         if self.project is None:

@@ -9,7 +9,7 @@ Courses
     $ python setup.py test -s tests.DocsTests.test_courses
 
     >>> from lino import startup
-    >>> startup('lino_voga.projects.docs.settings.doctests')
+    >>> startup('lino_voga.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
     
     
@@ -39,24 +39,24 @@ and
 >>> ses = rt.login('robin')
 
 >>> ses.show(courses.PupilTypes)
-==== =========== =============
- ID   Reference   Designation
----- ----------- -------------
- 1    M           Member
- 2    H           Helper
- 3    N           Non-member
-==== =========== =============
+==== =========== ============= ================== ==================
+ ID   Reference   Designation   Designation (de)   Designation (fr)
+---- ----------- ------------- ------------------ ------------------
+ 1    M           Member        Member             Member
+ 2    H           Helper        Helper             Helper
+ 3    N           Non-member    Non-member         Non-member
+==== =========== ============= ================== ==================
 <BLANKLINE>
 
 >>> ses.show(courses.TeacherTypes)
-==== =========== ==================
- ID   Reference   Designation
----- ----------- ------------------
- 1    S           Independant
- 2    EP          Voluntary (flat)
- 3    ER          Voluntary (real)
- 4    LBA         LEA
-==== =========== ==================
+==== =========== ================== ======================= ======================
+ ID   Reference   Designation        Designation (de)        Designation (fr)
+---- ----------- ------------------ ----------------------- ----------------------
+ 1    S           Independant        Selbstständig           Indépendant
+ 2    EP          Voluntary (flat)   Ehrenamtlich pauschal   Volontaire (forfait)
+ 3    ER          Voluntary (real)   Ehrenamtlich real       Volontaire (réel)
+ 4    LBA         LEA                LBA                     ALE
+==== =========== ================== ======================= ======================
 <BLANKLINE>
 
 
@@ -139,7 +139,7 @@ remain unchanged (if the following fails, make sure you've run
 True
 >>> print(res['info_message'])
 Update Events for comp (12/2/13 Computer room)...
-Generating events between 2013-12-02 and 2019-06-15.
+Generating events between 2013-12-02 and 2019-05-22.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ====================== ===========
@@ -173,7 +173,7 @@ Now we move that to the week after:
 True
 >>> print(ses.response['info_message'])
 Update Events for comp (12/2/13 Computer room)...
-Generating events between 2013-12-02 and 2019-06-15.
+Generating events between 2013-12-02 and 2019-05-22.
 8 row(s) have been updated.
 Move down for Course #3 Hour 4...
 1 row(s) have been updated.
@@ -272,7 +272,7 @@ Filtering pupils
 ================
 
 >>> print(rt.modules.courses.Pupils.params_layout.main)
-aged_from aged_to gender
+aged_from aged_to gender show_members show_lfv show_ckk show_raviva
 
 There are 36 pupils (21 men and 15 women) in our database:
 
@@ -280,8 +280,13 @@ There are 36 pupils (21 men and 15 women) in our database:
 >>> kwargs = dict(fmt='json', limit=10, start=0)
 >>> demo_get('robin', 'api/courses/Pupils', json_fields, 36, **kwargs)
 
->>> kwargs.update(pv=['', '', 'M'])
+>>> kwargs.update(pv=['', '', 'M', '', '', '', ''])
 >>> demo_get('robin', 'api/courses/Pupils', json_fields, 21, **kwargs)
 
->>> kwargs.update(pv=['', '', 'F'])
+>>> kwargs.update(pv=['', '', 'F', '', '', '', ''])
 >>> demo_get('robin', 'api/courses/Pupils', json_fields, 15, **kwargs)
+
+
+>>> json_fields = 'navinfo disable_delete data id title'
+>>> kwargs = dict(fmt='json', an='detail')
+>>> demo_get('robin', 'api/courses/Lines/2', json_fields, **kwargs)
