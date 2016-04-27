@@ -27,9 +27,8 @@ from lino.api import dd, rt
 
 def excerpt_types():
 
-    etype = Instantiator('excerpts.ExcerptType',
-                         # build_method='appypdf',
-                         email_template='Default.eml.html').build
+    etype = Instantiator('excerpts.ExcerptType').build
+    # email_template='Default.eml.html').build
 
     yield etype(
         build_method='appypdf',
@@ -46,6 +45,15 @@ def excerpt_types():
         content_type=ContentType.objects.get_for_model(
             rt.modules.courses.Enrolment),
         **dd.str2kw('name', _("Certificate")))
+
+    yield etype(
+        build_method='appypdf',
+        template='Default.odt',
+        body_template='payment_list.body.html',
+        certifying=True,
+        content_type=ContentType.objects.get_for_model(
+            rt.modules.courses.Course),
+        **dd.str2kw('name', _("Payment list")))
 
 
 def objects():

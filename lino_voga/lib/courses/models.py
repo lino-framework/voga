@@ -243,7 +243,7 @@ class InvoicingInfo(object):
                 state=rt.modules.cal.EventStates.took_place)
             if enr.end_date:
                 qs = qs.filter(end_date__lte=enr.end_date)
-            self.used_events = qs
+            self.used_events = qs.order_by('start_date')
             # print("20160414 c", self.used_events)
             # used_events = qs.count()
             # paid_events = invoiced_qty * fee.number_of_events
@@ -288,6 +288,13 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
 
         The total amount to pay for this enrolment. This is
         :attr:`places` * :attr:`fee`.
+
+    .. attribute:: pupil_info
+
+        Show the name and address of the participant.  Overrides
+        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
+        in order to add (between parentheses after the name) some
+        information needed to compute the price.
 
     """
 
@@ -403,6 +410,20 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
             return
         return self.get_invoicing_info().invoiceable_fee
 
+    @dd.virtualfield(dd.HtmlBox(_("Participant")))
+    def pupil_info(self, ar):
+        if ar is None:
+            return ''
+        elems = [ar.obj2html(self.pupil,
+                             self.pupil.get_full_name(nominative=True))]
+        info = self.pupil.get_enrolment_info()
+        if info:
+            # elems += [" ({})".format(self.pupil.pupil_type.ref)]
+            elems += [" ({})".format(info)]
+        elems += [', ']
+        elems += join_elems(self.pupil.address_location_lines(), sep=', ')
+        return E.p(*elems)
+
     @dd.displayfield(_("Invoicing info"))
     def invoicing_info(self, ar):
         if ar is None:
@@ -449,13 +470,6 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     """The Voga version of :class:`EnrolmentsByCourse
     <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
 
-    .. attribute:: pupil_info
-
-        Show the name and address of the participant.  Overrides
-        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
-        in order to add (between parentheses after the name) some
-        information needed to compute the price.
-
     """
 
     column_names = 'request_date pupil_info start_date end_date '\
@@ -464,18 +478,6 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
 
     # column_names = 'request_date pupil_info places ' \
     #                'fee option remark amount:10 workflow_buttons *'
-
-    @dd.virtualfield(dd.HtmlBox(_("Participant")))
-    def pupil_info(cls, self, ar):
-        elems = [ar.obj2html(self.pupil,
-                             self.pupil.get_full_name(nominative=True))]
-        info = self.pupil.get_enrolment_info()
-        if info:
-            # elems += [" ({})".format(self.pupil.pupil_type.ref)]
-            elems += [" ({})".format(info)]
-        elems += [', ']
-        elems += join_elems(self.pupil.address_location_lines(), sep=', ')
-        return E.p(*elems)
 
 
 class EnrolmentsByFee(EnrolmentsByCourse):
@@ -722,3 +724,7 @@ class StatusReport(Report):
             # ar = StatusCoursesByTopic.request(master_instance=topic)
             # yield ar
 
+
+class PaymentEnrolmentsByCourse(Enrolments):
+    master_key = 'course'
+    column_names = "pupil_info start_date invoicing_info"
