@@ -33,6 +33,10 @@ from lino.api import dd, rt
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
+from lino_cosi.lib.ledger.utils import get_due_movements
+from lino_cosi.lib.accounts.utils import CREDIT
+
+
 from lino.mixins.periods import DatePeriod
 
 from lino_voga.lib.contacts.models import Person
@@ -40,6 +44,8 @@ from lino_voga.lib.contacts.models import MyPersonDetail
 
 contacts = dd.resolve_app('contacts')
 # sales = dd.resolve_app('sales')
+
+day_and_month = dd.plugins.courses.day_and_month
 
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
@@ -257,7 +263,6 @@ class InvoicingInfo(object):
 
     def as_html(self, ar):
         elems = []
-        day_and_month = dd.plugins.courses.day_and_month
         for i, ev in enumerate(self.used_events):
             txt = day_and_month(ev.start_date)
             if i >= self.invoiced_events:
@@ -430,6 +435,25 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
             return ''
         info = self.get_invoicing_info()
         return info.as_html(ar)
+
+    @dd.displayfield(_("Payment info"))
+    def payment_info(self, ar):
+        if ar is None:
+            return ''
+        # sar = ar.ledger.DebtsByPartner.request()
+        mvts = []
+        for dm in get_due_movements(CREDIT, partner=self.pupil):
+            s = dm.match
+            s += " [{0}]".format(day_and_month(dm.due_date))
+            s += " ("
+            s += ', '.join([str(i.voucher) for i in dm.debts])
+            if len(dm.payments):
+                s += " - "
+                s += ', '.join([str(i.voucher) for i in dm.payments])
+            s += "): {0}".format(dm.balance)
+            mvts.append(s)
+        return '\n'.join(mvts)
+            
 
 # Enrolments.detail_layout = """
 #     request_date user course
@@ -725,6 +749,8 @@ class StatusReport(Report):
             # yield ar
 
 
-class PaymentEnrolmentsByCourse(Enrolments):
+class EnrolmentsAndPaymentsByCourse(Enrolments):
+    """Show enrolments of a course together with invoicing and payment
+    info. This is used by `payment_list.body.html`."""
     master_key = 'course'
-    column_names = "pupil_info start_date invoicing_info"
+    column_names = "pupil_info start_date invoicing_info payment_info"
