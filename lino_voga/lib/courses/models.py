@@ -301,6 +301,15 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
         in order to add (between parentheses after the name) some
         information needed to compute the price.
 
+    .. attribute:: invoicing_info
+
+        A virtual field showing a summary of recent invoicings.
+
+    .. attribute:: payment_info
+
+        A virtual field showing a summary of due accounting movements
+        (debts and payments).
+
     """
 
     invoiceable_date_field = 'request_date'
@@ -387,7 +396,10 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
         # When `products` is not installed, then fee may be None
         # because it is a DummyField.
         price = getattr(self.fee, 'sales_price') or ZERO
-        self.amount = price * self.places
+        try:
+            self.amount = price * self.places
+        except TypeError as e:
+            logger.warning("%s * %s -> %s", price, self.places, e)
 
     def get_invoicing_info(self):
         return InvoicingInfo(self)
@@ -750,7 +762,13 @@ class StatusReport(Report):
 
 
 class EnrolmentsAndPaymentsByCourse(Enrolments):
-    """Show enrolments of a course together with invoicing and payment
-    info. This is used by `payment_list.body.html`."""
+    """Show enrolments of a course together with
+    :attr:`invoicing_info` and :attr:`payment_info`.
+
+    This is used by `payment_list.body.html`.
+
+    
+
+    """
     master_key = 'course'
     column_names = "pupil_info start_date invoicing_info payment_info"
