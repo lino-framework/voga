@@ -33,6 +33,10 @@ from lino.api import dd, rt
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
+from lino_cosi.lib.ledger.utils import get_due_movements
+from lino_cosi.lib.accounts.utils import CREDIT
+
+
 from lino.mixins.periods import DatePeriod
 
 from lino_voga.lib.contacts.models import Person
@@ -40,6 +44,8 @@ from lino_voga.lib.contacts.models import MyPersonDetail
 
 contacts = dd.resolve_app('contacts')
 # sales = dd.resolve_app('sales')
+
+day_and_month = dd.plugins.courses.day_and_month
 
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
@@ -243,7 +249,7 @@ class InvoicingInfo(object):
                 state=rt.modules.cal.EventStates.took_place)
             if enr.end_date:
                 qs = qs.filter(end_date__lte=enr.end_date)
-            self.used_events = qs
+            self.used_events = qs.order_by('start_date')
             # print("20160414 c", self.used_events)
             # used_events = qs.count()
             # paid_events = invoiced_qty * fee.number_of_events
@@ -257,7 +263,6 @@ class InvoicingInfo(object):
 
     def as_html(self, ar):
         elems = []
-        day_and_month = dd.plugins.courses.day_and_month
         for i, ev in enumerate(self.used_events):
             txt = day_and_month(ev.start_date)
             if i >= self.invoiced_events:
@@ -288,6 +293,22 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
 
         The total amount to pay for this enrolment. This is
         :attr:`places` * :attr:`fee`.
+
+    .. attribute:: pupil_info
+
+        Show the name and address of the participant.  Overrides
+        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
+        in order to add (between parentheses after the name) some
+        information needed to compute the price.
+
+    .. attribute:: invoicing_info
+
+        A virtual field showing a summary of recent invoicings.
+
+    .. attribute:: payment_info
+
+        A virtual field showing a summary of due accounting movements
+        (debts and payments).
 
     """
 
@@ -375,7 +396,10 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
         # When `products` is not installed, then fee may be None
         # because it is a DummyField.
         price = getattr(self.fee, 'sales_price') or ZERO
-        self.amount = price * self.places
+        try:
+            self.amount = price * self.places
+        except TypeError as e:
+            logger.warning("%s * %s -> %s", price, self.places, e)
 
     def get_invoicing_info(self):
         return InvoicingInfo(self)
@@ -403,12 +427,50 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
             return
         return self.get_invoicing_info().invoiceable_fee
 
+    @dd.virtualfield(dd.HtmlBox(_("Participant")))
+    def pupil_info(self, ar):
+        if ar is None:
+            return ''
+        elems = [ar.obj2html(self.pupil,
+                             self.pupil.get_full_name(nominative=True))]
+        info = self.pupil.get_enrolment_info()
+        if info:
+            # elems += [" ({})".format(self.pupil.pupil_type.ref)]
+            elems += [" ({})".format(info)]
+        elems += [', ']
+        elems += join_elems(
+            self.pupil.address_location_lines(), sep=', ')
+        if self.pupil.phone:
+            elems += [', ', _("Phone: {0}").format(self.pupil.phone)]
+        if self.pupil.gsm:
+            elems += [', ', _("GSM: {0}").format(self.pupil.gsm)]
+        return E.p(*elems)
+
     @dd.displayfield(_("Invoicing info"))
     def invoicing_info(self, ar):
         if ar is None:
             return ''
         info = self.get_invoicing_info()
         return info.as_html(ar)
+
+    @dd.displayfield(_("Payment info"))
+    def payment_info(self, ar):
+        if ar is None:
+            return ''
+        # sar = ar.ledger.DebtsByPartner.request()
+        mvts = []
+        for dm in get_due_movements(CREDIT, partner=self.pupil):
+            s = dm.match
+            s += " [{0}]".format(day_and_month(dm.due_date))
+            s += " ("
+            s += ', '.join([str(i.voucher) for i in dm.debts])
+            if len(dm.payments):
+                s += " - "
+                s += ', '.join([str(i.voucher) for i in dm.payments])
+            s += "): {0}".format(dm.balance)
+            mvts.append(s)
+        return '\n'.join(mvts)
+            
 
 # Enrolments.detail_layout = """
 #     request_date user course
@@ -449,13 +511,6 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     """The Voga version of :class:`EnrolmentsByCourse
     <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
 
-    .. attribute:: pupil_info
-
-        Show the name and address of the participant.  Overrides
-        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
-        in order to add (between parentheses after the name) some
-        information needed to compute the price.
-
     """
 
     column_names = 'request_date pupil_info start_date end_date '\
@@ -464,18 +519,6 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
 
     # column_names = 'request_date pupil_info places ' \
     #                'fee option remark amount:10 workflow_buttons *'
-
-    @dd.virtualfield(dd.HtmlBox(_("Participant")))
-    def pupil_info(cls, self, ar):
-        elems = [ar.obj2html(self.pupil,
-                             self.pupil.get_full_name(nominative=True))]
-        info = self.pupil.get_enrolment_info()
-        if info:
-            # elems += [" ({})".format(self.pupil.pupil_type.ref)]
-            elems += [" ({})".format(info)]
-        elems += [', ']
-        elems += join_elems(self.pupil.address_location_lines(), sep=', ')
-        return E.p(*elems)
 
 
 class EnrolmentsByFee(EnrolmentsByCourse):
@@ -722,3 +765,15 @@ class StatusReport(Report):
             # ar = StatusCoursesByTopic.request(master_instance=topic)
             # yield ar
 
+
+class EnrolmentsAndPaymentsByCourse(Enrolments):
+    """Show enrolments of a course together with
+    :attr:`invoicing_info` and :attr:`payment_info`.
+
+    This is used by `payment_list.body.html`.
+
+    
+
+    """
+    master_key = 'course'
+    column_names = "pupil_info start_date invoicing_info payment_info"

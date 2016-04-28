@@ -35,8 +35,8 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-38 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, printing, system, contenttypes, gfks, users, office, countries, contacts, lists, beid, xl, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
-72 models:
+39 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, users, office, countries, printing, system, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
+73 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -59,7 +59,7 @@ The demo database
  contacts.Person            contacts.Persons               37        69
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             2         5
- contenttypes.ContentType   gfks.ContentTypes              3         73
+ contenttypes.ContentType   gfks.ContentTypes              3         74
  countries.Country          countries.Countries            4         8
  countries.Place            countries.Places               6         78
  courses.Course             courses.Courses                28        25
@@ -73,7 +73,7 @@ The demo database
  courses.TeacherType        courses.TeacherTypes           3         4
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
- excerpts.ExcerptType       excerpts.ExcerptTypes          15        8
+ excerpts.ExcerptType       excerpts.ExcerptTypes          15        9
  finan.BankStatement        finan.BankStatements           15        0
  finan.BankStatementItem    finan.BankStatementItemTable   10        0
  finan.JournalEntry         finan.FinancialVouchers        13        0
@@ -98,6 +98,7 @@ The demo database
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
+ plausibility.Problem       plausibility.Problems          6         0
  products.Product           products.Products              10        9
  products.ProductCat        products.ProductCats           3         5
  rooms.Booking              rooms.Bookings                 23        3
@@ -128,6 +129,7 @@ Rolf is the local system administrator, he has a complete menu:
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
+- Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Overdue appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS)
@@ -135,13 +137,12 @@ Rolf is the local system administrator, he has a complete menu:
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
 - Courses : Participants, Instructors, -, Topics, Course series, -, Draft courses, Inactive courses, Active courses, Closed courses, -, Pending requested enrolments, Pending confirmed enrolments
-- Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
   - Courses : Status Report
 - Configure :
-  - System : Site Parameters, Help Texts, Users
+  - System : Users, Site Parameters, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Priorities, Recurrent event rules, Guest Roles, Calendar Event Types, Remote Calendars
@@ -151,7 +152,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Courses : Course types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : content types, Authorities, User Profiles
+  - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems
   - Contacts : Contact Persons, List memberships
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
