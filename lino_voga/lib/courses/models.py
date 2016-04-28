@@ -438,7 +438,12 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
             # elems += [" ({})".format(self.pupil.pupil_type.ref)]
             elems += [" ({})".format(info)]
         elems += [', ']
-        elems += join_elems(self.pupil.address_location_lines(), sep=', ')
+        elems += join_elems(
+            self.pupil.address_location_lines(), sep=', ')
+        if self.pupil.phone:
+            elems += [', ', _("Phone: {0}").format(self.pupil.phone)]
+        if self.pupil.gsm:
+            elems += [', ', _("GSM: {0}").format(self.pupil.gsm)]
         return E.p(*elems)
 
     @dd.displayfield(_("Invoicing info"))
