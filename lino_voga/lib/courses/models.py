@@ -33,8 +33,7 @@ from lino.api import dd, rt
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
-from lino_cosi.lib.ledger.utils import get_due_movements
-from lino_cosi.lib.accounts.utils import CREDIT
+from lino_cosi.lib.accounts.utils import DEBIT, CREDIT
 
 
 from lino.mixins.periods import DatePeriod
@@ -46,6 +45,9 @@ contacts = dd.resolve_app('contacts')
 # sales = dd.resolve_app('sales')
 
 day_and_month = dd.plugins.courses.day_and_month
+
+MAX_SHOWN = 3  # maximum number of invoiced events shown in
+               # invoicing_info
 
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
@@ -262,13 +264,39 @@ class InvoicingInfo(object):
             self.invoiced_events = invoiced_events
 
     def as_html(self, ar):
+        if ar is None:
+            return ''
         elems = []
-        for i, ev in enumerate(self.used_events):
+        events = list(self.used_events)
+        invoiced = events[self.invoiced_events:]
+        coming = events[:self.invoiced_events]
+
+        def fmt(ev):
             txt = day_and_month(ev.start_date)
-            if i >= self.invoiced_events:
-                txt = E.b(txt)
-            elems.append(ar.obj2html(ev, txt))
-        return E.p(*join_elems(elems, sep=', '))
+            return ar.obj2html(ev, txt)
+        if len(invoiced) > 0:
+            elems.append("{0} : ".format(_("Invoiced")))
+            if len(invoiced) > MAX_SHOWN:
+                elems.append("(...) ")
+                invoiced = invoiced[-MAX_SHOWN:]
+            elems += join_elems(map(fmt, invoiced), sep=', ')
+            # s += ', '.join(map(fmt, invoiced))
+            # elems.append(E.p(s))
+        if len(coming) > 0:
+            if len(elems) > 0:
+                elems.append(E.br())
+            elems.append("{0} : ".format(_("Not invoiced")))
+            elems += join_elems(map(fmt, coming), sep=', ')
+            # s += ', '.join(map(fmt, coming))
+            # elems.append(E.p(s))
+        return E.p(*elems)
+
+        # for i, ev in enumerate(self.used_events):
+        #     txt = day_and_month(ev.start_date)
+        #     if i >= self.invoiced_events:
+        #         txt = E.b(txt)
+        #     elems.append(ar.obj2html(ev, txt))
+        # return E.p(*join_elems(elems, sep=', '))
 
     def invoice_number(self, voucher):
         if self.invoicings is None:
@@ -455,22 +483,9 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
 
     @dd.displayfield(_("Payment info"))
     def payment_info(self, ar):
-        if ar is None:
-            return ''
-        # sar = ar.ledger.DebtsByPartner.request()
-        mvts = []
-        for dm in get_due_movements(CREDIT, partner=self.pupil):
-            s = dm.match
-            s += " [{0}]".format(day_and_month(dm.due_date))
-            s += " ("
-            s += ', '.join([str(i.voucher) for i in dm.debts])
-            if len(dm.payments):
-                s += " - "
-                s += ', '.join([str(i.voucher) for i in dm.payments])
-            s += "): {0}".format(dm.balance)
-            mvts.append(s)
-        return '\n'.join(mvts)
-            
+        return rt.modules.ledger.Movement.balance_info(
+            DEBIT, partner=self.pupil, cleared=False)
+        
 
 # Enrolments.detail_layout = """
 #     request_date user course
@@ -512,7 +527,7 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
 
     """
-
+    variable_row_height = True
     column_names = 'request_date pupil_info start_date end_date '\
                    'places remark fee option amount ' \
                    'workflow_buttons *'
