@@ -36,8 +36,6 @@ from lino_cosi.lib.invoicing.mixins import Invoiceable
 from lino_cosi.lib.accounts.utils import DEBIT, CREDIT
 
 
-from lino.mixins.periods import DatePeriod
-
 from lino_voga.lib.contacts.models import Person
 from lino_voga.lib.contacts.models import MyPersonDetail
 
@@ -309,7 +307,7 @@ class InvoicingInfo(object):
         return n
 
 
-class Enrolment(Enrolment, Invoiceable, DatePeriod):
+class Enrolment(Enrolment, Invoiceable):
     """Adds
 
     .. attribute:: fee
@@ -584,6 +582,7 @@ class TeachersByType(Teachers):
 
 
 class Pupils(contacts.Persons):
+    """The global list of all pupils."""
     model = 'courses.Pupil'
     detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'

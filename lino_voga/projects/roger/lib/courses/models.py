@@ -158,6 +158,9 @@ class PupilDetail(PupilDetail):
 Pupils.detail_layout = PupilDetail()
 Pupils.params_layout = "aged_from aged_to gender "\
                        "show_members show_lfv show_ckk show_raviva"
+Pupils.column_names = (
+    'name_column address_column '
+    'legacy_id member_until section is_lfv is_ckk is_raviva *')
 
 
 class Line(Line):
