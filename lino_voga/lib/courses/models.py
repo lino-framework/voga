@@ -694,8 +694,21 @@ if False:
 
 
 class CoursesByTopic(CoursesByTopic):
-    column_names = "start_date:8 line:20 \
-    room__company__city:10 weekdays_text:10 times_text:10"
+    """Shows the courses of a given topic.
+
+    This is used both in the detail window of a topic and in
+    :class:`StatusReport`.
+
+    """
+    order_by = ["ref"]
+    column_names = "info name weekdays_text:10 times_text:10 "\
+                   "enrolments max_places:8 free_places"
+
+    @classmethod
+    def param_defaults(self, ar, **kw):
+        kw = super(CoursesByTopic, self).param_defaults(ar, **kw)
+        kw.update(can_enroll=dd.YesNo.yes)
+        return kw
 
 
 class CoursesByLine(CoursesByLine):
@@ -742,17 +755,7 @@ from lino.utils.report import Report
 from lino.mixins import ObservedPeriod
 
 
-class StatusCoursesByTopic(CoursesByTopic):
-    order_by = ["ref"]
-    column_names = "info line:20 \
-    room__company__city:10 weekdays_text:10 times_text:10 enrolments max_places:8 free_places"
-
-    @classmethod
-    def param_defaults(self, ar, **kw):
-        kw = super(StatusCoursesByTopic, self).param_defaults(ar, **kw)
-        kw.update(can_enroll=dd.YesNo.yes)
-        return kw
-
+# class StatusCoursesByTopic(CoursesByTopic):
 
 class StatusReport(Report):
     """Gives an overview about what's up today .
@@ -779,9 +782,7 @@ class StatusReport(Report):
     def get_story(cls, self, ar):
         for topic in rt.modules.courses.Topic.objects.all():
             yield E.h3(str(topic))
-            yield ar.spawn(StatusCoursesByTopic, master_instance=topic)
-            # ar = StatusCoursesByTopic.request(master_instance=topic)
-            # yield ar
+            yield ar.spawn(CoursesByTopic, master_instance=topic)
 
 
 class EnrolmentsAndPaymentsByCourse(Enrolments):

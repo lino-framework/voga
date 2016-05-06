@@ -20,9 +20,11 @@ lino_voga.lib.courses.models
       CoursesByLine
       CoursesByTopic
       Enrolment
+      EnrolmentsAndPaymentsByCourse
       EnrolmentsByCourse
-      EnrolmentsByOption
+      EnrolmentsByFee
       EnrolmentsByPupil
+      InvoicingInfo
       Line
       LinesByType
       PendingRequestedEnrolments
@@ -32,7 +34,6 @@ lino_voga.lib.courses.models
       PupilTypes
       Pupils
       PupilsByType
-      StatusCoursesByTopic
       StatusReport
       Teacher
       TeacherDetail
