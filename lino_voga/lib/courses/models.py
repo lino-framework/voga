@@ -224,6 +224,10 @@ class InvoicingInfo(object):
         # fee = enr.course.fee or enr.course.line.fee
         if not fee:
             return
+        if fee.min_asset is None:
+            self.invoiceable_fee = fee
+            return
+            
         self.invoiced_qty = ZERO
         invoiced_events = 0
         # history = []
