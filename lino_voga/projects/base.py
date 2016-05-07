@@ -30,9 +30,9 @@ class Site(Site):
 
     migration_class = 'lino_voga.migrate.Migrator'
 
-    userdocs_prefix = 'voga.'
+    # userdocs_prefix = 'voga.'
 
-    user_profiles_module = 'lino_voga.projects.roles'
+    user_profiles_module = 'lino_voga.lib.voga.roles'
 
     demo_fixtures = 'std minimal_ledger demo demo_bookings buche voga demo2'.split()
 

@@ -23,6 +23,7 @@ specializations under :mod:`lino_voga.lib`
 .. autosummary::
    :toctree:
 
+    roles
     models
     migrate
     fixtures.buche

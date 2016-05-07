@@ -35,7 +35,7 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-39 apps: lino_startup, staticfiles, about, extjs, jinja, bootstrap3, users, office, countries, printing, system, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
+39 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, users, office, countries, printing, system, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
 73 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -136,7 +136,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Purchases : Purchase invoices (PRC)
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
-- Courses : Participants, Instructors, -, Topics, Course series, -, Draft courses, Inactive courses, Active courses, Closed courses, -, Pending requested enrolments, Pending confirmed enrolments
+- Courses : Participants, Instructors, -, Courses, Topics, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors

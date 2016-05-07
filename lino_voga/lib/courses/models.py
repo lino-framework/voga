@@ -33,11 +33,8 @@ from lino.api import dd, rt
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
-from lino_cosi.lib.ledger.utils import get_due_movements
-from lino_cosi.lib.accounts.utils import CREDIT
+from lino_cosi.lib.accounts.utils import DEBIT, CREDIT
 
-
-from lino.mixins.periods import DatePeriod
 
 from lino_voga.lib.contacts.models import Person
 from lino_voga.lib.contacts.models import MyPersonDetail
@@ -46,6 +43,9 @@ contacts = dd.resolve_app('contacts')
 # sales = dd.resolve_app('sales')
 
 day_and_month = dd.plugins.courses.day_and_month
+
+MAX_SHOWN = 3  # maximum number of invoiced events shown in
+               # invoicing_info
 
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
@@ -224,6 +224,10 @@ class InvoicingInfo(object):
         # fee = enr.course.fee or enr.course.line.fee
         if not fee:
             return
+        if fee.min_asset is None:
+            self.invoiceable_fee = fee
+            return
+            
         self.invoiced_qty = ZERO
         invoiced_events = 0
         # history = []
@@ -262,13 +266,39 @@ class InvoicingInfo(object):
             self.invoiced_events = invoiced_events
 
     def as_html(self, ar):
+        if ar is None:
+            return ''
         elems = []
-        for i, ev in enumerate(self.used_events):
+        events = list(self.used_events)
+        invoiced = events[self.invoiced_events:]
+        coming = events[:self.invoiced_events]
+
+        def fmt(ev):
             txt = day_and_month(ev.start_date)
-            if i >= self.invoiced_events:
-                txt = E.b(txt)
-            elems.append(ar.obj2html(ev, txt))
-        return E.p(*join_elems(elems, sep=', '))
+            return ar.obj2html(ev, txt)
+        if len(invoiced) > 0:
+            elems.append("{0} : ".format(_("Invoiced")))
+            if len(invoiced) > MAX_SHOWN:
+                elems.append("(...) ")
+                invoiced = invoiced[-MAX_SHOWN:]
+            elems += join_elems(map(fmt, invoiced), sep=', ')
+            # s += ', '.join(map(fmt, invoiced))
+            # elems.append(E.p(s))
+        if len(coming) > 0:
+            if len(elems) > 0:
+                elems.append(E.br())
+            elems.append("{0} : ".format(_("Not invoiced")))
+            elems += join_elems(map(fmt, coming), sep=', ')
+            # s += ', '.join(map(fmt, coming))
+            # elems.append(E.p(s))
+        return E.p(*elems)
+
+        # for i, ev in enumerate(self.used_events):
+        #     txt = day_and_month(ev.start_date)
+        #     if i >= self.invoiced_events:
+        #         txt = E.b(txt)
+        #     elems.append(ar.obj2html(ev, txt))
+        # return E.p(*join_elems(elems, sep=', '))
 
     def invoice_number(self, voucher):
         if self.invoicings is None:
@@ -281,7 +311,7 @@ class InvoicingInfo(object):
         return n
 
 
-class Enrolment(Enrolment, Invoiceable, DatePeriod):
+class Enrolment(Enrolment, Invoiceable):
     """Adds
 
     .. attribute:: fee
@@ -455,22 +485,9 @@ class Enrolment(Enrolment, Invoiceable, DatePeriod):
 
     @dd.displayfield(_("Payment info"))
     def payment_info(self, ar):
-        if ar is None:
-            return ''
-        # sar = ar.ledger.DebtsByPartner.request()
-        mvts = []
-        for dm in get_due_movements(CREDIT, partner=self.pupil):
-            s = dm.match
-            s += " [{0}]".format(day_and_month(dm.due_date))
-            s += " ("
-            s += ', '.join([str(i.voucher) for i in dm.debts])
-            if len(dm.payments):
-                s += " - "
-                s += ', '.join([str(i.voucher) for i in dm.payments])
-            s += "): {0}".format(dm.balance)
-            mvts.append(s)
-        return '\n'.join(mvts)
-            
+        return rt.modules.ledger.Movement.balance_info(
+            DEBIT, partner=self.pupil, cleared=False)
+        
 
 # Enrolments.detail_layout = """
 #     request_date user course
@@ -512,7 +529,7 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
 
     """
-
+    variable_row_height = True
     column_names = 'request_date pupil_info start_date end_date '\
                    'places remark fee option amount ' \
                    'workflow_buttons *'
@@ -569,6 +586,7 @@ class TeachersByType(Teachers):
 
 
 class Pupils(contacts.Persons):
+    """The global list of all pupils."""
     model = 'courses.Pupil'
     detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'
@@ -676,8 +694,21 @@ if False:
 
 
 class CoursesByTopic(CoursesByTopic):
-    column_names = "start_date:8 line:20 \
-    room__company__city:10 weekdays_text:10 times_text:10"
+    """Shows the courses of a given topic.
+
+    This is used both in the detail window of a topic and in
+    :class:`StatusReport`.
+
+    """
+    order_by = ["ref"]
+    column_names = "info name weekdays_text:10 times_text:10 "\
+                   "enrolments max_places:8 free_places"
+
+    @classmethod
+    def param_defaults(self, ar, **kw):
+        kw = super(CoursesByTopic, self).param_defaults(ar, **kw)
+        kw.update(can_enroll=dd.YesNo.yes)
+        return kw
 
 
 class CoursesByLine(CoursesByLine):
@@ -724,17 +755,7 @@ from lino.utils.report import Report
 from lino.mixins import ObservedPeriod
 
 
-class StatusCoursesByTopic(CoursesByTopic):
-    order_by = ["ref"]
-    column_names = "info line:20 \
-    room__company__city:10 weekdays_text:10 times_text:10 enrolments max_places:8 free_places"
-
-    @classmethod
-    def param_defaults(self, ar, **kw):
-        kw = super(StatusCoursesByTopic, self).param_defaults(ar, **kw)
-        kw.update(can_enroll=dd.YesNo.yes)
-        return kw
-
+# class StatusCoursesByTopic(CoursesByTopic):
 
 class StatusReport(Report):
     """Gives an overview about what's up today .
@@ -761,9 +782,7 @@ class StatusReport(Report):
     def get_story(cls, self, ar):
         for topic in rt.modules.courses.Topic.objects.all():
             yield E.h3(str(topic))
-            yield ar.spawn(StatusCoursesByTopic, master_instance=topic)
-            # ar = StatusCoursesByTopic.request(master_instance=topic)
-            # yield ar
+            yield ar.spawn(CoursesByTopic, master_instance=topic)
 
 
 class EnrolmentsAndPaymentsByCourse(Enrolments):
