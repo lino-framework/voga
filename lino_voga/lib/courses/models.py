@@ -707,6 +707,7 @@ class CoursesByTopic(CoursesByTopic):
     @classmethod
     def param_defaults(self, ar, **kw):
         kw = super(CoursesByTopic, self).param_defaults(ar, **kw)
+        kw.update(state=CourseStates.active)
         kw.update(can_enroll=dd.YesNo.yes)
         return kw
 
