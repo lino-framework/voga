@@ -160,7 +160,7 @@ Pupils.params_layout = "aged_from aged_to gender "\
                        "show_members show_lfv show_ckk show_raviva"
 Pupils.column_names = (
     'name_column address_column '
-    'legacy_id member_until section is_lfv is_ckk is_raviva *')
+    'pupil_type section is_lfv is_ckk is_raviva member_until *')
 
 
 class Line(Line):
