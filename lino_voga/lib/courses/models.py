@@ -67,8 +67,16 @@ class TeacherTypes(dd.Table):
     """
 
 
+@dd.python_2_unicode_compatible
 class Teacher(Person):
+    """A **teacher** is a person with an additional field
+    :attr:`teacher_type`.
 
+    .. attribute:: teacher_type
+
+        Pointer to :class:`TeacherType`.
+
+    """
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Teacher')
@@ -80,7 +88,7 @@ class Teacher(Person):
 
     teacher_type = dd.ForeignKey('courses.TeacherType', blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.get_full_name(salutation=False)
 
 
@@ -103,7 +111,16 @@ class PupilTypes(dd.Table):
     """
 
 
+@dd.python_2_unicode_compatible
 class Pupil(Person):
+    """A **pupil** is a person with an additional field
+    :attr:`pupil_type`.
+
+    .. attribute:: pupil_type
+
+        Pointer to :class:`PupilType`.
+
+    """
 
     class Meta:
         app_label = 'courses'
@@ -117,15 +134,15 @@ class Pupil(Person):
 
     suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
 
-    def get_enrolment_info(self):
-        if self.pupil_type:
-            return self.pupil_type.ref
-
-    def __unicode__(self):
+    def __str__(self):
         s = self.get_full_name(salutation=False)
         if self.pupil_type:
             s += " (%s)" % self.pupil_type.ref
         return s
+
+    def get_enrolment_info(self):
+        if self.pupil_type:
+            return self.pupil_type.ref
 
 
 # class CreateInvoicesForCourse(CreateInvoice):
@@ -175,12 +192,11 @@ Lines.detail_layout = """
 
 
 class Course(Course):
-    """Extends the standard model by adding an action.
+    """Extends the standard model by adding a field :attr:`fee`.
 
     .. attribute:: fee
 
         The default participation fee to apply for new enrolments.
-
 
     """
     class Meta(Course.Meta):
@@ -239,7 +255,7 @@ class InvoicingInfo(object):
         for obj in self.invoicings:
             self.invoiced_qty += obj.qty
             if obj.product.number_of_events:
-                invoiced_events += obj.qty * obj.product.number_of_events
+                invoiced_events += int(obj.qty * obj.product.number_of_events)
             # history.append("".format())
         # print("20160414", self.invoicings, self.invoiced_qty)
         start_date = enr.start_date or enr.course.start_date

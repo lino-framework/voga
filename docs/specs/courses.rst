@@ -42,9 +42,9 @@ and
 ==== =========== ============= ================== ==================
  ID   Reference   Designation   Designation (de)   Designation (fr)
 ---- ----------- ------------- ------------------ ------------------
- 1    M           Member        Member             Member
+ 1    M           Member        Mitglied           Member
  2    H           Helper        Helper             Helper
- 3    N           Non-member    Non-member         Non-member
+ 3    N           Non-member    Nicht-Mitglied     Non-member
 ==== =========== ============= ================== ==================
 <BLANKLINE>
 
@@ -98,7 +98,7 @@ The first demo course starts on December 2, 2013:
 
 >>> obj = courses.Course.objects.get(pk=3)
 >>> print(obj)
-comp (12/2/13 Computer room)
+Course #3
 
 
 ..
@@ -138,7 +138,7 @@ remain unchanged (if the following fails, make sure you've run
 >>> res['success']
 True
 >>> print(res['info_message'])
-Update Events for comp (12/2/13 Computer room)...
+Update Events for Course #3...
 Generating events between 2013-12-02 and 2019-05-22.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
@@ -172,7 +172,7 @@ Now we move that to the week after:
 >>> ses.response['success']
 True
 >>> print(ses.response['info_message'])
-Update Events for comp (12/2/13 Computer room)...
+Update Events for Course #3...
 Generating events between 2013-12-02 and 2019-05-22.
 8 row(s) have been updated.
 Move down for Course #3 Hour 4...
