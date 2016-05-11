@@ -34,7 +34,11 @@ class InvoiceItem(InvoiceItem):
         verbose_name = _("Product invoice item")
         verbose_name_plural = _("Product invoice items")
 
-    def full_clean(self):
+    def unused_full_clean(self):
+        # converted into a pre_save signal because here was not the
+        # right place to define this behaviour. This behaviour should
+        # get automatically installed into any model which is declared
+        # as `item_model`
         if self.invoiceable_id and not self.title:
             self.title = self.invoiceable.get_invoiceable_title(self.voucher)
             self.invoiceable.setup_invoice_item(self)
@@ -56,3 +60,5 @@ description""", window_size=(80, 20))
 #     description""", window_size=(80, 20))
 
 # class ItemsByInvoice(InvoiceItems):
+
+VatProductInvoice.print_items_table = ItemsByInvoicePrintNoQtyColumn

@@ -451,11 +451,14 @@ class Enrolment(Enrolment, Invoiceable):
         return InvoicingInfo(self)
 
     def get_invoiceable_title(self, invoice):
+        title = _("{enrolment} to {course}").format(
+            enrolment=self.__class__._meta.verbose_name,
+            course=self.course)
         if self.fee.number_of_events:
             info = self.get_invoicing_info()
-            return "{0}, Rg. {1}".format(
-                self.course, info.invoice_number(invoice))
-        return self.course
+            return _("[{number}] {title}").format(
+                title=title, number=info.invoice_number(invoice))
+        return title
 
     def get_invoiceable_qty(self):
         return self.places
