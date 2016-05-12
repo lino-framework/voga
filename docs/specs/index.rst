@@ -16,6 +16,7 @@ specifications. One of their goal is to get tested.
    voga
    ledger
    courses
+   presences
    cal
    holidays
    invoicing

@@ -42,6 +42,9 @@ class DocsTests(BaseTestCase):
     def test_courses(self):
         return self.run_simple_doctests('docs/specs/courses.rst')
 
+    def test_presences(self):
+        return self.run_simple_doctests('docs/specs/presences.rst')
+
     def test_voga(self):
         return self.run_simple_doctests('docs/specs/voga.rst')
 

@@ -112,18 +112,18 @@ Course #3
 
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-===================== ===========
- When                  State
---------------------- -----------
- Mon 4/28/14 (13:30)   Suggested
- Mon 5/5/14 (13:30)    Suggested
- Mon 5/12/14 (13:30)   Suggested
- Mon 5/19/14 (13:30)   Suggested
- Mon 5/26/14 (13:30)   Suggested
- Mon 6/2/14 (13:30)    Suggested
- Mon 6/16/14 (13:30)   Suggested
- Mon 6/23/14 (13:30)   Suggested
-===================== ===========
+======================== ===========
+ When                     State
+------------------------ -----------
+ Mon 28/04/2014 (13:30)   Suggested
+ Mon 05/05/2014 (13:30)   Suggested
+ Mon 12/05/2014 (13:30)   Suggested
+ Mon 19/05/2014 (13:30)   Suggested
+ Mon 26/05/2014 (13:30)   Suggested
+ Mon 02/06/2014 (13:30)   Suggested
+ Mon 16/06/2014 (13:30)   Suggested
+ Mon 23/06/2014 (13:30)   Suggested
+======================== ===========
 <BLANKLINE>
 
 
@@ -142,19 +142,20 @@ Update Events for Course #3...
 Generating events between 2014-04-28 and 2019-05-22.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-===================== ===========
- When                  State
---------------------- -----------
- Mon 4/28/14 (13:30)   Suggested
- Mon 5/5/14 (13:30)    Suggested
- Mon 5/12/14 (13:30)   Suggested
- Mon 5/19/14 (13:30)   Suggested
- Mon 5/26/14 (13:30)   Suggested
- Mon 6/2/14 (13:30)    Suggested
- Mon 6/16/14 (13:30)   Suggested
- Mon 6/23/14 (13:30)   Suggested
-===================== ===========
+======================== ===========
+ When                     State
+------------------------ -----------
+ Mon 28/04/2014 (13:30)   Suggested
+ Mon 05/05/2014 (13:30)   Suggested
+ Mon 12/05/2014 (13:30)   Suggested
+ Mon 19/05/2014 (13:30)   Suggested
+ Mon 26/05/2014 (13:30)   Suggested
+ Mon 02/06/2014 (13:30)   Suggested
+ Mon 16/06/2014 (13:30)   Suggested
+ Mon 23/06/2014 (13:30)   Suggested
+======================== ===========
 <BLANKLINE>
+
 
 We select the event no 4 (2013-12-23, 20140519):
 
@@ -187,19 +188,20 @@ Draft
 We have now two events on 2014-05-26:
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-===================== ===========
- When                  State
---------------------- -----------
- Mon 4/28/14 (13:30)   Suggested
- Mon 5/5/14 (13:30)    Suggested
- Mon 5/12/14 (13:30)   Suggested
- Mon 5/26/14 (13:30)   Draft
- Mon 5/26/14 (13:30)   Suggested
- Mon 6/2/14 (13:30)    Suggested
- Mon 6/16/14 (13:30)   Suggested
- Mon 6/23/14 (13:30)   Suggested
-===================== ===========
+======================== ===========
+ When                     State
+------------------------ -----------
+ Mon 28/04/2014 (13:30)   Suggested
+ Mon 05/05/2014 (13:30)   Suggested
+ Mon 12/05/2014 (13:30)   Suggested
+ Mon 26/05/2014 (13:30)   Draft
+ Mon 26/05/2014 (13:30)   Suggested
+ Mon 02/06/2014 (13:30)   Suggested
+ Mon 16/06/2014 (13:30)   Suggested
+ Mon 23/06/2014 (13:30)   Suggested
+======================== ===========
 <BLANKLINE>
+
 
 To solve that, we must click on the lightning button:
 
@@ -208,18 +210,18 @@ To solve that, we must click on the lightning button:
 True
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-===================== ===========
- When                  State
---------------------- -----------
- Mon 4/28/14 (13:30)   Suggested
- Mon 5/5/14 (13:30)    Suggested
- Mon 5/12/14 (13:30)   Suggested
- Mon 5/26/14 (13:30)   Draft
- Mon 6/2/14 (13:30)    Suggested
- Mon 6/9/14 (13:30)    Suggested
- Mon 6/23/14 (13:30)   Suggested
- Mon 6/30/14 (13:30)   Suggested
-===================== ===========
+======================== ===========
+ When                     State
+------------------------ -----------
+ Mon 28/04/2014 (13:30)   Suggested
+ Mon 05/05/2014 (13:30)   Suggested
+ Mon 12/05/2014 (13:30)   Suggested
+ Mon 26/05/2014 (13:30)   Draft
+ Mon 02/06/2014 (13:30)   Suggested
+ Mon 09/06/2014 (13:30)   Suggested
+ Mon 23/06/2014 (13:30)   Suggested
+ Mon 30/06/2014 (13:30)   Suggested
+======================== ===========
 <BLANKLINE>
 
 Voilà. Note that the state "Draft" is normal: it indicates that the
@@ -237,18 +239,18 @@ and re-run UpdateEvents a last time:
 >>> res['success']
 True
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-===================== ===========
- When                  State
---------------------- -----------
- Mon 4/28/14 (13:30)   Suggested
- Mon 5/5/14 (13:30)    Suggested
- Mon 5/12/14 (13:30)   Suggested
- Mon 5/19/14 (13:30)   Suggested
- Mon 5/26/14 (13:30)   Suggested
- Mon 6/2/14 (13:30)    Suggested
- Mon 6/16/14 (13:30)   Suggested
- Mon 6/23/14 (13:30)   Suggested
-===================== ===========
+======================== ===========
+ When                     State
+------------------------ -----------
+ Mon 28/04/2014 (13:30)   Suggested
+ Mon 05/05/2014 (13:30)   Suggested
+ Mon 12/05/2014 (13:30)   Suggested
+ Mon 19/05/2014 (13:30)   Suggested
+ Mon 26/05/2014 (13:30)   Suggested
+ Mon 02/06/2014 (13:30)   Suggested
+ Mon 16/06/2014 (13:30)   Suggested
+ Mon 23/06/2014 (13:30)   Suggested
+======================== ===========
 <BLANKLINE>
 
 
@@ -261,17 +263,32 @@ The following is waiting for :ticket:`526` before it can work:
 >>> # demo_get('robin', 'choices/courses/Courses/city', 'bla', 0)
 
 
-There are three courses in the course line "Europe":
+CoursesByLine
+=============
 
->>> courses.Line.objects.get(pk=1)
-Line #1 ('Europe')
+There are two Yoga courses:
+
+>>> obj = courses.Line.objects.get(pk=10)
+>>> obj
+Line #10 ('Yoga')
         
+>>> rt.show(courses.CoursesByLine, obj)
+============== ============== ================== ============= ================
+ Info           When           Room               Times         Instructor
+-------------- -------------- ------------------ ------------- ----------------
+ *Course #24*   Every Monday   Conferences room   18:00-19:30   David da Vinci
+ *Course #25*   Every Friday   Conferences room   19:00-20:30   Hans Altenberg
+============== ============== ================== ============= ================
+<BLANKLINE>
+
+
 >>> ContentType = rt.modules.contenttypes.ContentType
 >>> json_fields = 'count rows title success no_data_text param_values'
 >>> kw = dict(fmt='json', limit=10, start=0)
 >>> mt = ContentType.objects.get_for_model(courses.Line).pk
 >>> demo_get('robin',
-...          'api/courses/CoursesByLine', json_fields, 1, mt=mt, mk=1, **kw)
+...          'api/courses/CoursesByLine', json_fields, 3, 
+...          mt=mt, mk=obj.pk, **kw)
 
 
 Status report
@@ -347,12 +364,58 @@ Externe
 No data to display
 
 
+Free places
+===========
 
-Note especially the *Free places* column which is 
+Note the *free places* field which is not always trivial. In course
+#12 there are 8 confirmed enrolments, but only 5 of them are actually
+taking a place because the 3 other ones are already ended.
+
 >>> obj = courses.Course.objects.get(pk=12)
->>> obj.free_places
+>>> print(obj.max_places)
+20
+>>> print(obj.get_free_places())
+15
+>>> rt.show(courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places")
+=================================== ============ ============ =============
+ Participant                         Start date   End date     Places used
+----------------------------------- ------------ ------------ -------------
+ Gregory Groteclaes                               12/05/2014   1
+ Christian Radermacher               03/06/2014                1
+ Marie-Louise Vandenmeulenbos        30/05/2014                1
+ Dorothée Dobbelstein-Demeulenaere   21/05/2014                1
+ Laura Laschet                       02/05/2014   09/05/2014   1
+ Didier di Rupo                                   02/05/2014   1
+ Hans Altenberg                      09/06/2014                1
+ Gregory Groteclaes                  29/05/2014                1
+ **Total (8 rows)**                                            **8**
+=================================== ============ ============ =============
+<BLANKLINE>
 
+Above situation is because we are working on 20140522:
 
+>>> print(dd.today())
+2014-05-22
+
+The same request on earlier dates yields different results:
+
+On 20140101 nobody has left yet, 5+3 places are taken and therefore
+20-8=12 places are free:
+
+>>> print(obj.get_free_places(i2d(20140101)))
+12
+
+On 20140503 we have 5+2 places taken because only 1 of the three
+early-leavers has left:
+
+>>> print(obj.get_free_places(i2d(20140503)))
+13
+
+On 20140502 is Didier di Rupo's last day, so his place is not yet
+free:
+
+>>> print(obj.get_free_places(i2d(20140502)))
+12
 
 
 
