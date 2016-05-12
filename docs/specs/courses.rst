@@ -43,7 +43,7 @@ and
  ID   Reference   Designation   Designation (de)   Designation (fr)
 ---- ----------- ------------- ------------------ ------------------
  1    M           Member        Mitglied           Member
- 2    H           Helper        Helper             Helper
+ 2    H           Helper        Helfer             Helper
  3    N           Non-member    Nicht-Mitglied     Non-member
 ==== =========== ============= ================== ==================
 <BLANKLINE>
@@ -112,24 +112,24 @@ Course #3
 
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-====================== ===========
- When                   State
----------------------- -----------
- Mon 12/2/13 (13:30)    Suggested
- Mon 12/9/13 (13:30)    Suggested
- Mon 12/16/13 (13:30)   Suggested
- Mon 12/23/13 (13:30)   Suggested
- Mon 12/30/13 (13:30)   Suggested
- Mon 1/6/14 (13:30)     Suggested
- Mon 1/13/14 (13:30)    Suggested
- Mon 1/20/14 (13:30)    Suggested
-====================== ===========
+===================== ===========
+ When                  State
+--------------------- -----------
+ Mon 4/28/14 (13:30)   Suggested
+ Mon 5/5/14 (13:30)    Suggested
+ Mon 5/12/14 (13:30)   Suggested
+ Mon 5/19/14 (13:30)   Suggested
+ Mon 5/26/14 (13:30)   Suggested
+ Mon 6/2/14 (13:30)    Suggested
+ Mon 6/16/14 (13:30)   Suggested
+ Mon 6/23/14 (13:30)   Suggested
+===================== ===========
 <BLANKLINE>
 
 
 We run the UpdateEvents action a first time and verify that the events
 remain unchanged (if the following fails, make sure you've run
-:cmd:`fab initdb` before running :cmd:`fab test`).
+:cmd:`inv initdb` before running :cmd:`inv test`).
 
 >>> # import logging
 >>> # logger = logging.getLogger('lino')
@@ -139,27 +139,27 @@ remain unchanged (if the following fails, make sure you've run
 True
 >>> print(res['info_message'])
 Update Events for Course #3...
-Generating events between 2013-12-02 and 2019-05-22.
+Generating events between 2014-04-28 and 2019-05-22.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-====================== ===========
- When                   State
----------------------- -----------
- Mon 12/2/13 (13:30)    Suggested
- Mon 12/9/13 (13:30)    Suggested
- Mon 12/16/13 (13:30)   Suggested
- Mon 12/23/13 (13:30)   Suggested
- Mon 12/30/13 (13:30)   Suggested
- Mon 1/6/14 (13:30)     Suggested
- Mon 1/13/14 (13:30)    Suggested
- Mon 1/20/14 (13:30)    Suggested
-====================== ===========
+===================== ===========
+ When                  State
+--------------------- -----------
+ Mon 4/28/14 (13:30)   Suggested
+ Mon 5/5/14 (13:30)    Suggested
+ Mon 5/12/14 (13:30)   Suggested
+ Mon 5/19/14 (13:30)   Suggested
+ Mon 5/26/14 (13:30)   Suggested
+ Mon 6/2/14 (13:30)    Suggested
+ Mon 6/16/14 (13:30)   Suggested
+ Mon 6/23/14 (13:30)   Suggested
+===================== ===========
 <BLANKLINE>
 
-We select the event no 4 (2013-12-23):
+We select the event no 4 (2013-12-23, 20140519):
 
 >>> qs = obj.get_existing_auto_events()
->>> e = qs.get(start_date=i2d(20131223))
+>>> e = qs.get(start_date=i2d(20140519))
 
 Yes, the state is "suggested":
 
@@ -173,7 +173,7 @@ Now we move that to the week after:
 True
 >>> print(ses.response['info_message'])
 Update Events for Course #3...
-Generating events between 2013-12-02 and 2019-05-22.
+Generating events between 2014-04-28 and 2019-05-22.
 8 row(s) have been updated.
 Move down for Course #3 Hour 4...
 1 row(s) have been updated.
@@ -184,21 +184,21 @@ The state is now "draft":
 >>> print(e.state)
 Draft
 
-We have now two events on 20131230:
+We have now two events on 2014-05-26:
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-====================== ===========
- When                   State
----------------------- -----------
- Mon 12/2/13 (13:30)    Suggested
- Mon 12/9/13 (13:30)    Suggested
- Mon 12/16/13 (13:30)   Suggested
- Mon 12/30/13 (13:30)   Draft
- Mon 12/30/13 (13:30)   Suggested
- Mon 1/6/14 (13:30)     Suggested
- Mon 1/13/14 (13:30)    Suggested
- Mon 1/20/14 (13:30)    Suggested
-====================== ===========
+===================== ===========
+ When                  State
+--------------------- -----------
+ Mon 4/28/14 (13:30)   Suggested
+ Mon 5/5/14 (13:30)    Suggested
+ Mon 5/12/14 (13:30)   Suggested
+ Mon 5/26/14 (13:30)   Draft
+ Mon 5/26/14 (13:30)   Suggested
+ Mon 6/2/14 (13:30)    Suggested
+ Mon 6/16/14 (13:30)   Suggested
+ Mon 6/23/14 (13:30)   Suggested
+===================== ===========
 <BLANKLINE>
 
 To solve that, we must click on the lightning button:
@@ -208,45 +208,52 @@ To solve that, we must click on the lightning button:
 True
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-====================== ===========
- When                   State
----------------------- -----------
- Mon 12/2/13 (13:30)    Suggested
- Mon 12/9/13 (13:30)    Suggested
- Mon 12/16/13 (13:30)   Suggested
- Mon 12/30/13 (13:30)   Draft
- Mon 1/6/14 (13:30)     Suggested
- Mon 1/13/14 (13:30)    Suggested
- Mon 1/20/14 (13:30)    Suggested
- Mon 1/27/14 (13:30)    Suggested
-====================== ===========
+===================== ===========
+ When                  State
+--------------------- -----------
+ Mon 4/28/14 (13:30)   Suggested
+ Mon 5/5/14 (13:30)    Suggested
+ Mon 5/12/14 (13:30)   Suggested
+ Mon 5/26/14 (13:30)   Draft
+ Mon 6/2/14 (13:30)    Suggested
+ Mon 6/9/14 (13:30)    Suggested
+ Mon 6/23/14 (13:30)   Suggested
+ Mon 6/30/14 (13:30)   Suggested
+===================== ===========
 <BLANKLINE>
 
-Click on the "Reset" button:
+Voilà. Note that the state "Draft" is normal: it indicates that the
+event has been manually modified.
+
+Now for this test, in order to restore original state, we click on the
+"Reset" button:
 
 >>> e.state = cal.EventStates.suggested
 >>> e.save()
 
-Re-run UpdateEvents to restore original state:
+and re-run UpdateEvents a last time:
 
 >>> res = ses.run(obj.do_update_events)
 >>> res['success']
 True
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-====================== ===========
- When                   State
----------------------- -----------
- Mon 12/2/13 (13:30)    Suggested
- Mon 12/9/13 (13:30)    Suggested
- Mon 12/16/13 (13:30)   Suggested
- Mon 12/23/13 (13:30)   Suggested
- Mon 12/30/13 (13:30)   Suggested
- Mon 1/6/14 (13:30)     Suggested
- Mon 1/13/14 (13:30)    Suggested
- Mon 1/20/14 (13:30)    Suggested
-====================== ===========
+===================== ===========
+ When                  State
+--------------------- -----------
+ Mon 4/28/14 (13:30)   Suggested
+ Mon 5/5/14 (13:30)    Suggested
+ Mon 5/12/14 (13:30)   Suggested
+ Mon 5/19/14 (13:30)   Suggested
+ Mon 5/26/14 (13:30)   Suggested
+ Mon 6/2/14 (13:30)    Suggested
+ Mon 6/16/14 (13:30)   Suggested
+ Mon 6/23/14 (13:30)   Suggested
+===================== ===========
 <BLANKLINE>
 
+
+Waiting things
+==============
 
 
 The following is waiting for :ticket:`526` before it can work:
@@ -265,6 +272,87 @@ Line #1 ('Europe')
 >>> mt = ContentType.objects.get_for_model(courses.Line).pk
 >>> demo_get('robin',
 ...          'api/courses/CoursesByLine', json_fields, 1, mt=mt, mk=1, **kw)
+
+
+Status report
+=============
+
+The status report gives an overview of active courses.
+
+(TODO: demo fixture should avoid negative free places)
+
+>>> rt.show(courses.StatusReport)
+~~~~~~~~
+Journeys
+~~~~~~~~
+<BLANKLINE>
+No data to display
+~~~~~~~~
+Computer
+~~~~~~~~
+<BLANKLINE>
+==================== ============= ================= ============= ============ ================== =============
+ Info                 Designation   When              Times         Enrolments   Available places   Free places
+-------------------- ------------- ----------------- ------------- ------------ ------------------ -------------
+ *Course #3*                        Every Monday      13:30-15:00   **5**        3                  1
+ *Course #4*                        Every Wednesday   17:30-19:00   **6**        3                  0
+ *Course #5*                        Every Friday      13:30-15:00   **5**        3                  0
+ *Course #6*                        Every Monday      13:30-15:00   **8**        4                  -2
+ *Course #7*                        Every Wednesday   17:30-19:00   **8**        4                  -2
+ *Course #8*                        Every Friday      13:30-15:00   **8**        4                  -2
+ **Total (6 rows)**                                                 **40**       **21**
+==================== ============= ================= ============= ============ ================== =============
+<BLANKLINE>
+~~~~~
+Sport
+~~~~~
+<BLANKLINE>
+===================== ============= ================= ============= ============ ================== =============
+ Info                  Designation   When              Times         Enrolments   Available places   Free places
+--------------------- ------------- ----------------- ------------- ------------ ------------------ -------------
+ *Course #9*                         Every Wednesday   19:00-20:00   **5**        10                 8
+ *Course #10*                        Every Monday      11:00-12:00   **6**        5                  2
+ *Course #11*                        Every Monday      13:30-14:30   **5**        5                  2
+ *Course #12*                        Every Monday      11:00-12:00   **8**        20                 15
+ *Course #13*                        Every Monday      13:30-14:30   **8**        20                 15
+ *Course #14*                        Every Tuesday     11:00-12:00   **8**        20                 15
+ *Course #15*                        Every Tuesday     13:30-14:30   **8**        20                 15
+ *Course #16*                        Every Thursday    11:00-12:00   **8**        20                 15
+ *Course #17*                        Every Thursday    13:30-14:30   **8**        20                 15
+ *Course #18*                        Every Friday      18:00-19:00   **5**        12                 10
+ *Course #19*                        Every Friday      19:00-20:00   **6**        12                 9
+ **Total (11 rows)**                                                 **75**       **164**
+===================== ============= ================= ============= ============ ================== =============
+<BLANKLINE>
+~~~~~~~~~~
+Meditation
+~~~~~~~~~~
+<BLANKLINE>
+==================== ============= ============== ============= ============ ================== =============
+ Info                 Designation   When           Times         Enrolments   Available places   Free places
+-------------------- ------------- -------------- ------------- ------------ ------------------ -------------
+ *Course #20*                       Every Monday   18:00-19:30   **5**                           Unlimited
+ *Course #21*                       Every Friday   19:00-20:30   **5**                           Unlimited
+ *Course #22*                       Every Monday   18:00-19:30   **8**        30                 24
+ *Course #23*                       Every Friday   19:00-20:30   **8**        30                 24
+ *Course #24*                       Every Monday   18:00-19:30   **5**        20                 18
+ *Course #25*                       Every Friday   19:00-20:30   **6**        20                 17
+ **Total (6 rows)**                                              **37**       **100**
+==================== ============= ============== ============= ============ ================== =============
+<BLANKLINE>
+~~~~~~~
+Externe
+~~~~~~~
+<BLANKLINE>
+No data to display
+
+
+
+Note especially the *Free places* column which is 
+>>> obj = courses.Course.objects.get(pk=12)
+>>> obj.free_places
+
+
 
 
 

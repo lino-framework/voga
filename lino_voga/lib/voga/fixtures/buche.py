@@ -34,7 +34,17 @@ from django.conf import settings
 from atelier.utils import date_offset
 from lino.api import dd, rt
 
-DEMO_REF_DATE = i2d(20140101)
+DATE_STORIES = Cycler([
+    (-20, -13),
+    (-10, None),
+    (-1, None),
+    (7, None),
+    (8, None),
+    (18, None),
+    (12, None),
+    (None, -20),
+    (None, -10)
+])
 
 
 cal = dd.resolve_app('cal')
@@ -59,8 +69,12 @@ BookingStates = rooms.BookingStates
 Calendar = dd.resolve_model('cal.Calendar')
 
 
-def demo_date(*args, **kw):
-    return date_offset(DEMO_REF_DATE, *args, **kw)
+demo_date = dd.demo_date
+
+# DEMO_REF_DATE = i2d(20140101)
+
+# def demo_date(*args, **kw):
+#     return date_offset(DEMO_REF_DATE, *args, **kw)
 
 
 class Loader1(object):
@@ -318,7 +332,7 @@ class Loader2(Loader1):
                    **dd.babelkw('name', de="Erste Schritte", en="First Steps"))
         yield obj
         kw = dict(max_events=8)
-        kw.update(max_places=20)
+        kw.update(max_places=3)
         kw.update(start_date=demo_date(-30))
         kw.update(state=courses.CourseStates.active)
         kw.update(every=1)
@@ -356,6 +370,7 @@ class Loader2(Loader1):
                 en="Internet for beginners"))
         yield obj
         kw = dict(max_events=8)
+        kw.update(max_places=4)
         kw.update(start_date=demo_date(10))
         kw.update(state=courses.CourseStates.active)
         yield add_course(obj, self.pc_bbach, "13:30", "15:00",
@@ -385,6 +400,7 @@ class Loader2(Loader1):
                                 en="Functional gymnastics"))
         yield obj
         kw = dict(max_events=10, state=CourseStates.active)
+        kw.update(max_places=5)
         kw.update(start_date=demo_date(-10))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
@@ -395,6 +411,7 @@ class Loader2(Loader1):
                    **dd.babelkw('name', de="Rücken fit durch Schwimmen", en="Swimming"))
         yield obj
         kw = dict(max_events=10, state=CourseStates.active)
+        kw.update(max_places=20)
         kw.update(start_date=demo_date(-100))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
@@ -447,6 +464,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=10)
         kw.update(start_date=demo_date(60))
+        kw.update(max_places=20)
         kw.update(state=CourseStates.active)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
@@ -486,7 +504,7 @@ class Loader2(Loader1):
         COURSES = Cycler(Course.objects.filter(line__fee__isnull=False))
         STATES = Cycler(EnrolmentStates.objects())
 
-        for i in range(100):
+        for i in range(200):
             course = COURSES.pop()
             kw = dict(
                 user=USERS.pop(), course=course,
@@ -497,10 +515,14 @@ class Loader2(Loader1):
             obj = Enrolment(**kw)
             obj.full_clean()
             if obj.fee.number_of_events:
-                obj.start_date = demo_date(-i)
+                sd, ed = DATE_STORIES.pop()
+                if sd is not None:
+                    obj.start_date = demo_date(sd)
+                if ed is not None:
+                    obj.end_date = demo_date(ed)
+                obj.state = EnrolmentStates.confirmed
             yield obj
 
-        #~ ses = settings.SITE.login('rolf')
         ses = settings.SITE.login()
 
         for model in (Course, Booking):
