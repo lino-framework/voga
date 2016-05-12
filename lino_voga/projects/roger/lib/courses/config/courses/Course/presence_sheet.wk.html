@@ -22,12 +22,12 @@ table, td, th {
 <table border="1" width="100%">
 <tr>
 <td>{{_("No.")}}</td>
-<td>Name</td>
+<td>{{_("Participant")}}</td>
 {% for e in  events %}
 <td>{{dd.plugins.courses.day_and_month(e.start_date)}}
-<br/><font size="tiny">({{e.state}})</font></td>
+<br/><font size="1">({{e.state}})</font></td>
 {% endfor %}
-<td>Bemerkung</td>
+<td>{{_("Remark")}}</td>
 </tr>
 
 {% for enrolment in obj.enrolments %}
