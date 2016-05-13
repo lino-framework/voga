@@ -26,16 +26,35 @@ examples.
 
 >>> kwargs = dict(column_names="id line weekdays_text start_date end_date")
 
-All courses that were active somewhere before 20140807:
+All courses that were active **already before Marce 2014**:
 
->>> pv = dict(end_date=i2d(20140807))
+>>> pv = dict(end_date=i2d(20140301))
+>>> rt.show(courses.Courses, param_values=pv, **kwargs)
+==== =============== ================ ============ ==========
+ ID   Course series   When             Start date   End Date
+---- --------------- ---------------- ------------ ----------
+ 13   Rücken          Every Monday     11/02/2014
+ 15   Rücken          Every Tuesday    11/02/2014
+ 17   Rücken          Every Thursday   11/02/2014
+ 12   Rücken          Every Monday     11/02/2014
+ 14   Rücken          Every Tuesday    11/02/2014
+ 16   Rücken          Every Thursday   11/02/2014
+==== =============== ================ ============ ==========
+<BLANKLINE>
+
+
+All courses that were still **active after 20140807**.  This includes
+all courses which have no :attr:`end_date` and those whose end_date is
+after 20140807.
+
+>>> pv = dict(start_date=i2d(20140807))
 >>> rt.show(courses.Courses, param_values=pv, **kwargs)
 ==== =============== ================= ============ ============
  ID   Course series   When              Start date   End Date
 ---- --------------- ----------------- ------------ ------------
+ 1    Europe                            14/08/2014   20/08/2014
  25   Yoga            Every Friday      21/07/2014
  24   Yoga            Every Monday      21/07/2014
- 2    Europe                            14/07/2014   20/07/2014
  9    BT              Every Wednesday   11/06/2014
  7    WWW             Every Wednesday   01/06/2014
  6    WWW             Every Monday      01/06/2014
@@ -60,19 +79,8 @@ All courses that were active somewhere before 20140807:
 ==== =============== ================= ============ ============
 <BLANKLINE>
 
-All courses that started after 20140807
-
->>> pv = dict(start_date=i2d(20140807))
->>> rt.show(courses.Courses, param_values=pv, **kwargs)
-==== =============== ====== ============ ============
- ID   Course series   When   Start date   End Date
----- --------------- ------ ------------ ------------
- 1    Europe                 14/08/2014   20/08/2014
-==== =============== ====== ============ ============
-<BLANKLINE>
-
-Courses which were active on at least one day of the period 20140303
-and 20140422:
+Courses which were active on at least one day of the **period between
+20140303 and 20140422**:
 
 >>> pv = dict(start_date=i2d(20140303), end_date=i2d(20140422))
 >>> rt.show(courses.Courses, param_values=pv, **kwargs)
@@ -84,6 +92,12 @@ and 20140422:
  5    comp            Every Friday      22/04/2014
  19   SV              Every Friday      03/03/2014
  18   SV              Every Friday      03/03/2014
+ 13   Rücken          Every Monday      11/02/2014
+ 15   Rücken          Every Tuesday     11/02/2014
+ 17   Rücken          Every Thursday    11/02/2014
+ 12   Rücken          Every Monday      11/02/2014
+ 14   Rücken          Every Tuesday     11/02/2014
+ 16   Rücken          Every Thursday    11/02/2014
 ==== =============== ================= ============ ==========
 <BLANKLINE>
 
