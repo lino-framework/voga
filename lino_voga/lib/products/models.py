@@ -77,7 +77,8 @@ class ProductDetail(dd.DetailLayout):
 
     main = "general courses"
     general = dd.Panel("""
-    id cat vat_class sales_price number_of_events:10 min_asset:10
+    id cat sales_price number_of_events:10 min_asset:10
+    vat_class delivery_unit
     name
     description
     """, _("General"))

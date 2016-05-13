@@ -22,6 +22,8 @@ Database models for `lino_voga.lib.courses`.
 """
 
 from __future__ import unicode_literals
+from __future__ import print_function
+
 from builtins import str
 import datetime
 import six
@@ -47,6 +49,109 @@ day_and_month = dd.plugins.courses.day_and_month
 MAX_SHOWN = 3  # maximum number of invoiced events shown in
                # invoicing_info
 
+from lino.utils.media import TmpMediaFile
+
+from lino.modlib.printing.utils import CustomBuildMethod
+
+
+# from xlwt import Workbook
+
+from openpyxl.workbook import Workbook
+
+
+class XlsColumn(object):
+
+    def __init__(self, label, func, width=None, **styles):
+        self.label = label
+        self.func = func
+        self.styles = styles
+        self.width = width
+
+
+class XlsTable(object):
+    def __init__(self):
+        self.columns = []
+
+    def add_column(self, *args, **kwargs):
+        self.columns.append(XlsColumn(*args, **kwargs))
+
+    def write_to_sheet(self, sheet, rows):
+        rowno = 1
+        for i, col in enumerate(self.columns):
+            # sheet.write(rowno, i, label)
+            cell = sheet.cell(row=rowno, column=i+1)
+            cell.value = col.label
+            for k, v in col.styles.items():
+                setattr(cell, k, v)
+            if col.width is not None:
+                sheet.column_dimensions[cell.column].width = col.width
+            
+        for row in rows:
+            rowno += 1
+            for i, col in enumerate(self.columns):
+                value = col.func(row)
+                # sheet.write(rowno, i, value)
+                sheet.cell(row=rowno, column=i+1).value = value
+
+
+class CourseToXls(CustomBuildMethod):
+    target_ext = '.xlsx'
+    name = 'course2xls'
+    label = _("Export")
+
+    def custom_build(self, ar, obj, target):
+        events = obj.events_by_course.order_by('start_date')
+
+        xt = XlsTable()
+        
+        # def func(enr):
+        #     # s = ''.join([str(e) for e in enr.pupil_info])
+        #     s = enr.pupil_info.text
+        #     print(20160512, s, E.tostring(enr.pupil_info))
+        #     return s
+        # xt.add_column("Teilnehmer", func)
+        from openpyxl.styles import Alignment
+        xt.add_column(
+            "Teilnehmer", lambda enr: enr.pupil_info.text,
+            alignment=Alignment(
+                horizontal="general", vertical="top",
+                wrap_text=True))
+
+        xt.add_column("Anzahl", lambda enr: enr.places)
+        xt.add_column("Start", lambda enr: enr.start_date)
+        xt.add_column("End", lambda enr: enr.end_date)
+        xt.add_column("Invoicing", lambda enr: enr.invoicing_info.text)
+        xt.add_column("Payment", lambda enr: enr.payment_info)
+
+        for i, evt in enumerate(events):
+            lbl = dd.plugins.courses.day_and_month(evt.start_date)
+
+            def func(enr):
+                qs = rt.modules.cal.Guest.objects.filter(
+                    event=evt, partner=enr.pupil)
+                n = qs.count()
+                if n == 0:
+                    return ''
+                return n
+                
+            xt.add_column(
+                lbl, func, alignment=Alignment(
+                    vertical="center", text_rotation=90), width=4)
+        xt.add_column("...", lambda enr: "")
+        xt.add_column("...", lambda enr: "")
+        xt.add_column("...", lambda enr: "")
+
+        wb = Workbook()
+        # sheet = wb.add_sheet(str(obj))
+        ws = wb.active
+        ws.title = str(obj)
+        # ws.page_setup.orientation = ws.ORIENTATION_LANDSCAPE
+        # print(type(six.text_type('100')))
+        ws.column_dimensions["A"].width = 40
+        ws.row_dimensions[1].height = 30
+        xt.write_to_sheet(ws, obj.enrolments)
+        wb.save(target)
+
 
 class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
 
@@ -67,8 +172,16 @@ class TeacherTypes(dd.Table):
     """
 
 
+@dd.python_2_unicode_compatible
 class Teacher(Person):
+    """A **teacher** is a person with an additional field
+    :attr:`teacher_type`.
 
+    .. attribute:: teacher_type
+
+        Pointer to :class:`TeacherType`.
+
+    """
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Teacher')
@@ -80,7 +193,7 @@ class Teacher(Person):
 
     teacher_type = dd.ForeignKey('courses.TeacherType', blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.get_full_name(salutation=False)
 
 
@@ -103,7 +216,16 @@ class PupilTypes(dd.Table):
     """
 
 
+@dd.python_2_unicode_compatible
 class Pupil(Person):
+    """A **pupil** is a person with an additional field
+    :attr:`pupil_type`.
+
+    .. attribute:: pupil_type
+
+        Pointer to :class:`PupilType`.
+
+    """
 
     class Meta:
         app_label = 'courses'
@@ -117,15 +239,15 @@ class Pupil(Person):
 
     suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
 
-    def get_enrolment_info(self):
-        if self.pupil_type:
-            return self.pupil_type.ref
-
-    def __unicode__(self):
+    def __str__(self):
         s = self.get_full_name(salutation=False)
         if self.pupil_type:
             s += " (%s)" % self.pupil_type.ref
         return s
+
+    def get_enrolment_info(self):
+        if self.pupil_type:
+            return self.pupil_type.ref
 
 
 # class CreateInvoicesForCourse(CreateInvoice):
@@ -175,12 +297,11 @@ Lines.detail_layout = """
 
 
 class Course(Course):
-    """Extends the standard model by adding an action.
+    """Extends the standard model by adding a field :attr:`fee`.
 
     .. attribute:: fee
 
         The default participation fee to apply for new enrolments.
-
 
     """
     class Meta(Course.Meta):
@@ -191,6 +312,8 @@ class Course(Course):
                         blank=True, null=True,
                         verbose_name=_("Default participation fee"),
                         related_name='courses_by_fee')
+
+    course2xls = CourseToXls.create_action()
 
     @classmethod
     def get_registrable_fields(cls, site):
@@ -237,9 +360,11 @@ class InvoicingInfo(object):
                    if not s.editable]
         self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
         for obj in self.invoicings:
-            self.invoiced_qty += obj.qty
-            if obj.product.number_of_events:
-                invoiced_events += obj.qty * obj.product.number_of_events
+            if obj.product is not None:
+                self.invoiced_qty += obj.qty
+                if obj.product.number_of_events:
+                    invoiced_events += int(
+                        obj.qty * obj.product.number_of_events)
             # history.append("".format())
         # print("20160414", self.invoicings, self.invoiced_qty)
         start_date = enr.start_date or enr.course.start_date
@@ -266,8 +391,6 @@ class InvoicingInfo(object):
             self.invoiced_events = invoiced_events
 
     def as_html(self, ar):
-        if ar is None:
-            return ''
         elems = []
         events = list(self.used_events)
         invoiced = events[self.invoiced_events:]
@@ -275,6 +398,8 @@ class InvoicingInfo(object):
 
         def fmt(ev):
             txt = day_and_month(ev.start_date)
+            if ar is None:
+                return txt
             return ar.obj2html(ev, txt)
         if len(invoiced) > 0:
             elems.append("{0} : ".format(_("Invoiced")))
@@ -371,7 +496,10 @@ class Enrolment(Enrolment, Invoiceable):
 
         qs = cls.objects.filter(**{
             cls.invoiceable_date_field + '__lte': plan.max_date})
-        qs = qs.filter(course__state=EnrolmentStates.confirmed)
+        if plan.course is not None:
+            qs = qs.filter(course__id=plan.course.id)
+        else:
+            qs = qs.filter(course__state=CourseStates.active)
         if partner is None:
             partner = plan.partner
         if partner:
@@ -384,6 +512,7 @@ class Enrolment(Enrolment, Invoiceable):
                 qs = cls.objects.filter(models.Q(q1 | q2))
             else:
                 return
+        # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
         for obj in qs.order_by(cls.invoiceable_date_field):
             # dd.logger.info('20160223 %s', obj)
             yield obj
@@ -435,11 +564,14 @@ class Enrolment(Enrolment, Invoiceable):
         return InvoicingInfo(self)
 
     def get_invoiceable_title(self, invoice):
+        title = _("{enrolment} to {course}").format(
+            enrolment=self.__class__._meta.verbose_name,
+            course=self.course)
         if self.fee.number_of_events:
             info = self.get_invoicing_info()
-            return "{0}, Rg. {1}".format(
-                self.course, info.invoice_number(invoice))
-        return self.course
+            return _("[{number}] {title}").format(
+                title=title, number=info.invoice_number(invoice))
+        return title
 
     def get_invoiceable_qty(self):
         return self.places
@@ -451,18 +583,20 @@ class Enrolment(Enrolment, Invoiceable):
 
     def get_invoiceable_product(self):
         # dd.logger.info('20160223 %s', self.course)
-        if not self.course.state.invoiceable:
-            return
+        # if not self.course.state.invoiceable:
+        #     return
         if not self.state.invoiceable:
             return
         return self.get_invoicing_info().invoiceable_fee
 
     @dd.virtualfield(dd.HtmlBox(_("Participant")))
     def pupil_info(self, ar):
+        elems = []
+        txt = self.pupil.get_full_name(nominative=True)
         if ar is None:
-            return ''
-        elems = [ar.obj2html(self.pupil,
-                             self.pupil.get_full_name(nominative=True))]
+            elems = [txt]
+        else:
+            elems = [ar.obj2html(self.pupil, txt)]
         info = self.pupil.get_enrolment_info()
         if info:
             # elems += [" ({})".format(self.pupil.pupil_type.ref)]
@@ -478,8 +612,6 @@ class Enrolment(Enrolment, Invoiceable):
 
     @dd.displayfield(_("Invoicing info"))
     def invoicing_info(self, ar):
-        if ar is None:
-            return ''
         info = self.get_invoicing_info()
         return info.as_html(ar)
 
@@ -707,6 +839,7 @@ class CoursesByTopic(CoursesByTopic):
     @classmethod
     def param_defaults(self, ar, **kw):
         kw = super(CoursesByTopic, self).param_defaults(ar, **kw)
+        kw.update(state=CourseStates.active)
         kw.update(can_enroll=dd.YesNo.yes)
         return kw
 

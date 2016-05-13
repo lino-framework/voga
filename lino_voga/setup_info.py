@@ -46,7 +46,7 @@ Environment :: Web Environment
 Framework :: Django
 Intended Audience :: Developers
 Intended Audience :: System Administrators
-License :: OSI Approved :: BSD License
+License :: OSI Approved :: GNU Affero General Public License v3
 Operating System :: OS Independent
 Topic :: Office/Business :: Scheduling
 """.splitlines())
@@ -63,7 +63,10 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.courses',
     'lino_voga.lib.courses.fixtures',
     'lino_voga.lib.products',
+    'lino_voga.lib.invoicing',
+    'lino_voga.lib.invoicing.fixtures',
     'lino_voga.lib.sales',
+    'lino_voga.lib.sales.fixtures',
     'lino_voga.lib.voga',
     'lino_voga.lib.voga.fixtures',
     'lino_voga.lib.rooms',
@@ -89,7 +92,12 @@ SETUP_INFO.update(message_extractors={
         ('**/cache/**',          'ignore', None),
         ('**.py',                'python', None),
         ('**.js',                'javascript', None),
-        ('**/templates_jinja/**.html', 'jinja2', None),
+        ('**.html', 'jinja2', None),
+        # ('**/config/**.html', 'jinja2', None),
+        # ('**/config/**/**.html', 'jinja2', None),
+        # ('lino_voga/lib/voga/config/courses/Enrolment/**.html',
+        #  'jinja2', None),
+
     ],
 })
 

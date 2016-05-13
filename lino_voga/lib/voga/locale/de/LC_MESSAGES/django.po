@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lino-faggio 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-04-29 10:29+0300\n"
-"PO-Revision-Date: 2016-04-29 10:31+0300\n"
+"POT-Creation-Date: 2016-05-11 16:35+0300\n"
+"PO-Revision-Date: 2016-05-11 16:37+0300\n"
 "Last-Translator: Luc Saffre <luc.saffre@gmail.com>\n"
 "Language: de\n"
 "Language-Team: de <LL@li.org>\n"
@@ -28,20 +28,20 @@ msgid "Calendar where events in this room are published."
 msgstr ""
 
 #: lino_voga/lib/cal/models.py:174 lino_voga/lib/contacts/models.py:46
-#: lino_voga/lib/contacts/models.py:127 lino_voga/lib/courses/models.py:607
+#: lino_voga/lib/contacts/models.py:127 lino_voga/lib/courses/models.py:629
 #: lino_voga/lib/products/models.py:83
-#: lino_voga/projects/roger/lib/courses/models.py:203
+#: lino_voga/projects/roger/lib/courses/models.py:251
 msgid "General"
 msgstr "Allgemein"
 
 #: lino_voga/lib/cal/models.py:179 lino_voga/lib/contacts/models.py:56
 #: lino_voga/lib/contacts/models.py:98 lino_voga/lib/contacts/models.py:138
-#: lino_voga/lib/courses/models.py:625
+#: lino_voga/lib/courses/models.py:647
 msgid "More"
 msgstr ""
 
-#: lino_voga/lib/cal/fixtures/std.py:30 lino_voga/lib/courses/models.py:113
-#: lino_voga/lib/courses/models.py:458
+#: lino_voga/lib/cal/fixtures/std.py:30 lino_voga/lib/courses/models.py:128
+#: lino_voga/lib/courses/models.py:479
 #: lino_voga/projects/roger/lib/courses/models.py:70
 msgid "Participant"
 msgstr "Teilnehmer"
@@ -60,105 +60,112 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:60
+#: lino_voga/lib/courses/models.py:58
 msgid "Instructor Type"
 msgstr "Kursleiterart"
 
-#: lino_voga/lib/courses/models.py:61
+#: lino_voga/lib/courses/models.py:59
 msgid "Instructor Types"
 msgstr "Kursleiterarten"
 
-#: lino_voga/lib/courses/models.py:77
+#: lino_voga/lib/courses/models.py:83
 msgid "Instructor"
 msgstr "Kursleiter"
 
-#: lino_voga/lib/courses/models.py:78
+#: lino_voga/lib/courses/models.py:84
 msgid "Instructors"
 msgstr "Kursleiter"
 
-#: lino_voga/lib/courses/models.py:96
+#: lino_voga/lib/courses/models.py:102
 msgid "Participant Type"
 msgstr "Teilnehmerart"
 
-#: lino_voga/lib/courses/models.py:97
+#: lino_voga/lib/courses/models.py:103
 msgid "Participant Types"
 msgstr "Teilnehmerarten"
 
-#: lino_voga/lib/courses/models.py:114
+#: lino_voga/lib/courses/models.py:129
 #: lino_voga/projects/roger/lib/courses/models.py:71
 msgid "Participants"
 msgstr "Teilnehmer"
 
-#: lino_voga/lib/courses/models.py:148
+#: lino_voga/lib/courses/models.py:163
 msgid "Course type"
-msgstr ""
+msgstr "Kursart"
 
-#: lino_voga/lib/courses/models.py:149
-#, fuzzy
+#: lino_voga/lib/courses/models.py:164
 msgid "Course types"
-msgstr "Kurse"
+msgstr "Kursarten"
 
-#: lino_voga/lib/courses/models.py:194
+#: lino_voga/lib/courses/models.py:208
 msgid "Default participation fee"
 msgstr "Standard-Teilnehmahmegebühr"
 
-#: lino_voga/lib/courses/models.py:278
+#: lino_voga/lib/courses/models.py:296
 msgid "Invoiced"
 msgstr "Fakturiert"
 
-#: lino_voga/lib/courses/models.py:288
+#: lino_voga/lib/courses/models.py:306
 msgid "Not invoiced"
 msgstr "Nicht fakturiert"
 
-#: lino_voga/lib/courses/models.py:348
+#: lino_voga/lib/courses/models.py:366
 msgid "Enrolment"
 msgstr "Einschreibung"
 
-#: lino_voga/lib/courses/models.py:349 lino_voga/lib/courses/models.py:619
+#: lino_voga/lib/courses/models.py:367 lino_voga/lib/courses/models.py:641
 #: lino_voga/lib/products/models.py:88
 msgid "Enrolments"
 msgstr "Einschreibungen"
 
-#: lino_voga/lib/courses/models.py:351
+#: lino_voga/lib/courses/models.py:369
 msgid "Amount"
 msgstr "Betrag"
 
-#: lino_voga/lib/courses/models.py:355
+#: lino_voga/lib/courses/models.py:373
 msgid "Participation fee"
 msgstr "Teilnehmahmegebühr"
 
-#: lino_voga/lib/courses/models.py:472
+#: lino_voga/lib/courses/models.py:454
+msgid "{enrolment} to {course}"
+msgstr "{enrolment} zu {course}"
+
+#: lino_voga/lib/courses/models.py:459
+msgid "[{number}] {title}"
+msgstr ""
+
+#: lino_voga/lib/courses/models.py:493
 msgid "Phone: {0}"
 msgstr "Tel.: {0}"
 
-#: lino_voga/lib/courses/models.py:474
+#: lino_voga/lib/courses/models.py:495
 msgid "GSM: {0}"
 msgstr "GSM: {0}"
 
-#: lino_voga/lib/courses/models.py:477
+#: lino_voga/lib/courses/models.py:498
 msgid "Invoicing info"
 msgstr "Info Fakturation"
 
-#: lino_voga/lib/courses/models.py:484
+#: lino_voga/lib/courses/models.py:505
 msgid "Payment info"
 msgstr "Info Buchhaltung"
 
-#: lino_voga/lib/courses/models.py:540
+#: lino_voga/lib/courses/models.py:561
 msgid "Enrolments using this fee"
-msgstr ""
+msgstr "Einschreibungen mit diesem Tarif"
 
-#: lino_voga/lib/courses/models.py:614
+#: lino_voga/lib/courses/models.py:636
 msgid "Events"
 msgstr "Veranstaltungen"
 
-#: lino_voga/lib/courses/models.py:668
+#: lino_voga/lib/courses/models.py:690
 #, python-format
 msgid "in %s"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:759
+#: lino_voga/lib/courses/models.py:785
 msgid "Status Report"
-msgstr ""
+msgstr "Statusbericht"
 
 #: lino_voga/lib/products/__init__.py:28 lino_voga/lib/products/models.py:65
 msgid "Tariffs"
@@ -200,18 +207,62 @@ msgstr ""
 msgid "Product invoice items"
 msgstr ""
 
+#: lino_voga/lib/voga/roles.py:49
+msgid "Anonymous"
+msgstr ""
+
+#: lino_voga/lib/voga/roles.py:50
+msgid "User"
+msgstr ""
+
+#: lino_voga/lib/voga/roles.py:51
+msgid "Developer"
+msgstr ""
+
+#: lino_voga/lib/voga/roles.py:52
+msgid "Senior Developer"
+msgstr ""
+
+#: lino_voga/lib/voga/roles.py:53
+msgid "Administrator"
+msgstr ""
+
+#: lino_voga/lib/voga/config/courses/Enrolment/item_description.html:4
+msgid "Time"
+msgstr "Zeit"
+
+#: lino_voga/lib/voga/config/courses/Enrolment/item_description.html:7
+msgid "Your start date"
+msgstr "Ihr Beginndatum"
+
+#: lino_voga/lib/voga/config/courses/Enrolment/item_description.html:9
+msgid "Scheduled dates"
+msgstr "Geplante Daten"
+
+#: lino_voga/lib/voga/config/sales/Invoice/trailer.body.html:4
+msgid "Date of payment"
+msgstr "Datum der Zahlung"
+
+#: lino_voga/lib/voga/config/sales/Invoice/trailer.body.html:6
+msgid "Payment terms"
+msgstr "Zahlungsbedingungen"
+
+#: lino_voga/lib/voga/config/sales/Invoice/trailer.body.html:9
+msgid "Your enrolments:"
+msgstr "Ihre Einschreibungen"
+
 #: lino_voga/lib/voga/fixtures/buche.py:72
 #: lino_voga/projects/roger/lib/courses/models.py:81
 msgid "Member"
-msgstr ""
+msgstr "Mitglied"
 
 #: lino_voga/lib/voga/fixtures/buche.py:73
 msgid "Helper"
-msgstr ""
+msgstr "Helfer"
 
 #: lino_voga/lib/voga/fixtures/buche.py:74
 msgid "Non-member"
-msgstr ""
+msgstr "Nicht-Mitglied"
 
 #: lino_voga/lib/voga/fixtures/buche.py:79
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:77
@@ -242,14 +293,14 @@ msgstr "Raummiete"
 
 #: lino_voga/lib/voga/fixtures/buche.py:139
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:132
-#: lino_voga/projects/roger/lib/courses/models.py:180
+#: lino_voga/projects/roger/lib/courses/models.py:220
 msgid "Courses"
 msgstr "Kurse"
 
 #: lino_voga/lib/voga/fixtures/buche.py:140
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:133
 msgid "Hour"
-msgstr ""
+msgstr "Stunde"
 
 #: lino_voga/lib/voga/fixtures/buche.py:146
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:139
@@ -259,12 +310,12 @@ msgstr "Seminare"
 #: lino_voga/lib/voga/fixtures/buche.py:149
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:142
 msgid "Excursions"
-msgstr ""
+msgstr "Ausflüge"
 
 #: lino_voga/lib/voga/fixtures/buche.py:153
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:143
 msgid "Hikes"
-msgstr ""
+msgstr "Ausfahrten"
 
 #: lino_voga/lib/voga/fixtures/buche.py:158
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:144
@@ -339,26 +390,6 @@ msgstr "Zeugnis"
 msgid "Payment list"
 msgstr ""
 
-#: lino_voga/projects/roles.py:49
-msgid "Anonymous"
-msgstr ""
-
-#: lino_voga/projects/roles.py:50
-msgid "User"
-msgstr ""
-
-#: lino_voga/projects/roles.py:51
-msgid "Developer"
-msgstr ""
-
-#: lino_voga/projects/roles.py:52
-msgid "Senior Developer"
-msgstr ""
-
-#: lino_voga/projects/roles.py:53
-msgid "Administrator"
-msgstr ""
-
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:78
 msgid "Voluntary"
 msgstr "Ehrenamtlich"
@@ -373,11 +404,11 @@ msgstr "Raummiete"
 
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:283
 msgid "First Steps"
-msgstr ""
+msgstr "Erste Schritte"
 
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:318
 msgid "Internet for beginners"
-msgstr ""
+msgstr "Internet für Anfänger"
 
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:331
 msgid "Belly dancing"
@@ -389,7 +420,7 @@ msgstr ""
 
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:349
 msgid "Swimming"
-msgstr ""
+msgstr "Schwimmen"
 
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:384
 msgid "Finding your inner peace"
@@ -397,16 +428,15 @@ msgstr ""
 
 #: lino_voga/projects/roger/lib/courses/models.py:38
 msgid "Section"
-msgstr ""
+msgstr "Sektion"
 
 #: lino_voga/projects/roger/lib/courses/models.py:39
-#, fuzzy
 msgid "Sections"
-msgstr "Versammlungen"
+msgstr "Sektionen"
 
 #: lino_voga/projects/roger/lib/courses/models.py:74
 msgid "Legacy ID"
-msgstr ""
+msgstr "Alte Nr."
 
 #: lino_voga/projects/roger/lib/courses/models.py:78
 #: lino_voga/projects/roger/lib/courses/models.py:113
@@ -431,24 +461,37 @@ msgstr ""
 #: lino_voga/projects/roger/lib/courses/models.py:139
 #: lino_voga/projects/roger/lib/courses/models.py:141
 msgid "Members"
-msgstr ""
+msgstr "Mitglieder"
 
 #: lino_voga/projects/roger/lib/courses/models.py:110
 msgid "Show those whose 'Member until' is after today."
 msgstr ""
 
-#: lino_voga/projects/roger/lib/courses/models.py:179
+#: lino_voga/projects/roger/lib/courses/models.py:219
 #, fuzzy
 msgid "Course"
 msgstr "Kurse"
 
+#: lino_voga/projects/roger/lib/courses/config/courses/Enrolment/enrolment.body.html:12
+#: lino_voga/projects/roger/lib/courses/config/courses/Enrolment/intervention.body.html:12
+msgid "Translation"
+msgstr ""
+
+#: lino_voga/projects/roger/lib/courses/config/courses/Enrolment/intervention.body.html:24
+msgid "Phone"
+msgstr "Tel."
+
+#: lino_voga/projects/roger/lib/courses/config/courses/Enrolment/intervention.body.html:25
+msgid "GSM"
+msgstr ""
+
 #: lino_voga/projects/roger/lib/courses/fixtures/std.py:35
 msgid "Presence sheet"
-msgstr ""
+msgstr "Anwesenheitsblatt"
 
 #: lino_voga/projects/roger/lib/courses/fixtures/std.py:41
 msgid "Overview"
-msgstr ""
+msgstr "Übersicht"
 
 #~ msgid "Confirm"
 #~ msgstr "Bestätigen"
@@ -470,3 +513,6 @@ msgstr ""
 
 #~ msgid "is a pupil"
 #~ msgstr "ist Teilnehmer"
+
+#~ msgid "Dates"
+#~ msgstr "Daten"

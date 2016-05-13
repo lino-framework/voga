@@ -160,7 +160,7 @@ Pupils.params_layout = "aged_from aged_to gender "\
                        "show_members show_lfv show_ckk show_raviva"
 Pupils.column_names = (
     'name_column address_column '
-    'legacy_id member_until section is_lfv is_ckk is_raviva *')
+    'pupil_type section is_lfv is_ckk is_raviva member_until *')
 
 
 class Line(Line):
@@ -173,8 +173,45 @@ class Line(Line):
         abstract = dd.is_abstract_model(__name__, 'Line')
 
 
+@dd.python_2_unicode_compatible
 class Course(Referrable, Course):
-    """Adds a :attr:`ref` field.
+    """Adds a :attr:`ref` field and defines a custom :meth:`__str__`
+    method.
+
+    The custom :meth:`__str__` method defines how to textually
+    represent a course e.g. in the dropdown list of a combobox or in
+    reports. Rules:
+
+    - If :attr:`ref` is given, it is shown, but see also the two
+      following cases.
+
+    - If :attr:`name` is given, it is shown (possibly behind the
+      :attr:`ref`).
+
+    - If a :attr:`line` (series) is given, it is shown (possibly
+      behind the :attr:`ref`).
+
+    - If neither :attr:`ref` nor :attr:`name` nor :attr:`line` are
+      given, show a simple "Course #".
+
+
+    .. attribute:: ref
+    
+        An identifying public course number to be used by both
+        external and internal partners for easily referring to a given
+        course.
+
+    .. attribute:: name
+
+        A short designation for this course. An extension of the
+        :attr:`ref`.
+
+    .. attribute:: line
+
+        Pointer to the course series.
+
+
+
     """
     class Meta:
         app_label = 'courses'
@@ -182,16 +219,24 @@ class Course(Referrable, Course):
         verbose_name = _("Course")
         verbose_name_plural = _("Courses")
 
+    def __str__(self):
+        if self.name:
+            if self.ref:
+                return "{0} {1}".format(self.ref, self.name)
+            return self.name
+        if self.ref:
+            if self.line:
+                return "{0} {1}".format(self.ref, self.line)
+            return self.ref
+        # Note that we cannot use super() with
+        # python_2_unicode_compatible
+        return "{0} #{1}".format(self._meta.verbose_name, self.pk)
+
     def update_cal_summary(self, i):
         label = dd.babelattr(self.line.event_type, 'event_label')
         if self.ref:
             label = self.ref + ' ' + label
         return "%s %d" % (label, i)
-
-    def __unicode__(self):
-        if self.ref and self.line:
-            return "{0} {1}".format(self.ref, self.line)
-        return super(Course, self).__unicode__()
 
 Course.set_widget_options('ref', preferred_with=6)
 

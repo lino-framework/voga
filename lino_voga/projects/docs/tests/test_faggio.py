@@ -64,7 +64,7 @@ class QuickTest(RemoteAuthTestCase):
             monday=True,
             state=courses.CourseStates.active,
             start_date=i2d(20140110))
-        self.assertEqual(unicode(obj), "First Line (1/10/14 First Room)")
+        self.assertEqual(unicode(obj), "First Line (10/01/2014 First Room)")
 
         # self.assertEqual(settings.SITE.kernel.__class__.__name__, 'Kernel')
         # self.assertEqual(settings.SITE.kernel.site, settings.SITE)
@@ -85,7 +85,7 @@ class QuickTest(RemoteAuthTestCase):
         res = ses.run(obj.do_update_events)
         self.assertEqual(res['success'], True)
         expected = """\
-Update Events for First Line (1/10/14 First Room)...
+Update Events for First Line (10/01/2014 First Room)...
 Generating events between 2014-01-13 and 2019-06-15.
 Update Guests for Course #1  1...
 0 row(s) have been updated.
@@ -103,15 +103,15 @@ Update Guests for Course #1  5...
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
-============= ===========
- When          State
-------------- -----------
- Mon 1/13/14   Suggested
- Mon 1/20/14   Suggested
- Mon 1/27/14   Suggested
- Mon 2/3/14    Suggested
- Mon 2/10/14   Suggested
-============= ===========
+================ ===========
+ When             State
+---------------- -----------
+ Mon 13/01/2014   Suggested
+ Mon 20/01/2014   Suggested
+ Mon 27/01/2014   Suggested
+ Mon 03/02/2014   Suggested
+ Mon 10/02/2014   Suggested
+================ ===========
 
 """)
 
@@ -143,15 +143,15 @@ Move down for Course #1  2...
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
-============= ===========
- When          State
-------------- -----------
- Mon 1/13/14   Suggested
- Mon 1/27/14   Draft
- Mon 1/27/14   Suggested
- Mon 2/3/14    Suggested
- Mon 2/10/14   Suggested
-============= ===========
+================ ===========
+ When             State
+---------------- -----------
+ Mon 13/01/2014   Suggested
+ Mon 27/01/2014   Draft
+ Mon 27/01/2014   Suggested
+ Mon 03/02/2014   Suggested
+ Mon 10/02/2014   Suggested
+================ ===========
 
 """)
 
@@ -163,7 +163,7 @@ Move down for Course #1  2...
         res = ses.run(obj.do_update_events)
         self.assertEqual(res['success'], True)
         expected = """\
-Update Events for First Line (1/10/14 First Room)...
+Update Events for First Line (10/01/2014 First Room)...
 Generating events between 2014-01-13 and 2019-06-15.
 2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
 3 : 2014-01-27 -> 2014-02-03
@@ -175,15 +175,15 @@ Generating events between 2014-01-13 and 2019-06-15.
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
-============= ===========
- When          State
-------------- -----------
- Mon 1/13/14   Suggested
- Mon 1/27/14   Draft
- Mon 2/3/14    Suggested
- Mon 2/10/14   Suggested
- Mon 2/17/14   Suggested
-============= ===========
+================ ===========
+ When             State
+---------------- -----------
+ Mon 13/01/2014   Suggested
+ Mon 27/01/2014   Draft
+ Mon 03/02/2014   Suggested
+ Mon 10/02/2014   Suggested
+ Mon 17/02/2014   Suggested
+================ ===========
 
 """)
 
@@ -224,16 +224,16 @@ Update Guests for Recurrent event rule #1 National Day...
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
-============ ===========
- When         State
------------- -----------
- Mon 2/3/14   Suggested
- Tue 2/3/15   Suggested
- Wed 2/3/16   Suggested
- Fri 2/3/17   Suggested
- Sat 2/3/18   Suggested
- Sun 2/3/19   Suggested
-============ ===========
+================ ===========
+ When             State
+---------------- -----------
+ Mon 03/02/2014   Suggested
+ Tue 03/02/2015   Suggested
+ Wed 03/02/2016   Suggested
+ Fri 03/02/2017   Suggested
+ Sat 03/02/2018   Suggested
+ Sun 03/02/2019   Suggested
+================ ===========
 
 """)
 

@@ -34,14 +34,12 @@ from lino_cosi.lib.invoicing.mixins import Invoiceable
 class Booking(Booking, Invoiceable):
 
     invoiceable_date_field = 'start_date'
-    #~ invoiceable_partner_field = 'company'
-
-    # create_invoice = sales.CreateInvoice()
 
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):
         qs = cls.objects.filter(**{
             cls.invoiceable_date_field + '__lte': plan.max_date})
+
         if partner:
             company = get_child(partner, rt.modules.contacts.Company)
             if company:

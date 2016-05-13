@@ -61,6 +61,7 @@ class Site(Site):
         # yield 'lino_xl.lib.extensible'
         yield 'lino_voga.lib.rooms'
         yield 'lino_voga.lib.sales'
+        yield 'lino_voga.lib.invoicing'
 
         yield 'lino_voga.lib.courses'
 
