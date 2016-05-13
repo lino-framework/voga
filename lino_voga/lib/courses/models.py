@@ -496,7 +496,10 @@ class Enrolment(Enrolment, Invoiceable):
 
         qs = cls.objects.filter(**{
             cls.invoiceable_date_field + '__lte': plan.max_date})
-        qs = qs.filter(course__state=EnrolmentStates.confirmed)
+        if plan.course is not None:
+            qs = qs.filter(course__id=plan.course.id)
+        else:
+            qs = qs.filter(course__state=CourseStates.active)
         if partner is None:
             partner = plan.partner
         if partner:
@@ -509,6 +512,7 @@ class Enrolment(Enrolment, Invoiceable):
                 qs = cls.objects.filter(models.Q(q1 | q2))
             else:
                 return
+        # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
         for obj in qs.order_by(cls.invoiceable_date_field):
             # dd.logger.info('20160223 %s', obj)
             yield obj
@@ -579,8 +583,8 @@ class Enrolment(Enrolment, Invoiceable):
 
     def get_invoiceable_product(self):
         # dd.logger.info('20160223 %s', self.course)
-        if not self.course.state.invoiceable:
-            return
+        # if not self.course.state.invoiceable:
+        #     return
         if not self.state.invoiceable:
             return
         return self.get_invoicing_info().invoiceable_fee

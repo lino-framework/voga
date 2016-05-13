@@ -63,6 +63,8 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.courses',
     'lino_voga.lib.courses.fixtures',
     'lino_voga.lib.products',
+    'lino_voga.lib.invoicing',
+    'lino_voga.lib.invoicing.fixtures',
     'lino_voga.lib.sales',
     'lino_voga.lib.sales.fixtures',
     'lino_voga.lib.voga',

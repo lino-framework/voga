@@ -82,7 +82,7 @@ The demo database
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
  gfks.HelpText              gfks.HelpTexts                 4         2
  invoicing.Item             invoicing.Items                9         35
- invoicing.Plan             invoicing.Plans                6         1
+ invoicing.Plan             invoicing.Plans                7         1
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         6
  ledger.Journal             ledger.Journals                15        6
  ledger.MatchRule           ledger.MatchRules              3         10

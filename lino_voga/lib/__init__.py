@@ -7,6 +7,7 @@ This package contains apps which are specific to :ref:`voga`.
     cal
     contacts
     courses
+    invoicing
     rooms
     voga
 
