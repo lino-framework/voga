@@ -583,8 +583,8 @@ class Enrolment(Enrolment, Invoiceable):
 
     def get_invoiceable_product(self):
         # dd.logger.info('20160223 %s', self.course)
-        # if not self.course.state.invoiceable:
-        #     return
+        if not self.course.state.invoiceable:
+            return
         if not self.state.invoiceable:
             return
         return self.get_invoicing_info().invoiceable_fee

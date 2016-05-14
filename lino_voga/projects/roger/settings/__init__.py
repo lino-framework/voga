@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 """
-The base settings module for :ref:`eiche`.
+The base settings module for :mod:`lino_voga.projects.roger`.
 """
 
 from __future__ import unicode_literals
@@ -11,7 +11,7 @@ from lino_voga.projects.base import *
 
 class Site(Site):
     """
-    The `Site` class for :ref:`eiche`.
+    The `Site` class for this module.
     """
 
     title = "Lino Voga à la Roger"

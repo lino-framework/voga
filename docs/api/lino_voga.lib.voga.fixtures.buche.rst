@@ -5,12 +5,6 @@ lino_voga.lib.voga.fixtures.buche
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      demo_date
-   
    
 
    

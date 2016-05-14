@@ -15,6 +15,7 @@ lino_voga.lib.courses.models
    
       Course
       CourseDetail
+      CourseToXls
       CourseType
       CourseTypes
       CoursesByLine
@@ -41,6 +42,8 @@ lino_voga.lib.courses.models
       TeacherTypes
       Teachers
       TeachersByType
+      XlsColumn
+      XlsTable
    
    
 
