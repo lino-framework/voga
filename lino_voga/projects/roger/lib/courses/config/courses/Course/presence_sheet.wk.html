@@ -9,7 +9,7 @@ table {
 table, td, th {
     border: 1px solid black;
 }
-.avoid {
+table tbody tr.avoid {
     page-break-inside: avoid !important;
     margin: 4px 0 4px 0;  /* to keep the page break from cutting too close to the text in the div */
 }
@@ -37,9 +37,9 @@ table, td, th {
 
 <tbody>
 {% for enrolment in obj.enrolments %}
-<tr>
+<tr class="avoid">
 <td>{{loop.index}}</td>
-<td class="avoid">{{E.tostring(enrolment.pupil_info)}}</td>
+<td>{{E.tostring(enrolment.pupil_info)}}</td>
 {% for e in  events %}
 <td>&nbsp;</td>
 {% endfor %}
