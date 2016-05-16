@@ -20,6 +20,7 @@ table, td, th {
 {% set  events = rt.modules.system.PeriodEvents.started.add_filter(events, ar.param_values)%}
 
 <table border="1" width="100%">
+<thead>
 <tr>
 <td>{{_("No.")}}</td>
 <td>{{_("Participant")}}</td>
@@ -29,7 +30,9 @@ table, td, th {
 {% endfor %}
 <td>{{_("Remark")}}</td>
 </tr>
+</thead>
 
+<tbody>
 {% for enrolment in obj.enrolments %}
 <tr>
 <td>{{loop.index}}</td>
@@ -41,7 +44,6 @@ table, td, th {
 </tr>
 {% endfor %}
 
-
 {% for i in range(9) %}
 <tr>
 <td><br/><br/></td>
@@ -52,6 +54,7 @@ table, td, th {
 <td></td>
 </tr>
 {% endfor %}
+</tbody>
 
 </table>
 {%- endblock %}
