@@ -9,9 +9,13 @@ table {
 table, td, th {
     border: 1px solid black;
 }
-table tbody tr.avoid {
+@media print {
+  table tbody tr.avoid {
     page-break-inside: avoid !important;
-    margin: 4px 0 4px 0;  /* to keep the page break from cutting too close to the text in the div */
+    
+    margin: 4px 0 4px 0; /* to keep the page break from cutting too
+                            close to the text in the div */ 
+  } 
 }
 </style>
 {%- endblock %}
