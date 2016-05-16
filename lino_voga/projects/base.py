@@ -90,7 +90,8 @@ class Site(Site):
 
         yield 'lino.modlib.export_excel'
         yield 'lino_xl.lib.extensible'
-        yield 'lino.modlib.wkhtmltopdf'
+        yield 'lino.modlib.wkhtmltopdf'  # obsolete
+        yield 'lino.modlib.weasyprint'
         yield 'lino_xl.lib.appypod'
 
     def get_admin_main_items(self, ar):
