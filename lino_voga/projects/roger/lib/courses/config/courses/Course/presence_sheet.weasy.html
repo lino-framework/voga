@@ -18,12 +18,35 @@ p {
     margin: 0;  
 }
 
-@page {margin-top: 15mm; margin-left: 15mm; size: landscape}
+@page {
+    margin: 10mm; margin-top: 15mm; margin-bottom: 15mm; 
+    size: landscape;
+    @bottom-right {
+        content: counter(page) "/" counter(pages);
+    }
+}
+
+
 @media print {
   tr.avoid {
     page-break-inside: avoid !important;
   } 
 }
+@media screen {
+    div.footer_div {
+        display: none;
+    }
+}
+@media print {
+    div.footer_div {
+        position: fixed;
+        bottom: -5mm;
+        width: 100%;
+        border-top: solid 1pt;
+        padding: 2pt;
+    }
+}
+
 </style>
 {%- endblock %}
 
@@ -31,7 +54,11 @@ p {
 {%- block main %}
 {{ super() }}
 {% set events = obj.events_by_course.order_by('start_date') %}
-{% set  events = rt.modules.system.PeriodEvents.started.add_filter(events, ar.param_values)%}
+{% set  events = rt.modules.system.PeriodEvents.started.add_filter(events, ar.action_param_values)%}
+
+
+<div class="footer_div">{{obj}} ({{fds(ar.action_param_values.start_date)}}...{{fds(ar.action_param_values.end_date)}})</div>
+
 
 <table border="1" width="100%">
 <thead>
@@ -42,7 +69,9 @@ p {
 <td>{{dd.plugins.courses.day_and_month(e.start_date)}}
 <br/><font size="1">({{e.state}})</font></td>
 {% endfor %}
+{% if ar.action_param_values.show_remarks %}
 <td>{{_("Remark")}}</td>
+{% endif %}
 </tr>
 </thead>
 
@@ -54,7 +83,9 @@ p {
 {% for e in  events %}
 <td>&nbsp;</td>
 {% endfor %}
+{% if ar.action_param_values.show_remarks %}
 <td>{{enrolment.remark}}</td>
+{% endif %}
 </tr>
 {% endfor %}
 
@@ -65,7 +96,9 @@ p {
 {% for e in  events %}
 <td>&nbsp;</td>
 {% endfor %}
+{% if ar.action_param_values.show_remarks %}
 <td></td>
+{% endif %}
 </tr>
 {% endfor %}
 </tbody>

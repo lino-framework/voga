@@ -54,11 +54,6 @@ from lino.utils.media import TmpMediaFile
 from lino.modlib.printing.utils import CustomBuildMethod
 
 
-# from xlwt import Workbook
-
-from openpyxl.workbook import Workbook
-
-
 class XlsColumn(object):
 
     def __init__(self, label, func, width=None, **styles):
@@ -95,11 +90,14 @@ class XlsTable(object):
 
 
 class CourseToXls(CustomBuildMethod):
+    """Interesting, but currently not used."""
     target_ext = '.xlsx'
     name = 'course2xls'
     label = _("Export")
 
     def custom_build(self, ar, obj, target):
+        from openpyxl.workbook import Workbook
+        from openpyxl.styles import Alignment
         events = obj.events_by_course.order_by('start_date')
 
         xt = XlsTable()
@@ -110,7 +108,6 @@ class CourseToXls(CustomBuildMethod):
         #     print(20160512, s, E.tostring(enr.pupil_info))
         #     return s
         # xt.add_column("Teilnehmer", func)
-        from openpyxl.styles import Alignment
         xt.add_column(
             "Teilnehmer", lambda enr: enr.pupil_info.text,
             alignment=Alignment(
@@ -313,7 +310,7 @@ class Course(Course):
                         verbose_name=_("Default participation fee"),
                         related_name='courses_by_fee')
 
-    course2xls = CourseToXls.create_action()
+    # course2xls = CourseToXls.create_action()
 
     @classmethod
     def get_registrable_fields(cls, site):
