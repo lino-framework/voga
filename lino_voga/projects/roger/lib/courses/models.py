@@ -250,6 +250,8 @@ class Course(Referrable, Course, PrintableObject):
 
     @dd.displayfield(_("Print"))
     def print_actions(self, ar):
+        if ar is None:
+            return ''
         return ar.instance_action_button(self.print_presence_sheet)
 
     def __str__(self):
