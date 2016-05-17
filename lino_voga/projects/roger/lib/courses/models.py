@@ -64,12 +64,16 @@ class PrintPresenceSheet(DirectPrintAction):
     build_method = "weasy"
     icon_name = None
     # show_in_bbar = False
-    parameters = Monthly(show_remarks=models.BooleanField(
-        _("Show remarks"), default=False))
+    parameters = Monthly(
+        show_remarks=models.BooleanField(
+            _("Show remarks"), default=False),
+        show_states=models.BooleanField(
+            _("Show states"), default=True))
     params_layout = """
     start_date
     end_date
     show_remarks
+    show_states
     """
     keep_user_values = True
 

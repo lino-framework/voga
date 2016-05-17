@@ -68,7 +68,10 @@ p {
 <td>{{_("Participant")}}</td>
 {% for e in  events %}
 <td>{{dd.plugins.courses.day_and_month(e.start_date)}}
-<br/><font size="1">({{e.state}})</font></td>
+{% if ar.action_param_values.show_states %}
+<br/><font size="1">({{e.state}})</font>
+{% endif %}
+</td>
 {% endfor %}
 {% if ar.action_param_values.show_remarks %}
 <td>{{_("Remark")}}</td>
