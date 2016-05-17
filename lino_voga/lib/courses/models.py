@@ -658,8 +658,8 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
 
     """
-    variable_row_height = True
-    column_names = 'request_date pupil_info start_date end_date '\
+    # variable_row_height = True
+    column_names = 'request_date pupil start_date end_date '\
                    'places remark fee option amount ' \
                    'workflow_buttons *'
 
@@ -746,7 +746,7 @@ class CourseDetail(CourseDetail):
     """, label=_("Events"))
 
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 free_places
+    enrolments_until fee max_places:8 confirmed free_places requested
     EnrolmentsByCourse:40
     """, label=_("Enrolments"))
 
@@ -831,7 +831,8 @@ class CoursesByTopic(CoursesByTopic):
     """
     order_by = ["ref"]
     column_names = "info name weekdays_text:10 times_text:10 "\
-                   "enrolments max_places:8 free_places"
+                   "max_places:8 confirmed "\
+                   "free_places requested *"
 
     @classmethod
     def param_defaults(self, ar, **kw):

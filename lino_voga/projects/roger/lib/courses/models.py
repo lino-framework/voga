@@ -286,7 +286,7 @@ class CourseDetail(CourseDetail):
     """, label=_("General"))
     # TODO: make an action renderable as a data element of a form
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 free_places print_actions
+    enrolments_until fee max_places:8 confirmed free_places print_actions
     EnrolmentsByCourse:40
     """, label=_("Enrolments"))
 

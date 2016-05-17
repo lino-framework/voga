@@ -55,7 +55,7 @@ p {
 {%- block main %}
 {{ super() }}
 {% set events = obj.events_by_course.order_by('start_date') %}
-{% set  events = rt.modules.system.PeriodEvents.started.add_filter(events, ar.action_param_values)%}
+{% set events = rt.modules.system.PeriodEvents.started.add_filter(events, ar.action_param_values)%}
 
 
 <div class="footer_div">{{obj}} ({{fds(ar.action_param_values.start_date)}}...{{fds(ar.action_param_values.end_date)}})</div>
@@ -80,7 +80,8 @@ p {
 </thead>
 
 <tbody>
-{% for enrolment in obj.enrolments %}
+{% for enrolment in obj.get_enrolments(
+   start_date=ar.action_param_values.start_date) %}
 <tr class="avoid">
 <td>{{loop.index}}</td>
 <td>{{E.tostring(enrolment.pupil_info)}}</td>
@@ -95,7 +96,7 @@ p {
 
 {% for i in range(9) %}
 <tr>
-<td><br/><br/></td>
+<td><br/></td>
 <td></td>
 {% for e in  events %}
 <td>&nbsp;</td>
