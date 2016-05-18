@@ -449,7 +449,7 @@ class Enrolment(Enrolment, Invoiceable):
     .. attribute:: pupil_info
 
         Show the name and address of the participant.  Overrides
-        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
+        :attr:`lino_cosi.lib.courses.models.Enrolment.pupil_info`
         in order to add (between parentheses after the name) some
         information needed to compute the price.
 

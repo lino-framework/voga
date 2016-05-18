@@ -16,6 +16,7 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
+import datetime
 
 from lino.api import dd, rt, _
 
@@ -27,6 +28,28 @@ def objects():
     yield lib_objects()
 
     GuestRole = rt.modules.cal.GuestRole
+
     yield GuestRole(**dd.str2kw('name', _("Participant")))
     yield GuestRole(**dd.str2kw('name', _("Guide")))
     yield GuestRole(**dd.str2kw('name', _("Teacher")))
+
+    EventType = rt.modules.cal.EventType
+    RecurrentEvent = rt.modules.cal.RecurrentEvent
+    Recurrencies = rt.modules.cal.Recurrencies
+    DEMO_START_YEAR = rt.modules.cal.DEMO_START_YEAR
+
+    holidays = EventType.objects.get(
+        **dd.str2kw('name', _("Holidays")))
+    yield RecurrentEvent(
+        event_type=holidays,
+        every_unit=Recurrencies.yearly,
+        monday=True, tuesday=True, wednesday=True, thursday=True,
+        friday=True, saturday=True, sunday=True,
+        every=1,
+        start_date=datetime.date(
+            year=DEMO_START_YEAR,
+            month=7, day=1),
+        end_date=datetime.date(
+            year=DEMO_START_YEAR,
+            month=8, day=31),
+        **dd.str2kw('name', _("Summer holidays")))
