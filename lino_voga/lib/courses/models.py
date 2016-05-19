@@ -238,11 +238,16 @@ class Pupil(Person):
 
     def __str__(self):
         s = self.get_full_name(salutation=False)
-        if self.pupil_type:
-            s += " (%s)" % self.pupil_type.ref
+        info = self.get_enrolment_info()
+        if info:
+            s += " ({0})".format(info)
         return s
 
     def get_enrolment_info(self):
+        """Return a short string with some additional information about this
+        pupil.
+
+        """
         if self.pupil_type:
             return self.pupil_type.ref
 
@@ -566,8 +571,12 @@ class Enrolment(Enrolment, Invoiceable):
             course=self.course)
         if self.fee.number_of_events:
             info = self.get_invoicing_info()
-            return _("[{number}] {title}").format(
-                title=title, number=info.invoice_number(invoice))
+            number = info.invoice_number(invoice)
+            if number > 1:
+                msg = _("[{number}] Renewal {title}")
+            else:
+                msg = _("[{number}] {title}")
+            return msg.format(title=title, number=number)
         return title
 
     def get_invoiceable_qty(self):

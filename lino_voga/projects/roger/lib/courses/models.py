@@ -112,23 +112,24 @@ class Pupil(Pupil):
         """Return a short text to be displayed between parentheses
         in `lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`.
         """
+        s = ""
         if self.member_until is None:
-            s = ""
-        elif self.member_until >= datetime.date.today():
+            pass
+        elif self.member_until >= dd.demo_date():
             s = "E"
-        else:
-            s = "e"
-        if self.is_lfv:
-            s += "L"
         if self.is_ckk:
             s += "C"
-        if self.is_raviva:
-            s += "R"
+        if self.is_lfv:
+            s += "L"
+        # if self.is_raviva:
+        #     s += "R"
         if self.section:
-            s += " {0}".format(self.section)
-        return s
+            s += "S"
+            # s += " {0}".format(self.section)
+        if s:
+            return "M{0}".format(s)
+        return "N"
 
-    # TODO:
     @classmethod
     def get_parameter_fields(cls, **fields):
         fields.update(

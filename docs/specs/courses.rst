@@ -378,19 +378,19 @@ taking a place because the 3 other ones are already ended.
 >>> print(obj.get_free_places())
 15
 >>> rt.show(courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places")
-=================================== ============ ============ =============
- Participant                         Start date   End date     Places used
------------------------------------ ------------ ------------ -------------
- Gregory Groteclaes                               12/05/2014   1
- Christian Radermacher               03/06/2014                1
- Marie-Louise Vandenmeulenbos        30/05/2014                1
- Dorothée Dobbelstein-Demeulenaere   21/05/2014                1
- Laura Laschet                       02/05/2014   09/05/2014   1
- Didier di Rupo                                   02/05/2014   1
- Hans Altenberg                      09/06/2014                1
- Gregory Groteclaes                  29/05/2014                1
- **Total (8 rows)**                                            **8**
-=================================== ============ ============ =============
+======================================= ============ ============ =============
+ Participant                             Start date   End date     Places used
+--------------------------------------- ------------ ------------ -------------
+ Gregory Groteclaes (N)                               12/05/2014   1
+ Christian Radermacher (N)               03/06/2014                1
+ Marie-Louise Vandenmeulenbos (N)        30/05/2014                1
+ Dorothée Dobbelstein-Demeulenaere (N)   21/05/2014                1
+ Laura Laschet (N)                       02/05/2014   09/05/2014   1
+ Didier di Rupo (N)                                   02/05/2014   1
+ Hans Altenberg (MC)                     09/06/2014                1
+ Gregory Groteclaes (N)                  29/05/2014                1
+ **Total (8 rows)**                                                **8**
+======================================= ============ ============ =============
 <BLANKLINE>
 
 Above situation is because we are working on 20140522:
