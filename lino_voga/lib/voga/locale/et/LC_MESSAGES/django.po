@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lino-faggio 0.0.4\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-05-18 23:28+0300\n"
+"POT-Creation-Date: 2016-05-20 01:17+0300\n"
 "PO-Revision-Date: 2016-03-08 14:11+0300\n"
 "Last-Translator: Luc Saffre <luc.saffre@gmail.com>\n"
 "Language: et\n"
@@ -27,20 +27,20 @@ msgid "Calendar where events in this room are published."
 msgstr ""
 
 #: lino_voga/lib/cal/models.py:174 lino_voga/lib/contacts/models.py:46
-#: lino_voga/lib/contacts/models.py:127 lino_voga/lib/courses/models.py:739
+#: lino_voga/lib/contacts/models.py:127 lino_voga/lib/courses/models.py:748
 #: lino_voga/lib/products/models.py:84
-#: lino_voga/projects/roger/lib/courses/models.py:286
+#: lino_voga/projects/roger/lib/courses/models.py:287
 msgid "General"
 msgstr ""
 
 #: lino_voga/lib/cal/models.py:179 lino_voga/lib/contacts/models.py:56
 #: lino_voga/lib/contacts/models.py:98 lino_voga/lib/contacts/models.py:138
-#: lino_voga/lib/courses/models.py:757
+#: lino_voga/lib/courses/models.py:766
 msgid "More"
 msgstr ""
 
 #: lino_voga/lib/cal/fixtures/std.py:32 lino_voga/lib/courses/models.py:230
-#: lino_voga/lib/courses/models.py:589
+#: lino_voga/lib/courses/models.py:598
 #: lino_voga/projects/roger/lib/courses/models.py:97
 #: lino_voga/projects/roger/lib/courses/config/courses/Course/presence_sheet.weasy.html:68
 #: lino_voga/projects/roger/lib/courses/config/courses/Course/presence_sheet.wk.html:33
@@ -101,85 +101,89 @@ msgstr "Osavõtjaliigid"
 msgid "Participants"
 msgstr "Osavõtjad"
 
-#: lino_voga/lib/courses/models.py:265
+#: lino_voga/lib/courses/models.py:270
 msgid "Course type"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:266
+#: lino_voga/lib/courses/models.py:271
 #, fuzzy
 msgid "Course types"
 msgstr "Reisid"
 
-#: lino_voga/lib/courses/models.py:310
+#: lino_voga/lib/courses/models.py:315
 #, fuzzy
 msgid "Default participation fee"
 msgstr "Osavõtumaksud"
 
-#: lino_voga/lib/courses/models.py:402
+#: lino_voga/lib/courses/models.py:407
 msgid "Invoiced"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:412
+#: lino_voga/lib/courses/models.py:417
 msgid "Not invoiced"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:472
+#: lino_voga/lib/courses/models.py:477
 msgid "Enrolment"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:473 lino_voga/lib/courses/models.py:751
+#: lino_voga/lib/courses/models.py:478 lino_voga/lib/courses/models.py:760
 #: lino_voga/lib/products/models.py:89
-#: lino_voga/projects/roger/lib/courses/models.py:291
+#: lino_voga/projects/roger/lib/courses/models.py:292
 msgid "Enrolments"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:475
+#: lino_voga/lib/courses/models.py:480
 msgid "Amount"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:479
+#: lino_voga/lib/courses/models.py:484
 #, fuzzy
 msgid "Participation fee"
 msgstr "Osavõtumaksud"
 
-#: lino_voga/lib/courses/models.py:564
+#: lino_voga/lib/courses/models.py:569
 msgid "{enrolment} to {course}"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:569
+#: lino_voga/lib/courses/models.py:576
+msgid "[{number}] Renewal {title}"
+msgstr ""
+
+#: lino_voga/lib/courses/models.py:578
 msgid "[{number}] {title}"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:605
+#: lino_voga/lib/courses/models.py:614
 msgid "Phone: {0}"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:607
+#: lino_voga/lib/courses/models.py:616
 msgid "GSM: {0}"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:610
+#: lino_voga/lib/courses/models.py:619
 msgid "Invoicing info"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:615
+#: lino_voga/lib/courses/models.py:624
 msgid "Payment info"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:671
+#: lino_voga/lib/courses/models.py:680
 msgid "Enrolments using this fee"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:746
+#: lino_voga/lib/courses/models.py:755
 msgid "Events"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:800
+#: lino_voga/lib/courses/models.py:809
 #, python-format
 msgid "in %s"
 msgstr ""
 
-#: lino_voga/lib/courses/models.py:896
+#: lino_voga/lib/courses/models.py:905
 msgid "Status Report"
 msgstr ""
 
@@ -309,7 +313,7 @@ msgstr "Ruumi üür"
 
 #: lino_voga/lib/voga/fixtures/buche.py:153
 #: lino_voga/projects/edmund/settings/fixtures/voga.py:132
-#: lino_voga/projects/roger/lib/courses/models.py:247
+#: lino_voga/projects/roger/lib/courses/models.py:248
 #, fuzzy
 msgid "Courses"
 msgstr "Reisid"
@@ -469,17 +473,17 @@ msgid "Legacy ID"
 msgstr ""
 
 #: lino_voga/projects/roger/lib/courses/models.py:105
-#: lino_voga/projects/roger/lib/courses/models.py:140
+#: lino_voga/projects/roger/lib/courses/models.py:141
 msgid "LFV"
 msgstr ""
 
 #: lino_voga/projects/roger/lib/courses/models.py:106
-#: lino_voga/projects/roger/lib/courses/models.py:139
+#: lino_voga/projects/roger/lib/courses/models.py:140
 msgid "CKK"
 msgstr ""
 
 #: lino_voga/projects/roger/lib/courses/models.py:107
-#: lino_voga/projects/roger/lib/courses/models.py:141
+#: lino_voga/projects/roger/lib/courses/models.py:142
 msgid "Raviva"
 msgstr ""
 
@@ -487,22 +491,22 @@ msgstr ""
 msgid "Mitglied bis"
 msgstr ""
 
-#: lino_voga/projects/roger/lib/courses/models.py:136
-#: lino_voga/projects/roger/lib/courses/models.py:166
-#: lino_voga/projects/roger/lib/courses/models.py:168
+#: lino_voga/projects/roger/lib/courses/models.py:137
+#: lino_voga/projects/roger/lib/courses/models.py:167
+#: lino_voga/projects/roger/lib/courses/models.py:169
 msgid "Members"
 msgstr ""
 
-#: lino_voga/projects/roger/lib/courses/models.py:137
+#: lino_voga/projects/roger/lib/courses/models.py:138
 msgid "Show those whose 'Member until' is after today."
 msgstr ""
 
-#: lino_voga/projects/roger/lib/courses/models.py:246
+#: lino_voga/projects/roger/lib/courses/models.py:247
 #, fuzzy
 msgid "Course"
 msgstr "Reisid"
 
-#: lino_voga/projects/roger/lib/courses/models.py:251
+#: lino_voga/projects/roger/lib/courses/models.py:252
 msgid "Print"
 msgstr ""
 
