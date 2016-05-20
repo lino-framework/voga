@@ -30,6 +30,7 @@ Here are the default holidays defined as recurrent event rules
 :mod:`lino.modlib.cal.fixtures.std`:
 
 >>> rt.show(cal.RecurrentEvents)
+... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ============ ============ ============================ ==================== =================================== ==================== =====================
  Start date   End Date     Designation                  Designation (de)     Designation (fr)                    Recurrency           Calendar Event Type
 ------------ ------------ ---------------------------- -------------------- ----------------------------------- -------------------- ---------------------

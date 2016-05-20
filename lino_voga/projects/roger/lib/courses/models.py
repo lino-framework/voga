@@ -30,9 +30,13 @@ from django.db.models import Q
 from lino.api import dd, rt, _
 
 from lino.mixins import Referrable
+from lino.mixins.periods import Monthly
+
+from lino.modlib.printing.mixins import DirectPrintAction
 
 from lino_voga.lib.courses.models import *
 
+from lino.modlib.printing.utils import PrintableObject
 
 class Sections(dd.ChoiceList):
     verbose_name = _("Section")
@@ -49,6 +53,29 @@ for i, name in enumerate(names.split()):
 # add("02", "Nidrum", "nidrum")
 # add("03", "Walhorn", "walhorn")
 add("etc", "Sonstige", "etc")
+
+
+class PrintPresenceSheet(DirectPrintAction):
+    """Action to print a presence sheet.
+    """
+    combo_group = "creacert"
+    label = _("Presence sheet"),
+    tplname = "presence_sheet"
+    build_method = "weasy"
+    icon_name = None
+    # show_in_bbar = False
+    parameters = Monthly(
+        show_remarks=models.BooleanField(
+            _("Show remarks"), default=False),
+        show_states=models.BooleanField(
+            _("Show states"), default=True))
+    params_layout = """
+    start_date
+    end_date
+    show_remarks
+    show_states
+    """
+    keep_user_values = True
 
 
 class Pupil(Pupil):
@@ -85,23 +112,24 @@ class Pupil(Pupil):
         """Return a short text to be displayed between parentheses
         in `lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`.
         """
+        s = ""
         if self.member_until is None:
-            s = ""
-        elif self.member_until >= datetime.date.today():
+            pass
+        elif self.member_until >= dd.demo_date():
             s = "E"
-        else:
-            s = "e"
-        if self.is_lfv:
-            s += "L"
         if self.is_ckk:
             s += "C"
-        if self.is_raviva:
-            s += "R"
+        if self.is_lfv:
+            s += "L"
+        # if self.is_raviva:
+        #     s += "R"
         if self.section:
-            s += " {0}".format(self.section)
-        return s
+            s += "S"
+            # s += " {0}".format(self.section)
+        if s:
+            return "M{0}".format(s)
+        return "N"
 
-    # TODO:
     @classmethod
     def get_parameter_fields(cls, **fields):
         fields.update(
@@ -174,7 +202,7 @@ class Line(Line):
 
 
 @dd.python_2_unicode_compatible
-class Course(Referrable, Course):
+class Course(Referrable, Course, PrintableObject):
     """Adds a :attr:`ref` field and defines a custom :meth:`__str__`
     method.
 
@@ -219,6 +247,14 @@ class Course(Referrable, Course):
         verbose_name = _("Course")
         verbose_name_plural = _("Courses")
 
+    print_presence_sheet = PrintPresenceSheet()
+
+    @dd.displayfield(_("Print"))
+    def print_actions(self, ar):
+        if ar is None:
+            return ''
+        return ar.instance_action_button(self.print_presence_sheet)
+
     def __str__(self):
         if self.name:
             if self.ref:
@@ -249,6 +285,11 @@ class CourseDetail(CourseDetail):
     remark #OptionsByCourse
     # courses.EventsByCourse
     """, label=_("General"))
+    # TODO: make an action renderable as a data element of a form
+    enrolments = dd.Panel("""
+    enrolments_until fee max_places:8 confirmed free_places print_actions
+    EnrolmentsByCourse:40
+    """, label=_("Enrolments"))
 
 
 Courses.detail_layout = CourseDetail()

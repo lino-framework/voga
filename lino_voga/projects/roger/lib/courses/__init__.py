@@ -22,6 +22,7 @@ An extension of :mod:`lino_voga.lib.courses`
    :toctree:
 
     management.commands.eiche2lino
+    models
 
 """
 

@@ -10,7 +10,7 @@
 
 from importlib import import_module
 intersphinx_mapping = {}
-for n in 'atelier lino lino_xl lino_cosi'.split():
+for n in 'atelier lino_book lino_cosi'.split():
     m = import_module(n)
     n = n.replace('_', "")
     intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
@@ -19,7 +19,8 @@ extlinks = {}
 extensions = []
 
 from atelier.sphinxconf import configure
-configure(globals(), 'lino_voga.projects.docs.settings.doctests')
+configure(globals(), 'lino_voga.projects.roger.settings.doctests')
+# configure(globals(), 'lino.projects.std.settings_test')
 
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.actordoc']

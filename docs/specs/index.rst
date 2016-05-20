@@ -21,3 +21,5 @@ specifications. One of their goal is to get tested.
    holidays
    invoicing
    sales
+   checkdata
+   roger

@@ -166,9 +166,6 @@ Move down for Course #1  2...
 Update Events for First Line (10/01/2014 First Room)...
 Generating events between 2014-01-13 and 2019-06-15.
 2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
-3 : 2014-01-27 -> 2014-02-03
-4 : 2014-02-03 -> 2014-02-10
-5 : 2014-02-10 -> 2014-02-17
 5 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
         ar = ses.spawn(cal.EventsByController, master_instance=obj)

@@ -54,11 +54,6 @@ from lino.utils.media import TmpMediaFile
 from lino.modlib.printing.utils import CustomBuildMethod
 
 
-# from xlwt import Workbook
-
-from openpyxl.workbook import Workbook
-
-
 class XlsColumn(object):
 
     def __init__(self, label, func, width=None, **styles):
@@ -95,11 +90,14 @@ class XlsTable(object):
 
 
 class CourseToXls(CustomBuildMethod):
+    """Interesting, but currently not used."""
     target_ext = '.xlsx'
     name = 'course2xls'
     label = _("Export")
 
     def custom_build(self, ar, obj, target):
+        from openpyxl.workbook import Workbook
+        from openpyxl.styles import Alignment
         events = obj.events_by_course.order_by('start_date')
 
         xt = XlsTable()
@@ -110,7 +108,6 @@ class CourseToXls(CustomBuildMethod):
         #     print(20160512, s, E.tostring(enr.pupil_info))
         #     return s
         # xt.add_column("Teilnehmer", func)
-        from openpyxl.styles import Alignment
         xt.add_column(
             "Teilnehmer", lambda enr: enr.pupil_info.text,
             alignment=Alignment(
@@ -241,11 +238,16 @@ class Pupil(Person):
 
     def __str__(self):
         s = self.get_full_name(salutation=False)
-        if self.pupil_type:
-            s += " (%s)" % self.pupil_type.ref
+        info = self.get_enrolment_info()
+        if info:
+            s += " ({0})".format(info)
         return s
 
     def get_enrolment_info(self):
+        """Return a short string with some additional information about this
+        pupil.
+
+        """
         if self.pupil_type:
             return self.pupil_type.ref
 
@@ -313,7 +315,7 @@ class Course(Course):
                         verbose_name=_("Default participation fee"),
                         related_name='courses_by_fee')
 
-    course2xls = CourseToXls.create_action()
+    # course2xls = CourseToXls.create_action()
 
     @classmethod
     def get_registrable_fields(cls, site):
@@ -452,7 +454,7 @@ class Enrolment(Enrolment, Invoiceable):
     .. attribute:: pupil_info
 
         Show the name and address of the participant.  Overrides
-        :attr:`lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`
+        :attr:`lino_cosi.lib.courses.models.Enrolment.pupil_info`
         in order to add (between parentheses after the name) some
         information needed to compute the price.
 
@@ -569,8 +571,12 @@ class Enrolment(Enrolment, Invoiceable):
             course=self.course)
         if self.fee.number_of_events:
             info = self.get_invoicing_info()
-            return _("[{number}] {title}").format(
-                title=title, number=info.invoice_number(invoice))
+            number = info.invoice_number(invoice)
+            if number > 1:
+                msg = _("[{number}] Renewal {title}")
+            else:
+                msg = _("[{number}] {title}")
+            return msg.format(title=title, number=number)
         return title
 
     def get_invoiceable_qty(self):
@@ -583,8 +589,8 @@ class Enrolment(Enrolment, Invoiceable):
 
     def get_invoiceable_product(self):
         # dd.logger.info('20160223 %s', self.course)
-        # if not self.course.state.invoiceable:
-        #     return
+        if not self.course.state.invoiceable:
+            return
         if not self.state.invoiceable:
             return
         return self.get_invoicing_info().invoiceable_fee
@@ -661,8 +667,8 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
 
     """
-    variable_row_height = True
-    column_names = 'request_date pupil_info start_date end_date '\
+    # variable_row_height = True
+    column_names = 'request_date pupil start_date end_date '\
                    'places remark fee option amount ' \
                    'workflow_buttons *'
 
@@ -749,7 +755,7 @@ class CourseDetail(CourseDetail):
     """, label=_("Events"))
 
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 free_places
+    enrolments_until fee max_places:8 confirmed free_places requested
     EnrolmentsByCourse:40
     """, label=_("Enrolments"))
 
@@ -834,7 +840,8 @@ class CoursesByTopic(CoursesByTopic):
     """
     order_by = ["ref"]
     column_names = "info name weekdays_text:10 times_text:10 "\
-                   "enrolments max_places:8 free_places"
+                   "max_places:8 confirmed "\
+                   "free_places requested *"
 
     @classmethod
     def param_defaults(self, ar, **kw):

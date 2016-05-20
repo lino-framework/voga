@@ -299,6 +299,7 @@ The status report gives an overview of active courses.
 (TODO: demo fixture should avoid negative free places)
 
 >>> rt.show(courses.StatusReport)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ~~~~~~~~
 Journeys
 ~~~~~~~~
@@ -308,54 +309,54 @@ No data to display
 Computer
 ~~~~~~~~
 <BLANKLINE>
-==================== ============= ================= ============= ============ ================== =============
- Info                 Designation   When              Times         Enrolments   Available places   Free places
--------------------- ------------- ----------------- ------------- ------------ ------------------ -------------
- *Course #3*                        Every Monday      13:30-15:00   **5**        3                  1
- *Course #4*                        Every Wednesday   17:30-19:00   **6**        3                  0
- *Course #5*                        Every Friday      13:30-15:00   **5**        3                  0
- *Course #6*                        Every Monday      13:30-15:00   **8**        4                  -2
- *Course #7*                        Every Wednesday   17:30-19:00   **8**        4                  -2
- *Course #8*                        Every Friday      13:30-15:00   **8**        4                  -2
- **Total (6 rows)**                                                 **40**       **21**
-==================== ============= ================= ============= ============ ================== =============
+==================== ============= ================= ============= ================== =========== ============= ===========
+ Info                 Designation   When              Times         Available places   Confirmed   Free places   Requested
+-------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
+ *Course #3*                        Every Monday      13:30-15:00   3                  **2**       1             **3**
+ *Course #4*                        Every Wednesday   17:30-19:00   3                  **3**       0             **3**
+ *Course #5*                        Every Friday      13:30-15:00   3                  **3**       0             **2**
+ *Course #6*                        Every Monday      13:30-15:00   4                  **6**       -2
+ *Course #7*                        Every Wednesday   17:30-19:00   4                  **6**       -2
+ *Course #8*                        Every Friday      13:30-15:00   4                  **6**       -2
+ **Total (6 rows)**                                                 **21**             **26**                    **8**
+==================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~
 Sport
 ~~~~~
 <BLANKLINE>
-===================== ============= ================= ============= ============ ================== =============
- Info                  Designation   When              Times         Enrolments   Available places   Free places
---------------------- ------------- ----------------- ------------- ------------ ------------------ -------------
- *Course #9*                         Every Wednesday   19:00-20:00   **5**        10                 8
- *Course #10*                        Every Monday      11:00-12:00   **6**        5                  2
- *Course #11*                        Every Monday      13:30-14:30   **5**        5                  2
- *Course #12*                        Every Monday      11:00-12:00   **8**        20                 15
- *Course #13*                        Every Monday      13:30-14:30   **8**        20                 15
- *Course #14*                        Every Tuesday     11:00-12:00   **8**        20                 15
- *Course #15*                        Every Tuesday     13:30-14:30   **8**        20                 15
- *Course #16*                        Every Thursday    11:00-12:00   **8**        20                 15
- *Course #17*                        Every Thursday    13:30-14:30   **8**        20                 15
- *Course #18*                        Every Friday      18:00-19:00   **5**        12                 10
- *Course #19*                        Every Friday      19:00-20:00   **6**        12                 9
- **Total (11 rows)**                                                 **75**       **164**
-===================== ============= ================= ============= ============ ================== =============
+===================== ============= ================= ============= ================== =========== ============= ===========
+ Info                  Designation   When              Times         Available places   Confirmed   Free places   Requested
+--------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
+ *Course #9*                         Every Wednesday   19:00-20:00   10                 **2**       8             **3**
+ *Course #10*                        Every Monday      11:00-12:00   5                  **3**       2             **3**
+ *Course #11*                        Every Monday      13:30-14:30   5                  **3**       2             **2**
+ *Course #12*                        Every Monday      11:00-12:00   20                 **5**       15
+ *Course #13*                        Every Monday      13:30-14:30   20                 **5**       15
+ *Course #14*                        Every Tuesday     11:00-12:00   20                 **5**       15
+ *Course #15*                        Every Tuesday     13:30-14:30   20                 **5**       15
+ *Course #16*                        Every Thursday    11:00-12:00   20                 **5**       15
+ *Course #17*                        Every Thursday    13:30-14:30   20                 **5**       15
+ *Course #18*                        Every Friday      18:00-19:00   12                 **2**       10            **3**
+ *Course #19*                        Every Friday      19:00-20:00   12                 **3**       9             **3**
+ **Total (11 rows)**                                                 **164**            **43**                    **14**
+===================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~~~
 Meditation
 ~~~~~~~~~~
 <BLANKLINE>
-==================== ============= ============== ============= ============ ================== =============
- Info                 Designation   When           Times         Enrolments   Available places   Free places
--------------------- ------------- -------------- ------------- ------------ ------------------ -------------
- *Course #20*                       Every Monday   18:00-19:30   **5**                           Unlimited
- *Course #21*                       Every Friday   19:00-20:30   **5**                           Unlimited
- *Course #22*                       Every Monday   18:00-19:30   **8**        30                 24
- *Course #23*                       Every Friday   19:00-20:30   **8**        30                 24
- *Course #24*                       Every Monday   18:00-19:30   **5**        20                 18
- *Course #25*                       Every Friday   19:00-20:30   **6**        20                 17
- **Total (6 rows)**                                              **37**       **100**
-==================== ============= ============== ============= ============ ================== =============
+==================== ============= ============== ============= ================== =========== ============= ===========
+ Info                 Designation   When           Times         Available places   Confirmed   Free places   Requested
+-------------------- ------------- -------------- ------------- ------------------ ----------- ------------- -----------
+ *Course #20*                       Every Monday   18:00-19:30                      **3**       Unlimited     **2**
+ *Course #21*                       Every Friday   19:00-20:30                      **2**       Unlimited     **3**
+ *Course #22*                       Every Monday   18:00-19:30   30                 **6**       24
+ *Course #23*                       Every Friday   19:00-20:30   30                 **6**       24
+ *Course #24*                       Every Monday   18:00-19:30   20                 **2**       18            **3**
+ *Course #25*                       Every Friday   19:00-20:30   20                 **3**       17            **3**
+ **Total (6 rows)**                                              **100**            **22**                    **11**
+==================== ============= ============== ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~
 Externe
@@ -377,19 +378,19 @@ taking a place because the 3 other ones are already ended.
 >>> print(obj.get_free_places())
 15
 >>> rt.show(courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places")
-=================================== ============ ============ =============
- Participant                         Start date   End date     Places used
------------------------------------ ------------ ------------ -------------
- Gregory Groteclaes                               12/05/2014   1
- Christian Radermacher               03/06/2014                1
- Marie-Louise Vandenmeulenbos        30/05/2014                1
- Dorothée Dobbelstein-Demeulenaere   21/05/2014                1
- Laura Laschet                       02/05/2014   09/05/2014   1
- Didier di Rupo                                   02/05/2014   1
- Hans Altenberg                      09/06/2014                1
- Gregory Groteclaes                  29/05/2014                1
- **Total (8 rows)**                                            **8**
-=================================== ============ ============ =============
+======================================= ============ ============ =============
+ Participant                             Start date   End date     Places used
+--------------------------------------- ------------ ------------ -------------
+ Gregory Groteclaes (N)                               12/05/2014   1
+ Christian Radermacher (N)               03/06/2014                1
+ Marie-Louise Vandenmeulenbos (N)        30/05/2014                1
+ Dorothée Dobbelstein-Demeulenaere (N)   21/05/2014                1
+ Laura Laschet (N)                       02/05/2014   09/05/2014   1
+ Didier di Rupo (N)                                   02/05/2014   1
+ Hans Altenberg (MC)                     09/06/2014                1
+ Gregory Groteclaes (N)                  29/05/2014                1
+ **Total (8 rows)**                                                **8**
+======================================= ============ ============ =============
 <BLANKLINE>
 
 Above situation is because we are working on 20140522:

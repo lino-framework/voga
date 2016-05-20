@@ -7,7 +7,9 @@
 {{_("Your start date")}}: {{fds(obj.start_date)}}.
 {%- else %}
 {{_("Scheduled dates")}}:
-{% for evt in obj.course.events_by_course.order_by('start_date') -%}
+{% set qs = obj.course.events_by_course.order_by('start_date') %}
+{% set qs = rt.modules.system.PeriodEvents.active.add_filter(qs, obj) %}
+{% for evt in qs -%}
 {{fds(evt.start_date)}}, {% endfor %}
 {%- endif %}
 {% if obj.options %}

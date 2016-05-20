@@ -2,13 +2,20 @@
 
 {%- block head %}
 {{ super() }}
-<style>
+<style type="text/css">
 table {
     border-collapse: collapse;
 }
-
 table, td, th {
     border: 1px solid black;
+}
+@media print {
+  tr.avoid {
+    page-break-inside: avoid !important;
+    
+    margin: 4px 0 4px 0; /* to keep the page break from cutting too
+                            close to the text in the div */ 
+  } 
 }
 </style>
 {%- endblock %}
@@ -20,6 +27,7 @@ table, td, th {
 {% set  events = rt.modules.system.PeriodEvents.started.add_filter(events, ar.param_values)%}
 
 <table border="1" width="100%">
+<thead>
 <tr>
 <td>{{_("No.")}}</td>
 <td>{{_("Participant")}}</td>
@@ -29,10 +37,12 @@ table, td, th {
 {% endfor %}
 <td>{{_("Remark")}}</td>
 </tr>
+</thead>
 
+<tbody>
 {% for enrolment in obj.enrolments %}
-<tr>
-<td>{{loop.index}}</td>
+<tr class="avoid">
+<td><b>{{loop.index}}</b></td>
 <td>{{E.tostring(enrolment.pupil_info)}}</td>
 {% for e in  events %}
 <td>&nbsp;</td>
@@ -40,7 +50,6 @@ table, td, th {
 <td>{{enrolment.remark}}</td>
 </tr>
 {% endfor %}
-
 
 {% for i in range(9) %}
 <tr>
@@ -52,6 +61,7 @@ table, td, th {
 <td></td>
 </tr>
 {% endfor %}
+</tbody>
 
 </table>
 {%- endblock %}

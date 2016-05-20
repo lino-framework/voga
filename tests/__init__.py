@@ -26,6 +26,14 @@ class PackagesTests(TestCase):
         self.run_packages_test(lino_voga.SETUP_INFO['packages'])
 
 
+class SpecsTests(BaseTestCase):
+    def test_checkdata(self):
+        return self.run_simple_doctests('docs/specs/checkdata.rst')
+
+    def test_roger(self):
+        return self.run_simple_doctests('docs/specs/roger.rst')
+
+
 class DocsTests(BaseTestCase):
     def test_cal(self):
         return self.run_simple_doctests('docs/specs/cal.rst')

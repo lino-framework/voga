@@ -35,7 +35,7 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-39 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, users, office, countries, printing, system, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
+40 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, users, office, countries, printing, system, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, weasyprint, appypod.
 74 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -43,7 +43,7 @@ The demo database
  accounts.Account           accounts.Accounts              12        12
  accounts.Group             accounts.Groups                4         7
  cal.Calendar               cal.Calendars                  4         8
- cal.Event                  cal.OneEvent                   23        346
+ cal.Event                  cal.OneEvent                   23        340
  cal.EventType              cal.EventTypes                 12        8
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 2         3

@@ -6,7 +6,7 @@
 </head>
 <body>
 {%- block header %}
-<h1>{{obj}}</h1>
+<h1>{{obj}} ({{fds(ar.action_param_values.start_date)}}...{{fds(ar.action_param_values.end_date)}})</h1>
 {%- endblock %}
 
 {%- block intro %}
@@ -14,6 +14,7 @@
 {% for k in ['ref', 'line', 'teacher', 'room', 'start_date'] %}
 <li>{{obj._meta.get_field(k).verbose_name}} : {{getattr(obj, k)}}</li>
 {% endfor %}
+
 </ul>
 {%- endblock %}
 

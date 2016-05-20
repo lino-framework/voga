@@ -17,7 +17,7 @@
 # <http://www.gnu.org/licenses/>.
 
 """
-The Lino application for :ref:`eiche`.
+The Lino Voga variant named "Roger".
 
 .. autosummary::
    :toctree:

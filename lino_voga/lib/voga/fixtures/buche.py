@@ -514,12 +514,12 @@ class Loader2(Loader1):
             #~ print 20130712, kw
             obj = Enrolment(**kw)
             obj.full_clean()
+            sd, ed = DATE_STORIES.pop()
+            if sd is not None:
+                obj.start_date = demo_date(sd)
+            if ed is not None:
+                obj.end_date = demo_date(ed)
             if obj.fee.number_of_events:
-                sd, ed = DATE_STORIES.pop()
-                if sd is not None:
-                    obj.start_date = demo_date(sd)
-                if ed is not None:
-                    obj.end_date = demo_date(ed)
                 obj.state = EnrolmentStates.confirmed
             yield obj
 
