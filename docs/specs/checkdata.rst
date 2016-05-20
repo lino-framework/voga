@@ -1,8 +1,8 @@
 .. _voga.specs.checkdata:
 
-==========================
-Checking for data problems
-==========================
+=======================================
+Checking for data problems in Lino Voga
+=======================================
 
 .. to test only this doc:
 
@@ -11,10 +11,26 @@ Checking for data problems
     >>> from lino import startup
     >>> startup('lino_voga.projects.docs.settings.doctests')
     >>> from lino.api.doctest import *
+
+
+Lino Voga offers some functionality for managing plausibility
+problems.
+
+See also :ref:`book.specs.checkdata`.
+
+Data checkers available in Lino Voga
+====================================
+
+In the web interface you can select :menuselection:`Explorer -->
+System --> Plausibility checkers` to see a table of all available
+checkers.
+
+.. 
+    >>> show_menu_path(plausibility.Checkers)
+    Explorer --> System --> Plausibility checkers
     
 
->>> from django.core.management import call_command
->>> call_command('checkdata', list=True)
+>>> rt.show(plausibility.Checkers)
 ================================= ===============================================
  value                             text
 --------------------------------- -----------------------------------------------
@@ -28,25 +44,17 @@ Checking for data problems
 <BLANKLINE>
 
 
->>> call_command('checkdata')
-Running 3 plausibility checkers on 340 Events...
-No plausibility problems found in Events.
-Running 1 plausibility checkers on 0 Excerpts...
-No plausibility problems found in Excerpts.
-Running 1 plausibility checkers on 100 Notes...
-No plausibility problems found in Notes.
-Running 1 plausibility checkers on 78 Places...
-No plausibility problems found in Places.
-Running 1 plausibility checkers on 69 Persons...
-No plausibility problems found in Persons.
-Running 1 plausibility checkers on 0 Payment Order items...
-No plausibility problems found in Payment Order items.
+Showing all problems
+====================
 
->>> call_command('checkdata', 'cal.')
-Running 2 plausibility checkers on 340 Events...
-No plausibility problems found in Events.
+In the web interface you can select :menuselection:`Explorer -->
+System --> Plausibility problems` to see them.
 
->>> call_command('checkdata', 'foo')
-Traceback (most recent call last):
-...
-CommandError: No checker matches ('foo',)
+..
+    >>> show_menu_path(plausibility.AllProblems)
+    Explorer --> System --> Plausibility problems
+
+
+>>> rt.show(plausibility.AllProblems)
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+No data to display
