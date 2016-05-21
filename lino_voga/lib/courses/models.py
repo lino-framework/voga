@@ -52,6 +52,7 @@ MAX_SHOWN = 3  # maximum number of invoiced events shown in
 from lino.utils.media import TmpMediaFile
 
 from lino.modlib.printing.utils import CustomBuildMethod
+from lino_xl.lib.cal.ui import EventsByController
 
 
 class XlsColumn(object):
@@ -121,7 +122,7 @@ class CourseToXls(CustomBuildMethod):
         xt.add_column("Payment", lambda enr: enr.payment_info)
 
         for i, evt in enumerate(events):
-            lbl = dd.plugins.courses.day_and_month(evt.start_date)
+            lbl = day_and_month(evt.start_date)
 
             def func(enr):
                 qs = rt.modules.cal.Guest.objects.filter(
@@ -738,7 +739,44 @@ class PupilsByType(Pupils):
     master_key = 'pupil_type'
 
 
+class EventsByCourse(EventsByController):
+    """Shows the events linked to this course.
+    """
+    column_names = "start_date start_time end_time "\
+                   "auto_type room summary workflow_buttons *"
+
+    slave_grid_format = "summary"
+
+    @classmethod
+    def get_slave_summary(self, obj, ar):
+        """The summary view for this table.
+
+        See :meth:`lino.core.actors.Actor.get_slave_summary`.
+
+        """
+        if ar is None:
+            return ''
+        sar = self.request_from(ar, master_instance=obj)
+
+        elems = []
+        for evt in sar:
+            lbl = day_and_month(evt.start_date)
+            if evt.state.symbol:
+                lbl = "{0}{1}".format(lbl, evt.state.symbol)
+            elems.append(ar.obj2html(evt, lbl))
+        elems = join_elems(elems, sep=', ')
+        sar = obj.do_update_events.request_from(sar)
+        if sar.get_permission():
+            btn = sar.ar2button(obj)
+            elems.append(E.p(btn))
+
+        return E.div(class_="htmlText", *elems)
+
+
 class CourseDetail(CourseDetail):
+    """The detail layout of a :class:`Course` (:ref:`voga` variant).
+
+    """
     main = "general events enrolments more"
     general = dd.Panel("""
     line teacher name workflow_buttons
@@ -750,7 +788,7 @@ class CourseDetail(CourseDetail):
     events = dd.Panel("""
     every_unit every max_date max_events
     monday tuesday wednesday thursday friday saturday sunday
-    cal.EventsByController
+    courses.EventsByCourse
 
     """, label=_("Events"))
 
@@ -761,7 +799,7 @@ class CourseDetail(CourseDetail):
 
     more = dd.Panel("""
     # company contact_person
-    state user id events_text
+    state user id
     invoicing.InvoicingsByInvoiceable
     """, label=_("More"))
 
