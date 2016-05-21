@@ -25,6 +25,7 @@ lino_voga.lib.courses.models
       EnrolmentsByCourse
       EnrolmentsByFee
       EnrolmentsByPupil
+      EventsByCourse
       InvoicingInfo
       Line
       LinesByType
