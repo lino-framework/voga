@@ -33,6 +33,9 @@ class SpecsTests(BaseTestCase):
     def test_roger(self):
         return self.run_simple_doctests('docs/specs/roger.rst')
 
+    def test_invoicing(self):
+        return self.run_simple_doctests('docs/specs/invoicing.rst')
+
 
 class DocsTests(BaseTestCase):
     def test_cal(self):

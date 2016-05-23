@@ -19,6 +19,10 @@
 """
 Database models for `lino_voga.lib.courses`.
 
+.. xfile:: courses/Enrolment/item_description.html
+
+     The template used to fill the items description.
+
 """
 
 from __future__ import unicode_literals
