@@ -51,7 +51,8 @@ class Booking(Booking, Invoiceable):
 
     def get_invoiceable_product(self):
         if self.company and self.room:
-            if self.get_invoicings().count() > 0:
+            # if self.get_invoicings().count() > 0:
+            if self.invoicings.count() > 0:
                 return
             # if self.company != settings.SITE.site_config.site_company:
             return self.room.fee

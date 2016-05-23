@@ -1,14 +1,14 @@
 {%- if obj.pupil.id != item.voucher.partner.id -%}
-{{rt.modules.courses.Pupil._meta.verbose_name}}: {{obj.pupil}}.
+{{rt.models.courses.Pupil._meta.verbose_name}}: {{obj.pupil}}.
 {% endif -%}
 {{_("Time")}}: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
-{{rt.modules.products.Product._meta.verbose_name}}: {{obj.fee}}.
+{{rt.models.products.Product._meta.verbose_name}}: {{obj.fee}}.
 {% if obj.fee.number_of_events %}
 {{_("Your start date")}}: {{fds(obj.start_date)}}.
 {%- else %}
 {{_("Scheduled dates")}}:
 {% set qs = obj.course.events_by_course.order_by('start_date') %}
-{% set qs = rt.modules.system.PeriodEvents.active.add_filter(qs, obj) %}
+{% set qs = rt.models.system.PeriodEvents.started.add_filter(qs, obj) %}
 {% for evt in qs -%}
 {{fds(evt.start_date)}}, {% endfor %}
 {%- endif %}
