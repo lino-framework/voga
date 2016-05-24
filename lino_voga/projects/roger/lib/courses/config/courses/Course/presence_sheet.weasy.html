@@ -87,9 +87,10 @@ p {
 <tr class="avoid">
 <td>{{loop.index}}</td>
 <td>{{E.tostring(enrolment.pupil_info)}}</td>
-{% for e in  events %}
+{% for e in events %}
 <td>
-{% if (apv.end_date and e.start_date > apv.end_date) or (apv.start_date and e.start_date < apv.start_date) %}
+{% if (enrolment.end_date and e.start_date > enrolment.end_date) 
+   or (enrolment.start_date and e.start_date < enrolment.start_date) %}
 X
 {% else %}
 &nbsp;
