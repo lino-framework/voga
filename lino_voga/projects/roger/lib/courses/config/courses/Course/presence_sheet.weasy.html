@@ -88,7 +88,7 @@ p {
 <td>{{loop.index}}</td>
 <td>{{E.tostring(enrolment.pupil_info)}}</td>
 {% for e in events %}
-<td>
+<td align="center" valign="middle">
 {% if (enrolment.end_date and e.start_date > enrolment.end_date) 
    or (enrolment.start_date and e.start_date < enrolment.start_date) %}
 X
