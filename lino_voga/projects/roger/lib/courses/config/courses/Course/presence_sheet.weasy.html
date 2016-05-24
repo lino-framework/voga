@@ -81,7 +81,8 @@ p {
 
 <tbody>
 {% for enrolment in obj.get_enrolments(
-   start_date=ar.action_param_values.start_date) %}
+   start_date=ar.action_param_values.start_date,
+   end_date=ar.action_param_values.end_date) %}
 <tr class="avoid">
 <td>{{loop.index}}</td>
 <td>{{E.tostring(enrolment.pupil_info)}}</td>
