@@ -8,11 +8,9 @@ Welcome to the *Lino Voga* project homepage.
 
 .. py2rst::
 
-  import lino_voga
-  print(lino_voga.SETUP_INFO['long_description'])
+  from lino_voga import SETUP_INFO
+  print(SETUP_INFO['long_description'])
 
-See also the `Official Online demo
-<http://voga-demo.lino-framework.org/>`_
 
 Content
 ========
