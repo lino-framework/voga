@@ -29,6 +29,7 @@ class Site(Site):
         self.plugins.contacts.configure(hide_region=True)
         self.plugins.countries.configure(country_code='BE')
         self.plugins.ledger.configure(start_year=2014)
+        self.plugins.ledger.configure(use_pcmn=True)
 
     def get_apps_modifiers(self, **kw):
         kw = super(Site, self).get_apps_modifiers(**kw)
