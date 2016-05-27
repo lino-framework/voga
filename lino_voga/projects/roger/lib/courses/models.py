@@ -26,11 +26,13 @@ from __future__ import print_function
 import datetime
 
 from django.db.models import Q
+from django.utils.translation import string_concat
 
 from lino.api import dd, rt, _
 
 from lino.mixins import Referrable
 from lino.mixins.periods import Monthly
+from lino.utils import join_elems
 
 from lino.modlib.printing.mixins import DirectPrintAction
 
@@ -59,9 +61,9 @@ class PrintPresenceSheet(DirectPrintAction):
     """Action to print a presence sheet.
     """
     combo_group = "creacert"
-    label = _("Presence sheet"),
+    label = _("Presence sheet")
     tplname = "presence_sheet"
-    build_method = "weasy"
+    build_method = "weasy2pdf"
     icon_name = None
     # show_in_bbar = False
     parameters = Monthly(
@@ -248,12 +250,20 @@ class Course(Referrable, Course, PrintableObject):
         verbose_name_plural = _("Courses")
 
     print_presence_sheet = PrintPresenceSheet()
+    print_presence_sheet_html = PrintPresenceSheet(
+        build_method='weasy2html',
+        label=string_concat(_("Presence sheet"), _(" (HTML)")))
 
     @dd.displayfield(_("Print"))
     def print_actions(self, ar):
         if ar is None:
             return ''
-        return ar.instance_action_button(self.print_presence_sheet)
+        elems = []
+        elems.append(ar.instance_action_button(
+            self.print_presence_sheet))
+        elems.append(ar.instance_action_button(
+            self.print_presence_sheet_html))
+        return E.p(*join_elems(elems, sep=", "))
 
     def __str__(self):
         if self.name:

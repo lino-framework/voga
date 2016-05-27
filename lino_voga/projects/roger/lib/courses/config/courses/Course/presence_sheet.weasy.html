@@ -70,7 +70,7 @@ p {
 {% for e in  events %}
 <td>{{dd.plugins.courses.day_and_month(e.start_date)}}
 {% if ar.action_param_values.show_states %}
-<br/><font size="1">({{e.state}})</font>
+<br/><font size="1">({{e.state.symbol}})</font>
 {% endif %}
 </td>
 {% endfor %}
