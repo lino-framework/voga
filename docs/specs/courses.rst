@@ -443,3 +443,14 @@ There are 36 pupils (21 men and 15 women) in our database:
 >>> json_fields = 'navinfo disable_delete data id title'
 >>> kwargs = dict(fmt='json', an='detail')
 >>> demo_get('robin', 'api/courses/Lines/2', json_fields, **kwargs)
+
+
+
+.. _voga.presence_sheet:
+
+Presence sheet
+==============
+
+The **presence sheet** of a course is a printable document where
+course instructors can manually record the presences of the
+participants for every event.
