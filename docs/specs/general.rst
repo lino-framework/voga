@@ -40,7 +40,7 @@ The demo database
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- accounts.Account           accounts.Accounts              12        12
+ accounts.Account           accounts.Accounts              13        12
  accounts.Group             accounts.Groups                4         7
  cal.Calendar               cal.Calendars                  4         8
  cal.Event                  cal.OneEvent                   23        340
@@ -74,9 +74,9 @@ The demo database
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        9
- finan.BankStatement        finan.BankStatements           15        0
+ finan.BankStatement        finan.BankStatements           16        0
  finan.BankStatementItem    finan.BankStatementItemTable   10        0
- finan.JournalEntry         finan.FinancialVouchers        13        0
+ finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        0
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
