@@ -27,9 +27,12 @@
 
 
 from lino_cosi.lib.courses import Plugin
+from lino.api import _
 
 
 class Plugin(Plugin):
+
+    verbose_name = _("Activities")
 
     teacher_model = 'courses.Teacher'
     """The name of the model to be used for "teachers" (i.e. the person

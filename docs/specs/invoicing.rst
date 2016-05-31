@@ -124,12 +124,12 @@ enrolment:
 
 >>> obj = courses.Enrolment.objects.get(pk=83)
 >>> rt.show('invoicing.InvoicingsByInvoiceable', obj)  #doctest: +REPORT_UDIFF
-==================== ============================ ========== ============== ============ ==================
- Product invoice      Heading                      Quantity   Voucher date   State        Number of events
--------------------- ---------------------------- ---------- -------------- ------------ ------------------
- SLS 33               [1] Enrolment to Course #8   1          22/05/2014     Registered   12
- **Total (1 rows)**                                **1**                                  **12**
-==================== ============================ ========== ============== ============ ==================
+==================== ============================== ========== ============== ============ ==================
+ Product invoice      Heading                        Quantity   Voucher date   State        Number of events
+-------------------- ------------------------------ ---------- -------------- ------------ ------------------
+ SLS 33               [1] Enrolment to Activity #8   1          22/05/2014     Registered   12
+ **Total (1 rows)**                                  **1**                                  **12**
+==================== ============================== ========== ============== ============ ==================
 <BLANKLINE>
 
 
@@ -220,8 +220,8 @@ for each of these items:
 And run it:
 
 >>> for o in qs2: fmt(o)  #doctest: +REPORT_UDIFF
---- Invoice #25 for enrolment #95 (Course #20 / Hedi Radermacher (MLS)):
-Title: Enrolment to Course #20
+--- Invoice #25 for enrolment #95 (Activity #20 / Hedi Radermacher (MLS)):
+Title: Enrolment to Activity #20
 Start date: 30/05/2014
 Missed events: 12/05/2014, 19/05/2014, 26/05/2014
 Description:
@@ -229,8 +229,8 @@ Time: Every Monday 18:00-19:30.
 Tariff: 20€.
 Scheduled dates:
 02/06/2014, 16/06/2014, 23/06/2014, 30/06/2014, 07/07/2014, 14/07/2014, 28/07/2014, 
---- Invoice #26 for enrolment #128 (Course #3 / Edgard Radermacher (MCS)):
-Title: Enrolment to Course #3
+--- Invoice #26 for enrolment #128 (Activity #3 / Edgard Radermacher (MCS)):
+Title: Enrolment to Activity #3
 Start date: 12/05/2014
 Missed events: 28/04/2014, 05/05/2014, 12/05/2014
 Description:
@@ -238,16 +238,16 @@ Time: Every Monday 13:30-15:00.
 Tariff: 20€.
 Scheduled dates:
 12/05/2014, 19/05/2014, 26/05/2014, 02/06/2014, 16/06/2014, 23/06/2014, 
---- Invoice #28 for enrolment #194 (Course #19 / Marie-Louise Meier (MS)):
-Title: Enrolment to Course #19
+--- Invoice #28 for enrolment #194 (Activity #19 / Marie-Louise Meier (MS)):
+Title: Enrolment to Activity #19
 Start date: 30/05/2014
 Missed events: 07/03/2014, 14/03/2014, 21/03/2014, 28/03/2014, 04/04/2014, 11/04/2014
 Description:
 Time: Every Friday 19:00-20:00.
 Tariff: 80€.
 Scheduled dates:
---- Invoice #30 for enrolment #86 (Course #11 / Karl Kaivers (MLS)):
-Title: Enrolment to Course #11
+--- Invoice #30 for enrolment #86 (Activity #11 / Karl Kaivers (MLS)):
+Title: Enrolment to Activity #11
 Start date: 30/05/2014
 Missed events: 12/05/2014, 19/05/2014, 26/05/2014
 Description:
@@ -255,8 +255,8 @@ Time: Every Monday 13:30-14:30.
 Tariff: 20€.
 Scheduled dates:
 02/06/2014, 16/06/2014, 23/06/2014, 30/06/2014, 07/07/2014, 14/07/2014, 28/07/2014, 
---- Invoice #31 for enrolment #155 (Course #5 / Josef Jonas (MEC)):
-Title: Enrolment to Course #5
+--- Invoice #31 for enrolment #155 (Activity #5 / Josef Jonas (MEC)):
+Title: Enrolment to Activity #5
 Start date: 12/05/2014
 Missed events: 25/04/2014, 02/05/2014, 09/05/2014
 Description:
@@ -264,8 +264,8 @@ Time: Every Friday 13:30-15:00.
 Tariff: 20€.
 Scheduled dates:
 16/05/2014, 23/05/2014, 30/05/2014, 06/06/2014, 13/06/2014, 
---- Invoice #32 for enrolment #119 (Course #19 / Jacqueline Jacobs (MS)):
-Title: Enrolment to Course #19
+--- Invoice #32 for enrolment #119 (Activity #19 / Jacqueline Jacobs (MS)):
+Title: Enrolment to Activity #19
 Start date: 12/05/2014
 Missed events: 07/03/2014, 14/03/2014, 21/03/2014, 28/03/2014, 04/04/2014, 11/04/2014
 Description:

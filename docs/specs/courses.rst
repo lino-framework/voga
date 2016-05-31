@@ -98,7 +98,7 @@ The first demo course starts on December 2, 2013:
 
 >>> obj = courses.Course.objects.get(pk=3)
 >>> print(obj)
-Course #3
+Activity #3
 
 
 ..
@@ -138,7 +138,7 @@ remain unchanged (if the following fails, make sure you've run
 >>> res['success']
 True
 >>> print(res['info_message'])
-Update Events for Course #3...
+Update Events for Activity #3...
 Generating events between 2014-04-28 and 2019-05-22.
 8 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
@@ -173,10 +173,10 @@ Now we move that to the week after:
 >>> ses.response['success']
 True
 >>> print(ses.response['info_message'])
-Update Events for Course #3...
+Update Events for Activity #3...
 Generating events between 2014-04-28 and 2019-05-22.
 8 row(s) have been updated.
-Move down for Course #3 Hour 4...
+Move down for Activity #3 Hour 4...
 1 row(s) have been updated.
 
 
@@ -273,12 +273,12 @@ There are two Yoga courses:
 Line #10 ('Yoga')
         
 >>> rt.show(courses.CoursesByLine, obj)
-============== ============== ================== ============= ================
- Info           When           Room               Times         Instructor
--------------- -------------- ------------------ ------------- ----------------
- *Course #24*   Every Monday   Conferences room   18:00-19:30   David da Vinci
- *Course #25*   Every Friday   Conferences room   19:00-20:30   Hans Altenberg
-============== ============== ================== ============= ================
+================ ============== ================== ============= ================
+ Info             When           Room               Times         Instructor
+---------------- -------------- ------------------ ------------- ----------------
+ *Activity #24*   Every Monday   Conferences room   18:00-19:30   David da Vinci
+ *Activity #25*   Every Friday   Conferences room   19:00-20:30   Hans Altenberg
+================ ============== ================== ============= ================
 <BLANKLINE>
 
 
@@ -312,12 +312,12 @@ Computer
 ==================== ============= ================= ============= ================== =========== ============= ===========
  Info                 Designation   When              Times         Available places   Confirmed   Free places   Requested
 -------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *Course #3*                        Every Monday      13:30-15:00   3                  **1**       2             **2**
- *Course #4*                        Every Wednesday   17:30-19:00   3                  **2**       1             **2**
- *Course #5*                        Every Friday      13:30-15:00   3                  **2**       1             **1**
- *Course #6*                        Every Monday      13:30-15:00   4                  **6**       -2
- *Course #7*                        Every Wednesday   17:30-19:00   4                  **6**       -2
- *Course #8*                        Every Friday      13:30-15:00   4                  **6**       -2
+ *Activity #3*                      Every Monday      13:30-15:00   3                  **1**       2             **2**
+ *Activity #4*                      Every Wednesday   17:30-19:00   3                  **2**       1             **2**
+ *Activity #5*                      Every Friday      13:30-15:00   3                  **2**       1             **1**
+ *Activity #6*                      Every Monday      13:30-15:00   4                  **6**       -2
+ *Activity #7*                      Every Wednesday   17:30-19:00   4                  **6**       -2
+ *Activity #8*                      Every Friday      13:30-15:00   4                  **6**       -2
  **Total (6 rows)**                                                 **21**             **23**                    **5**
 ==================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
@@ -328,17 +328,17 @@ Sport
 ===================== ============= ================= ============= ================== =========== ============= ===========
  Info                  Designation   When              Times         Available places   Confirmed   Free places   Requested
 --------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *Course #9*                         Every Wednesday   19:00-20:00   10                 **1**       9             **2**
- *Course #10*                        Every Monday      11:00-12:00   5                  **2**       3             **2**
- *Course #11*                        Every Monday      13:30-14:30   5                  **2**       3             **1**
- *Course #12*                        Every Monday      11:00-12:00   20                 **5**       15
- *Course #13*                        Every Monday      13:30-14:30   20                 **5**       15
- *Course #14*                        Every Tuesday     11:00-12:00   20                 **5**       15
- *Course #15*                        Every Tuesday     13:30-14:30   20                 **6**       14
- *Course #16*                        Every Thursday    11:00-12:00   20                 **6**       14
- *Course #17*                        Every Thursday    13:30-14:30   20                 **6**       14
- *Course #18*                        Every Friday      18:00-19:00   12                 **1**       11            **2**
- *Course #19*                        Every Friday      19:00-20:00   12                 **2**       10            **2**
+ *Activity #9*                       Every Wednesday   19:00-20:00   10                 **1**       9             **2**
+ *Activity #10*                      Every Monday      11:00-12:00   5                  **2**       3             **2**
+ *Activity #11*                      Every Monday      13:30-14:30   5                  **2**       3             **1**
+ *Activity #12*                      Every Monday      11:00-12:00   20                 **5**       15
+ *Activity #13*                      Every Monday      13:30-14:30   20                 **5**       15
+ *Activity #14*                      Every Tuesday     11:00-12:00   20                 **5**       15
+ *Activity #15*                      Every Tuesday     13:30-14:30   20                 **6**       14
+ *Activity #16*                      Every Thursday    11:00-12:00   20                 **6**       14
+ *Activity #17*                      Every Thursday    13:30-14:30   20                 **6**       14
+ *Activity #18*                      Every Friday      18:00-19:00   12                 **1**       11            **2**
+ *Activity #19*                      Every Friday      19:00-20:00   12                 **2**       10            **2**
  **Total (11 rows)**                                                 **164**            **41**                    **9**
 ===================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
@@ -349,12 +349,12 @@ Meditation
 ==================== ============= ============== ============= ================== =========== ============= ===========
  Info                 Designation   When           Times         Available places   Confirmed   Free places   Requested
 -------------------- ------------- -------------- ------------- ------------------ ----------- ------------- -----------
- *Course #20*                       Every Monday   18:00-19:30                      **2**       Unlimited     **1**
- *Course #21*                       Every Friday   19:00-20:30                      **1**       Unlimited     **2**
- *Course #22*                       Every Monday   18:00-19:30   30                 **5**       25
- *Course #23*                       Every Friday   19:00-20:30   30                 **5**       25
- *Course #24*                       Every Monday   18:00-19:30   20                 **2**       18            **2**
- *Course #25*                       Every Friday   19:00-20:30   20                 **2**       18            **2**
+ *Activity #20*                     Every Monday   18:00-19:30                      **2**       Unlimited     **1**
+ *Activity #21*                     Every Friday   19:00-20:30                      **1**       Unlimited     **2**
+ *Activity #22*                     Every Monday   18:00-19:30   30                 **5**       25
+ *Activity #23*                     Every Friday   19:00-20:30   30                 **5**       25
+ *Activity #24*                     Every Monday   18:00-19:30   20                 **2**       18            **2**
+ *Activity #25*                     Every Friday   19:00-20:30   20                 **2**       18            **2**
  **Total (6 rows)**                                              **100**            **17**                    **7**
 ==================== ============= ============== ============= ================== =========== ============= ===========
 <BLANKLINE>

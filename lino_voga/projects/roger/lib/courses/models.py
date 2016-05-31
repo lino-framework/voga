@@ -243,11 +243,9 @@ class Course(Referrable, Course, PrintableObject):
 
 
     """
-    class Meta:
+    class Meta(Course.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
-        verbose_name = _("Course")
-        verbose_name_plural = _("Courses")
 
     print_presence_sheet = PrintPresenceSheet()
     print_presence_sheet_html = PrintPresenceSheet(

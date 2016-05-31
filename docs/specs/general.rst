@@ -137,11 +137,11 @@ Rolf is the local system administrator, he has a complete menu:
   - Purchases : Purchase invoices (PRC)
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
-- Courses : Participants, Instructors, -, Courses, Topics, Course series, -, Pending requested enrolments, Pending confirmed enrolments
+- Activities : Participants, Instructors, -, Activities, Topics, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
-  - Courses : Status Report
+  - Activities : Status Report
 - Configure :
   - System : Users, Site Parameters, Help Texts
   - Places : Countries, Places
@@ -150,7 +150,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Tariffs : Tariffs, Tariff Categories
   - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment Terms
   - VAT : VAT rules, Paper types
-  - Courses : Course types, Instructor Types, Participant Types, Timetable Slots
+  - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
   - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems
@@ -158,7 +158,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
-  - Courses : Courses, Enrolments, Enrolment states
+  - Activities : Activities, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts

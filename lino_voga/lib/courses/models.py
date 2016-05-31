@@ -272,8 +272,8 @@ class CourseType(mixins.Referrable, mixins.BabelNamed):
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'CourseType')
-        verbose_name = _("Course type")
-        verbose_name_plural = _('Course types')
+        verbose_name = _("Activity type")
+        verbose_name_plural = _('Activity types')
 
 
 class CourseTypes(dd.Table):
@@ -314,6 +314,8 @@ class Course(Course):
     class Meta(Course.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
+        verbose_name = _("Activity")
+        verbose_name_plural = _('Activities')
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
