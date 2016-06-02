@@ -86,7 +86,7 @@ The demo database
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         6
  ledger.Journal             ledger.Journals                15        6
  ledger.MatchRule           ledger.MatchRules              3         10
- ledger.Movement            ledger.Movements               9         0
+ ledger.Movement            ledger.Movements               10        0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
  ledger.Voucher             ledger.Vouchers                9         68
  lists.List                 lists.Lists                    5         8
