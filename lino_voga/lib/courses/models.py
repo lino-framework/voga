@@ -693,7 +693,7 @@ class EnrolmentsByFee(EnrolmentsByCourse):
 
 class PupilDetail(MyPersonDetail):
 
-    main = 'general address courses sales ledger more'
+    main = 'general address courses ledger more'
 
     personal = 'pupil_type'
 
