@@ -64,7 +64,7 @@ class StartInvoicingForCourse(StartInvoicing):
     def get_options(self, ar):
         course = ar.selected_rows[0]
         assert isinstance(course, rt.modules.courses.Course)
-        return dict(course=course)
+        return dict(course=course, partner=None, journal=None)
 
 
 @dd.receiver(dd.pre_analyze)

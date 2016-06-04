@@ -55,15 +55,15 @@ The demo database contains exactly one plan:
 ===================== =================================== ========= ============== =================
  Selected              Partner                             Number    Amount         Product invoice
 --------------------- ----------------------------------- --------- -------------- -----------------
- Yes                   Radermacher Hedi                    3         150,00         SLS 25
- Yes                   Radermacher Edgard                  5         220,00         SLS 26
- Yes                   Radermacher Christian               5         250,00         SLS 27
- Yes                   Meier Marie-Louise                  2         130,00         SLS 28
- Yes                   Laschet Laura                       5         250,00         SLS 29
- Yes                   Kaivers Karl                        4         170,00         SLS 30
- Yes                   Jonas Josef                         4         200,00         SLS 31
- Yes                   Jacobs Jacqueline                   3         180,00         SLS 32
- Yes                   Hilgers Hildegard                   4         200,00         SLS 33
+ Yes                   Radermacher Hedi                    3         150,00         SLS 1
+ Yes                   Radermacher Edgard                  5         220,00         SLS 2
+ Yes                   Radermacher Christian               5         250,00         SLS 3
+ Yes                   Meier Marie-Louise                  2         130,00         SLS 4
+ Yes                   Laschet Laura                       5         250,00         SLS 5
+ Yes                   Kaivers Karl                        4         170,00         SLS 6
+ Yes                   Jonas Josef                         4         200,00         SLS 7
+ Yes                   Jacobs Jacqueline                   3         180,00         SLS 8
+ Yes                   Hilgers Hildegard                   4         200,00         SLS 9
  Yes                   Groteclaes Gregory                  5         250,00
  Yes                   Engels Edgar                        3         90,00
  Yes                   Evers Eberhart                      4         200,00
@@ -127,7 +127,7 @@ enrolment:
 ==================== ============================== ========== ============== ============ ==================
  Product invoice      Heading                        Quantity   Voucher date   State        Number of events
 -------------------- ------------------------------ ---------- -------------- ------------ ------------------
- SLS 33               [1] Enrolment to Activity #8   1          22/05/2014     Registered   12
+ SLS 9                [1] Enrolment to Activity #8   1          22/05/2014     Registered   12
  **Total (1 rows)**                                  **1**                                  **12**
 ==================== ============================== ========== ============== ============ ==================
 <BLANKLINE>
@@ -220,7 +220,7 @@ for each of these items:
 And run it:
 
 >>> for o in qs2: fmt(o)  #doctest: +REPORT_UDIFF
---- Invoice #25 for enrolment #95 (Activity #20 / Hedi Radermacher (MLS)):
+--- Invoice #1 for enrolment #95 (Activity #20 / Hedi Radermacher (MLS)):
 Title: Enrolment to Activity #20
 Start date: 30/05/2014
 Missed events: 12/05/2014, 19/05/2014, 26/05/2014
@@ -229,7 +229,7 @@ Time: Every Monday 18:00-19:30.
 Tariff: 20€.
 Scheduled dates:
 02/06/2014, 16/06/2014, 23/06/2014, 30/06/2014, 07/07/2014, 14/07/2014, 28/07/2014, 
---- Invoice #26 for enrolment #128 (Activity #3 / Edgard Radermacher (MCS)):
+--- Invoice #2 for enrolment #128 (Activity #3 / Edgard Radermacher (MCS)):
 Title: Enrolment to Activity #3
 Start date: 12/05/2014
 Missed events: 28/04/2014, 05/05/2014, 12/05/2014
@@ -238,7 +238,7 @@ Time: Every Monday 13:30-15:00.
 Tariff: 20€.
 Scheduled dates:
 12/05/2014, 19/05/2014, 26/05/2014, 02/06/2014, 16/06/2014, 23/06/2014, 
---- Invoice #28 for enrolment #194 (Activity #19 / Marie-Louise Meier (MS)):
+--- Invoice #4 for enrolment #194 (Activity #19 / Marie-Louise Meier (MS)):
 Title: Enrolment to Activity #19
 Start date: 30/05/2014
 Missed events: 07/03/2014, 14/03/2014, 21/03/2014, 28/03/2014, 04/04/2014, 11/04/2014
@@ -246,7 +246,7 @@ Description:
 Time: Every Friday 19:00-20:00.
 Tariff: 80€.
 Scheduled dates:
---- Invoice #30 for enrolment #86 (Activity #11 / Karl Kaivers (MLS)):
+--- Invoice #6 for enrolment #86 (Activity #11 / Karl Kaivers (MLS)):
 Title: Enrolment to Activity #11
 Start date: 30/05/2014
 Missed events: 12/05/2014, 19/05/2014, 26/05/2014
@@ -255,7 +255,7 @@ Time: Every Monday 13:30-14:30.
 Tariff: 20€.
 Scheduled dates:
 02/06/2014, 16/06/2014, 23/06/2014, 30/06/2014, 07/07/2014, 14/07/2014, 28/07/2014, 
---- Invoice #31 for enrolment #155 (Activity #5 / Josef Jonas (MEC)):
+--- Invoice #7 for enrolment #155 (Activity #5 / Josef Jonas (MEC)):
 Title: Enrolment to Activity #5
 Start date: 12/05/2014
 Missed events: 25/04/2014, 02/05/2014, 09/05/2014
@@ -264,7 +264,7 @@ Time: Every Friday 13:30-15:00.
 Tariff: 20€.
 Scheduled dates:
 16/05/2014, 23/05/2014, 30/05/2014, 06/06/2014, 13/06/2014, 
---- Invoice #32 for enrolment #119 (Activity #19 / Jacqueline Jacobs (MS)):
+--- Invoice #8 for enrolment #119 (Activity #19 / Jacqueline Jacobs (MES)):
 Title: Enrolment to Activity #19
 Start date: 12/05/2014
 Missed events: 07/03/2014, 14/03/2014, 21/03/2014, 28/03/2014, 04/04/2014, 11/04/2014
@@ -273,7 +273,7 @@ Time: Every Friday 19:00-20:00.
 Tariff: 80€.
 Scheduled dates:
 
-Let's have a closed look at the first of above invoicings.
+Let's have a closer look at the first of above invoicings.
 
 >>> course = rt.models.courses.Course.objects.get(pk=20)
 

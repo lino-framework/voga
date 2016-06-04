@@ -30,7 +30,7 @@ Adds some demo data specific to Lino Voga à la Roger.
 
 """
 
-from lino.api import dd, rt
+from lino.api import dd, rt, _
 from lino.utils.cycler import Cycler
 
 from lino_voga.lib.courses.fixtures.demo import objects as lib_objects
@@ -52,3 +52,41 @@ def objects():
         elif obj.id % 10 != 0:
             obj.member_until = dd.demo_date().replace(month=12, day=31)
         yield obj
+
+    fee_account = rt.models.accounts.Account(
+        ref=dd.plugins.courses.membership_fee_account,
+        type=rt.models.accounts.AccountTypes.incomes,
+        default_amount=15,
+        **dd.str2kw('name', _("Membership fee")))
+    yield fee_account
+
+    Journal = rt.models.ledger.Journal
+    USERS = Cycler(rt.models.users.User.objects.all())
+    MEMBERS = Cycler(rt.modules.courses.Pupil.objects.all())
+
+    jnl = Journal.objects.get(ref='CSH')
+    membership_payments = [
+        (1, 3),
+        (2, 1),
+        (10, 2),
+        (11, 4),
+        (12, 5),
+    ]
+    REQUEST = rt.login()
+
+    for month, number in membership_payments:
+        date = dd.demo_date().replace(month=month)
+        voucher = jnl.create_voucher(
+            user=USERS.pop(),
+            voucher_date=date)
+        yield voucher
+        for i in range(number):
+            M = jnl.voucher_type.get_items_model()
+            kw = dict(voucher=voucher)
+            kw.update(partner=MEMBERS.pop(), date=date, account=fee_account)
+            kw.update(
+                amount=fee_account.default_amount, dc=fee_account.type.dc)
+            yield M(**kw)
+        voucher.register(REQUEST)
+        voucher.save()
+

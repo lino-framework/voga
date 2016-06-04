@@ -35,6 +35,7 @@ from lino.mixins.periods import Monthly
 from lino.utils import join_elems
 
 from lino.modlib.printing.mixins import DirectPrintAction
+from lino.modlib.plausibility.choicelists import Checker
 
 from lino_voga.lib.courses.models import *
 
@@ -334,3 +335,54 @@ Courses.column_names = "ref start_date enrolments_until line room teacher " \
 #                                   'places remark fee option amount ' \
 #                                   'workflow_buttons *'
 
+
+class MemberChecker(Checker):
+    """Check membership payments.
+
+    If :attr:`force_cleared_until
+    <lino_cosi.lib.ledger.Plugin.force_cleared_until>` is set, then
+    :attr:`member_until` dates before that date are tolerated.
+
+    """
+    verbose_name = _("Check membership payments")
+    model = Pupil
+    messages = dict(
+        no_payment=_("Member until {0}, but no payment."),
+        wrong_until=_("Member until {0} (expected {1})."),
+    )
+
+    def get_plausibility_problems(self, obj, fix=False):
+        qs = rt.models.ledger.Movement.objects.filter(
+            partner=obj,
+            account__ref=dd.plugins.courses.membership_fee_account)
+        qs = qs.order_by('-value_date')
+        until = obj.member_until
+        fcu = dd.plugins.ledger.force_cleared_until
+        if qs.count() == 0:
+            if until:
+                if fcu and until > fcu:
+                    return
+                yield (False, self.messages['no_payment'].format(until))
+            return
+        
+        def expected_until(mvt):
+            pd = mvt.value_date
+            if pd.month > 8:
+                return pd.replace(year=pd.year+1, month=12, day=31)
+            return pd.replace(month=12, day=31)
+
+        eu = expected_until(qs[0])
+        if until != eu:
+            msg = self.messages['wrong_until'].format(until, eu)
+            if until is None or until < eu:
+                if fix:
+                    obj.member_until = eu
+                    obj.full_clean()
+                    obj.save()
+                else:
+                    yield (True, msg)
+            else:
+                yield (False, msg)
+
+
+MemberChecker.activate()

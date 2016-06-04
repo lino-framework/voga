@@ -34,3 +34,10 @@ class Plugin(Plugin):
     extends_models = ['Pupil', 'Course', 'Enrolment', 'Line']
     # extends_models = ['Pupil', 'Course', 'Enrolment']
     # extends_models = ['Pupil', 'Course', 'Line']
+
+    # membership_fee_account = '7100'
+    membership_fee_account = 'membership_fee'
+    """The reference of the general account where membership fees are
+    being booked.  Used by :class:`MemberChecker`.
+
+    """

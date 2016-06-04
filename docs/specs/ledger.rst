@@ -32,3 +32,23 @@ Journals
  MSC         Miscellaneous Journal Entries                (cash) Cash                            Debit
 =========== =============================== ============ ====================================== ===========================
 <BLANKLINE>
+
+
+>>> rt.show(accounts.Accounts)
+================ ========================= ==========================
+ Reference        Designation               Account Group
+---------------- ------------------------- --------------------------
+ bestbank         Bestbank                  Banks
+ bestbankpo       Payment Orders Bestbank   Running transactions
+ cash             Cash                      Banks
+ customers        Customers                 Commercial receivable(?)
+ goods            Purchase of goods         Expenses
+ investments      Purchase of investments   Expenses
+ membership_fee   Membership fee            Revenues
+ services         Purchase of services      Expenses
+ suppliers        Suppliers                 Commercial receivable(?)
+ vat_deductible   VAT deductible            VAT to pay
+ vat_due          VAT due                   VAT to pay
+ vatdcl           VAT to declare            Running transactions
+================ ========================= ==========================
+<BLANKLINE>
