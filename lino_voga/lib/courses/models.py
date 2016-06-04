@@ -19,6 +19,10 @@
 """
 Database models for `lino_voga.lib.courses`.
 
+.. xfile:: courses/Enrolment/item_description.html
+
+     The template used to fill the items description.
+
 """
 
 from __future__ import unicode_literals
@@ -268,8 +272,8 @@ class CourseType(mixins.Referrable, mixins.BabelNamed):
     class Meta:
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'CourseType')
-        verbose_name = _("Course type")
-        verbose_name_plural = _('Course types')
+        verbose_name = _("Activity type")
+        verbose_name_plural = _('Activity types')
 
 
 class CourseTypes(dd.Table):
@@ -310,6 +314,8 @@ class Course(Course):
     class Meta(Course.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
+        verbose_name = _("Activity")
+        verbose_name_plural = _('Activities')
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
@@ -361,7 +367,8 @@ class InvoicingInfo(object):
             'state')
         vstates = [s for s in state_field.choicelist.objects()
                    if not s.editable]
-        self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
+        # self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
+        self.invoicings = enr.invoicings.filter(voucher__state__in=vstates)
         for obj in self.invoicings:
             if obj.product is not None:
                 self.invoiced_qty += obj.qty
@@ -378,7 +385,7 @@ class InvoicingInfo(object):
                 return
             qs = enr.course.events_by_course.filter(
                 start_date__gte=start_date,
-                state=rt.modules.cal.EventStates.took_place)
+                state=rt.models.cal.EventStates.took_place)
             if enr.end_date:
                 qs = qs.filter(end_date__lte=enr.end_date)
             self.used_events = qs.order_by('start_date')
@@ -686,7 +693,7 @@ class EnrolmentsByFee(EnrolmentsByCourse):
 
 class PupilDetail(MyPersonDetail):
 
-    main = 'general address courses sales ledger more'
+    main = 'general address courses ledger more'
 
     personal = 'pupil_type'
 

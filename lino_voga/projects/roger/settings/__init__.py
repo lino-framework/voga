@@ -18,7 +18,7 @@ class Site(Site):
     languages = "en de fr"
 
     demo_fixtures = """std few_languages few_countries euvatrates
-    minimal_ledger demo demo_bookings buche demo2""".split()
+    minimal_ledger demo buche demo2 demo_bookings checkdata""".split()
 
     def setup_plugins(self):
         """
@@ -29,6 +29,7 @@ class Site(Site):
         self.plugins.contacts.configure(hide_region=True)
         self.plugins.countries.configure(country_code='BE')
         self.plugins.ledger.configure(start_year=2014)
+        self.plugins.ledger.configure(use_pcmn=True)
 
     def get_apps_modifiers(self, **kw):
         kw = super(Site, self).get_apps_modifiers(**kw)

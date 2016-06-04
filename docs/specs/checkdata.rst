@@ -38,6 +38,7 @@ checkers.
  countries.PlaceChecker            Check plausibility of geographical places.
  beid.BeIdCardHolderChecker        Check for invalid SSINs
  sepa.BankAccountChecker           Check for partner mismatches in bank accounts
+ ledger.VoucherChecker             Check integrity of ledger movements
  cal.EventGuestChecker             Check for missing participants
  cal.ConflictingEventsChecker      Check for conflicting events
 ================================= ===============================================

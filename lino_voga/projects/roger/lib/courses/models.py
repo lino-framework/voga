@@ -26,13 +26,16 @@ from __future__ import print_function
 import datetime
 
 from django.db.models import Q
+from django.utils.translation import string_concat
 
 from lino.api import dd, rt, _
 
 from lino.mixins import Referrable
 from lino.mixins.periods import Monthly
+from lino.utils import join_elems
 
 from lino.modlib.printing.mixins import DirectPrintAction
+from lino.modlib.plausibility.choicelists import Checker
 
 from lino_voga.lib.courses.models import *
 
@@ -59,9 +62,9 @@ class PrintPresenceSheet(DirectPrintAction):
     """Action to print a presence sheet.
     """
     combo_group = "creacert"
-    label = _("Presence sheet"),
+    label = _("Presence sheet")
     tplname = "presence_sheet"
-    build_method = "weasy"
+    build_method = "weasy2pdf"
     icon_name = None
     # show_in_bbar = False
     parameters = Monthly(
@@ -241,19 +244,25 @@ class Course(Referrable, Course, PrintableObject):
 
 
     """
-    class Meta:
+    class Meta(Course.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
-        verbose_name = _("Course")
-        verbose_name_plural = _("Courses")
 
     print_presence_sheet = PrintPresenceSheet()
+    print_presence_sheet_html = PrintPresenceSheet(
+        build_method='weasy2html',
+        label=string_concat(_("Presence sheet"), _(" (HTML)")))
 
     @dd.displayfield(_("Print"))
     def print_actions(self, ar):
         if ar is None:
             return ''
-        return ar.instance_action_button(self.print_presence_sheet)
+        elems = []
+        elems.append(ar.instance_action_button(
+            self.print_presence_sheet))
+        elems.append(ar.instance_action_button(
+            self.print_presence_sheet_html))
+        return E.p(*join_elems(elems, sep=", "))
 
     def __str__(self):
         if self.name:
@@ -326,3 +335,54 @@ Courses.column_names = "ref start_date enrolments_until line room teacher " \
 #                                   'places remark fee option amount ' \
 #                                   'workflow_buttons *'
 
+
+class MemberChecker(Checker):
+    """Check membership payments.
+
+    If :attr:`force_cleared_until
+    <lino_cosi.lib.ledger.Plugin.force_cleared_until>` is set, then
+    :attr:`member_until` dates before that date are tolerated.
+
+    """
+    verbose_name = _("Check membership payments")
+    model = Pupil
+    messages = dict(
+        no_payment=_("Member until {0}, but no payment."),
+        wrong_until=_("Member until {0} (expected {1})."),
+    )
+
+    def get_plausibility_problems(self, obj, fix=False):
+        qs = rt.models.ledger.Movement.objects.filter(
+            partner=obj,
+            account__ref=dd.plugins.courses.membership_fee_account)
+        qs = qs.order_by('-value_date')
+        until = obj.member_until
+        fcu = dd.plugins.ledger.force_cleared_until
+        if qs.count() == 0:
+            if until:
+                if fcu and until > fcu:
+                    return
+                yield (False, self.messages['no_payment'].format(until))
+            return
+        
+        def expected_until(mvt):
+            pd = mvt.value_date
+            if pd.month > 8:
+                return pd.replace(year=pd.year+1, month=12, day=31)
+            return pd.replace(month=12, day=31)
+
+        eu = expected_until(qs[0])
+        if until != eu:
+            msg = self.messages['wrong_until'].format(until, eu)
+            if until is None or until < eu:
+                if fix:
+                    obj.member_until = eu
+                    obj.full_clean()
+                    obj.save()
+                else:
+                    yield (True, msg)
+            else:
+                yield (False, msg)
+
+
+MemberChecker.activate()

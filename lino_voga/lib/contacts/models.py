@@ -34,9 +34,11 @@ class Person(Person, BeIdCardHolder):
     pass
 
 
-class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
+# class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
+class MyPartnerDetail(PartnerDetail):
 
-    main = 'general address more sales ledger'
+    # main = 'general address more sales ledger'
+    main = 'general address more ledger'
 
     #~ general = dd.Panel(PartnerDetail.main,label=_("General"))
 
@@ -56,10 +58,17 @@ class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
     """, label=_("More"))
 
     ledger = dd.Panel("""
-    # sales.InvoiceablesByPartner
-    # ledger.InvoicesByPartner
-    ledger.MovementsByPartner
+    ledger_a ledger.MovementsByPartner
+    sales.InvoicesByPartner
     """, label=dd.plugins.ledger.verbose_name)
+
+    ledger_a = """
+    invoice_recipient vat_regime
+    payment_term paper_type
+    """
+
+    # sales = dd.Panel("""
+    # """, label=dd.plugins.sales.verbose_name)
 
     bottom_box = """
     remarks
@@ -119,10 +128,10 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
 
 class MyPersonDetail(PersonDetail, MyPartnerDetail):
 
-    main = 'general address sales ledger more'
+    main = 'general address ledger more'
 
     general = dd.Panel("""
-    overview contact_box lists.MembersByPartner
+    overview:30 contact_box:30 lists.MembersByPartner:20
     remarks
     """, label=_("General"))
 

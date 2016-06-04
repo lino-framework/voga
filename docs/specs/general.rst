@@ -40,7 +40,7 @@ The demo database
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- accounts.Account           accounts.Accounts              12        12
+ accounts.Account           accounts.Accounts              13        12
  accounts.Group             accounts.Groups                4         7
  cal.Calendar               cal.Calendars                  4         8
  cal.Event                  cal.OneEvent                   23        340
@@ -74,9 +74,9 @@ The demo database
  courses.Topic              courses.Topics                 2         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          15        9
- finan.BankStatement        finan.BankStatements           15        0
+ finan.BankStatement        finan.BankStatements           16        0
  finan.BankStatementItem    finan.BankStatementItemTable   10        0
- finan.JournalEntry         finan.FinancialVouchers        13        0
+ finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        0
  finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
@@ -86,7 +86,7 @@ The demo database
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         6
  ledger.Journal             ledger.Journals                15        6
  ledger.MatchRule           ledger.MatchRules              3         10
- ledger.Movement            ledger.Movements               9         0
+ ledger.Movement            ledger.Movements               10        0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
  ledger.Voucher             ledger.Vouchers                9         68
  lists.List                 lists.Lists                    5         8
@@ -137,11 +137,11 @@ Rolf is the local system administrator, he has a complete menu:
   - Purchases : Purchase invoices (PRC)
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
-- Courses : Participants, Instructors, -, Courses, Topics, Course series, -, Pending requested enrolments, Pending confirmed enrolments
+- Activities : Participants, Instructors, -, Activities, Topics, Course series, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
-  - Courses : Status Report
+  - Activities : Status Report
 - Configure :
   - System : Users, Site Parameters, Help Texts
   - Places : Countries, Places
@@ -150,7 +150,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Tariffs : Tariffs, Tariff Categories
   - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment Terms
   - VAT : VAT rules, Paper types
-  - Courses : Course types, Instructor Types, Participant Types, Timetable Slots
+  - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
   - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems
@@ -158,7 +158,7 @@ Rolf is the local system administrator, he has a complete menu:
   - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
-  - Courses : Courses, Enrolments, Enrolment states
+  - Activities : Activities, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
   - Office : Notes, Uploads, Upload Areas, Outgoing Mails, Attachments, Excerpts
