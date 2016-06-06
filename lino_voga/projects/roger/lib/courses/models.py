@@ -187,6 +187,12 @@ class PupilDetail(PupilDetail):
 
 
 Pupils.detail_layout = PupilDetail()
+Pupils.insert_layout = """
+first_name last_name
+gender language
+member_until section
+is_lfv is_ckk is_raviva
+"""
 Pupils.params_layout = "aged_from aged_to gender "\
                        "show_members show_lfv show_ckk show_raviva"
 Pupils.column_names = (
