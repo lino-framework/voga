@@ -84,8 +84,8 @@ The demo database
  invoicing.Item             invoicing.Items                9         35
  invoicing.Plan             invoicing.Plans                7         1
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         6
- ledger.Journal             ledger.Journals                15        6
- ledger.MatchRule           ledger.MatchRules              3         10
+ ledger.Journal             ledger.Journals                15        7
+ ledger.MatchRule           ledger.MatchRules              3         11
  ledger.Movement            ledger.Movements               10        0
  ledger.PaymentTerm         ledger.PaymentTerms            6         7
  ledger.Voucher             ledger.Vouchers                9         68
@@ -133,7 +133,7 @@ Rolf is the local system administrator, he has a complete menu:
 - Office : My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Overdue appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
-  - Sales : Sales invoices (SLS)
+  - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
@@ -141,6 +141,7 @@ Rolf is the local system administrator, he has a complete menu:
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
+  - VAT : Due invoices
   - Activities : Status Report
 - Configure :
   - System : Users, Site Parameters, Help Texts

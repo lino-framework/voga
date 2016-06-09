@@ -605,6 +605,8 @@ class Enrolment(Enrolment, Invoiceable):
 
     @dd.virtualfield(dd.HtmlBox(_("Participant")))
     def pupil_info(self, ar):
+        if not self.pupil_id:
+            return ''
         elems = []
         txt = self.pupil.get_full_name(nominative=True)
         if ar is None:

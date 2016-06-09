@@ -190,7 +190,7 @@ Pupils.detail_layout = PupilDetail()
 Pupils.insert_layout = """
 first_name last_name
 gender language
-member_until section
+pupil_type section member_until
 is_lfv is_ckk is_raviva
 """
 Pupils.params_layout = "aged_from aged_to gender "\
