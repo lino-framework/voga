@@ -38,7 +38,9 @@ from lino_cosi.lib.courses.choicelists import EnrolmentStates
 # courses = dd.resolve_app('courses')
 
 # must import this to activate these workflow definitions:
-from lino_xl.lib.cal.workflows import voga  
+from . import workflows
+# from lino_xl.lib.cal.workflows import voga  
+
 
 from lino.modlib.office.roles import OfficeUser
 

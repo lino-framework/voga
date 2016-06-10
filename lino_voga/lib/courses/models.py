@@ -770,8 +770,8 @@ class EventsByCourse(EventsByController):
         elems = []
         for evt in sar:
             lbl = day_and_month(evt.start_date)
-            if evt.state.symbol:
-                lbl = "{0}{1}".format(lbl, evt.state.symbol)
+            if evt.state.button_text:
+                lbl = "{0}{1}".format(lbl, evt.state.button_text)
             elems.append(ar.obj2html(evt, lbl))
         elems = join_elems(elems, sep=', ')
         sar = obj.do_update_events.request_from(sar)
