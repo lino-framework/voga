@@ -22,6 +22,7 @@
    :toctree:
 
     models
+    workflows
     fixtures.std
     fixtures.demo2
 

@@ -16,6 +16,10 @@
 # You should have received a copy of the GNU Affero General Public
 # License along with Lino XL.  If not, see
 # <http://www.gnu.org/licenses/>.
+"""
+Defines the default calendar workflows for :ref:`voga`.
+
+"""
 
 from __future__ import unicode_literals
 
@@ -25,14 +29,14 @@ from django.utils.translation import pgettext_lazy as pgettext
 
 GuestStates.clear()
 add = GuestStates.add_item
-# add('10', _("Invited"), 'invited')
-# add('40', _("Present"), 'present', afterwards=True)
-# add('50', _("Absent"), 'absent', afterwards=True)
-# add('60', _("Excused"), 'excused')
-add('10', "☐", 'invited')
-add('40', "☑", 'present', afterwards=True)
-add('50', "☉", 'absent', afterwards=True)
-add('60', "⚕", 'excused')
+add('10', _("Invited"), 'invited', button_text="☐")
+add('40', _("Present"), 'present', afterwards=True, button_text="☑")
+add('50', _("Absent"), 'absent', afterwards=True, button_text="☉")
+add('60', _("Excused"), 'excused', button_text="⚕")
+# add('10', "☐", 'invited')
+# add('40', "☑", 'present', afterwards=True)
+# add('50', "☉", 'absent', afterwards=True)
+# add('60', "⚕", 'excused')
 
 
 @dd.receiver(dd.pre_analyze)
@@ -61,8 +65,19 @@ def my_event_workflows(sender=None, **kw):
 
     # sender.modules.cal.Event.find_next_date = FindNextDate()
 
+    EventStates.suggested.add_transition(
+        # "?",
+        # _("Reset"),
+        required_states='draft took_place cancelled',
+        help_text=_("Set to suggested state."))
+
+    EventStates.draft.add_transition(
+        # "\u2610",  # BALLOT BOX
+        required_states='suggested took_place cancelled',
+        help_text=_("Set to draft state."))
+
     EventStates.took_place.add_transition(
-        "\u2611",  # BALLOT BOX WITH CHECK
+        # "\u2611",  # BALLOT BOX WITH CHECK
         required_states='suggested draft cancelled',
         help_text=_("Event took place."))
         #icon_name='emoticon_smile')
@@ -70,7 +85,7 @@ def my_event_workflows(sender=None, **kw):
     #~ EventStates.rescheduled.add_transition(_("Reschedule"),
         #~ states='published',icon_file='date_edit.png')
     EventStates.cancelled.add_transition(
-        "\u2609",  # SUN
+        # "\u2609",  # SUN
         # pgettext("calendar event action", "Cancel"),
         #~ owner=True,
         help_text=_("Event was cancelled."),
@@ -80,17 +95,6 @@ def my_event_workflows(sender=None, **kw):
     #     pgettext("calendar event action", "Omit"),
     #     states='suggested draft took_place',
     #     icon_name='date_delete')
-    EventStates.suggested.add_transition(
-        "?",
-        # _("Reset"),
-        required_states='draft took_place cancelled',
-        help_text=_("Reset to suggested state."))
-
-    EventStates.draft.add_transition(
-        "\u2610",  # BALLOT BOX
-        required_states='suggested took_place cancelled',
-        help_text=_("Reset to draft state."))
-
     # EventStates.suggested.add_transition(
     #     _("Reset"),
     #     required_states='draft took_place cancelled',

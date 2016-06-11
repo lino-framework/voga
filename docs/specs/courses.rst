@@ -127,9 +127,10 @@ Activity #3
 <BLANKLINE>
 
 
-We run the UpdateEvents action a first time and verify that the events
-remain unchanged (if the following fails, make sure you've run
-:cmd:`inv initdb` before running :cmd:`inv test`).
+We run the :class:`UpdateEvents <lino_xl.lib.cal.mixins.UpdateEvents>`
+action a first time and verify that the events remain unchanged (if
+the following fails, make sure you've run :cmd:`inv initdb` before
+running :cmd:`inv test`).
 
 >>> # import logging
 >>> # logger = logging.getLogger('lino')
@@ -167,7 +168,8 @@ Yes, the state is "suggested":
 >>> print(e.state)
 Suggested
 
-Now we move that to the week after:
+Now we move that event to the next available date (the week after in
+our case):
 
 >>> e.move_next(ses)
 >>> ses.response['success']
@@ -177,6 +179,7 @@ Update Events for Activity #3...
 Generating events between 2014-04-28 and 2019-05-22.
 8 row(s) have been updated.
 Move down for Activity #3 Hour 4...
+Generating events between 2014-04-28 and 2019-05-22.
 1 row(s) have been updated.
 
 
@@ -185,29 +188,8 @@ The state is now "draft":
 >>> print(e.state)
 Draft
 
-We have now two events on 2014-05-26:
-
->>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-======================== ===========
- When                     State
------------------------- -----------
- Mon 28/04/2014 (13:30)   Suggested
- Mon 05/05/2014 (13:30)   Suggested
- Mon 12/05/2014 (13:30)   Suggested
- Mon 26/05/2014 (13:30)   Draft
- Mon 26/05/2014 (13:30)   Suggested
- Mon 02/06/2014 (13:30)   Suggested
- Mon 16/06/2014 (13:30)   Suggested
- Mon 23/06/2014 (13:30)   Suggested
-======================== ===========
-<BLANKLINE>
-
-
-To solve that, we must click on the lightning button:
-
->>> obj.do_update_events(ses)
->>> ses.response['success']
-True
+Note that all subsequent events have also been moved to their next
+available date.
 
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ======================== ===========
@@ -224,34 +206,34 @@ True
 ======================== ===========
 <BLANKLINE>
 
-Voilà. Note that the state "Draft" is normal: it indicates that the
+Note also that the state "Draft" is normal: it indicates that the
 event has been manually modified.
 
-Now for this test, in order to restore original state, we click on the
-"Reset" button:
+.. Now for this test, in order to restore original state, we click on
+   the "Reset" button:
 
->>> e.state = cal.EventStates.suggested
->>> e.save()
+    >>> e.state = cal.EventStates.suggested
+    >>> e.save()
 
-and re-run UpdateEvents a last time:
+    and re-run UpdateEvents a last time:
 
->>> res = ses.run(obj.do_update_events)
->>> res['success']
-True
->>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-======================== ===========
- When                     State
------------------------- -----------
- Mon 28/04/2014 (13:30)   Suggested
- Mon 05/05/2014 (13:30)   Suggested
- Mon 12/05/2014 (13:30)   Suggested
- Mon 19/05/2014 (13:30)   Suggested
- Mon 26/05/2014 (13:30)   Suggested
- Mon 02/06/2014 (13:30)   Suggested
- Mon 16/06/2014 (13:30)   Suggested
- Mon 23/06/2014 (13:30)   Suggested
-======================== ===========
-<BLANKLINE>
+    >>> res = ses.run(obj.do_update_events)
+    >>> res['success']
+    True
+    >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
+    ======================== ===========
+     When                     State
+    ------------------------ -----------
+     Mon 28/04/2014 (13:30)   Suggested
+     Mon 05/05/2014 (13:30)   Suggested
+     Mon 12/05/2014 (13:30)   Suggested
+     Mon 19/05/2014 (13:30)   Suggested
+     Mon 26/05/2014 (13:30)   Suggested
+     Mon 02/06/2014 (13:30)   Suggested
+     Mon 16/06/2014 (13:30)   Suggested
+     Mon 23/06/2014 (13:30)   Suggested
+    ======================== ===========
+    <BLANKLINE>
 
 
 Waiting things
