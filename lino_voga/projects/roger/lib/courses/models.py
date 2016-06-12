@@ -392,3 +392,10 @@ class MemberChecker(Checker):
 
 
 MemberChecker.activate()
+
+from lino_cosi.lib.ledger.utils import on_ledger_movement
+
+
+@dd.receiver(on_ledger_movement)
+def check_member_until(sender=None, instance=None, **kwargs):
+    MemberChecker.self.get_plausibility_problems(instance, fix=True)
