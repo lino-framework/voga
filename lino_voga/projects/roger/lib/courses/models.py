@@ -187,6 +187,12 @@ class PupilDetail(PupilDetail):
 
 
 Pupils.detail_layout = PupilDetail()
+Pupils.insert_layout = """
+first_name last_name
+gender language
+pupil_type section member_until
+is_lfv is_ckk is_raviva
+"""
 Pupils.params_layout = "aged_from aged_to gender "\
                        "show_members show_lfv show_ckk show_raviva"
 Pupils.column_names = (
@@ -386,3 +392,10 @@ class MemberChecker(Checker):
 
 
 MemberChecker.activate()
+
+from lino_cosi.lib.ledger.utils import on_ledger_movement
+
+
+@dd.receiver(on_ledger_movement)
+def check_member_until(sender=None, instance=None, **kwargs):
+    MemberChecker.self.get_plausibility_problems(instance, fix=True)

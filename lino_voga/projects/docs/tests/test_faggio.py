@@ -52,7 +52,7 @@ class QuickTest(RemoteAuthTestCase):
     def test01(self):
         # from lino.api.shell import courses, users, settings
         room = create(cal.Room, name="First Room")
-        et = create(cal.EventType, name="Lesson")
+        et = create(cal.EventType, name="Lesson", event_label="Lesson")
 
         line = create(courses.Line, name="First Line", event_type=et)
 
@@ -87,39 +87,37 @@ class QuickTest(RemoteAuthTestCase):
         expected = """\
 Update Events for First Line (10/01/2014 First Room)...
 Generating events between 2014-01-13 and 2019-06-15.
-Update Guests for Activity #1  1...
+Update Guests for Activity #1 Lesson 1...
 0 row(s) have been updated.
-Update Guests for Activity #1  2...
+Update Guests for Activity #1 Lesson 2...
 0 row(s) have been updated.
-Update Guests for Activity #1  3...
+Update Guests for Activity #1 Lesson 3...
 0 row(s) have been updated.
-Update Guests for Activity #1  4...
+Update Guests for Activity #1 Lesson 4...
 0 row(s) have been updated.
-Update Guests for Activity #1  5...
+Update Guests for Activity #1 Lesson 5...
 0 row(s) have been updated.
 5 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
         ar = ses.spawn(cal.EventsByController, master_instance=obj)
-        s = ar.to_rst(column_names="when_text state")
+        s = ar.to_rst(column_names="when_text state summary")
         # print s
         self.assertEqual(s, """\
-================ ===========
- When             State
----------------- -----------
- Mon 13/01/2014   Suggested
- Mon 20/01/2014   Suggested
- Mon 27/01/2014   Suggested
- Mon 03/02/2014   Suggested
- Mon 10/02/2014   Suggested
-================ ===========
+================ =========== ==========
+ When             State       Summary
+---------------- ----------- ----------
+ Mon 13/01/2014   Suggested   Lesson 1
+ Mon 20/01/2014   Suggested   Lesson 2
+ Mon 27/01/2014   Suggested   Lesson 3
+ Mon 03/02/2014   Suggested   Lesson 4
+ Mon 10/02/2014   Suggested   Lesson 5
+================ =========== ==========
 
 """)
 
-        """Now we want to skip the 2nd event.  We click on "Move next" on
-        this event.
+        # Now we want to skip the 2nd event.  We click on "Move next"
+        # on this event.
 
-        """
-        # e = cal.Event.objects.get(owner=obj, start_date=i2d(20140120))
         ar = cal.EventsByController.request(
             master_instance=obj,
             known_values=dict(
@@ -131,43 +129,19 @@ Update Guests for Activity #1  5...
 
         self.assertEqual(res['success'], True)
         expected = """\
-Move down for Activity #1  2...
+Move down for Activity #1 Lesson 2...
+Generating events between 2014-01-13 and 2019-06-15.
+2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
 1 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
+
+        # The event is now in state "draft" because it has been
+        # modified by the user.
 
         self.assertEqual(e.state, cal.EventStates.draft)
         e.full_clean()
         e.save()
         
-        ar = ses.spawn(cal.EventsByController, master_instance=obj)
-        s = ar.to_rst(column_names="when_text state")
-        # print s
-        self.assertEqual(s, """\
-================ ===========
- When             State
----------------- -----------
- Mon 13/01/2014   Suggested
- Mon 27/01/2014   Draft
- Mon 27/01/2014   Suggested
- Mon 03/02/2014   Suggested
- Mon 10/02/2014   Suggested
-================ ===========
-
-""")
-
-
-        """Run do_update_events a second time
-
-        """
-
-        res = ses.run(obj.do_update_events)
-        self.assertEqual(res['success'], True)
-        expected = """\
-Update Events for First Line (10/01/2014 First Room)...
-Generating events between 2014-01-13 and 2019-06-15.
-2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
-5 row(s) have been updated."""
-        self.assertEqual(res['info_message'], expected)
         ar = ses.spawn(cal.EventsByController, master_instance=obj)
         s = ar.to_rst(column_names="when_text state")
         # print s

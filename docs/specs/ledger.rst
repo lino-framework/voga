@@ -20,11 +20,12 @@ Journals
 --------
 
 >>> ses = settings.SITE.login('robin')
->>> ses.show(ledger.Journals,column_names="ref name trade_type account dc")
+>>> ses.show(ledger.Journals, column_names="ref name trade_type account dc")
 =========== =============================== ============ ====================================== ===========================
  Reference   Designation                     Trade type   Account                                Primary booking direction
 ----------- ------------------------------- ------------ -------------------------------------- ---------------------------
  SLS         Sales invoices                  Sales                                               Debit
+ SLC         Sales credit notes              Sales                                               Credit
  PRC         Purchase invoices               Purchases                                           Credit
  PMO         Payment Orders                  Purchases    (bestbankpo) Payment Orders Bestbank   Credit
  CSH         Cash                                         (cash) Cash                            Debit
@@ -52,3 +53,4 @@ Journals
  vatdcl           VAT to declare            Running transactions
 ================ ========================= ==========================
 <BLANKLINE>
+

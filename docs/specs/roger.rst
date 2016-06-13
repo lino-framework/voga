@@ -12,14 +12,21 @@ Specific for Lino Voga à la Roger
     >>> startup('lino_voga.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
 
-In :mod:`lino_voga.projects.roger` they have the following rules about
-"membership":
 
-- Members get a discount on enrolments, nothing else
+A customized management of membership fees
+==========================================
+
+In :mod:`lino_voga.projects.roger` they have the following rules for
+handling memberships:
+
+- Membership costs 15€  per year.
+- Members get a discount on enrolments to courses.
 - Customers can freely decide whether they want to be members or not.
-  They become member by paying the membership fee.
-- They have a field :attr:`member_until
-  <lino_voga.projects.roger.lib.courses.models.Pupil.member_until>`
+- They become member by paying the membership fee.
+
+To handle these rules, we have an additional field :attr:`member_until
+<lino_voga.projects.roger.lib.courses.models.Pupil.member_until>` on
+each pupil.
 
 There is a custom plausibility checker
 :class:`lino_voga.projects.roger.lib.courses.models.MemberChecker`
