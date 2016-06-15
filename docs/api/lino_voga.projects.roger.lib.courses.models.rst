@@ -5,6 +5,12 @@ lino_voga.projects.roger.lib.courses.models
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      check_member_until
+   
    
 
    
@@ -16,6 +22,7 @@ lino_voga.projects.roger.lib.courses.models
       Course
       CourseDetail
       Line
+      MemberChecker
       PrintPresenceSheet
       Pupil
       PupilDetail

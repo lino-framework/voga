@@ -38,7 +38,7 @@ class Booking(Booking, Invoiceable):
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):
         qs = cls.objects.filter(**{
-            cls.invoiceable_date_field + '__lte': plan.max_date})
+            cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
 
         if partner:
             company = get_child(partner, rt.modules.contacts.Company)
@@ -49,7 +49,10 @@ class Booking(Booking, Invoiceable):
         for obj in qs.order_by(cls.invoiceable_date_field):
             yield obj
 
-    def get_invoiceable_product(self):
+    def get_invoiceable_product(self, plan):
+        max_date = plan.max_date or plan.today
+        if self.start_date > max_date:
+            return
         if self.company and self.room:
             # if self.get_invoicings().count() > 0:
             if self.invoicings.count() > 0:

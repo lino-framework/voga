@@ -25,22 +25,21 @@ from lino.core.roles import UserRole, SiteAdmin, SiteStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
 from lino_cosi.lib.sepa.roles import SepaStaff
+from lino.modlib.plausibility.roles import PlausibilityUser
 
 
-class SiteUser(OfficeUser, LedgerUser):
+class SiteUser(OfficeUser, LedgerUser, PlausibilityUser):
     pass
 
 
-class SiteAdmin(SiteAdmin, OfficeStaff, LedgerStaff, SepaStaff):
+class Secretary(SiteUser, SiteStaff):
     pass
 
 
-class Developer(SiteStaff):
+class SiteAdmin(SiteAdmin, OfficeStaff, LedgerStaff, SepaStaff,
+                PlausibilityUser):
     pass
 
-
-class SeniorDeveloper(Developer):
-    pass
 
 from django.utils.translation import ugettext_lazy as _
 from lino.modlib.users.choicelists import UserProfiles
@@ -48,6 +47,5 @@ UserProfiles.clear()
 add = UserProfiles.add_item
 add('000', _("Anonymous"), UserRole, name='anonymous', readonly=True)
 add('100', _("User"), SiteUser, name='user')
-add('500', _("Developer"), Developer, name='developer')
-add('510', _("Senior Developer"), SeniorDeveloper, name='senior')
+add('200', _("Secretary"), Secretary, name='secretary')
 add('900', _("Administrator"), SiteAdmin, name='admin')

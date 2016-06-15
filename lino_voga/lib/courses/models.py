@@ -33,9 +33,11 @@ import datetime
 import six
 
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import pgettext_lazy as pgettext
 from lino.utils.mti import get_child
 from lino.api import dd, rt
 
+from lino.mixins import Referrable
 from lino.modlib.printing.mixins import Printable
 from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
@@ -155,7 +157,7 @@ class CourseToXls(CustomBuildMethod):
         wb.save(target)
 
 
-class TeacherType(mixins.Referrable, mixins.BabelNamed, Printable):
+class TeacherType(Referrable, mixins.BabelNamed, Printable):
 
     class Meta:
         app_label = 'courses'
@@ -199,7 +201,7 @@ class Teacher(Person):
         return self.get_full_name(salutation=False)
 
 
-class PupilType(mixins.Referrable, mixins.BabelNamed, Printable):
+class PupilType(Referrable, mixins.BabelNamed, Printable):
 
     class Meta:
         app_label = 'courses'
@@ -267,7 +269,7 @@ class Pupil(Person):
 #             state=EnrolmentStates.confirmed)]
 
 
-class CourseType(mixins.Referrable, mixins.BabelNamed):
+class CourseType(Referrable, mixins.BabelNamed):
 
     class Meta:
         app_label = 'courses'
@@ -303,8 +305,47 @@ Lines.detail_layout = """
     """
 
 
-class Course(Course):
+@dd.python_2_unicode_compatible
+class Course(Referrable, Course):
     """Extends the standard model by adding a field :attr:`fee`.
+
+    Also adds a :attr:`ref` field and defines a custom :meth:`__str__`
+    method.
+
+    The custom :meth:`__str__` method defines how to textually
+    represent a course e.g. in the dropdown list of a combobox or in
+    reports. Rules:
+
+    - If :attr:`ref` is given, it is shown, but see also the two
+      following cases.
+
+    - If :attr:`name` is given, it is shown (possibly behind the
+      :attr:`ref`).
+
+    - If a :attr:`line` (series) is given, it is shown (possibly
+      behind the :attr:`ref`).
+
+    - If neither :attr:`ref` nor :attr:`name` nor :attr:`line` are
+      given, show a simple "Course #".
+
+
+    .. attribute:: ref
+    
+        An identifying public course number to be used by both
+        external and internal partners for easily referring to a given
+        course.
+
+    .. attribute:: name
+
+        A short designation for this course. An extension of the
+        :attr:`ref`.
+
+    .. attribute:: line
+
+        Pointer to the course series.
+
+
+
 
     .. attribute:: fee
 
@@ -322,6 +363,8 @@ class Course(Course):
                         verbose_name=_("Default participation fee"),
                         related_name='courses_by_fee')
 
+    quick_search_fields = 'name line__name line__topic__name ref'
+
     # course2xls = CourseToXls.create_action()
 
     @classmethod
@@ -337,6 +380,24 @@ class Course(Course):
             return Product.objects.none()
         return Product.objects.filter(cat=line.fees_cat)
 
+    def __str__(self):
+        if self.name:
+            if self.ref:
+                return "{0} {1}".format(self.ref, self.name)
+            return self.name
+        if self.ref:
+            if self.line:
+                return "{0} {1}".format(self.ref, self.line)
+            return self.ref
+        # Note that we cannot use super() with
+        # python_2_unicode_compatible
+        return "{0} #{1}".format(self._meta.verbose_name, self.pk)
+
+    def update_cal_summary(self, i):
+        label = dd.babelattr(self.line.event_type, 'event_label')
+        if self.ref:
+            label = self.ref + ' ' + label
+        return "%s %d" % (label, i)
 
 # class CreateInvoiceForEnrolment(CreateInvoice):
 
@@ -350,7 +411,7 @@ class InvoicingInfo(object):
     used_events = []
     invoicings = None
 
-    def __init__(self, enr):
+    def __init__(self, enr, max_date):
         self.enrolment = enr
         fee = enr.fee
         # fee = enr.course.fee or enr.course.line.fee
@@ -369,6 +430,8 @@ class InvoicingInfo(object):
                    if not s.editable]
         # self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
         self.invoicings = enr.invoicings.filter(voucher__state__in=vstates)
+        if enr.free_events:
+            self.invoiced_events += enr.free_events
         for obj in self.invoicings:
             if obj.product is not None:
                 self.invoiced_qty += obj.qty
@@ -385,6 +448,7 @@ class InvoicingInfo(object):
                 return
             qs = enr.course.events_by_course.filter(
                 start_date__gte=start_date,
+                end_date__lte=max_date,
                 state=rt.models.cal.EventStates.took_place)
             if enr.end_date:
                 qs = qs.filter(end_date__lte=enr.end_date)
@@ -453,6 +517,10 @@ class Enrolment(Enrolment, Invoiceable):
 
         The participation fee to apply for this enrolment.
 
+    .. attribute:: free_events
+
+        Number of events to add for first invoicing for this
+        enrolment.
 
     .. attribute:: amount
 
@@ -489,8 +557,14 @@ class Enrolment(Enrolment, Invoiceable):
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
-                        verbose_name=_("Participation fee"),
+                        # verbose_name=_("Participation fee"),
                         related_name='enrolments_by_fee')
+
+    free_events = models.IntegerField(
+        pgettext("in an enrolment", "Free events"),
+        null=True, blank=True,
+        help_text=_("Number of events to add for first invoicing "
+                    "for this enrolment."))
 
     # create_invoice = CreateInvoiceForEnrolment()
 
@@ -505,7 +579,7 @@ class Enrolment(Enrolment, Invoiceable):
     def get_invoiceables_for_plan(cls, plan, partner=None):
 
         qs = cls.objects.filter(**{
-            cls.invoiceable_date_field + '__lte': plan.max_date})
+            cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
         if plan.course is not None:
             qs = qs.filter(course__id=plan.course.id)
         else:
@@ -513,7 +587,7 @@ class Enrolment(Enrolment, Invoiceable):
         if partner is None:
             partner = plan.partner
         if partner:
-            pupil = get_child(partner, rt.modules.courses.Pupil)
+            pupil = get_child(partner, rt.models.courses.Pupil)
             # pupil = partner.get_mti_child('pupil')
             if pupil:  # isinstance(partner, rt.modules.courses.Pupil):
                 q1 = models.Q(
@@ -539,6 +613,10 @@ class Enrolment(Enrolment, Invoiceable):
             self.fee_id = self.course.fee_id
             if self.fee_id is None and self.course.line_id is not None:
                 self.fee_id = self.course.line.fee_id
+        # if self.number_of_events is None:
+        #     if self.fee_id and self.fee.number_of_events:
+        #         self.number_of_events = self.fee.number_of_events
+        #     self.number_of_events = self.course.max_events
         if self.amount is None:
             self.compute_amount()
         super(Enrolment, self).full_clean(*args, **kwargs)
@@ -549,8 +627,17 @@ class Enrolment(Enrolment, Invoiceable):
     def places_changed(self, ar):
         self.compute_amount()
 
-    def fee_changed(self, ar):
-        self.compute_amount()
+    # def fee_changed(self, ar):
+    #     if self.fee_id is not None:
+    #         self.number_of_events = self.fee.number_of_events
+    #     self.compute_amount()
+
+    # def get_number_of_events(self):
+    #     if self.number_of_events is not None:
+    #         return self.number_of_events
+    #     if self.fee_id and self.fee.number_of_events:
+    #         return self.fee.number_of_events
+    #     return self.course.max_events or 0
 
     def get_invoiceable_amount(self):
         return self.amount
@@ -570,15 +657,15 @@ class Enrolment(Enrolment, Invoiceable):
         except TypeError as e:
             logger.warning("%s * %s -> %s", price, self.places, e)
 
-    def get_invoicing_info(self):
-        return InvoicingInfo(self)
+    def get_invoicing_info(self, max_date):
+        return InvoicingInfo(self, max_date)
 
     def get_invoiceable_title(self, invoice):
         title = _("{enrolment} to {course}").format(
             enrolment=self.__class__._meta.verbose_name,
             course=self.course)
         if self.fee.number_of_events:
-            info = self.get_invoicing_info()
+            info = self.get_invoicing_info(invoice.voucher_date)
             number = info.invoice_number(invoice)
             if number > 1:
                 msg = _("[{number}] Renewal {title}")
@@ -595,13 +682,16 @@ class Enrolment(Enrolment, Invoiceable):
             None, 'courses/Enrolment/item_description.html',
             obj=self, item=item)
 
-    def get_invoiceable_product(self):
+    def get_invoiceable_product(self, plan):
         # dd.logger.info('20160223 %s', self.course)
         if not self.course.state.invoiceable:
             return
         if not self.state.invoiceable:
             return
-        return self.get_invoicing_info().invoiceable_fee
+        max_date = plan.max_date or plan.today
+        if self.start_date and self.start_date > max_date:
+            return
+        return self.get_invoicing_info(max_date).invoiceable_fee
 
     @dd.virtualfield(dd.HtmlBox(_("Participant")))
     def pupil_info(self, ar):
@@ -628,12 +718,12 @@ class Enrolment(Enrolment, Invoiceable):
 
     @dd.displayfield(_("Invoicing info"))
     def invoicing_info(self, ar):
-        info = self.get_invoicing_info()
+        info = self.get_invoicing_info(dd.today())
         return info.as_html(ar)
 
     @dd.displayfield(_("Payment info"))
     def payment_info(self, ar):
-        return rt.modules.ledger.Movement.balance_info(
+        return rt.models.ledger.Movement.balance_info(
             DEBIT, partner=self.pupil, cleared=False)
         
 
@@ -646,7 +736,7 @@ class Enrolment(Enrolment, Invoiceable):
 
 Enrolments.detail_layout = """
 id course pupil request_date user
-start_date end_date places fee option amount
+start_date end_date places:8 fee free_events:8 #option amount
 remark workflow_buttons printed invoicing_info
 confirmation_details invoicing.InvoicingsByInvoiceable
 """
@@ -679,7 +769,7 @@ class EnrolmentsByCourse(EnrolmentsByCourse):
     """
     # variable_row_height = True
     column_names = 'request_date pupil start_date end_date '\
-                   'places remark fee option amount ' \
+                   'places:8 remark fee free_events:8 #option amount ' \
                    'workflow_buttons *'
 
     # column_names = 'request_date pupil_info places ' \
@@ -690,7 +780,7 @@ class EnrolmentsByFee(EnrolmentsByCourse):
     label = _("Enrolments using this fee")
     master_key = "fee"
     column_names = 'course request_date pupil_info start_date end_date '\
-                   'places remark option amount *'
+                   'places remark free_events #option amount *'
 
 
 class PupilDetail(MyPersonDetail):
@@ -700,7 +790,7 @@ class PupilDetail(MyPersonDetail):
     personal = 'pupil_type'
 
     courses = dd.Panel("""
-    courses.SuggestedCoursesByPupil
+    # courses.SuggestedCoursesByPupil
     courses.EnrolmentsByPupil
     """, label=dd.plugins.courses.verbose_name)
 
@@ -866,6 +956,7 @@ if False:
             return Place.objects.filter(id__in=places)
 
     class SuggestedCoursesByPupil(SuggestedCoursesByPupil):
+        button_text = _("Suggestions")
         params_layout = 'topic line city teacher active'
 
         @classmethod

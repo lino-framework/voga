@@ -30,6 +30,9 @@ class SpecsTests(BaseTestCase):
     def test_checkdata(self):
         return self.run_simple_doctests('docs/specs/checkdata.rst')
 
+    def test_profiles(self):
+        return self.run_simple_doctests('docs/specs/profiles.rst')
+
     def test_roger(self):
         return self.run_simple_doctests('docs/specs/roger.rst')
 
