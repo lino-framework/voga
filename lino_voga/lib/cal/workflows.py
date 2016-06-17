@@ -44,42 +44,41 @@ def my_event_workflows(sender=None, **kw):
 
     GuestStates.present.add_transition(
         # "\u2611",  # BALLOT BOX WITH CHECK
-        required_states='invited',
-        help_text=_("Participant was present."))
+        required_states='invited')
+        # help_text=_("Participant was present."))
 
     GuestStates.absent.add_transition(
         # "☉",  # 2609 SUN
-        required_states='invited',
-        help_text=_("Participant was absent."))
+        required_states='invited')
+        # help_text=_("Participant was absent."))
 
     GuestStates.excused.add_transition(
         # "⚕",  # 2695
-        required_states='invited',
-        help_text=_("Participant was excused."))
+        required_states='invited')
+        # help_text=_("Participant was excused."))
 
     GuestStates.invited.add_transition(
         # "☐",  # BALLOT BOX \u2610
-        required_states='absent present excused',
-        help_text=_("Reset state to invited."))
-
+        required_states='absent present excused')
+        # help_text=_("Reset state to invited."))
 
     # sender.modules.cal.Event.find_next_date = FindNextDate()
 
     EventStates.suggested.add_transition(
         # "?",
         # _("Reset"),
-        required_states='draft took_place cancelled',
-        help_text=_("Set to suggested state."))
+        required_states='draft took_place cancelled')
+        # help_text=_("Set to suggested state."))
 
     EventStates.draft.add_transition(
         # "\u2610",  # BALLOT BOX
-        required_states='suggested took_place cancelled',
-        help_text=_("Set to draft state."))
+        required_states='suggested took_place cancelled')
+        # help_text=_("Set to draft state."))
 
     EventStates.took_place.add_transition(
         # "\u2611",  # BALLOT BOX WITH CHECK
-        required_states='suggested draft cancelled',
-        help_text=_("Event took place."))
+        required_states='suggested draft cancelled')
+        # help_text=_("Event took place."))
         #icon_name='emoticon_smile')
     #~ EventStates.absent.add_transition(states='published',icon_file='emoticon_unhappy.png')
     #~ EventStates.rescheduled.add_transition(_("Reschedule"),
@@ -88,7 +87,7 @@ def my_event_workflows(sender=None, **kw):
         # "\u2609",  # SUN
         # pgettext("calendar event action", "Cancel"),
         #~ owner=True,
-        help_text=_("Event was cancelled."),
+        # help_text=_("Event was cancelled."),
         required_states='suggested draft took_place')
         # icon_name='cross')
     # EventStates.omitted.add_transition(

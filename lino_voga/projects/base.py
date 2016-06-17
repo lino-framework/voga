@@ -34,7 +34,7 @@ class Site(Site):
 
     user_profiles_module = 'lino_voga.lib.voga.roles'
 
-    demo_fixtures = 'std minimal_ledger demo demo_bookings buche voga checkdata demo2'.split()
+    demo_fixtures = 'std minimal_ledger demo demo_bookings voga checkdata demo2'.split()
 
     languages = 'en de et'
 

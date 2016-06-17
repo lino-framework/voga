@@ -13,8 +13,7 @@ lino_voga.lib.voga.roles
 
    .. autosummary::
    
-      Developer
-      SeniorDeveloper
+      Secretary
       SiteAdmin
       SiteUser
    

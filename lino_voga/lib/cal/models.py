@@ -103,7 +103,10 @@ class Event(Event):
     invoiceable_date_field = 'start_date'
     invoiceable_partner_field = 'company'
 
-    def get_invoiceable_product(self):
+    def get_invoiceable_product(self, plan):
+        max_date = plan.max_date or plan.today
+        if self.start_date > max_date:
+            return
         if self.company and self.room:
             return self.room.fee
 

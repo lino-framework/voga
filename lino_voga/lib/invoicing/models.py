@@ -43,7 +43,7 @@ class Plan(Plan):
     course = dd.ForeignKey('courses.Course', blank=True, null=True)
 
 
-Plans.detail_layout = """user journal max_date today
+Plans.detail_layout = """user journal today max_date
     partner course
     invoicing.ItemsByPlan
     """

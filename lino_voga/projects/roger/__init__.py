@@ -24,6 +24,7 @@ The Lino Voga variant named "Roger".
 
     lib
     settings
+    settings.fixtures.voga
     test
 
 """

@@ -26,7 +26,6 @@ from __future__ import unicode_literals
 import logging
 logger = logging.getLogger(__name__)
 
-
 from lino.utils.instantiator import Instantiator, i2d
 from lino.utils import Cycler
 from django.utils.translation import ugettext_lazy as _
@@ -34,16 +33,17 @@ from django.conf import settings
 from atelier.utils import date_offset
 from lino.api import dd, rt
 
-DATE_STORIES = Cycler([
-    (-20, -13),
-    (-10, None),
-    (-1, None),
-    (7, None),
-    (8, None),
-    (18, None),
-    (12, None),
-    (None, -20),
-    (None, -10)
+ENROLMENT_STORIES = Cycler([
+    [(-20, -13)],
+    [(-10, None)],
+    [(-1, None)],
+    [(7, None)],
+    [(8, None)],
+    [(18, None)],
+    [(12, None)],
+    [(None, -20)],
+    [(None, -10)],
+    [(None, 3*7), (7*7, None)]
 ])
 
 
@@ -272,7 +272,10 @@ class Loader2(Loader1):
             kw.update(user=USERS.pop())
             kw.update(teacher=TEACHERS.pop())
             #~ kw.update(price=PRICES.pop())
-            return course(*args, **kw)
+            obj = course(*args, **kw)
+            if obj.line.fee.number_of_events:
+                obj.max_events = None
+            return obj
 
         Product = rt.modules.products.Product
         ProductCat = rt.modules.products.ProductCat
@@ -455,9 +458,10 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=10)
         kw.update(max_places=30)
-        kw.update(start_date=demo_date(-10))
+        kw.update(start_date=demo_date(-310))
         kw.update(state=CourseStates.active)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
+        kw.update(start_date=demo_date(-110))
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
 
         obj = line(medit, self.kurse, self.PRICES.pop(), name="Yoga")
@@ -503,24 +507,37 @@ class Loader2(Loader1):
         #~ print 20130712, Pupil.objects.all()
         COURSES = Cycler(Course.objects.filter(line__fee__isnull=False))
         STATES = Cycler(EnrolmentStates.objects())
+        FREE_EVENTS = Cycler([3, 2, 5, -2])
 
         for i in range(200):
             course = COURSES.pop()
+
+            def dateoffset(offset, *args, **kwargs):
+                return date_offset(course.start_date, *args, **kwargs)
             kw = dict(
-                user=USERS.pop(), course=course,
-                pupil=PUPILS.pop())
-            kw.update(request_date=demo_date(-i))
-            kw.update(state=STATES.pop())
+                user=USERS.pop(), course=course, pupil=PUPILS.pop())
             #~ print 20130712, kw
-            obj = Enrolment(**kw)
-            obj.full_clean()
-            sd, ed = DATE_STORIES.pop()
-            if sd is not None:
-                obj.start_date = demo_date(sd)
-            if ed is not None:
-                obj.end_date = demo_date(ed)
-            if obj.fee.number_of_events:
-                obj.state = EnrolmentStates.confirmed
+            story = ENROLMENT_STORIES.pop()
+            for sd, ed in story:
+                kw.update(state=STATES.pop())
+                # most enrolments are requested in the range 3 weeks
+                # before until 1 week after start date of course:
+                kw.update(request_date=dateoffset(i % 28 - 7))
+                obj = Enrolment(**kw)
+                obj.full_clean()
+                if sd is not None:
+                    obj.start_date = dateoffset(sd)
+                    obj.request_date = obj.start_date
+                if ed is not None:
+                    obj.end_date = dateoffset(ed)
+                if obj.fee.number_of_events:
+                    obj.state = EnrolmentStates.confirmed
+                if i % 9 == 0:
+                    obj.free_events = FREE_EVENTS.pop()
+                yield obj
+
+        for obj in Course.objects.filter(ref__isnull=True):
+            obj.ref = "%03d" % obj.id
             yield obj
 
         ses = settings.SITE.login()
@@ -531,6 +548,15 @@ class Loader2(Loader1):
                 if not rc.get('success', False):
                     raise Exception("update_reminders on %s returned %s" %
                                     (obj, rc))
+
+        Event = rt.models.cal.Event
+        EventStates = rt.models.cal.EventStates
+        qs = Event.objects.filter(
+            start_date__lt=dd.demo_date()).order_by('id')
+        for i, e in enumerate(qs):
+            if i % 8:
+                e.state = EventStates.took_place
+                yield e
 
         # n = 0
         # for p in Partner.objects.all():
