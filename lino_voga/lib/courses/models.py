@@ -411,8 +411,9 @@ class InvoicingInfo(object):
     used_events = []
     invoicings = None
 
-    def __init__(self, enr, max_date):
+    def __init__(self, enr, max_date=None):
         self.enrolment = enr
+        self.max_date = max_date or dd.today()
         fee = enr.fee
         # fee = enr.course.fee or enr.course.line.fee
         if not fee:
@@ -448,10 +449,13 @@ class InvoicingInfo(object):
                 return
             qs = enr.course.events_by_course.filter(
                 start_date__gte=start_date,
-                end_date__lte=max_date,
+                start_date__lte=self.max_date,
                 state=rt.models.cal.EventStates.took_place)
             if enr.end_date:
-                qs = qs.filter(end_date__lte=enr.end_date)
+                qs = qs.filter(start_date__lte=enr.end_date)
+            # Note that this query works only on the start_date of
+            # events. If we want to filter on end_date, then don't
+            # forget this field can be empty.
             self.used_events = qs.order_by('start_date')
             # print("20160414 c", self.used_events)
             # used_events = qs.count()
@@ -505,7 +509,7 @@ class InvoicingInfo(object):
         n = 1
         for item in self.invoicings:
             n += 1
-            if item.voucher.id == voucher.id:
+            if voucher and item.voucher.id == voucher.id:
                 break
         return n
 
@@ -546,6 +550,7 @@ class Enrolment(Enrolment, Invoiceable):
     """
 
     invoiceable_date_field = 'request_date'
+    _invoicing_info = None
 
     class Meta:
         app_label = 'courses'
@@ -657,15 +662,18 @@ class Enrolment(Enrolment, Invoiceable):
         except TypeError as e:
             logger.warning("%s * %s -> %s", price, self.places, e)
 
-    def get_invoicing_info(self, max_date):
-        return InvoicingInfo(self, max_date)
+    def get_invoicing_info(self, max_date=None):
+        if self._invoicing_info is None:
+            self._invoicing_info = InvoicingInfo(self, max_date)
+        # assert self._invoicing_info.max_date == max_date
+        return self._invoicing_info
 
-    def get_invoiceable_title(self, invoice):
+    def get_invoiceable_title(self, invoice=None):
         title = _("{enrolment} to {course}").format(
             enrolment=self.__class__._meta.verbose_name,
             course=self.course)
         if self.fee.number_of_events:
-            info = self.get_invoicing_info(invoice.voucher_date)
+            info = self.get_invoicing_info()
             number = info.invoice_number(invoice)
             if number > 1:
                 msg = _("[{number}] Renewal {title}")

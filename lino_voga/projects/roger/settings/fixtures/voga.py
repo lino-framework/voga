@@ -34,16 +34,12 @@ from atelier.utils import date_offset
 from lino.api import dd, rt
 
 ENROLMENT_STORIES = Cycler([
-    [(-20, -13)],
-    [(-10, None)],
-    [(-1, None)],
-    [(7, None)],
-    [(8, None)],
-    [(18, None)],
-    [(12, None)],
-    [(None, -20)],
-    [(None, -10)],
-    [(None, 3*7), (7*7, None)]
+    [(-20, None, None)],  # early enrolment
+    [(-5, None, None)],  # normal enrolment
+    [(-5, None, 5*7)],  # stops after 5 weeks
+    [(None, None, None)],  # last minute enrolment (same day)
+    [(15, 15, None)],  # starts after second week
+    [(None, None, 3*7), (None, 7*7, None)]  # interrupts for 4 weeks
 ])
 
 
@@ -134,8 +130,14 @@ class Loader1(object):
             vat_class=VatClasses.normal).build
         yield product("20", self.course_fees, "20€")
         yield product(
-            "50", self.course_fees, "50€/12 hours",
+            "48", self.course_fees, "48€/8 hours",
+            number_of_events=8, min_asset=2)
+        yield product(
+            "64", self.course_fees, "64€/12 hours",
             number_of_events=12, min_asset=4)
+        yield product(
+            "50", self.course_fees, "50€/5 hours",
+            number_of_events=5, min_asset=1)
         yield product("80", self.course_fees, "80€")
 
         rent20 = product("20", rent, "Spiegelraum Eupen")
@@ -336,7 +338,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=3)
-        kw.update(start_date=demo_date(-30))
+        kw.update(start_date=demo_date(-430))
         kw.update(state=courses.CourseStates.active)
         kw.update(every=1)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
@@ -374,7 +376,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=4)
-        kw.update(start_date=demo_date(10))
+        kw.update(start_date=demo_date(-210))
         kw.update(state=courses.CourseStates.active)
         yield add_course(obj, self.pc_bbach, "13:30", "15:00",
                          monday=True, **kw)
@@ -390,7 +392,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=8)
         kw.update(max_places=10)
-        kw.update(start_date=demo_date(20))
+        kw.update(start_date=demo_date(-420))
         kw.update(state=CourseStates.active)
         yield add_course(obj, self.spiegel, "19:00", "20:00",
                          wednesday=True, **kw)
@@ -404,7 +406,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=10, state=CourseStates.active)
         kw.update(max_places=5)
-        kw.update(start_date=demo_date(-10))
+        kw.update(start_date=demo_date(-230))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
 
@@ -415,7 +417,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=10, state=CourseStates.active)
         kw.update(max_places=20)
-        kw.update(start_date=demo_date(-100))
+        kw.update(start_date=demo_date(50))
         yield add_course(obj, self.spiegel, "11:00", "12:00", monday=True, **kw)
         yield add_course(obj, self.spiegel, "13:30", "14:30", monday=True, **kw)
         yield add_course(obj, self.pc_stvith, "11:00", "12:00", tuesday=True, **kw)
@@ -441,7 +443,7 @@ class Loader2(Loader1):
                    name="GuoLin-Qigong")
         yield obj
         kw = dict(max_events=10)
-        kw.update(start_date=demo_date(-10))
+        kw.update(start_date=demo_date(-310))
         kw.update(state=CourseStates.active)
         yield add_course(obj, self.spiegel, "18:00", "19:30",
                          monday=True, **kw)
@@ -458,7 +460,7 @@ class Loader2(Loader1):
         yield obj
         kw = dict(max_events=10)
         kw.update(max_places=30)
-        kw.update(start_date=demo_date(-310))
+        kw.update(start_date=demo_date(-610))
         kw.update(state=CourseStates.active)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
         kw.update(start_date=demo_date(-110))
@@ -467,11 +469,18 @@ class Loader2(Loader1):
         obj = line(medit, self.kurse, self.PRICES.pop(), name="Yoga")
         yield obj
         kw = dict(max_events=10)
-        kw.update(start_date=demo_date(60))
+        kw.update(start_date=demo_date(-560))
         kw.update(max_places=20)
         kw.update(state=CourseStates.active)
         yield add_course(obj, self.konf, "18:00", "19:30", monday=True, **kw)
         yield add_course(obj, self.konf, "19:00", "20:30", friday=True, **kw)
+
+        for obj in Course.objects.filter(ref__isnull=True):
+            if obj.line.fee.number_of_events:
+                obj.ref = "%03dC" % obj.id
+            else:
+                obj.ref = "%03d" % obj.id
+            yield obj
 
         EXTS = Cycler(self.ext1, self.ext2)
 
@@ -490,7 +499,7 @@ class Loader2(Loader1):
         #~ yield obj
         kw = dict(max_events=10)
         kw.update(every_unit=cal.Recurrencies.per_weekday)
-        kw.update(start_date=demo_date(60))
+        kw.update(start_date=demo_date(160))
         kw.update(state=BookingStates.registered)
         kw.update(company=COMPANIES.pop())
         yield add_booking(self.konf, "20:00", "22:00", tuesday=True, **kw)
@@ -503,42 +512,53 @@ class Loader2(Loader1):
         kw.update(every_unit=cal.Recurrencies.once)
         yield add_booking(self.konf, "10:00", "14:00", **kw)
 
-        PUPILS = Cycler(Pupil.objects.all())
+        # PUPILS = Cycler()
         #~ print 20130712, Pupil.objects.all()
-        COURSES = Cycler(Course.objects.filter(line__fee__isnull=False))
-        STATES = Cycler(EnrolmentStates.objects())
+        COURSES = Cycler(Course.objects.filter(
+            line__fee__isnull=False).order_by('room__company__city'))
+        # STATES = Cycler(EnrolmentStates.objects())
         FREE_EVENTS = Cycler([3, 2, 5, -2])
+        
+        n = 0
+        for pupil in Pupil.objects.order_by('id'):
+            for i in range(pupil.id % 6):
+                n += 1
+                # every pupil can be in up to 5 courses. That's a bit
+                # unrealistic, but we have 25 courses and 50
+                # participants and want to have
+                course = COURSES.pop()
 
-        for i in range(200):
-            course = COURSES.pop()
+                def coursedate(*args, **kwargs):
+                    return date_offset(course.start_date, *args, **kwargs)
 
-            def dateoffset(offset, *args, **kwargs):
-                return date_offset(course.start_date, *args, **kwargs)
-            kw = dict(
-                user=USERS.pop(), course=course, pupil=PUPILS.pop())
-            #~ print 20130712, kw
-            story = ENROLMENT_STORIES.pop()
-            for sd, ed in story:
-                kw.update(state=STATES.pop())
-                # most enrolments are requested in the range 3 weeks
-                # before until 1 week after start date of course:
-                kw.update(request_date=dateoffset(i % 28 - 7))
-                obj = Enrolment(**kw)
-                obj.full_clean()
-                if sd is not None:
-                    obj.start_date = dateoffset(sd)
-                    obj.request_date = obj.start_date
-                if ed is not None:
-                    obj.end_date = dateoffset(ed)
-                if obj.fee.number_of_events:
-                    obj.state = EnrolmentStates.confirmed
-                if i % 9 == 0:
-                    obj.free_events = FREE_EVENTS.pop()
-                yield obj
+                kw = dict(user=USERS.pop(), course=course, pupil=pupil)
+                #~ print 20130712, kw
+                story = ENROLMENT_STORIES.pop()
+                assert isinstance(story, list)
+                for rd, sd, ed in story:
+                    # kw.update(state=STATES.pop())
+                    # enrolments are requested from 3 weeks before until 1
+                    # week after start date of course:
+                    # kw.update(request_date=coursedate(i % 28 - 7))
+                    kw.update(request_date=coursedate(rd))
 
-        for obj in Course.objects.filter(ref__isnull=True):
-            obj.ref = "%03d" % obj.id
-            yield obj
+                    obj = Enrolment(**kw)
+                    obj.full_clean()
+                    if sd is not None:
+                        obj.start_date = coursedate(sd)
+                        # obj.request_date = obj.start_date
+                    if ed is not None:
+                        obj.end_date = coursedate(ed)
+                    if n % 10 == 0:
+                        obj.state = EnrolmentStates.requested
+                    elif n % 13 == 0:
+                        obj.state = EnrolmentStates.cancelled
+                    else:
+                        obj.state = EnrolmentStates.confirmed
+                    if n % 9 == 0:
+                        if course.line.fee.number_of_events:
+                            obj.free_events = FREE_EVENTS.pop()
+                    yield obj
 
         ses = settings.SITE.login()
 

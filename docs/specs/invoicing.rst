@@ -1,5 +1,6 @@
 .. _voga.specs.invoicing:
 
+================================
 How Lino Voga generates invoices
 ================================
 
@@ -24,8 +25,9 @@ On the user-visible level this plugin adds
 and a :class:`StartInvoicing
 <lino_cosi.lib.invoicing.actions.StartInvoicing>` 
 action (with a basket as icon, referring to a shopping basket) 
-at three places: 
+at four places: 
 
+- as a menu command :menuselection:`Accounting --> Create invoices`
 - on every *partner* (generate invoices for this partner)
 - on every *course* (generate invoices for all enrolments of this
   course)
@@ -45,55 +47,8 @@ indirectly defined by the :attr:`voucher_model
 >>> vt.table_class.start_invoicing
 <StartInvoicingForJournal start_invoicing ('Create invoices')>
 
-
-
-The demo database contains exactly one plan:
-
->>> obj = rt.modules.invoicing.Plan.objects.all()[0]
-
->>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
-===================== =================================== ========= ============== =================
- Selected              Partner                             Number    Amount         Product invoice
---------------------- ----------------------------------- --------- -------------- -----------------
- Yes                   Radermacher Hedi                    3         150,00         SLS 1
- Yes                   Radermacher Edgard                  5         220,00         SLS 2
- Yes                   Radermacher Christian               5         250,00         SLS 3
- Yes                   Meier Marie-Louise                  2         130,00         SLS 4
- Yes                   Laschet Laura                       5         250,00         SLS 5
- Yes                   Kaivers Karl                        4         170,00         SLS 6
- Yes                   Jonas Josef                         4         200,00         SLS 7
- Yes                   Jacobs Jacqueline                   3         180,00         SLS 8
- Yes                   Hilgers Hildegard                   4         200,00         SLS 9
- Yes                   Groteclaes Gregory                  5         250,00
- Yes                   Engels Edgar                        3         90,00
- Yes                   Evers Eberhart                      4         200,00
- Yes                   Dobbelstein-Demeulenaere Dorothée   5         250,00
- Yes                   Demeulenaere Dorothée               4         170,00
- Yes                   Charlier Ulrike                     3         150,00
- Yes                   Lahm Lisa                           4         230,00
- Yes                   Vandenmeulenbos Marie-Louise        4         200,00
- Yes                   Dupont Jean                         2         70,00
- Yes                   di Rupo Didier                      4         200,00
- Yes                   Radermacher Jean                    2         100,00
- Yes                   Radermacher Guido                   2         130,00
- Yes                   Radermacher Alfons                  3         120,00
- Yes                   Leffin Josefine                     4         170,00
- Yes                   Emonts Daniel                       3         210,00
- Yes                   Bastiaensen Laurent                 4         230,00
- Yes                   Altenberg Hans                      4         200,00
- Yes                   Arens Annette                       3         120,00
- Yes                   Jeanémart Jérôme                    2         70,00
- Yes                   Brecht Bernd                        2         70,00
- Yes                   Ärgerlich Erna                      3         150,00
- Yes                   Östges Otto                         3         150,00
- Yes                   Emonts-Gast Erna                    3         150,00
- Yes                   Faymonville Luc                     3         120,00
- Yes                   Dericum Daniel                      3         90,00
- Yes                   Martelaer Mark                      2         100,00
- **Total (35 rows)**                                       **119**   **5 740,00**
-===================== =================================== ========= ============== =================
-<BLANKLINE>
-
+>>> rt.models.invoicing.Plan.start_invoicing
+<StartInvoicing start_invoicing ('Create invoices')>
 
 On the API level it defines the :class:`Invoiceable
 <lino_cosi.lib.invoicing.mixins.Invoiceable>` mixin.
@@ -104,7 +59,7 @@ Lino Voga uses this functionality by extending :class:`Enrolment
 Lino Voga, enrolments are the things for which they write invoices.
 
 Another invoiceable thing in Lino Voga is when they rent a room to a
-third-party organisation. This is called a :class:`Booking
+third-party organisation.  This is called a :class:`Booking
 <lino_voga.lib.rooms.models.Booking>`.
 
 IOW, in Lino Voga both :class:`Enrolment
@@ -115,6 +70,10 @@ IOW, in Lino Voga both :class:`Enrolment
 >>> rt.models_by_base(rt.modules.invoicing.Invoiceable)
 [<class 'lino_voga.lib.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
 
+Enrolments
+==========
+
+>>> rt.show(courses.Enrolments)
 
 Invoicings
 ==========
@@ -154,6 +113,8 @@ The items of automatically generated invoices have a
 :attr:`description` field whose context is defined by the
 :xfile:`courses/Enrolment/item_description.html` template and can be
 complex and application specific.
+
+.. literalinclude:: ../../lino_voga/lib/courses/config/courses/Enrolment/item_description.html
 
 
 Scheduled dates
@@ -296,4 +257,28 @@ events:
 >>> qs = rt.models.system.PeriodEvents.started.add_filter(qs, enr)
 >>> print(', '.join([dd.fds(e.start_date) for e in qs]))
 02/06/2014, 16/06/2014, 23/06/2014, 30/06/2014, 07/07/2014, 14/07/2014, 28/07/2014
+
+
+Invoicing plan
+==============
+
+
+
+The demo database contains exactly one plan:
+
+>>> obj = rt.modules.invoicing.Plan.objects.all()[0]
+
+>>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
+==================== ======================= ============================================= ============ ========= ==========
+ Selected             Partner                 Preview                                       Amount       Invoice   Workflow
+-------------------- ----------------------- --------------------------------------------- ------------ --------- ----------
+ Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (50.00 €)    50,00        SLS 70
+ Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 71
+ Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 72
+ Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (48.00 €)   48,00        SLS 73
+ Yes                  Brecht Bernd            [1] Enrolment to 023C MED (64.00 €)           64,00        SLS 74
+ **Total (5 rows)**                                                                         **258,00**
+==================== ======================= ============================================= ============ ========= ==========
+<BLANKLINE>
+
 
