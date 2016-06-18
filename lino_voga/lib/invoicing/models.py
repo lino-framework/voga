@@ -59,12 +59,13 @@ class StartInvoicingForCourse(StartInvoicing):
     <lino_voga.lib.courses.models.Course>` model as `start_invoicing`.
 
     """
+    show_in_bbar = True
     select_rows = True
 
     def get_options(self, ar):
         course = ar.selected_rows[0]
         assert isinstance(course, rt.modules.courses.Course)
-        return dict(course=course, partner=None, journal=None)
+        return dict(course=course, partner=None)
 
 
 @dd.receiver(dd.pre_analyze)

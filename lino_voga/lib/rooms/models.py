@@ -60,7 +60,7 @@ class Booking(Booking, Invoiceable):
             # if self.company != settings.SITE.site_config.site_company:
             return self.room.fee
 
-    # def get_invoiceable_title(self, invoice):
+    # def get_invoiceable_title(self, invoice=None):
         # if self.organizer:
             # return unicode(self.room)
 

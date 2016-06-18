@@ -18,7 +18,7 @@ class Site(Site):
     languages = "en de fr"
 
     demo_fixtures = """std few_languages few_countries euvatrates
-    minimal_ledger demo voga demo2 demo_bookings checkdata""".split()
+    minimal_ledger demo voga demo_bookings payments demo2 checkdata""".split()
 
     def setup_plugins(self):
         """
