@@ -11,7 +11,7 @@ General
     doctest init:
 
     >>> import lino
-    >>> lino.startup('lino_voga.projects.docs.settings.doctests')
+    >>> lino.startup('lino_voga.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
 
 The demo database has 35 pupils and 8 teachers:
@@ -40,80 +40,80 @@ The demo database
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- accounts.Account           accounts.Accounts              13        12
- accounts.Group             accounts.Groups                4         7
- cal.Calendar               cal.Calendars                  4         8
- cal.Event                  cal.OneEvent                   23        340
- cal.EventType              cal.EventTypes                 12        8
+ accounts.Account           accounts.Accounts              15        13
+ accounts.Group             accounts.Groups                6         7
+ cal.Calendar               cal.Calendars                  6         8
+ cal.Event                  cal.OneEvent                   23        1154
+ cal.EventType              cal.EventTypes                 16        8
  cal.Guest                  cal.Guests                     6         0
- cal.GuestRole              cal.GuestRoles                 2         3
- cal.Priority               cal.Priorities                 3         4
- cal.RecurrentEvent         cal.RecurrentEvents            19        16
+ cal.GuestRole              cal.GuestRoles                 4         3
+ cal.Priority               cal.Priorities                 5         4
+ cal.RecurrentEvent         cal.RecurrentEvents            21        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
- cal.Room                   cal.Rooms                      7         7
- cal.Subscription           cal.Subscriptions              4         7
+ cal.Room                   cal.Rooms                      9         7
+ cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      17        0
  contacts.Company           contacts.Companies             27        29
- contacts.CompanyType       contacts.CompanyTypes          3         16
- contacts.Partner           contacts.Partners              23        98
- contacts.Person            contacts.Persons               38        69
+ contacts.CompanyType       contacts.CompanyTypes          7         16
+ contacts.Partner           contacts.Partners              23        100
+ contacts.Person            contacts.Persons               38        71
  contacts.Role              contacts.Roles                 4         0
- contacts.RoleType          contacts.RoleTypes             2         5
+ contacts.RoleType          contacts.RoleTypes             4         5
  contenttypes.ContentType   gfks.ContentTypes              3         75
- countries.Country          countries.Countries            4         8
- countries.Place            countries.Places               6         78
- courses.Course             courses.Courses                28        25
- courses.CourseType         courses.CourseTypes            3         0
- courses.Enrolment          courses.Enrolments             17        200
- courses.Line               courses.Lines                  16        10
- courses.Pupil              courses.Pupils                 40        35
- courses.PupilType          courses.PupilTypes             3         3
+ countries.Country          countries.Countries            6         8
+ countries.Place            countries.Places               8         78
+ courses.Course             courses.Courses                31        25
+ courses.CourseType         courses.CourseTypes            5         0
+ courses.Enrolment          courses.Enrolments             17        82
+ courses.Line               courses.Lines                  22        10
+ courses.Pupil              courses.Pupils                 47        35
+ courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
  courses.Teacher            courses.Teachers               40        8
- courses.TeacherType        courses.TeacherTypes           3         4
- courses.Topic              courses.Topics                 2         5
+ courses.TeacherType        courses.TeacherTypes           5         4
+ courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
- excerpts.ExcerptType       excerpts.ExcerptTypes          15        9
- finan.BankStatement        finan.BankStatements           16        0
- finan.BankStatementItem    finan.BankStatementItemTable   10        0
+ excerpts.ExcerptType       excerpts.ExcerptTypes          17        11
+ finan.BankStatement        finan.BankStatements           16        21
+ finan.BankStatementItem    finan.BankStatementItemTable   10        181
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
- finan.PaymentOrder         finan.PaymentOrders            15        0
- finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        0
+ finan.PaymentOrder         finan.PaymentOrders            15        16
+ finan.PaymentOrderItem     finan.PaymentOrderItemTable    10        80
  gfks.HelpText              gfks.HelpTexts                 4         2
- invoicing.Item             invoicing.Items                9         35
+ invoicing.Item             invoicing.Items                10        5
  invoicing.Plan             invoicing.Plans                7         1
- ledger.AccountingPeriod    ledger.AccountingPeriods       7         6
- ledger.Journal             ledger.Journals                15        7
+ ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
+ ledger.Journal             ledger.Journals                19        7
  ledger.MatchRule           ledger.MatchRules              3         11
- ledger.Movement            ledger.Movements               10        0
- ledger.PaymentTerm         ledger.PaymentTerms            6         7
- ledger.Voucher             ledger.Vouchers                9         68
- lists.List                 lists.Lists                    5         8
- lists.ListType             lists.ListTypes                2         3
+ ledger.Movement            ledger.Movements               10        667
+ ledger.PaymentTerm         ledger.PaymentTerms            8         7
+ ledger.Voucher             ledger.Vouchers                9         196
+ lists.List                 lists.Lists                    7         8
+ lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
- notes.EventType            notes.EventTypes               4         0
+ notes.EventType            notes.EventTypes               8         0
  notes.Note                 notes.Notes                    16        100
- notes.NoteType             notes.NoteTypes                9         3
+ notes.NoteType             notes.NoteTypes                11        3
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- plausibility.Problem       plausibility.Problems          6         0
- products.Product           products.Products              11        9
- products.ProductCat        products.ProductCats           3         5
+ plausibility.Problem       plausibility.Problems          6         14
+ products.Product           products.Products              15        11
+ products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        92
- sales.PaperType            sales.PaperTypes               3         2
- sales.VatProductInvoice    sales.Invoices                 24        38
+ sales.InvoiceItem          sales.InvoiceItems             15        108
+ sales.PaperType            sales.PaperTypes               5         2
+ sales.VatProductInvoice    sales.Invoices                 24        74
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             18        1
  uploads.Upload             uploads.Uploads                9         0
- uploads.UploadType         uploads.UploadTypes            6         0
+ uploads.UploadType         uploads.UploadTypes            8         0
  users.Authority            users.Authorities              3         0
- users.User                 users.Users                    15        1
- vat.InvoiceItem            vat.InvoiceItemTable           9         48
- vat.VatAccountInvoice      vat.Invoices                   19        30
- vat.VatRule                vat.VatRules                   9         0
+ users.User                 users.Users                    15        5
+ vat.InvoiceItem            vat.InvoiceItemTable           9         136
+ vat.VatAccountInvoice      vat.Invoices                   19        85
+ vat.VatRule                vat.VatRules                   9         11
 ========================== ============================== ========= =======
 <BLANKLINE>
 

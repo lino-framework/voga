@@ -81,20 +81,18 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.voga.fixtures',
     'lino_voga.lib.rooms',
     'lino_voga.projects',
-    'lino_voga.projects.docs',
-    'lino_voga.projects.docs.settings',
-    'lino_voga.projects.docs.tests',
     'lino_voga.projects.edmund',
     'lino_voga.projects.edmund.settings',
     'lino_voga.projects.edmund.settings.fixtures',
     'lino_voga.projects.roger',
-    'lino_voga.projects.roger.settings',
-    'lino_voga.projects.roger.settings.fixtures',
     'lino_voga.projects.roger.lib',
     'lino_voga.projects.roger.lib.courses',
     'lino_voga.projects.roger.lib.courses.fixtures',
     'lino_voga.projects.roger.lib.courses.management',
     'lino_voga.projects.roger.lib.courses.management.commands',
+    'lino_voga.projects.roger.settings',
+    'lino_voga.projects.roger.settings.fixtures',
+    'lino_voga.projects.roger.tests',
 ])
 
 SETUP_INFO.update(message_extractors={

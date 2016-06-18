@@ -11,12 +11,11 @@ Calendar
 .. doctest initialization:
 
    >>> from lino import startup
-   >>> startup('lino_voga.projects.docs.settings.demo')
+   >>> startup('lino_voga.projects.roger.settings.demo')
    >>> from lino.api.doctest import *
 
 This document describes how :ref:`voga` extends the default calendar
 functions.
-
 
 See also :ref:`book.specs.cal`.
 
@@ -54,23 +53,34 @@ Rooms
 =====
 
 The following rooms are defined in the
-:mod:`lino_voga.lib.voga.fixtures.buche` demo fixture.
+:mod:`lino_voga.projects.roger.settings.fixtures.voga` demo fixture.
 
 
 >>> ses = rt.login('robin')
->>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS +REPORT_NDIFF
-================== ================== =================== ============================= ============
- Designation        Calendar           Tariff              Company                       City
------------------- ------------------ ------------------- ----------------------------- ------------
- Mirrored room      Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   Eupen
- Computer room      Computer room      Rent per meeting    Lern- und Begegnungszentrum   Eupen
- Conferences room   Conferences room                       Lern- und Begegnungszentrum   Butgenbach
- Computer room      Computer room                          Lern- und Begegnungszentrum   Butgenbach
- Computer room      Computer room                          Zur Klüüs                     Kelmis
- Computer room      Computer room                          Sport- und Freizeitzentrum    Sankt Vith
- Outside            Outside
-================== ================== =================== ============================= ============
+>>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS -REPORT_NDIFF
+================== ================== ===================== ================== =================== ============================= ============
+ Designation        Designation (de)   Designation (fr)      Calendar           Tariff              Company                       City
+------------------ ------------------ --------------------- ------------------ ------------------- ----------------------------- ------------
+ Mirrored room      Spiegelsaal        Salle miroîtée        Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   Eupen
+ Computer room      Computersaal       Salle informatique    Computer room      Rent per meeting    Lern- und Begegnungszentrum   Eupen
+ Conferences room   Konferenzraum      Salle de conférence   Conferences room                       Lern- und Begegnungszentrum   Butgenbach
+ Computer room      Computersaal       Salle informatique    Computer room                          Lern- und Begegnungszentrum   Butgenbach
+ Computer room      Computersaal       Salle informatique    Computer room                          Zur Klüüs                     Kelmis
+ Computer room      Computersaal       Salle informatique    Computer room                          Sport- und Freizeitzentrum    Sankt Vith
+ Outside            Draußen            Outside               Outside
+================== ================== ===================== ================== =================== ============================= ============
 <BLANKLINE>
 
 (The last room, because it has no company, caused a bug which was fixed on
 :blogref:`20140920`)
+
+>>> show_fields(cal.Room, 'name calendar fee company')
+=============== ============== ===================================================
+ Internal name   Verbose name   Help text
+--------------- -------------- ---------------------------------------------------
+ name            Designation
+ calendar        Calendar       Calendar where events in this room are published.
+ fee             Tariff
+ company         Company
+=============== ============== ===================================================
+

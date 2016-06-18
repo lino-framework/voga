@@ -10,11 +10,11 @@ from lino_voga.projects.base import *
 
 class Site(Site):
 
-    title = "Lino Voga all'estone"
-    languages = "et en"
+    title = "Lino Voga à la Edmund"
+    languages = "en et"
 
     demo_fixtures = """std
-    few_languages few_countries eesti few_cities
+    few_languages few_countries few_cities
     euvatrates
     minimal_ledger demo voga demo2""".split()
 

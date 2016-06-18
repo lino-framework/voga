@@ -8,23 +8,20 @@ Voga
    $ python setup.py test -s tests.DocsTests.test_voga
 
     >>> from lino import startup
-    >>> startup('lino_voga.projects.docs.settings.doctests')
+    >>> startup('lino_voga.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
     >>> from django.utils.translation import get_language
 
-    >>> print(settings.SETTINGS_MODULE)
-    lino_voga.projects.docs.settings.doctests
     >>> print([lng.name for lng in settings.SITE.languages])
-    ['en']
+    ['en', 'de', 'fr']
 
 
 A web request
 -------------
 
-The following snippet reproduces a one-day bug 
-on calendar events whose **time** fields are empty.
-Fixed 2013-06-04 
-in :func:`lino.modlib.cal.utils.when_text`.
+The following snippet reproduces a one-day bug on calendar events
+whose **time** fields are empty.  Fixed 2013-06-04 in
+:func:`lino.modlib.cal.utils.when_text`.
 
 >>> print(get_language())
 en
@@ -32,7 +29,7 @@ en
 >>> d = settings.SITE.demo_date().replace(month=12,day=25)
 >>> d = d.strftime(settings.SITE.date_format_strftime)
 >>> print(d)
-25.12.2014
+25.12.2015
 >>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
 >>> res = client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
@@ -50,16 +47,16 @@ check whether we get the expected response.
 
 >>> ses = rt.login("robin")
 >>> translation.activate('en')
->>> obj = sales.VatProductInvoice.objects.get(pk=1)
+>>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=1)
 
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print) 
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-/media/cache/appypdf/sales.VatProductInvoice-1.pdf
+/media/cache/appypdf/sales.VatProductInvoice-91.pdf
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-Your printable document (filename sales.VatProductInvoice-1.pdf)
+Your printable document (filename sales.VatProductInvoice-91.pdf)
 should now open in a new browser window. If it doesn't, please consult
 <a href="http://www.lino-framework.org/help/print.html"
 target="_blank">the documentation</a> or ask your system

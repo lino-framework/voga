@@ -9,7 +9,7 @@ Checking for data problems in Lino Voga
     $ python setup.py test -s tests.SpecsTests.test_checkdata
 
     >>> from lino import startup
-    >>> startup('lino_voga.projects.docs.settings.doctests')
+    >>> startup('lino_voga.projects.edmund.settings.doctests')
     >>> from lino.api.doctest import *
 
 

@@ -26,7 +26,7 @@ and a "basket" button to the Course model.
    :toctree:
 
     models
-    fixtures.demo2
+    fixtures.demo_bookings
 
 
 """
