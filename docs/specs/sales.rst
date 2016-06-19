@@ -1,7 +1,8 @@
 .. _voga.specs.sales:
 
-Sales
-=====
+=============================
+Sales management in Lino Voga
+=============================
 
 .. to test only this doc:
 

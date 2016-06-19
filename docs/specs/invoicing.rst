@@ -70,8 +70,11 @@ IOW, in Lino Voga both :class:`Enrolment
 >>> rt.models_by_base(rt.modules.invoicing.Invoiceable)
 [<class 'lino_voga.lib.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
 
-Enrolments
-==========
+Enrolments as invoiceables
+==========================
+
+:attr:`Enrolment.invoicing_info` is a summary of what has been
+invoiced (and what hasn't) for a given enrolment.
 
 >>> from textwrap import wrap
 >>> for obj in courses.Enrolment.objects.all():
