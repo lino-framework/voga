@@ -26,6 +26,18 @@ from lino_cosi.lib.sales.models import *
 from lino.api import _
 
 
+class InvoiceDetail(InvoiceDetail):
+    totals = dd.Panel("""
+    #total_base #total_vat
+    total_incl
+    balance_before
+    balance_to_pay
+    workflow_buttons
+    """, label=_("Totals"))
+
+Invoices.detail_layout = InvoiceDetail()
+
+
 class InvoiceItem(InvoiceItem):
 
     class Meta:

@@ -19,7 +19,7 @@
 """
 To run just this test:
 
-  $ cd lino_voga/projects/docs
+  $ cd lino_voga/projects/roger
   $ python manage.py test
 
 """
@@ -64,7 +64,7 @@ class QuickTest(RemoteAuthTestCase):
             monday=True,
             state=courses.CourseStates.active,
             start_date=i2d(20140110))
-        self.assertEqual(unicode(obj), "First Line (10/01/2014 First Room)")
+        self.assertEqual(unicode(obj), "Activity #1")
 
         # self.assertEqual(settings.SITE.kernel.__class__.__name__, 'Kernel')
         # self.assertEqual(settings.SITE.kernel.site, settings.SITE)
@@ -85,8 +85,8 @@ class QuickTest(RemoteAuthTestCase):
         res = ses.run(obj.do_update_events)
         self.assertEqual(res['success'], True)
         expected = """\
-Update Events for First Line (10/01/2014 First Room)...
-Generating events between 2014-01-13 and 2019-06-15.
+Update Events for Activity #1...
+Generating events between 2014-01-13 and 2020-05-22.
 Update Guests for Activity #1 Lesson 1...
 0 row(s) have been updated.
 Update Guests for Activity #1 Lesson 2...
@@ -130,7 +130,7 @@ Update Guests for Activity #1 Lesson 5...
         self.assertEqual(res['success'], True)
         expected = """\
 Move down for Activity #1 Lesson 2...
-Generating events between 2014-01-13 and 2019-06-15.
+Generating events between 2014-01-13 and 2020-05-22.
 2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
 1 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
@@ -175,8 +175,8 @@ Generating events between 2014-01-13 and 2019-06-15.
         self.assertEqual(res['success'], True)
         expected = """\
 Update Events for National Day...
-Generating events between 2014-02-03 and 2019-06-15.
-Reached upper date limit 2019-06-15
+Generating events between 2014-02-03 and 2020-05-22.
+Reached upper date limit 2020-05-22
 Update Guests for Recurrent event rule #1 National Day...
 0 row(s) have been updated.
 Update Guests for Recurrent event rule #1 National Day...
@@ -189,7 +189,9 @@ Update Guests for Recurrent event rule #1 National Day...
 0 row(s) have been updated.
 Update Guests for Recurrent event rule #1 National Day...
 0 row(s) have been updated.
-6 row(s) have been updated."""
+Update Guests for Recurrent event rule #1 National Day...
+0 row(s) have been updated.
+7 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
         ar = ses.spawn(cal.EventsByController, master_instance=obj)
         s = ar.to_rst(column_names="when_text state")
@@ -204,6 +206,7 @@ Update Guests for Recurrent event rule #1 National Day...
  Fri 03/02/2017   Suggested
  Sat 03/02/2018   Suggested
  Sun 03/02/2019   Suggested
+ Mon 03/02/2020   Suggested
 ================ ===========
 
 """)

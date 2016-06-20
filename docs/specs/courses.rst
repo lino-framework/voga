@@ -94,35 +94,46 @@ or more persons.
 Automatic calender events
 =========================
 
-The first demo course starts on December 2, 2013:
+For the following examples we select a course which did not yet start,
+i.e. which starts after :meth:`lino.core.site.Site.today`.
 
->>> obj = courses.Course.objects.get(pk=3)
->>> print(obj)
-Activity #3
+>>> for obj in courses.Course.objects.filter(start_date__gte=dd.today()):
+...     print("Course #{} starts {} and has {} events".format(obj.id, obj.start_date, obj.max_events))
+...     # doctest: +NORMALIZE_WHITESPACE
+Course #12 starts 2015-07-11 and has 10 events
+Course #13 starts 2015-07-11 and has 10 events
+Course #14 starts 2015-07-11 and has 10 events
+Course #15 starts 2015-07-11 and has 10 events
+Course #16 starts 2015-07-11 and has 10 events
+Course #17 starts 2015-07-11 and has 10 events
 
+Let's take the first of them:
+
+>>> obj = courses.Course.objects.get(pk=12)
 
 ..
 
-    Repair from previous incomplete test runs.
+    Repair from previous incomplete test runs if necessary.
 
     >>> obj.do_update_events(ses)
     >>> ses.response['success']
     True
 
 
-
 >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
 ======================== ===========
  When                     State
 ------------------------ -----------
- Mon 28/04/2014 (13:30)   Suggested
- Mon 05/05/2014 (13:30)   Suggested
- Mon 12/05/2014 (13:30)   Suggested
- Mon 19/05/2014 (13:30)   Suggested
- Mon 26/05/2014 (13:30)   Suggested
- Mon 02/06/2014 (13:30)   Suggested
- Mon 16/06/2014 (13:30)   Suggested
- Mon 23/06/2014 (13:30)   Suggested
+ Mon 21/03/2016 (11:00)   Suggested
+ Mon 04/04/2016 (11:00)   Suggested
+ Mon 11/04/2016 (11:00)   Suggested
+ Mon 18/04/2016 (11:00)   Suggested
+ Mon 25/04/2016 (11:00)   Suggested
+ Mon 02/05/2016 (11:00)   Suggested
+ Mon 09/05/2016 (11:00)   Suggested
+ Mon 23/05/2016 (11:00)   Suggested
+ Mon 30/05/2016 (11:00)   Suggested
+ Mon 06/06/2016 (11:00)   Suggested
 ======================== ===========
 <BLANKLINE>
 
@@ -132,36 +143,34 @@ action a first time and verify that the events remain unchanged (if
 the following fails, make sure you've run :cmd:`inv initdb` before
 running :cmd:`inv test`).
 
->>> # import logging
->>> # logger = logging.getLogger('lino')
->>> # logger.setLevel('DEBUG')
 >>> res = ses.run(obj.do_update_events)
 >>> res['success']
 True
 >>> print(res['info_message'])
-Update Events for Activity #3...
-Generating events between 2014-04-28 and 2019-05-22.
-8 row(s) have been updated.
->>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-======================== ===========
- When                     State
------------------------- -----------
- Mon 28/04/2014 (13:30)   Suggested
- Mon 05/05/2014 (13:30)   Suggested
- Mon 12/05/2014 (13:30)   Suggested
- Mon 19/05/2014 (13:30)   Suggested
- Mon 26/05/2014 (13:30)   Suggested
- Mon 02/06/2014 (13:30)   Suggested
- Mon 16/06/2014 (13:30)   Suggested
- Mon 23/06/2014 (13:30)   Suggested
-======================== ===========
+Update Events for 012 Rücken...
+Generating events between 2015-07-13 and 2020-05-22.
+10 row(s) have been updated.
+>>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
+======================== ============= ===========
+ When                     Summary       State
+------------------------ ------------- -----------
+ Mon 21/03/2016 (11:00)   012 Hour 1    Suggested
+ Mon 04/04/2016 (11:00)   012 Hour 2    Suggested
+ Mon 11/04/2016 (11:00)   012 Hour 3    Suggested
+ Mon 18/04/2016 (11:00)   012 Hour 4    Suggested
+ Mon 25/04/2016 (11:00)   012 Hour 5    Suggested
+ Mon 02/05/2016 (11:00)   012 Hour 6    Suggested
+ Mon 09/05/2016 (11:00)   012 Hour 7    Suggested
+ Mon 23/05/2016 (11:00)   012 Hour 8    Suggested
+ Mon 30/05/2016 (11:00)   012 Hour 9    Suggested
+ Mon 06/06/2016 (11:00)   012 Hour 10   Suggested
+======================== ============= ===========
 <BLANKLINE>
-
 
 We select the event no 4 (2013-12-23, 20140519):
 
 >>> qs = obj.get_existing_auto_events()
->>> e = qs.get(start_date=i2d(20140519))
+>>> e = qs.get(start_date=i2d(20160418))
 
 Yes, the state is "suggested":
 
@@ -175,11 +184,11 @@ our case):
 >>> ses.response['success']
 True
 >>> print(ses.response['info_message'])
-Update Events for Activity #3...
-Generating events between 2014-04-28 and 2019-05-22.
-8 row(s) have been updated.
-Move down for Activity #3 Hour 4...
-Generating events between 2014-04-28 and 2019-05-22.
+Update Events for 012 Rücken...
+Generating events between 2015-07-13 and 2020-05-22.
+10 row(s) have been updated.
+Move down for Activity #12 012 Hour 4...
+Generating events between 2015-07-13 and 2020-05-22.
 1 row(s) have been updated.
 
 
@@ -191,23 +200,25 @@ Draft
 Note that all subsequent events have also been moved to their next
 available date.
 
->>> ses.show(cal.EventsByController, obj, column_names="when_text state")
-======================== ===========
- When                     State
------------------------- -----------
- Mon 28/04/2014 (13:30)   Suggested
- Mon 05/05/2014 (13:30)   Suggested
- Mon 12/05/2014 (13:30)   Suggested
- Mon 26/05/2014 (13:30)   Draft
- Mon 02/06/2014 (13:30)   Suggested
- Mon 09/06/2014 (13:30)   Suggested
- Mon 23/06/2014 (13:30)   Suggested
- Mon 30/06/2014 (13:30)   Suggested
-======================== ===========
+>>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
+======================== ============= ===========
+ When                     Summary       State
+------------------------ ------------- -----------
+ Mon 21/03/2016 (11:00)   012 Hour 1    Suggested
+ Mon 04/04/2016 (11:00)   012 Hour 2    Suggested
+ Mon 11/04/2016 (11:00)   012 Hour 3    Suggested
+ Mon 25/04/2016 (11:00)   012 Hour 4    Draft
+ Mon 02/05/2016 (11:00)   012 Hour 5    Suggested
+ Mon 09/05/2016 (11:00)   012 Hour 6    Suggested
+ Mon 16/05/2016 (11:00)   012 Hour 7    Suggested
+ Mon 30/05/2016 (11:00)   012 Hour 8    Suggested
+ Mon 06/06/2016 (11:00)   012 Hour 9    Suggested
+ Mon 13/06/2016 (11:00)   012 Hour 10   Suggested
+======================== ============= ===========
 <BLANKLINE>
 
-Note also that the state "Draft" is normal: it indicates that the
-event has been manually modified.
+The state "Draft" is normal: it indicates that the event has been
+manually modified.
 
 .. Now for this test, in order to restore original state, we click on
    the "Reset" button:
@@ -224,14 +235,16 @@ event has been manually modified.
     ======================== ===========
      When                     State
     ------------------------ -----------
-     Mon 28/04/2014 (13:30)   Suggested
-     Mon 05/05/2014 (13:30)   Suggested
-     Mon 12/05/2014 (13:30)   Suggested
-     Mon 19/05/2014 (13:30)   Suggested
-     Mon 26/05/2014 (13:30)   Suggested
-     Mon 02/06/2014 (13:30)   Suggested
-     Mon 16/06/2014 (13:30)   Suggested
-     Mon 23/06/2014 (13:30)   Suggested
+     Mon 21/03/2016 (11:00)   Suggested
+     Mon 04/04/2016 (11:00)   Suggested
+     Mon 11/04/2016 (11:00)   Suggested
+     Mon 18/04/2016 (11:00)   Suggested
+     Mon 25/04/2016 (11:00)   Suggested
+     Mon 02/05/2016 (11:00)   Suggested
+     Mon 09/05/2016 (11:00)   Suggested
+     Mon 23/05/2016 (11:00)   Suggested
+     Mon 30/05/2016 (11:00)   Suggested
+     Mon 06/06/2016 (11:00)   Suggested
     ======================== ===========
     <BLANKLINE>
 
@@ -255,12 +268,12 @@ There are two Yoga courses:
 Line #10 ('Yoga')
         
 >>> rt.show(courses.CoursesByLine, obj)
-================ ============== ================== ============= ================
- Info             When           Room               Times         Instructor
----------------- -------------- ------------------ ------------- ----------------
- *Activity #24*   Every Monday   Conferences room   18:00-19:30   David da Vinci
- *Activity #25*   Every Friday   Conferences room   19:00-20:30   Hans Altenberg
-================ ============== ================== ============= ================
+============= ============== ================== ============= ================
+ Info          When           Room               Times         Instructor
+------------- -------------- ------------------ ------------- ----------------
+ *024C Yoga*   Every Monday   Conferences room   18:00-19:30   David da Vinci
+ *025C Yoga*   Every Friday   Conferences room   19:00-20:30   Hans Altenberg
+============= ============== ================== ============= ================
 <BLANKLINE>
 
 
@@ -294,13 +307,13 @@ Computer
 ==================== ============= ================= ============= ================== =========== ============= ===========
  Info                 Designation   When              Times         Available places   Confirmed   Free places   Requested
 -------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *Activity #3*                      Every Monday      13:30-15:00   3                  **1**       2             **2**
- *Activity #4*                      Every Wednesday   17:30-19:00   3                  **2**       1             **2**
- *Activity #5*                      Every Friday      13:30-15:00   3                  **2**       1             **1**
- *Activity #6*                      Every Monday      13:30-15:00   4                  **6**       -2
- *Activity #7*                      Every Wednesday   17:30-19:00   4                  **6**       -2
- *Activity #8*                      Every Friday      13:30-15:00   4                  **6**       -2
- **Total (6 rows)**                                                 **21**             **23**                    **5**
+ *003 comp*                         Every Monday      13:30-15:00   3                  **3**       0
+ *004 comp*                         Every Wednesday   17:30-19:00   3                  **2**       1
+ *005 comp*                         Every Friday      13:30-15:00   3                  **2**       1
+ *006C WWW*                         Every Monday      13:30-15:00   4                  **2**       2
+ *007C WWW*                         Every Wednesday   17:30-19:00   4                  **3**       1
+ *008C WWW*                         Every Friday      13:30-15:00   4                              4             **1**
+ **Total (6 rows)**                                                 **21**             **12**                    **1**
 ==================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~
@@ -310,18 +323,18 @@ Sport
 ===================== ============= ================= ============= ================== =========== ============= ===========
  Info                  Designation   When              Times         Available places   Confirmed   Free places   Requested
 --------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *Activity #9*                       Every Wednesday   19:00-20:00   10                 **1**       9             **2**
- *Activity #10*                      Every Monday      11:00-12:00   5                  **2**       3             **2**
- *Activity #11*                      Every Monday      13:30-14:30   5                  **2**       3             **1**
- *Activity #12*                      Every Monday      11:00-12:00   20                 **5**       15
- *Activity #13*                      Every Monday      13:30-14:30   20                 **5**       15
- *Activity #14*                      Every Tuesday     11:00-12:00   20                 **5**       15
- *Activity #15*                      Every Tuesday     13:30-14:30   20                 **6**       14
- *Activity #16*                      Every Thursday    11:00-12:00   20                 **6**       14
- *Activity #17*                      Every Thursday    13:30-14:30   20                 **6**       14
- *Activity #18*                      Every Friday      18:00-19:00   12                 **1**       11            **2**
- *Activity #19*                      Every Friday      19:00-20:00   12                 **2**       10            **2**
- **Total (11 rows)**                                                 **164**            **41**                    **9**
+ *009C BT*                           Every Wednesday   19:00-20:00   10                 **2**       8             **1**
+ *010C FG*                           Every Monday      11:00-12:00   5                  **3**       2
+ *011C FG*                           Every Monday      13:30-14:30   5                  **2**       3
+ *012 Rücken*                        Every Monday      11:00-12:00   20                 **3**       17
+ *013 Rücken*                        Every Monday      13:30-14:30   20                 **3**       17
+ *014 Rücken*                        Every Tuesday     11:00-12:00   20                 **3**       17
+ *015 Rücken*                        Every Tuesday     13:30-14:30   20                 **1**       19            **1**
+ *016 Rücken*                        Every Thursday    11:00-12:00   20                 **4**       16
+ *017 Rücken*                        Every Thursday    13:30-14:30   20                 **4**       16
+ *018 SV*                            Every Friday      18:00-19:00   12                 **1**       11            **2**
+ *019 SV*                            Every Friday      19:00-20:00   12                 **3**       9
+ **Total (11 rows)**                                                 **164**            **29**                    **4**
 ===================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~~~
@@ -331,13 +344,13 @@ Meditation
 ==================== ============= ============== ============= ================== =========== ============= ===========
  Info                 Designation   When           Times         Available places   Confirmed   Free places   Requested
 -------------------- ------------- -------------- ------------- ------------------ ----------- ------------- -----------
- *Activity #20*                     Every Monday   18:00-19:30                      **2**       Unlimited     **1**
- *Activity #21*                     Every Friday   19:00-20:30                      **1**       Unlimited     **2**
- *Activity #22*                     Every Monday   18:00-19:30   30                 **5**       25
- *Activity #23*                     Every Friday   19:00-20:30   30                 **5**       25
- *Activity #24*                     Every Monday   18:00-19:30   20                 **2**       18            **2**
- *Activity #25*                     Every Friday   19:00-20:30   20                 **2**       18            **2**
- **Total (6 rows)**                                              **100**            **17**                    **7**
+ *020C GLQ*                         Every Monday   18:00-19:30                      **3**       Unlimited
+ *021C GLQ*                         Every Friday   19:00-20:30                      **1**       Unlimited
+ *022C MED*                         Every Monday   18:00-19:30   30                             30            **2**
+ *023C MED*                         Every Friday   19:00-20:30   30                 **2**       28
+ *024C Yoga*                        Every Monday   18:00-19:30   20                 **2**       18
+ *025C Yoga*                        Every Friday   19:00-20:30   20                 **2**       18
+ **Total (6 rows)**                                              **100**            **10**                    **2**
 ==================== ============= ============== ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~
@@ -351,55 +364,74 @@ No data to display
 Free places
 ===========
 
-Note the *free places* field which is not always trivial. In course
-#12 there are 8 confirmed enrolments, but only 5 of them are actually
-taking a place because the 3 other ones are already ended.
+Note the *free places* field which is not always trivial.  Basicially
+it contains `max_places - number of confirmed enrolments`.  But it
+also looks at the `end_date` of these enrolments.
 
->>> obj = courses.Course.objects.get(pk=12)
+List of courses which have a confirmed ended enrolment:
+
+>>> qs = courses.Enrolment.objects.filter(end_date__lt=dd.today(),
+...     state=courses.EnrolmentStates.confirmed)
+>>> for obj in qs:
+...     print("{} {}".format(obj.course.id, obj.course.max_places))
+4 3
+10 5
+20 None
+8 4
+3 3
+23 30
+2 None
+19 12
+22 30
+25 20
+1 None
+7 4
+11 5
+21 None
+6 4
+
+In course #25 there are 8 confirmed enrolments, but only 5 of them are
+actually taking a place because the 3 other ones are already ended.
+
+
+>>> obj = courses.Course.objects.get(pk=11)
 >>> print(obj.max_places)
-20
+5
 >>> print(obj.get_free_places())
-15
+3
 >>> rt.show(courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places")
-======================================== ============ ============ =============
- Participant                              Start date   End date     Places used
----------------------------------------- ------------ ------------ -------------
- Gregory Groteclaes (ME)                  03/06/2014                1
- Christian Radermacher (ME)                            12/05/2014   1
- Marie-Louise Vandenmeulenbos (ME)        12/05/2014                1
- Dorothée Dobbelstein-Demeulenaere (ME)   29/05/2014                1
- Laura Laschet (ME)                       09/06/2014                1
- Didier di Rupo (ME)                                   02/05/2014   1
- Hans Altenberg (MEC)                     02/05/2014   09/05/2014   1
- Gregory Groteclaes (ME)                  21/05/2014                1
- **Total (8 rows)**                                                 **8**
-======================================== ============ ============ =============
+=========================== ============ ============ =============
+ Participant                 Start date   End date     Places used
+--------------------------- ------------ ------------ -------------
+ Laurent Bastiaensen (MES)                             1
+ Laura Laschet (ME)                                    1
+ Otto Östges (ME)                         08/11/2014   1
+ **Total (3 rows)**                                    **3**
+=========================== ============ ============ =============
 <BLANKLINE>
 
-Above situation is because we are working on 20140522:
+Above situation is because we are working on 20150522:
 
 >>> print(dd.today())
-2014-05-22
+2015-05-22
 
 The same request on earlier dates yields different results:
 
 On 20140101 nobody has left yet, 5+3 places are taken and therefore
 20-8=12 places are free:
 
->>> print(obj.get_free_places(i2d(20140101)))
-12
+>>> print(obj.get_free_places(i2d(20141107)))
+2
 
-On 20140503 we have 5+2 places taken because only 1 of the three
-early-leavers has left:
+On 20141108 is Otto's last day, so his place is not yet free:
 
->>> print(obj.get_free_places(i2d(20140503)))
-13
+>>> print(obj.get_free_places(i2d(20141108)))
+2
 
-On 20140502 is Didier di Rupo's last day, so his place is not yet
-free:
+On 20141109 is is:
 
->>> print(obj.get_free_places(i2d(20140502)))
-12
+>>> print(obj.get_free_places(i2d(20141109)))
+3
 
 
 
