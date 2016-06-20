@@ -423,7 +423,6 @@ class InvoicingInfo(object):
             return
             
         self.invoiced_qty = ZERO
-        invoiced_events = 0
         # history = []
         state_field = dd.plugins.invoicing.voucher_model._meta.get_field(
             'state')
@@ -437,7 +436,7 @@ class InvoicingInfo(object):
             if obj.product is not None:
                 self.invoiced_qty += obj.qty
                 if obj.product.number_of_events:
-                    invoiced_events += int(
+                    self.invoiced_events += int(
                         obj.qty * obj.product.number_of_events)
             # history.append("".format())
         # print("20160414", self.invoicings, self.invoiced_qty)
@@ -460,13 +459,13 @@ class InvoicingInfo(object):
             # print("20160414 c", self.used_events)
             # used_events = qs.count()
             # paid_events = invoiced_qty * fee.number_of_events
-            asset = invoiced_events - self.used_events.count()
+            asset = self.invoiced_events - self.used_events.count()
         else:
             asset = self.invoiced_qty
         # dd.logger.info("20160223 %s %s %s", enr, asset, fee.min_asset)
         if asset < fee.min_asset:
             self.invoiceable_fee = fee
-            self.invoiced_events = invoiced_events
+            # self.invoiced_events = invoiced_events
 
     def as_html(self, ar):
         elems = []
