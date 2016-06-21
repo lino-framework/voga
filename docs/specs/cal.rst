@@ -81,6 +81,5 @@ The following rooms are defined in the
  name            Designation
  calendar        Calendar       Calendar where events in this room are published.
  fee             Tariff
- company         Company
+ company         Company        Pointer to lino.modlib.contacts.models.Company.
 =============== ============== ===================================================
-

@@ -99,7 +99,7 @@ Invoiced : 13.05., 20.05. Not invoiced : 16.04., 23.04., 30.04., 07.05., 21.05.,
 21.01., 28.01., 04.02., 11.02., 04.03., 11.03., 18.03., 25.03., 01.04., 08.04.,
 15.04., 29.04., 06.05.
 6 : 010C FG Laurent Bastiaensen (MES)
-Invoiced : 06.10., 13.10., 20.10.
+Not invoiced : 06.10., 13.10., 20.10.
 7 : 010C FG Laurent Bastiaensen (MES)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 24.11., 01.12., 08.12.,
 15.12., 29.12., 05.01., 12.01., 19.01., 26.01., 02.02., 09.02., 02.03., 09.03.,
@@ -117,7 +117,7 @@ Invoiced : (...) 27.04., 11.05., 18.05. Not invoiced : 06.10., 13.10., 20.10.,
 12 : 019 SV Ulrike Charlier (ME)
 <BLANKLINE>
 13 : 020C GLQ Dorothée Demeulenaere (ME)
-Invoiced : 28.07.
+Not invoiced : 28.07.
 14 : 020C GLQ Dorothée Demeulenaere (ME)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 08.09., 15.09., 22.09.,
 06.10., 13.10., 20.10., 27.10., 03.11., 10.11., 17.11., 01.12., 08.12., 15.12.,
@@ -128,7 +128,7 @@ Invoiced : (...) 27.02., 24.04., 15.05.
 16 : 005 comp Dorothée Dobbelstein-Demeulenaere (ME)
 <BLANKLINE>
 17 : 008C WWW Daniel Emonts (ME)
-Invoiced : (...) 14.11., 21.11., 28.11.
+Not invoiced : 24.10., 14.11., 21.11., 28.11.
 18 : 016 Rücken Edgar Engels (MES)
 <BLANKLINE>
 19 : 017 Rücken Edgar Engels (MES)
@@ -144,11 +144,16 @@ Not invoiced : 27.10., 03.11., 17.11., 24.11., 01.12., 08.12., 15.12., 22.12.,
 23 : 022C MED Luc Faymonville (ME)
 Invoiced : (...) 23.02., 02.03., 16.03.
 24 : 023C MED Gregory Groteclaes (ME)
-Invoiced : (...) 20.02., 27.02., 06.03.
+Not invoiced : 06.02., 13.02., 20.02., 27.02., 06.03.
 25 : 024C Yoga Gregory Groteclaes (ME)
 Invoiced : 11.05., 18.05. Not invoiced : 23.03., 13.04., 20.04., 27.04., 04.05.
 26 : 025C Yoga Gregory Groteclaes (ME)
-Invoiced : (...) 16.01., 23.01., 30.01.
+Not invoiced : 29.11., 06.12., 13.12., 20.12., 27.12., 03.01., 17.01., 24.01.,
+31.01., 07.02., 14.02., 21.02., 28.02., 14.03., 21.03., 28.03., 04.04., 11.04.,
+25.04., 02.05., 16.05., 23.05., 30.05., 06.06., 13.06., 20.06., 27.06., 11.07.,
+18.07., 25.07., 01.08., 08.08., 22.08., 29.08., 12.09., 19.09., 26.09., 03.10.,
+10.10., 17.10., 24.10., 14.11., 21.11., 28.11., 05.12., 12.12., 19.12., 26.12.,
+09.01., 16.01., 23.01., 30.01.
 27 : 014 Rücken Gregory Groteclaes (ME)
 <BLANKLINE>
 28 : 014 Rücken Gregory Groteclaes (ME)
@@ -193,7 +198,10 @@ Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 28.07., 11.08., 18.08.,
 10.11., 17.11., 01.12., 08.12., 15.12., 22.12., 29.12., 05.01., 12.01., 26.01.,
 02.02., 09.02., 23.02., 02.03., 09.03., 16.03., 30.03., 13.04., 20.04.
 44 : 021C GLQ Marie-Louise Meier (MS)
-Invoiced : (...) 27.02., 24.04., 15.05.
+Not invoiced : 25.07., 01.08., 08.08., 22.08., 29.08., 05.09., 12.09., 26.09.,
+03.10., 10.10., 17.10., 24.10., 07.11., 14.11., 28.11., 05.12., 12.12., 19.12.,
+26.12., 02.01., 09.01., 23.01., 30.01., 06.02., 13.02., 20.02., 27.02., 24.04.,
+15.05.
 45 : 005 comp Marie-Louise Meier (MS)
 <BLANKLINE>
 46 : 008C WWW Erna Emonts-Gast (ME)
@@ -211,16 +219,20 @@ Not invoiced : 27.10., 03.11., 17.11., 24.11., 01.12., 08.12., 15.12., 22.12.,
 29.12., 12.01., 19.01., 26.01., 02.02., 09.02., 23.02., 02.03., 16.03., 23.03.,
 30.03., 13.04., 20.04., 27.04., 04.05., 18.05.
 52 : 022C MED Christian Radermacher (ME)
-Invoiced : 14.10., 21.10. Not invoiced : 23.09., 30.09., 07.10.
+Not invoiced : 23.09., 30.09., 07.10., 14.10., 21.10.
 53 : 023C MED Christian Radermacher (ME)
 Not invoiced : 06.02., 13.02., 20.02., 27.02., 06.03., 13.03., 27.03., 10.04.,
 17.04., 24.04., 08.05., 15.05.
 54 : 024C Yoga Guido Radermacher (ME)
 Invoiced : 11.05., 18.05. Not invoiced : 23.03., 13.04., 20.04., 27.04., 04.05.
 55 : 025C Yoga Guido Radermacher (ME)
-Invoiced : 08.11., 22.11., 29.11.
+Not invoiced : 08.11., 22.11., 29.11.
 56 : 025C Yoga Guido Radermacher (ME)
-Invoiced : (...) 16.01., 23.01., 30.01.
+Not invoiced : 27.12., 03.01., 17.01., 24.01., 31.01., 07.02., 14.02., 21.02.,
+28.02., 14.03., 21.03., 28.03., 04.04., 11.04., 25.04., 02.05., 16.05., 23.05.,
+30.05., 06.06., 13.06., 20.06., 27.06., 11.07., 18.07., 25.07., 01.08., 08.08.,
+22.08., 29.08., 12.09., 19.09., 26.09., 03.10., 10.10., 17.10., 24.10., 14.11.,
+21.11., 28.11., 05.12., 12.12., 19.12., 26.12., 09.01., 16.01., 23.01., 30.01.
 57 : 014 Rücken Hedi Radermacher (MLS)
 <BLANKLINE>
 58 : 015 Rücken Hedi Radermacher (MLS)
@@ -232,11 +244,10 @@ Invoiced : (...) 16.01., 23.01., 30.01.
 61 : 004 comp Didier di Rupo (ME)
 <BLANKLINE>
 62 : 007C WWW Otto Östges (ME)
-Invoiced : 12.11. Not invoiced : 29.10., 05.11.
+Not invoiced : 29.10., 05.11., 12.11.
 63 : 007C WWW Otto Östges (ME)
 Invoiced : (...) 06.05., 13.05., 20.05. Not invoiced : 17.12., 24.12., 31.12.,
-07.01., 14.01., 21.01., 28.01., 11.02., 25.02., 04.03., 11.03., 18.03., 25.03.,
-01.04., 15.04., 22.04.
+07.01., 14.01., 21.01., 28.01., 11.02., 25.02., 04.03., 11.03., 18.03., 25.03.
 64 : 009C BT Otto Östges (ME)
 Invoiced : (...) 06.05., 13.05., 20.05. Not invoiced : 02.04., 09.04., 16.04.,
 23.04., 30.04., 07.05., 21.05., 28.05., 04.06., 11.06., 18.06., 25.06., 02.07.,
@@ -249,7 +260,7 @@ Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 06.10., 13.10., 20.10.,
 03.11., 10.11., 17.11., 24.11., 01.12., 08.12., 15.12., 29.12., 05.01., 12.01.,
 19.01., 26.01., 02.02., 09.02., 02.03., 09.03., 16.03.
 66 : 011C FG Otto Östges (ME)
-Invoiced : (...) 13.10., 20.10., 27.10.
+Not invoiced : 06.10., 13.10., 20.10., 27.10.
 67 : 012 Rücken Otto Östges (ME)
 <BLANKLINE>
 68 : 013 Rücken Jean Dupont (ML)
@@ -266,7 +277,7 @@ Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 28.07., 11.08., 18.08.,
 10.11., 17.11., 01.12., 08.12., 15.12., 22.12., 29.12., 05.01., 12.01., 26.01.,
 02.02., 09.02., 23.02., 02.03., 09.03., 16.03., 30.03., 13.04., 20.04.
 73 : 021C GLQ Mark Martelaer (ME)
-Invoiced : 01.08., 08.08. Not invoiced : 25.07.
+Not invoiced : 25.07., 01.08., 08.08.
 74 : 005 comp Marie-Louise Vandenmeulenbos (ME)
 <BLANKLINE>
 75 : 008C WWW Marie-Louise Vandenmeulenbos (ME)
@@ -280,7 +291,7 @@ Invoiced : (...) 17.04., 24.04., 15.05.
 79 : 003 comp Marie-Louise Vandenmeulenbos (ME)
 <BLANKLINE>
 80 : 006C WWW Lisa Lahm (MEL)
-Invoiced : (...) 03.11., 17.11., 24.11.
+Not invoiced : 27.10., 03.11., 17.11., 24.11.
 81 : 022C MED Bernd Brecht (MS)
 Invoiced : (...) 23.02., 02.03., 16.03.
 82 : 023C MED Bernd Brecht (MS)
@@ -330,7 +341,7 @@ enrolment:
  SLS 9                [1] Enrolment to 009C BT           1          01/04/2014     Registered   12
  SLS 22               [2] Renewal Enrolment to 009C BT   1          01/07/2014     Registered   12
  SLS 31               [3] Renewal Enrolment to 009C BT   1          01/10/2014     Registered   12
- SLS 53               [4] Renewal Enrolment to 009C BT   1          01/01/2015     Registered   12
+ SLS 54               [4] Renewal Enrolment to 009C BT   1          01/01/2015     Registered   12
  **Total (4 rows)**                                      **4**                                  **48**
 ==================== ================================== ========== ============== ============ ==================
 <BLANKLINE>
@@ -472,22 +483,19 @@ events:
 Invoicing plan
 ==============
 
-
-The demo database contains exactly one plan:
+The demo database contains exactly one plan, which still holds
+information about the last invoicing run.
 
 >>> obj = rt.modules.invoicing.Plan.objects.all()[0]
-
 >>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
 ==================== ======================= ============================================= ============ ========= ==========
  Selected             Partner                 Preview                                       Amount       Invoice   Workflow
 -------------------- ----------------------- --------------------------------------------- ------------ --------- ----------
- Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (50.00 €)    50,00        SLS 70
- Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 71
- Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 72
- Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (48.00 €)   48,00        SLS 73
- Yes                  Brecht Bernd            [1] Enrolment to 023C MED (64.00 €)           64,00        SLS 74
+ Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (50.00 €)    50,00        SLS 71
+ Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 72
+ Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 73
+ Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (48.00 €)   48,00        SLS 74
+ Yes                  Brecht Bernd            [1] Enrolment to 023C MED (64.00 €)           64,00        SLS 75
  **Total (5 rows)**                                                                         **258,00**
 ==================== ======================= ============================================= ============ ========= ==========
 <BLANKLINE>
-
-

@@ -75,7 +75,7 @@ The demo database
  excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        11
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        181
+ finan.BankStatementItem    finan.BankStatementItemTable   10        189
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
@@ -86,9 +86,9 @@ The demo database
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                19        7
  ledger.MatchRule           ledger.MatchRules              3         11
- ledger.Movement            ledger.Movements               10        667
+ ledger.Movement            ledger.Movements               10        677
  ledger.PaymentTerm         ledger.PaymentTerms            8         7
- ledger.Voucher             ledger.Vouchers                9         196
+ ledger.Voucher             ledger.Vouchers                9         197
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
@@ -102,9 +102,9 @@ The demo database
  products.Product           products.Products              15        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        108
+ sales.InvoiceItem          sales.InvoiceItems             15        107
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 24        74
+ sales.VatProductInvoice    sales.Invoices                 24        75
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             18        1
  uploads.Upload             uploads.Uploads                9         0
