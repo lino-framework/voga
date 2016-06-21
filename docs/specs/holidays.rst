@@ -31,24 +31,24 @@ Here are the default holidays defined as recurrent event rules
 
 >>> rt.show(cal.RecurrentEvents)
 ... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-============ ============ ============================ ==================== =================================== ==================== =====================
- Start date   End Date     Designation                  Designation (de)     Designation (fr)                    Recurrency           Calendar Event Type
------------- ------------ ---------------------------- -------------------- ----------------------------------- -------------------- ---------------------
- 01/01/2013                New Year's Day               Neujahr              Jour de l'an                        yearly               Holidays
- 11/02/2013                Rosenmontag                  Rosenmontag          Rosenmontag                         Relative to Easter   Holidays
- 13/02/2013                Ash Wednesday                Ash Wednesday        Ash Wednesday                       Relative to Easter   Holidays
- 29/03/2013                Good Friday                  Good Friday          Good Friday                         Relative to Easter   Holidays
- 31/03/2013                Easter sunday                Easter sunday        Easter sunday                       Relative to Easter   Holidays
- 01/04/2013                Easter monday                Easter monday        Easter monday                       Relative to Easter   Holidays
- 01/05/2013                International Workers' Day   Tag der Arbeit       Premier Mai                         yearly               Holidays
- 09/05/2013                Ascension of Jesus           Ascension of Jesus   Ascension of Jesus                  Relative to Easter   Holidays
- 20/05/2013                Pentecost                    Pentecost            Pentecost                           Relative to Easter   Holidays
- 01/07/2013   31/08/2013   Summer holidays              Sommerferien         Vacances d'été                      yearly               Holidays
- 21/07/2013                National Day                 Nationalfeiertag     Fête nationale                      yearly               Holidays
- 15/08/2013                Assumption of Mary           Mariä Himmelfahrt    Assomption de Marie                 yearly               Holidays
- 31/10/2013                All Souls' Day               Allerseelen          Commémoration des fidèles défunts   yearly               Holidays
- 01/11/2013                All Saints' Day              Allerheiligen        Toussaint                           yearly               Holidays
- 11/11/2013                Armistice with Germany       Waffenstillstand     Armistice                           yearly               Holidays
- 25/12/2013                Christmas                    Weihnachten          Noël                                yearly               Holidays
-============ ============ ============================ ==================== =================================== ==================== =====================
+============ ============ ============================ ===================== =================================== ==================== =====================
+ Start date   End Date     Designation                  Designation (de)      Designation (fr)                    Recurrency           Calendar Event Type
+------------ ------------ ---------------------------- --------------------- ----------------------------------- -------------------- ---------------------
+ 01/01/2013                New Year's Day               Neujahr               Jour de l'an                        yearly               Holidays
+ 11/02/2013                Rosenmontag                  Rosenmontag           Rosenmontag                         Relative to Easter   Holidays
+ 13/02/2013                Ash Wednesday                Aschermittwoch        Ash Wednesday                       Relative to Easter   Holidays
+ 29/03/2013                Good Friday                  Karfreitag            Good Friday                         Relative to Easter   Holidays
+ 31/03/2013                Easter sunday                Ostersonntag          Easter sunday                       Relative to Easter   Holidays
+ 01/04/2013                Easter monday                Ostermontag           Easter monday                       Relative to Easter   Holidays
+ 01/05/2013                International Workers' Day   Tag der Arbeit        Premier Mai                         yearly               Holidays
+ 09/05/2013                Ascension of Jesus           Christi Himmelfahrt   Ascension of Jesus                  Relative to Easter   Holidays
+ 20/05/2013                Pentecost                    Pfingsten             Pentecost                           Relative to Easter   Holidays
+ 01/07/2013   31/08/2013   Summer holidays              Sommerferien          Vacances d'été                      yearly               Holidays
+ 21/07/2013                National Day                 Nationalfeiertag      Fête nationale                      yearly               Holidays
+ 15/08/2013                Assumption of Mary           Mariä Himmelfahrt     Assomption de Marie                 yearly               Holidays
+ 31/10/2013                All Souls' Day               Allerseelen           Commémoration des fidèles défunts   yearly               Holidays
+ 01/11/2013                All Saints' Day              Allerheiligen         Toussaint                           yearly               Holidays
+ 11/11/2013                Armistice with Germany       Waffenstillstand      Armistice                           yearly               Holidays
+ 25/12/2013                Christmas                    Weihnachten           Noël                                yearly               Holidays
+============ ============ ============================ ===================== =================================== ==================== =====================
 <BLANKLINE>

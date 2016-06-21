@@ -37,7 +37,8 @@ else:
     @dd.receiver(dd.pre_analyze)
     def add_merge_action(sender, **kw):
         apps = sender.modules
-        for m in (apps.contacts.Person, apps.contacts.Company):
+        # for m in (apps.contacts.Person, apps.contacts.Company):
+        for m in (apps.courses.Pupil, apps.contacts.Company):
             m.define_action(merge_row=dd.MergeAction(m))
 
 
