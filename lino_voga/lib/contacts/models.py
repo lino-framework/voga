@@ -55,7 +55,7 @@ class MyPartnerDetail(PartnerDetail):
     id language
     addr1 url
     #courses.CoursesByCompany
-    excerpts.ExcerptsByOwner
+    excerpts.ExcerptsByOwner cal.GuestsByPartner
     """, label=_("More"))
 
     ledger = dd.Panel("""

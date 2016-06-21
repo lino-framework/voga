@@ -52,7 +52,7 @@ users.UserProfiles.admin:900
 - Explorer :
   - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems
   - Contacts : Contact Persons, List memberships
-  - Calendar : Tasks, Participants, Subscriptions, Event states, Guest states, Task states
+  - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
   - Activities : Activities, Enrolments, Enrolment states
@@ -90,7 +90,7 @@ users.UserProfiles.secretary:200
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - System : content types, Plausibility checkers, Plausibility problems
-  - Calendar : Participants, Event states, Guest states, Task states
+  - Calendar : Presences, Event states, Guest states, Task states
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
   - Activities : Activities, Enrolments
 - Site : About
