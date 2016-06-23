@@ -45,7 +45,7 @@ from lino_cosi.lib.accounts.utils import DEBIT, CREDIT
 
 
 from lino_voga.lib.contacts.models import Person
-from lino_voga.lib.contacts.models import MyPersonDetail
+from lino_voga.lib.contacts.models import PersonDetail
 
 contacts = dd.resolve_app('contacts')
 # sales = dd.resolve_app('sales')
@@ -790,8 +790,9 @@ class EnrolmentsByFee(EnrolmentsByCourse):
                    'places remark free_events #option amount *'
 
 
-class PupilDetail(MyPersonDetail):
+class PupilDetail(PersonDetail):
 
+    # main = PersonDetail.main + " courses"
     main = 'general address courses ledger more'
 
     personal = 'pupil_type'
@@ -802,8 +803,8 @@ class PupilDetail(MyPersonDetail):
     """, label=dd.plugins.courses.verbose_name)
 
 
-class TeacherDetail(MyPersonDetail):
-    main = MyPersonDetail.main + " courses"
+class TeacherDetail(PersonDetail):
+    main = PersonDetail.main + " courses"
     personal = 'teacher_type'
 
     courses = dd.Panel("""

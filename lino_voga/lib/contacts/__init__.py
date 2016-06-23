@@ -29,7 +29,7 @@
 """
 
 
-from lino.modlib.contacts import Plugin
+from lino_cosi.lib.contacts import Plugin
 
 
 class Plugin(Plugin):

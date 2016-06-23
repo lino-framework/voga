@@ -23,7 +23,7 @@ The :xfile:`models` module for the :mod:`lino_voga.contacts` app.
 
 from django.utils.translation import ugettext_lazy as _
 
-from lino.modlib.contacts.models import *
+from lino_cosi.lib.contacts.models import *
 
 from lino_xl.lib.beid.mixins import BeIdCardHolder
 from lino_xl.lib.appypod.mixins import PrintLabelsAction
@@ -34,8 +34,7 @@ class Person(Person, BeIdCardHolder):
     pass
 
 
-# class MyPartnerDetail(PartnerDetail, sales.PartnerDetailMixin):
-class MyPartnerDetail(PartnerDetail):
+class PartnerDetail(PartnerDetail):
 
     # main = 'general address more sales ledger'
     main = 'general address more ledger'
@@ -91,7 +90,7 @@ class MyPartnerDetail(PartnerDetail):
     """
 
 
-class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
+class CompanyDetail(CompanyDetail, PartnerDetail):
 
     # main = 'general more ledger'
 
@@ -127,7 +126,7 @@ class MyCompanyDetail(CompanyDetail, MyPartnerDetail):
     """
 
 
-class MyPersonDetail(PersonDetail, MyPartnerDetail):
+class PersonDetail(PersonDetail, PartnerDetail):
 
     main = 'general address ledger more'
 
@@ -163,11 +162,18 @@ class MyPersonDetail(PersonDetail, MyPartnerDetail):
 #         print_labels=PrintLabelsAction())
 
 
-@dd.receiver(dd.post_analyze)
-def customize_contacts2(sender, **kw):
-    site = sender
-    site.modules.contacts.Persons.set_detail_layout(MyPersonDetail())
-    site.modules.contacts.Companies.set_detail_layout(MyCompanyDetail())
-    site.modules.contacts.Partners.set_detail_layout(MyPartnerDetail())
-    # site.modules.courses.Pupils.set_detail_layout(PupilDetail())
-    # site.modules.courses.Teachers.set_detail_layout(TeacherDetail())
+# Persons.detail_layout = PersonDetail()
+# Companies.detail_layout = CompanyDetail()
+# Partners.detail_layout = PartnerDetail()
+
+Persons.set_detail_layout(PersonDetail())
+Companies.set_detail_layout(CompanyDetail())
+Partners.set_detail_layout(PartnerDetail())
+
+
+# @dd.receiver(dd.post_analyze)
+# def customize_contacts2(sender, **kw):
+#     contacts = sender.models.contacts
+#     contacts.Persons.set_detail_layout(contacts.PersonDetail())
+#     contacts.Companies.set_detail_layout(contacts.CompanyDetail())
+#     contacts.Partners.set_detail_layout(contacts.PartnerDetail())
