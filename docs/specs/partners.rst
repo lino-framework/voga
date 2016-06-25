@@ -1,4 +1,4 @@
-.. _voga.specs.checkdata:
+.. _voga.specs.partners:
 
 =====================
 Partners in Lino Voga
@@ -13,16 +13,25 @@ Partners in Lino Voga
     >>> from lino.api.doctest import *
 
 
-Lino Voga differentiates the following subclasses of Partner:
+Partners in Lino Voga are :class:`polymorphic
+<lino.mixins.polymorphic.Polimorphic>`, i.e. the database has a series
+of models which are more or less specialized subclasses of a partner.
+
+In Lino Voga we differentiate the following subclasses of Partner:
 
 .. django2rst:: contacts.Partner.print_subclasses_graph()
 
 
->>> courses.Pupil
-<class 'lino_voga.projects.roger.lib.courses.models.Pupil'>
->>> issubclass(courses.Pupil, contacts.Person)
-True
->>> issubclass(courses.Teacher, contacts.Person)
-True
->>> issubclass(courses.Teacher, contacts.Partner)
-True
+..
+    >>> from lino.mixins.polymorphic import Polimorphic
+    >>> issubclass(contacts.Person, Polimorphic)
+    True
+    >>> issubclass(contacts.Person, contacts.Partner)
+    True
+    >>> issubclass(courses.Pupil, contacts.Person)
+    True
+    >>> issubclass(courses.Teacher, contacts.Person)
+    True
+    >>> issubclass(courses.Teacher, contacts.Partner)
+    True
+
