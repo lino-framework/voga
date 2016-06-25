@@ -14,7 +14,7 @@ Partners in Lino Voga
 
 
 Partners in Lino Voga are :class:`polymorphic
-<lino.mixins.polymorphic.Polimorphic>`, i.e. the database has a series
+<lino.mixins.polymorphic.Polymorphic>`, i.e. the database has a series
 of models which are more or less specialized subclasses of a partner.
 
 In Lino Voga we differentiate the following subclasses of Partner:
@@ -23,8 +23,8 @@ In Lino Voga we differentiate the following subclasses of Partner:
 
 
 ..
-    >>> from lino.mixins.polymorphic import Polimorphic
-    >>> issubclass(contacts.Person, Polimorphic)
+    >>> from lino.mixins.polymorphic import Polymorphic
+    >>> issubclass(contacts.Person, Polymorphic)
     True
     >>> issubclass(contacts.Person, contacts.Partner)
     True
@@ -35,3 +35,11 @@ In Lino Voga we differentiate the following subclasses of Partner:
     >>> issubclass(courses.Teacher, contacts.Partner)
     True
 
+    >>> print(noblanklines(contacts.Partner.get_subclasses_graph()))
+    .. graphviz::
+       digraph foo {
+        "Partner" -> "Organization"
+        "Partner" -> "Person"
+        "Person" -> "Participant"
+        "Person" -> "Instructor"
+      }
