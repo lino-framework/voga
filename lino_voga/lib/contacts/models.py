@@ -26,12 +26,15 @@ from django.utils.translation import ugettext_lazy as _
 from lino_cosi.lib.contacts.models import *
 
 from lino_xl.lib.beid.mixins import BeIdCardHolder
-from lino_xl.lib.appypod.mixins import PrintLabelsAction
-from lino_cosi.lib.sales import models as sales
+# from lino_xl.lib.appypod.mixins import PrintLabelsAction
+# from lino_cosi.lib.sales import models as sales
 
 
 class Person(Person, BeIdCardHolder):
-    pass
+
+    class Meta(Person.Meta):
+        app_label = 'contacts'
+        abstract = dd.is_abstract_model(__name__, 'Person')
 
 
 class PartnerDetail(PartnerDetail):
@@ -39,7 +42,7 @@ class PartnerDetail(PartnerDetail):
     # main = 'general address more sales ledger'
     main = 'general address more ledger'
 
-    #~ general = dd.Panel(PartnerDetail.main,label=_("General"))
+    # general = dd.Panel(PartnerDetail.main,label=_("General"))
 
     general = dd.Panel("""
     overview:30 contact_box:30 lists.MembersByPartner:20

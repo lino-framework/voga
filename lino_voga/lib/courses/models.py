@@ -177,7 +177,7 @@ class TeacherTypes(dd.Table):
 
 
 @dd.python_2_unicode_compatible
-class Teacher(Person):
+class Teacher(contacts.Person):
     """A **teacher** is a person with an additional field
     :attr:`teacher_type`.
 
@@ -221,7 +221,7 @@ class PupilTypes(dd.Table):
 
 
 @dd.python_2_unicode_compatible
-class Pupil(Person):
+class Pupil(contacts.Person):
     """A **pupil** is a person with an additional field
     :attr:`pupil_type`.
 

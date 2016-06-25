@@ -28,6 +28,9 @@ class PackagesTests(TestCase):
 
 class SpecsTests(BaseTestCase):
 
+    def test_partners(self):
+        return self.run_simple_doctests('docs/specs/partners.rst')
+
     def test_checkdata(self):
         return self.run_simple_doctests('docs/specs/checkdata.rst')
 

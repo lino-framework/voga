@@ -24,3 +24,4 @@ specifications. One of their goal is to get tested.
    sales
    checkdata
    roger
+   partners

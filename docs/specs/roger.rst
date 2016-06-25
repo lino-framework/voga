@@ -77,20 +77,6 @@ datetime.date(2015, 5, 22)
 ======================================== ================================= ================== ============ ===== ===== ======== ==============
 <BLANKLINE>
 
->>> rt.show(plausibility.Checkers)
-================================= ===============================================
- value                             text
---------------------------------- -----------------------------------------------
- printing.CachedPrintableChecker   Check for missing target files
- countries.PlaceChecker            Check plausibility of geographical places.
- beid.BeIdCardHolderChecker        Check for invalid SSINs
- sepa.BankAccountChecker           Check for partner mismatches in bank accounts
- ledger.VoucherChecker             Check integrity of ledger movements
- cal.EventGuestChecker             Check for missing participants
- cal.ConflictingEventsChecker      Check for conflicting events
- courses.MemberChecker             Check membership payments
-================================= ===============================================
-<BLANKLINE>
 
 >>> print(dd.plugins.ledger.force_cleared_until)
 None

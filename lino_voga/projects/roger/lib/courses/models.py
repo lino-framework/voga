@@ -40,6 +40,7 @@ from lino_voga.lib.courses.models import *
 
 from lino.modlib.printing.utils import PrintableObject
 
+
 class Sections(dd.ChoiceList):
     verbose_name = _("Section")
     verbose_name_plural = _("Sections")
