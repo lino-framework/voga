@@ -85,65 +85,65 @@ invoiced (and what hasn't) for a given enrolment.
 <BLANKLINE>
 2 : 002 London 2014 Annette Arens (ME)
 <BLANKLINE>
-3 : 004 comp Annette Arens (ME)
+3 : 004 comp (First Steps) Annette Arens (ME)
 <BLANKLINE>
-4 : 007C WWW Annette Arens (ME)
+4 : 007C WWW (Internet for beginners) Annette Arens (ME)
 Invoiced : 13.05., 20.05. Not invoiced : 29.10., 05.11., 12.11., 19.11., 26.11.,
 03.12., 17.12., 24.12., 31.12., 07.01., 14.01., 21.01., 28.01., 11.02., 25.02.,
 04.03., 11.03., 18.03., 25.03., 01.04., 15.04., 22.04., 29.04., 06.05.
-5 : 009C BT Annette Arens (ME)
+5 : 009C BT (Belly dancing) Annette Arens (ME)
 Invoiced : 13.05., 20.05. Not invoiced : 16.04., 23.04., 30.04., 07.05., 21.05.,
 28.05., 04.06., 11.06., 18.06., 25.06., 02.07., 16.07., 23.07., 30.07., 06.08.,
 13.08., 20.08., 27.08., 10.09., 17.09., 24.09., 01.10., 08.10., 15.10., 22.10.,
 05.11., 12.11., 19.11., 26.11., 03.12., 10.12., 17.12., 31.12., 07.01., 14.01.,
 21.01., 28.01., 04.02., 11.02., 04.03., 11.03., 18.03., 25.03., 01.04., 08.04.,
 15.04., 29.04., 06.05.
-6 : 010C FG Laurent Bastiaensen (MES)
+6 : 010C FG (Functional gymnastics) Laurent Bastiaensen (MES)
 Not invoiced : 06.10., 13.10., 20.10.
-7 : 010C FG Laurent Bastiaensen (MES)
+7 : 010C FG (Functional gymnastics) Laurent Bastiaensen (MES)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 24.11., 01.12., 08.12.,
 15.12., 29.12., 05.01., 12.01., 19.01., 26.01., 02.02., 09.02., 02.03., 09.03.,
 16.03., 23.03.
-8 : 011C FG Laurent Bastiaensen (MES)
+8 : 011C FG (Functional gymnastics) Laurent Bastiaensen (MES)
 Invoiced : (...) 27.04., 11.05., 18.05. Not invoiced : 06.10., 13.10., 20.10.,
 27.10., 10.11., 17.11., 24.11., 01.12., 08.12., 15.12., 22.12., 05.01., 12.01.,
 19.01., 26.01., 02.02., 09.02., 23.02., 09.03., 16.03.
-9 : 012 Rücken Ulrike Charlier (ME)
+9 : 012 Rücken (Swimming) Ulrike Charlier (ME)
 <BLANKLINE>
-10 : 013 Rücken Ulrike Charlier (ME)
+10 : 013 Rücken (Swimming) Ulrike Charlier (ME)
 <BLANKLINE>
-11 : 018 SV Ulrike Charlier (ME)
+11 : 018 SV (Self-defence) Ulrike Charlier (ME)
 <BLANKLINE>
-12 : 019 SV Ulrike Charlier (ME)
+12 : 019 SV (Self-defence) Ulrike Charlier (ME)
 <BLANKLINE>
-13 : 020C GLQ Dorothée Demeulenaere (ME)
+13 : 020C GLQ (GuoLin-Qigong) Dorothée Demeulenaere (ME)
 Not invoiced : 28.07.
-14 : 020C GLQ Dorothée Demeulenaere (ME)
+14 : 020C GLQ (GuoLin-Qigong) Dorothée Demeulenaere (ME)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 08.09., 15.09., 22.09.,
 06.10., 13.10., 20.10., 27.10., 03.11., 10.11., 17.11., 01.12., 08.12., 15.12.,
 22.12., 29.12., 05.01., 12.01., 26.01., 02.02., 09.02., 23.02., 02.03., 09.03.,
 16.03.
-15 : 021C GLQ Dorothée Dobbelstein-Demeulenaere (ME)
+15 : 021C GLQ (GuoLin-Qigong) Dorothée Dobbelstein-Demeulenaere (ME)
 Invoiced : (...) 27.02., 24.04., 15.05.
-16 : 005 comp Dorothée Dobbelstein-Demeulenaere (ME)
+16 : 005 comp (First Steps) Dorothée Dobbelstein-Demeulenaere (ME)
 <BLANKLINE>
-17 : 008C WWW Daniel Emonts (ME)
+17 : 008C WWW (Internet for beginners) Daniel Emonts (ME)
 Not invoiced : 24.10., 14.11., 21.11., 28.11.
-18 : 016 Rücken Edgar Engels (MES)
+18 : 016 Rücken (Swimming) Edgar Engels (MES)
 <BLANKLINE>
-19 : 017 Rücken Edgar Engels (MES)
+19 : 017 Rücken (Swimming) Edgar Engels (MES)
 <BLANKLINE>
-20 : 003 comp Luc Faymonville (ME)
+20 : 003 comp (First Steps) Luc Faymonville (ME)
 <BLANKLINE>
-21 : 003 comp Luc Faymonville (ME)
+21 : 003 comp (First Steps) Luc Faymonville (ME)
 <BLANKLINE>
-22 : 006C WWW Luc Faymonville (ME)
+22 : 006C WWW (Internet for beginners) Luc Faymonville (ME)
 Not invoiced : 27.10., 03.11., 17.11., 24.11., 01.12., 08.12., 15.12., 22.12.,
 29.12., 12.01., 19.01., 26.01., 02.02., 09.02., 23.02., 02.03., 16.03., 23.03.,
 30.03., 13.04., 20.04., 27.04., 04.05., 18.05.
-23 : 022C MED Luc Faymonville (ME)
+23 : 022C MED (Finding your inner peace) Luc Faymonville (ME)
 Invoiced : (...) 23.02., 02.03., 16.03.
-24 : 023C MED Gregory Groteclaes (ME)
+24 : 023C MED (Finding your inner peace) Gregory Groteclaes (ME)
 Not invoiced : 06.02., 13.02., 20.02., 27.02., 06.03.
 25 : 024C Yoga Gregory Groteclaes (ME)
 Invoiced : 11.05., 18.05. Not invoiced : 23.03., 13.04., 20.04., 27.04., 04.05.
@@ -154,73 +154,73 @@ Not invoiced : 29.11., 06.12., 13.12., 20.12., 27.12., 03.01., 17.01., 24.01.,
 18.07., 25.07., 01.08., 08.08., 22.08., 29.08., 12.09., 19.09., 26.09., 03.10.,
 10.10., 17.10., 24.10., 14.11., 21.11., 28.11., 05.12., 12.12., 19.12., 26.12.,
 09.01., 16.01., 23.01., 30.01.
-27 : 014 Rücken Gregory Groteclaes (ME)
+27 : 014 Rücken (Swimming) Gregory Groteclaes (ME)
 <BLANKLINE>
-28 : 014 Rücken Gregory Groteclaes (ME)
+28 : 014 Rücken (Swimming) Gregory Groteclaes (ME)
 <BLANKLINE>
-29 : 015 Rücken Gregory Groteclaes (ME)
+29 : 015 Rücken (Swimming) Gregory Groteclaes (ME)
 <BLANKLINE>
 30 : 001 Griechenland 2014 Jacqueline Jacobs (MES)
 <BLANKLINE>
 31 : 002 London 2014 Jacqueline Jacobs (MES)
 <BLANKLINE>
-32 : 004 comp Jacqueline Jacobs (MES)
+32 : 004 comp (First Steps) Jacqueline Jacobs (MES)
 <BLANKLINE>
-33 : 007C WWW Jacqueline Jacobs (MES)
+33 : 007C WWW (Internet for beginners) Jacqueline Jacobs (MES)
 Invoiced : (...) 06.05., 13.05., 20.05. Not invoiced : 12.11., 19.11., 26.11.,
 03.12., 17.12., 24.12., 31.12., 07.01., 14.01., 21.01., 28.01., 11.02., 25.02.,
 04.03., 11.03., 18.03.
-34 : 009C BT Karl Kaivers (MLS)
+34 : 009C BT (Belly dancing) Karl Kaivers (MLS)
 Invoiced : 02.04., 09.04., 16.04.
-35 : 009C BT Karl Kaivers (MLS)
+35 : 009C BT (Belly dancing) Karl Kaivers (MLS)
 Invoiced : (...) 06.05., 13.05., 20.05.
-36 : 010C FG Karl Kaivers (MLS)
+36 : 010C FG (Functional gymnastics) Karl Kaivers (MLS)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 06.10., 13.10., 20.10.,
 03.11., 10.11., 17.11., 24.11., 01.12., 08.12., 15.12., 29.12., 05.01., 12.01.,
 19.01., 26.01., 02.02., 09.02., 02.03., 09.03., 16.03.
-37 : 011C FG Laura Laschet (ME)
+37 : 011C FG (Functional gymnastics) Laura Laschet (ME)
 Invoiced : (...) 27.04., 11.05., 18.05. Not invoiced : 06.10., 13.10., 20.10.,
 27.10., 10.11., 17.11., 24.11., 01.12., 08.12., 15.12., 22.12., 05.01., 12.01.,
 19.01., 26.01., 02.02., 09.02., 23.02., 09.03., 16.03.
-38 : 012 Rücken Laura Laschet (ME)
+38 : 012 Rücken (Swimming) Laura Laschet (ME)
 <BLANKLINE>
-39 : 013 Rücken Laura Laschet (ME)
+39 : 013 Rücken (Swimming) Laura Laschet (ME)
 <BLANKLINE>
-40 : 018 SV Laura Laschet (ME)
+40 : 018 SV (Self-defence) Laura Laschet (ME)
 <BLANKLINE>
-41 : 019 SV Marie-Louise Meier (MS)
+41 : 019 SV (Self-defence) Marie-Louise Meier (MS)
 <BLANKLINE>
-42 : 019 SV Marie-Louise Meier (MS)
+42 : 019 SV (Self-defence) Marie-Louise Meier (MS)
 <BLANKLINE>
-43 : 020C GLQ Marie-Louise Meier (MS)
+43 : 020C GLQ (GuoLin-Qigong) Marie-Louise Meier (MS)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 28.07., 11.08., 18.08.,
 25.08., 01.09., 08.09., 15.09., 22.09., 06.10., 13.10., 20.10., 27.10., 03.11.,
 10.11., 17.11., 01.12., 08.12., 15.12., 22.12., 29.12., 05.01., 12.01., 26.01.,
 02.02., 09.02., 23.02., 02.03., 09.03., 16.03., 30.03., 13.04., 20.04.
-44 : 021C GLQ Marie-Louise Meier (MS)
+44 : 021C GLQ (GuoLin-Qigong) Marie-Louise Meier (MS)
 Not invoiced : 25.07., 01.08., 08.08., 22.08., 29.08., 05.09., 12.09., 26.09.,
 03.10., 10.10., 17.10., 24.10., 07.11., 14.11., 28.11., 05.12., 12.12., 19.12.,
 26.12., 02.01., 09.01., 23.01., 30.01., 06.02., 13.02., 20.02., 27.02., 24.04.,
 15.05.
-45 : 005 comp Marie-Louise Meier (MS)
+45 : 005 comp (First Steps) Marie-Louise Meier (MS)
 <BLANKLINE>
-46 : 008C WWW Erna Emonts-Gast (ME)
+46 : 008C WWW (Internet for beginners) Erna Emonts-Gast (ME)
 Invoiced : (...) 17.04., 24.04., 15.05.
-47 : 016 Rücken Alfons Radermacher (MS)
+47 : 016 Rücken (Swimming) Alfons Radermacher (MS)
 <BLANKLINE>
-48 : 017 Rücken Alfons Radermacher (MS)
+48 : 017 Rücken (Swimming) Alfons Radermacher (MS)
 <BLANKLINE>
-49 : 017 Rücken Alfons Radermacher (MS)
+49 : 017 Rücken (Swimming) Alfons Radermacher (MS)
 <BLANKLINE>
-50 : 003 comp Christian Radermacher (ME)
+50 : 003 comp (First Steps) Christian Radermacher (ME)
 <BLANKLINE>
-51 : 006C WWW Christian Radermacher (ME)
+51 : 006C WWW (Internet for beginners) Christian Radermacher (ME)
 Not invoiced : 27.10., 03.11., 17.11., 24.11., 01.12., 08.12., 15.12., 22.12.,
 29.12., 12.01., 19.01., 26.01., 02.02., 09.02., 23.02., 02.03., 16.03., 23.03.,
 30.03., 13.04., 20.04., 27.04., 04.05., 18.05.
-52 : 022C MED Christian Radermacher (ME)
+52 : 022C MED (Finding your inner peace) Christian Radermacher (ME)
 Not invoiced : 23.09., 30.09., 07.10., 14.10., 21.10.
-53 : 023C MED Christian Radermacher (ME)
+53 : 023C MED (Finding your inner peace) Christian Radermacher (ME)
 Not invoiced : 06.02., 13.02., 20.02., 27.02., 06.03., 13.03., 27.03., 10.04.,
 17.04., 24.04., 08.05., 15.05.
 54 : 024C Yoga Guido Radermacher (ME)
@@ -233,97 +233,101 @@ Not invoiced : 27.12., 03.01., 17.01., 24.01., 31.01., 07.02., 14.02., 21.02.,
 30.05., 06.06., 13.06., 20.06., 27.06., 11.07., 18.07., 25.07., 01.08., 08.08.,
 22.08., 29.08., 12.09., 19.09., 26.09., 03.10., 10.10., 17.10., 24.10., 14.11.,
 21.11., 28.11., 05.12., 12.12., 19.12., 26.12., 09.01., 16.01., 23.01., 30.01.
-57 : 014 Rücken Hedi Radermacher (MLS)
+57 : 014 Rücken (Swimming) Hedi Radermacher (MLS)
 <BLANKLINE>
-58 : 015 Rücken Hedi Radermacher (MLS)
+58 : 015 Rücken (Swimming) Hedi Radermacher (MLS)
 <BLANKLINE>
 59 : 001 Griechenland 2014 Hedi Radermacher (MLS)
 <BLANKLINE>
 60 : 002 London 2014 Hedi Radermacher (MLS)
 <BLANKLINE>
-61 : 004 comp Didier di Rupo (ME)
+61 : 004 comp (First Steps) Didier di Rupo (ME)
 <BLANKLINE>
-62 : 007C WWW Otto Östges (ME)
+62 : 007C WWW (Internet for beginners) Otto Östges (ME)
 Not invoiced : 29.10., 05.11., 12.11.
-63 : 007C WWW Otto Östges (ME)
+63 : 007C WWW (Internet for beginners) Otto Östges (ME)
 Invoiced : (...) 06.05., 13.05., 20.05. Not invoiced : 17.12., 24.12., 31.12.,
 07.01., 14.01., 21.01., 28.01., 11.02., 25.02., 04.03., 11.03., 18.03., 25.03.
-64 : 009C BT Otto Östges (ME)
+64 : 009C BT (Belly dancing) Otto Östges (ME)
 Invoiced : (...) 06.05., 13.05., 20.05. Not invoiced : 02.04., 09.04., 16.04.,
 23.04., 30.04., 07.05., 21.05., 28.05., 04.06., 11.06., 18.06., 25.06., 02.07.,
 16.07., 23.07., 30.07., 06.08., 13.08., 20.08., 27.08., 10.09., 17.09., 24.09.,
 01.10., 08.10., 15.10., 22.10., 05.11., 12.11., 19.11., 26.11., 03.12., 10.12.,
 17.12., 31.12., 07.01., 14.01., 21.01., 28.01., 04.02., 11.02., 04.03., 11.03.,
 18.03., 25.03., 01.04., 08.04., 15.04.
-65 : 010C FG Otto Östges (ME)
+65 : 010C FG (Functional gymnastics) Otto Östges (ME)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 06.10., 13.10., 20.10.,
 03.11., 10.11., 17.11., 24.11., 01.12., 08.12., 15.12., 29.12., 05.01., 12.01.,
 19.01., 26.01., 02.02., 09.02., 02.03., 09.03., 16.03.
-66 : 011C FG Otto Östges (ME)
+66 : 011C FG (Functional gymnastics) Otto Östges (ME)
 Not invoiced : 06.10., 13.10., 20.10., 27.10.
-67 : 012 Rücken Otto Östges (ME)
+67 : 012 Rücken (Swimming) Otto Östges (ME)
 <BLANKLINE>
-68 : 013 Rücken Jean Dupont (ML)
+68 : 013 Rücken (Swimming) Jean Dupont (ML)
 <BLANKLINE>
-69 : 018 SV Jean Dupont (ML)
+69 : 018 SV (Self-defence) Jean Dupont (ML)
 <BLANKLINE>
-70 : 018 SV Jean Dupont (ML)
+70 : 018 SV (Self-defence) Jean Dupont (ML)
 <BLANKLINE>
-71 : 019 SV Mark Martelaer (ME)
+71 : 019 SV (Self-defence) Mark Martelaer (ME)
 <BLANKLINE>
-72 : 020C GLQ Mark Martelaer (ME)
+72 : 020C GLQ (GuoLin-Qigong) Mark Martelaer (ME)
 Invoiced : (...) 04.05., 11.05., 18.05. Not invoiced : 28.07., 11.08., 18.08.,
 25.08., 01.09., 08.09., 15.09., 22.09., 06.10., 13.10., 20.10., 27.10., 03.11.,
 10.11., 17.11., 01.12., 08.12., 15.12., 22.12., 29.12., 05.01., 12.01., 26.01.,
 02.02., 09.02., 23.02., 02.03., 09.03., 16.03., 30.03., 13.04., 20.04.
-73 : 021C GLQ Mark Martelaer (ME)
+73 : 021C GLQ (GuoLin-Qigong) Mark Martelaer (ME)
 Not invoiced : 25.07., 01.08., 08.08.
-74 : 005 comp Marie-Louise Vandenmeulenbos (ME)
+74 : 005 comp (First Steps) Marie-Louise Vandenmeulenbos (ME)
 <BLANKLINE>
-75 : 008C WWW Marie-Louise Vandenmeulenbos (ME)
+75 : 008C WWW (Internet for beginners) Marie-Louise Vandenmeulenbos (ME)
 Invoiced : (...) 17.04., 24.04., 15.05.
-76 : 016 Rücken Marie-Louise Vandenmeulenbos (ME)
+76 : 016 Rücken (Swimming) Marie-Louise Vandenmeulenbos (ME)
 <BLANKLINE>
-77 : 016 Rücken Marie-Louise Vandenmeulenbos (ME)
+77 : 016 Rücken (Swimming) Marie-Louise Vandenmeulenbos (ME)
 <BLANKLINE>
-78 : 017 Rücken Marie-Louise Vandenmeulenbos (ME)
+78 : 017 Rücken (Swimming) Marie-Louise Vandenmeulenbos (ME)
 <BLANKLINE>
-79 : 003 comp Marie-Louise Vandenmeulenbos (ME)
+79 : 003 comp (First Steps) Marie-Louise Vandenmeulenbos (ME)
 <BLANKLINE>
-80 : 006C WWW Lisa Lahm (MEL)
+80 : 006C WWW (Internet for beginners) Lisa Lahm (MEL)
 Not invoiced : 27.10., 03.11., 17.11., 24.11.
-81 : 022C MED Bernd Brecht (MS)
+81 : 022C MED (Finding your inner peace) Bernd Brecht (MS)
 Invoiced : (...) 23.02., 02.03., 16.03.
-82 : 023C MED Bernd Brecht (MS)
+82 : 023C MED (Finding your inner peace) Bernd Brecht (MS)
 Not invoiced : 20.02., 27.02., 06.03., 13.03., 27.03., 10.04., 17.04., 24.04.,
 08.05., 15.05.
 
 
 >>> rt.show(courses.Enrolments)
 ...     #doctest: +REPORT_UDIFF +ELLIPSIS
-================= ======================= ======================================== =============== =================
- Date of request   Activity                Participant                              Workflow        Author
------------------ ----------------------- ---------------------------------------- --------------- -----------------
- 14/09/2013        022C MED                Luc Faymonville (ME)                     **Requested**   Romain Raffault
- 14/09/2013        022C MED                Christian Radermacher (ME)               **Confirmed**   Romain Raffault
- 19/09/2013        022C MED                Bernd Brecht (MS)                        **Requested**   Romain Raffault
- 08/11/2013        024C Yoga               Gregory Groteclaes (ME)                  **Confirmed**   Robin Rood
- 08/11/2013        025C Yoga               Guido Radermacher (ME)                   **Confirmed**   Marianne Martin
- 08/11/2013        025C Yoga               Guido Radermacher (ME)                   **Confirmed**   Marianne Martin
- 23/11/2013        025C Yoga               Gregory Groteclaes (ME)                  **Confirmed**   Marianne Martin
- 23/11/2013        024C Yoga               Guido Radermacher (ME)                   **Confirmed**   Robin Rood
- 26/02/2014        003 comp                Christian Radermacher (ME)               **Confirmed**   Marianne Martin
- 08/03/2014        009C BT                 Otto Östges (ME)                         **Confirmed**   Romain Raffault
+================= ===================================== ======================================== =============== =================
+ Date of request   Activity                              Participant                              Workflow        Author
+----------------- ------------------------------------- ---------------------------------------- --------------- -----------------
+ 14/09/2013        022C MED (Finding your inner peace)   Luc Faymonville (ME)                     **Requested**   Romain Raffault
+ 14/09/2013        022C MED (Finding your inner peace)   Christian Radermacher (ME)               **Confirmed**   Romain Raffault
+ 19/09/2013        022C MED (Finding your inner peace)   Bernd Brecht (MS)                        **Requested**   Romain Raffault
+ 08/11/2013        024C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Robin Rood
+ 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Marianne Martin
+ 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Marianne Martin
+ 23/11/2013        025C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Marianne Martin
+ 23/11/2013        024C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Robin Rood
+ 26/02/2014        003 comp (First Steps)                Christian Radermacher (ME)               **Confirmed**   Marianne Martin
+ 08/03/2014        009C BT (Belly dancing)               Otto Östges (ME)                         **Confirmed**   Romain Raffault
  ...
- 11/07/2015        017 Rücken              Alfons Radermacher (MS)                  **Confirmed**   Robin Rood
- 11/07/2015        017 Rücken              Alfons Radermacher (MS)                  **Confirmed**   Robin Rood
- 11/07/2015        012 Rücken              Otto Östges (ME)                         **Confirmed**   Marianne Martin
- 11/07/2015        016 Rücken              Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
- 11/07/2015        016 Rücken              Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
- 26/07/2015        017 Rücken              Edgar Engels (MES)                       **Confirmed**   Robin Rood
- 26/07/2015        016 Rücken              Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
- 26/07/2015        013 Rücken              Jean Dupont (ML)                         **Confirmed**   Monique Mommer
-================= ======================= ======================================== =============== =================
+ 11/07/2015        016 Rücken (Swimming)                 Edgar Engels (MES)                       **Confirmed**   Rolf Rompen
+ 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Monique Mommer
+ 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Monique Mommer
+ 11/07/2015        013 Rücken (Swimming)                 Laura Laschet (ME)                       **Confirmed**   Monique Mommer
+ 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Robin Rood
+ 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Robin Rood
+ 11/07/2015        012 Rücken (Swimming)                 Otto Östges (ME)                         **Confirmed**   Marianne Martin
+ 11/07/2015        016 Rücken (Swimming)                 Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
+ 11/07/2015        016 Rücken (Swimming)                 Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
+ 26/07/2015        017 Rücken (Swimming)                 Edgar Engels (MES)                       **Confirmed**   Robin Rood
+ 26/07/2015        016 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
+ 26/07/2015        013 Rücken (Swimming)                 Jean Dupont (ML)                         **Confirmed**   Monique Mommer
+================= ===================================== ======================================== =============== =================
 <BLANKLINE>
 
 
@@ -335,15 +339,15 @@ enrolment:
 
 >>> obj = courses.Enrolment.objects.get(pk=64)
 >>> rt.show('invoicing.InvoicingsByInvoiceable', obj)  #doctest: +REPORT_UDIFF
-==================== ================================== ========== ============== ============ ==================
- Product invoice      Heading                            Quantity   Voucher date   State        Number of events
--------------------- ---------------------------------- ---------- -------------- ------------ ------------------
- SLS 9                [1] Enrolment to 009C BT           1          01/04/2014     Registered   12
- SLS 22               [2] Renewal Enrolment to 009C BT   1          01/07/2014     Registered   12
- SLS 31               [3] Renewal Enrolment to 009C BT   1          01/10/2014     Registered   12
- SLS 54               [4] Renewal Enrolment to 009C BT   1          01/01/2015     Registered   12
- **Total (4 rows)**                                      **4**                                  **48**
-==================== ================================== ========== ============== ============ ==================
+==================== ================================================== ========== ============== ============ ==================
+ Product invoice      Heading                                            Quantity   Voucher date   State        Number of events
+-------------------- -------------------------------------------------- ---------- -------------- ------------ ------------------
+ SLS 9                [1] Enrolment to 009C BT (Belly dancing)           1          01/04/2014     Registered   12
+ SLS 22               [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered   12
+ SLS 31               [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
+ SLS 54               [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
+ **Total (4 rows)**                                                      **4**                                  **48**
+==================== ================================================== ========== ============== ============ ==================
 <BLANKLINE>
 
 
@@ -436,8 +440,8 @@ for each of these items:
 And run it:
 
 >>> for o in qs2: fmt(o)  #doctest: +REPORT_UDIFF
---- Invoice #16 for enrolment #61 (004 comp / Didier di Rupo (ME)):
-Title: Enrolment to 004 comp
+--- Invoice #16 for enrolment #61 (004 comp (First Steps) / Didier di Rupo (ME)):
+Title: Enrolment to 004 comp (First Steps)
 Start date: 02/04/2014
 Missed events: 19/03/2014, 26/03/2014, 02/04/2014
 Description:
@@ -445,8 +449,8 @@ Time: Every Wednesday 17:30-19:00.
 Tariff: 20€.
 Scheduled dates:
 02/04/2014, 09/04/2014, 16/04/2014, 23/04/2014, 30/04/2014, 07/05/2014, 
---- Invoice #19 for enrolment #21 (003 comp / Luc Faymonville (ME)):
-Title: Enrolment to 003 comp
+--- Invoice #19 for enrolment #21 (003 comp (First Steps) / Luc Faymonville (ME)):
+Title: Enrolment to 003 comp (First Steps)
 Start date: 06/05/2014
 Missed events: 24/03/2014, 31/03/2014, 07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014
 Description:
@@ -488,14 +492,14 @@ information about the last invoicing run.
 
 >>> obj = rt.modules.invoicing.Plan.objects.all()[0]
 >>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
-==================== ======================= ============================================= ============ ========= ==========
- Selected             Partner                 Preview                                       Amount       Invoice   Workflow
--------------------- ----------------------- --------------------------------------------- ------------ --------- ----------
- Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (50.00 €)    50,00        SLS 71
- Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 72
- Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (48.00 €)   48,00        SLS 73
- Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (48.00 €)   48,00        SLS 74
- Yes                  Brecht Bernd            [1] Enrolment to 023C MED (64.00 €)           64,00        SLS 75
- **Total (5 rows)**                                                                         **258,00**
-==================== ======================= ============================================= ============ ========= ==========
+==================== ======================= ====================================================================== ============ ========= ==========
+ Selected             Partner                 Preview                                                                Amount       Invoice   Workflow
+-------------------- ----------------------- ---------------------------------------------------------------------- ------------ --------- ----------
+ Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     50,00        SLS 71
+ Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 72
+ Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 73
+ Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   48,00        SLS 74
+ Yes                  Brecht Bernd            [1] Enrolment to 023C MED (Finding your inner peace) (64.00 €)         64,00        SLS 75
+ **Total (5 rows)**                                                                                                  **258,00**
+==================== ======================= ====================================================================== ============ ========= ==========
 <BLANKLINE>
