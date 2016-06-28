@@ -341,7 +341,7 @@ class Loader2(Loader1):
         kw.update(start_date=demo_date(-430))
         kw.update(state=courses.CourseStates.active)
         kw.update(every=1)
-        kw.update(every_unit=cal.Recurrencies.per_weekday)
+        kw.update(every_unit=cal.Recurrencies.weekly)
 
         yield add_course(obj, self.pc_bbach, "13:30", "15:00",
                          monday=True, **kw)
@@ -498,7 +498,7 @@ class Loader2(Loader1):
             #~ de="Raumbuchung",en="Room booking"))
         #~ yield obj
         kw = dict(max_events=10)
-        kw.update(every_unit=cal.Recurrencies.per_weekday)
+        kw.update(every_unit=cal.Recurrencies.weekly)
         kw.update(start_date=demo_date(160))
         kw.update(state=BookingStates.registered)
         kw.update(company=COMPANIES.pop())

@@ -690,14 +690,27 @@ class Enrolment(Enrolment, Invoiceable):
             obj=self, item=item)
 
     def get_invoiceable_product(self, plan):
+        """Return the product to use for the invoice.
+        This also decides whether an invoice should get issued.
+        """
         # dd.logger.info('20160223 %s', self.course)
         if not self.course.state.invoiceable:
             return
         if not self.state.invoiceable:
             return
         max_date = plan.max_date or plan.today
-        if self.start_date and self.start_date > max_date:
+
+        # the following 2 lines were nonsense. it is perfectly okay to
+        # write an invoice for an enrolment which starts in the
+        # future.
+        # if self.start_date and self.start_date > max_date:
+        #     return
+
+        # but at least for our demo fixtures we don't want invoices
+        # for enrolments in the future:
+        if self.request_date and self.request_date > max_date:
             return
+
         return self.get_invoicing_info(max_date).invoiceable_fee
 
     @dd.virtualfield(dd.HtmlBox(_("Participant")))

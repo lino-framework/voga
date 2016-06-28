@@ -342,10 +342,10 @@ enrolment:
 ==================== ================================================== ========== ============== ============ ==================
  Product invoice      Heading                                            Quantity   Voucher date   State        Number of events
 -------------------- -------------------------------------------------- ---------- -------------- ------------ ------------------
- SLS 9                [1] Enrolment to 009C BT (Belly dancing)           1          01/04/2014     Registered   12
+ SLS 10               [1] Enrolment to 009C BT (Belly dancing)           1          01/04/2014     Registered   12
  SLS 22               [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered   12
- SLS 31               [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
- SLS 54               [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
+ SLS 32               [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
+ SLS 58               [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
  **Total (4 rows)**                                                      **4**                                  **48**
 ==================== ================================================== ========== ============== ============ ==================
 <BLANKLINE>
@@ -440,16 +440,7 @@ for each of these items:
 And run it:
 
 >>> for o in qs2: fmt(o)  #doctest: +REPORT_UDIFF
---- Invoice #16 for enrolment #61 (004 comp (First Steps) / Didier di Rupo (ME)):
-Title: Enrolment to 004 comp (First Steps)
-Start date: 02/04/2014
-Missed events: 19/03/2014, 26/03/2014, 02/04/2014
-Description:
-Time: Every Wednesday 17:30-19:00.
-Tariff: 20€.
-Scheduled dates:
-02/04/2014, 09/04/2014, 16/04/2014, 23/04/2014, 30/04/2014, 07/05/2014, 
---- Invoice #19 for enrolment #21 (003 comp (First Steps) / Luc Faymonville (ME)):
+--- Invoice #14 for enrolment #21 (003 comp (First Steps) / Luc Faymonville (ME)):
 Title: Enrolment to 003 comp (First Steps)
 Start date: 06/05/2014
 Missed events: 24/03/2014, 31/03/2014, 07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014
@@ -458,6 +449,15 @@ Time: Every Monday 13:30-15:00.
 Tariff: 20€.
 Scheduled dates:
 12/05/2014, 19/05/2014, 
+--- Invoice #17 for enrolment #61 (004 comp (First Steps) / Didier di Rupo (ME)):
+Title: Enrolment to 004 comp (First Steps)
+Start date: 02/04/2014
+Missed events: 19/03/2014, 26/03/2014, 02/04/2014
+Description:
+Time: Every Wednesday 17:30-19:00.
+Tariff: 20€.
+Scheduled dates:
+02/04/2014, 09/04/2014, 16/04/2014, 23/04/2014, 30/04/2014, 07/05/2014, 
 
 Let's have a closer look at the first of above invoicings.
 
@@ -495,11 +495,12 @@ information about the last invoicing run.
 ==================== ======================= ====================================================================== ============ ========= ==========
  Selected             Partner                 Preview                                                                Amount       Invoice   Workflow
 -------------------- ----------------------- ---------------------------------------------------------------------- ------------ --------- ----------
- Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     50,00        SLS 71
- Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 72
- Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 73
- Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   48,00        SLS 74
- Yes                  Brecht Bernd            [1] Enrolment to 023C MED (Finding your inner peace) (64.00 €)         64,00        SLS 75
- **Total (5 rows)**                                                                                                  **258,00**
+ Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     50,00        SLS 76
+ Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 77
+ Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 78
+ Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   48,00        SLS 79
+ Yes                  Martelaer Mark          Enrolment to 019 SV (Self-defence) (20.00 €)                           20,00        SLS 80
+ Yes                  Brecht Bernd            [1] Enrolment to 023C MED (Finding your inner peace) (64.00 €)         64,00        SLS 81
+ **Total (6 rows)**                                                                                                  **278,00**
 ==================== ======================= ====================================================================== ============ ========= ==========
 <BLANKLINE>
