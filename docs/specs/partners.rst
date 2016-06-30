@@ -43,3 +43,28 @@ In Lino Voga we differentiate the following subclasses of Partner:
         "Person" -> "Participant"
         "Person" -> "Instructor"
       }
+
+
+
+Partner lists
+=============
+
+The demo database currently contains no data about partner lists.
+
+>>> rt.show(lists.Members)
+No data to display
+
+>>> from django.utils.http import urlquote
+>>> url = '/api/lists/Members?'
+>>> url += 'limit=10&start=0&fmt=json&'
+>>> url += "filter=" + urlquote('[{"type":"string","value":"3","field":"list"}]')
+>>> res = test_client.get(url, REMOTE_USER='robin')
+>>> print(res.status_code)
+200
+
+>>> d = json.loads(res.content)
+>>> d['count']
+1
+>>> d['rows'][0]
+[None, None, None, None, None, None, None, None, None, None, None, None, None]
+

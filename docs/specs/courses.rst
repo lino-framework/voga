@@ -60,6 +60,9 @@ and
 <BLANKLINE>
 
 
+See also :doc:`pupils`.
+
+
 The fee of a course
 ===================
 

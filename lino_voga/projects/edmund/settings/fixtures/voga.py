@@ -70,9 +70,9 @@ class Loader1(object):
         PlaceTypes = rt.modules.countries.PlaceTypes
         ProductCat = rt.modules.products.ProductCat
 
-        yield PupilType(ref="M", name="Liige")
-        yield PupilType(ref="H", name="Abistaja")
-        yield PupilType(ref="L", name="Muu")
+        # yield PupilType(ref="M", name="Liige")
+        # yield PupilType(ref="H", name="Abistaja")
+        # yield PupilType(ref="L", name="Muu")
 
         yield TeacherType(ref="IN", **dd.str2kw('name', _("Independant")))
         yield TeacherType(ref="VL", **dd.str2kw('name', _("Voluntary")))

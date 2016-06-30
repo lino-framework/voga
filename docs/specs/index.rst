@@ -25,3 +25,4 @@ specifications. One of their goal is to get tested.
    checkdata
    roger
    partners
+   pupils

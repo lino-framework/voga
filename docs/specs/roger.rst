@@ -35,45 +35,26 @@ There is a custom plausibility checker
 >>> dd.demo_date()
 datetime.date(2015, 5, 22)
 
+
 >>> rt.show(courses.Pupils)
+... #doctest: +ELLIPSIS
 ======================================== ================================= ================== ============ ===== ===== ======== ==============
  Name                                     Address                           Participant Type   Section      LFV   CKK   Raviva   Mitglied bis
 ---------------------------------------- --------------------------------- ------------------ ------------ ----- ----- -------- --------------
- Hans Altenberg (MEC)                     Aachener Straße, 4700 Eupen                                       No    Yes   No       31/12/2015
- Annette Arens (ME)                       Alter Malmedyer Weg, 4700 Eupen                                   No    No    No       31/12/2015
- Laurent Bastiaensen (MES)                Am Berg, 4700 Eupen                                  Eupen        No    No    No       31/12/2015
- Bernd Brecht (MS)                        Germany                                              Nidrum       No    No    No
- Ulrike Charlier (ME)                     Auenweg, 4700 Eupen                                               No    No    No       31/12/2015
- Dorothée Demeulenaere (ME)               Auf'm Rain, 4700 Eupen                                            No    No    No       31/12/2016
- Daniel Dericum (MECLS)                   August-Thonnar-Str., 4700 Eupen                      Nidrum       Yes   Yes   No       31/12/2016
- Dorothée Dobbelstein-Demeulenaere (ME)   Bahnhofstraße, 4700 Eupen                                         No    No    No       31/12/2016
- Jean Dupont (ML)                         4031 Angleur                                                      Yes   No    No
- Daniel Emonts (ME)                       Bellmerin, 4700 Eupen                                             No    No    No       31/12/2016
- Erna Emonts-Gast (ME)                    4730 Raeren                                                       No    No    No       31/12/2015
- Edgar Engels (MES)                       Bennetsborn, 4700 Eupen                              Walhorn      No    No    No       31/12/2016
- Eberhart Evers (MEC)                     Bergstraße, 4700 Eupen                                            No    Yes   No       31/12/2016
- Luc Faymonville (ME)                     Brabantstraße, 4700 Eupen                                         No    No    No       31/12/2016
- Gregory Groteclaes (ME)                  Edelstraße, 4700 Eupen                                            No    No    No       31/12/2016
- Hildegard Hilgers (MECS)                 Favrunpark, 4700 Eupen                               Herresbach   No    Yes   No       31/12/2016
- Jacqueline Jacobs (MES)                  Fränzel, 4700 Eupen                                  Eynatten     No    No    No       31/12/2016
- Jérôme Jeanémart (MCLS)                  France                                               Walhorn      Yes   Yes   No
- Josef Jonas (MEC)                        Gülcherstraße, 4700 Eupen                                         No    Yes   No       31/12/2016
- Karl Kaivers (MLS)                       Haasberg, 4700 Eupen                                 Kelmis       Yes   No    No
- Lisa Lahm (MEL)                          Germany                                                           Yes   No    No       31/12/2015
- Laura Laschet (ME)                       Habsburgerweg, 4700 Eupen                                         No    No    No       31/12/2015
- Josefine Leffin (MCS)                    Heidgasse, 4700 Eupen                                Hergenrath   No    Yes   No
- Mark Martelaer (ME)                      Amsterdam, Netherlands                                            No    No    No       31/12/2015
- Marie-Louise Meier (MS)                  Hisselsgasse, 4700 Eupen                             Hauset       No    No    No
- Alfons Radermacher (MS)                  4730 Raeren                                          Elsenborn    No    No    No
- Christian Radermacher (ME)               4730 Raeren                                                       No    No    No       31/12/2015
- Edgard Radermacher (MCS)                 4730 Raeren                                          Weywertz     No    Yes   No
- Guido Radermacher (ME)                   4730 Raeren                                                       No    No    No       31/12/2015
- Hedi Radermacher (MLS)                   4730 Raeren                                          Sonstige     Yes   No    No
- Jean Radermacher (MEC)                   4730 Raeren                                                       No    Yes   No       31/12/2015
- Marie-Louise Vandenmeulenbos (ME)        Amsterdam, Netherlands                                            No    No    No       31/12/2015
- Didier di Rupo (ME)                      4730 Raeren                                                       No    No    No       31/12/2015
- Erna Ärgerlich (MCS)                     4730 Raeren                                          Eupen        No    Yes   No
- Otto Östges (ME)                         4730 Raeren                                                       No    No    No       31/12/2015
+ Hans Altenberg (MEC)                     Aachener Straße, 4700 Eupen       Member                          No    Yes   No       31/12/2015
+ Annette Arens (ME)                       Alter Malmedyer Weg, 4700 Eupen   Helper                          No    No    No       31/12/2015
+ Laurent Bastiaensen (MES)                Am Berg, 4700 Eupen               Non-member         Eupen        No    No    No       31/12/2015
+ Bernd Brecht (MS)                        Germany                           Member             Nidrum       No    No    No
+ Ulrike Charlier (ME)                     Auenweg, 4700 Eupen               Helper                          No    No    No       31/12/2015
+ Dorothée Demeulenaere (ME)               Auf'm Rain, 4700 Eupen            Non-member                      No    No    No       31/12/2016
+ Daniel Dericum (MECLS)                   August-Thonnar-Str., 4700 Eupen   Member             Nidrum       Yes   Yes   No       31/12/2016
+...
+ Hedi Radermacher (MLS)                   4730 Raeren                       Non-member         Sonstige     Yes   No    No
+ Jean Radermacher (MEC)                   4730 Raeren                       Member                          No    Yes   No       31/12/2015
+ Marie-Louise Vandenmeulenbos (ME)        Amsterdam, Netherlands            Helper                          No    No    No       31/12/2015
+ Didier di Rupo (ME)                      4730 Raeren                       Non-member                      No    No    No       31/12/2015
+ Erna Ärgerlich (MCS)                     4730 Raeren                       Member             Eupen        No    Yes   No
+ Otto Östges (ME)                         4730 Raeren                       Helper                          No    No    No       31/12/2015
 ======================================== ================================= ================== ============ ===== ===== ======== ==============
 <BLANKLINE>
 
