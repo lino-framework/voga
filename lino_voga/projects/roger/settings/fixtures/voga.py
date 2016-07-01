@@ -303,6 +303,7 @@ class Loader2(Loader1):
         def add_journey(*args, **kw):
             kw.update(user=USERS.pop())
             kw.update(teacher=TEACHERS.pop())
+            kw.update(every_unit=cal.Recurrencies.once)
             return journey(*args, **kw)
 
         self.journeys_topic = topic(**dd.str2kw('name', _("Journeys")))
@@ -313,8 +314,9 @@ class Loader2(Loader1):
                       **dd.str2kw('name', _("Europe")))
 
         yield europe
-        yield add_journey(europe, "Griechenland 2014",
-                          i2d(20140814), i2d(20140820))
+        yield add_journey(europe, "Greece 2014",
+                          i2d(20140814), i2d(20140820),
+                          state=courses.CourseStates.active)
         yield add_journey(europe, "London 2014",
                           i2d(20140714), i2d(20140720))
 
@@ -537,7 +539,9 @@ class Loader2(Loader1):
                     # week after start date of course:
                     # kw.update(request_date=coursedate(i % 28 - 7))
                     kw.update(request_date=coursedate(rd))
-
+                    if course.line == europe:
+                        if n % 3 == 0:
+                            kw.update(places=2)
                     obj = Enrolment(**kw)
                     obj.full_clean()
                     if sd is not None:

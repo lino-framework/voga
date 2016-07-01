@@ -81,7 +81,7 @@ invoiced (and what hasn't) for a given enrolment.
 ...     ii = '\n'.join(wrap(E.to_rst(obj.invoicing_info), 80))
 ...     print(u"{} : {} {}\n{}".format(obj.id, obj.course, obj.pupil, ii))
 ...     #doctest: +REPORT_UDIFF +NORMALIZE_WHITESPACE
-1 : 001 Griechenland 2014 Annette Arens (ME)
+1 : 001 Greece 2014 Annette Arens (ME)
 <BLANKLINE>
 2 : 002 London 2014 Annette Arens (ME)
 <BLANKLINE>
@@ -160,7 +160,7 @@ Not invoiced : 29.11., 06.12., 13.12., 20.12., 27.12., 03.01., 17.01., 24.01.,
 <BLANKLINE>
 29 : 015 Rücken (Swimming) Gregory Groteclaes (ME)
 <BLANKLINE>
-30 : 001 Griechenland 2014 Jacqueline Jacobs (MES)
+30 : 001 Greece 2014 Jacqueline Jacobs (MES)
 <BLANKLINE>
 31 : 002 London 2014 Jacqueline Jacobs (MES)
 <BLANKLINE>
@@ -237,7 +237,7 @@ Not invoiced : 27.12., 03.01., 17.01., 24.01., 31.01., 07.02., 14.02., 21.02.,
 <BLANKLINE>
 58 : 015 Rücken (Swimming) Hedi Radermacher (MLS)
 <BLANKLINE>
-59 : 001 Griechenland 2014 Hedi Radermacher (MLS)
+59 : 001 Greece 2014 Hedi Radermacher (MLS)
 <BLANKLINE>
 60 : 002 London 2014 Hedi Radermacher (MLS)
 <BLANKLINE>
@@ -338,14 +338,15 @@ The detail window of an enrolment shows all invoicings of that
 enrolment:
 
 >>> obj = courses.Enrolment.objects.get(pk=64)
->>> rt.show('invoicing.InvoicingsByInvoiceable', obj)  #doctest: +REPORT_UDIFF
+>>> rt.show('invoicing.InvoicingsByInvoiceable', obj)
+... #doctest: +REPORT_UDIFF
 ==================== ================================================== ========== ============== ============ ==================
  Product invoice      Heading                                            Quantity   Voucher date   State        Number of events
 -------------------- -------------------------------------------------- ---------- -------------- ------------ ------------------
  SLS 10               [1] Enrolment to 009C BT (Belly dancing)           1          01/04/2014     Registered   12
  SLS 22               [2] Renewal Enrolment to 009C BT (Belly dancing)   1          01/07/2014     Registered   12
- SLS 32               [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
- SLS 58               [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
+ SLS 34               [3] Renewal Enrolment to 009C BT (Belly dancing)   1          01/10/2014     Registered   12
+ SLS 60               [4] Renewal Enrolment to 009C BT (Belly dancing)   1          01/01/2015     Registered   12
  **Total (4 rows)**                                                      **4**                                  **48**
 ==================== ================================================== ========== ============== ============ ==================
 <BLANKLINE>
@@ -424,15 +425,18 @@ for each of these items:
 
 >>> def fmt(obj):
 ...     enr = obj.invoiceable
-...     missed_events = enr.course.events_by_course.filter(
-...         start_date__lte=enr.start_date)
-...     if missed_events.count() == 0: return
-...     missed_events = ', '.join([dd.fds(o.start_date) for o in missed_events])
+...     # avoid initdb_demo after change in item_description.html:
+...     enr.setup_invoice_item(obj) 
 ...     print(u"--- Invoice #{0} for enrolment #{1} ({2}):".format(
 ...         obj.voucher.number, enr.id, enr))
 ...     print("Title: {0}".format(obj.title))
 ...     print("Start date: " + dd.fds(obj.invoiceable.start_date))
-...     print("Missed events: {0}".format(missed_events))
+...     if enr.start_date:
+...       missed_events = enr.course.events_by_course.filter(
+...         start_date__lte=enr.start_date)
+...       # if missed_events.count() == 0: return
+...       missed_events = ', '.join([dd.fds(o.start_date) for o in missed_events])
+...       print("Missed events: {0}".format(missed_events))
 ...     print("Description:")
 ...     print(noblanklines(obj.description))
 
@@ -490,17 +494,96 @@ Invoicing plan
 The demo database contains exactly one plan, which still holds
 information about the last invoicing run.
 
->>> obj = rt.modules.invoicing.Plan.objects.all()[0]
+>>> obj = rt.models.invoicing.Plan.objects.all()[0]
 >>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
 ==================== ======================= ====================================================================== ============ ========= ==========
  Selected             Partner                 Preview                                                                Amount       Invoice   Workflow
 -------------------- ----------------------- ---------------------------------------------------------------------- ------------ --------- ----------
- Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     50,00        SLS 76
- Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 77
- Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 78
- Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   48,00        SLS 79
- Yes                  Martelaer Mark          Enrolment to 019 SV (Self-defence) (20.00 €)                           20,00        SLS 80
- Yes                  Brecht Bernd            [1] Enrolment to 023C MED (Finding your inner peace) (64.00 €)         64,00        SLS 81
+ Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     50,00        SLS 78
+ Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 79
+ Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 80
+ Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   48,00        SLS 81
+ Yes                  Martelaer Mark          Enrolment to 019 SV (Self-defence) (20.00 €)                           20,00        SLS 82
+ Yes                  Brecht Bernd            [1] Enrolment to 023C MED (Finding your inner peace) (64.00 €)         64,00        SLS 83
  **Total (6 rows)**                                                                                                  **278,00**
 ==================== ======================= ====================================================================== ============ ========= ==========
 <BLANKLINE>
+
+
+Item descriptions
+=================
+
+The template :xfile:`courses/Enrolment/item_description.html` defines
+the text to use as the description of an invoice item
+when generating invoices.
+
+Here is an overview of the different cases of item descriptions.
+
+>>> qs = InvoiceItem.objects.filter(invoiceable_id__isnull=False)
+>>> qs.count()
+101
+>>> cases = set()
+>>> for i in qs:
+...     e = i.invoiceable
+...     k = (e.places == 1, e.start_date is None, 
+...         e.course.start_time is None,
+...         e.start_date is None,
+...         e.option_id is None,
+...         e.fee.number_of_events is None,
+...         e.course.every_unit)
+...     if k in cases: continue
+...     print "=== {} ===".format(k)
+...     fmt(i)
+...     cases.add(k)
+...  #doctest: -REPORT_UDIFF
+=== (True, True, False, True, True, False, <Recurrencies.weekly:W>) ===
+--- Invoice #1 for enrolment #52 (022C MED (Finding your inner peace) / Christian Radermacher (ME)):
+Title: [1] Enrolment to 022C MED (Finding your inner peace)
+Start date: 
+Description:
+Time: Every Monday 18:00-19:30.
+Tariff: 64€/12 hours.
+=== (True, False, False, False, True, False, <Recurrencies.weekly:W>) ===
+--- Invoice #2 for enrolment #26 (025C Yoga / Gregory Groteclaes (ME)):
+Title: [1] Enrolment to 025C Yoga
+Start date: 23/11/2013
+Missed events: 08/11/2013, 15/11/2013, 22/11/2013
+Description:
+Time: Every Friday 19:00-20:30.
+Tariff: 50€/5 hours.
+Your start date: 23/11/2013.
+=== (True, True, False, True, True, True, <Recurrencies.weekly:W>) ===
+--- Invoice #7 for enrolment #50 (003 comp (First Steps) / Christian Radermacher (ME)):
+Title: Enrolment to 003 comp (First Steps)
+Start date: 
+Description:
+Time: Every Monday 13:30-15:00.
+Tariff: 20€.
+Scheduled dates:
+24/03/2014, 31/03/2014, 07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014, 12/05/2014, 19/05/2014, 
+=== (True, False, False, False, True, True, <Recurrencies.weekly:W>) ===
+--- Invoice #14 for enrolment #21 (003 comp (First Steps) / Luc Faymonville (ME)):
+Title: Enrolment to 003 comp (First Steps)
+Start date: 06/05/2014
+Missed events: 24/03/2014, 31/03/2014, 07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014
+Description:
+Time: Every Monday 13:30-15:00.
+Tariff: 20€.
+Scheduled dates:
+12/05/2014, 19/05/2014, 
+=== (True, True, True, True, True, True, <Recurrencies.once:O>) ===
+--- Invoice #30 for enrolment #1 (001 Greece 2014 / Annette Arens (ME)):
+Title: Enrolment to 001 Greece 2014
+Start date: 
+Description:
+Date: From Thursday, 14 August 2014 until Wednesday, 20 August 2014.
+Tariff: Journeys.
+=== (False, True, True, True, True, True, <Recurrencies.once:O>) ===
+--- Invoice #32 for enrolment #59 (001 Greece 2014 / Hedi Radermacher (MLS)):
+Title: Enrolment to 001 Greece 2014
+Start date: 
+Description:
+Places used: 2.
+Date: From Thursday, 14 August 2014 until Wednesday, 20 August 2014.
+Tariff: Journeys.
+
