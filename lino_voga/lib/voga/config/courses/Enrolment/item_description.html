@@ -6,7 +6,7 @@
 {% endif -%}
 {%- if obj.course.start_time %}
 {{_("Time")}}: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
-{% else %}
+{%- else -%}
 {{_("Date")}}: {{obj.course.weekdays_text}}.
 {% endif -%}
 {{rt.models.products.Product._meta.verbose_name}}: {{obj.fee}}.
