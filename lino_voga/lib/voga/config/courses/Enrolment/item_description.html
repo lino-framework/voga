@@ -22,7 +22,7 @@
 {% for evt in qs -%}
 {{fds(evt.start_date)}}, {% endfor %}
 {% endif -%}
-{%- endif -%}
+{% endif -%}
 {%- if obj.option -%}
 {{obj.option}}.
 {% endif -%}
