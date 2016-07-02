@@ -1,10 +1,10 @@
-{%- if obj.pupil.id != item.voucher.partner.id -%}
+{%- if obj.pupil.id != item.voucher.partner.id %}
 {{rt.models.courses.Pupil._meta.verbose_name}}: {{obj.pupil}}.
 {% endif -%}
-{%- if obj.places != 1 -%}
+{%- if obj.places != 1 %}
 {{rt.models.courses.Enrolment._meta.get_field('places').verbose_name}}: {{obj.places}}.
 {% endif -%}
-{%- if obj.course.start_time -%}
+{%- if obj.course.start_time %}
 {{_("Time")}}: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
 {%- else -%}
 {{_("Date")}}: {{obj.course.weekdays_text}}.
@@ -23,10 +23,10 @@
 {{fds(evt.start_date)}}, {% endfor %}
 {% endif -%}
 {% endif -%}
-{%- if obj.option -%}
+{%- if obj.option %}
 {{obj.option}}.
 {% endif -%}
-{%- if False -%}
+{%- if False %}
 Angefragt am {{fds(obj.request_date)}} 
 ({{obj.user.initials or obj.user.first_name}}). 
 {% endif -%}
