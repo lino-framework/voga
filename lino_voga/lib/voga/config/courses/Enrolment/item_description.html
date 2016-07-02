@@ -1,14 +1,14 @@
 {%- if obj.pupil.id != item.voucher.partner.id %}
 {{rt.models.courses.Pupil._meta.verbose_name}}: {{obj.pupil}}.
-{%- endif -%}
+{% endif -%}
 {%- if obj.places != 1 %}
 {{rt.models.courses.Enrolment._meta.get_field('places').verbose_name}}: {{obj.places}}.
-{%- endif -%}
+{% endif -%}
 {%- if obj.course.start_time %}
 {{_("Time")}}: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
 {%- else -%}
 {{_("Date")}}: {{obj.course.weekdays_text}}.
-{%- endif -%}
+{% endif -%}
 {{rt.models.products.Product._meta.verbose_name}}: {{obj.fee}}.
 {%- if obj.course.every_unit != rt.models.cal.Recurrencies.once -%}
 {%- if obj.fee.number_of_events -%}
@@ -21,13 +21,13 @@
 {% set qs = rt.models.system.PeriodEvents.started.add_filter(qs, obj) %}
 {% for evt in qs -%}
 {{fds(evt.start_date)}}, {% endfor %}
-{%- endif -%}
-{%- endif -%}
+{% endif -%}
+{% endif -%}
 {%- if obj.option %}
 {{obj.option}}.
-{%- endif -%}
+{% endif -%}
 {%- if False %}
 Angefragt am {{fds(obj.request_date)}} 
 ({{obj.user.initials or obj.user.first_name}}). 
-{%- endif -%}
+{% endif -%}
 
