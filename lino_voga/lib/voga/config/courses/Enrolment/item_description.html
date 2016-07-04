@@ -1,6 +1,6 @@
 {%- if obj.pupil.id != item.voucher.partner.id -%}
 {{rt.models.courses.Pupil._meta.verbose_name}}: {{obj.pupil}}.
-{%- endif -%}
+{% endif -%}
 {%- if obj.places != 1 %}
 {{rt.models.courses.Enrolment._meta.get_field('places').verbose_name}}: {{obj.places}}.
 {% endif -%}
