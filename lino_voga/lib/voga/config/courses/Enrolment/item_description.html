@@ -1,4 +1,4 @@
-{%- if obj.pupil.id != item.voucher.partner.id %}
+{%- if obj.pupil.id != item.voucher.partner.id -%}
 {{rt.models.courses.Pupil._meta.verbose_name}}: {{obj.pupil}}.
 {%- endif -%}
 {%- if obj.places != 1 %}
