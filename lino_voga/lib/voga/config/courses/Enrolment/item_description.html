@@ -4,7 +4,7 @@
 {%- if obj.places != 1 %}
 {{rt.models.courses.Enrolment._meta.get_field('places').verbose_name}}: {{obj.places}}.
 {% endif -%}
-{%- if obj.course.start_time %}
+{%- if obj.course.start_time -%}
 {{_("Time")}}: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
 {%- else -%}
 {{_("Date")}}: {{obj.course.weekdays_text}}.
