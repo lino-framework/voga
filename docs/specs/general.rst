@@ -88,7 +88,7 @@ The demo database
  ledger.MatchRule           ledger.MatchRules              3         11
  ledger.Movement            ledger.Movements               10        675
  ledger.PaymentTerm         ledger.PaymentTerms            8         7
- ledger.Voucher             ledger.Vouchers                9         203
+ ledger.Voucher             ledger.Vouchers                9         205
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
@@ -102,9 +102,9 @@ The demo database
  products.Product           products.Products              15        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
- sales.InvoiceItem          sales.InvoiceItems             15        99
+ sales.InvoiceItem          sales.InvoiceItems             15        101
  sales.PaperType            sales.PaperTypes               5         2
- sales.VatProductInvoice    sales.Invoices                 24        81
+ sales.VatProductInvoice    sales.Invoices                 24        83
  sepa.Account               sepa.Accounts                  6         17
  system.SiteConfig          system.SiteConfigs             18        1
  uploads.Upload             uploads.Uploads                9         0

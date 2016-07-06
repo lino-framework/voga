@@ -6,11 +6,11 @@
 {% endif -%}
 {%- if obj.course.start_time -%}
 {{_("Time")}}: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
-{%- else -%}
+{% else -%}
 {{_("Date")}}: {{obj.course.weekdays_text}}.
 {% endif -%}
 {{rt.models.products.Product._meta.verbose_name}}: {{obj.fee}}.
-{%- if obj.course.every_unit != rt.models.cal.Recurrencies.once -%}
+{% if obj.course.every_unit != rt.models.cal.Recurrencies.once -%}
 {%- if obj.fee.number_of_events -%}
 {%- if obj.start_date %}
 {{_("Your start date")}}: {{fds(obj.start_date)}}.
