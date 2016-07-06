@@ -50,7 +50,7 @@ class Site(Site):
         # yield 'lino.modlib.gfks'
         # yield 'lino.modlib.system'
         yield 'lino.modlib.users'
-        yield 'lino.modlib.countries'
+        yield 'lino_xl.lib.countries'
         yield 'lino_voga.lib.contacts'
         yield 'lino_xl.lib.lists'
         yield 'lino_xl.lib.beid'

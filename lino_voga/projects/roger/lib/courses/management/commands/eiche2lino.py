@@ -33,7 +33,7 @@ from xlrd.xldate import XLDateError
 
 from lino.utils import iif
 from lino.utils import IncompleteDate
-from lino.modlib.contacts.utils import street2kw
+from lino_xl.lib.contacts.utils import street2kw
 
 # from lino.api.shell import *
 from lino.api import dd

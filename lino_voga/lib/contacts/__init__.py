@@ -16,7 +16,7 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-"""Extends :mod:`lino.modlib.contacts` for :ref:`voga`.
+"""Extends :mod:`lino_xl.lib.contacts` for :ref:`voga`.
 
 .. autosummary::
    :toctree:

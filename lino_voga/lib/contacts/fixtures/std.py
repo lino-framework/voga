@@ -1,1 +1,1 @@
-from lino.modlib.contacts.fixtures.std import objects
+from lino_xl.lib.contacts.fixtures.std import objects

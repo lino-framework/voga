@@ -32,7 +32,7 @@ from lino_xl.lib.cal.models import *
 
 from lino.modlib.users.choicelists import UserProfiles
 
-from lino.modlib.contacts.mixins import ContactRelated
+from lino_xl.lib.contacts.mixins import ContactRelated
 from lino_cosi.lib.courses.choicelists import EnrolmentStates
 
 # courses = dd.resolve_app('courses')
