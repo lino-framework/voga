@@ -17,34 +17,27 @@
 # <http://www.gnu.org/licenses/>.
 
 """
-Does some adaptions.
+Adds some specific fields for managing the member fee.
+
 """
 
 from __future__ import unicode_literals
 from __future__ import print_function
 
-import datetime
-
 from django.db.models import Q
-from django.utils.translation import string_concat
 
 from lino.api import dd, rt, _
 
-from lino.mixins.periods import Monthly
-from lino.utils import join_elems
 
-from lino.modlib.printing.mixins import DirectPrintAction
 from lino.modlib.plausibility.choicelists import Checker
 
 from lino_voga.lib.courses.models import *
-
-from lino.modlib.printing.utils import PrintableObject
 
 
 class Sections(dd.ChoiceList):
     verbose_name = _("Section")
     verbose_name_plural = _("Sections")
-    
+
 add = Sections.add_item
 
 names = """Eupen Nidrum Walhorn Herresbach Eynatten Kelmis Hergenrath
@@ -56,29 +49,6 @@ for i, name in enumerate(names.split()):
 # add("02", "Nidrum", "nidrum")
 # add("03", "Walhorn", "walhorn")
 add("etc", "Sonstige", "etc")
-
-
-class PrintPresenceSheet(DirectPrintAction):
-    """Action to print a presence sheet.
-    """
-    combo_group = "creacert"
-    label = _("Presence sheet")
-    tplname = "presence_sheet"
-    build_method = "weasy2pdf"
-    icon_name = None
-    # show_in_bbar = False
-    parameters = Monthly(
-        show_remarks=models.BooleanField(
-            _("Show remarks"), default=False),
-        show_states=models.BooleanField(
-            _("Show states"), default=True))
-    params_layout = """
-    start_date
-    end_date
-    show_remarks
-    show_states
-    """
-    keep_user_values = True
 
 
 class Pupil(Pupil):
@@ -208,83 +178,6 @@ class Line(Line):
     class Meta(Line.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Line')
-
-
-class Course(Course, PrintableObject):
-    """Adds two custom print actions.
-    """
-    class Meta(Course.Meta):
-        app_label = 'courses'
-        abstract = dd.is_abstract_model(__name__, 'Course')
-
-    print_presence_sheet = PrintPresenceSheet()
-    print_presence_sheet_html = PrintPresenceSheet(
-        build_method='weasy2html',
-        label=string_concat(_("Presence sheet"), _(" (HTML)")))
-
-    @dd.displayfield(_("Print"))
-    def print_actions(self, ar):
-        if ar is None:
-            return ''
-        elems = []
-        elems.append(ar.instance_action_button(
-            self.print_presence_sheet))
-        elems.append(ar.instance_action_button(
-            self.print_presence_sheet_html))
-        return E.p(*join_elems(elems, sep=", "))
-
-
-Course.set_widget_options('ref', preferred_with=6)
-
-
-class CourseDetail(CourseDetail):
-    general = dd.Panel("""
-    ref line teacher workflow_buttons
-    room start_date end_date start_time end_time
-    name
-    remark #OptionsByCourse
-    # courses.EventsByCourse
-    """, label=_("General"))
-    # TODO: make an action renderable as a data element of a form
-    enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 confirmed free_places print_actions
-    EnrolmentsByCourse:40
-    """, label=_("Enrolments"))
-
-
-Courses.detail_layout = CourseDetail()
-Courses.order_by = ['ref', '-start_date', '-start_time']
-Courses.column_names = "ref start_date enrolments_until line room teacher " \
-                       "workflow_buttons *"
-
-
-# class Enrolment(Enrolment, DatePeriod):
-#     """
-    
-#     """
-#     class Meta:
-#         app_label = 'courses'
-#         abstract = dd.is_abstract_model(__name__, 'Enrolment')
-#         verbose_name = _("Enrolment")
-#         verbose_name_plural = _("Enrolments")
-
-    # def suggest_guest_for(self, event):
-    #     return self.state in GUEST_ENROLMENT_STATES
-
-# Enrolments.detail_layout = """
-# id course pupil request_date user
-# start_date end_date places fee option amount
-# remark workflow_buttons printed
-# confirmation_details invoicing.InvoicingsByInvoiceable
-# """
-
-
-# EnrolmentsByPupil.column_names = 'request_date course start_date end_date '\
-#                                  'places remark amount workflow_buttons *'
-
-# EnrolmentsByCourse.column_names = 'request_date pupil_info start_date end_date '\
-#                                   'places remark fee option amount ' \
-#                                   'workflow_buttons *'
 
 
 class MemberChecker(Checker):
