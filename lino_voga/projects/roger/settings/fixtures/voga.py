@@ -277,6 +277,7 @@ class Loader2(Loader1):
 
         Product = rt.modules.products.Product
         ProductCat = rt.modules.products.ProductCat
+        CourseAreas = rt.modules.courses.CourseAreas
 
         journey_options = ProductCat(**dd.str2kw(
             'name', _("Hotel options")))
@@ -310,6 +311,7 @@ class Loader2(Loader1):
         yield self.journeys_topic
         europe = line(self.journeys_topic, None, self.journey_fee,
                       options_cat=journey_options,
+                      course_area=CourseAreas.journeys,
                       fees_cat=self.journeys_cat,
                       **dd.str2kw('name', _("Europe")))
 

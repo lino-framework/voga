@@ -58,12 +58,24 @@ day_and_month = dd.plugins.courses.day_and_month
 MAX_SHOWN = 3  # maximum number of invoiced events shown in
                # invoicing_info
 
-from lino.utils.media import TmpMediaFile
+# from lino.utils.media import TmpMediaFile
 
 from lino.modlib.printing.utils import CustomBuildMethod
 from lino_xl.lib.cal.ui import EventsByController
 from lino.mixins.periods import Monthly
 from lino.modlib.printing.mixins import DirectPrintAction
+
+
+"""The default activity are **courses**.  a **hike** usually includes
+a bus travel. One enrolment can mean several participants (seats).  A
+**journey** also includes a room in a hotel.
+
+"""
+CourseAreas.clear()
+add = CourseAreas.add_item
+add('C', _("Courses"), 'default')    # one place per enrolment
+add('H', _("Hikes"), 'hikes', 'courses.Hikes')
+add('J', _("Journeys"), 'journeys', 'courses.Journeys')
 
 
 class PrintPresenceSheet(DirectPrintAction):
@@ -325,7 +337,7 @@ class Line(Line):
 
 Lines.detail_layout = """
     id name ref
-    #course_area topic fees_cat fee options_cat body_template
+    course_area topic fees_cat fee options_cat body_template
     course_type event_type guest_role every_unit every
     description
     excerpt_title
@@ -969,6 +981,7 @@ class CourseDetail(CourseDetail):
 
 
 Courses.detail_layout = CourseDetail()
+Courses._course_area = CourseAreas.default
 Courses.order_by = ['ref', '-start_date', '-start_time']
 Courses.column_names = "ref start_date enrolments_until line room teacher " \
                        "workflow_buttons *"
@@ -1143,3 +1156,41 @@ class EnrolmentsAndPaymentsByCourse(Enrolments):
     """
     master_key = 'course'
     column_names = "pupil_info start_date invoicing_info payment_info"
+
+
+class EnrolmentsByHike(EnrolmentsByCourse):
+    column_names = 'request_date pupil '\
+                   'places:8 remark fee option amount ' \
+                   'workflow_buttons *'
+
+
+class EnrolmentsByJourney(EnrolmentsByCourse):
+    column_names = 'request_date pupil '\
+                   'places:8 remark fee option amount ' \
+                   'workflow_buttons *'
+
+
+class HikeDetail(CourseDetail):
+    enrolments = dd.Panel("""
+    enrolments_until fee max_places:8 confirmed free_places print_actions
+    EnrolmentsByHike
+    """, label=_("Enrolments"))
+
+
+class JourneyDetail(CourseDetail):
+    enrolments = dd.Panel("""
+    enrolments_until fee max_places:8 confirmed free_places print_actions
+    EnrolmentsByJourney
+    """, label=_("Enrolments"))
+
+
+class Hikes(Courses):
+    _course_area = CourseAreas.hikes
+    detail_layout = HikeDetail()
+
+
+class Journeys(Courses):
+    _course_area = CourseAreas.journeys
+    detail_layout = JourneyDetail()
+
+
