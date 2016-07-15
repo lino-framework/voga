@@ -5,15 +5,15 @@ lino_voga.lib.cal.workflows
 
    
    
-   .. rubric:: Functions
+   
+
+   
+   
+   .. rubric:: Classes
 
    .. autosummary::
    
-      my_event_workflows
-   
-   
-
-   
+      ResetEvent
    
    
 

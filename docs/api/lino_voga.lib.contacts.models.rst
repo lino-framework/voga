@@ -5,12 +5,6 @@ lino_voga.lib.contacts.models
 
    
    
-   .. rubric:: Functions
-
-   .. autosummary::
-   
-      customize_contacts2
-   
    
 
    
@@ -19,10 +13,10 @@ lino_voga.lib.contacts.models
 
    .. autosummary::
    
-      MyCompanyDetail
-      MyPartnerDetail
-      MyPersonDetail
+      CompanyDetail
+      PartnerDetail
       Person
+      PersonDetail
    
    
 

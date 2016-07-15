@@ -54,7 +54,10 @@ class Plugin(Plugin):
         m.add_action('courses.Pupils')
         m.add_action('courses.Teachers')
         m.add_separator()
-        m.add_action('courses.Courses')
+        for ca in site.models.courses.CourseAreas.objects():
+            m.add_action(ca.courses_table)
+        # m.add_action('courses.Courses')
+        m.add_separator()
         m.add_action('courses.Topics')
         m.add_action('courses.Lines')
         # m.add_separator()

@@ -55,7 +55,6 @@ Company = dd.resolve_model('contacts.Company')
 Teacher = dd.resolve_model('courses.Teacher')
 TeacherType = dd.resolve_model('courses.TeacherType')
 Pupil = dd.resolve_model('courses.Pupil')
-PupilType = dd.resolve_model('courses.PupilType')
 Enrolment = dd.resolve_model('courses.Enrolment')
 Course = dd.resolve_model('courses.Course')
 Product = dd.resolve_model('products.Product')
@@ -79,9 +78,6 @@ class Loader1(object):
         VatClasses = rt.modules.vat.VatClasses
         # yield PupilType(ref="M", name="Mitglied")
         # yield PupilType(ref="H", name="Helfer")
-        yield PupilType(ref="M", **dd.str2kw('name', _("Member")))
-        yield PupilType(ref="H", **dd.str2kw('name', _("Helper")))
-        yield PupilType(ref="N", **dd.str2kw('name', _("Non-member")))
         # yield PupilType(ref="L", name="LFV")
         # yield PupilType(ref="C", name="COK")
         #~ yield PupilType(ref="E",name="Extern")
@@ -281,6 +277,7 @@ class Loader2(Loader1):
 
         Product = rt.modules.products.Product
         ProductCat = rt.modules.products.ProductCat
+        CourseAreas = rt.modules.courses.CourseAreas
 
         journey_options = ProductCat(**dd.str2kw(
             'name', _("Hotel options")))
@@ -307,18 +304,21 @@ class Loader2(Loader1):
         def add_journey(*args, **kw):
             kw.update(user=USERS.pop())
             kw.update(teacher=TEACHERS.pop())
+            kw.update(every_unit=cal.Recurrencies.once)
             return journey(*args, **kw)
 
         self.journeys_topic = topic(**dd.str2kw('name', _("Journeys")))
         yield self.journeys_topic
         europe = line(self.journeys_topic, None, self.journey_fee,
                       options_cat=journey_options,
+                      course_area=CourseAreas.journeys,
                       fees_cat=self.journeys_cat,
                       **dd.str2kw('name', _("Europe")))
 
         yield europe
-        yield add_journey(europe, "Griechenland 2014",
-                          i2d(20140814), i2d(20140820))
+        yield add_journey(europe, "Greece 2014",
+                          i2d(20140814), i2d(20140820),
+                          state=courses.CourseStates.active)
         yield add_journey(europe, "London 2014",
                           i2d(20140714), i2d(20140720))
 
@@ -341,7 +341,7 @@ class Loader2(Loader1):
         kw.update(start_date=demo_date(-430))
         kw.update(state=courses.CourseStates.active)
         kw.update(every=1)
-        kw.update(every_unit=cal.Recurrencies.per_weekday)
+        kw.update(every_unit=cal.Recurrencies.weekly)
 
         yield add_course(obj, self.pc_bbach, "13:30", "15:00",
                          monday=True, **kw)
@@ -498,7 +498,7 @@ class Loader2(Loader1):
             #~ de="Raumbuchung",en="Room booking"))
         #~ yield obj
         kw = dict(max_events=10)
-        kw.update(every_unit=cal.Recurrencies.per_weekday)
+        kw.update(every_unit=cal.Recurrencies.weekly)
         kw.update(start_date=demo_date(160))
         kw.update(state=BookingStates.registered)
         kw.update(company=COMPANIES.pop())
@@ -541,7 +541,9 @@ class Loader2(Loader1):
                     # week after start date of course:
                     # kw.update(request_date=coursedate(i % 28 - 7))
                     kw.update(request_date=coursedate(rd))
-
+                    if course.line == europe:
+                        if n % 3 == 0:
+                            kw.update(places=2)
                     obj = Enrolment(**kw)
                     obj.full_clean()
                     if sd is not None:

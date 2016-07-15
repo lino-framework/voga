@@ -1,22 +1,33 @@
 {%- if obj.pupil.id != item.voucher.partner.id -%}
 {{rt.models.courses.Pupil._meta.verbose_name}}: {{obj.pupil}}.
 {% endif -%}
+{%- if obj.places != 1 %}
+{{rt.models.courses.Enrolment._meta.get_field('places').verbose_name}}: {{obj.places}}.
+{% endif -%}
+{%- if obj.course.start_time -%}
 {{_("Time")}}: {{obj.course.weekdays_text}} {{obj.course.times_text}}.
+{% else -%}
+{{_("Date")}}: {{obj.course.weekdays_text}}.
+{% endif -%}
 {{rt.models.products.Product._meta.verbose_name}}: {{obj.fee}}.
-{% if obj.fee.number_of_events %}
+{% if obj.course.every_unit != rt.models.cal.Recurrencies.once -%}
+{%- if obj.fee.number_of_events -%}
+{%- if obj.start_date %}
 {{_("Your start date")}}: {{fds(obj.start_date)}}.
-{%- else %}
+{% endif -%}
+{%- else -%}
 {{_("Scheduled dates")}}:
 {% set qs = obj.course.events_by_course.order_by('start_date') %}
 {% set qs = rt.models.system.PeriodEvents.started.add_filter(qs, obj) %}
 {% for evt in qs -%}
 {{fds(evt.start_date)}}, {% endfor %}
-{%- endif %}
-{% if obj.options %}
-{{obj.options}}.
-{%- endif %}
-{%- if False -%}
+{% endif -%}
+{% endif -%}
+{%- if obj.option %}
+{{obj.option}}.
+{% endif -%}
+{%- if False %}
 Angefragt am {{fds(obj.request_date)}} 
 ({{obj.user.initials or obj.user.first_name}}). 
-{%- endif -%}
+{% endif -%}
 

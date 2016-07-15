@@ -28,6 +28,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
 Person = dd.resolve_model('contacts.Person')
+PupilType = dd.resolve_model('courses.PupilType')
 
 courses = dd.resolve_app('courses')
 cal = dd.resolve_app('cal')
@@ -35,6 +36,10 @@ users = dd.resolve_app('users')
 
 
 def objects():
+
+    yield PupilType(ref="M", **dd.str2kw('name', _("Member")))
+    yield PupilType(ref="H", **dd.str2kw('name', _("Helper")))
+    yield PupilType(ref="N", **dd.str2kw('name', _("Non-member")))
 
     #~ yield courses.Room(name="A")
     #~ yield cal.Place(name="A")

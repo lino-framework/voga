@@ -60,6 +60,9 @@ and
 <BLANKLINE>
 
 
+See also :doc:`pupils`.
+
+
 The fee of a course
 ===================
 
@@ -147,7 +150,7 @@ running :cmd:`inv test`).
 >>> res['success']
 True
 >>> print(res['info_message'])
-Update Events for 012 Rücken...
+Update Events for 012 Rücken (Swimming)...
 Generating events between 2015-07-13 and 2020-05-22.
 10 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
@@ -184,7 +187,7 @@ our case):
 >>> ses.response['success']
 True
 >>> print(ses.response['info_message'])
-Update Events for 012 Rücken...
+Update Events for 012 Rücken (Swimming)...
 Generating events between 2015-07-13 and 2020-05-22.
 10 row(s) have been updated.
 Move down for Activity #12 012 Hour 4...
@@ -299,59 +302,65 @@ The status report gives an overview of active courses.
 Journeys
 ~~~~~~~~
 <BLANKLINE>
-No data to display
+==================== ============= =============================================================== ======= ================== =========== ============= ===========
+ Info                 Designation   When                                                            Times   Available places   Confirmed   Free places   Requested
+-------------------- ------------- --------------------------------------------------------------- ------- ------------------ ----------- ------------- -----------
+ *001 Greece 2014*    Greece 2014   From Thursday, 14 August 2014 until Wednesday, 20 August 2014                              1           Unlimited     0
+ **Total (1 rows)**                                                                                         **0**              **1**                     **0**
+==================== ============= =============================================================== ======= ================== =========== ============= ===========
+<BLANKLINE>
 ~~~~~~~~
 Computer
 ~~~~~~~~
 <BLANKLINE>
-==================== ============= ================= ============= ================== =========== ============= ===========
- Info                 Designation   When              Times         Available places   Confirmed   Free places   Requested
--------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *003 comp*                         Every Monday      13:30-15:00   3                  **3**       0
- *004 comp*                         Every Wednesday   17:30-19:00   3                  **2**       1
- *005 comp*                         Every Friday      13:30-15:00   3                  **2**       1
- *006C WWW*                         Every Monday      13:30-15:00   4                  **2**       2
- *007C WWW*                         Every Wednesday   17:30-19:00   4                  **3**       1
- *008C WWW*                         Every Friday      13:30-15:00   4                              4             **1**
- **Total (6 rows)**                                                 **21**             **12**                    **1**
-==================== ============= ================= ============= ================== =========== ============= ===========
+===================================== ============= ================= ============= ================== =========== ============= ===========
+ Info                                  Designation   When              Times         Available places   Confirmed   Free places   Requested
+------------------------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
+ *003 comp (First Steps)*                            Every Monday      13:30-15:00   3                  3           0             0
+ *004 comp (First Steps)*                            Every Wednesday   17:30-19:00   3                  2           1             0
+ *005 comp (First Steps)*                            Every Friday      13:30-15:00   3                  2           1             0
+ *006C WWW (Internet for beginners)*                 Every Monday      13:30-15:00   4                  2           2             0
+ *007C WWW (Internet for beginners)*                 Every Wednesday   17:30-19:00   4                  3           1             0
+ *008C WWW (Internet for beginners)*                 Every Friday      13:30-15:00   4                  0           4             1
+ **Total (6 rows)**                                                                  **21**             **12**                    **1**
+===================================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~
 Sport
 ~~~~~
 <BLANKLINE>
-===================== ============= ================= ============= ================== =========== ============= ===========
- Info                  Designation   When              Times         Available places   Confirmed   Free places   Requested
---------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *009C BT*                           Every Wednesday   19:00-20:00   10                 **2**       8             **1**
- *010C FG*                           Every Monday      11:00-12:00   5                  **3**       2
- *011C FG*                           Every Monday      13:30-14:30   5                  **2**       3
- *012 Rücken*                        Every Monday      11:00-12:00   20                 **3**       17
- *013 Rücken*                        Every Monday      13:30-14:30   20                 **3**       17
- *014 Rücken*                        Every Tuesday     11:00-12:00   20                 **3**       17
- *015 Rücken*                        Every Tuesday     13:30-14:30   20                 **1**       19            **1**
- *016 Rücken*                        Every Thursday    11:00-12:00   20                 **4**       16
- *017 Rücken*                        Every Thursday    13:30-14:30   20                 **4**       16
- *018 SV*                            Every Friday      18:00-19:00   12                 **1**       11            **2**
- *019 SV*                            Every Friday      19:00-20:00   12                 **3**       9
- **Total (11 rows)**                                                 **164**            **29**                    **4**
-===================== ============= ================= ============= ================== =========== ============= ===========
+=================================== ============= ================= ============= ================== =========== ============= ===========
+ Info                                Designation   When              Times         Available places   Confirmed   Free places   Requested
+----------------------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
+ *009C BT (Belly dancing)*                         Every Wednesday   19:00-20:00   10                 2           8             1
+ *010C FG (Functional gymnastics)*                 Every Monday      11:00-12:00   5                  3           2             0
+ *011C FG (Functional gymnastics)*                 Every Monday      13:30-14:30   5                  2           3             0
+ *012 Rücken (Swimming)*                           Every Monday      11:00-12:00   20                 3           17            0
+ *013 Rücken (Swimming)*                           Every Monday      13:30-14:30   20                 3           17            0
+ *014 Rücken (Swimming)*                           Every Tuesday     11:00-12:00   20                 3           17            0
+ *015 Rücken (Swimming)*                           Every Tuesday     13:30-14:30   20                 1           19            1
+ *016 Rücken (Swimming)*                           Every Thursday    11:00-12:00   20                 4           16            0
+ *017 Rücken (Swimming)*                           Every Thursday    13:30-14:30   20                 4           16            0
+ *018 SV (Self-defence)*                           Every Friday      18:00-19:00   12                 1           11            2
+ *019 SV (Self-defence)*                           Every Friday      19:00-20:00   12                 3           9             0
+ **Total (11 rows)**                                                               **164**            **29**                    **4**
+=================================== ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~~~
 Meditation
 ~~~~~~~~~~
 <BLANKLINE>
-==================== ============= ============== ============= ================== =========== ============= ===========
- Info                 Designation   When           Times         Available places   Confirmed   Free places   Requested
--------------------- ------------- -------------- ------------- ------------------ ----------- ------------- -----------
- *020C GLQ*                         Every Monday   18:00-19:30                      **3**       Unlimited
- *021C GLQ*                         Every Friday   19:00-20:30                      **1**       Unlimited
- *022C MED*                         Every Monday   18:00-19:30   30                             30            **2**
- *023C MED*                         Every Friday   19:00-20:30   30                 **2**       28
- *024C Yoga*                        Every Monday   18:00-19:30   20                 **2**       18
- *025C Yoga*                        Every Friday   19:00-20:30   20                 **2**       18
- **Total (6 rows)**                                              **100**            **10**                    **2**
-==================== ============= ============== ============= ================== =========== ============= ===========
+======================================= ============= ============== ============= ================== =========== ============= ===========
+ Info                                    Designation   When           Times         Available places   Confirmed   Free places   Requested
+--------------------------------------- ------------- -------------- ------------- ------------------ ----------- ------------- -----------
+ *020C GLQ (GuoLin-Qigong)*                            Every Monday   18:00-19:30                      3           Unlimited     0
+ *021C GLQ (GuoLin-Qigong)*                            Every Friday   19:00-20:30                      1           Unlimited     0
+ *022C MED (Finding your inner peace)*                 Every Monday   18:00-19:30   30                 0           30            2
+ *023C MED (Finding your inner peace)*                 Every Friday   19:00-20:30   30                 2           28            0
+ *024C Yoga*                                           Every Monday   18:00-19:30   20                 2           18            0
+ *025C Yoga*                                           Every Friday   19:00-20:30   20                 2           18            0
+ **Total (6 rows)**                                                                 **100**            **10**                    **2**
+======================================= ============= ============== ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~
 Externe

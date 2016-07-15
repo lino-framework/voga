@@ -34,18 +34,21 @@ import six
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy as pgettext
+from django.utils.translation import string_concat
+
 from lino.utils.mti import get_child
 from lino.api import dd, rt
 
 from lino.mixins import Referrable
 from lino.modlib.printing.mixins import Printable
-from lino_cosi.lib.courses.models import *
 from lino_cosi.lib.invoicing.mixins import Invoiceable
-from lino_cosi.lib.accounts.utils import DEBIT, CREDIT
+from lino_cosi.lib.accounts.utils import DEBIT
+from lino.utils import join_elems
+from lino.modlib.printing.utils import PrintableObject
+# from lino_voga.lib.contacts.models import Person
+from lino_voga.lib.contacts.models import PersonDetail
 
-
-from lino_voga.lib.contacts.models import Person
-from lino_voga.lib.contacts.models import MyPersonDetail
+from lino_cosi.lib.courses.models import *
 
 contacts = dd.resolve_app('contacts')
 # sales = dd.resolve_app('sales')
@@ -55,10 +58,47 @@ day_and_month = dd.plugins.courses.day_and_month
 MAX_SHOWN = 3  # maximum number of invoiced events shown in
                # invoicing_info
 
-from lino.utils.media import TmpMediaFile
+# from lino.utils.media import TmpMediaFile
 
 from lino.modlib.printing.utils import CustomBuildMethod
 from lino_xl.lib.cal.ui import EventsByController
+from lino.mixins.periods import Monthly
+from lino.modlib.printing.mixins import DirectPrintAction
+
+
+"""The default activity are **courses**.  a **hike** usually includes
+a bus travel. One enrolment can mean several participants (seats).  A
+**journey** also includes a room in a hotel.
+
+"""
+CourseAreas.clear()
+add = CourseAreas.add_item
+add('C', _("Courses"), 'default')    # one place per enrolment
+add('H', _("Hikes"), 'hikes', 'courses.Hikes')
+add('J', _("Journeys"), 'journeys', 'courses.Journeys')
+
+
+class PrintPresenceSheet(DirectPrintAction):
+    """Action to print a presence sheet.
+    """
+    combo_group = "creacert"
+    label = _("Presence sheet")
+    tplname = "presence_sheet"
+    build_method = "weasy2pdf"
+    icon_name = None
+    # show_in_bbar = False
+    parameters = Monthly(
+        show_remarks=models.BooleanField(
+            _("Show remarks"), default=False),
+        show_states=models.BooleanField(
+            _("Show states"), default=True))
+    params_layout = """
+    start_date
+    end_date
+    show_remarks
+    show_states
+    """
+    keep_user_values = True
 
 
 class XlsColumn(object):
@@ -177,7 +217,7 @@ class TeacherTypes(dd.Table):
 
 
 @dd.python_2_unicode_compatible
-class Teacher(Person):
+class Teacher(contacts.Person):
     """A **teacher** is a person with an additional field
     :attr:`teacher_type`.
 
@@ -221,7 +261,7 @@ class PupilTypes(dd.Table):
 
 
 @dd.python_2_unicode_compatible
-class Pupil(Person):
+class Pupil(contacts.Person):
     """A **pupil** is a person with an additional field
     :attr:`pupil_type`.
 
@@ -297,7 +337,7 @@ class Line(Line):
 
 Lines.detail_layout = """
     id name ref
-    #course_area topic fees_cat fee options_cat body_template
+    course_area topic fees_cat fee options_cat body_template
     course_type event_type guest_role every_unit every
     description
     excerpt_title
@@ -306,7 +346,7 @@ Lines.detail_layout = """
 
 
 @dd.python_2_unicode_compatible
-class Course(Referrable, Course):
+class Course(Referrable, Course, PrintableObject):
     """Extends the standard model by adding a field :attr:`fee`.
 
     Also adds a :attr:`ref` field and defines a custom :meth:`__str__`
@@ -345,8 +385,6 @@ class Course(Referrable, Course):
         Pointer to the course series.
 
 
-
-
     .. attribute:: fee
 
         The default participation fee to apply for new enrolments.
@@ -366,6 +404,22 @@ class Course(Referrable, Course):
     quick_search_fields = 'name line__name line__topic__name ref'
 
     # course2xls = CourseToXls.create_action()
+
+    print_presence_sheet = PrintPresenceSheet()
+    print_presence_sheet_html = PrintPresenceSheet(
+        build_method='weasy2html',
+        label=string_concat(_("Presence sheet"), _(" (HTML)")))
+
+    @dd.displayfield(_("Print"))
+    def print_actions(self, ar):
+        if ar is None:
+            return ''
+        elems = []
+        elems.append(ar.instance_action_button(
+            self.print_presence_sheet))
+        elems.append(ar.instance_action_button(
+            self.print_presence_sheet_html))
+        return E.p(*join_elems(elems, sep=", "))
 
     @classmethod
     def get_registrable_fields(cls, site):
@@ -398,6 +452,8 @@ class Course(Referrable, Course):
         if self.ref:
             label = self.ref + ' ' + label
         return "%s %d" % (label, i)
+
+Course.set_widget_options('ref', preferred_with=6)
 
 # class CreateInvoiceForEnrolment(CreateInvoice):
 
@@ -690,14 +746,27 @@ class Enrolment(Enrolment, Invoiceable):
             obj=self, item=item)
 
     def get_invoiceable_product(self, plan):
+        """Return the product to use for the invoice.
+        This also decides whether an invoice should get issued.
+        """
         # dd.logger.info('20160223 %s', self.course)
         if not self.course.state.invoiceable:
             return
         if not self.state.invoiceable:
             return
         max_date = plan.max_date or plan.today
-        if self.start_date and self.start_date > max_date:
+
+        # the following 2 lines were nonsense. it is perfectly okay to
+        # write an invoice for an enrolment which starts in the
+        # future.
+        # if self.start_date and self.start_date > max_date:
+        #     return
+
+        # but at least for our demo fixtures we don't want invoices
+        # for enrolments in the future:
+        if self.request_date and self.request_date > max_date:
             return
+
         return self.get_invoicing_info(max_date).invoiceable_fee
 
     @dd.virtualfield(dd.HtmlBox(_("Participant")))
@@ -790,8 +859,9 @@ class EnrolmentsByFee(EnrolmentsByCourse):
                    'places remark free_events #option amount *'
 
 
-class PupilDetail(MyPersonDetail):
+class PupilDetail(PersonDetail):
 
+    # main = PersonDetail.main + " courses"
     main = 'general address courses ledger more'
 
     personal = 'pupil_type'
@@ -802,8 +872,8 @@ class PupilDetail(MyPersonDetail):
     """, label=dd.plugins.courses.verbose_name)
 
 
-class TeacherDetail(MyPersonDetail):
-    main = MyPersonDetail.main + " courses"
+class TeacherDetail(PersonDetail):
+    main = PersonDetail.main + " courses"
     personal = 'teacher_type'
 
     courses = dd.Panel("""
@@ -885,10 +955,10 @@ class CourseDetail(CourseDetail):
     """
     main = "general events enrolments more"
     general = dd.Panel("""
-    line teacher name workflow_buttons
+    ref line teacher workflow_buttons
     room start_date end_date start_time end_time
-    # courses.EventsByCourse
-    remark #OptionsByCourse
+    name
+    remark
     """, label=_("General"))
 
     events = dd.Panel("""
@@ -899,8 +969,8 @@ class CourseDetail(CourseDetail):
     """, label=_("Events"))
 
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 confirmed free_places requested
-    EnrolmentsByCourse:40
+    enrolments_until fee max_places:8 confirmed free_places print_actions
+    EnrolmentsByCourse
     """, label=_("Enrolments"))
 
     more = dd.Panel("""
@@ -911,6 +981,11 @@ class CourseDetail(CourseDetail):
 
 
 Courses.detail_layout = CourseDetail()
+Courses._course_area = CourseAreas.default
+Courses.order_by = ['ref', '-start_date', '-start_time']
+Courses.column_names = "ref start_date enrolments_until line room teacher " \
+                       "workflow_buttons *"
+
 
 # class Courses(Courses):
 #     # detail_layout = CourseDetail()
@@ -1081,3 +1156,41 @@ class EnrolmentsAndPaymentsByCourse(Enrolments):
     """
     master_key = 'course'
     column_names = "pupil_info start_date invoicing_info payment_info"
+
+
+class EnrolmentsByHike(EnrolmentsByCourse):
+    column_names = 'request_date pupil '\
+                   'places:8 remark fee option amount ' \
+                   'workflow_buttons *'
+
+
+class EnrolmentsByJourney(EnrolmentsByCourse):
+    column_names = 'request_date pupil '\
+                   'places:8 remark fee option amount ' \
+                   'workflow_buttons *'
+
+
+class HikeDetail(CourseDetail):
+    enrolments = dd.Panel("""
+    enrolments_until fee max_places:8 confirmed free_places print_actions
+    EnrolmentsByHike
+    """, label=_("Enrolments"))
+
+
+class JourneyDetail(CourseDetail):
+    enrolments = dd.Panel("""
+    enrolments_until fee max_places:8 confirmed free_places print_actions
+    EnrolmentsByJourney
+    """, label=_("Enrolments"))
+
+
+class Hikes(Courses):
+    _course_area = CourseAreas.hikes
+    detail_layout = HikeDetail()
+
+
+class Journeys(Courses):
+    _course_area = CourseAreas.journeys
+    detail_layout = JourneyDetail()
+
+
