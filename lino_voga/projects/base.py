@@ -59,7 +59,6 @@ class Site(Site):
 
         yield 'lino_voga.lib.cal'
         yield 'lino_voga.lib.products'
-        # yield 'lino_xl.lib.extensible'
         yield 'lino_voga.lib.rooms'
         yield 'lino_voga.lib.sales'
         yield 'lino_voga.lib.invoicing'
@@ -108,8 +107,9 @@ class Site(Site):
         Change the default value of certain plugin settings.
        
         """
-        self.plugins.extensible.configure(calendar_start_hour=9)
-        self.plugins.extensible.configure(calendar_end_hour=21)
+        if self.is_installed('extensible'):
+            self.plugins.extensible.configure(calendar_start_hour=9)
+            self.plugins.extensible.configure(calendar_end_hour=21)
         self.plugins.vat.configure(default_vat_class='exempt')
         self.plugins.ledger.configure(start_year=2015)
         super(Site, self).setup_plugins()
