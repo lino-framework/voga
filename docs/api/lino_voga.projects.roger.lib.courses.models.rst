@@ -19,11 +19,8 @@ lino_voga.projects.roger.lib.courses.models
 
    .. autosummary::
    
-      Course
-      CourseDetail
       Line
       MemberChecker
-      PrintPresenceSheet
       Pupil
       PupilDetail
       Sections

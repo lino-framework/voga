@@ -24,12 +24,19 @@ lino_voga.lib.courses.models
       EnrolmentsAndPaymentsByCourse
       EnrolmentsByCourse
       EnrolmentsByFee
+      EnrolmentsByHike
+      EnrolmentsByJourney
       EnrolmentsByPupil
       EventsByCourse
+      HikeDetail
+      Hikes
       InvoicingInfo
+      JourneyDetail
+      Journeys
       Line
       LinesByType
       PendingRequestedEnrolments
+      PrintPresenceSheet
       Pupil
       PupilDetail
       PupilType
