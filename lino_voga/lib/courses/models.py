@@ -281,7 +281,7 @@ class Pupil(contacts.Person):
 
     pupil_type = dd.ForeignKey('courses.PupilType', blank=True, null=True)
 
-    suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
+    # suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
 
     def __str__(self):
         s = self.get_full_name(salutation=False)
@@ -393,8 +393,8 @@ class Course(Referrable, Course, PrintableObject):
     class Meta(Course.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
-        verbose_name = _("Activity")
-        verbose_name_plural = _('Activities')
+        # verbose_name = _("Activity")
+        # verbose_name_plural = _('Activities')
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
@@ -981,7 +981,7 @@ class CourseDetail(CourseDetail):
 
 
 Courses.detail_layout = CourseDetail()
-Courses._course_area = CourseAreas.default
+# Courses._course_area = CourseAreas.default
 Courses.order_by = ['ref', '-start_date', '-start_time']
 Courses.column_names = "ref start_date enrolments_until line room teacher " \
                        "workflow_buttons *"
@@ -1187,10 +1187,14 @@ class JourneyDetail(CourseDetail):
 class Hikes(Courses):
     _course_area = CourseAreas.hikes
     detail_layout = HikeDetail()
+    column_names = "ref name start_date enrolments_until line " \
+                   "workflow_buttons *"
 
 
 class Journeys(Courses):
     _course_area = CourseAreas.journeys
     detail_layout = JourneyDetail()
+    column_names = "ref name start_date end_date enrolments_until line " \
+                   "workflow_buttons *"
 
 

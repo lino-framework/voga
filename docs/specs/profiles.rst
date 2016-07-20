@@ -26,14 +26,14 @@ users.UserProfiles.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Office : Plausibility problems assigned to me, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Plausibility problems assigned to me, My Notifications, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Overdue appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
-- Activities : Participants, Instructors, -, Activities, Topics, Course series, -, Pending requested enrolments, Pending confirmed enrolments
+- Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
@@ -50,7 +50,7 @@ users.UserProfiles.admin:900
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems
+  - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems, Notifications
   - Contacts : Contact Persons, List memberships
   - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
@@ -68,14 +68,14 @@ users.UserProfiles.secretary:200
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Office : Plausibility problems assigned to me, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Plausibility problems assigned to me, My Notifications, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
-- Activities : Participants, Instructors, -, Activities, Course series, -, Pending requested enrolments, Pending confirmed enrolments
+- Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
   - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
@@ -89,7 +89,7 @@ users.UserProfiles.secretary:200
   - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
-  - System : content types, Plausibility checkers, Plausibility problems
+  - System : content types, Plausibility checkers, Plausibility problems, Notifications
   - Calendar : Presences, Event states, Guest states, Task states
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
   - Activities : Activities, Enrolments
@@ -102,14 +102,14 @@ users.UserProfiles.user:100
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Office : Plausibility problems assigned to me, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Plausibility problems assigned to me, My Notifications, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
   - Financial : Payment Orders (PMO), Cash (CSH), Bestbank (BNK), Miscellaneous Journal Entries (MSC)
   - Create invoices
-- Activities : Participants, Instructors, -, Activities, Course series, -
+- Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -
 - Reports :
   - Accounting : Situation, Activity Report, Debtors, Creditors
   - VAT : Due invoices
