@@ -946,7 +946,8 @@ class EventsByCourse(EventsByController):
             btn = sar.ar2button(obj)
             elems.append(E.p(btn))
 
-        return E.div(class_="htmlText", *elems)
+        # return E.div(class_="htmlText", *elems)
+        return ar.html_text(E.div(*elems))
 
 
 class CourseDetail(CourseDetail):
