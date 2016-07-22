@@ -35,8 +35,8 @@ The demo database
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-40 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, users, office, countries, printing, system, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
-74 models:
+41 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, users, office, countries, printing, system, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
+75 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -59,10 +59,10 @@ The demo database
  contacts.Person            contacts.Persons               38        71
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         75
+ contenttypes.ContentType   gfks.ContentTypes              3         76
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               8         78
- courses.Course             courses.Courses                31        25
+ courses.Course             courses.Activities             31        25
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        82
  courses.Line               courses.Lines                  22        10
@@ -92,9 +92,10 @@ The demo database
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3
  lists.Member               lists.Members                  5         0
- notes.EventType            notes.EventTypes               8         0
+ notes.EventType            notes.EventTypes               8         1
  notes.Note                 notes.Notes                    16        100
  notes.NoteType             notes.NoteTypes                11        3
+ notify.Notification        notify.Notifications           9         3
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0

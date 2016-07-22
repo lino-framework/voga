@@ -14,6 +14,8 @@ class Site(Site):
     The `Site` class for this module.
     """
 
+    # default_ui = 'lino_extjs6.extjs6'
+
     title = "Lino Voga à la Roger"
     languages = "en de fr"
 

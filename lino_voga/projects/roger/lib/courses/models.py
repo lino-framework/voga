@@ -151,7 +151,6 @@ class PupilDetail(PupilDetail):
 
     courses = dd.Panel("""
     legacy_id member_until section is_lfv is_ckk is_raviva
-    # courses.SuggestedCoursesByPupil
     courses.EnrolmentsByPupil
     """, label=dd.plugins.courses.verbose_name)
 

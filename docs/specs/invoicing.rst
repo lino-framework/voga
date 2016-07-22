@@ -535,7 +535,7 @@ Here is an overview of the different cases of item descriptions.
 ...     print "=== {} ===".format(k)
 ...     fmt(i)
 ...     cases.add(k)
-...  #doctest: -REPORT_UDIFF
+...  #doctest: +REPORT_UDIFF
 === (True, True, False, True, True, False, <Recurrencies.weekly:W>) ===
 --- Invoice #1 for enrolment #52 (022C MED (Finding your inner peace) / Christian Radermacher (ME)):
 Title: [1] Enrolment to 022C MED (Finding your inner peace)
@@ -576,7 +576,7 @@ Scheduled dates:
 Title: Enrolment to 001 Greece 2014
 Start date: 
 Description:
-Date: From Thursday, 14 August 2014 until Wednesday, 20 August 2014.
+Date: 14/08/2014-20/08/2014.
 Tariff: Journeys.
 === (False, True, True, True, True, True, <Recurrencies.once:O>) ===
 --- Invoice #32 for enrolment #59 (001 Greece 2014 / Hedi Radermacher (MLS)):
@@ -584,6 +584,6 @@ Title: Enrolment to 001 Greece 2014
 Start date: 
 Description:
 Places used: 2.
-Date: From Thursday, 14 August 2014 until Wednesday, 20 August 2014.
+Date: 14/08/2014-20/08/2014.
 Tariff: Journeys.
 

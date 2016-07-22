@@ -77,11 +77,12 @@ class PartnerDetail(PartnerDetail):
     remarks
     """
 
+    # A layout for use in Belgium
     address_box = """
     name
-    country region city zip_code:10
-    street:25 street_no street_box
+    street:25 #street_no street_box
     addr2
+    country zip_code:10 city
     """
 
     contact_box = """
