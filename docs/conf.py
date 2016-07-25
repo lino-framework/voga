@@ -199,4 +199,10 @@ htmlhelp_basename = 'voga'
 extlinks = dict()
 extlinks.update(ticket=('http://bugs.lino-framework.org/tickets/Ticket/%s', '#'))
 
-from lino.sphinxcontrib.help_text_builder import setup
+extensions += ['lino.sphinxcontrib.help_texts_extractor']
+help_texts_builder_targets = {
+    'lino_voga.': 'lino_voga.lib.voga'
+}
+
+
+
