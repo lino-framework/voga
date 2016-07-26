@@ -298,6 +298,36 @@ class Pupil(contacts.Person):
         if self.pupil_type:
             return self.pupil_type.ref
 
+    @classmethod
+    def get_parameter_fields(cls, **fields):
+        fields.update(
+            partner_list=dd.ForeignKey(
+                'lists.List', blank=True, null=True),
+            course=dd.ForeignKey(
+                'courses.Course', blank=True, null=True))
+
+        return super(Pupil, cls).get_parameter_fields(**fields)
+
+    @classmethod
+    def get_request_queryset(cls, ar):
+        qs = super(Pupil, cls).get_request_queryset(ar)
+        pv = ar.param_values
+        if pv.course:
+            qs = qs.filter(enrolments_by_pupil__course=pv.course)
+        if pv.partner_list:
+            qs = qs.filter(list_memberships__list=pv.partner_list)
+        return qs
+
+    @classmethod
+    def get_title_tags(self, ar):
+        for t in super(Pupil, self).get_title_tags(ar):
+            yield t
+        pv = ar.param_values
+        if pv.course:
+            yield str(pv.course)
+        if pv.partner_list:
+            yield str(pv.partner_list)
+
 
 # class CreateInvoicesForCourse(CreateInvoice):
 #     """
@@ -1064,6 +1094,8 @@ class CoursesByTopic(CoursesByTopic):
                    "max_places:8 confirmed "\
                    "free_places requested *"
 
+    detail_layout = Courses.detail_layout
+
     @classmethod
     def param_defaults(self, ar, **kw):
         kw = super(CoursesByTopic, self).param_defaults(ar, **kw)
@@ -1082,6 +1114,8 @@ class CoursesByLine(CoursesByLine):
     `courses.CourseManager`.
 
     """
+    detail_layout = Courses.detail_layout
+
     @classmethod
     def param_defaults(self, ar, **kw):
         kw = super(CoursesByLine, self).param_defaults(ar, **kw)
@@ -1124,20 +1158,6 @@ class StatusReport(Report):
     """
 
     label = _("Status Report")
-
-    # parameters = ObservedPeriod(
-    #     detailed=models.BooleanField(
-    #         verbose_name=_("Detailed"), default=False),
-    # )
-
-    # params_layout = "start_date end_date detailed"
-
-    # @classmethod
-    # def param_defaults(self, ar, **kw):
-    #     D = datetime.date
-    #     kw.update(start_date=D(D.today().year, 1, 1))
-    #     kw.update(end_date=D(D.today().year, 12, 31))
-    #     return kw
 
     @classmethod
     def get_story(cls, self, ar):

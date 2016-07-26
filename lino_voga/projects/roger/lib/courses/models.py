@@ -138,8 +138,8 @@ class Pupil(Pupil):
         pv = ar.param_values
         if pv.show_members:
             yield "{0}:{1}".format(_("Members"), pv.show_members)
-        if pv.show_members:
-            yield "{0}:{1}".format(_("Members"), pv.show_members)
+        if pv.show_ckk:
+            yield "{0}:{1}".format(_("CKK"), pv.show_ckk)
 
 
 class PupilDetail(PupilDetail):
@@ -162,7 +162,7 @@ gender language
 pupil_type section member_until
 is_lfv is_ckk is_raviva
 """
-Pupils.params_layout = "aged_from aged_to gender "\
+Pupils.params_layout = "course partner_list #aged_from #aged_to #gender "\
                        "show_members show_lfv show_ckk show_raviva"
 Pupils.column_names = (
     'name_column address_column '
