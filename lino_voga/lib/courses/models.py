@@ -1094,7 +1094,7 @@ class CoursesByTopic(CoursesByTopic):
                    "max_places:8 confirmed "\
                    "free_places requested *"
 
-    detail_layout = Courses.detail_layout
+    # detail_layout = Courses.detail_layout
 
     @classmethod
     def param_defaults(self, ar, **kw):
@@ -1114,7 +1114,7 @@ class CoursesByLine(CoursesByLine):
     `courses.CourseManager`.
 
     """
-    detail_layout = Courses.detail_layout
+    # detail_layout = Courses.detail_layout
 
     @classmethod
     def param_defaults(self, ar, **kw):
