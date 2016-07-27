@@ -25,7 +25,7 @@ def objects():
 
     ContentType = rt.modules.contenttypes.ContentType
     ExcerptType = rt.modules.excerpts.ExcerptType
-    Course = rt.modules.courses.Course
+    Course = rt.models.courses.Course
 
     yield ExcerptType(
         template='presence_sheet.wk.html',

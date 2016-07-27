@@ -122,7 +122,7 @@ class MyBook():
                      zip_code, city_name, phone, gsm, birth_date, bez, datum,
                      mg, mgnr, email):
         Place = rt.modules.countries.Place
-        Pupil = rt.modules.courses.Pupil
+        Pupil = rt.models.courses.Pupil
 
         kw = dict(last_name=last_name, first_name=first_name)
         if nr:
@@ -194,8 +194,8 @@ class MyBook2016(MyBook):
                      eiche_mg, sektion, ckk, lfv, raviva,
                      nicht_mitglied, national_id, sex):
         Place = rt.modules.countries.Place
-        Pupil = rt.modules.courses.Pupil
-        Sections = rt.modules.courses.Sections
+        Pupil = rt.models.courses.Pupil
+        Sections = rt.models.courses.Sections
         MEMBER_UNTIL = datetime.date(2016, 12, 31)
 
         update_fields = (
@@ -294,7 +294,7 @@ class Command(BaseCommand):
         if len(args) == 0:
             raise CommandError(self.help)
 
-        Pupil = rt.modules.courses.Pupil
+        Pupil = rt.models.courses.Pupil
         qs = Pupil.objects.all()
         if False:
             dd.logger.info("Delete %d pupils", qs.count())

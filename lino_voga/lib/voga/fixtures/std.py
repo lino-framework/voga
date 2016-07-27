@@ -35,7 +35,7 @@ def excerpt_types():
         template='Confirmation.odt',
         backward_compat=True,
         content_type=ContentType.objects.get_for_model(
-            rt.modules.courses.Enrolment),
+            rt.models.courses.Enrolment),
         **dd.str2kw('name', _("Confirmation")))
 
     yield etype(
@@ -43,7 +43,7 @@ def excerpt_types():
         template='Certificate.odt',
         backward_compat=True,
         content_type=ContentType.objects.get_for_model(
-            rt.modules.courses.Enrolment),
+            rt.models.courses.Enrolment),
         **dd.str2kw('name', _("Certificate")))
 
     yield etype(
@@ -52,7 +52,7 @@ def excerpt_types():
         body_template='payment_list.body.html',
         certifying=True,
         content_type=ContentType.objects.get_for_model(
-            rt.modules.courses.Course),
+            rt.models.courses.Course),
         **dd.str2kw('name', _("Payment list")))
 
 

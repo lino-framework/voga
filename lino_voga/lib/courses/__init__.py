@@ -21,6 +21,7 @@
    :toctree:
 
     models
+    desktop
     fixtures.demo
 
 """

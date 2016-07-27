@@ -88,7 +88,7 @@ setzen?"
 Kursserien
 ==========
 
-.. django2rst:: rt.show(courses.Lines)
+.. django2rst:: rt.show(rt.actors.courses.Lines)
 
 
 

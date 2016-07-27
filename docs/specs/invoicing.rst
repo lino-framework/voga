@@ -299,7 +299,7 @@ Not invoiced : 20.02., 27.02., 06.03., 13.03., 27.03., 10.04., 17.04., 24.04.,
 08.05., 15.05.
 
 
->>> rt.show(courses.Enrolments)
+>>> rt.show(rt.actors.courses.Enrolments)
 ...     #doctest: +REPORT_UDIFF +ELLIPSIS
 ================= ===================================== ======================================== =============== =================
  Date of request   Activity                              Participant                              Workflow        Author

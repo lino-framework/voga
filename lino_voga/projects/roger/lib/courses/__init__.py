@@ -23,6 +23,7 @@ An extension of :mod:`lino_voga.lib.courses`
 
     management.commands.eiche2lino
     models
+    desktop
 
 """
 
