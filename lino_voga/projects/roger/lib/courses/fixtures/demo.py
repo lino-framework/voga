@@ -40,9 +40,9 @@ def objects():
 
     yield lib_objects()
 
-    SECTIONS = Cycler(rt.modules.courses.Sections.objects())
+    SECTIONS = Cycler(rt.models.courses.Sections.objects())
 
-    for obj in rt.modules.courses.Pupil.objects.order_by('id'):
+    for obj in rt.models.courses.Pupil.objects.order_by('id'):
         if obj.id % 5 == 0:
             obj.is_lfv = True
         if obj.id % 6 == 0:
@@ -62,7 +62,7 @@ def objects():
 
     Journal = rt.models.ledger.Journal
     USERS = Cycler(rt.models.users.User.objects.all())
-    MEMBERS = Cycler(rt.modules.courses.Pupil.objects.all())
+    MEMBERS = Cycler(rt.models.courses.Pupil.objects.all())
 
     jnl = Journal.objects.get(ref='CSH')
     membership_payments = [

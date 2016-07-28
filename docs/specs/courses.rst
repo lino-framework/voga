@@ -38,7 +38,7 @@ and
 
 >>> ses = rt.login('robin')
 
->>> ses.show(courses.PupilTypes)
+>>> ses.show(rt.actors.courses.PupilTypes)
 ==== =========== ============= ================== ==================
  ID   Reference   Designation   Designation (de)   Designation (fr)
 ---- ----------- ------------- ------------------ ------------------
@@ -48,7 +48,7 @@ and
 ==== =========== ============= ================== ==================
 <BLANKLINE>
 
->>> ses.show(courses.TeacherTypes)
+>>> ses.show(rt.actors.courses.TeacherTypes)
 ==== =========== ================== ======================= ======================
  ID   Reference   Designation        Designation (de)        Designation (fr)
 ---- ----------- ------------------ ----------------------- ----------------------
@@ -270,7 +270,7 @@ There are two Yoga courses:
 >>> obj
 Line #10 ('Yoga')
         
->>> rt.show(courses.CoursesByLine, obj)
+>>> rt.show(rt.actors.courses.CoursesByLine, obj)
 ============= ============== ================== ============= ================
  Info          When           Room               Times         Instructor
 ------------- -------------- ------------------ ------------- ----------------
@@ -296,7 +296,7 @@ The status report gives an overview of active courses.
 
 (TODO: demo fixture should avoid negative free places)
 
->>> rt.show(courses.StatusReport)
+>>> rt.show(rt.actors.courses.StatusReport)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ~~~~~~~~
 Journeys
@@ -408,7 +408,7 @@ actually taking a place because the 3 other ones are already ended.
 5
 >>> print(obj.get_free_places())
 3
->>> rt.show(courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places")
+>>> rt.show(rt.actors.courses.EnrolmentsByCourse, obj, column_names="pupil start_date end_date places")
 =========================== ============ ============ =============
  Participant                 Start date   End date     Places used
 --------------------------- ------------ ------------ -------------
@@ -447,8 +447,8 @@ On 20141109 is is:
 Filtering pupils
 ================
 
->>> print(rt.modules.courses.Pupils.params_layout.main)
-aged_from aged_to gender show_members show_lfv show_ckk show_raviva
+>>> print(rt.actors.courses.Pupils.params_layout.main)
+course partner_list #aged_from #aged_to gender show_members show_lfv show_ckk show_raviva
 
 There are 36 pupils (21 men and 15 women) in our database:
 

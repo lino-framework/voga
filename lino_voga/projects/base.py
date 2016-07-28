@@ -98,7 +98,7 @@ class Site(Site):
         """Defines the story to be displayed on the admin main page.
 
         """
-        yield self.modules.courses.StatusReport
+        yield self.actors.courses.StatusReport
         # yield self.modules.courses.DraftCourses
         # yield self.modules.courses.ActiveCourses
 

@@ -22,7 +22,6 @@ lino_voga.projects.roger.lib.courses.models
       Line
       MemberChecker
       Pupil
-      PupilDetail
       Sections
    
    

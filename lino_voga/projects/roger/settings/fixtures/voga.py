@@ -277,7 +277,7 @@ class Loader2(Loader1):
 
         Product = rt.modules.products.Product
         ProductCat = rt.modules.products.ProductCat
-        CourseAreas = rt.modules.courses.CourseAreas
+        CourseAreas = rt.models.courses.CourseAreas
 
         journey_options = ProductCat(**dd.str2kw(
             'name', _("Hotel options")))

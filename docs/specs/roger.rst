@@ -36,7 +36,7 @@ There is a custom plausibility checker
 datetime.date(2015, 5, 22)
 
 
->>> rt.show(courses.Pupils)
+>>> rt.show(rt.actors.courses.Pupils)
 ... #doctest: +ELLIPSIS
 ======================================== ================================= ================== ============ ===== ===== ======== ==============
  Name                                     Address                           Participant Type   Section      LFV   CKK   Raviva   Mitglied bis

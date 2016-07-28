@@ -64,12 +64,12 @@ class StartInvoicingForCourse(StartInvoicing):
 
     def get_options(self, ar):
         course = ar.selected_rows[0]
-        assert isinstance(course, rt.modules.courses.Course)
+        assert isinstance(course, rt.models.courses.Course)
         return dict(course=course, partner=None)
 
 
 @dd.receiver(dd.pre_analyze)
 def install_start_action(sender=None, **kwargs):
-    rt.modules.courses.Course.start_invoicing = StartInvoicingForCourse()
+    rt.models.courses.Course.start_invoicing = StartInvoicingForCourse()
     
 
