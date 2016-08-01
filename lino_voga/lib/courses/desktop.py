@@ -138,22 +138,23 @@ class PupilDetail(PersonDetail):
     # main = PersonDetail.main + " courses"
     main = 'general address courses ledger more'
 
-    personal = 'pupil_type'
-
     courses = dd.Panel("""
     # courses.SuggestedCoursesByPupil
     courses.EnrolmentsByPupil
     """, label=dd.plugins.courses.verbose_name)
 
+    personal = 'pupil_type national_id card_number'
+
 
 class TeacherDetail(PersonDetail):
     main = PersonDetail.main + " courses"
-    personal = 'teacher_type'
 
     courses = dd.Panel("""
     courses.EventsByTeacher
     courses.CoursesByTeacher
     """, label=dd.plugins.courses.verbose_name)
+
+    personal = 'teacher_type national_id'
 
 
 # class TeacherDetail(contacts.PersonDetail):

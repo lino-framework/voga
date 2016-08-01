@@ -113,10 +113,10 @@ class CompanyDetail(CompanyDetail, PartnerDetail):
 
     address_box = """
     prefix name
-    country region city zip_code:10
-    street:25 street_no street_box
+    street:25 #street_no street_box
     addr2
-    """
+    country zip_code:10 city
+    """    
 
     contact_box = dd.Panel("""
     #mti_navigator
@@ -155,8 +155,10 @@ class PersonDetail(PersonDetail, PartnerDetail):
     last_name first_name:15 #title:10 gender
     street:25 #street_no street_box
     country zip_code:10 city
-    birth_date age:10 national_id card_number
+    birth_date age:10 personal
     """
+
+    personal = 'national_id card_number'
    
 
 
