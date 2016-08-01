@@ -51,6 +51,7 @@ class PartnerDetail(PartnerDetail):
 
     address = dd.Panel("""
     address_box
+    sepa.AccountsByPartner
     """, label=_("Address"))
 
     more = dd.Panel("""
