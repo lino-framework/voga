@@ -100,7 +100,7 @@ class CompanyDetail(CompanyDetail, PartnerDetail):
 
     address = dd.Panel("""
     address_box
-    contacts.RolesByCompany
+    contacts.RolesByCompany sepa.AccountsByPartner
     """, label=_("Address"))
 
     more = dd.Panel("""
@@ -141,23 +141,22 @@ class PersonDetail(PersonDetail, PartnerDetail):
 
     address = dd.Panel("""
     address_box
-    contacts.RolesByPerson
+    contacts.RolesByPerson sepa.AccountsByPartner
     """, label=_("Address"))
 
     more = dd.Panel("""
     id language url
-    addr1 addr2 national_id
+    addr1 addr2
     notes.NotesByPerson
     """, label=_("More"))
 
-    personal = ''
-
     address_box = """
     last_name first_name:15 #title:10 gender
-    country region city zip_code:10
-    #street_prefix street:25 street_no street_box
-    birth_date age:10 personal
+    street:25 #street_no street_box
+    country zip_code:10 city
+    birth_date age:10 national_id card_number
     """
+   
 
 
 # @dd.receiver(dd.pre_analyze)
