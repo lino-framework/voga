@@ -27,9 +27,12 @@ from django.core.exceptions import ValidationError
 
 from lino.api import rt
 
-
-from xlrd import open_workbook, xldate_as_tuple
-from xlrd.xldate import XLDateError
+try:
+    from xlrd import open_workbook, xldate_as_tuple
+    from xlrd.xldate import XLDateError
+except ImportError:
+    pass  # ignore the problem so that autodoc can work withour xlrd
+          # installed.
 
 from lino.utils import iif
 from lino.utils import IncompleteDate
