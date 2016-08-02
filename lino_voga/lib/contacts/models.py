@@ -36,6 +36,8 @@ class Person(Person, BeIdCardHolder):
         app_label = 'contacts'
         abstract = dd.is_abstract_model(__name__, 'Person')
 
+    validate_national_id = True        
+
 
 class PartnerDetail(PartnerDetail):
 
@@ -75,7 +77,7 @@ class PartnerDetail(PartnerDetail):
     # """, label=dd.plugins.sales.verbose_name)
 
     bottom_box = """
-    remarks
+    remarks:50 plausibility.ProblemsByOwner:30
     """
 
     # A layout for use in Belgium
@@ -127,7 +129,7 @@ class CompanyDetail(CompanyDetail, PartnerDetail):
     """)  # ,label = _("Contact"))
 
     bottom_box = """
-    remarks
+    remarks:50 plausibility.ProblemsByOwner:30
     """
 
 
@@ -137,7 +139,7 @@ class PersonDetail(PersonDetail, PartnerDetail):
 
     general = dd.Panel("""
     overview:30 contact_box:30 lists.MembersByPartner:20
-    remarks
+    bottom_box
     """, label=_("General"))
 
     address = dd.Panel("""
@@ -160,6 +162,10 @@ class PersonDetail(PersonDetail, PartnerDetail):
 
     personal = 'national_id card_number'
    
+    bottom_box = """
+    remarks:50 plausibility.ProblemsByOwner:30
+    """
+
 
 
 # @dd.receiver(dd.pre_analyze)
