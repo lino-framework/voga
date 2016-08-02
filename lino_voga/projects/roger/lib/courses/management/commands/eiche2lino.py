@@ -31,7 +31,7 @@ try:
     from xlrd import open_workbook, xldate_as_tuple
     from xlrd.xldate import XLDateError
 except ImportError:
-    pass  # ignore the problem so that autodoc can work withour xlrd
+    pass  # ignore the problem so that autodoc can work without xlrd
           # installed.
 
 from lino.utils import iif
