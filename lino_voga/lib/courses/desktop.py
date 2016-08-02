@@ -145,6 +145,10 @@ class PupilDetail(PersonDetail):
 
     personal = 'pupil_type national_id card_number'
 
+    bottom_box = """
+    remarks:50 plausibility.ProblemsByOwner:30
+    """
+
 
 class TeacherDetail(PersonDetail):
     main = PersonDetail.main + " courses"
