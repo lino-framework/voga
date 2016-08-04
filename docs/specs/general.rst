@@ -87,7 +87,7 @@ The demo database
  ledger.Journal             ledger.Journals                19        7
  ledger.MatchRule           ledger.MatchRules              3         11
  ledger.Movement            ledger.Movements               10        675
- ledger.PaymentTerm         ledger.PaymentTerms            8         7
+ ledger.PaymentTerm         ledger.PaymentTerms            9         8
  ledger.Voucher             ledger.Vouchers                9         205
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3

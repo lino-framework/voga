@@ -619,7 +619,7 @@ class Enrolment(Enrolment, Invoiceable):
     # create_invoice = CreateInvoiceForEnrolment()
 
     def get_invoiceable_partner(self):
-        return self.pupil
+        return self.pupil.invoice_recipient or self.pupil
 
     # @classmethod
     # def get_invoiceable_partners(cls):
@@ -660,9 +660,9 @@ class Enrolment(Enrolment, Invoiceable):
 
     def full_clean(self, *args, **kwargs):
         if self.fee_id is None and self.course_id is not None:
-            self.fee_id = self.course.fee_id
+            self.fee = self.course.fee
             if self.fee_id is None and self.course.line_id is not None:
-                self.fee_id = self.course.line.fee_id
+                self.fee = self.course.line.fee
         # if self.number_of_events is None:
         #     if self.fee_id and self.fee.number_of_events:
         #         self.number_of_events = self.fee.number_of_events

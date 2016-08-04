@@ -215,11 +215,17 @@ class EventsByCourse(EventsByController):
 
         elems = []
         for evt in sar:
+            # if len(elems) > 0:
+            #     elems.append(', ')
+            elems.append(' ')
+            if evt.auto_type:
+                # elems.append("({}) ".format(evt.auto_type))
+                elems.append("{}: ".format(evt.auto_type))
             lbl = day_and_month(evt.start_date)
             if evt.state.button_text:
                 lbl = "{0}{1}".format(lbl, evt.state.button_text)
             elems.append(ar.obj2html(evt, lbl))
-        elems = join_elems(elems, sep=', ')
+        # elems = join_elems(elems, sep=', ')
         sar = obj.do_update_events.request_from(sar)
         if sar.get_permission():
             btn = sar.ar2button(obj)
