@@ -24,18 +24,19 @@ from lino.api import dd, rt
 from lino.utils import mti, Cycler
 from django.utils.translation import ugettext_lazy as _
 
-
 from django.conf import settings
 
-Person = dd.resolve_model('contacts.Person')
-PupilType = dd.resolve_model('courses.PupilType')
-
-courses = dd.resolve_app('courses')
-cal = dd.resolve_app('cal')
-users = dd.resolve_app('users')
+# courses = dd.resolve_app('courses')
+# cal = dd.resolve_app('cal')
+# users = dd.resolve_app('users')
 
 
 def objects():
+    Person = rt.models.contacts.Person
+    PupilType = rt.models.courses.PupilType
+    TeacherType = rt.models.courses.TeacherType
+    Pupil = rt.models.courses.Pupil
+    Teacher = rt.models.courses.Teacher
 
     yield PupilType(ref="M", **dd.str2kw('name', _("Member")))
     yield PupilType(ref="H", **dd.str2kw('name', _("Helper")))
@@ -48,27 +49,33 @@ def objects():
     #~ yield cal.Place(name="D")
     #~ yield cal.Place(name="E")
     #~ yield cal.Place(name="F")
-    PTYPES = Cycler(courses.PupilType.objects.all())
-    TTYPES = Cycler(courses.TeacherType.objects.all())
+    PTYPES = Cycler(PupilType.objects.all())
+    TTYPES = Cycler(TeacherType.objects.all())
 
     n = 0
     for p in Person.objects.all():
         if n % 2 == 0:
-            yield mti.insert_child(p, courses.Pupil,
-                                   pupil_type=PTYPES.pop())
+            yield mti.insert_child(p, Pupil, pupil_type=PTYPES.pop())
         if n % 9 == 0:
-            yield mti.insert_child(p, courses.Teacher,
-                                   teacher_type=TTYPES.pop())
+            yield mti.insert_child(p, Teacher, teacher_type=TTYPES.pop())
         n += 1
 
+    invoice_recipient = None
+    for n, p in enumerate(Pupil.objects.all()):
+        if n % 10 == 0:
+            p.invoice_recipient = invoice_recipient
+            yield p
+        else:
+            invoice_recipient = p
+            
     if False:
 
         #~ PS = Cycler(courses.PresenceStatus.objects.all())
-        CONTENTS = Cycler(courses.Line.objects.all())
-        USERS = Cycler(users.User.objects.all())
-        PLACES = Cycler(cal.Room.objects.all())
-        TEACHERS = Cycler(courses.Teacher.objects.all())
-        SLOTS = Cycler(courses.Slot.objects.all())
+        CONTENTS = Cycler(rt.models.courses.Line.objects.all())
+        USERS = Cycler(rt.models.users.User.objects.all())
+        PLACES = Cycler(rt.models.cal.Room.objects.all())
+        TEACHERS = Cycler(Teacher.objects.all())
+        SLOTS = Cycler(rt.models.courses.Slot.objects.all())
         #~ SLOTS = Cycler(1,2,3,4)
         PUPILS = Cycler(courses.Pupil.objects.all())
         #~ Event = settings.SITE.modules.cal.Event

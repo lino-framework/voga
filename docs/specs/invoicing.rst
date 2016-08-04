@@ -6,17 +6,45 @@ How Lino Voga generates invoices
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_invoicing
+    $ python setup.py test -s tests.SpecsTests.test_invoicingg
 
     doctest init:
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
-    
+
+
+.. contents:: 
+   :local:
+   :depth: 2
+
+Overview
+========
 
 The general functionality for automatically generating invoices is
 defined in :mod:`lino_cosi.lib.invoicing`.
+
+Lino Voga uses this functionality by extending :class:`Enrolment
+<lino_cosi.lib.courses.models.Enrolment>` so that it inherits from
+:class:`Invoiceable <lino_cosi.lib.invoicing.mixins.Invoiceable>`. In
+Lino Voga, enrolments are the things for which they write invoices.
+
+Another invoiceable thing in Lino Voga is when they rent a room to a
+third-party organisation.  This is called a :class:`Booking
+<lino_voga.lib.rooms.models.Booking>`.
+
+IOW, in Lino Voga both :class:`Enrolment
+<lino_cosi.lib.courses.models.Enrolment>` and :class:`Booking
+<lino_voga.lib.rooms.models.Booking>` are :class:`Invoiceable
+<lino_cosi.lib.invoicing.mixins.Invoiceable>`:
+
+>>> rt.models_by_base(rt.modules.invoicing.Invoiceable)
+[<class 'lino_voga.lib.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
+
+
+User interface
+==============
 
 On the user-visible level this plugin adds
 
@@ -39,6 +67,12 @@ at four places:
 >>> rt.models.courses.Course.start_invoicing
 <StartInvoicingForCourse start_invoicing ('Create invoices')>
 
+API
+===
+
+On the API level it defines the :class:`Invoiceable
+<lino_cosi.lib.invoicing.mixins.Invoiceable>` mixin.
+
 The *invoices journal* which supports automatic generation is
 indirectly defined by the :attr:`voucher_model
 <lino_cosi.lib.invoicing.Plugin.voucher_model>` setting.
@@ -50,25 +84,6 @@ indirectly defined by the :attr:`voucher_model
 >>> rt.models.invoicing.Plan.start_invoicing
 <StartInvoicing start_invoicing ('Create invoices')>
 
-On the API level it defines the :class:`Invoiceable
-<lino_cosi.lib.invoicing.mixins.Invoiceable>` mixin.
-
-Lino Voga uses this functionality by extending :class:`Enrolment
-<lino_cosi.lib.courses.models.Enrolment>` so that it inherits from
-:class:`Invoiceable <lino_cosi.lib.invoicing.mixins.Invoiceable>`. In
-Lino Voga, enrolments are the things for which they write invoices.
-
-Another invoiceable thing in Lino Voga is when they rent a room to a
-third-party organisation.  This is called a :class:`Booking
-<lino_voga.lib.rooms.models.Booking>`.
-
-IOW, in Lino Voga both :class:`Enrolment
-<lino_cosi.lib.courses.models.Enrolment>` and :class:`Booking
-<lino_voga.lib.rooms.models.Booking>` are :class:`Invoiceable
-<lino_cosi.lib.invoicing.mixins.Invoiceable>`:
-
->>> rt.models_by_base(rt.modules.invoicing.Invoiceable)
-[<class 'lino_voga.lib.courses.models.Enrolment'>, <class 'lino_voga.lib.rooms.models.Booking'>]
 
 Enrolments as invoiceables
 ==========================
@@ -449,6 +464,7 @@ Title: Enrolment to 003 comp (First Steps)
 Start date: 06/05/2014
 Missed events: 24/03/2014, 31/03/2014, 07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014
 Description:
+Participant: Luc Faymonville (ME).
 Time: Every Monday 13:30-15:00.
 Tariff: 20€.
 Scheduled dates:
@@ -500,10 +516,10 @@ information about the last invoicing run.
  Selected             Partner                 Preview                                                                Amount       Invoice   Workflow
 -------------------- ----------------------- ---------------------------------------------------------------------- ------------ --------- ----------
  Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     50,00        SLS 78
- Yes                  Faymonville Luc         [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 79
+ Yes                  Engels Edgar            [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 79
  Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 80
  Yes                  Arens Annette           [3] Renewal Enrolment to 007C WWW (Internet for beginners) (48.00 €)   48,00        SLS 81
- Yes                  Martelaer Mark          Enrolment to 019 SV (Self-defence) (20.00 €)                           20,00        SLS 82
+ Yes                  Dupont Jean             Enrolment to 019 SV (Self-defence) (20.00 €)                           20,00        SLS 82
  Yes                  Brecht Bernd            [1] Enrolment to 023C MED (Finding your inner peace) (64.00 €)         64,00        SLS 83
  **Total (6 rows)**                                                                                                  **278,00**
 ==================== ======================= ====================================================================== ============ ========= ==========
@@ -567,6 +583,7 @@ Title: Enrolment to 003 comp (First Steps)
 Start date: 06/05/2014
 Missed events: 24/03/2014, 31/03/2014, 07/04/2014, 14/04/2014, 28/04/2014, 05/05/2014
 Description:
+Participant: Luc Faymonville (ME).
 Time: Every Monday 13:30-15:00.
 Tariff: 20€.
 Scheduled dates:
@@ -586,4 +603,73 @@ Description:
 Places used: 2.
 Date: 14/08/2014-20/08/2014.
 Tariff: Journeys.
+
+
+Invoice recipient
+=================
+
+TODO: write explanations between the examples.
+
+>>> show_fields(rt.models.contacts.Partner, 'invoice_recipient')
+=================== =================== ===========================================================================
+ Internal name       Verbose name        Help text
+------------------- ------------------- ---------------------------------------------------------------------------
+ invoice_recipient   Invoicing address   Redirect to another partner all invoices which should go to this partner.
+=================== =================== ===========================================================================
+
+>>> for p in rt.models.contacts.Partner.objects.filter(invoice_recipient__isnull=False):
+...     print("{} --> {}".format(p, p.invoice_recipient))
+Faymonville Luc --> Engels Edgar
+Radermacher Alfons --> Emonts-Gast Erna
+Martelaer Mark --> Dupont Jean
+
+>>> p = rt.models.courses.Pupil.objects.get(last_name="Faymonville")
+>>> p
+Pupil #129 ('Luc Faymonville (ME)')
+
+>>> rt.show('courses.EnrolmentsByPupil', p)
+==================== ===================================== ============ ============ ============= ======== ============ ===============
+ Date of request      Activity                              Start date   End date     Places used   Remark   Amount       Workflow
+-------------------- ------------------------------------- ------------ ------------ ------------- -------- ------------ ---------------
+ 14/09/2013           022C MED (Finding your inner peace)                             1                      64,00        **Requested**
+ 18/03/2014           003 comp (First Steps)                             08/04/2014   1                      20,00        **Confirmed**
+ 18/03/2014           003 comp (First Steps)                06/05/2014                1                      20,00        **Confirmed**
+ 04/10/2014           006C WWW (Internet for beginners)                               1                      48,00        **Confirmed**
+ **Total (4 rows)**                                                                   **4**                  **152,00**
+==================== ===================================== ============ ============ ============= ======== ============ ===============
+<BLANKLINE>
+
+>>> e = rt.models.courses.Enrolment.objects.get(id=22)
+>>> e
+Enrolment #22 ('006C WWW (Internet for beginners) / Luc Faymonville (ME)')
+
+>>> rt.show('invoicing.InvoicingsByInvoiceable', e)
+==================== ============================================================ ========== ============== ============ ==================
+ Product invoice      Heading                                                      Quantity   Voucher date   State        Number of events
+-------------------- ------------------------------------------------------------ ---------- -------------- ------------ ------------------
+ SLS 45               [1] Enrolment to 006C WWW (Internet for beginners)           1          01/11/2014     Registered   8
+ SLS 66               [2] Renewal Enrolment to 006C WWW (Internet for beginners)   1          01/01/2015     Registered   8
+ SLS 79               [3] Renewal Enrolment to 006C WWW (Internet for beginners)   1          01/03/2015     Registered   8
+ **Total (3 rows)**                                                                **3**                                  **24**
+==================== ============================================================ ========== ============== ============ ==================
+<BLANKLINE>
+
+>>> rt.show('sales.InvoicesByPartner', p)
+No data to display
+
+>>> p = rt.models.courses.Pupil.objects.get(last_name="Engels")
+>>> p
+Pupil #128 ('Edgar Engels (MES)')
+
+>>> rt.show('sales.InvoicesByPartner', p)
+==================== =========== ========= ================= ================
+ Voucher date         Reference   No.       Total incl. VAT   Workflow
+-------------------- ----------- --------- ----------------- ----------------
+ 01/03/2015           SLS         79        48,00             **Registered**
+ 01/01/2015           SLS         66        48,00             **Registered**
+ 01/11/2014           SLS         45        48,00             **Registered**
+ 01/04/2014           SLS         14        40,00             **Registered**
+ **Total (4 rows)**               **204**   **184,00**
+==================== =========== ========= ================= ================
+<BLANKLINE>
 
