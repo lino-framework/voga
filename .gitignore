@@ -18,3 +18,4 @@ docs/api/lino_faggio.*
 .DS_Store
 .idea
 .coverage
+.eggs/
