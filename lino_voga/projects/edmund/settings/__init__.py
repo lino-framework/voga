@@ -14,7 +14,7 @@ class Site(Site):
     languages = "en et"
 
     demo_fixtures = """std
-    few_languages few_countries few_cities
+    few_countries few_cities
     euvatrates
     minimal_ledger demo voga demo2""".split()
 
