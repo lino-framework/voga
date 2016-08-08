@@ -25,7 +25,9 @@
 SETUP_INFO = dict(
     name='lino_voga',
     version='0.0.4',
-    install_requires=['lino', 'lino_cosi'],
+    install_requires=[
+        'lino', 'lino_cosi',
+        'weasyprint', 'cairocffi<0.7'],
     test_suite='tests',
     description="A Lino application for managing courses, "
     "participants and meeting rooms",
