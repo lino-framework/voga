@@ -452,7 +452,28 @@ Course.set_widget_options('ref', preferred_with=6)
 
 
 class InvoicingInfo(object):
+    """A volatile object which holds invoicing information about a given
+    enrolment.
+
+    .. attribute:: enrolment
+
+        The enrolment it's all about.
+
+    .. attribute:: max_date
+
+        Don't consider dates after this.
+
+    .. attribute:: invoiceable_fee
+
+        Which fee to apply. If this is None, 
+
+    .. attribute:: invoiced_qty
+
+        
+
+    """
     invoiceable_fee = None
+    invoiced_qty = ZERO
     invoiced_events = 0
     used_events = []
     invoicings = None
@@ -468,7 +489,6 @@ class InvoicingInfo(object):
             self.invoiceable_fee = fee
             return
             
-        self.invoiced_qty = ZERO
         # history = []
         state_field = dd.plugins.invoicing.voucher_model._meta.get_field(
             'state')
@@ -509,6 +529,12 @@ class InvoicingInfo(object):
         else:
             asset = self.invoiced_qty
         # dd.logger.info("20160223 %s %s %s", enr, asset, fee.min_asset)
+        if self.enrolment.end_date \
+           and self.enrolment.end_date < self.max_date and asset >= 0:
+            # ticket #1040 : a participant who declared to stop before
+            # their asset got negative should not get any invoice for
+            # a next asset
+            return 
         if asset < fee.min_asset:
             self.invoiceable_fee = fee
             # self.invoiced_events = invoiced_events
@@ -737,7 +763,7 @@ class Enrolment(Enrolment, Invoiceable):
 
     def get_invoiceable_product(self, plan):
         """Return the product to use for the invoice.
-        This also decides whether an invoice should get issued.
+        This also decides whether an invoice should be issued or not.
         """
         # dd.logger.info('20160223 %s', self.course)
         if not self.course.state.invoiceable:
