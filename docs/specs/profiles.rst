@@ -40,7 +40,7 @@ users.UserProfiles.admin:900
   - VAT : Due invoices
   - Activities : Status Report
 - Configure :
-  - System : Users, Site Parameters, Help Texts
+  - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
   - Calendar : Calendars, Rooms, Priorities, Recurrent event rules, Guest Roles, Calendar Event Types, Remote Calendars

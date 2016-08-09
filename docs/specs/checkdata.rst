@@ -39,6 +39,7 @@ checkers.
  beid.BeIdCardHolderChecker        Check for invalid SSINs
  cal.EventGuestChecker             Check for missing participants
  cal.ConflictingEventsChecker      Check for conflicting events
+ cal.ObsoleteEventTypeChecker      Update event types of generated events
  ledger.VoucherChecker             Check integrity of ledger movements
  sepa.BankAccountChecker           Check for partner mismatches in bank accounts
 ================================= ===============================================
