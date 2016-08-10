@@ -6,26 +6,32 @@ help_texts = {
     'lino_voga.lib.courses.desktop.EnrolmentsAndPaymentsByCourse' : _("""Show enrolments of a course together with
 invoicing_info and payment_info."""),
     'lino_voga.projects.roger.lib.courses.models.MemberChecker.model' : _("""alias of Pupil"""),
-    'lino_voga.lib.courses.models.Enrolment.payment_info' : _("""A virtual field showing a summary of due accounting movements
-(debts and payments)."""),
+    'lino_voga.lib.courses.models.InvoicingInfo' : _("""A volatile object which holds invoicing information about a given
+enrolment."""),
     'lino_voga.lib.courses.desktop.EnrolmentsAndPaymentsByCourse.master' : _("""alias of Course"""),
     'lino_voga.lib.courses.models.PrintPresenceSheet' : _("""Action to print a presence sheet."""),
     'lino_voga.lib.courses.desktop.CoursesByLine.model' : _("""alias of Course"""),
     'lino_voga.lib.courses.models.Course' : _("""Extends the standard model by adding a field fee."""),
     'lino_voga.lib.courses.models.Teacher.teacher_type' : _("""Pointer to TeacherType."""),
+    'lino_voga.lib.courses.models.InvoicingInfo.invoiceable_fee' : _("""Which fee to apply. If this is None,"""),
     'lino_voga.lib.invoicing.models.Plan' : _("""An extended invoicing plan."""),
     'lino_voga.lib.courses.models.Teacher' : _("""A teacher is a person with an additional field
 teacher_type."""),
     'lino_voga.lib.courses.models.Course.name' : _("""A short designation for this course. An extension of the
 ref."""),
+    'lino_voga.lib.courses.models.Enrolment.payment_info' : _("""A virtual field showing a summary of due accounting movements
+(debts and payments)."""),
     'lino_voga.lib.courses.desktop.EnrolmentsByCourse.model' : _("""alias of Enrolment"""),
     'lino_voga.lib.courses.desktop.EventsByCourse' : _("""Shows the events linked to this course."""),
     'lino_voga.projects.roger.lib.courses.models.MemberChecker' : _("""Check membership payments."""),
     'lino_voga.lib.courses.models.Enrolment' : _("""Adds"""),
+    'lino_voga.lib.voga.migrate.Migrator' : _("""This class is used because a voga Site has
+ad.Site.migration_class set to
+"lino_voga.migrate.Migrator"."""),
+    'lino_voga.lib.invoicing.models.StartInvoicingForCourse' : _("""Start an invoicing plan for this course."""),
     'lino_voga.projects.roger.lib.courses.models.Pupil' : _("""The Roger variant of Lino Voga adds a few very specific fields
 which are being used for filtering, and they may influence the
 price of an enrolment."""),
-    'lino_voga.lib.invoicing.models.StartInvoicingForCourse' : _("""Start an invoicing plan for this course."""),
     'lino_voga.lib.courses.desktop.CoursesByTopic.model' : _("""alias of Course"""),
     'lino_voga.lib.courses.desktop.EventsByCourse.model' : _("""alias of Event"""),
     'lino_voga.lib.courses.models.Course.ref' : _("""An identifying public course number to be used by both
@@ -47,8 +53,9 @@ only courses for which new enrolments can happen."""),
 lino_cosi.lib.courses.models.Enrolment.pupil_info
 in order to add (between parentheses after the name) some
 information needed to compute the price."""),
-    'lino_voga.lib.invoicing.models.Plan.course' : _("""If this field is nonempty, select only enrolments of that
-given course."""),
+    'lino_voga.lib.courses.models.InvoicingInfo.enrolment' : _("""The enrolment it's all about."""),
+    'lino_voga.lib.courses.models.Enrolment.amount' : _("""The total amount to pay for this enrolment. This is
+places * fee."""),
     'lino_voga.lib.courses.desktop.EnrolmentsByCourse' : _("""The Voga version of EnrolmentsByCourse."""),
     'lino_voga.lib.courses.models.CourseToXls' : _("""Interesting, but currently not used."""),
     'lino_voga.lib.courses.desktop.CoursesByTopic.master' : _("""alias of Topic"""),
@@ -57,13 +64,11 @@ given course."""),
 enrolment."""),
     'lino_voga.lib.courses.models.Pupil' : _("""A pupil is a person with an additional field
 pupil_type."""),
-    'lino_voga.lib.courses.models.Enrolment.amount' : _("""The total amount to pay for this enrolment. This is
-places * fee."""),
+    'lino_voga.lib.courses.models.InvoicingInfo.max_date' : _("""Don't consider dates after this."""),
     'lino_voga.lib.courses.desktop.EnrolmentsAndPaymentsByCourse.model' : _("""alias of Enrolment"""),
     'lino_voga.lib.courses.desktop.Pupils.model' : _("""alias of Pupil"""),
     'lino_voga.lib.courses.desktop.CourseDetail' : _("""The detail layout of a Course (voga variant)."""),
-    'lino_voga.lib.voga.migrate.Migrator' : _("""This class is used because a voga Site has
-ad.Site.migration_class set to
-"lino_voga.migrate.Migrator"."""),
+    'lino_voga.lib.invoicing.models.Plan.course' : _("""If this field is nonempty, select only enrolments of that
+given course."""),
     'lino_voga.projects.roger.settings.Site' : _("""The Site class for this module."""),
 }
