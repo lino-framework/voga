@@ -89,7 +89,7 @@ users.UserProfiles.secretary:200
   - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
-  - System : content types, Plausibility checkers, Plausibility problems, Notifications
+  - System : content types, Plausibility checkers, Plausibility problems
   - Calendar : Presences, Event states, Guest states, Task states
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
   - Activities : Activities, Enrolments
