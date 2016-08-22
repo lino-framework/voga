@@ -25,4 +25,5 @@ specifications. One of their goal is to get tested.
    checkdata
    roger
    partners
+   print_labels
    pupils
