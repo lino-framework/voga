@@ -13,7 +13,6 @@ Managing participants in Lino Voga
     >>> from lino.api.doctest import *
     
 
-
 Displaying all pupils who are either Member or Non-Member (using
 gridfilter):
 
@@ -34,4 +33,36 @@ The response to this AJAX request is in JSON:
 >>> d['count']
 24
 
+
+
+Filtering pupils
+=================
+
+Select pupils who participate in a given course:
+
+>>> obj = rt.models.courses.Course.objects.get(pk=1)
+>>> obj
+Course #1 ('001 Greece 2014')
+>>> pv = dict(course=obj)
+>>> rt.show('courses.Pupils', param_values=pv)
+======================== ================================= ================== ========== ===== ===== ======== ==============
+ Name                     Address                           Participant Type   Section    LFV   CKK   Raviva   Mitglied bis
+------------------------ --------------------------------- ------------------ ---------- ----- ----- -------- --------------
+ Annette Arens (ME)       Alter Malmedyer Weg, 4700 Eupen   Helper                        No    No    No       31/12/2015
+ Hedi Radermacher (MLS)   4730 Raeren                       Non-member         Sonstige   Yes   No    No
+======================== ================================= ================== ========== ===== ===== ======== ==============
+<BLANKLINE>
+
+Note that above table is not the same as :class:`EnrolmentsByCourse
+<lino_voga.lib.courses.desktop.EnrolmentsByCourse>`:
+
+>>> rt.show('courses.EnrolmentsByCourse', obj)
+==================== ======================== ============ ============ ============= ======== ========== ============= ======== ===============
+ Date of request      Participant              Start date   End date     Places used   Remark   Tariff     Free events   Amount   Workflow
+-------------------- ------------------------ ------------ ------------ ------------- -------- ---------- ------------- -------- ---------------
+ 25/07/2014           Annette Arens (ME)                                 1                      Journeys                          **Confirmed**
+ 09/08/2014           Hedi Radermacher (MLS)                18/09/2014   2                      Journeys                          **Confirmed**
+ **Total (2 rows)**                                                      **3**                             **0**
+==================== ======================== ============ ============ ============= ======== ========== ============= ======== ===============
+<BLANKLINE>
 

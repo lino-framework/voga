@@ -291,7 +291,16 @@ class Pupil(contacts.Person):
         qs = super(Pupil, cls).get_request_queryset(ar)
         pv = ar.param_values
         if pv.course:
-            qs = qs.filter(enrolments_by_pupil__course=pv.course)
+            # qs = qs.filter(enrolments_by_pupil__course=pv.course)
+            # qs = qs.filter(
+            #     enrolments_by_pupil__state__in=EnrolmentStates.filter(
+            #         invoiceable=True))
+            qs = qs.filter(
+                enrolments_by_pupil__course=pv.course,
+                enrolments_by_pupil__state__in=EnrolmentStates.filter(
+                    invoiceable=True))
+            # qs = qs.filter(
+            #     enrolments_by_pupil__state=EnrolmentStates.confirmed)
         if pv.partner_list:
             qs = qs.filter(list_memberships__list=pv.partner_list)
         return qs
