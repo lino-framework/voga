@@ -1,11 +1,8 @@
-==========================
-lino_voga README
-==========================
+=========================
+The ``lino_voga`` package
+=========================
 
-A Lino application for managing courses, participants and meeting rooms
 
-Description
------------
 
 
 Lino Voga is a `Lino <http://www.lino-framework.org>`__ application
@@ -21,5 +18,3 @@ for managing courses, participants and meeting rooms.
   and  http://vtp2014.lino-framework.org (English, Estonian)
 
 
-
-Read more on http://voga.lino-framework.org
