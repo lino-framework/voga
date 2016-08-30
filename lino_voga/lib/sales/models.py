@@ -60,7 +60,8 @@ class InvoiceItem(InvoiceItem):
 InvoiceItems.detail_layout = dd.DetailLayout("""
 seqno product discount
 unit_price qty total_base total_vat total_incl
-invoiceable title
+title
+invoiceable_type:15 invoiceable_id:15 invoiceable:50
 description""", window_size=(80, 20))
 
 # class InvoiceItems(InvoiceItems):
