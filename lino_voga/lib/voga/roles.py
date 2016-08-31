@@ -22,13 +22,14 @@ See also :attr:`lino.core.site.Site.user_profiles_module`.
 """
 
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
+from lino_xl.lib.contacts.roles import ContactsUser
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
 from lino_cosi.lib.sepa.roles import SepaStaff
 from lino.modlib.plausibility.roles import PlausibilityUser
 
 
-class SiteUser(OfficeUser, LedgerUser, PlausibilityUser):
+class SiteUser(ContactsUser, OfficeUser, LedgerUser, PlausibilityUser):
     pass
 
 
