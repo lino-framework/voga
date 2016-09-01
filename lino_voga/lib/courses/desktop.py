@@ -197,8 +197,8 @@ class PupilsByType(Pupils):
 class EventsByCourse(EventsByController):
     """Shows the events linked to this course.
     """
-    column_names = "start_date start_time end_time "\
-                   "auto_type room summary workflow_buttons *"
+    column_names = "start_date auto_type workflow_buttons "\
+                   "start_time end_time room summary *"
 
     slave_grid_format = "summary"
 
