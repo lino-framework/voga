@@ -18,17 +18,17 @@ Journals
 
 >>> ses = settings.SITE.login('robin')
 >>> ses.show(ledger.Journals, column_names="ref name trade_type account dc")
-=========== =============================== ==================== ===================== ============ ================================ ===========================
- Reference   Designation                     Designation (de)     Designation (fr)      Trade type   Account                          Primary booking direction
------------ ------------------------------- -------------------- --------------------- ------------ -------------------------------- ---------------------------
- SLS         Sales invoices                  Verkaufsrechnungen   Factures vente        Sales                                         Debit
- SLC         Sales credit notes              Sales credit notes   Sales credit notes    Sales                                         Credit
- PRC         Purchase invoices               Einkaufsrechnungen   Factures achat        Purchases                                     Credit
- PMO         Payment Orders                  Zahlungsaufträge     Payment Orders        Purchases    (5810) Payment Orders Bestbank   Credit
- CSH         Cash                            Kasse                Caisse                             (5700) Cash                      Debit
- BNK         Bestbank                        Bestbank             Bestbank                           (5500) Bestbank                  Debit
- MSC         Miscellaneous Journal Entries   Diverse Buchungen    Opérations diverses                (5700) Cash                      Debit
-=========== =============================== ==================== ===================== ============ ================================ ===========================
+=========== =============================== ====================== ===================== ============ ================================ ===========================
+ Reference   Designation                     Designation (de)       Designation (fr)      Trade type   Account                          Primary booking direction
+----------- ------------------------------- ---------------------- --------------------- ------------ -------------------------------- ---------------------------
+ SLS         Sales invoices                  Verkaufsrechnungen     Factures vente        Sales                                         Debit
+ SLC         Sales credit notes              Gutschriften Verkauf   Sales credit notes    Sales                                         Credit
+ PRC         Purchase invoices               Einkaufsrechnungen     Factures achat        Purchases                                     Credit
+ PMO         Payment Orders                  Zahlungsaufträge       Payment Orders        Purchases    (5810) Payment Orders Bestbank   Credit
+ CSH         Cash                            Kasse                  Caisse                             (5700) Cash                      Debit
+ BNK         Bestbank                        Bestbank               Bestbank                           (5500) Bestbank                  Debit
+ MSC         Miscellaneous Journal Entries   Diverse Buchungen      Opérations diverses                (5700) Cash                      Debit
+=========== =============================== ====================== ===================== ============ ================================ ===========================
 <BLANKLINE>
 
 

@@ -29,6 +29,7 @@ SETUP_INFO = dict(
         'lino', 'lino_cosi',
         'weasyprint', 'cairocffi<0.7'],
     test_suite='tests',
+    tests_require=['pytest'],
     description="A Lino application for managing courses, "
     "participants and meeting rooms",
 
