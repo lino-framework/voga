@@ -291,6 +291,13 @@ class Pupil(contacts.Person):
         qs = super(Pupil, cls).get_request_queryset(ar)
         pv = ar.param_values
         if pv.course:
+            qs = qs.filter(
+                Q(enrolments_by_pupil__start_date__isnull=True) |
+                Q(enrolments_by_pupil__start_date__lte=dd.today()))
+            qs = qs.filter(
+                Q(enrolments_by_pupil__end_date__isnull=True) |
+                Q(enrolments_by_pupil__end_date__gte=dd.today()))
+            qs = qs.distinct()
             # qs = qs.filter(enrolments_by_pupil__course=pv.course)
             # qs = qs.filter(
             #     enrolments_by_pupil__state__in=EnrolmentStates.filter(
@@ -301,6 +308,8 @@ class Pupil(contacts.Person):
                     invoiceable=True))
             # qs = qs.filter(
             #     enrolments_by_pupil__state=EnrolmentStates.confirmed)
+            
+
         if pv.partner_list:
             qs = qs.filter(list_memberships__list=pv.partner_list)
         return qs
@@ -662,7 +671,10 @@ class Enrolment(Enrolment, Invoiceable):
 
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):
+        """Yield all enrolments for which the given plan and partner should
+        generate an invoice.
 
+        """
         qs = cls.objects.filter(**{
             cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
         if plan.course is not None:
@@ -680,7 +692,10 @@ class Enrolment(Enrolment, Invoiceable):
                 q2 = models.Q(pupil__invoice_recipient=partner)
                 qs = cls.objects.filter(models.Q(q1 | q2))
             else:
-                return
+                # if the partner is not a pupil, then it might still
+                # be an invoice_recipient
+                qs = cls.objects.filter(pupil__invoice_recipient=partner)
+                
         # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
         for obj in qs.order_by(cls.invoiceable_date_field):
             # dd.logger.info('20160223 %s', obj)

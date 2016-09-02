@@ -6,7 +6,7 @@ How Lino Voga generates invoices
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_invoicingg
+    $ python setup.py test -s tests.SpecsTests.test_invoicing
 
     doctest init:
 
@@ -622,6 +622,15 @@ TODO: write explanations between the examples.
 Faymonville Luc --> Engels Edgar
 Radermacher Alfons --> Emonts-Gast Erna
 Martelaer Mark --> Dupont Jean
+
+>>> p = rt.models.courses.Pupil.objects.get(last_name="Engels")
+>>> rt.show(rt.models.sales.PartnersByInvoiceRecipient, p)
+================= ===== ===========================
+ Name              ID    Address
+----------------- ----- ---------------------------
+ Faymonville Luc   129   Brabantstraße, 4700 Eupen
+================= ===== ===========================
+<BLANKLINE>
 
 >>> p = rt.models.courses.Pupil.objects.get(last_name="Faymonville")
 >>> p
