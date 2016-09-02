@@ -180,7 +180,15 @@ class TeachersByType(Teachers):
 
 
 class Pupils(contacts.Persons):
-    """The global list of all pupils."""
+    """The global list of all pupils.
+
+    Fitler parameters:
+
+    .. attribute:: course
+
+        Show only pupils who participate in the given course.
+
+    """
     model = 'courses.Pupil'
     detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'
