@@ -62,7 +62,7 @@ The demo database
  contenttypes.ContentType   gfks.ContentTypes              3         76
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               8         78
- courses.Course             courses.Activities             31        25
+ courses.Course             courses.Activities             32        25
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        82
  courses.Line               courses.Lines                  22        10
@@ -75,7 +75,7 @@ The demo database
  excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        11
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        175
+ finan.BankStatementItem    finan.BankStatementItemTable   10        193
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
@@ -86,8 +86,8 @@ The demo database
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                19        7
  ledger.MatchRule           ledger.MatchRules              3         11
- ledger.Movement            ledger.Movements               10        675
- ledger.PaymentTerm         ledger.PaymentTerms            9         8
+ ledger.Movement            ledger.Movements               10        697
+ ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         205
  lists.List                 lists.Lists                    7         8
  lists.ListType             lists.ListTypes                4         3

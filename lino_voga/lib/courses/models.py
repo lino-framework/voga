@@ -397,6 +397,11 @@ class Course(Referrable, Course, PrintableObject):
 
         The default participation fee to apply for new enrolments.
 
+    .. attribute:: payment_term
+
+        The payment term to use when writing an invoice. If this is
+        empty, Lino will use the partner's default payment term.
+
     """
     class Meta(Course.Meta):
         app_label = 'courses'
@@ -408,6 +413,11 @@ class Course(Referrable, Course, PrintableObject):
                         blank=True, null=True,
                         verbose_name=_("Default participation fee"),
                         related_name='courses_by_fee')
+
+    payment_term = dd.ForeignKey(
+        'ledger.PaymentTerm',
+        related_name="%(app_label)s_%(class)s_set_by_payment_term",
+        blank=True, null=True)    
 
     quick_search_fields = 'name line__name line__topic__name ref'
 
@@ -665,9 +675,8 @@ class Enrolment(Enrolment, Invoiceable):
     def get_invoiceable_partner(self):
         return self.pupil.invoice_recipient or self.pupil
 
-    # @classmethod
-    # def get_invoiceable_partners(cls):
-    #     return rt.models.courses.Pupil.objects.all()
+    def get_invoiceable_payment_term(self):
+        return self.course.payment_term
 
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):

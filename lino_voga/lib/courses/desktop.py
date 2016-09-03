@@ -439,14 +439,14 @@ class EnrolmentsByJourney(EnrolmentsByCourse):
 
 class HikeDetail(CourseDetail):
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 confirmed free_places print_actions
+    enrolments_until fee payment_term max_places:8 confirmed free_places print_actions
     EnrolmentsByHike
     """, label=_("Enrolments"))
 
 
 class JourneyDetail(CourseDetail):
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 confirmed free_places print_actions
+    enrolments_until fee payment_term max_places:8 confirmed free_places print_actions
     EnrolmentsByJourney
     """, label=_("Enrolments"))
 
