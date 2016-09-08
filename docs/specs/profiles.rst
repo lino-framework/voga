@@ -50,7 +50,7 @@ users.UserProfiles.admin:900
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems, Notifications
+  - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notifications
   - Contacts : Contact Persons, List memberships
   - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
