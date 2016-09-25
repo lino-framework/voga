@@ -31,6 +31,9 @@ class SpecsTests(BaseTestCase):
     def test_print_labels(self):
         return self.run_simple_doctests('docs/specs/print_labels.rst')
 
+    def test_db_roger(self):
+        return self.run_simple_doctests('docs/specs/db_roger.rst')
+
     def test_partners(self):
         return self.run_simple_doctests('docs/specs/partners.rst')
 
