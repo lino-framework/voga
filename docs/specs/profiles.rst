@@ -22,7 +22,7 @@ Robin is a system administrator, he has a complete menu:
 
 >>> ses = rt.login('robin') 
 >>> ses.user.profile
-users.UserProfiles.admin:900
+users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
@@ -64,7 +64,7 @@ users.UserProfiles.admin:900
 
 >>> ses = rt.login('monique') 
 >>> ses.user.profile
-users.UserProfiles.secretary:200
+users.UserTypes.secretary:200
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
@@ -98,7 +98,7 @@ users.UserProfiles.secretary:200
 
 >>> ses = rt.login('marianne') 
 >>> ses.user.profile
-users.UserProfiles.user:100
+users.UserTypes.user:100
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists

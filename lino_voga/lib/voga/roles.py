@@ -17,7 +17,7 @@
 
 """Defines the standard user roles for Lino Voga.
 
-See also :attr:`lino.core.site.Site.user_profiles_module`.
+See also :attr:`lino.core.site.Site.user_types_module`.
 
 """
 
@@ -44,9 +44,9 @@ class SiteAdmin(CoursesUser, SiteAdmin, OfficeStaff, LedgerStaff,
 
 
 from django.utils.translation import ugettext_lazy as _
-from lino.modlib.users.choicelists import UserProfiles
-UserProfiles.clear()
-add = UserProfiles.add_item
+from lino.modlib.users.choicelists import UserTypes
+UserTypes.clear()
+add = UserTypes.add_item
 add('000', _("Anonymous"), UserRole, name='anonymous', readonly=True)
 add('100', _("User"), SiteUser, name='user')
 add('200', _("Secretary"), Secretary, name='secretary')

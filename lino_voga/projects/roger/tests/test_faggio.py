@@ -36,7 +36,7 @@ from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils import i2d
-from lino.modlib.users.choicelists import UserProfiles
+from lino.modlib.users.choicelists import UserTypes
 
 
 def create(model, **kwargs):
@@ -74,7 +74,7 @@ class QuickTest(RemoteAuthTestCase):
 
         settings.SITE.verbose_client_info_message = True
         users.User(username="robin",
-                   profile=UserProfiles.admin,
+                   profile=UserTypes.admin,
                    language="en").save()
         ses = settings.SITE.login('robin')
 
