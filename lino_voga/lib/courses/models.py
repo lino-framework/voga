@@ -402,6 +402,11 @@ class Course(Referrable, Course, PrintableObject):
         The payment term to use when writing an invoice. If this is
         empty, Lino will use the partner's default payment term.
 
+    .. attribute:: paper_type
+
+        The paper_type to use when writing an invoice. If this is
+        empty, Lino will use the site's default paper type.
+
     """
     class Meta(Course.Meta):
         app_label = 'courses'
@@ -417,6 +422,11 @@ class Course(Referrable, Course, PrintableObject):
     payment_term = dd.ForeignKey(
         'ledger.PaymentTerm',
         related_name="%(app_label)s_%(class)s_set_by_payment_term",
+        blank=True, null=True)    
+
+    paper_type = dd.ForeignKey(
+        'sales.PaperType',
+        related_name="%(app_label)s_%(class)s_set_by_paper_type",
         blank=True, null=True)    
 
     quick_search_fields = 'name line__name line__topic__name ref'
@@ -677,6 +687,9 @@ class Enrolment(Enrolment, Invoiceable):
 
     def get_invoiceable_payment_term(self):
         return self.course.payment_term
+
+    def get_invoiceable_paper_type(self):
+        return self.course.paper_type
 
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):

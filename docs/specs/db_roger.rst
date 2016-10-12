@@ -50,7 +50,7 @@ The database structure
  contenttypes.ContentType   gfks.ContentTypes              3         76
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               8         78
- courses.Course             courses.Activities             32        25
+ courses.Course             courses.Activities             33        25
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        82
  courses.Line               courses.Lines                  22        10
@@ -205,7 +205,7 @@ Here is the output of
 - products.ProductCat :
   - PROTECT : courses.Line.fees_cat, courses.Line.options_cat, products.Product.cat
 - sales.PaperType :
-  - PROTECT : contacts.Partner.paper_type, sales.VatProductInvoice.paper_type
+  - PROTECT : contacts.Partner.paper_type, courses.Course.paper_type, sales.VatProductInvoice.paper_type
 - sales.VatProductInvoice :
   - CASCADE : sales.InvoiceItem.voucher
   - SET_NULL : invoicing.Item.invoice
