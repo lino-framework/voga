@@ -151,7 +151,7 @@ running :cmd:`inv test`).
 True
 >>> print(res['info_message'])
 Update Events for 012 Rücken (Swimming)...
-Generating events between 2015-07-13 and 2020-05-22.
+Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 10 row(s) have been updated.
 >>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
 ======================== ============= ===========
@@ -188,10 +188,10 @@ our case):
 True
 >>> print(ses.response['info_message'])
 Update Events for 012 Rücken (Swimming)...
-Generating events between 2015-07-13 and 2020-05-22.
+Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 10 row(s) have been updated.
 Move down for Activity #12 012 Hour 4...
-Generating events between 2015-07-13 and 2020-05-22.
+Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 1 row(s) have been updated.
 
 
