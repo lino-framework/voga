@@ -16,8 +16,10 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-"""
-To run just this test:
+"""Tests about generating automatic events of a course.  Look at the
+source code!
+
+To run just this test::
 
   $ cd lino_voga/projects/roger
   $ python manage.py test

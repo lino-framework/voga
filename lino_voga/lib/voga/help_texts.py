@@ -43,6 +43,8 @@ ref."""),
     'lino_voga.lib.courses.models.Course.fee' : _("""The default participation fee to apply for new enrolments."""),
     'lino_voga.lib.courses.models.Course.payment_term' : _("""The payment term to use when writing an invoice. If this is
 empty, Lino will use the partner's default payment term."""),
+    'lino_voga.lib.courses.models.Course.paper_type' : _("""The paper_type to use when writing an invoice. If this is
+empty, Lino will use the site's default paper type."""),
     'lino_voga.lib.courses.models.InvoicingInfo' : _("""A volatile object which holds invoicing information about a given
 enrolment."""),
     'lino_voga.lib.courses.models.InvoicingInfo.enrolment' : _("""The enrolment it's all about."""),
