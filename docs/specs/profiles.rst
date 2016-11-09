@@ -22,7 +22,7 @@ Robin is a system administrator, he has a complete menu:
 
 >>> ses = rt.login('robin') 
 >>> ses.user.profile
-users.UserProfiles.admin:900
+users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
@@ -50,7 +50,7 @@ users.UserProfiles.admin:900
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User Profiles, content types, Plausibility checkers, Plausibility problems, Notifications
+  - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notifications
   - Contacts : Contact Persons, List memberships
   - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
@@ -64,7 +64,7 @@ users.UserProfiles.admin:900
 
 >>> ses = rt.login('monique') 
 >>> ses.user.profile
-users.UserProfiles.secretary:200
+users.UserTypes.secretary:200
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
@@ -89,7 +89,7 @@ users.UserProfiles.secretary:200
   - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
-  - System : content types, Plausibility checkers, Plausibility problems, Notifications
+  - System : content types, Plausibility checkers, Plausibility problems
   - Calendar : Presences, Event states, Guest states, Task states
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
   - Activities : Activities, Enrolments
@@ -98,7 +98,7 @@ users.UserProfiles.secretary:200
 
 >>> ses = rt.login('marianne') 
 >>> ses.user.profile
-users.UserProfiles.user:100
+users.UserTypes.user:100
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists

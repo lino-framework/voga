@@ -111,6 +111,7 @@ class Loader1(object):
         self.journeys_cat = ProductCat(**kw)
         yield self.journeys_cat
 
+        kw.update(sales_price="295.00")
         self.journey_fee = Product(cat=self.journeys_cat, **kw)
         yield self.journey_fee
 
@@ -275,9 +276,10 @@ class Loader2(Loader1):
                 obj.max_events = None
             return obj
 
-        Product = rt.modules.products.Product
-        ProductCat = rt.modules.products.ProductCat
+        Product = rt.models.products.Product
+        ProductCat = rt.models.products.ProductCat
         CourseAreas = rt.models.courses.CourseAreas
+        PaymentTerm = rt.models.ledger.PaymentTerm
 
         journey_options = ProductCat(**dd.str2kw(
             'name', _("Hotel options")))
@@ -305,6 +307,7 @@ class Loader2(Loader1):
             kw.update(user=USERS.pop())
             kw.update(teacher=TEACHERS.pop())
             kw.update(every_unit=cal.Recurrencies.once)
+            kw.update(payment_term=PaymentTerm.get_by_ref('P30'))
             return journey(*args, **kw)
 
         self.journeys_topic = topic(**dd.str2kw('name', _("Journeys")))

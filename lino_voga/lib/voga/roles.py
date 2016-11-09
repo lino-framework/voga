@@ -17,18 +17,20 @@
 
 """Defines the standard user roles for Lino Voga.
 
-See also :attr:`lino.core.site.Site.user_profiles_module`.
+See also :attr:`lino.core.site.Site.user_types_module`.
 
 """
 
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
+from lino_xl.lib.contacts.roles import ContactsUser
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
 from lino_cosi.lib.sepa.roles import SepaStaff
+from lino_cosi.lib.courses.roles import CoursesUser
 from lino.modlib.plausibility.roles import PlausibilityUser
 
 
-class SiteUser(OfficeUser, LedgerUser, PlausibilityUser):
+class SiteUser(CoursesUser, ContactsUser, OfficeUser, LedgerUser, PlausibilityUser):
     pass
 
 
@@ -36,15 +38,15 @@ class Secretary(SiteUser, SiteStaff):
     pass
 
 
-class SiteAdmin(SiteAdmin, OfficeStaff, LedgerStaff, SepaStaff,
-                PlausibilityUser):
+class SiteAdmin(CoursesUser, SiteAdmin, OfficeStaff, LedgerStaff,
+                SepaStaff, PlausibilityUser):
     pass
 
 
 from django.utils.translation import ugettext_lazy as _
-from lino.modlib.users.choicelists import UserProfiles
-UserProfiles.clear()
-add = UserProfiles.add_item
+from lino.modlib.users.choicelists import UserTypes
+UserTypes.clear()
+add = UserTypes.add_item
 add('000', _("Anonymous"), UserRole, name='anonymous', readonly=True)
 add('100', _("User"), SiteUser, name='user')
 add('200', _("Secretary"), Secretary, name='secretary')

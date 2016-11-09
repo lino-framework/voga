@@ -19,3 +19,4 @@ docs/api/lino_faggio.*
 .idea
 .coverage
 .eggs/
+.cache

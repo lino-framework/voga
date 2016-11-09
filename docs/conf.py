@@ -53,7 +53,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = settings.SITE.title
+project = 'Lino Voga'
 copyright = u'2012-2016, Luc Saffre'
 
 # The version info for the project you're documenting, acts as replacement for

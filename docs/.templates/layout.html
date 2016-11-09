@@ -1,4 +1,23 @@
 {% extends "!layout.html" %}
+{% set css_files = css_files + ["_static/myalabaster.css"] %}
+
+{%- block relbaritems %}
+{%- if master_doc != pagename %}
+<li class="nav-item nav-item-last"><a href="{{ pathto(pagename) }}">{{ title|striptags|e }}</a></li>
+{% endif %}
+{% endblock %}
+
+{% block relbar1 %}
+{{relbar() }}
+{{ super() }}
+{% endblock %}
+
+{% block relbar2 %}
+{{relbar() }}
+{{ super() }}
+{% endblock %}
+
+
 {%- block footer %}
     <div class="footer">
     {%- if show_copyright %}
@@ -14,8 +33,8 @@
     {%- if show_sphinx %}
       {% trans sphinx_version=sphinx_version|e %}Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> {{ sphinx_version }}.{% endtrans %}
     {%- endif %}    
-    <a href="https://raw.github.com/lsaffre/lino-faggio/master/docs/{{ pagename|e }}.rst"
+    <a href="https://raw.github.com/lino-framework/voga/master/docs/{{ pagename|e }}.rst"
            rel="nofollow">{{ _('Show Source') }}</a>.
-    <a href="http://faggio.lino-framework.org/{{ pagename|e }}.html">Online Link</a>.
+    <a href="http://voga.lino-framework.org/{{ pagename|e }}.html">Online Link</a>.
     </div>
 {%- endblock %} 

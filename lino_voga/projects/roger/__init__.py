@@ -25,7 +25,8 @@ The Lino Voga variant named "Roger".
     lib
     settings
     settings.fixtures.voga
-    tests
+    tests.test_faggio
+    tests.test_webindex
 
 """
 

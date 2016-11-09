@@ -30,7 +30,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino_xl.lib.cal.models import *
 
-from lino.modlib.users.choicelists import UserProfiles
+from lino.modlib.users.choicelists import UserTypes
 
 from lino_xl.lib.contacts.mixins import ContactRelated
 from lino_cosi.lib.courses.choicelists import EnrolmentStates
@@ -81,7 +81,7 @@ class Room(Room, ContactRelated):
         if not settings.SITE.loading_from_dump:
 
             profiles = set()
-            for p in UserProfiles.items():
+            for p in UserTypes.items():
                 if isinstance(p.role, OfficeUser):
                     profiles.add(p)
             User = settings.SITE.user_model

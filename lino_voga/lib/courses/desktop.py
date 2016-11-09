@@ -180,7 +180,15 @@ class TeachersByType(Teachers):
 
 
 class Pupils(contacts.Persons):
-    """The global list of all pupils."""
+    """The global list of all pupils.
+
+    Fitler parameters:
+
+    .. attribute:: course
+
+        Show only pupils who participate in the given course.
+
+    """
     model = 'courses.Pupil'
     detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'
@@ -197,8 +205,8 @@ class PupilsByType(Pupils):
 class EventsByCourse(EventsByController):
     """Shows the events linked to this course.
     """
-    column_names = "start_date start_time end_time "\
-                   "auto_type room summary workflow_buttons *"
+    column_names = "start_date auto_type workflow_buttons "\
+                   "start_time end_time room summary *"
 
     slave_grid_format = "summary"
 
@@ -254,14 +262,16 @@ class CourseDetail(CourseDetail):
 
     """, label=_("Events"))
 
+    enrolments_top = 'enrolments_until fee:15 max_places:10 confirmed free_places:10 print_actions:15'
+
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 confirmed free_places print_actions
+    enrolments_top
     EnrolmentsByCourse
     """, label=_("Enrolments"))
 
     more = dd.Panel("""
     # company contact_person
-    state user id
+    state user payment_term paper_type id
     invoicing.InvoicingsByInvoiceable
     """, label=_("More"))
 
@@ -431,14 +441,14 @@ class EnrolmentsByJourney(EnrolmentsByCourse):
 
 class HikeDetail(CourseDetail):
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 confirmed free_places print_actions
+    enrolments_top
     EnrolmentsByHike
     """, label=_("Enrolments"))
 
 
 class JourneyDetail(CourseDetail):
     enrolments = dd.Panel("""
-    enrolments_until fee max_places:8 confirmed free_places print_actions
+    enrolments_top
     EnrolmentsByJourney
     """, label=_("Enrolments"))
 

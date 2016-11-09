@@ -56,7 +56,7 @@ def site_setup(site):
         default_build_method simulate_today
         clients_account   sales_account     sales_vat_account
         suppliers_account purchases_account purchases_vat_account
-        pupil_guestrole
-        max_auto_events default_event_type site_calendar
+        site_calendar default_event_type pupil_guestrole
+        max_auto_events hide_events_before
         """)
 

@@ -291,7 +291,25 @@ class Pupil(contacts.Person):
         qs = super(Pupil, cls).get_request_queryset(ar)
         pv = ar.param_values
         if pv.course:
-            qs = qs.filter(enrolments_by_pupil__course=pv.course)
+            qs = qs.filter(
+                Q(enrolments_by_pupil__start_date__isnull=True) |
+                Q(enrolments_by_pupil__start_date__lte=dd.today()))
+            qs = qs.filter(
+                Q(enrolments_by_pupil__end_date__isnull=True) |
+                Q(enrolments_by_pupil__end_date__gte=dd.today()))
+            qs = qs.distinct()
+            # qs = qs.filter(enrolments_by_pupil__course=pv.course)
+            # qs = qs.filter(
+            #     enrolments_by_pupil__state__in=EnrolmentStates.filter(
+            #         invoiceable=True))
+            qs = qs.filter(
+                enrolments_by_pupil__course=pv.course,
+                enrolments_by_pupil__state__in=EnrolmentStates.filter(
+                    invoiceable=True))
+            # qs = qs.filter(
+            #     enrolments_by_pupil__state=EnrolmentStates.confirmed)
+            
+
         if pv.partner_list:
             qs = qs.filter(list_memberships__list=pv.partner_list)
         return qs
@@ -379,6 +397,16 @@ class Course(Referrable, Course, PrintableObject):
 
         The default participation fee to apply for new enrolments.
 
+    .. attribute:: payment_term
+
+        The payment term to use when writing an invoice. If this is
+        empty, Lino will use the partner's default payment term.
+
+    .. attribute:: paper_type
+
+        The paper_type to use when writing an invoice. If this is
+        empty, Lino will use the site's default paper type.
+
     """
     class Meta(Course.Meta):
         app_label = 'courses'
@@ -390,6 +418,16 @@ class Course(Referrable, Course, PrintableObject):
                         blank=True, null=True,
                         verbose_name=_("Default participation fee"),
                         related_name='courses_by_fee')
+
+    payment_term = dd.ForeignKey(
+        'ledger.PaymentTerm',
+        related_name="%(app_label)s_%(class)s_set_by_payment_term",
+        blank=True, null=True)    
+
+    paper_type = dd.ForeignKey(
+        'sales.PaperType',
+        related_name="%(app_label)s_%(class)s_set_by_paper_type",
+        blank=True, null=True)    
 
     quick_search_fields = 'name line__name line__topic__name ref'
 
@@ -647,13 +685,18 @@ class Enrolment(Enrolment, Invoiceable):
     def get_invoiceable_partner(self):
         return self.pupil.invoice_recipient or self.pupil
 
-    # @classmethod
-    # def get_invoiceable_partners(cls):
-    #     return rt.models.courses.Pupil.objects.all()
+    def get_invoiceable_payment_term(self):
+        return self.course.payment_term
+
+    def get_invoiceable_paper_type(self):
+        return self.course.paper_type
 
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):
+        """Yield all enrolments for which the given plan and partner should
+        generate an invoice.
 
+        """
         qs = cls.objects.filter(**{
             cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
         if plan.course is not None:
@@ -671,7 +714,10 @@ class Enrolment(Enrolment, Invoiceable):
                 q2 = models.Q(pupil__invoice_recipient=partner)
                 qs = cls.objects.filter(models.Q(q1 | q2))
             else:
-                return
+                # if the partner is not a pupil, then it might still
+                # be an invoice_recipient
+                qs = cls.objects.filter(pupil__invoice_recipient=partner)
+                
         # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
         for obj in qs.order_by(cls.invoiceable_date_field):
             # dd.logger.info('20160223 %s', obj)
