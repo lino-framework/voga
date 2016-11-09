@@ -28,9 +28,6 @@ To run just this test::
 
 from __future__ import unicode_literals
 
-import logging
-logger = logging.getLogger(__name__)
-
 from lino.api.shell import cal
 from lino.api.shell import courses
 from lino.api.shell import users
@@ -52,12 +49,11 @@ class QuickTest(RemoteAuthTestCase):
     maxDiff = None
 
     def test01(self):
-        # from lino.api.shell import courses, users, settings
+        # Create a room, event type, series and a course
+        
         room = create(cal.Room, name="First Room")
         et = create(cal.EventType, name="Lesson", event_label="Lesson")
-
         line = create(courses.Line, name="First Line", event_type=et)
-
         obj = create(
             courses.Course,
             line=line,
@@ -68,7 +64,6 @@ class QuickTest(RemoteAuthTestCase):
             start_date=i2d(20140110))
         self.assertEqual(unicode(obj), "Activity #1")
 
-        # self.assertEqual(settings.SITE.kernel.__class__.__name__, 'Kernel')
         # self.assertEqual(settings.SITE.kernel.site, settings.SITE)
         # self.assertEqual(settings.SITE, dd.site)
         # self.assertEqual(settings.SITE.plugins, dd.apps)
@@ -80,7 +75,10 @@ class QuickTest(RemoteAuthTestCase):
                    language="en").save()
         ses = settings.SITE.login('robin')
 
-        def check_update(msg1, msg2):
+        # utility function which runs update_events and checks whether
+        # info_message and output of cal.EventsByController are as
+        # expected:        
+        def check_update(obj, msg1, msg2):
             res = ses.run(obj.do_update_events)
             self.assertEqual(res['success'], True)
             self.assertEqual(res['info_message'].strip(), msg1.strip())
@@ -90,7 +88,7 @@ class QuickTest(RemoteAuthTestCase):
             self.assertEqual(s.strip(), msg2.strip())
             
         # Run do_update_events a first time
-        check_update("""
+        check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
 Update Guests for Activity #1 Lesson 1...
@@ -114,13 +112,13 @@ Update Guests for Activity #1 Lesson 5...
  Mon 10/02/2014   Suggested   Lesson 5
 ================ =========== ==========
 """)
-        # run it for 3 events to check whether the superfluous events
+        # Decrease max_events and check whether the superfluous events
         # get removed.
         obj.max_events = 3
-        check_update("""
+        check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 3).
-3 row(s) have been updated.""", """
+2 row(s) have been updated.""", """
 ================ =========== ==========
  When             State       Summary
 ---------------- ----------- ----------
@@ -132,14 +130,14 @@ Generating events between 2014-01-13 and 2020-05-22 (max. 3).
         
         # Run do_update_events for 5 events a second time
         obj.max_events = 5
-        check_update("""
+        check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
 Update Guests for Activity #1 Lesson 4...
 0 row(s) have been updated.
 Update Guests for Activity #1 Lesson 5...
 0 row(s) have been updated.
-5 row(s) have been updated.""", """
+2 row(s) have been updated.""", """
 ================ =========== ==========
  When             State       Summary
 ---------------- ----------- ----------
@@ -168,7 +166,7 @@ Update Guests for Activity #1 Lesson 5...
         expected = """\
 Move down for Activity #1 Lesson 2...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
-2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
+Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
 1 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
 
@@ -179,11 +177,11 @@ Generating events between 2014-01-13 and 2020-05-22 (max. 5).
         # e.full_clean()
         # e.save()
 
-        check_update("""
+        check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
-2 has been moved from 2014-01-20 to 2014-01-27: move subsequent dates (3, 4, 5) by 7 days, 0:00:00
-5 row(s) have been updated.
+Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
+0 row(s) have been updated.
 ""","""
 ================ =========== ==========
  When             State       Summary
@@ -195,21 +193,21 @@ Generating events between 2014-01-13 and 2020-05-22 (max. 5).
  Mon 17/02/2014   Suggested   Lesson 5
 ================ =========== ==========
 """)
-        
+
         # Now we imagine that February 3 is the National Day in our
-        # country. And we create the rule for generating it only now.
-        # So we have a conflict because Lino created an appointment on
+        # country. But that we create the rule for this only now.  So
+        # we have a conflict because Lino created an appointment on
         # that date. Of course the National Day must *not* move to an
         # alternative date.
 
-        et = create(cal.EventType, name="Holiday")
-        obj = create(
+        et = create(cal.EventType, name="Holiday", all_rooms=True)
+        national_day = create(
             cal.RecurrentEvent,
             name="National Day", event_type=et,
             start_date=i2d(20140203),
             every_unit=cal.Recurrencies.yearly)
 
-        res = ses.run(obj.do_update_events)
+        res = ses.run(national_day.do_update_events)
         self.assertEqual(res['success'], True)
         expected = """\
 Update Events for National Day...
@@ -231,7 +229,8 @@ Update Guests for Recurrent event rule #1 National Day...
 0 row(s) have been updated.
 7 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
-        ar = ses.spawn(cal.EventsByController, master_instance=obj)
+        ar = ses.spawn(
+            cal.EventsByController, master_instance=national_day)
         s = ar.to_rst(column_names="when_text state")
         # print s
         self.assertEqual(s, """\
@@ -249,3 +248,38 @@ Update Guests for Recurrent event rule #1 National Day...
 
 """)
 
+        # the national day is now conflicting with our Lesson 3:
+        ce = ar[0]
+        self.assertEqual(ce.summary, "National Day")
+        self.assertEqual(ce.start_date.year, 2014)
+        ar = ses.spawn(
+            cal.ConflictingEvents, master_instance=ce)
+        s = ar.to_rst(column_names="when_text state auto_type")
+        # print s
+        self.assertEqual(s, """\
+==================== =========== =======
+ When                 State       No.
+-------------------- ----------- -------
+ Mon 03/02/2014       Suggested   3
+ **Total (1 rows)**               **3**
+==================== =========== =======
+
+""")
+
+        check_update(obj, """
+Update Events for Activity #1...
+Generating events between 2014-01-13 and 2020-05-22 (max. 5).
+Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
+Lesson 3 wants 2014-02-03 but conflicts with [Event #8 ('Recurrent event rule #1 National Day')], moving to 2014-02-10. 
+0 row(s) have been updated.
+""", """
+================ =========== ==========
+ When             State       Summary
+---------------- ----------- ----------
+ Mon 13/01/2014   Suggested   Lesson 1
+ Mon 27/01/2014   Draft       Lesson 2
+ Mon 10/02/2014   Suggested   Lesson 3
+ Mon 17/02/2014   Suggested   Lesson 4
+ Mon 24/02/2014   Suggested   Lesson 5
+================ =========== ==========
+""")
