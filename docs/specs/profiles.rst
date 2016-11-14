@@ -26,7 +26,7 @@ users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Office : Plausibility problems assigned to me, My Notifications, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Plausibility problems assigned to me, My Messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Overdue appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
@@ -50,7 +50,7 @@ users.UserTypes.admin:900
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notifications
+  - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Messages
   - Contacts : Contact Persons, List memberships
   - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
@@ -68,7 +68,7 @@ users.UserTypes.secretary:200
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Office : Plausibility problems assigned to me, My Notifications, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Plausibility problems assigned to me, My Messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
@@ -102,7 +102,7 @@ users.UserTypes.user:100
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
-- Office : Plausibility problems assigned to me, My Notifications, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Plausibility problems assigned to me, My Messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)

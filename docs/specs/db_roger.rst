@@ -83,7 +83,7 @@ The database structure
  notes.EventType            notes.EventTypes               8         1
  notes.Note                 notes.Notes                    16        100
  notes.NoteType             notes.NoteTypes                11        3
- notify.Notification        notify.Notifications           9         3
+ notify.Message        notify.Messages           9         3
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
@@ -146,7 +146,7 @@ Here is the output of
 - contacts.RoleType :
   - PROTECT : cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, notes.Note.contact_role, rooms.Booking.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, notify.Notification.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, plausibility.Problem.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, notify.Message.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, plausibility.Problem.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, contacts.Person.nationality, countries.Place.country, vat.VatRule.country
 - countries.Place :
@@ -214,7 +214,7 @@ Here is the output of
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, notify.Notification.user, outbox.Mail.user, plausibility.Problem.user, rooms.Booking.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, notify.Message.user, outbox.Mail.user, plausibility.Problem.user, rooms.Booking.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>
