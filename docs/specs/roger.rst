@@ -188,7 +188,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Datenbankmodelle : 77
 - Explorer --> System --> Datentests : 9
 - Explorer --> System --> Datenprobleme : 14
-- Explorer --> System --> Mitteilungen : 4
+- Explorer --> System --> Mitteilungen : 6
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> List memberships : 1
 - Explorer --> Kalender --> Aufgaben : 1
