@@ -15,5 +15,5 @@ script:
   - libreoffice '--accept=socket,host=127.0.0.1,port=8100;urp;' &
   - export LINO_CACHE_ROOT=$TRAVIS_BUILD_DIR/lino_cache
   - mkdir $LINO_CACHE_ROOT
-  - inv initdb test
+  - inv prep test
 
