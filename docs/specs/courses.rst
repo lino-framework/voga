@@ -143,7 +143,7 @@ Let's take the first of them:
 
 We run the :class:`UpdateEvents <lino_xl.lib.cal.mixins.UpdateEvents>`
 action a first time and verify that the events remain unchanged (if
-the following fails, make sure you've run :cmd:`inv initdb` before
+the following fails, make sure you've run :cmd:`inv prep` before
 running :cmd:`inv test`).
 
 >>> res = ses.run(obj.do_update_events)
