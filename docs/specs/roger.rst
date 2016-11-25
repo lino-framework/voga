@@ -105,3 +105,122 @@ None
                         **Balance 225.00 (15 movements)**     **225,00**
 ============ ========= ===================================== ============ ======== ============= =========
 <BLANKLINE>
+
+
+
+Menu walk
+=========
+
+Here is the output of :func:`walk_menu_items
+<lino.api.doctests.walk_menu_items>` for this database:
+
+>>> walk_menu_items('rolf')
+... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+- Kontakte --> Personen : 72
+- Kontakte --> Organisationen : 30
+- Kontakte --> Partner : 101
+- Kontakte --> Partnerlisten : 9
+- Büro --> Meine Datenkontrollliste : 0
+- Büro --> Meine Mitteilungen : 2
+- Büro --> Meine Notizen : 34
+- Büro --> Meine Uploads : 1
+- Büro --> Mein E-Mail-Ausgang : 1
+- Büro --> Meine Auszüge : 0
+- Kalender --> Meine Termine : 100
+- Kalender --> Überfällige Termine : 15
+- Kalender --> Unbestätigte Termine : 4
+- Kalender --> Meine Aufgaben : 1
+- Kalender --> Meine Gäste : 1
+- Kalender --> Meine Anwesenheiten : 1
+- Kalender --> Buchungen : 4
+- Buchhaltung --> Verkauf --> Verkaufsrechnungen (SLS) : 0
+- Buchhaltung --> Verkauf --> Gutschriften Verkauf (SLC) : 0
+- Buchhaltung --> Einkauf --> Einkaufsrechnungen (PRC) : 0
+- Buchhaltung --> Finanzjournale --> Zahlungsaufträge (PMO) : 0
+- Buchhaltung --> Finanzjournale --> Kasse (CSH) : 0
+- Buchhaltung --> Finanzjournale --> Bestbank (BNK) : 0
+- Buchhaltung --> Finanzjournale --> Diverse Buchungen (MSC) : 0
+- Aktivitäten --> Teilnehmer : 36
+- Aktivitäten --> Kursleiter : 9
+- Aktivitäten --> Kurse : 24
+- Aktivitäten --> Ausfahrten : 1
+- Aktivitäten --> Reisen : 3
+- Aktivitäten --> Themen : 6
+- Aktivitäten --> Aktivitätenreihen : 11
+- Aktivitäten --> Offene Einschreibungsanfragen : 10
+- Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
+- Berichte --> System --> Broken GFKs : 0
+- Berichte --> Buchhaltung --> Schuldner : 0
+- Berichte --> Buchhaltung --> Gläubiger : 14
+- Berichte --> MwSt. --> Offene Rechnungen : 18
+- Konfigurierung --> System --> Benutzer : 6
+- Konfigurierung --> System --> Hilfetexte : 3
+- Konfigurierung --> Orte --> Länder : 9
+- Konfigurierung --> Orte --> Orte : 79
+- Konfigurierung --> Kontakte --> Organisationsarten : 17
+- Konfigurierung --> Kontakte --> Funktionen : 6
+- Konfigurierung --> Kontakte --> Listenarten : 4
+- Konfigurierung --> Kalender --> Kalenderliste : 9
+- Konfigurierung --> Kalender --> Räume : 8
+- Konfigurierung --> Kalender --> Prioritäten : 5
+- Konfigurierung --> Kalender --> Periodische Terminregeln : 17
+- Konfigurierung --> Kalender --> Gastrollen : 4
+- Konfigurierung --> Kalender --> Kalendereintragsarten : 9
+- Konfigurierung --> Kalender --> Externe Kalender : 1
+- Konfigurierung --> Tarife --> Tarife : 12
+- Konfigurierung --> Tarife --> Tarifkategorien : 6
+- Konfigurierung --> Buchhaltung --> Kontengruppen : 8
+- Konfigurierung --> Buchhaltung --> Konten : 14
+- Konfigurierung --> Buchhaltung --> Journale : 8
+- Konfigurierung --> Buchhaltung --> Buchungsperioden : 18
+- Konfigurierung --> Buchhaltung --> Zahlungsbedingungen : 9
+- Konfigurierung --> MwSt. --> MwSt-Regeln : 12
+- Konfigurierung --> MwSt. --> Papierarten : 3
+- Konfigurierung --> Aktivitäten --> Aktivitätsarten : 1
+- Konfigurierung --> Aktivitäten --> Kursleiterarten : 5
+- Konfigurierung --> Aktivitäten --> Teilnehmerarten : 4
+- Konfigurierung --> Aktivitäten --> Timetable Slots : 1
+- Konfigurierung --> Büro --> Notizarten : 4
+- Konfigurierung --> Büro --> Ereignisarten : 2
+- Konfigurierung --> Büro --> Upload-Arten : 1
+- Konfigurierung --> Büro --> Auszugsarten : 12
+- Explorer --> System --> Vollmachten : 1
+- Explorer --> System --> Benutzerarten : 4
+- Explorer --> System --> Datenbankmodelle : 77
+- Explorer --> System --> Datentests : 9
+- Explorer --> System --> Datenprobleme : 14
+- Explorer --> System --> Mitteilungen : 6
+- Explorer --> Kontakte --> Kontaktpersonen : 1
+- Explorer --> Kontakte --> List memberships : 1
+- Explorer --> Kalender --> Aufgaben : 1
+- Explorer --> Kalender --> Anwesenheiten : 1
+- Explorer --> Kalender --> Abonnements : 36
+- Explorer --> Kalender --> Termin-Zustände : 5
+- Explorer --> Kalender --> Gast-Zustände : 4
+- Explorer --> Kalender --> Aufgaben-Zustände : 4
+- Explorer --> Buchhaltung --> Ausgleichungsregeln : 12
+- Explorer --> Buchhaltung --> Belege : 205
+- Explorer --> Buchhaltung --> Belegarten : 5
+- Explorer --> Buchhaltung --> Bewegungen : 697
+- Explorer --> Buchhaltung --> Geschäftsjahre : 7
+- Explorer --> Buchhaltung --> Handelsarten : 4
+- Explorer --> Buchhaltung --> Journalgruppen : 4
+- Explorer --> MwSt. --> MwSt.-Regimes : 9
+- Explorer --> MwSt. --> MwSt.-Klassen : 3
+- Explorer --> MwSt. --> Produktrechnungen : 84
+- Explorer --> MwSt. --> Produktrechnungszeilen : 102
+- Explorer --> MwSt. --> Fakturationspläne : 2
+- Explorer --> Aktivitäten --> Aktivitäten : 26
+- Explorer --> Aktivitäten --> Einschreibungen : 78
+- Explorer --> Aktivitäten --> Einschreibungs-Zustände : 3
+- Explorer --> Finanzjournale --> Kontoauszüge : 22
+- Explorer --> Finanzjournale --> Diverse Buchungen : 1
+- Explorer --> Finanzjournale --> Zahlungsaufträge : 17
+- Explorer --> SEPA --> Bankkonten : 18
+- Explorer --> Büro --> Notizen : 101
+- Explorer --> Büro --> Uploads : 1
+- Explorer --> Büro --> Upload-Bereiche : 1
+- Explorer --> Büro --> E-Mail-Ausgänge : 1
+- Explorer --> Büro --> Anhänge : 1
+- Explorer --> Büro --> Auszüge : 0
+<BLANKLINE>

@@ -1,7 +1,7 @@
 .. _voga.specs.profiles:
 
 =============
-User profiles
+User types
 =============
 
 .. To run only this test::
@@ -27,7 +27,7 @@ users.UserTypes.admin:900
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
 - Office : Plausibility problems assigned to me, My Messages, My Notes, My Uploads, My Outbox, My Excerpts
-- Calendar : My appointments, Overdue appointments, My tasks, My guests, My presences, Bookings, Calendar
+- Calendar : My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
@@ -69,7 +69,7 @@ users.UserTypes.secretary:200
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
 - Office : Plausibility problems assigned to me, My Messages, My Notes, My Uploads, My Outbox, My Excerpts
-- Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
+- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
@@ -103,7 +103,7 @@ users.UserTypes.user:100
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
 - Office : Plausibility problems assigned to me, My Messages, My Notes, My Uploads, My Outbox, My Excerpts
-- Calendar : My appointments, My tasks, My guests, My presences, Bookings, Calendar
+- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
