@@ -52,8 +52,8 @@ class QuickTest(RemoteAuthTestCase):
         # Create a room, event type, series and a course
         
         room = create(cal.Room, name="First Room")
-        et = create(cal.EventType, name="Lesson", event_label="Lesson")
-        line = create(courses.Line, name="First Line", event_type=et)
+        lesson = create(cal.EventType, name="Lesson", event_label="Lesson")
+        line = create(courses.Line, name="First Line", event_type=lesson)
         obj = create(
             courses.Course,
             line=line,
@@ -112,8 +112,10 @@ Update Guests for Activity #1 Lesson 5...
  Mon 10/02/2014   Suggested   Lesson 5
 ================ =========== ==========
 """)
+        
         # Decrease max_events and check whether the superfluous events
         # get removed.
+        
         obj.max_events = 3
         check_update(obj, """
 Update Events for Activity #1...
@@ -149,6 +151,7 @@ Update Guests for Activity #1 Lesson 5...
 ================ =========== ==========
 """)
 
+        
         # Now we want to skip the 2nd event.  We click on "Move next"
         # on this event. Lino then moves all subsequent events
         # accordingly.
@@ -266,20 +269,59 @@ Update Guests for Recurrent event rule #1 National Day...
 
 """)
 
+        # delete all lessons and start again with a virgin series
+
+        cal.Event.objects.filter(event_type=lesson).delete()
+
         check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
-Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
-Lesson 3 wants 2014-02-03 but conflicts with [Event #8 ('Recurrent event rule #1 National Day')], moving to 2014-02-10. 
+Lesson 4 wants 2014-02-03 but conflicts with [Event #8 ('Recurrent event rule #1 National Day')], moving to 2014-02-10. 
+Update Guests for Activity #1 Lesson 1...
 0 row(s) have been updated.
+Update Guests for Activity #1 Lesson 2...
+0 row(s) have been updated.
+Update Guests for Activity #1 Lesson 3...
+0 row(s) have been updated.
+Update Guests for Activity #1 Lesson 4...
+0 row(s) have been updated.
+Update Guests for Activity #1 Lesson 5...
+0 row(s) have been updated.
+5 row(s) have been updated.
 """, """
 ================ =========== ==========
  When             State       Summary
 ---------------- ----------- ----------
  Mon 13/01/2014   Suggested   Lesson 1
- Mon 27/01/2014   Draft       Lesson 2
+ Mon 20/01/2014   Suggested   Lesson 2
+ Mon 27/01/2014   Suggested   Lesson 3
+ Mon 10/02/2014   Suggested   Lesson 4
+ Mon 17/02/2014   Suggested   Lesson 5
+================ =========== ==========
+""")
+
+        # we move the first lesson one week down and set it to draft:
+        
+        e = cal.Event.objects.get(event_type=lesson, auto_type=1)
+        e.state = cal.EventStates.draft
+        e.start_date = i2d(20140120)
+        e.full_clean()
+        e.save()
+
+        check_update(obj, """
+Update Events for Activity #1...
+Generating events between 2014-01-27 and 2020-05-22 (max. 5).
+Lesson 3 wants 2014-02-03 but conflicts with [Event #8 ('Recurrent event rule #1 National Day')], moving to 2014-02-10. 
+0 row(s) have been updated.
+        """, """
+================ =========== ==========
+ When             State       Summary
+---------------- ----------- ----------
+ Mon 20/01/2014   Draft       Lesson 1
+ Mon 27/01/2014   Suggested   Lesson 2
  Mon 10/02/2014   Suggested   Lesson 3
  Mon 17/02/2014   Suggested   Lesson 4
  Mon 24/02/2014   Suggested   Lesson 5
 ================ =========== ==========
 """)
+        

@@ -28,7 +28,7 @@ class Site(Site):
 
     #~ help_url = "http://lino.saffre-rumma.net/az/index.html"
 
-    migration_class = 'lino_voga.migrate.Migrator'
+    migration_class = 'lino_voga.lib.voga.migrate.Migrator'
 
     # userdocs_prefix = 'voga.'
 
