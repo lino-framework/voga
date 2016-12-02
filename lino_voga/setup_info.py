@@ -24,7 +24,8 @@
 
 SETUP_INFO = dict(
     name='lino_voga',
-    version='0.0.4',
+    # version='0.0.4',
+    version='2016.12.0',
     install_requires=[
         'lino', 'lino_cosi',
         'weasyprint', 'cairocffi', 'channels'],

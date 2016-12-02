@@ -20,11 +20,12 @@ can provide automatic data migrations for :ref:`dpy`.
 
 import logging
 logger = logging.getLogger(__name__)
+from django.conf import settings
 
 from lino.core.utils import resolve_model
 from lino.api import dd, rt
 
-from lino.utils.dpy import Migrator
+from lino.utils.dpy import Migrator, override
 
 
 class Migrator(Migrator):
@@ -225,3 +226,40 @@ class Migrator(Migrator):
 
 
         return '0.0.4'
+
+    def migrate_from_0_0_4(self, globals_dict):
+        """
+        - removed field User.notifyme_mode
+        
+        """
+
+        # bv2kw = globals_dict['bv2kw']
+        # new_content_type_id = globals_dict['new_content_type_id']
+        # cal_EventType = resolve_model("cal.EventType")
+        users_User = resolve_model("users.User")
+        
+        @override(globals_dict)
+        def create_users_user(id, modified, created, username, password, profile, initials, first_name, last_name, email, remarks, language, partner_id, access_class, event_type_id, notifyme_mode):
+            if profile: profile = settings.SITE.modules.users.UserTypes.get_by_value(profile)
+            if access_class: access_class = settings.SITE.modules.cal.AccessClasses.get_by_value(access_class)
+            kw = dict()
+            kw.update(id=id)
+            kw.update(modified=modified)
+            kw.update(created=created)
+            kw.update(username=username)
+            kw.update(password=password)
+            kw.update(profile=profile)
+            kw.update(initials=initials)
+            kw.update(first_name=first_name)
+            kw.update(last_name=last_name)
+            kw.update(email=email)
+            kw.update(remarks=remarks)
+            kw.update(language=language)
+            kw.update(partner_id=partner_id)
+            kw.update(access_class=access_class)
+            kw.update(event_type_id=event_type_id)
+            # kw.update(notifyme_mode=notifyme_mode)
+            return users_User(**kw)
+        
+        return '2016.12.0'
+    

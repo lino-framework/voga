@@ -861,6 +861,8 @@ class Enrolment(Enrolment, Invoiceable):
 
     @dd.displayfield(_("Payment info"))
     def payment_info(self, ar):
+        if not self.pupil_id:
+            return ''
         return rt.models.ledger.Movement.balance_info(
             DEBIT, partner=self.pupil, cleared=False)
         
