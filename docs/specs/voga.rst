@@ -50,7 +50,9 @@ check whether we get the expected response.
 >>> obj = sales.VatProductInvoice.objects.get(journal__ref="SLS", number=1)
 
 >>> obj.clear_cache()
->>> rv = ses.run(obj.do_print) 
+>>> rv = ses.run(obj.do_print)  #doctest: +ELLIPSIS
+appy.pod render .../lino_cosi/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-91.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+
 >>> print(rv['success']) 
 True
 >>> print(rv['open_url'])  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
@@ -73,7 +75,9 @@ events have no `user` and would currently fail to print.
 
 >>> obj = cal.Event.objects.get(pk=100)
 >>> obj.clear_cache()
->>> rv = ses.run(obj.do_print)
+>>> rv = ses.run(obj.do_print) #doctest: +ELLIPSIS
+appy.pod render .../lino_xl/lib/cal/config/cal/Event/Default.odt -> .../media/cache/appypdf/cal.Event-100.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+
 >>> print(rv['success'])
 True
 >>> print(rv['message']) #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
