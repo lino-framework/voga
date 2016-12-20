@@ -32,7 +32,7 @@ The database structure
  accounts.Group             accounts.Groups                6         7
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
- cal.EventType              cal.EventTypes                 16        8
+ cal.EventType              cal.EventTypes                 17        8
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 4         3
  cal.Priority               cal.Priorities                 5         4
@@ -87,7 +87,7 @@ The database structure
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- plausibility.Problem       plausibility.Problems          6         14
+ plausibility.Problem       plausibility.Problems          6         16
  products.Product           products.Products              15        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3

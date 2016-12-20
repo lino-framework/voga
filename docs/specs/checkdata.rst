@@ -40,6 +40,7 @@ checkers.
  cal.EventGuestChecker             Check for missing participants
  cal.ConflictingEventsChecker      Check for conflicting events
  cal.ObsoleteEventTypeChecker      Update event types of generated events
+ cal.EventChecker                  Check for strange events
  ledger.VoucherChecker             Check integrity of ledger movements
  sepa.BankAccountChecker           Check for partner mismatches in bank accounts
 ================================= ===============================================

@@ -127,7 +127,7 @@ Here is the output of :func:`walk_menu_items
 - Büro --> Mein E-Mail-Ausgang : 1
 - Büro --> Meine Auszüge : 0
 - Kalender --> Meine Termine : 100
-- Kalender --> Überfällige Termine : 15
+- Kalender --> Überfällige Termine : 18
 - Kalender --> Unbestätigte Termine : 4
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
@@ -187,15 +187,15 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Vollmachten : 1
 - Explorer --> System --> Benutzerarten : 4
 - Explorer --> System --> Datenbankmodelle : 77
-- Explorer --> System --> Datentests : 9
-- Explorer --> System --> Datenprobleme : 14
+- Explorer --> System --> Datentests : 10
+- Explorer --> System --> Datenprobleme : 16
 - Explorer --> System --> Benachrichtigungen : 6
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> List memberships : 1
 - Explorer --> Kalender --> Aufgaben : 1
 - Explorer --> Kalender --> Anwesenheiten : 1
 - Explorer --> Kalender --> Abonnements : 36
-- Explorer --> Kalender --> Termin-Zustände : 5
+- Explorer --> Kalender --> Termin-Zustände : 4
 - Explorer --> Kalender --> Gast-Zustände : 4
 - Explorer --> Kalender --> Aufgaben-Zustände : 4
 - Explorer --> Buchhaltung --> Ausgleichungsregeln : 12
