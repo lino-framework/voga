@@ -1,4 +1,4 @@
-# Copyright 2015 Luc Saffre
+# Copyright 2015-2016 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -17,12 +17,14 @@
 
 """Defines the standard user roles for Lino Voga.
 
+See also :ref:`voga.specs.profiles`.
+
 See also :attr:`lino.core.site.Site.user_types_module`.
 
 """
 
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
-from lino_xl.lib.contacts.roles import ContactsUser
+from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
 from lino_cosi.lib.sepa.roles import SepaStaff
@@ -34,7 +36,7 @@ class SiteUser(CoursesUser, ContactsUser, OfficeUser, LedgerUser, PlausibilityUs
     pass
 
 
-class Secretary(SiteUser, SiteStaff):
+class Secretary(SiteUser, SiteStaff, ContactsStaff):
     pass
 
 
