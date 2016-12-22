@@ -52,7 +52,7 @@ users.UserTypes.admin:900
 - Explorer :
   - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notification messages
   - Contacts : Contact Persons, List memberships
-  - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
+  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
   - Activities : Activities, Enrolments, Enrolment states

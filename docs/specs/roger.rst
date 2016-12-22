@@ -120,7 +120,7 @@ Here is the output of :func:`walk_menu_items
 - Kontakte --> Organisationen : 30
 - Kontakte --> Partner : 101
 - Kontakte --> Partnerlisten : 9
-- Büro --> Meine Datenkontrollliste : 0
+- Büro --> Meine Datenkontrollliste : 1
 - Büro --> Meine Benachrichtigungen : 2
 - Büro --> Meine Notizen : 34
 - Büro --> Meine Uploads : 1
@@ -192,6 +192,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Benachrichtigungen : 6
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> List memberships : 1
+- Explorer --> Kalender --> Kalendereinträge : 714
 - Explorer --> Kalender --> Aufgaben : 1
 - Explorer --> Kalender --> Anwesenheiten : 1
 - Explorer --> Kalender --> Abonnements : 36
