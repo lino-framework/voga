@@ -83,7 +83,7 @@ The database structure
  notes.EventType            notes.EventTypes               8         1
  notes.Note                 notes.Notes                    16        100
  notes.NoteType             notes.NoteTypes                11        3
- notify.Message             notify.Messages                10        5
+ notify.Message             notify.Messages                11        5
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
