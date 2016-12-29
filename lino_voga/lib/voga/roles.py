@@ -24,6 +24,7 @@ See also :attr:`lino.core.site.Site.user_types_module`.
 """
 
 from lino.core.roles import UserRole, SiteAdmin, SiteStaff
+from lino_xl.lib.excerpts.roles import ExcerptsUser, ExcerptsStaff
 from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
@@ -32,16 +33,17 @@ from lino_cosi.lib.courses.roles import CoursesUser
 from lino.modlib.plausibility.roles import PlausibilityUser
 
 
-class SiteUser(CoursesUser, ContactsUser, OfficeUser, LedgerUser, PlausibilityUser):
+class SiteUser(CoursesUser, ContactsUser, OfficeUser, LedgerUser,
+               PlausibilityUser, ExcerptsUser):
     pass
 
 
-class Secretary(SiteUser, SiteStaff, ContactsStaff):
+class Secretary(SiteUser, SiteStaff, ContactsStaff, ExcerptsUser):
     pass
 
 
 class SiteAdmin(CoursesUser, SiteAdmin, OfficeStaff, LedgerStaff,
-                SepaStaff, PlausibilityUser):
+                SepaStaff, PlausibilityUser, ExcerptsStaff):
     pass
 
 
