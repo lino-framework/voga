@@ -99,7 +99,7 @@ The database structure
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0
  users.Authority            users.Authorities              3         0
- users.User                 users.Users                    17        5
+ users.User                 users.Users                    18        5
  vat.InvoiceItem            vat.InvoiceItemTable           9         136
  vat.VatAccountInvoice      vat.Invoices                   19        85
  vat.VatRule                vat.VatRules                   9         11
