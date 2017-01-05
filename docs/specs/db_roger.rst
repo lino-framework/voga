@@ -23,7 +23,7 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, countries, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, channels, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
+41 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, countries, contacts, lists, beid, contenttypes, gfks, plausibility, xl, cal, products, rooms, cosi, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
 75 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
@@ -32,7 +32,7 @@ The database structure
  accounts.Group             accounts.Groups                6         7
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
- cal.EventType              cal.EventTypes                 16        8
+ cal.EventType              cal.EventTypes                 17        8
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 4         3
  cal.Priority               cal.Priorities                 5         4
@@ -83,11 +83,11 @@ The database structure
  notes.EventType            notes.EventTypes               8         1
  notes.Note                 notes.Notes                    16        100
  notes.NoteType             notes.NoteTypes                11        3
- notify.Message             notify.Messages                10        5
+ notify.Message             notify.Messages                11        5
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- plausibility.Problem       plausibility.Problems          6         14
+ plausibility.Problem       plausibility.Problems          6         16
  products.Product           products.Products              15        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
@@ -99,7 +99,7 @@ The database structure
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0
  users.Authority            users.Authorities              3         0
- users.User                 users.Users                    16        5
+ users.User                 users.Users                    18        5
  vat.InvoiceItem            vat.InvoiceItemTable           9         136
  vat.VatAccountInvoice      vat.Invoices                   19        85
  vat.VatRule                vat.VatRules                   9         11

@@ -52,7 +52,7 @@ users.UserTypes.admin:900
 - Explorer :
   - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notification messages
   - Contacts : Contact Persons, List memberships
-  - Calendar : Tasks, Presences, Subscriptions, Event states, Guest states, Task states
+  - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
   - Activities : Activities, Enrolments, Enrolment states
@@ -83,13 +83,15 @@ users.UserTypes.secretary:200
   - Activities : Status Report
 - Configure :
   - System : Site Parameters, Help Texts
-  - Places : Countries
+  - Places : Countries, Places
+  - Contacts : Organization types, Functions
   - Calendar : Guest Roles
   - Tariffs : Tariffs, Tariff Categories
   - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - System : content types, Plausibility checkers, Plausibility problems
+  - Contacts : Contact Persons
   - Calendar : Presences, Event states, Guest states, Task states
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
   - Activities : Activities, Enrolments
@@ -115,7 +117,6 @@ users.UserTypes.user:100
   - VAT : Due invoices
   - Activities : Status Report
 - Configure :
-  - Places : Countries
   - Tariffs : Tariffs
   - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
