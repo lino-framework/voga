@@ -94,7 +94,7 @@ class Site(Site):
         yield 'lino.modlib.weasyprint'
         yield 'lino_xl.lib.appypod'
 
-    def get_admin_main_items(self, user):
+    def get_dashboard_items(self, user):
         """Defines the story to be displayed on the admin main page.
 
         """
