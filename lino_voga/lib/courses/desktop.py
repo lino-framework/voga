@@ -33,7 +33,7 @@ from lino.api import dd, rt
 from lino.utils import join_elems
 from lino_voga.lib.contacts.models import PersonDetail
 
-from lino_cosi.lib.courses.desktop import *
+from lino_xl.lib.courses.desktop import *
 
 contacts = dd.resolve_app('contacts')
 
@@ -114,7 +114,7 @@ class EnrolmentsByPupil(EnrolmentsByPupil):
 
 class EnrolmentsByCourse(EnrolmentsByCourse):
     """The Voga version of :class:`EnrolmentsByCourse
-    <lino_cosi.lib.courses.ui.EnrolmentsByCourse>`.
+    <lino_xl.lib.courses.ui.EnrolmentsByCourse>`.
 
     """
     # variable_row_height = True
@@ -297,8 +297,8 @@ Courses.column_names = "ref start_date enrolments_until line room teacher " \
 if False:
 
     # Exception: Cannot reuse detail_layout of <class
-    # 'lino_cosi.lib.courses.models.CoursesByTeacher'> for <class
-    # 'lino_cosi.lib.courses.models.CoursesBySlot'>
+    # 'lino_xl.lib.courses.models.CoursesByTeacher'> for <class
+    # 'lino_xl.lib.courses.models.CoursesBySlot'>
 
     class Courses(Courses):
 
@@ -370,7 +370,7 @@ class CoursesByTopic(CoursesByTopic):
 
 
 class CoursesByLine(CoursesByLine):
-    """Like :class:`lino_cosi.lib.courses.CoursesByLine`, but with other
+    """Like :class:`lino_xl.lib.courses.CoursesByLine`, but with other
     default values in the filter parameters. In Voga we want to see
     only courses for which new enrolments can happen.
     

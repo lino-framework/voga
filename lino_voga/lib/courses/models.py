@@ -44,7 +44,7 @@ from lino_cosi.lib.accounts.utils import DEBIT
 from lino.utils import join_elems
 from lino.modlib.printing.utils import PrintableObject
 
-from lino_cosi.lib.courses.models import *
+from lino_xl.lib.courses.models import *
 
 contacts = dd.resolve_app('contacts')
 
@@ -643,7 +643,7 @@ class Enrolment(Enrolment, Invoiceable):
     .. attribute:: pupil_info
 
         Show the name and address of the participant.  Overrides
-        :attr:`lino_cosi.lib.courses.models.Enrolment.pupil_info`
+        :attr:`lino_xl.lib.courses.models.Enrolment.pupil_info`
         in order to add (between parentheses after the name) some
         information needed to compute the price.
 

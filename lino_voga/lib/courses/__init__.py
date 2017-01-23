@@ -15,7 +15,7 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-"""Extends :mod:`lino_cosi.lib.courses` for :ref:`voga`.
+"""Extends :mod:`lino_xl.lib.courses` for :ref:`voga`.
 
 .. autosummary::
    :toctree:
@@ -27,7 +27,7 @@
 """
 
 
-from lino_cosi.lib.courses import Plugin
+from lino_xl.lib.courses import Plugin
 from lino.api import _
 
 

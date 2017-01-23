@@ -29,7 +29,7 @@ from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_cosi.lib.ledger.roles import LedgerUser, LedgerStaff
 from lino_cosi.lib.sepa.roles import SepaStaff
-from lino_cosi.lib.courses.roles import CoursesUser
+from lino_xl.lib.courses.roles import CoursesUser
 from lino.modlib.plausibility.roles import PlausibilityUser
 
 

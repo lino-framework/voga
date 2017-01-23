@@ -26,7 +26,7 @@ The general functionality for automatically generating invoices is
 defined in :mod:`lino_cosi.lib.invoicing`.
 
 Lino Voga uses this functionality by extending :class:`Enrolment
-<lino_cosi.lib.courses.models.Enrolment>` so that it inherits from
+<lino_xl.lib.courses.models.Enrolment>` so that it inherits from
 :class:`Invoiceable <lino_cosi.lib.invoicing.mixins.Invoiceable>`. In
 Lino Voga, enrolments are the things for which they write invoices.
 
@@ -35,7 +35,7 @@ third-party organisation.  This is called a :class:`Booking
 <lino_voga.lib.rooms.models.Booking>`.
 
 IOW, in Lino Voga both :class:`Enrolment
-<lino_cosi.lib.courses.models.Enrolment>` and :class:`Booking
+<lino_xl.lib.courses.models.Enrolment>` and :class:`Booking
 <lino_voga.lib.rooms.models.Booking>` are :class:`Invoiceable
 <lino_cosi.lib.invoicing.mixins.Invoiceable>`:
 

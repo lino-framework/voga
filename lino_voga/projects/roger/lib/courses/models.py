@@ -83,7 +83,7 @@ class Pupil(Pupil):
 
     def get_enrolment_info(self):
         """Return a short text to be displayed between parentheses
-        in `lino_cosi.lib.courses.ui.EnrolmentsByCourse.pupil_info`.
+        in `lino_xl.lib.courses.ui.EnrolmentsByCourse.pupil_info`.
         """
         s = ""
         if self.member_until is None:

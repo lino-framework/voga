@@ -24,17 +24,16 @@ Lino Voga adds specific models for teachers and pupils.
 A teacher is a person with a `teacher_type`.
 A pupil is a person with a `pupil_type`.
 
-The :mod:`lino_cosi.lib.courses` plugin has two settings
-:attr:`teacher_model<lino_cosi.lib.courses.Plugin.teacher_model>`
-and
-:attr:`pupil_model<lino_cosi.lib.courses.Plugin.pupil_model>`:
+The :mod:`lino_xl.lib.courses` plugin has two settings
+:attr:`teacher_model <lino_xl.lib.courses.Plugin.teacher_model>` and
+:attr:`pupil_model <lino_xl.lib.courses.Plugin.pupil_model>`:
 
 
 >>> dd.plugins.courses.teacher_model
-'courses.Teacher'
+<class 'lino_voga.lib.courses.models.Teacher'>
 
 >>> dd.plugins.courses.pupil_model
-'courses.Pupil'
+<class 'lino_voga.projects.roger.lib.courses.models.Pupil'>
 
 >>> ses = rt.login('robin')
 
@@ -71,7 +70,7 @@ Per course and per enrolment we get a new field :attr:`fee`.
 Number of places
 ================
 
-The :attr:`max_places<lino_cosi.lib.courses.models.Course.max_places>`
+The :attr:`max_places<lino_xl.lib.courses.models.Course.max_places>`
 (:ddref:`courses.Course.max_places`) field of a *course* contains the
 number of available places.
 
@@ -87,7 +86,7 @@ this limit is reached. Here is a user statement about this:
     können.
 
 Every *enrolment* has a field
-:attr:`places<lino_cosi.lib.courses.models.Enrolment.places>`
+:attr:`places<lino_xl.lib.courses.models.Enrolment.places>`
 (:ddref:`courses.Enrolment.places`) which expresses how many places
 this enrolment takes. This is usually 1, but for certain types of
 courses, e.g. bus travels, it can happen that one enrolment is for two

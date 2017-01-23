@@ -191,7 +191,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Datenprobleme : 16
 - Explorer --> System --> Benachrichtigungen : 6
 - Explorer --> Kontakte --> Kontaktpersonen : 1
-- Explorer --> Kontakte --> List memberships : 1
+- Explorer --> Kontakte --> Listenmitgliedschaften : 1
 - Explorer --> Kalender --> Kalendereinträge : 714
 - Explorer --> Kalender --> Aufgaben : 1
 - Explorer --> Kalender --> Anwesenheiten : 1
