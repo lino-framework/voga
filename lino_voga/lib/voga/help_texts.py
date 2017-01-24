@@ -15,7 +15,7 @@ help_texts = {
     'lino_voga.lib.courses.desktop.CoursesByTopic' : _("""Shows the courses of a given topic."""),
     'lino_voga.lib.courses.desktop.CoursesByTopic.master' : _("""alias of Topic"""),
     'lino_voga.lib.courses.desktop.CoursesByTopic.model' : _("""alias of Course"""),
-    'lino_voga.lib.courses.desktop.CoursesByLine' : _("""Like lino_cosi.lib.courses.CoursesByLine, but with other
+    'lino_voga.lib.courses.desktop.CoursesByLine' : _("""Like lino_xl.lib.courses.CoursesByLine, but with other
 default values in the filter parameters. In Voga we want to see
 only courses for which new enrolments can happen."""),
     'lino_voga.lib.courses.desktop.CoursesByLine.master' : _("""alias of Line"""),
@@ -57,7 +57,7 @@ enrolment."""),
     'lino_voga.lib.courses.models.Enrolment.amount' : _("""The total amount to pay for this enrolment. This is
 places * fee."""),
     'lino_voga.lib.courses.models.Enrolment.pupil_info' : _("""Show the name and address of the participant.  Overrides
-lino_cosi.lib.courses.models.Enrolment.pupil_info
+lino_xl.lib.courses.models.Enrolment.pupil_info
 in order to add (between parentheses after the name) some
 information needed to compute the price."""),
     'lino_voga.lib.courses.models.Enrolment.invoicing_info' : _("""A virtual field showing a summary of recent invoicings."""),

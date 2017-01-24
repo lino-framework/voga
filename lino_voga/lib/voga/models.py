@@ -21,7 +21,7 @@ The :xfile:`models.py` for the :mod:`lino_voga` app.
 
 from lino.api import dd
 
-from lino_cosi.lib.courses import workflows
+from lino_xl.lib.courses import workflows
 
 
 if False:

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2016 Luc Saffre
+# Copyright 2012-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -17,6 +17,8 @@
 # <http://www.gnu.org/licenses/>.
 
 from lino.projects.std.settings import *
+
+from lino.api import _
 
 from lino_voga import SETUP_INFO
 
@@ -85,7 +87,7 @@ class Site(Site):
         yield 'lino_xl.lib.outbox'
         yield 'lino_xl.lib.excerpts'
         #~ yield 'lino_xl.lib.pages'
-        #~ yield 'lino_cosi.lib.courses'
+        #~ yield 'lino_xl.lib.courses'
         yield 'lino_voga.lib.voga'
 
         yield 'lino.modlib.export_excel'
@@ -114,3 +116,12 @@ class Site(Site):
         self.plugins.ledger.configure(start_year=2015)
         super(Site, self).setup_plugins()
 
+    def setup_quicklinks(self, user, tb):
+        super(Site, self).setup_quicklinks(user, tb)
+        tb.add_action(self.actors.courses.Pupils)
+        tb.add_action(
+            self.actors.courses.Pupils.insert_action,
+            label=_("New {}").format(
+                self.models.courses.Pupil._meta.verbose_name))
+
+        

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@ from lino_xl.lib.cal.models import *
 from lino.modlib.users.choicelists import UserTypes
 
 from lino_xl.lib.contacts.mixins import ContactRelated
-from lino_cosi.lib.courses.choicelists import EnrolmentStates
+from lino_xl.lib.courses.choicelists import EnrolmentStates
 
 # courses = dd.resolve_app('courses')
 
@@ -82,7 +82,7 @@ class Room(Room, ContactRelated):
 
             profiles = set()
             for p in UserTypes.items():
-                if isinstance(p.role, OfficeUser):
+                if p.has_required_roles([OfficeUser]):
                     profiles.add(p)
             User = settings.SITE.user_model
             for u in User.objects.filter(profile__in=profiles):
