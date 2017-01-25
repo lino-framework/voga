@@ -309,8 +309,8 @@ Journeys
 ====================================== ============= ======================= ======= ================== =========== ============= ===========
  Description                            Designation   When                    Times   Available places   Confirmed   Free places   Requested
 -------------------------------------- ------------- ----------------------- ------- ------------------ ----------- ------------- -----------
- *001 Greece 2014* / *Hans Altenberg*   Greece 2014   14/08/2014-20/08/2014                              1           Unlimited     0
- **Total (1 rows)**                                                                   **0**              **1**                     **0**
+ *001 Greece 2014* / *Hans Altenberg*   Greece 2014   14/08/2014-20/08/2014                              1                         0
+ **Total (1 rows)**                                                                   **0**              **1**       **0**         **0**
 ====================================== ============= ======================= ======= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~
@@ -326,7 +326,7 @@ Computer
  *006C WWW (Internet for beginners)* / *Marc Malmendier*                    Every Monday      13:30-15:00   4                  2           2             0
  *007C WWW (Internet for beginners)* / *Edgard Radermacher*                 Every Wednesday   17:30-19:00   4                  3           1             0
  *008C WWW (Internet for beginners)* / *David da Vinci*                     Every Friday      13:30-15:00   4                  0           4             1
- **Total (6 rows)**                                                                                         **21**             **12**                    **1**
+ **Total (6 rows)**                                                                                         **21**             **12**      **9**         **1**
 ============================================================ ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~
@@ -347,7 +347,7 @@ Sport
  *017 Rücken (Swimming)* / *Hans Altenberg*                              Every Thursday    13:30-14:30   20                 4           16            0
  *018 SV (Self-defence)* / *Charlotte Collard*                           Every Friday      18:00-19:00   12                 1           11            2
  *019 SV (Self-defence)* / *Daniel Emonts*                               Every Friday      19:00-20:00   12                 3           9             0
- **Total (11 rows)**                                                                                     **164**            **29**                    **4**
+ **Total (11 rows)**                                                                                     **164**            **29**      **135**       **4**
 ========================================================= ============= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~~~
@@ -357,13 +357,13 @@ Meditation
 ============================================================== ============= ============== ============= ================== =========== ============= ===========
  Description                                                    Designation   When           Times         Available places   Confirmed   Free places   Requested
 -------------------------------------------------------------- ------------- -------------- ------------- ------------------ ----------- ------------- -----------
- *020C GLQ (GuoLin-Qigong)* / *Germaine Gernegroß*                            Every Monday   18:00-19:30                      3           Unlimited     0
- *021C GLQ (GuoLin-Qigong)* / *Josef Jonas*                                   Every Friday   19:00-20:30                      1           Unlimited     0
+ *020C GLQ (GuoLin-Qigong)* / *Germaine Gernegroß*                            Every Monday   18:00-19:30                      3                         0
+ *021C GLQ (GuoLin-Qigong)* / *Josef Jonas*                                   Every Friday   19:00-20:30                      1                         0
  *022C MED (Finding your inner peace)* / *Marc Malmendier*                    Every Monday   18:00-19:30   30                 0           30            2
  *023C MED (Finding your inner peace)* / *Edgard Radermacher*                 Every Friday   19:00-20:30   30                 2           28            0
  *024C Yoga* / *David da Vinci*                                               Every Monday   18:00-19:30   20                 2           18            0
  *025C Yoga* / *Hans Altenberg*                                               Every Friday   19:00-20:30   20                 2           18            0
- **Total (6 rows)**                                                                                        **100**            **10**                    **2**
+ **Total (6 rows)**                                                                                        **100**            **10**      **94**        **2**
 ============================================================== ============= ============== ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~
