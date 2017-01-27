@@ -95,6 +95,17 @@ class Site(Site):
         yield 'lino.modlib.wkhtmltopdf'  # obsolete
         yield 'lino.modlib.weasyprint'
         yield 'lino_xl.lib.appypod'
+        yield 'lino.modlib.changes'
+
+    def do_site_startup(self):
+        super(Site, self).do_site_startup()
+
+        from lino.modlib.changes.models import watch_changes as wc
+
+        wc(self.models.contacts.Partner)
+        wc(self.models.contacts.Person, master_key='partner_ptr')
+        wc(self.models.contacts.Company, master_key='partner_ptr')
+        wc(self.models.courses.Pupil, master_key='partner_ptr')
 
     def get_dashboard_items(self, user):
         """Defines the story to be displayed on the admin main page.
