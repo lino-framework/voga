@@ -58,6 +58,7 @@ class PartnerDetail(PartnerDetail):
     id language
     addr1 url
     #courses.CoursesByCompany
+    changes.ChangesByMaster
     excerpts.ExcerptsByOwner cal.GuestsByPartner
     """, label=_("More"))
 
