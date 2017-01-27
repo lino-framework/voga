@@ -355,7 +355,7 @@ class CoursesByTopic(CoursesByTopic):
 
     """
     order_by = ["ref"]
-    column_names = "overview name weekdays_text:10 times_text:10 "\
+    column_names = "overview #name weekdays_text:10 times_text:10 "\
                    "max_places:8 confirmed "\
                    "free_places requested *"
 

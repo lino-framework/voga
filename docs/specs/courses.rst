@@ -306,65 +306,65 @@ The status report gives an overview of active courses.
 Journeys
 ~~~~~~~~
 <BLANKLINE>
-====================================== ============= ======================= ======= ================== =========== ============= ===========
- Description                            Designation   When                    Times   Available places   Confirmed   Free places   Requested
--------------------------------------- ------------- ----------------------- ------- ------------------ ----------- ------------- -----------
- *001 Greece 2014* / *Hans Altenberg*   Greece 2014   14/08/2014-20/08/2014                              1                         0
- **Total (1 rows)**                                                                   **0**              **1**       **0**         **0**
-====================================== ============= ======================= ======= ================== =========== ============= ===========
+====================================== ======================= ======= ================== =========== ============= ===========
+ Description                            When                    Times   Available places   Confirmed   Free places   Requested
+-------------------------------------- ----------------------- ------- ------------------ ----------- ------------- -----------
+ *001 Greece 2014* / *Hans Altenberg*   14/08/2014-20/08/2014                              1                         0
+ **Total (1 rows)**                                                     **0**              **1**       **0**         **0**
+====================================== ======================= ======= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~
 Computer
 ~~~~~~~~
 <BLANKLINE>
-============================================================ ============= ================= ============= ================== =========== ============= ===========
- Description                                                  Designation   When              Times         Available places   Confirmed   Free places   Requested
------------------------------------------------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *003 comp (First Steps)* / *Daniel Emonts*                                 Every Monday      13:30-15:00   3                  3           0             0
- *004 comp (First Steps)* / *Germaine Gernegroß*                            Every Wednesday   17:30-19:00   3                  2           1             0
- *005 comp (First Steps)* / *Josef Jonas*                                   Every Friday      13:30-15:00   3                  2           1             0
- *006C WWW (Internet for beginners)* / *Marc Malmendier*                    Every Monday      13:30-15:00   4                  2           2             0
- *007C WWW (Internet for beginners)* / *Edgard Radermacher*                 Every Wednesday   17:30-19:00   4                  3           1             0
- *008C WWW (Internet for beginners)* / *David da Vinci*                     Every Friday      13:30-15:00   4                  0           4             1
- **Total (6 rows)**                                                                                         **21**             **12**      **9**         **1**
-============================================================ ============= ================= ============= ================== =========== ============= ===========
+============================================================ ================= ============= ================== =========== ============= ===========
+ Description                                                  When              Times         Available places   Confirmed   Free places   Requested
+------------------------------------------------------------ ----------------- ------------- ------------------ ----------- ------------- -----------
+ *003 comp (First Steps)* / *Daniel Emonts*                   Every Monday      13:30-15:00   3                  3           0             0
+ *004 comp (First Steps)* / *Germaine Gernegroß*              Every Wednesday   17:30-19:00   3                  2           1             0
+ *005 comp (First Steps)* / *Josef Jonas*                     Every Friday      13:30-15:00   3                  2           1             0
+ *006C WWW (Internet for beginners)* / *Marc Malmendier*      Every Monday      13:30-15:00   4                  2           2             0
+ *007C WWW (Internet for beginners)* / *Edgard Radermacher*   Every Wednesday   17:30-19:00   4                  3           1             0
+ *008C WWW (Internet for beginners)* / *David da Vinci*       Every Friday      13:30-15:00   4                  0           4             1
+ **Total (6 rows)**                                                                           **21**             **12**      **9**         **1**
+============================================================ ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~
 Sport
 ~~~~~
 <BLANKLINE>
-========================================================= ============= ================= ============= ================== =========== ============= ===========
- Description                                               Designation   When              Times         Available places   Confirmed   Free places   Requested
---------------------------------------------------------- ------------- ----------------- ------------- ------------------ ----------- ------------- -----------
- *009C BT (Belly dancing)* / *Hans Altenberg*                            Every Wednesday   19:00-20:00   10                 2           8             1
- *010C FG (Functional gymnastics)* / *Charlotte Collard*                 Every Monday      11:00-12:00   5                  3           2             0
- *011C FG (Functional gymnastics)* / *Daniel Emonts*                     Every Monday      13:30-14:30   5                  2           3             0
- *012 Rücken (Swimming)* / *Germaine Gernegroß*                          Every Monday      11:00-12:00   20                 3           17            0
- *013 Rücken (Swimming)* / *Josef Jonas*                                 Every Monday      13:30-14:30   20                 3           17            0
- *014 Rücken (Swimming)* / *Marc Malmendier*                             Every Tuesday     11:00-12:00   20                 3           17            0
- *015 Rücken (Swimming)* / *Edgard Radermacher*                          Every Tuesday     13:30-14:30   20                 1           19            1
- *016 Rücken (Swimming)* / *David da Vinci*                              Every Thursday    11:00-12:00   20                 4           16            0
- *017 Rücken (Swimming)* / *Hans Altenberg*                              Every Thursday    13:30-14:30   20                 4           16            0
- *018 SV (Self-defence)* / *Charlotte Collard*                           Every Friday      18:00-19:00   12                 1           11            2
- *019 SV (Self-defence)* / *Daniel Emonts*                               Every Friday      19:00-20:00   12                 3           9             0
- **Total (11 rows)**                                                                                     **164**            **29**      **135**       **4**
-========================================================= ============= ================= ============= ================== =========== ============= ===========
+========================================================= ================= ============= ================== =========== ============= ===========
+ Description                                               When              Times         Available places   Confirmed   Free places   Requested
+--------------------------------------------------------- ----------------- ------------- ------------------ ----------- ------------- -----------
+ *009C BT (Belly dancing)* / *Hans Altenberg*              Every Wednesday   19:00-20:00   10                 2           8             1
+ *010C FG (Functional gymnastics)* / *Charlotte Collard*   Every Monday      11:00-12:00   5                  3           2             0
+ *011C FG (Functional gymnastics)* / *Daniel Emonts*       Every Monday      13:30-14:30   5                  2           3             0
+ *012 Rücken (Swimming)* / *Germaine Gernegroß*            Every Monday      11:00-12:00   20                 3           17            0
+ *013 Rücken (Swimming)* / *Josef Jonas*                   Every Monday      13:30-14:30   20                 3           17            0
+ *014 Rücken (Swimming)* / *Marc Malmendier*               Every Tuesday     11:00-12:00   20                 3           17            0
+ *015 Rücken (Swimming)* / *Edgard Radermacher*            Every Tuesday     13:30-14:30   20                 1           19            1
+ *016 Rücken (Swimming)* / *David da Vinci*                Every Thursday    11:00-12:00   20                 4           16            0
+ *017 Rücken (Swimming)* / *Hans Altenberg*                Every Thursday    13:30-14:30   20                 4           16            0
+ *018 SV (Self-defence)* / *Charlotte Collard*             Every Friday      18:00-19:00   12                 1           11            2
+ *019 SV (Self-defence)* / *Daniel Emonts*                 Every Friday      19:00-20:00   12                 3           9             0
+ **Total (11 rows)**                                                                       **164**            **29**      **135**       **4**
+========================================================= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~~~
 Meditation
 ~~~~~~~~~~
 <BLANKLINE>
-============================================================== ============= ============== ============= ================== =========== ============= ===========
- Description                                                    Designation   When           Times         Available places   Confirmed   Free places   Requested
--------------------------------------------------------------- ------------- -------------- ------------- ------------------ ----------- ------------- -----------
- *020C GLQ (GuoLin-Qigong)* / *Germaine Gernegroß*                            Every Monday   18:00-19:30                      3                         0
- *021C GLQ (GuoLin-Qigong)* / *Josef Jonas*                                   Every Friday   19:00-20:30                      1                         0
- *022C MED (Finding your inner peace)* / *Marc Malmendier*                    Every Monday   18:00-19:30   30                 0           30            2
- *023C MED (Finding your inner peace)* / *Edgard Radermacher*                 Every Friday   19:00-20:30   30                 2           28            0
- *024C Yoga* / *David da Vinci*                                               Every Monday   18:00-19:30   20                 2           18            0
- *025C Yoga* / *Hans Altenberg*                                               Every Friday   19:00-20:30   20                 2           18            0
- **Total (6 rows)**                                                                                        **100**            **10**      **94**        **2**
-============================================================== ============= ============== ============= ================== =========== ============= ===========
+============================================================== ============== ============= ================== =========== ============= ===========
+ Description                                                    When           Times         Available places   Confirmed   Free places   Requested
+-------------------------------------------------------------- -------------- ------------- ------------------ ----------- ------------- -----------
+ *020C GLQ (GuoLin-Qigong)* / *Germaine Gernegroß*              Every Monday   18:00-19:30                      3                         0
+ *021C GLQ (GuoLin-Qigong)* / *Josef Jonas*                     Every Friday   19:00-20:30                      1                         0
+ *022C MED (Finding your inner peace)* / *Marc Malmendier*      Every Monday   18:00-19:30   30                 0           30            2
+ *023C MED (Finding your inner peace)* / *Edgard Radermacher*   Every Friday   19:00-20:30   30                 2           28            0
+ *024C Yoga* / *David da Vinci*                                 Every Monday   18:00-19:30   20                 2           18            0
+ *025C Yoga* / *Hans Altenberg*                                 Every Friday   19:00-20:30   20                 2           18            0
+ **Total (6 rows)**                                                                          **100**            **10**      **94**        **2**
+============================================================== ============== ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~
 Externe
