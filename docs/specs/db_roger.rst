@@ -23,8 +23,8 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-41 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, plausibility, cal, products, rooms, cosi, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod.
-75 models:
+42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, contacts, lists, beid, contenttypes, gfks, plausibility, cal, products, rooms, cosi, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes.
+76 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -41,13 +41,14 @@ The database structure
  cal.Room                   cal.Rooms                      9         7
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      17        0
+ changes.Change             changes.Changes                10        0
  contacts.Company           contacts.Companies             27        29
  contacts.CompanyType       contacts.CompanyTypes          7         16
  contacts.Partner           contacts.Partners              23        100
  contacts.Person            contacts.Persons               38        71
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         76
+ contenttypes.ContentType   gfks.ContentTypes              3         77
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               8         78
  courses.Course             courses.Activities             33        25
@@ -146,7 +147,7 @@ Here is the output of
 - contacts.RoleType :
   - PROTECT : cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, notes.Note.contact_role, rooms.Booking.contact_role
 - contenttypes.ContentType :
-  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, notify.Message.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, plausibility.Problem.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
+  - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, notify.Message.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, plausibility.Problem.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
 - countries.Country :
   - PROTECT : contacts.Partner.country, contacts.Person.nationality, countries.Place.country, vat.VatRule.country
 - countries.Place :
@@ -214,7 +215,7 @@ Here is the output of
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, notify.Message.user, outbox.Mail.user, plausibility.Problem.user, rooms.Booking.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
+  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, notify.Message.user, outbox.Mail.user, plausibility.Problem.user, rooms.Booking.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>

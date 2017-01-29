@@ -186,10 +186,11 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Büro --> Auszugsarten : 12
 - Explorer --> System --> Vollmachten : 1
 - Explorer --> System --> Benutzerarten : 4
-- Explorer --> System --> Datenbankmodelle : 77
+- Explorer --> System --> Datenbankmodelle : 78
 - Explorer --> System --> Datentests : 10
 - Explorer --> System --> Datenprobleme : 16
 - Explorer --> System --> Benachrichtigungen : 6
+- Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> Listenmitgliedschaften : 1
 - Explorer --> Kalender --> Kalendereinträge : 714
