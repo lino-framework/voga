@@ -50,7 +50,7 @@ users.UserTypes.admin:900
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notification messages
+  - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notification messages, Changes
   - Contacts : Contact Persons, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
@@ -90,7 +90,7 @@ users.UserTypes.secretary:200
   - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
-  - System : content types, Plausibility checkers, Plausibility problems
+  - System : content types, Plausibility checkers, Plausibility problems, Changes
   - Contacts : Contact Persons
   - Calendar : Presences, Event states, Guest states, Task states
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
