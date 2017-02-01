@@ -1,7 +1,7 @@
-lino_voga.lib.voga.roles
-========================
+lino_voga.lib.voga.user_types
+=============================
 
-.. automodule:: lino_voga.lib.voga.roles
+.. automodule:: lino_voga.lib.voga.user_types
 
    
    

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 Luc Saffre
+# Copyright 2016-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@ specializations under :mod:`lino_voga.lib`
 .. autosummary::
    :toctree:
 
-    roles
+    user_types
     models
     migrate
     fixtures.eiche2lino
