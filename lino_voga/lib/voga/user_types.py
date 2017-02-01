@@ -42,8 +42,9 @@ class Secretary(SiteUser, SiteStaff, ContactsStaff, ExcerptsUser):
     pass
 
 
-class SiteAdmin(CoursesUser, SiteAdmin, OfficeStaff, LedgerStaff,
-                SepaStaff, PlausibilityUser, ExcerptsStaff):
+class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
+                LedgerStaff, SepaStaff, PlausibilityUser,
+                ExcerptsStaff):
     pass
 
 

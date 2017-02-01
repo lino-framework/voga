@@ -45,7 +45,7 @@ The database structure
  contacts.Company           contacts.Companies             27        29
  contacts.CompanyType       contacts.CompanyTypes          7         16
  contacts.Partner           contacts.Partners              23        100
- contacts.Person            contacts.Persons               38        71
+ contacts.Person            contacts.Persons               40        71
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
  contenttypes.ContentType   gfks.ContentTypes              3         77
@@ -55,10 +55,10 @@ The database structure
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        82
  courses.Line               courses.Lines                  22        10
- courses.Pupil              courses.Pupils                 47        35
+ courses.Pupil              courses.Pupils                 49        35
  courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
- courses.Teacher            courses.Teachers               40        8
+ courses.Teacher            courses.Teachers               42        8
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
@@ -149,7 +149,7 @@ Here is the output of
 - contenttypes.ContentType :
   - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, notify.Message.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, plausibility.Problem.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
 - countries.Country :
-  - PROTECT : contacts.Partner.country, contacts.Person.nationality, countries.Place.country, vat.VatRule.country
+  - PROTECT : contacts.Partner.country, contacts.Person.birth_country, contacts.Person.nationality, countries.Place.country, vat.VatRule.country
 - countries.Place :
   - PROTECT : contacts.Partner.city, contacts.Partner.region, countries.Place.parent
 - courses.Course :
