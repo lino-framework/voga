@@ -16,7 +16,9 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-"""Tests about Lino checking max_places.
+"""Tests about how Lino computes whether there are still available
+places in a course. That computation can be complex in long-running
+courses where participants come and go.
 
 To run just this test::
 
