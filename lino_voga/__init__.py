@@ -35,4 +35,4 @@ exec(compile(open(fn, "rb").read(), fn, 'exec'))
 __version__ = SETUP_INFO['version']
 
 intersphinx_urls = dict(docs="http://voga.lino-framework.org")
-srcref_url = 'https://github.com/lsaffre/lino-voga/blob/master/%s'
+srcref_url = 'https://github.com/lino-framework/voga/blob/master/%s'

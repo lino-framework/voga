@@ -27,6 +27,7 @@ The Lino Voga variant named "Roger".
     settings.fixtures.voga
     tests.test_faggio
     tests.test_webindex
+    tests.test_max_places
 
 """
 
