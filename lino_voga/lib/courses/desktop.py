@@ -111,6 +111,14 @@ class EnrolmentsByPupil(EnrolmentsByPupil):
     # column_names = 'request_date course user:10 remark ' \
     #                'amount:10 workflow_buttons *'
 
+    insert_layout = """
+    course_area
+    course
+    places option
+    remark
+    request_date user
+    """
+
 
 class EnrolmentsByCourse(EnrolmentsByCourse):
     """The Voga version of :class:`EnrolmentsByCourse

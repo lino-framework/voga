@@ -340,14 +340,14 @@ Sport
  *010C FG (Functional gymnastics)* / *Charlotte Collard*   Every Monday      11:00-12:00   5                  3           2             0
  *011C FG (Functional gymnastics)* / *Daniel Emonts*       Every Monday      13:30-14:30   5                  2           3             0
  *012 Rücken (Swimming)* / *Germaine Gernegroß*            Every Monday      11:00-12:00   20                 3           17            0
- *013 Rücken (Swimming)* / *Josef Jonas*                   Every Monday      13:30-14:30   20                 2           18            0
- *014 Rücken (Swimming)* / *Marc Malmendier*               Every Tuesday     11:00-12:00   20                 2           18            0
+ *013 Rücken (Swimming)* / *Josef Jonas*                   Every Monday      13:30-14:30   20                 3           17            0
+ *014 Rücken (Swimming)* / *Marc Malmendier*               Every Tuesday     11:00-12:00   20                 3           17            0
  *015 Rücken (Swimming)* / *Edgard Radermacher*            Every Tuesday     13:30-14:30   20                 1           19            1
- *016 Rücken (Swimming)* / *David da Vinci*                Every Thursday    11:00-12:00   20                 2           18            0
- *017 Rücken (Swimming)* / *Hans Altenberg*                Every Thursday    13:30-14:30   20                 2           18            0
+ *016 Rücken (Swimming)* / *David da Vinci*                Every Thursday    11:00-12:00   20                 4           16            0
+ *017 Rücken (Swimming)* / *Hans Altenberg*                Every Thursday    13:30-14:30   20                 4           16            0
  *018 SV (Self-defence)* / *Charlotte Collard*             Every Friday      18:00-19:00   12                 1           11            2
  *019 SV (Self-defence)* / *Daniel Emonts*                 Every Friday      19:00-20:00   12                 3           9             0
- **Total (11 rows)**                                                                       **164**            **23**      **141**       **4**
+ **Total (11 rows)**                                                                       **164**            **29**      **135**       **4**
 ========================================================= ================= ============= ================== =========== ============= ===========
 <BLANKLINE>
 ~~~~~~~~~~
