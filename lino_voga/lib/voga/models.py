@@ -42,21 +42,15 @@ else:
             m.define_action(merge_row=dd.MergeAction(m))
 
 
-def site_setup(site):
-    # site.modules.accounts.Accounts.set_detail_layout(
-    #     """
-    #     ref:10 name id:5
-    #     seqno group type clearable
-    #     ledger.MovementsByAccount
-    #     """)
+# def site_setup(site):
 
-    site.modules.system.SiteConfigs.set_detail_layout(
-        """
-        site_company next_partner_id:10
-        default_build_method simulate_today
-        clients_account   sales_account     sales_vat_account
-        suppliers_account purchases_account purchases_vat_account
-        site_calendar default_event_type pupil_guestrole
-        max_auto_events hide_events_before
-        """)
+#     site.actors.system.SiteConfigs.set_detail_layout(
+#         """
+#         site_company next_partner_id:10
+#         default_build_method simulate_today
+#         clients_account   sales_account     sales_vat_account
+#         suppliers_account purchases_account purchases_vat_account
+#         site_calendar default_event_type pupil_guestrole
+#         max_auto_events hide_events_before
+#         """)
 

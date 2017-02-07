@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016-2017 Luc Saffre
+# Copyright 2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -16,18 +16,19 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-"""This is the place for doing things which are common to all Lino
-Voga applications and do not go into one of the library
-specializations under :mod:`lino_voga.lib`
+"""The default :attr:`custom_layouts_module
+<lino.core.site.Site.custom_layouts_module>` for Lino Voga.
 
-.. autosummary::
-   :toctree:
+"""
 
-    user_types
-    layouts
-    models
-    migrate
-    fixtures.eiche2lino
+from lino.api import rt
 
+rt.actors.system.SiteConfigs.detail_layout = """
+site_company next_partner_id:10
+default_build_method simulate_today
+clients_account   sales_account     sales_vat_account
+suppliers_account purchases_account purchases_vat_account
+site_calendar default_event_type pupil_guestrole
+max_auto_events hide_events_before
 """
 

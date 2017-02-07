@@ -84,14 +84,14 @@ users.UserTypes.secretary:200
 - Configure :
   - System : Site Parameters, Help Texts
   - Places : Countries, Places
-  - Contacts : Organization types, Functions
+  - Contacts : Organization types, Functions, List Types
   - Calendar : Guest Roles
   - Tariffs : Tariffs, Tariff Categories
   - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - System : content types, Plausibility checkers, Plausibility problems, Changes
-  - Contacts : Contact Persons
+  - Contacts : Contact Persons, List memberships
   - Calendar : Presences, Event states, Guest states, Task states
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
   - Activities : Activities, Enrolments
