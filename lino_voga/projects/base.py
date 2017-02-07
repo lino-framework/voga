@@ -36,6 +36,7 @@ class Site(Site):
 
     user_types_module = 'lino_voga.lib.voga.user_types'
     workflows_module = 'lino_voga.lib.cal.workflows'
+    custom_layouts_module = 'lino_voga.lib.voga.layouts'
 
     demo_fixtures = 'std minimal_ledger demo demo_bookings payments voga checkdata demo2'.split()
 

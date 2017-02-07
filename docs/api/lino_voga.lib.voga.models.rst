@@ -10,7 +10,6 @@ lino_voga.lib.voga.models
    .. autosummary::
    
       add_merge_action
-      site_setup
    
    
 

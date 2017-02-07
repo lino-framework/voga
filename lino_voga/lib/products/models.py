@@ -53,7 +53,6 @@ class Product(Product):
     .. attribute:: min_asset
 
         Minimum quantity required to trigger an invoice.
-
     
 
     """
@@ -76,6 +75,7 @@ class Product(Product):
 class ProductDetail(dd.DetailLayout):
 
     main = "general courses"
+    
     general = dd.Panel("""
     id cat sales_price number_of_events:10 min_asset:10
     vat_class delivery_unit
