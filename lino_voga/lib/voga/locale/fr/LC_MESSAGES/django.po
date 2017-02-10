@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lino-faggio 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-01-25 00:57+0200\n"
+"POT-Creation-Date: 2017-02-10 19:43+0200\n"
 "PO-Revision-Date: 2016-05-18 23:28+0300\n"
 "Last-Translator: Luc Saffre <luc.saffre@gmail.com>\n"
 "Language: fr\n"
@@ -27,47 +27,15 @@ msgid "Calendar where events in this room are published."
 msgstr ""
 
 #: lino_voga/lib/cal/models.py:180 lino_voga/lib/contacts/models.py:50
-#: lino_voga/lib/contacts/models.py:141 lino_voga/lib/courses/desktop.py:256
+#: lino_voga/lib/contacts/models.py:142 lino_voga/lib/courses/desktop.py:264
 #: lino_voga/lib/products/models.py:84
 msgid "General"
 msgstr ""
 
-#: lino_voga/lib/cal/models.py:185 lino_voga/lib/contacts/models.py:62
-#: lino_voga/lib/contacts/models.py:112 lino_voga/lib/contacts/models.py:152
-#: lino_voga/lib/courses/desktop.py:276
+#: lino_voga/lib/cal/models.py:185 lino_voga/lib/contacts/models.py:63
+#: lino_voga/lib/contacts/models.py:113 lino_voga/lib/contacts/models.py:153
+#: lino_voga/lib/courses/desktop.py:284
 msgid "More"
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:40
-msgid "Reset"
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:46
-msgid "Reset this event to 'suggested' state."
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:63
-msgid "Any manual changes to your event will get lost upon next update "
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:65
-msgid "Are you sure?"
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:69
-msgid "Invited"
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:70
-msgid "Present"
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:71
-msgid "Absent"
-msgstr ""
-
-#: lino_voga/lib/cal/workflows.py:72
-msgid "Excused"
 msgstr ""
 
 #: lino_voga/lib/cal/fixtures/std.py:32
@@ -94,36 +62,36 @@ msgstr ""
 msgid "Summer holidays"
 msgstr "Vacances d'été"
 
-#: lino_voga/lib/contacts/models.py:55 lino_voga/lib/contacts/models.py:105
-#: lino_voga/lib/contacts/models.py:146
+#: lino_voga/lib/contacts/models.py:55 lino_voga/lib/contacts/models.py:106
+#: lino_voga/lib/contacts/models.py:147
 msgid "Address"
 msgstr ""
 
-#: lino_voga/lib/courses/desktop.py:130
+#: lino_voga/lib/courses/desktop.py:138
 msgid "Enrolments using this fee"
 msgstr ""
 
-#: lino_voga/lib/courses/desktop.py:263
+#: lino_voga/lib/courses/desktop.py:271
 msgid "Events"
 msgstr ""
 
-#: lino_voga/lib/courses/desktop.py:270 lino_voga/lib/courses/desktop.py:446
-#: lino_voga/lib/courses/desktop.py:453 lino_voga/lib/courses/models.py:668
+#: lino_voga/lib/courses/desktop.py:278 lino_voga/lib/courses/desktop.py:454
+#: lino_voga/lib/courses/desktop.py:461 lino_voga/lib/courses/models.py:668
 #: lino_voga/lib/products/models.py:89
 msgid "Enrolments"
 msgstr ""
 
-#: lino_voga/lib/courses/desktop.py:324
+#: lino_voga/lib/courses/desktop.py:332
 #, python-format
 msgid "in %s"
 msgstr ""
 
-#: lino_voga/lib/courses/desktop.py:337
+#: lino_voga/lib/courses/desktop.py:345
 #, fuzzy
 msgid "Suggestions"
 msgstr "Location"
 
-#: lino_voga/lib/courses/desktop.py:408
+#: lino_voga/lib/courses/desktop.py:416
 msgid "Status Report"
 msgstr ""
 
@@ -273,7 +241,11 @@ msgstr ""
 msgid "No."
 msgstr ""
 
-#: lino_voga/lib/courses/config/courses/Course/presence_sheet.weasy.html:78
+#: lino_voga/lib/courses/config/courses/Course/presence_sheet.weasy.html:70
+msgid "Age"
+msgstr ""
+
+#: lino_voga/lib/courses/config/courses/Course/presence_sheet.weasy.html:79
 #: lino_voga/lib/courses/config/courses/Course/presence_sheet.wk.html:38
 msgid "Remark"
 msgstr ""
@@ -304,7 +276,7 @@ msgstr ""
 msgid "Non-member"
 msgstr ""
 
-#: lino_voga/lib/products/__init__.py:28 lino_voga/lib/products/models.py:65
+#: lino_voga/lib/products/__init__.py:28 lino_voga/lib/products/models.py:64
 msgid "Tariffs"
 msgstr ""
 
@@ -316,23 +288,23 @@ msgstr ""
 msgid "Tariff Categories"
 msgstr ""
 
-#: lino_voga/lib/products/models.py:64
+#: lino_voga/lib/products/models.py:63
 msgid "Tariff"
 msgstr ""
 
-#: lino_voga/lib/products/models.py:68
+#: lino_voga/lib/products/models.py:67
 msgid "Number of events"
 msgstr ""
 
-#: lino_voga/lib/products/models.py:69
+#: lino_voga/lib/products/models.py:68
 msgid "Number of calendar events paid per invoicing."
 msgstr ""
 
-#: lino_voga/lib/products/models.py:72
+#: lino_voga/lib/products/models.py:71
 msgid "Invoice threshold"
 msgstr ""
 
-#: lino_voga/lib/products/models.py:73
+#: lino_voga/lib/products/models.py:72
 msgid "Minimum quantity to pay in advance."
 msgstr ""
 
@@ -571,19 +543,19 @@ msgstr ""
 msgid "The Site class for this module."
 msgstr ""
 
-#: lino_voga/lib/voga/roles.py:54
+#: lino_voga/lib/voga/user_types.py:55
 msgid "Anonymous"
 msgstr ""
 
-#: lino_voga/lib/voga/roles.py:55
+#: lino_voga/lib/voga/user_types.py:56
 msgid "User"
 msgstr ""
 
-#: lino_voga/lib/voga/roles.py:56
+#: lino_voga/lib/voga/user_types.py:57
 msgid "Secretary"
 msgstr ""
 
-#: lino_voga/lib/voga/roles.py:57
+#: lino_voga/lib/voga/user_types.py:58
 msgid "Administrator"
 msgstr ""
 
@@ -627,7 +599,7 @@ msgstr ""
 msgid "Payment list"
 msgstr ""
 
-#: lino_voga/projects/base.py:124
+#: lino_voga/projects/base.py:136
 msgid "New {}"
 msgstr ""
 
@@ -863,5 +835,29 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid ""
+#~ msgstr ""
+
+#~ msgid "Reset"
+#~ msgstr ""
+
+#~ msgid "Reset this event to 'suggested' state."
+#~ msgstr ""
+
+#~ msgid "Any manual changes to your event will get lost upon next update "
+#~ msgstr ""
+
+#~ msgid "Are you sure?"
+#~ msgstr ""
+
+#~ msgid "Invited"
+#~ msgstr ""
+
+#~ msgid "Present"
+#~ msgstr ""
+
+#~ msgid "Absent"
+#~ msgstr ""
+
+#~ msgid "Excused"
 #~ msgstr ""
 
