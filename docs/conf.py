@@ -18,7 +18,7 @@ for n in 'atelier lino_book lino_cosi'.split():
 extlinks = {}
 extensions = []
 
-from atelier.sphinxconf import configure
+from lino.sphinxcontrib import configure
 configure(globals(), 'lino_voga.projects.roger.settings.doctests')
 # configure(globals(), 'lino.projects.std.settings_test')
 
