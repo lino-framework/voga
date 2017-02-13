@@ -120,18 +120,19 @@ Here is the output of :func:`walk_menu_items
 - Kontakte --> Organisationen : 30
 - Kontakte --> Partner : 101
 - Kontakte --> Partnerlisten : 9
-- Büro --> Meine Datenkontrollliste : 1
+- Büro --> Meine Datenkontrollliste : 0
 - Büro --> Meine Benachrichtigungen : 2
 - Büro --> Meine Notizen : 34
 - Büro --> Meine Uploads : 1
 - Büro --> Mein E-Mail-Ausgang : 1
 - Büro --> Meine Auszüge : 0
 - Kalender --> Meine Termine : 100
-- Kalender --> Überfällige Termine : 18
+- Kalender --> Überfällige Termine : 29
 - Kalender --> Unbestätigte Termine : 4
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
 - Kalender --> Meine Anwesenheiten : 1
+- Kalender --> Meine überfälligen Termine : 2
 - Kalender --> Buchungen : 4
 - Buchhaltung --> Verkauf --> Verkaufsrechnungen (SLS) : 0
 - Buchhaltung --> Verkauf --> Gutschriften Verkauf (SLC) : 0
@@ -185,10 +186,10 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Büro --> Upload-Arten : 1
 - Konfigurierung --> Büro --> Auszugsarten : 12
 - Explorer --> System --> Vollmachten : 1
-- Explorer --> System --> Benutzerarten : 4
+- Explorer --> System --> Benutzerarten : 5
 - Explorer --> System --> Datenbankmodelle : 78
 - Explorer --> System --> Datentests : 10
-- Explorer --> System --> Datenprobleme : 16
+- Explorer --> System --> Datenprobleme : 15
 - Explorer --> System --> Benachrichtigungen : 6
 - Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
