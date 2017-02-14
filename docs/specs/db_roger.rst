@@ -88,7 +88,7 @@ The database structure
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
- plausibility.Problem       plausibility.Problems          6         16
+ plausibility.Problem       plausibility.Problems          6         15
  products.Product           products.Products              15        11
  products.ProductCat        products.ProductCats           5         5
  rooms.Booking              rooms.Bookings                 23        3
