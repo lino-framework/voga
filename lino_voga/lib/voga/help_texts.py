@@ -70,6 +70,8 @@ given course."""),
     'lino_voga.lib.voga.migrate.Migrator' : _("""This class is used because a voga Site has
 ad.Site.migration_class set to
 "lino_voga.migrate.Migrator"."""),
+    'lino_voga.lib.voga.user_types.Teacher' : _("""Somebody who can just register presences of participants, i.e. mark
+them as absent or present."""),
     'lino_voga.projects.roger.lib.courses.models.Pupil' : _("""The Roger variant of Lino Voga adds a few very specific fields
 which are being used for filtering, and they may influence the
 price of an enrolment."""),

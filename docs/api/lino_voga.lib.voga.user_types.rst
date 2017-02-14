@@ -16,6 +16,7 @@ lino_voga.lib.voga.user_types
       Secretary
       SiteAdmin
       SiteUser
+      Teacher
    
    
 
