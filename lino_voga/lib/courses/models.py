@@ -719,7 +719,7 @@ class Enrolment(Enrolment, Invoiceable):
                 qs = cls.objects.filter(pupil__invoice_recipient=partner)
                 
         # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
-        for obj in qs.order_by(cls.invoiceable_date_field):
+        for obj in qs.order_by(cls.invoiceable_date_field, 'id'):
             # dd.logger.info('20160223 %s', obj)
             yield obj
 

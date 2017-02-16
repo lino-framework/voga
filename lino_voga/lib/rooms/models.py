@@ -46,7 +46,7 @@ class Booking(Booking, Invoiceable):
                 qs = qs.filter(company=company)
             else:
                 return
-        for obj in qs.order_by(cls.invoiceable_date_field):
+        for obj in qs.order_by(cls.invoiceable_date_field, 'id'):
             yield obj
 
     def get_invoiceable_product(self, plan):
