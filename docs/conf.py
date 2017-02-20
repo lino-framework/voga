@@ -197,7 +197,7 @@ htmlhelp_basename = 'voga'
 
 
 extlinks = dict()
-extlinks.update(ticket=('http://bugs.lino-framework.org/tickets/Ticket/%s', '#'))
+extlinks.update(ticket=('http://bugs.saffre-rumma.net/tickets/Ticket/%s', '#'))
 
 extensions += ['lino.sphinxcontrib.help_texts_extractor']
 help_texts_builder_targets = {
