@@ -215,7 +215,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> MwSt. --> Fakturationspläne : 2
 - Explorer --> Aktivitäten --> Aktivitäten : 26
 - Explorer --> Aktivitäten --> Einschreibungen : 78
-- Explorer --> Aktivitäten --> Einschreibungs-Zustände : 3
+- Explorer --> Aktivitäten --> Einschreibungs-Zustände : 4
 - Explorer --> Finanzjournale --> Kontoauszüge : 22
 - Explorer --> Finanzjournale --> Diverse Buchungen : 1
 - Explorer --> Finanzjournale --> Zahlungsaufträge : 17
