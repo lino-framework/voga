@@ -1,1 +1,1 @@
-from lino_cosi.lib.invoicing.fixtures.demo_bookings import *
+from lino_xl.lib.invoicing.fixtures.demo_bookings import *

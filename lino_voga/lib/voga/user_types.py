@@ -27,8 +27,8 @@ from lino.core.roles import UserRole, SiteAdmin, SiteStaff
 from lino_xl.lib.excerpts.roles import ExcerptsUser, ExcerptsStaff
 from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
-from lino_cosi.lib.ledger.roles import LedgerUser, VoucherSupervisor, LedgerStaff
-from lino_cosi.lib.sepa.roles import SepaStaff
+from lino_xl.lib.ledger.roles import LedgerUser, VoucherSupervisor, LedgerStaff
+from lino_xl.lib.sepa.roles import SepaStaff
 from lino_xl.lib.courses.roles import CoursesTeacher, CoursesUser
 from lino.modlib.plausibility.roles import PlausibilityUser
 

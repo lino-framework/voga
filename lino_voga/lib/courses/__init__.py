@@ -47,7 +47,7 @@ class Plugin(Plugin):
     """
     extends_models = ['Enrolment', 'Course', 'Line']
     needs_plugins = [
-        'lino_xl.lib.cal', 'lino_cosi.lib.invoicing', 'lino_cosi.lib.sales']
+        'lino_xl.lib.cal', 'lino_xl.lib.invoicing', 'lino_xl.lib.sales']
     # needs_plugins = ['lino_xl.lib.cal', 'lino_cosi.lib.auto.sales']
 
     def setup_main_menu(self, site, profile, m):

@@ -92,7 +92,7 @@ confirmation_details invoicing.InvoicingsByInvoiceable
 """
 
 
-from lino_cosi.lib.invoicing.models import InvoicingsByInvoiceable
+from lino_xl.lib.invoicing.models import InvoicingsByInvoiceable
 
 InvoicingsByInvoiceable.column_names = (
     "voucher title qty voucher__voucher_date "

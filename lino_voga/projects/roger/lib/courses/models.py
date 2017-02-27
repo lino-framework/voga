@@ -156,7 +156,7 @@ class MemberChecker(Checker):
     """Check membership payments.
 
     If :attr:`force_cleared_until
-    <lino_cosi.lib.ledger.Plugin.force_cleared_until>` is set, then
+    <lino_xl.lib.ledger.Plugin.force_cleared_until>` is set, then
     :attr:`member_until` dates before that date are tolerated.
 
     """
@@ -203,7 +203,7 @@ class MemberChecker(Checker):
 
 MemberChecker.activate()
 
-from lino_cosi.lib.ledger.utils import on_ledger_movement
+from lino_xl.lib.ledger.utils import on_ledger_movement
 
 
 @dd.receiver(on_ledger_movement)

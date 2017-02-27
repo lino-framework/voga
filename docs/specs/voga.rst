@@ -51,7 +51,7 @@ check whether we get the expected response.
 
 >>> obj.clear_cache()
 >>> rv = ses.run(obj.do_print)  #doctest: +ELLIPSIS
-appy.pod render .../lino_cosi/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-91.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+appy.pod render .../lino_xl/lib/sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-91.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
 
 >>> print(rv['success']) 
 True
