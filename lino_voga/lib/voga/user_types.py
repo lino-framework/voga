@@ -29,6 +29,7 @@ from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_xl.lib.ledger.roles import LedgerUser, VoucherSupervisor, LedgerStaff
 from lino_xl.lib.sepa.roles import SepaStaff
+from lino_xl.lib.products.roles import ProductsStaff
 from lino_xl.lib.courses.roles import CoursesTeacher, CoursesUser
 from lino.modlib.plausibility.roles import PlausibilityUser
 
@@ -39,11 +40,11 @@ class SiteUser(CoursesUser, ContactsUser, OfficeUser, LedgerUser,
 
 
 class Secretary(SiteUser, SiteStaff, ContactsStaff, ExcerptsUser,
-                VoucherSupervisor):
+                VoucherSupervisor, ProductsStaff):
     pass
 
 
-class Teacher(CoursesTeacher, ExcerptsUser, OfficeUser):
+class Teacher(CoursesTeacher):  # , ExcerptsUser, OfficeUser):
     """Somebody who can just register presences of participants, i.e. mark
     them as absent or present.
 
@@ -53,7 +54,7 @@ class Teacher(CoursesTeacher, ExcerptsUser, OfficeUser):
 
 class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
                 LedgerStaff, SepaStaff, PlausibilityUser,
-                ExcerptsStaff):
+                ExcerptsStaff, ProductsStaff):
     pass
 
 

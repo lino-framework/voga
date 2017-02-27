@@ -26,6 +26,7 @@ from lino.api import dd, rt
 def objects():
     Person = rt.models.contacts.Person
     User = rt.models.users.User
+    from lino.modlib.users.choicelists import UserTypes
     Place = rt.models.countries.Place
     eupen = Place.objects.get(name__exact='Eupen')
 
@@ -42,4 +43,11 @@ def objects():
     yield person
     yield User(username=person.first_name.lower(),
                partner=person, profile='200')
+
+    person = Person(first_name="Tom", last_name="Thess",
+                    email=settings.SITE.demo_email,
+                    city=eupen, gender=dd.Genders.male)
+    yield person
+    yield User(username=person.first_name.lower(),
+               partner=person, profile=UserTypes.teacher)
 

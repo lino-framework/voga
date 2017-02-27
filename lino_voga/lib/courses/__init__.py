@@ -52,6 +52,7 @@ class Plugin(Plugin):
 
     def setup_main_menu(self, site, profile, m):
         m = m.add_menu(self.app_label, self.verbose_name)
+        m.add_action('courses.MyCoursesGiven')
         m.add_action('courses.Pupils')
         m.add_action('courses.Teachers')
         m.add_separator()
