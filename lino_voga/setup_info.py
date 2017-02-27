@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -27,7 +27,8 @@ SETUP_INFO = dict(
     # version='0.0.4',
     version='2016.12.0',
     install_requires=[
-        'lino', 'lino_cosi',
+        'lino',
+        #'lino_cosi',
         'weasyprint', 'cairocffi', 'channels'],
     test_suite='tests',
     tests_require=['pytest'],

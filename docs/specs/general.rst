@@ -14,11 +14,3 @@ General
     >>> lino.startup('lino_voga.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
 
-The demo database has 35 pupils and 8 teachers:
-
->>> rt.modules.courses.Pupil.objects.count()
-35
->>> rt.modules.courses.Teacher.objects.count()
-8
-
-
