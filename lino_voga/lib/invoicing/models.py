@@ -22,7 +22,7 @@
 
 from __future__ import unicode_literals
 
-from lino_cosi.lib.invoicing.models import *
+from lino_xl.lib.invoicing.models import *
 from lino.api import _
 
 
@@ -49,7 +49,7 @@ Plans.detail_layout = """user journal today max_date
     """
 
 
-from lino_cosi.lib.invoicing.actions import StartInvoicing
+from lino_xl.lib.invoicing.actions import StartInvoicing
 
 
 class StartInvoicingForCourse(StartInvoicing):

@@ -46,7 +46,7 @@ class Site(Site):
 
     # default_build_method = "wkhtmltopdf"
     default_build_method = "appypdf"
-    auto_configure_logger_names = 'schedule atelier django lino lino_xl lino_cosi lino_voga'
+    auto_configure_logger_names = 'schedule atelier django lino lino_xl lino_voga'
 
     def get_installed_apps(self):
         yield super(Site, self).get_installed_apps()
@@ -69,14 +69,14 @@ class Site(Site):
         yield 'lino_voga.lib.courses'
 
         # yield 'lino_xl.lib.products'
-        # yield 'lino_cosi.lib.accounts'
-        # yield 'lino_cosi.lib.ledger'
-        # yield 'lino_cosi.lib.vat'
+        # yield 'lino_xl.lib.accounts'
+        # yield 'lino_xl.lib.ledger'
+        # yield 'lino_xl.lib.vat'
         #~ yield 'lino_cosi.lib.declarations'
-        #~ yield 'lino_cosi.lib.sales'
+        #~ yield 'lino_xl.lib.sales'
         # yield 'lino_cosi.lib.auto.sales'
-        yield 'lino_cosi.lib.finan'
-        yield 'lino_cosi.lib.sepa'
+        yield 'lino_xl.lib.finan'
+        yield 'lino_xl.lib.sepa'
 
         # yield 'lino_voga.lib.courses'
 
@@ -112,6 +112,7 @@ class Site(Site):
         """Defines the story to be displayed on the admin main page.
 
         """
+        yield self.actors.courses.MyCoursesGiven
         yield self.actors.courses.StatusReport
         # yield self.modules.courses.DraftCourses
         # yield self.modules.courses.ActiveCourses

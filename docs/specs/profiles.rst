@@ -62,14 +62,16 @@ users.UserTypes.admin:900
 - Site : About
 
 
->>> ses = rt.login('monique') 
->>> ses.user.profile
-users.UserTypes.secretary:200
->>> ses.show_menu()
+Monique is a secretary.   
+
+>>> print(rt.login('monique').user.profile)
+Secretary
+
+>>> rt.login('monique').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
 - Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
-- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar
+- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
@@ -87,25 +89,26 @@ users.UserTypes.secretary:200
   - Contacts : Organization types, Functions, List Types
   - Calendar : Guest Roles
   - Tariffs : Tariffs, Tariff Categories
-  - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - System : content types, Plausibility checkers, Plausibility problems, Changes
   - Contacts : Contact Persons, List memberships
   - Calendar : Presences, Event states, Guest states, Task states
-  - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
+  - VAT : Product invoices
   - Activities : Activities, Enrolments
 - Site : About
 
 
->>> ses = rt.login('marianne') 
->>> ses.user.profile
-users.UserTypes.user:100
->>> ses.show_menu()
+Marianne is a "simple user".
+
+>>> print(rt.login('marianne').user.profile)
+User
+
+>>> rt.login('marianne').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partners, Partner Lists
 - Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
-- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar
+- Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
   - Purchases : Purchase invoices (PRC)
@@ -117,10 +120,13 @@ users.UserTypes.user:100
   - VAT : Due invoices
   - Activities : Status Report
 - Configure :
-  - Tariffs : Tariffs
-  - VAT : VAT rules, Paper types
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
-  - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items
+  - VAT : Product invoices
   - Activities : Activities
+- Site : About
+
+>>> rt.login('tom').show_menu()
+... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
+- Activities : My courses given, -, Courses, Hikes, Journeys, -
 - Site : About

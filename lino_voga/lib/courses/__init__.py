@@ -47,11 +47,12 @@ class Plugin(Plugin):
     """
     extends_models = ['Enrolment', 'Course', 'Line']
     needs_plugins = [
-        'lino_xl.lib.cal', 'lino_cosi.lib.invoicing', 'lino_cosi.lib.sales']
+        'lino_xl.lib.cal', 'lino_xl.lib.invoicing', 'lino_xl.lib.sales']
     # needs_plugins = ['lino_xl.lib.cal', 'lino_cosi.lib.auto.sales']
 
     def setup_main_menu(self, site, profile, m):
         m = m.add_menu(self.app_label, self.verbose_name)
+        m.add_action('courses.MyCoursesGiven')
         m.add_action('courses.Pupils')
         m.add_action('courses.Teachers')
         m.add_separator()

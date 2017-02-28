@@ -26,7 +26,7 @@ from __future__ import unicode_literals
 from lino.utils.mti import get_child
 from lino_xl.lib.rooms.models import *
 from lino.api import rt
-from lino_cosi.lib.invoicing.mixins import Invoiceable
+from lino_xl.lib.invoicing.mixins import Invoiceable
 
 # sales = dd.resolve_app('sales')
 

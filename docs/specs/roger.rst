@@ -116,19 +116,19 @@ Here is the output of :func:`walk_menu_items
 
 >>> walk_menu_items('rolf')
 ... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Kontakte --> Personen : 72
+- Kontakte --> Personen : 73
 - Kontakte --> Organisationen : 30
-- Kontakte --> Partner : 101
+- Kontakte --> Partner : 102
 - Kontakte --> Partnerlisten : 9
-- Büro --> Meine Datenkontrollliste : 1
+- Büro --> Meine Datenkontrollliste : 0
 - Büro --> Meine Benachrichtigungen : 2
 - Büro --> Meine Notizen : 34
 - Büro --> Meine Uploads : 1
 - Büro --> Mein E-Mail-Ausgang : 1
 - Büro --> Meine Auszüge : 0
-- Kalender --> Meine Termine : 94
+- Kalender --> Meine Termine : 58
 - Kalender --> Überfällige Termine : 29
-- Kalender --> Unbestätigte Termine : 2
+- Kalender --> Unbestätigte Termine : 3
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
 - Kalender --> Meine Anwesenheiten : 1
@@ -142,7 +142,7 @@ Here is the output of :func:`walk_menu_items
 - Buchhaltung --> Finanzjournale --> Bestbank (BNK) : 0
 - Buchhaltung --> Finanzjournale --> Diverse Buchungen (MSC) : 0
 - Aktivitäten --> Teilnehmer : 36
-- Aktivitäten --> Kursleiter : 9
+- Aktivitäten --> Kursleiter : 10
 - Aktivitäten --> Kurse : 24
 - Aktivitäten --> Ausfahrten : 1
 - Aktivitäten --> Reisen : 3
@@ -154,7 +154,7 @@ Here is the output of :func:`walk_menu_items
 - Berichte --> Buchhaltung --> Schuldner : 0
 - Berichte --> Buchhaltung --> Gläubiger : 14
 - Berichte --> MwSt. --> Offene Rechnungen : 18
-- Konfigurierung --> System --> Benutzer : 6
+- Konfigurierung --> System --> Benutzer : 7
 - Konfigurierung --> System --> Hilfetexte : 3
 - Konfigurierung --> Orte --> Länder : 9
 - Konfigurierung --> Orte --> Orte : 79
@@ -190,7 +190,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Datenbankmodelle : 78
 - Explorer --> System --> Datentests : 10
 - Explorer --> System --> Datenprobleme : 15
-- Explorer --> System --> Benachrichtigungen : 6
+- Explorer --> System --> Benachrichtigungen : 7
 - Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> Listenmitgliedschaften : 1

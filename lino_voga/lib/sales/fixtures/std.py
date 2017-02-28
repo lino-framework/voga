@@ -1,1 +1,1 @@
-from lino_cosi.lib.sales.fixtures.std import objects
+from lino_xl.lib.sales.fixtures.std import objects

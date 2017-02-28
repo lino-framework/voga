@@ -39,8 +39,8 @@ from lino.api import dd, rt
 
 from lino.mixins import Referrable
 from lino.modlib.printing.mixins import Printable
-from lino_cosi.lib.invoicing.mixins import Invoiceable
-from lino_cosi.lib.accounts.utils import DEBIT
+from lino_xl.lib.invoicing.mixins import Invoiceable
+from lino_xl.lib.accounts.utils import DEBIT
 from lino.utils import join_elems
 from lino.modlib.printing.utils import PrintableObject
 

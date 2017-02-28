@@ -44,8 +44,8 @@ The database structure
  changes.Change             changes.Changes                10        0
  contacts.Company           contacts.Companies             27        29
  contacts.CompanyType       contacts.CompanyTypes          7         16
- contacts.Partner           contacts.Partners              23        100
- contacts.Person            contacts.Persons               40        71
+ contacts.Partner           contacts.Partners              23        101
+ contacts.Person            contacts.Persons               40        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
  contenttypes.ContentType   gfks.ContentTypes              3         77
@@ -58,7 +58,7 @@ The database structure
  courses.Pupil              courses.Pupils                 49        35
  courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
- courses.Teacher            courses.Teachers               42        8
+ courses.Teacher            courses.Teachers               42        9
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        0
@@ -84,7 +84,7 @@ The database structure
  notes.EventType            notes.EventTypes               8         1
  notes.Note                 notes.Notes                    16        100
  notes.NoteType             notes.NoteTypes                11        3
- notify.Message             notify.Messages                11        5
+ notify.Message             notify.Messages                11        6
  outbox.Attachment          outbox.Attachments             4         0
  outbox.Mail                outbox.Mails                   8         0
  outbox.Recipient           outbox.Recipients              6         0
@@ -100,7 +100,7 @@ The database structure
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0
  users.Authority            users.Authorities              3         0
- users.User                 users.Users                    18        5
+ users.User                 users.Users                    18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         136
  vat.VatAccountInvoice      vat.Invoices                   19        85
  vat.VatRule                vat.VatRules                   9         11

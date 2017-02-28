@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -25,7 +25,9 @@ from lino.api import dd, rt
 
 def objects():
     Person = rt.models.contacts.Person
+    Teacher = rt.models.courses.Teacher
     User = rt.models.users.User
+    from lino.modlib.users.choicelists import UserTypes
     Place = rt.models.countries.Place
     eupen = Place.objects.get(name__exact='Eupen')
 
@@ -42,4 +44,11 @@ def objects():
     yield person
     yield User(username=person.first_name.lower(),
                partner=person, profile='200')
+
+    person = Teacher(first_name="Tom", last_name="Thess",
+                    email=settings.SITE.demo_email,
+                    city=eupen, gender=dd.Genders.male)
+    yield person
+    yield User(username=person.first_name.lower(),
+               partner=person, profile=UserTypes.teacher)
 

@@ -319,29 +319,46 @@ Not invoiced : 20.02., 27.02., 06.03., 13.03., 27.03., 10.04., 17.04., 24.04.,
 ================= ===================================== ======================================== =============== =================
  Date of request   Activity                              Participant                              Actions         Author
 ----------------- ------------------------------------- ---------------------------------------- --------------- -----------------
- 14/09/2013        022C MED (Finding your inner peace)   Luc Faymonville (ME)                     **Requested**   Romain Raffault
- 14/09/2013        022C MED (Finding your inner peace)   Christian Radermacher (ME)               **Confirmed**   Romain Raffault
- 19/09/2013        022C MED (Finding your inner peace)   Bernd Brecht (MS)                        **Requested**   Romain Raffault
- 08/11/2013        024C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Robin Rood
- 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Marianne Martin
- 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Marianne Martin
- 23/11/2013        025C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Marianne Martin
- 23/11/2013        024C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Robin Rood
- 26/02/2014        003 comp (First Steps)                Christian Radermacher (ME)               **Confirmed**   Marianne Martin
- 08/03/2014        009C BT (Belly dancing)               Otto Östges (ME)                         **Confirmed**   Romain Raffault
+ 14/09/2013        022C MED (Finding your inner peace)   Luc Faymonville (ME)                     **Requested**   Tom Thess
+ 14/09/2013        022C MED (Finding your inner peace)   Christian Radermacher (ME)               **Confirmed**   Marianne Martin
+ 19/09/2013        022C MED (Finding your inner peace)   Bernd Brecht (MS)                        **Requested**   Monique Mommer
+ 08/11/2013        024C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Monique Mommer
+ 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Rolf Rompen
+ 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Rolf Rompen
+ 23/11/2013        025C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Romain Raffault
+ 23/11/2013        024C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Romain Raffault
+ 26/02/2014        003 comp (First Steps)                Christian Radermacher (ME)               **Confirmed**   Robin Rood
+ 08/03/2014        009C BT (Belly dancing)               Otto Östges (ME)                         **Confirmed**   Robin Rood
+ 13/03/2014        004 comp (First Steps)                Annette Arens (ME)                       **Confirmed**   Marianne Martin
+ 13/03/2014        005 comp (First Steps)                Dorothée Dobbelstein-Demeulenaere (ME)   **Confirmed**   Tom Thess
+ 13/03/2014        003 comp (First Steps)                Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Tom Thess
+ 18/03/2014        003 comp (First Steps)                Luc Faymonville (ME)                     **Confirmed**   Rolf Rompen
+ 18/03/2014        003 comp (First Steps)                Luc Faymonville (ME)                     **Confirmed**   Rolf Rompen
+ 18/03/2014        004 comp (First Steps)                Jacqueline Jacobs (MES)                  **Confirmed**   Monique Mommer
+ 18/03/2014        005 comp (First Steps)                Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Monique Mommer
+ 28/03/2014        009C BT (Belly dancing)               Karl Kaivers (MLS)                       **Requested**   Rolf Rompen
+ 28/03/2014        009C BT (Belly dancing)               Karl Kaivers (MLS)                       **Requested**   Rolf Rompen
+ 02/04/2014        004 comp (First Steps)                Didier di Rupo (ME)                      **Confirmed**   Romain Raffault
+ 12/04/2014        009C BT (Belly dancing)               Annette Arens (ME)                       **Confirmed**   Romain Raffault
+ 26/06/2014        020C GLQ (GuoLin-Qigong)              Marie-Louise Meier (MS)                  **Confirmed**   Robin Rood
+ 09/07/2014        002 London 2014                       Annette Arens (ME)                       **Confirmed**   Tom Thess
+ 09/07/2014        002 London 2014                       Jacqueline Jacobs (MES)                  **Confirmed**   Marianne Martin
+ 11/07/2014        021C GLQ (GuoLin-Qigong)              Marie-Louise Meier (MS)                  **Confirmed**   Tom Thess
+ 11/07/2014        020C GLQ (GuoLin-Qigong)              Mark Martelaer (ME)                      **Confirmed**   Tom Thess
+ 11/07/2014        021C GLQ (GuoLin-Qigong)              Mark Martelaer (ME)                      **Confirmed**   Marianne Martin
  ...
- 11/07/2015        016 Rücken (Swimming)                 Edgar Engels (MES)                       **Confirmed**   Rolf Rompen
- 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Monique Mommer
- 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Monique Mommer
+ 11/07/2015        016 Rücken (Swimming)                 Edgar Engels (MES)                       **Confirmed**   Monique Mommer
+ 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Rolf Rompen
+ 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Rolf Rompen
  11/07/2015        013 Rücken (Swimming)                 Laura Laschet (ME)                       **Confirmed**   Monique Mommer
- 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Robin Rood
- 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Robin Rood
- 11/07/2015        012 Rücken (Swimming)                 Otto Östges (ME)                         **Confirmed**   Marianne Martin
+ 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
+ 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
+ 11/07/2015        012 Rücken (Swimming)                 Otto Östges (ME)                         **Confirmed**   Monique Mommer
  11/07/2015        016 Rücken (Swimming)                 Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
  11/07/2015        016 Rücken (Swimming)                 Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
- 26/07/2015        017 Rücken (Swimming)                 Edgar Engels (MES)                       **Confirmed**   Robin Rood
- 26/07/2015        016 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
- 26/07/2015        013 Rücken (Swimming)                 Jean Dupont (ML)                         **Confirmed**   Monique Mommer
+ 26/07/2015        017 Rücken (Swimming)                 Edgar Engels (MES)                       **Confirmed**   Romain Raffault
+ 26/07/2015        016 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Romain Raffault
+ 26/07/2015        013 Rücken (Swimming)                 Jean Dupont (ML)                         **Confirmed**   Romain Raffault
 ================= ===================================== ======================================== =============== =================
 <BLANKLINE>
 

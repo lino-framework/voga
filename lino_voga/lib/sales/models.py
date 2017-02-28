@@ -22,7 +22,7 @@
 
 from __future__ import unicode_literals
 
-from lino_cosi.lib.sales.models import *
+from lino_xl.lib.sales.models import *
 from lino.api import _
 
 

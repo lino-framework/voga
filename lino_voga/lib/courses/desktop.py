@@ -31,9 +31,10 @@ from django.utils.translation import ugettext_lazy as _
 from lino.api import dd, rt
 
 from lino.utils import join_elems
-from lino_voga.lib.contacts.models import PersonDetail
 
 from lino_xl.lib.courses.desktop import *
+from lino_xl.lib.courses.roles import CoursesUser
+from lino_voga.lib.contacts.models import PersonDetail
 
 contacts = dd.resolve_app('contacts')
 
@@ -45,6 +46,7 @@ from lino.utils.report import Report
 
 class TeacherTypes(dd.Table):
     model = 'courses.TeacherType'
+    required_roles = dd.login_required(CoursesUser)
     detail_layout = """
     id name
     courses.TeachersByType
@@ -53,6 +55,7 @@ class TeacherTypes(dd.Table):
 
 class PupilTypes(dd.Table):
     model = 'courses.PupilType'
+    required_roles = dd.login_required(CoursesUser)
     detail_layout = """
     id name
     courses.PupilsByType
@@ -61,6 +64,7 @@ class PupilTypes(dd.Table):
 
 class CourseTypes(dd.Table):
     model = 'courses.CourseType'
+    required_roles = dd.login_required(CoursesUser)
     detail_layout = """
     id name
     courses.LinesByType
@@ -92,7 +96,7 @@ confirmation_details invoicing.InvoicingsByInvoiceable
 """
 
 
-from lino_cosi.lib.invoicing.models import InvoicingsByInvoiceable
+from lino_xl.lib.invoicing.models import InvoicingsByInvoiceable
 
 InvoicingsByInvoiceable.column_names = (
     "voucher title qty voucher__voucher_date "
@@ -363,9 +367,9 @@ class CoursesByTopic(CoursesByTopic):
 
     """
     order_by = ["ref"]
-    column_names = "overview #name weekdays_text:10 times_text:10 "\
+    column_names = "overview weekdays_text:10 times_text:10 "\
                    "max_places:8 confirmed "\
-                   "free_places requested *"
+                   "free_places requested trying *"
 
     # detail_layout = Courses.detail_layout
 
@@ -414,6 +418,7 @@ class StatusReport(Report):
     """
 
     label = _("Status Report")
+    required_roles = dd.login_required(CoursesUser)
 
     @classmethod
     def get_story(cls, self, ar):
