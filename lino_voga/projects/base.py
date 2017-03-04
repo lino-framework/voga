@@ -108,14 +108,12 @@ class Site(Site):
         wc(self.models.contacts.Company, master_key='partner_ptr')
         wc(self.models.courses.Pupil, master_key='partner_ptr')
 
-    def get_dashboard_items(self, user):
+    def unused_get_dashboard_items(self, user):
         """Defines the story to be displayed on the admin main page.
 
         """
         yield self.actors.courses.MyCoursesGiven
         yield self.actors.courses.StatusReport
-        # yield self.modules.courses.DraftCourses
-        # yield self.modules.courses.ActiveCourses
 
     def setup_plugins(self):
         """

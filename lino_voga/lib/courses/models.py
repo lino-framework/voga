@@ -475,8 +475,8 @@ class Course(Referrable, Course, PrintableObject):
         # python_2_unicode_compatible
         return "{0} #{1}".format(self._meta.verbose_name, self.pk)
 
-    def update_cal_summary(self, i):
-        label = dd.babelattr(self.line.event_type, 'event_label')
+    def update_cal_summary(self, et, i):
+        label = dd.babelattr(et, 'event_label')
         if self.ref:
             label = self.ref + ' ' + label
         return "%s %d" % (label, i)

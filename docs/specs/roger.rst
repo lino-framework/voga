@@ -127,12 +127,12 @@ Here is the output of :func:`walk_menu_items
 - Büro --> Mein E-Mail-Ausgang : 1
 - Büro --> Meine Auszüge : 0
 - Kalender --> Meine Termine : 58
-- Kalender --> Überfällige Termine : 29
+- Kalender --> Überfällige Termine : 74
 - Kalender --> Unbestätigte Termine : 3
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
 - Kalender --> Meine Anwesenheiten : 1
-- Kalender --> Meine überfälligen Termine : 5
+- Kalender --> Meine überfälligen Termine : 15
 - Kalender --> Buchungen : 4
 - Buchhaltung --> Verkauf --> Verkaufsrechnungen (SLS) : 0
 - Buchhaltung --> Verkauf --> Gutschriften Verkauf (SLC) : 0
@@ -167,6 +167,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Kalender --> Periodische Terminregeln : 17
 - Konfigurierung --> Kalender --> Gastrollen : 4
 - Konfigurierung --> Kalender --> Kalendereintragsarten : 9
+- Konfigurierung --> Kalender --> Event Policies : 7
 - Konfigurierung --> Kalender --> Externe Kalender : 1
 - Konfigurierung --> Tarife --> Tarife : 12
 - Konfigurierung --> Tarife --> Tarifkategorien : 6
@@ -187,14 +188,14 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Büro --> Auszugsarten : 12
 - Explorer --> System --> Vollmachten : 1
 - Explorer --> System --> Benutzerarten : 5
-- Explorer --> System --> Datenbankmodelle : 78
+- Explorer --> System --> Datenbankmodelle : 79
 - Explorer --> System --> Datentests : 10
 - Explorer --> System --> Datenprobleme : 15
 - Explorer --> System --> Benachrichtigungen : 7
 - Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
 - Explorer --> Kontakte --> Listenmitgliedschaften : 1
-- Explorer --> Kalender --> Kalendereinträge : 714
+- Explorer --> Kalender --> Kalendereinträge : 1084
 - Explorer --> Kalender --> Aufgaben : 1
 - Explorer --> Kalender --> Anwesenheiten : 1
 - Explorer --> Kalender --> Abonnements : 36

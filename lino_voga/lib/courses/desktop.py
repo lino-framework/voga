@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -41,7 +41,6 @@ contacts = dd.resolve_app('contacts')
 day_and_month = dd.plugins.courses.day_and_month
 
 from lino_xl.lib.cal.ui import EventsByController
-from lino.utils.report import Report
 
 
 class TeacherTypes(dd.Table):
@@ -410,21 +409,6 @@ class LinesByType(Lines):
 #     hide_sums = True
 
 
-
-
-class StatusReport(Report):
-    """Gives an overview about what's up today .
-
-    """
-
-    label = _("Status Report")
-    required_roles = dd.login_required(CoursesUser)
-
-    @classmethod
-    def get_story(cls, self, ar):
-        for topic in rt.models.courses.Topic.objects.all():
-            yield E.h3(str(topic))
-            yield ar.spawn(CoursesByTopic, master_instance=topic)
 
 
 class EnrolmentsAndPaymentsByCourse(Enrolments):
