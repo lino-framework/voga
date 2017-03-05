@@ -24,7 +24,7 @@ The database structure
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, cosi, contacts, lists, beid, contenttypes, gfks, plausibility, cal, products, rooms, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes.
-76 models:
+77 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
@@ -32,6 +32,7 @@ The database structure
  accounts.Group             accounts.Groups                6         7
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
+ cal.EventPolicy            cal.EventPolicies              19        6
  cal.EventType              cal.EventTypes                 17        8
  cal.Guest                  cal.Guests                     6         0
  cal.GuestRole              cal.GuestRoles                 4         3
@@ -48,7 +49,7 @@ The database structure
  contacts.Person            contacts.Persons               40        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
- contenttypes.ContentType   gfks.ContentTypes              3         77
+ contenttypes.ContentType   gfks.ContentTypes              3         78
  countries.Country          countries.Countries            6         8
  countries.Place            countries.Places               8         78
  courses.Course             courses.Activities             33        25
@@ -127,7 +128,7 @@ Here is the output of
 - cal.Event :
   - CASCADE : cal.Guest.event
 - cal.EventType :
-  - PROTECT : cal.Event.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, rooms.Booking.event_type, system.SiteConfig.default_event_type, users.User.event_type
+  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, rooms.Booking.event_type, system.SiteConfig.default_event_type, users.User.event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role, courses.Line.guest_role, system.SiteConfig.pupil_guestrole
 - cal.Priority :

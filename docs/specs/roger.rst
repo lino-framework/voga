@@ -167,6 +167,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Kalender --> Periodische Terminregeln : 17
 - Konfigurierung --> Kalender --> Gastrollen : 4
 - Konfigurierung --> Kalender --> Kalendereintragsarten : 9
+- Konfigurierung --> Kalender --> Event Policies : 7
 - Konfigurierung --> Kalender --> Externe Kalender : 1
 - Konfigurierung --> Tarife --> Tarife : 12
 - Konfigurierung --> Tarife --> Tarifkategorien : 6
@@ -187,7 +188,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Büro --> Auszugsarten : 12
 - Explorer --> System --> Vollmachten : 1
 - Explorer --> System --> Benutzerarten : 5
-- Explorer --> System --> Datenbankmodelle : 78
+- Explorer --> System --> Datenbankmodelle : 79
 - Explorer --> System --> Datentests : 10
 - Explorer --> System --> Datenprobleme : 15
 - Explorer --> System --> Benachrichtigungen : 7
