@@ -167,7 +167,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Kalender --> Periodische Terminregeln : 17
 - Konfigurierung --> Kalender --> Gastrollen : 4
 - Konfigurierung --> Kalender --> Kalendereintragsarten : 9
-- Konfigurierung --> Kalender --> Event Policies : 7
+- Konfigurierung --> Kalender --> Terminregeln : 7
 - Konfigurierung --> Kalender --> Externe Kalender : 1
 - Konfigurierung --> Tarife --> Tarife : 12
 - Konfigurierung --> Tarife --> Tarifkategorien : 6
