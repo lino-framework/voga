@@ -20,7 +20,6 @@ default values in the filter parameters. In Voga we want to see
 only courses for which new enrolments can happen."""),
     'lino_voga.lib.courses.desktop.CoursesByLine.master' : _("""alias of Line"""),
     'lino_voga.lib.courses.desktop.CoursesByLine.model' : _("""alias of Course"""),
-    'lino_voga.lib.courses.desktop.StatusReport' : _("""Gives an overview about what's up today ."""),
     'lino_voga.lib.courses.desktop.EnrolmentsAndPaymentsByCourse' : _("""Show enrolments of a course together with
 invoicing_info and payment_info."""),
     'lino_voga.lib.courses.desktop.EnrolmentsAndPaymentsByCourse.master' : _("""alias of Course"""),

@@ -34,7 +34,6 @@ lino_voga.lib.courses.desktop
       PupilTypes
       Pupils
       PupilsByType
-      StatusReport
       TeacherDetail
       TeacherTypes
       Teachers
