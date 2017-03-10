@@ -38,8 +38,6 @@ from lino_voga.lib.contacts.models import PersonDetail
 
 contacts = dd.resolve_app('contacts')
 
-day_and_month = dd.plugins.courses.day_and_month
-
 from lino_xl.lib.cal.ui import EventsByController
 
 
@@ -220,38 +218,6 @@ class EventsByCourse(EventsByController):
                    "start_time end_time room summary *"
 
     slave_grid_format = "summary"
-
-    @classmethod
-    def get_slave_summary(self, obj, ar):
-        """The summary view for this table.
-
-        See :meth:`lino.core.actors.Actor.get_slave_summary`.
-
-        """
-        if ar is None:
-            return ''
-        sar = self.request_from(ar, master_instance=obj)
-
-        elems = []
-        for evt in sar:
-            # if len(elems) > 0:
-            #     elems.append(', ')
-            elems.append(' ')
-            if evt.auto_type:
-                # elems.append("({}) ".format(evt.auto_type))
-                elems.append("{}: ".format(evt.auto_type))
-            lbl = day_and_month(evt.start_date)
-            if evt.state.button_text:
-                lbl = "{0}{1}".format(lbl, evt.state.button_text)
-            elems.append(ar.obj2html(evt, lbl))
-        # elems = join_elems(elems, sep=', ')
-        sar = obj.do_update_events.request_from(sar)
-        if sar.get_permission():
-            btn = sar.ar2button(obj)
-            elems.append(E.p(btn))
-
-        # return E.div(class_="htmlText", *elems)
-        return ar.html_text(E.div(*elems))
 
 
 class CourseDetail(CourseDetail):

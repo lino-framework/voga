@@ -114,7 +114,7 @@ Let's take the first of them:
     True
 
 
->>> ses.show(cal.EventsByController, obj, column_names="when_text state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text state", nosummary=True)
 ======================== ===========
  When                     State
 ------------------------ -----------
@@ -144,7 +144,7 @@ True
 Update Events for 012 Rücken (Swimming)...
 Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 0 row(s) have been updated.
->>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text summary state", nosummary=True)
 ======================== ============= ===========
  When                     Summary       State
 ------------------------ ------------- -----------
@@ -194,7 +194,7 @@ Draft
 Note that all subsequent events have also been moved to their next
 available date.
 
->>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text summary state", nosummary=True)
 ======================== ============= ===========
  When                     Summary       State
 ------------------------ ------------- -----------
@@ -230,7 +230,7 @@ Note that 2016-05-16 is a holiday:
     >>> res = ses.run(obj.do_update_events)
     >>> res['success']
     True
-    >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
+    >>> ses.show(cal.EventsByController, obj, column_names="when_text state", nosummary=True)
     ======================== ===========
      When                     State
     ------------------------ -----------

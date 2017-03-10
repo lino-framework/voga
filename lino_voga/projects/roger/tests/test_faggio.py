@@ -83,7 +83,7 @@ class QuickTest(RemoteAuthTestCase):
             self.assertEqual(res['success'], True)
             self.assertEqual(res['info_message'].strip(), msg1.strip())
             ar = ses.spawn(cal.EventsByController, master_instance=obj)
-            s = ar.to_rst(column_names="when_text state summary")
+            s = ar.to_rst(column_names="when_text state summary", nosummary=True)
             # print s
             self.assertEqual(s.strip(), msg2.strip())
             
@@ -234,7 +234,7 @@ Update Guests for Recurrent event rule #1 National Day...
         self.assertEqual(res['info_message'], expected)
         ar = ses.spawn(
             cal.EventsByController, master_instance=national_day)
-        s = ar.to_rst(column_names="when_text state")
+        s = ar.to_rst(column_names="when_text state", nosummary=True)
         # print s
         self.assertEqual(s, """\
 ================ ===========
