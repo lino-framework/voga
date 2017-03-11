@@ -57,17 +57,17 @@ The following rooms are defined in the
 
 >>> ses = rt.login('robin')
 >>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS -REPORT_NDIFF
-================== ================== ===================== ================== =================== ============================= ============
+================== ================== ===================== ================== =================== ============================= ================================
  Designation        Designation (de)   Designation (fr)      Calendar           Tariff              Company                       City
------------------- ------------------ --------------------- ------------------ ------------------- ----------------------------- ------------
- Mirrored room      Spiegelsaal        Salle miroîtée        Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   Eupen
- Computer room      Computersaal       Salle informatique    Computer room      Rent per meeting    Lern- und Begegnungszentrum   Eupen
- Conferences room   Konferenzraum      Salle de conférence   Conferences room                       Lern- und Begegnungszentrum   Butgenbach
- Computer room      Computersaal       Salle informatique    Computer room                          Lern- und Begegnungszentrum   Butgenbach
- Computer room      Computersaal       Salle informatique    Computer room                          Zur Klüüs                     Kelmis
- Computer room      Computersaal       Salle informatique    Computer room                          Sport- und Freizeitzentrum    Sankt Vith
+------------------ ------------------ --------------------- ------------------ ------------------- ----------------------------- --------------------------------
+ Mirrored room      Spiegelsaal        Salle miroîtée        Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   Eupen (City)
+ Computer room      Computersaal       Salle informatique    Computer room      Rent per meeting    Lern- und Begegnungszentrum   Eupen (City)
+ Conferences room   Konferenzraum      Salle de conférence   Conferences room                       Lern- und Begegnungszentrum   Butgenbach / Bütgenbach (City)
+ Computer room      Computersaal       Salle informatique    Computer room                          Lern- und Begegnungszentrum   Butgenbach / Bütgenbach (City)
+ Computer room      Computersaal       Salle informatique    Computer room                          Zur Klüüs                     Kelmis / La Calamine (City)
+ Computer room      Computersaal       Salle informatique    Computer room                          Sport- und Freizeitzentrum    Sankt Vith / Saint-Vith (City)
  Outside            Draußen            Outside               Outside
-================== ================== ===================== ================== =================== ============================= ============
+================== ================== ===================== ================== =================== ============================= ================================
 <BLANKLINE>
 
 (The last room, because it has no company, caused a bug which was fixed on
