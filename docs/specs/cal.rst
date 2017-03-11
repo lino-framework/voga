@@ -57,17 +57,17 @@ The following rooms are defined in the
 
 >>> ses = rt.login('robin')
 >>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS -REPORT_NDIFF
-================== ================== ===================== ================== =================== ============================= ============
+================== ================== ===================== ================== =================== ============================= ================================
  Designation        Designation (de)   Designation (fr)      Calendar           Tariff              Company                       City
------------------- ------------------ --------------------- ------------------ ------------------- ----------------------------- ------------
- Mirrored room      Spiegelsaal        Salle miroîtée        Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   Eupen
- Computer room      Computersaal       Salle informatique    Computer room      Rent per meeting    Lern- und Begegnungszentrum   Eupen
- Conferences room   Konferenzraum      Salle de conférence   Conferences room                       Lern- und Begegnungszentrum   Butgenbach
- Computer room      Computersaal       Salle informatique    Computer room                          Lern- und Begegnungszentrum   Butgenbach
- Computer room      Computersaal       Salle informatique    Computer room                          Zur Klüüs                     Kelmis
- Computer room      Computersaal       Salle informatique    Computer room                          Sport- und Freizeitzentrum    Sankt Vith
+------------------ ------------------ --------------------- ------------------ ------------------- ----------------------------- --------------------------------
+ Mirrored room      Spiegelsaal        Salle miroîtée        Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   Eupen (City)
+ Computer room      Computersaal       Salle informatique    Computer room      Rent per meeting    Lern- und Begegnungszentrum   Eupen (City)
+ Conferences room   Konferenzraum      Salle de conférence   Conferences room                       Lern- und Begegnungszentrum   Butgenbach / Bütgenbach (City)
+ Computer room      Computersaal       Salle informatique    Computer room                          Lern- und Begegnungszentrum   Butgenbach / Bütgenbach (City)
+ Computer room      Computersaal       Salle informatique    Computer room                          Zur Klüüs                     Kelmis / La Calamine (City)
+ Computer room      Computersaal       Salle informatique    Computer room                          Sport- und Freizeitzentrum    Sankt Vith / Saint-Vith (City)
  Outside            Draußen            Outside               Outside
-================== ================== ===================== ================== =================== ============================= ============
+================== ================== ===================== ================== =================== ============================= ================================
 <BLANKLINE>
 
 (The last room, because it has no company, caused a bug which was fixed on
@@ -114,7 +114,7 @@ Let's take the first of them:
     True
 
 
->>> ses.show(cal.EventsByController, obj, column_names="when_text state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text state", nosummary=True)
 ======================== ===========
  When                     State
 ------------------------ -----------
@@ -144,7 +144,7 @@ True
 Update Events for 012 Rücken (Swimming)...
 Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 0 row(s) have been updated.
->>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text summary state", nosummary=True)
 ======================== ============= ===========
  When                     Summary       State
 ------------------------ ------------- -----------
@@ -194,7 +194,7 @@ Draft
 Note that all subsequent events have also been moved to their next
 available date.
 
->>> ses.show(cal.EventsByController, obj, column_names="when_text summary state")
+>>> ses.show(cal.EventsByController, obj, column_names="when_text summary state", nosummary=True)
 ======================== ============= ===========
  When                     Summary       State
 ------------------------ ------------- -----------
@@ -230,7 +230,7 @@ Note that 2016-05-16 is a holiday:
     >>> res = ses.run(obj.do_update_events)
     >>> res['success']
     True
-    >>> ses.show(cal.EventsByController, obj, column_names="when_text state")
+    >>> ses.show(cal.EventsByController, obj, column_names="when_text state", nosummary=True)
     ======================== ===========
      When                     State
     ------------------------ -----------

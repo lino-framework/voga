@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ from lino_xl.lib.courses.models import *
 
 contacts = dd.resolve_app('contacts')
 
-day_and_month = dd.plugins.courses.day_and_month
+from lino_xl.lib.cal.utils import day_and_month
 
 MAX_SHOWN = 3  # maximum number of invoiced events shown in
                # invoicing_info
