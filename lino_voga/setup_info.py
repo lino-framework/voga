@@ -27,9 +27,10 @@ SETUP_INFO = dict(
     # version='0.0.4',
     version='2016.12.0',
     install_requires=[
-        'lino',
+        'lino_xl',
         #'lino_cosi',
-        'weasyprint', 'cairocffi', 'channels'],
+        #'cairocffi'
+        ],
     test_suite='tests',
     tests_require=['pytest'],
     description="A Lino application for managing courses, "

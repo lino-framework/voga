@@ -241,11 +241,6 @@ class CourseDetail(CourseDetail):
 
     enrolments_top = 'enrolments_until fee:15 max_places:10 confirmed free_places:10 print_actions:15'
 
-    enrolments = dd.Panel("""
-    enrolments_top
-    EnrolmentsByCourse
-    """, label=_("Enrolments"))
-
     more = dd.Panel("""
     # company contact_person
     state user payment_term paper_type id

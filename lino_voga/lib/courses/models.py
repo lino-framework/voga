@@ -32,7 +32,6 @@ from builtins import str
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy as pgettext
-from django.utils.translation import string_concat
 
 from lino.utils.mti import get_child
 from lino.api import dd, rt
@@ -42,7 +41,6 @@ from lino.modlib.printing.mixins import Printable
 from lino_xl.lib.invoicing.mixins import Invoiceable
 from lino_xl.lib.accounts.utils import DEBIT
 from lino.utils import join_elems
-from lino.modlib.printing.utils import PrintableObject
 
 from lino_xl.lib.courses.models import *
 
@@ -56,8 +54,6 @@ MAX_SHOWN = 3  # maximum number of invoiced events shown in
 # from lino.utils.media import TmpMediaFile
 
 from lino.modlib.printing.utils import CustomBuildMethod
-from lino.mixins.periods import Monthly
-from lino.modlib.printing.mixins import DirectPrintAction
 
 
 """The default activity are **courses**.  a **hike** usually includes
@@ -70,29 +66,6 @@ add = CourseAreas.add_item
 add('C', _("Courses"), 'default')    # one place per enrolment
 add('H', _("Hikes"), 'hikes', 'courses.Hikes')
 add('J', _("Journeys"), 'journeys', 'courses.Journeys')
-
-
-class PrintPresenceSheet(DirectPrintAction):
-    """Action to print a presence sheet.
-    """
-    combo_group = "creacert"
-    label = _("Presence sheet")
-    tplname = "presence_sheet"
-    build_method = "weasy2pdf"
-    icon_name = None
-    # show_in_bbar = False
-    parameters = Monthly(
-        show_remarks=models.BooleanField(
-            _("Show remarks"), default=False),
-        show_states=models.BooleanField(
-            _("Show states"), default=True))
-    params_layout = """
-    start_date
-    end_date
-    show_remarks
-    show_states
-    """
-    keep_user_values = True
 
 
 class XlsColumn(object):
@@ -354,7 +327,7 @@ class Line(Line):
 
 
 @dd.python_2_unicode_compatible
-class Course(Referrable, Course, PrintableObject):
+class Course(Referrable, Course):
     """Extends the standard model by adding a field :attr:`fee`.
 
     Also adds a :attr:`ref` field and defines a custom :meth:`__str__`
@@ -432,22 +405,6 @@ class Course(Referrable, Course, PrintableObject):
     quick_search_fields = 'name line__name line__topic__name ref'
 
     # course2xls = CourseToXls.create_action()
-
-    print_presence_sheet = PrintPresenceSheet()
-    print_presence_sheet_html = PrintPresenceSheet(
-        build_method='weasy2html',
-        label=string_concat(_("Presence sheet"), _(" (HTML)")))
-
-    @dd.displayfield(_("Print"))
-    def print_actions(self, ar):
-        if ar is None:
-            return ''
-        elems = []
-        elems.append(ar.instance_action_button(
-            self.print_presence_sheet))
-        elems.append(ar.instance_action_button(
-            self.print_presence_sheet_html))
-        return E.p(*join_elems(elems, sep=", "))
 
     @classmethod
     def get_registrable_fields(cls, site):
