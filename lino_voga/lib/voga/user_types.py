@@ -54,7 +54,7 @@ class Teacher(CoursesTeacher):  # , ExcerptsUser, OfficeUser):
 
 class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
                 LedgerStaff, SepaStaff, PlausibilityUser,
-                ExcerptsStaff, ProductsStaff):
+                ExcerptsStaff, ProductsStaff, Explorer):
     pass
 
 

@@ -123,7 +123,6 @@ User
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - VAT : Product invoices
-  - Activities : Activities
 - Site : About
 
 >>> rt.login('tom').show_menu()
