@@ -93,7 +93,7 @@ Secretary
 - Explorer :
   - System : content types, Plausibility checkers, Plausibility problems, Changes
   - Contacts : Contact Persons, List memberships
-  - Calendar : Presences, Event states, Guest states, Task states
+  - Calendar : Calendar entries, Presences, Event states, Guest states, Task states
   - VAT : Product invoices
   - Activities : Activities, Enrolments
 - Site : About
@@ -123,7 +123,6 @@ User
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - VAT : Product invoices
-  - Activities : Activities
 - Site : About
 
 >>> rt.login('tom').show_menu()

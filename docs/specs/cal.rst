@@ -40,7 +40,7 @@ The following workflows are defined in
 ======= ========= ============ ========= ========
  value   name      Afterwards   text      Symbol
 ------- --------- ------------ --------- --------
- 10      invited   No           Invited   ☐
+ 10      invited   No           Invited   ?
  40      present   Yes          Present   ☑
  50      absent    Yes          Absent    ☉
  60      excused   No           Excused   ⚕
