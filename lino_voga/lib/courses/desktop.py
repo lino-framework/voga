@@ -389,12 +389,16 @@ class EnrolmentsByHike(EnrolmentsByCourse):
     column_names = 'request_date pupil '\
                    'places:8 remark fee option amount ' \
                    'workflow_buttons *'
+    insert_layout = """
+    pupil
+    places option
+    remark
+    request_date user
+    """
 
 
-class EnrolmentsByJourney(EnrolmentsByCourse):
-    column_names = 'request_date pupil '\
-                   'places:8 remark fee option amount ' \
-                   'workflow_buttons *'
+class EnrolmentsByJourney(EnrolmentsByHike):
+    pass
 
 
 class HikeDetail(CourseDetail):
