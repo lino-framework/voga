@@ -19,7 +19,6 @@ lino_voga.lib.courses.models
       Enrolment
       InvoicingInfo
       Line
-      PrintPresenceSheet
       Pupil
       PupilType
       Teacher
