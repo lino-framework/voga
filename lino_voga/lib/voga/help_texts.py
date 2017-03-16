@@ -24,7 +24,6 @@ only courses for which new enrolments can happen."""),
 invoicing_info and payment_info."""),
     'lino_voga.lib.courses.desktop.EnrolmentsAndPaymentsByCourse.master' : _("""alias of Course"""),
     'lino_voga.lib.courses.desktop.EnrolmentsAndPaymentsByCourse.model' : _("""alias of Enrolment"""),
-    'lino_voga.lib.courses.models.PrintPresenceSheet' : _("""Action to print a presence sheet."""),
     'lino_voga.lib.courses.models.CourseToXls' : _("""Interesting, but currently not used."""),
     'lino_voga.lib.courses.models.Teacher' : _("""A teacher is a person with an additional field
 teacher_type."""),
