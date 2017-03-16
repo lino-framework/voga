@@ -10,6 +10,7 @@ lino_voga.projects.roger.tests.test_faggio
    .. autosummary::
    
       create
+      i2d
    
    
 
@@ -20,6 +21,8 @@ lino_voga.projects.roger.tests.test_faggio
    .. autosummary::
    
       QuickTest
+      RemoteAuthTestCase
+      UserTypes
    
    
 

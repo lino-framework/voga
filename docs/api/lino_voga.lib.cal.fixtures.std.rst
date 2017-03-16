@@ -9,6 +9,7 @@ lino_voga.lib.cal.fixtures.std
 
    .. autosummary::
    
+      lib_objects
       objects
    
    

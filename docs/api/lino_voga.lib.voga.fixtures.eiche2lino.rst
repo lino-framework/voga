@@ -15,6 +15,12 @@ lino_voga.lib.voga.fixtures.eiche2lino
 
    
    
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      MyBook2016
+   
    
 
    
