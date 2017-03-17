@@ -5,6 +5,13 @@ lino_voga.projects.roger.tests.test_max_places
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      create
+      i2d
+   
    
 
    
@@ -14,6 +21,8 @@ lino_voga.projects.roger.tests.test_max_places
    .. autosummary::
    
       QuickTest
+      RemoteAuthTestCase
+      UserTypes
    
    
 

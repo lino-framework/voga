@@ -5,6 +5,13 @@ lino_voga.lib.voga.migrate
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      override
+      resolve_model
+   
    
 
    
