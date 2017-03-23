@@ -35,7 +35,6 @@ users.UserTypes.admin:900
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
-  - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
   - VAT : Due invoices
   - Activities : Status Report
@@ -79,7 +78,6 @@ Secretary
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
-  - System : Broken GFKs
   - Accounting : Situation, Activity Report, Debtors, Creditors
   - VAT : Due invoices
   - Activities : Status Report
