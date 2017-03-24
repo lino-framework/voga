@@ -150,7 +150,6 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Aktivitätenreihen : 11
 - Aktivitäten --> Offene Einschreibungsanfragen : 10
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
-- Berichte --> System --> Broken GFKs : 0
 - Berichte --> Buchhaltung --> Schuldner : 0
 - Berichte --> Buchhaltung --> Gläubiger : 14
 - Berichte --> MwSt. --> Offene Rechnungen : 18
