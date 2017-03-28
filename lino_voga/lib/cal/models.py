@@ -32,7 +32,6 @@ from lino_xl.lib.cal.models import *
 
 from lino.modlib.users.choicelists import UserTypes
 
-from lino_xl.lib.contacts.mixins import ContactRelated
 from lino_xl.lib.courses.choicelists import EnrolmentStates
 
 # courses = dd.resolve_app('courses')
@@ -53,7 +52,7 @@ dd.inject_field('system.SiteConfig', 'pupil_guestrole',
                               blank=True, null=True))
 
 
-class Room(Room, ContactRelated):
+class Room(Room):
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
