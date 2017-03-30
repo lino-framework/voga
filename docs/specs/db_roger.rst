@@ -39,7 +39,7 @@ The database structure
  cal.Priority               cal.Priorities                 5         4
  cal.RecurrentEvent         cal.RecurrentEvents            21        16
  cal.RemoteCalendar         cal.RemoteCalendars            7         0
- cal.Room                   cal.Rooms                      9         7
+ cal.Room                   cal.AllRooms                   10        7
  cal.Subscription           cal.Subscriptions              4         35
  cal.Task                   cal.Tasks                      17        0
  changes.Change             changes.Changes                10        0
@@ -55,7 +55,7 @@ The database structure
  courses.Course             courses.Activities             33        25
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        82
- courses.Line               courses.Lines                  22        10
+ courses.Line               courses.Lines                  25        10
  courses.Pupil              courses.Pupils                 49        35
  courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
@@ -136,7 +136,7 @@ Here is the output of
 - cal.Room :
   - PROTECT : cal.Event.room, courses.Course.room, rooms.Booking.room
 - contacts.Company :
-  - PROTECT : cal.Room.company, contacts.Role.company, excerpts.Excerpt.company, notes.Note.company, rooms.Booking.company, system.SiteConfig.site_company
+  - PROTECT : cal.Room.company, contacts.Role.company, courses.Line.company, excerpts.Excerpt.company, notes.Note.company, rooms.Booking.company, system.SiteConfig.site_company
 - contacts.CompanyType :
   - PROTECT : contacts.Company.type
 - contacts.Partner :
@@ -144,9 +144,9 @@ Here is the output of
   - PROTECT : cal.Guest.partner, contacts.Partner.invoice_recipient, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : courses.Pupil.person_ptr, courses.Teacher.person_ptr
-  - PROTECT : cal.Room.contact_person, contacts.Role.person, excerpts.Excerpt.contact_person, notes.Note.contact_person, rooms.Booking.contact_person
+  - PROTECT : cal.Room.contact_person, contacts.Role.person, courses.Line.contact_person, excerpts.Excerpt.contact_person, notes.Note.contact_person, rooms.Booking.contact_person
 - contacts.RoleType :
-  - PROTECT : cal.Room.contact_role, contacts.Role.type, excerpts.Excerpt.contact_role, notes.Note.contact_role, rooms.Booking.contact_role
+  - PROTECT : cal.Room.contact_role, contacts.Role.type, courses.Line.contact_role, excerpts.Excerpt.contact_role, notes.Note.contact_role, rooms.Booking.contact_role
 - contenttypes.ContentType :
   - PROTECT : cal.Event.owner_type, cal.Task.owner_type, changes.Change.master_type, changes.Change.object_type, excerpts.Excerpt.owner_type, excerpts.ExcerptType.content_type, gfks.HelpText.content_type, notes.Note.owner_type, notify.Message.owner_type, outbox.Attachment.owner_type, outbox.Mail.owner_type, plausibility.Problem.owner_type, sales.InvoiceItem.invoiceable_type, uploads.Upload.owner_type
 - countries.Country :

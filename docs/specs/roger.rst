@@ -200,7 +200,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Kalender --> Abonnements : 36
 - Explorer --> Kalender --> Termin-Zustände : 4
 - Explorer --> Kalender --> Gast-Zustände : 4
-- Explorer --> Kalender --> Aufgaben-Zustände : 4
+- Explorer --> Kalender --> Aufgaben-Zustände : 5
 - Explorer --> Buchhaltung --> Ausgleichungsregeln : 12
 - Explorer --> Buchhaltung --> Belege : 205
 - Explorer --> Buchhaltung --> Belegarten : 5

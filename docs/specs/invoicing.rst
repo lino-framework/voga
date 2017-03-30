@@ -62,27 +62,27 @@ at four places:
 - on every *journal* which supports automatic invoice generation. 
 
 >>> rt.models.contacts.Partner.start_invoicing
-<StartInvoicingForPartner start_invoicing ('Create invoices')>
+<lino_xl.lib.invoicing.actions.StartInvoicingForPartner start_invoicing ('Create invoices')>
 
 >>> rt.models.courses.Course.start_invoicing
-<StartInvoicingForCourse start_invoicing ('Create invoices')>
+<lino_voga.lib.invoicing.models.StartInvoicingForCourse start_invoicing ('Create invoices')>
 
 API
 ===
 
 On the API level it defines the :class:`Invoiceable
-<lino_cosi.lib.invoicing.mixins.Invoiceable>` mixin.
+<lino_xl.lib.invoicing.mixins.Invoiceable>` mixin.
 
 The *invoices journal* which supports automatic generation is
 indirectly defined by the :attr:`voucher_model
-<lino_cosi.lib.invoicing.Plugin.voucher_model>` setting.
+<lino_xl.lib.invoicing.Plugin.voucher_model>` setting.
 
 >>> vt = dd.plugins.invoicing.get_voucher_type()
 >>> vt.table_class.start_invoicing
-<StartInvoicingForJournal start_invoicing ('Create invoices')>
+<lino_xl.lib.invoicing.actions.StartInvoicingForJournal start_invoicing ('Create invoices')>
 
 >>> rt.models.invoicing.Plan.start_invoicing
-<StartInvoicing start_invoicing ('Create invoices')>
+<lino_xl.lib.invoicing.actions.StartInvoicing start_invoicing ('Create invoices')>
 
 
 Enrolments as invoiceables
