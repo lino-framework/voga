@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -76,13 +76,13 @@ class QuickTest(RemoteAuthTestCase):
         ses = settings.SITE.login('robin')
 
         # utility function which runs update_events and checks whether
-        # info_message and output of cal.EventsByController are as
+        # info_message and output of cal.EntriesByController are as
         # expected:        
         def check_update(obj, msg1, msg2):
             res = ses.run(obj.do_update_events)
             self.assertEqual(res['success'], True)
             self.assertEqual(res['info_message'].strip(), msg1.strip())
-            ar = ses.spawn(cal.EventsByController, master_instance=obj)
+            ar = ses.spawn(cal.EntriesByController, master_instance=obj)
             s = ar.to_rst(column_names="when_text state summary", nosummary=True)
             # print s
             self.assertEqual(s.strip(), msg2.strip())
@@ -156,12 +156,12 @@ Update Guests for Activity #1 Lesson 5...
         # on this event. Lino then moves all subsequent events
         # accordingly.
 
-        ar = cal.EventsByController.request(
+        ar = cal.EntriesByController.request(
             master_instance=obj,
             known_values=dict(
                 start_date=i2d(20140120)))
         e = ar.data_iterator[0]
-        self.assertEqual(e.state, cal.EventStates.suggested)
+        self.assertEqual(e.state, cal.EntryStates.suggested)
         #
         res = ses.run(e.move_next)
 
@@ -176,7 +176,7 @@ Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
         # The event is now in state "draft" because it has been
         # modified by the user.
 
-        self.assertEqual(e.state, cal.EventStates.draft)
+        self.assertEqual(e.state, cal.EntryStates.draft)
         # e.full_clean()
         # e.save()
 
@@ -216,24 +216,24 @@ Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
 Update Events for National Day...
 Generating events between 2014-02-03 and 2020-05-22 (max. 72).
 Reached upper date limit 2020-05-22
-Update Guests for Recurrent event rule #1 National Day...
+Update Guests for Recurring event #1 National Day...
 0 row(s) have been updated.
-Update Guests for Recurrent event rule #1 National Day...
+Update Guests for Recurring event #1 National Day...
 0 row(s) have been updated.
-Update Guests for Recurrent event rule #1 National Day...
+Update Guests for Recurring event #1 National Day...
 0 row(s) have been updated.
-Update Guests for Recurrent event rule #1 National Day...
+Update Guests for Recurring event #1 National Day...
 0 row(s) have been updated.
-Update Guests for Recurrent event rule #1 National Day...
+Update Guests for Recurring event #1 National Day...
 0 row(s) have been updated.
-Update Guests for Recurrent event rule #1 National Day...
+Update Guests for Recurring event #1 National Day...
 0 row(s) have been updated.
-Update Guests for Recurrent event rule #1 National Day...
+Update Guests for Recurring event #1 National Day...
 0 row(s) have been updated.
 7 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
         ar = ses.spawn(
-            cal.EventsByController, master_instance=national_day)
+            cal.EntriesByController, master_instance=national_day)
         s = ar.to_rst(column_names="when_text state", nosummary=True)
         # print s
         self.assertEqual(s, """\
@@ -276,7 +276,7 @@ Update Guests for Recurrent event rule #1 National Day...
         check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
-Lesson 4 wants 2014-02-03 but conflicts with [Event #8 ('Recurrent event rule #1 National Day')], moving to 2014-02-10. 
+Lesson 4 wants 2014-02-03 but conflicts with [Event #8 ('Recurring event #1 National Day')], moving to 2014-02-10. 
 Update Guests for Activity #1 Lesson 1...
 0 row(s) have been updated.
 Update Guests for Activity #1 Lesson 2...
@@ -303,7 +303,7 @@ Update Guests for Activity #1 Lesson 5...
         # we move the first lesson one week down and set it to draft:
         
         e = cal.Event.objects.get(event_type=lesson, auto_type=1)
-        e.state = cal.EventStates.draft
+        e.state = cal.EntryStates.draft
         e.start_date = i2d(20140120)
         e.full_clean()
         e.save()
@@ -311,7 +311,7 @@ Update Guests for Activity #1 Lesson 5...
         check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-27 and 2020-05-22 (max. 5).
-Lesson 3 wants 2014-02-03 but conflicts with [Event #8 ('Recurrent event rule #1 National Day')], moving to 2014-02-10. 
+Lesson 3 wants 2014-02-03 but conflicts with [Event #8 ('Recurring event #1 National Day')], moving to 2014-02-10. 
 0 row(s) have been updated.
         """, """
 ================ =========== ==========

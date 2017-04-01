@@ -384,8 +384,8 @@ class Course(Referrable, Course):
     class Meta(Course.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
-        # verbose_name = _("Activity")
-        # verbose_name_plural = _('Activities')
+        verbose_name = _("Activity")
+        verbose_name_plural = _('Activities')
 
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
@@ -510,7 +510,7 @@ class InvoicingInfo(object):
             qs = enr.course.events_by_course.filter(
                 start_date__gte=start_date,
                 start_date__lte=self.max_date,
-                state=rt.models.cal.EventStates.took_place)
+                state=rt.models.cal.EntryStates.took_place)
             if enr.end_date:
                 qs = qs.filter(start_date__lte=enr.end_date)
             # Note that this query works only on the start_date of

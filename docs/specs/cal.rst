@@ -25,7 +25,7 @@ Workflow
 The following workflows are defined in
 :mod:`lino_voga.lib.cal.workflows`.
 
->>> rt.show(cal.EventStates)
+>>> rt.show(cal.EntryStates)
 ======= ============ ============ ======== =================== ======== ============= =========
  value   name         text         Symbol   Edit participants   Stable   Transparent   No auto
 ------- ------------ ------------ -------- ------------------- -------- ------------- ---------
@@ -114,7 +114,7 @@ Let's take the first of them:
     True
 
 
->>> ses.show(cal.EventsByController, obj, column_names="when_text state", nosummary=True)
+>>> ses.show(cal.EntriesByController, obj, column_names="when_text state", nosummary=True)
 ======================== ===========
  When                     State
 ------------------------ -----------
@@ -144,7 +144,7 @@ True
 Update Events for 012 Rücken (Swimming)...
 Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 0 row(s) have been updated.
->>> ses.show(cal.EventsByController, obj, column_names="when_text summary state", nosummary=True)
+>>> ses.show(cal.EntriesByController, obj, column_names="when_text summary state", nosummary=True)
 ======================== ============= ===========
  When                     Summary       State
 ------------------------ ------------- -----------
@@ -194,7 +194,7 @@ Draft
 Note that all subsequent events have also been moved to their next
 available date.
 
->>> ses.show(cal.EventsByController, obj, column_names="when_text summary state", nosummary=True)
+>>> ses.show(cal.EntriesByController, obj, column_names="when_text summary state", nosummary=True)
 ======================== ============= ===========
  When                     Summary       State
 ------------------------ ------------- -----------
@@ -217,12 +217,12 @@ manually modified.
 Note that 2016-05-16 is a holiday:
 
 >>> cal.Event.objects.filter(start_date=i2d(20160516))
-[Event #86 ('Recurrent event rule #12 Pentecost')]
+[Event #86 ('Recurring event #12 Pentecost')]
 
 .. Now for this test, in order to restore original state, we click on
    the "Reset" button:
 
-    >>> e.state = cal.EventStates.suggested
+    >>> e.state = cal.EntryStates.suggested
     >>> e.save()
 
     and re-run UpdateEvents a last time:
@@ -230,7 +230,7 @@ Note that 2016-05-16 is a holiday:
     >>> res = ses.run(obj.do_update_events)
     >>> res['success']
     True
-    >>> ses.show(cal.EventsByController, obj, column_names="when_text state", nosummary=True)
+    >>> ses.show(cal.EntriesByController, obj, column_names="when_text state", nosummary=True)
     ======================== ===========
      When                     State
     ------------------------ -----------

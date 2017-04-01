@@ -32,7 +32,7 @@ Here are the default holidays defined as recurrent event rules
 >>> rt.show(cal.RecurrentEvents)
 ... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 ============ ============ ============================ ===================== =================================== ==================== =====================
- Start date   End Date     Designation                  Designation (de)      Designation (fr)                    Recurrency           Calendar Event Type
+ Start date   End Date     Designation                  Designation (de)      Designation (fr)                    Recurrency           Calendar entry type
 ------------ ------------ ---------------------------- --------------------- ----------------------------------- -------------------- ---------------------
  01/01/2013                New Year's Day               Neujahr               Jour de l'an                        yearly               Holidays
  11/02/2013                Rosenmontag                  Rosenmontag           Lundi de carnaval                   Relative to Easter   Holidays

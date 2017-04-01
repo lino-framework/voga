@@ -38,7 +38,7 @@ from lino_voga.lib.contacts.models import PersonDetail
 
 contacts = dd.resolve_app('contacts')
 
-from lino_xl.lib.cal.ui import EventsByController
+from lino_xl.lib.cal.ui import EntriesByController
 
 
 class TeacherTypes(dd.Table):
@@ -163,7 +163,7 @@ class TeacherDetail(PersonDetail):
     main = PersonDetail.main + " courses"
 
     courses = dd.Panel("""
-    courses.EventsByTeacher
+    courses.EntriesByTeacher
     courses.CoursesByTeacher
     """, label=dd.plugins.courses.verbose_name)
 
@@ -174,7 +174,7 @@ class TeacherDetail(PersonDetail):
 #     general = dd.Panel(contacts.PersonDetail.main, label=_("General"))
 #     box5 = "remarks"
 #     main = "general courses.CoursesByTeacher \
-#     courses.EventsByTeacher cal.GuestsByPartner"
+#     courses.EntriesByTeacher cal.GuestsByPartner"
 
 
 class Teachers(contacts.Persons):
@@ -211,7 +211,7 @@ class PupilsByType(Pupils):
     master_key = 'pupil_type'
 
 
-class EventsByCourse(EventsByController):
+class EntriesByCourse(EntriesByController):
     """Shows the events linked to this course.
     """
     column_names = "start_date auto_type workflow_buttons "\
@@ -235,7 +235,7 @@ class CourseDetail(CourseDetail):
     events = dd.Panel("""
     every_unit every max_date max_events
     monday tuesday wednesday thursday friday saturday sunday
-    courses.EventsByCourse
+    courses.EntriesByCourse
 
     """, label=_("Events"))
 

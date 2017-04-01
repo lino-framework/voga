@@ -42,7 +42,7 @@ users.UserTypes.admin:900
   - System : Site Parameters, Users, Help Texts
   - Places : Countries, Places
   - Contacts : Organization types, Functions, List Types
-  - Calendar : Calendars, Rooms, Priorities, Recurrent event rules, Guest Roles, Calendar Event Types, Event Policies, Remote Calendars
+  - Calendar : Calendars, Rooms, Priorities, Recurring events, Guest Roles, Calendar entry types, Recurrency policies, Remote Calendars
   - Tariffs : Tariffs, Tariff Categories
   - Accounting : Account Groups, Accounts, Journals, Accounting periods, Payment Terms
   - VAT : VAT rules, Paper types
