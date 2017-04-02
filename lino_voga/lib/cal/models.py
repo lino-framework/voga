@@ -93,7 +93,7 @@ class Rooms(Rooms):
     detail_layout = """
     id name calendar
     fee company contact_person contact_role
-    cal.EventsByRoom
+    cal.EntriesByRoom
     """
 
 
@@ -158,7 +158,7 @@ class Event(Event):
         return settings.SITE.site_config.site_calendar
 
 
-class MyEvents(MyEvents):
+class MyEntries(MyEntries):
     column_names = 'when_text summary room owner workflow_buttons *'
 
 

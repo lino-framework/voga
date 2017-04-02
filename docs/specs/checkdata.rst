@@ -37,10 +37,10 @@ checkers.
  printing.CachedPrintableChecker   Check for missing target files
  countries.PlaceChecker            Check plausibility of geographical places.
  beid.BeIdCardHolderChecker        Check for invalid SSINs
- cal.EventGuestChecker             Events without participants
- cal.ConflictingEventsChecker      Check for conflicting events
- cal.ObsoleteEventTypeChecker      Obsolete event type of generated events
- cal.LongEventChecker              Too long-lasting events
+ cal.EventGuestChecker             Entries without participants
+ cal.ConflictingEventsChecker      Check for conflicting calendar entries
+ cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ cal.LongEntryChecker              Too long-lasting calendar entries
  ledger.VoucherChecker             Check integrity of ledger movements
  sepa.BankAccountChecker           Check for partner mismatches in bank accounts
 ================================= ===============================================

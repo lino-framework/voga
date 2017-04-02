@@ -163,10 +163,10 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Kalender --> Kalenderliste : 9
 - Konfigurierung --> Kalender --> Räume : 8
 - Konfigurierung --> Kalender --> Prioritäten : 5
-- Konfigurierung --> Kalender --> Periodische Terminregeln : 17
+- Konfigurierung --> Kalender --> Regelmäßige Ereignisse : 17
 - Konfigurierung --> Kalender --> Gastrollen : 4
 - Konfigurierung --> Kalender --> Kalendereintragsarten : 9
-- Konfigurierung --> Kalender --> Terminregeln : 7
+- Konfigurierung --> Kalender --> Wiederholungsregeln : 7
 - Konfigurierung --> Kalender --> Externe Kalender : 1
 - Konfigurierung --> Tarife --> Tarife : 12
 - Konfigurierung --> Tarife --> Tarifkategorien : 6

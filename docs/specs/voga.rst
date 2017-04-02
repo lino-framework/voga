@@ -6,6 +6,7 @@ Voga
 .. To run only this test::
 
    $ python setup.py test -s tests.DocsTests.test_voga
+   $ pytest -k test_voga
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
@@ -30,7 +31,7 @@ en
 >>> d = d.strftime(settings.SITE.date_format_strftime)
 >>> print(d)
 25.12.2015
->>> url = '/api/cal/MyEvents?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
+>>> url = '/api/cal/MyEntries?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
 >>> res = client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200

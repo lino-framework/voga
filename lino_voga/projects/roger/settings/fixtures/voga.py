@@ -575,12 +575,12 @@ class Loader2(Loader1):
                                     (obj, rc))
 
         Event = rt.models.cal.Event
-        EventStates = rt.models.cal.EventStates
+        EntryStates = rt.models.cal.EntryStates
         qs = Event.objects.filter(
             start_date__lt=dd.demo_date()).order_by('id')
         for i, e in enumerate(qs):
             if i % 8:
-                e.state = EventStates.took_place
+                e.state = EntryStates.took_place
                 yield e
 
         # n = 0
