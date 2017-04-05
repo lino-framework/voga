@@ -145,20 +145,20 @@ Update Events for 012 Rücken (Swimming)...
 Generating events between 2015-07-13 and 2020-05-22 (max. 10).
 0 row(s) have been updated.
 >>> ses.show(cal.EntriesByController, obj, column_names="when_text summary state", nosummary=True)
-======================== ============= ===========
- When                     Summary       State
------------------------- ------------- -----------
- Mon 21/03/2016 (11:00)   012 Hour 1    Suggested
- Mon 04/04/2016 (11:00)   012 Hour 2    Suggested
- Mon 11/04/2016 (11:00)   012 Hour 3    Suggested
- Mon 18/04/2016 (11:00)   012 Hour 4    Suggested
- Mon 25/04/2016 (11:00)   012 Hour 5    Suggested
- Mon 02/05/2016 (11:00)   012 Hour 6    Suggested
- Mon 09/05/2016 (11:00)   012 Hour 7    Suggested
- Mon 23/05/2016 (11:00)   012 Hour 8    Suggested
- Mon 30/05/2016 (11:00)   012 Hour 9    Suggested
- Mon 06/06/2016 (11:00)   012 Hour 10   Suggested
-======================== ============= ===========
+======================== =================== ===========
+ When                     Short description   State
+------------------------ ------------------- -----------
+ Mon 21/03/2016 (11:00)   012 Hour 1          Suggested
+ Mon 04/04/2016 (11:00)   012 Hour 2          Suggested
+ Mon 11/04/2016 (11:00)   012 Hour 3          Suggested
+ Mon 18/04/2016 (11:00)   012 Hour 4          Suggested
+ Mon 25/04/2016 (11:00)   012 Hour 5          Suggested
+ Mon 02/05/2016 (11:00)   012 Hour 6          Suggested
+ Mon 09/05/2016 (11:00)   012 Hour 7          Suggested
+ Mon 23/05/2016 (11:00)   012 Hour 8          Suggested
+ Mon 30/05/2016 (11:00)   012 Hour 9          Suggested
+ Mon 06/06/2016 (11:00)   012 Hour 10         Suggested
+======================== =================== ===========
 <BLANKLINE>
 
 We select the event no 4 (2013-12-23, 20140519):
@@ -195,20 +195,20 @@ Note that all subsequent events have also been moved to their next
 available date.
 
 >>> ses.show(cal.EntriesByController, obj, column_names="when_text summary state", nosummary=True)
-======================== ============= ===========
- When                     Summary       State
------------------------- ------------- -----------
- Mon 21/03/2016 (11:00)   012 Hour 1    Suggested
- Mon 04/04/2016 (11:00)   012 Hour 2    Suggested
- Mon 11/04/2016 (11:00)   012 Hour 3    Suggested
- Mon 25/04/2016 (11:00)   012 Hour 4    Draft
- Mon 02/05/2016 (11:00)   012 Hour 5    Suggested
- Mon 09/05/2016 (11:00)   012 Hour 6    Suggested
- Mon 23/05/2016 (11:00)   012 Hour 7    Suggested
- Mon 30/05/2016 (11:00)   012 Hour 8    Suggested
- Mon 06/06/2016 (11:00)   012 Hour 9    Suggested
- Mon 13/06/2016 (11:00)   012 Hour 10   Suggested
-======================== ============= ===========
+======================== =================== ===========
+ When                     Short description   State
+------------------------ ------------------- -----------
+ Mon 21/03/2016 (11:00)   012 Hour 1          Suggested
+ Mon 04/04/2016 (11:00)   012 Hour 2          Suggested
+ Mon 11/04/2016 (11:00)   012 Hour 3          Suggested
+ Mon 25/04/2016 (11:00)   012 Hour 4          Draft
+ Mon 02/05/2016 (11:00)   012 Hour 5          Suggested
+ Mon 09/05/2016 (11:00)   012 Hour 6          Suggested
+ Mon 23/05/2016 (11:00)   012 Hour 7          Suggested
+ Mon 30/05/2016 (11:00)   012 Hour 8          Suggested
+ Mon 06/06/2016 (11:00)   012 Hour 9          Suggested
+ Mon 13/06/2016 (11:00)   012 Hour 10         Suggested
+======================== =================== ===========
 <BLANKLINE>
 
 The state "Draft" is normal: it indicates that the event has been

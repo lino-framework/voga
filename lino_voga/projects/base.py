@@ -67,6 +67,7 @@ class Site(Site):
         yield 'lino_voga.lib.invoicing'
 
         yield 'lino_voga.lib.courses'
+        # yield 'lino.modlib.blacklist'
 
         # yield 'lino_xl.lib.products'
         # yield 'lino_xl.lib.accounts'

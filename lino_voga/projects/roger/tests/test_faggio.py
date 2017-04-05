@@ -102,15 +102,15 @@ Update Guests for Activity #1 Lesson 4...
 Update Guests for Activity #1 Lesson 5...
 0 row(s) have been updated.
 5 row(s) have been updated.""", """
-================ =========== ==========
- When             State       Summary
----------------- ----------- ----------
+================ =========== ===================
+ When             State       Short description
+---------------- ----------- -------------------
  Mon 13/01/2014   Suggested   Lesson 1
  Mon 20/01/2014   Suggested   Lesson 2
  Mon 27/01/2014   Suggested   Lesson 3
  Mon 03/02/2014   Suggested   Lesson 4
  Mon 10/02/2014   Suggested   Lesson 5
-================ =========== ==========
+================ =========== ===================
 """)
         
         # Decrease max_events and check whether the superfluous events
@@ -121,13 +121,13 @@ Update Guests for Activity #1 Lesson 5...
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 3).
 2 row(s) have been updated.""", """
-================ =========== ==========
- When             State       Summary
----------------- ----------- ----------
+================ =========== ===================
+ When             State       Short description
+---------------- ----------- -------------------
  Mon 13/01/2014   Suggested   Lesson 1
  Mon 20/01/2014   Suggested   Lesson 2
  Mon 27/01/2014   Suggested   Lesson 3
-================ =========== ==========
+================ =========== ===================
 """)
         
         # Run do_update_events for 5 events a second time
@@ -140,15 +140,15 @@ Update Guests for Activity #1 Lesson 4...
 Update Guests for Activity #1 Lesson 5...
 0 row(s) have been updated.
 2 row(s) have been updated.""", """
-================ =========== ==========
- When             State       Summary
----------------- ----------- ----------
+================ =========== ===================
+ When             State       Short description
+---------------- ----------- -------------------
  Mon 13/01/2014   Suggested   Lesson 1
  Mon 20/01/2014   Suggested   Lesson 2
  Mon 27/01/2014   Suggested   Lesson 3
  Mon 03/02/2014   Suggested   Lesson 4
  Mon 10/02/2014   Suggested   Lesson 5
-================ =========== ==========
+================ =========== ===================
 """)
 
         
@@ -186,15 +186,15 @@ Generating events between 2014-01-13 and 2020-05-22 (max. 5).
 Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
 0 row(s) have been updated.
 ""","""
-================ =========== ==========
- When             State       Summary
----------------- ----------- ----------
+================ =========== ===================
+ When             State       Short description
+---------------- ----------- -------------------
  Mon 13/01/2014   Suggested   Lesson 1
  Mon 27/01/2014   Draft       Lesson 2
  Mon 03/02/2014   Suggested   Lesson 3
  Mon 10/02/2014   Suggested   Lesson 4
  Mon 17/02/2014   Suggested   Lesson 5
-================ =========== ==========
+================ =========== ===================
 """)
 
         # Now we imagine that February 3 is the National Day in our
@@ -289,15 +289,15 @@ Update Guests for Activity #1 Lesson 5...
 0 row(s) have been updated.
 5 row(s) have been updated.
 """, """
-================ =========== ==========
- When             State       Summary
----------------- ----------- ----------
+================ =========== ===================
+ When             State       Short description
+---------------- ----------- -------------------
  Mon 13/01/2014   Suggested   Lesson 1
  Mon 20/01/2014   Suggested   Lesson 2
  Mon 27/01/2014   Suggested   Lesson 3
  Mon 10/02/2014   Suggested   Lesson 4
  Mon 17/02/2014   Suggested   Lesson 5
-================ =========== ==========
+================ =========== ===================
 """)
 
         # we move the first lesson one week down and set it to draft:
@@ -314,14 +314,14 @@ Generating events between 2014-01-27 and 2020-05-22 (max. 5).
 Lesson 3 wants 2014-02-03 but conflicts with [Event #8 ('Recurring event #1 National Day')], moving to 2014-02-10. 
 0 row(s) have been updated.
         """, """
-================ =========== ==========
- When             State       Summary
----------------- ----------- ----------
+================ =========== ===================
+ When             State       Short description
+---------------- ----------- -------------------
  Mon 20/01/2014   Draft       Lesson 1
  Mon 27/01/2014   Suggested   Lesson 2
  Mon 10/02/2014   Suggested   Lesson 3
  Mon 17/02/2014   Suggested   Lesson 4
  Mon 24/02/2014   Suggested   Lesson 5
-================ =========== ==========
+================ =========== ===================
 """)
         

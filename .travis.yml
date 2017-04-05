@@ -7,7 +7,7 @@ python:
 install:
   - sudo apt-get install -y tidy libreoffice python3-uno
   - pip install -U setuptools
-  - pip install -r requirements.txt
+  - test -e "requirements.$TRAVIS_BRANCH.txt" && ( pip install -r "requirements.$TRAVIS_BRANCH.txt" ) || ( pip install -r requirements.txt )
   - pip install -e .
 
 # command to run tests, e.g. python setup.py test
