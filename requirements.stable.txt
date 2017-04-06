@@ -4,3 +4,4 @@
 -e git+https://github.com/lino-framework/cosi.git@stable#egg=lino_cosi
 -e git+https://github.com/eliben/pycparser@release_v2.14#egg=pycparser
 pytest
+channels
