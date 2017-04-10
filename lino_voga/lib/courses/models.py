@@ -212,7 +212,7 @@ class PupilType(Referrable, mixins.BabelNamed, Printable):
         verbose_name_plural = _("Participant Types")
 
 
-class Pupil(contacts.Person, Enrollable):
+class Pupil(Enrollable, contacts.Person):
     """A **pupil** is a person with an additional field
     :attr:`pupil_type`.
 
