@@ -39,6 +39,7 @@ from lino.api import dd, rt
 from lino.mixins import Referrable
 from lino.modlib.printing.mixins import Printable
 from lino_xl.lib.invoicing.mixins import Invoiceable
+from lino_xl.lib.courses.mixins import Enrollable
 from lino_xl.lib.accounts.utils import DEBIT
 from lino.utils import join_elems
 
@@ -211,8 +212,7 @@ class PupilType(Referrable, mixins.BabelNamed, Printable):
         verbose_name_plural = _("Participant Types")
 
 
-@dd.python_2_unicode_compatible
-class Pupil(contacts.Person):
+class Pupil(contacts.Person, Enrollable):
     """A **pupil** is a person with an additional field
     :attr:`pupil_type`.
 
@@ -234,18 +234,7 @@ class Pupil(contacts.Person):
 
     # suggested_courses = dd.ShowSlaveTable('courses.SuggestedCoursesByPupil')
 
-    def __str__(self):
-        s = self.get_full_name(salutation=False)
-        info = self.get_enrolment_info()
-        if info:
-            s += " ({0})".format(info)
-        return s
-
     def get_enrolment_info(self):
-        """Return a short string with some additional information about this
-        pupil.
-
-        """
         if self.pupil_type:
             return self.pupil_type.ref
 
@@ -253,9 +242,7 @@ class Pupil(contacts.Person):
     def get_parameter_fields(cls, **fields):
         fields.update(
             partner_list=dd.ForeignKey(
-                'lists.List', blank=True, null=True),
-            course=dd.ForeignKey(
-                'courses.Course', blank=True, null=True))
+                'lists.List', blank=True, null=True))
 
         return super(Pupil, cls).get_parameter_fields(**fields)
 
@@ -292,8 +279,6 @@ class Pupil(contacts.Person):
         for t in super(Pupil, self).get_title_tags(ar):
             yield t
         pv = ar.param_values
-        if pv.course:
-            yield str(pv.course)
         if pv.partner_list:
             yield str(pv.partner_list)
 
