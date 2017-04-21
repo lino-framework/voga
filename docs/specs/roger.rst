@@ -118,7 +118,6 @@ Here is the output of :func:`walk_menu_items
 ... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Kontakte --> Personen : 73
 - Kontakte --> Organisationen : 30
-- Kontakte --> Partner : 102
 - Kontakte --> Partnerlisten : 9
 - Büro --> Meine Datenkontrollliste : 0
 - Büro --> Meine Benachrichtigungen : 2
@@ -193,6 +192,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Benachrichtigungen : 7
 - Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
+- Explorer --> Kontakte --> Partner : 102
 - Explorer --> Kontakte --> Listenmitgliedschaften : 1
 - Explorer --> Kalender --> Kalendereinträge : 714
 - Explorer --> Kalender --> Aufgaben : 1

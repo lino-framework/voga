@@ -25,7 +25,7 @@ Robin is a system administrator, he has a complete menu:
 users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Contacts : Persons, Organizations, Partners, Partner Lists
+- Contacts : Persons, Organizations, Partner Lists
 - Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar
 - Accounting :
@@ -50,7 +50,7 @@ users.UserTypes.admin:900
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
   - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notification messages, Changes
-  - Contacts : Contact Persons, List memberships
+  - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
   - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
@@ -68,7 +68,7 @@ Secretary
 
 >>> rt.login('monique').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Contacts : Persons, Organizations, Partners, Partner Lists
+- Contacts : Persons, Organizations, Partner Lists
 - Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Accounting :
@@ -90,7 +90,7 @@ Secretary
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - System : content types, Plausibility checkers, Plausibility problems, Changes
-  - Contacts : Contact Persons, List memberships
+  - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Presences, Event states, Guest states, Task states
   - VAT : Product invoices
   - Activities : Activities, Enrolments
@@ -104,7 +104,7 @@ User
 
 >>> rt.login('marianne').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Contacts : Persons, Organizations, Partners, Partner Lists
+- Contacts : Persons, Organizations, Partner Lists
 - Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Accounting :
@@ -120,6 +120,7 @@ User
 - Configure :
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
+  - Contacts : Partners
   - VAT : Product invoices
 - Site : About
 
