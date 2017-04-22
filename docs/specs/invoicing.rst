@@ -313,32 +313,36 @@ Invoiced : (...) 23.02., 02.03., 16.03.
 Not invoiced : 20.02., 27.02., 06.03., 13.03., 27.03., 10.04., 17.04., 24.04.,
 08.05., 15.05.
 
+Here is a list of all enrolments:
 
 >>> rt.show(rt.actors.courses.Enrolments)
 ...     #doctest: +REPORT_UDIFF +ELLIPSIS
-================= ===================================== ======================================== =============== =================
- Date of request   Activity                              Participant                              Actions         Author
------------------ ------------------------------------- ---------------------------------------- --------------- -----------------
- 14/09/2013        022C MED (Finding your inner peace)   Luc Faymonville (ME)                     **Requested**   Tom Thess
- 14/09/2013        022C MED (Finding your inner peace)   Christian Radermacher (ME)               **Confirmed**   Marianne Martin
- 19/09/2013        022C MED (Finding your inner peace)   Bernd Brecht (MS)                        **Requested**   Monique Mommer
- 08/11/2013        024C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Monique Mommer
- 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Rolf Rompen
- 08/11/2013        025C Yoga                             Guido Radermacher (ME)                   **Confirmed**   Rolf Rompen
- 23/11/2013        025C Yoga                             Gregory Groteclaes (ME)                  **Confirmed**   Romain Raffault
+================= ===================================== ========= ======================================== =============== =================
+ Date of request   Activity                              State     Participant                              Actions         Author
+----------------- ------------------------------------- --------- ---------------------------------------- --------------- -----------------
+ 14/09/2013        022C MED (Finding your inner peace)   Started   Luc Faymonville (ME)                     **Requested**   Tom Thess
+ 14/09/2013        022C MED (Finding your inner peace)   Started   Christian Radermacher (ME)               **Confirmed**   Marianne Martin
+ 19/09/2013        022C MED (Finding your inner peace)   Started   Bernd Brecht (MS)                        **Requested**   Monique Mommer
+ 08/11/2013        024C Yoga                             Started   Gregory Groteclaes (ME)                  **Confirmed**   Monique Mommer
+ 08/11/2013        025C Yoga                             Started   Guido Radermacher (ME)                   **Confirmed**   Rolf Rompen
+ 08/11/2013        025C Yoga                             Started   Guido Radermacher (ME)                   **Confirmed**   Rolf Rompen
+ 23/11/2013        025C Yoga                             Started   Gregory Groteclaes (ME)                  **Confirmed**   Romain Raffault
+ 23/11/2013        024C Yoga                             Started   Guido Radermacher (ME)                   **Confirmed**   Romain Raffault
+ 26/02/2014        003 comp (First Steps)                Started   Christian Radermacher (ME)               **Confirmed**   Robin Rood
+ 08/03/2014        009C BT (Belly dancing)               Started   Otto Östges (ME)                         **Confirmed**   Robin Rood
+ 13/03/2014        004 comp (First Steps)                Started   Annette Arens (ME)                       **Confirmed**   Marianne Martin
  ...
- 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Rolf Rompen
- 11/07/2015        014 Rücken (Swimming)                 Gregory Groteclaes (ME)                  **Confirmed**   Rolf Rompen
- 11/07/2015        013 Rücken (Swimming)                 Laura Laschet (ME)                       **Confirmed**   Monique Mommer
- 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
- 11/07/2015        017 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
- 11/07/2015        012 Rücken (Swimming)                 Otto Östges (ME)                         **Confirmed**   Monique Mommer
- 11/07/2015        016 Rücken (Swimming)                 Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
- 11/07/2015        016 Rücken (Swimming)                 Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
- 26/07/2015        017 Rücken (Swimming)                 Edgar Engels (MES)                       **Confirmed**   Romain Raffault
- 26/07/2015        016 Rücken (Swimming)                 Alfons Radermacher (MS)                  **Confirmed**   Romain Raffault
- 26/07/2015        013 Rücken (Swimming)                 Jean Dupont (ML)                         **Confirmed**   Romain Raffault
-================= ===================================== ======================================== =============== =================
+ 11/07/2015        014 Rücken (Swimming)                 Started   Gregory Groteclaes (ME)                  **Confirmed**   Rolf Rompen
+ 11/07/2015        013 Rücken (Swimming)                 Started   Laura Laschet (ME)                       **Confirmed**   Monique Mommer
+ 11/07/2015        017 Rücken (Swimming)                 Started   Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
+ 11/07/2015        017 Rücken (Swimming)                 Started   Alfons Radermacher (MS)                  **Confirmed**   Rolf Rompen
+ 11/07/2015        012 Rücken (Swimming)                 Started   Otto Östges (ME)                         **Confirmed**   Monique Mommer
+ 11/07/2015        016 Rücken (Swimming)                 Started   Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
+ 11/07/2015        016 Rücken (Swimming)                 Started   Marie-Louise Vandenmeulenbos (ME)        **Confirmed**   Rolf Rompen
+ 26/07/2015        017 Rücken (Swimming)                 Started   Edgar Engels (MES)                       **Confirmed**   Romain Raffault
+ 26/07/2015        016 Rücken (Swimming)                 Started   Alfons Radermacher (MS)                  **Confirmed**   Romain Raffault
+ 26/07/2015        013 Rücken (Swimming)                 Started   Jean Dupont (ML)                         **Confirmed**   Romain Raffault
+================= ===================================== ========= ======================================== =============== =================
 <BLANKLINE>
 
 
