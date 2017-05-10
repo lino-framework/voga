@@ -127,7 +127,7 @@ Here is the output of :func:`walk_menu_items
 - Büro --> Meine Auszüge : 0
 - Kalender --> Meine Termine : 58
 - Kalender --> Überfällige Termine : 29
-- Kalender --> Unbestätigte Termine : 3
+- Kalender --> Unbestätigte Termine : 5
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
 - Kalender --> Meine Anwesenheiten : 1
