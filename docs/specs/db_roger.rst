@@ -74,7 +74,7 @@ The database structure
  invoicing.Item             invoicing.Items                10        6
  invoicing.Plan             invoicing.Plans                7         1
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
- ledger.Journal             ledger.Journals                19        7
+ ledger.Journal             ledger.Journals                20        7
  ledger.MatchRule           ledger.MatchRules              3         11
  ledger.Movement            ledger.Movements               10        697
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
@@ -96,7 +96,7 @@ The database structure
  sales.InvoiceItem          sales.InvoiceItems             15        101
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 24        83
- sepa.Account               sepa.Accounts                  6         17
+ sepa.Account               sepa.Accounts                  6         18
  system.SiteConfig          system.SiteConfigs             19        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0
@@ -212,7 +212,7 @@ Here is the output of
   - CASCADE : sales.InvoiceItem.voucher
   - SET_NULL : invoicing.Item.invoice
 - sepa.Account :
-  - PROTECT : finan.PaymentOrderItem.bank_account
+  - PROTECT : finan.PaymentOrderItem.bank_account, ledger.Journal.sepa_account
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
 - users.User :
