@@ -91,7 +91,8 @@ class Loader1(object):
         company = Instantiator('contacts.Company', 'name city:name').build
 
         we = company("Die Buche V.o.G.", "Eupen",
-                     street="Birkenweg", street_no=5)
+                     street="Birkenweg", street_no=5,
+                     vat_id="BE0123456789")
         yield we
         settings.SITE.site_config.site_company = we
         yield settings.SITE.site_config

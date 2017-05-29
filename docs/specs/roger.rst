@@ -219,7 +219,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Finanzjournale --> Kontoauszüge : 22
 - Explorer --> Finanzjournale --> Diverse Buchungen : 1
 - Explorer --> Finanzjournale --> Zahlungsaufträge : 17
-- Explorer --> SEPA --> Bankkonten : 18
+- Explorer --> SEPA --> Bankkonten : 19
 - Explorer --> Büro --> Notizen : 101
 - Explorer --> Büro --> Uploads : 1
 - Explorer --> Büro --> Upload-Bereiche : 1
