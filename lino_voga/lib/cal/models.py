@@ -30,7 +30,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino_xl.lib.cal.models import *
 
-from lino.modlib.users.choicelists import UserTypes
+from lino.modlib.auth.choicelists import UserTypes
 
 from lino_xl.lib.courses.choicelists import EnrolmentStates
 
@@ -79,12 +79,12 @@ class Room(Room):
 
         if not settings.SITE.loading_from_dump:
 
-            profiles = set()
+            user_types = set()
             for p in UserTypes.items():
                 if p.has_required_roles([OfficeUser]):
-                    profiles.add(p)
+                    user_types.add(p)
             User = settings.SITE.user_model
-            for u in User.objects.filter(profile__in=profiles):
+            for u in User.objects.filter(user_type__in=user_types):
                 check_subscription(u, self.calendar)
 
 

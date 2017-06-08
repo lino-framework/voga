@@ -72,7 +72,7 @@ def objects():
 
         #~ PS = Cycler(courses.PresenceStatus.objects.all())
         CONTENTS = Cycler(rt.models.courses.Line.objects.all())
-        USERS = Cycler(rt.models.users.User.objects.all())
+        USERS = Cycler(rt.models.auth.User.objects.all())
         PLACES = Cycler(rt.models.cal.Room.objects.all())
         TEACHERS = Cycler(Teacher.objects.all())
         SLOTS = Cycler(rt.models.courses.Slot.objects.all())

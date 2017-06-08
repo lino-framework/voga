@@ -347,7 +347,7 @@ class CoursesByLine(CoursesByLine):
     only courses for which new enrolments can happen.
     
     TODO: when Lino gets class-based user roles, move this back to the
-    library table and show all courses only for users with profile
+    library table and show all courses only for users with user_type
     `courses.CourseManager`.
 
     """

@@ -61,7 +61,7 @@ def objects():
     yield fee_account
 
     Journal = rt.models.ledger.Journal
-    USERS = Cycler(rt.models.users.User.objects.all())
+    USERS = Cycler(rt.models.auth.User.objects.all())
     MEMBERS = Cycler(rt.models.courses.Pupil.objects.all())
 
     jnl = Journal.objects.get(ref='CSH')
