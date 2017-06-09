@@ -50,7 +50,7 @@ class Plugin(Plugin):
         'lino_xl.lib.cal', 'lino_xl.lib.invoicing', 'lino_xl.lib.sales']
     # needs_plugins = ['lino_xl.lib.cal', 'lino_cosi.lib.auto.sales']
 
-    def setup_main_menu(self, site, profile, m):
+    def setup_main_menu(self, site, user_type, m):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action('courses.MyCoursesGiven')
         m.add_action('courses.Pupils')
@@ -71,14 +71,14 @@ class Plugin(Plugin):
         m.add_action('courses.PendingRequestedEnrolments')
         m.add_action('courses.PendingConfirmedEnrolments')
 
-    def setup_config_menu(self, site, profile, m):
+    def setup_config_menu(self, site, user_type, m):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action('courses.CourseTypes')
         m.add_action('courses.TeacherTypes')
         m.add_action('courses.PupilTypes')
         m.add_action('courses.Slots')
 
-    def setup_reports_menu(self, site, profile, m):
+    def setup_reports_menu(self, site, user_type, m):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action('courses.StatusReport')
 

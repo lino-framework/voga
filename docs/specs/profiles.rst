@@ -21,7 +21,7 @@ System administrator
 Robin is a system administrator, he has a complete menu:
 
 >>> ses = rt.login('robin') 
->>> ses.user.profile
+>>> ses.user.user_type
 users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
@@ -63,7 +63,7 @@ users.UserTypes.admin:900
 
 Monique is a secretary.   
 
->>> print(rt.login('monique').user.profile)
+>>> print(rt.login('monique').user.user_type)
 Secretary
 
 >>> rt.login('monique').show_menu()
@@ -99,7 +99,7 @@ Secretary
 
 Marianne is a "simple user".
 
->>> print(rt.login('marianne').user.profile)
+>>> print(rt.login('marianne').user.user_type)
 User
 
 >>> rt.login('marianne').show_menu()

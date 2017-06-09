@@ -28,10 +28,10 @@ class Plugin(Plugin):
     verbose_name = _("Tariffs")
     extends_models = ['Product', 'ProductCat']
 
-    def setup_main_menu(self, site, profile, m):
+    def setup_main_menu(self, site, user_type, m):
         pass
 
-    def setup_config_menu(self, site, profile, m):
+    def setup_config_menu(self, site, user_type, m):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action('products.Products')
         m.add_action('products.ProductCats')
