@@ -32,6 +32,7 @@ en
 >>> print(d)
 25.12.2015
 >>> url = '/api/cal/MyEntries?start=0&limit=16&fmt=json&pv=%s&pv=%s&pv=&pv=&pv=&pv=&pv=&pv=&pv=' % (d,d)
+>>> client.force_login(rt.login('robin').user)
 >>> res = client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200
