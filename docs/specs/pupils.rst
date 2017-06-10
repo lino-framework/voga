@@ -23,6 +23,7 @@ gridfilter):
 >>> # url += "rp=ext-comp-1213&"
 >>> # url += "pv=&pv=&pv=&pv=&pv=&pv=&pv=&"
 >>> url += "filter=" + urlquote('[{"type":"string","value":"mem","field":"pupil_type"}]')
+>>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200
