@@ -40,13 +40,13 @@ ref."""),
     'lino_voga.lib.courses.models.Course.line' : _("""Pointer to the course series."""),
     'lino_voga.lib.courses.models.Course.fee' : _("""The default participation fee to apply for new enrolments."""),
     'lino_voga.lib.courses.models.Course.payment_term' : _("""The payment term to use when writing an invoice. If this is
-empty, Lino will use the partner’s default payment term."""),
+empty, Lino will use the partner's default payment term."""),
     'lino_voga.lib.courses.models.Course.paper_type' : _("""The paper_type to use when writing an invoice. If this is
-empty, Lino will use the site’s default paper type."""),
+empty, Lino will use the site's default paper type."""),
     'lino_voga.lib.courses.models.InvoicingInfo' : _("""A volatile object which holds invoicing information about a given
 enrolment."""),
-    'lino_voga.lib.courses.models.InvoicingInfo.enrolment' : _("""The enrolment it’s all about."""),
-    'lino_voga.lib.courses.models.InvoicingInfo.max_date' : _("""Don’t consider dates after this."""),
+    'lino_voga.lib.courses.models.InvoicingInfo.enrolment' : _("""The enrolment it's all about."""),
+    'lino_voga.lib.courses.models.InvoicingInfo.max_date' : _("""Don't consider dates after this."""),
     'lino_voga.lib.courses.models.InvoicingInfo.invoiceable_fee' : _("""Which fee to apply. If this is None,"""),
     'lino_voga.lib.courses.models.Enrolment' : _("""Adds"""),
     'lino_voga.lib.courses.models.Enrolment.fee' : _("""The participation fee to apply for this enrolment."""),
