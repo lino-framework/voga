@@ -217,7 +217,7 @@ manually modified.
 Note that 2016-05-16 is a holiday:
 
 >>> cal.Event.objects.filter(start_date=i2d(20160516))
-[Event #86 ('Recurring event #12 Pentecost')]
+<QuerySet [Event #86 ('Recurring event #12 Pentecost')]>
 
 .. Now for this test, in order to restore original state, we click on
    the "Reset" button:

@@ -23,13 +23,15 @@ The database structure
 >>> from lino.utils.diag import analyzer
 >>> print(analyzer.show_db_overview())
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-42 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, users, office, xl, countries, cosi, contacts, lists, beid, contenttypes, gfks, plausibility, cal, products, rooms, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes.
-77 models:
+43 apps: lino_startup, staticfiles, about, jinja, bootstrap3, extjs, printing, system, auth, office, xl, countries, cosi, contacts, lists, beid, contenttypes, gfks, plausibility, cal, products, rooms, accounts, weasyprint, ledger, vat, sales, invoicing, courses, finan, sepa, notify, notes, uploads, outbox, excerpts, voga, export_excel, extensible, wkhtmltopdf, appypod, changes, sessions.
+78 models:
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
  accounts.Account           accounts.Accounts              15        13
  accounts.Group             accounts.Groups                6         7
+ auth.Authority             auth.Authorities               3         0
+ auth.User                  auth.Users                     18        6
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
  cal.EventPolicy            cal.EventPolicies              19        6
@@ -97,11 +99,10 @@ The database structure
  sales.PaperType            sales.PaperTypes               5         2
  sales.VatProductInvoice    sales.Invoices                 24        83
  sepa.Account               sepa.Accounts                  6         18
+ sessions.Session           sessions.SessionTable          3         ...
  system.SiteConfig          system.SiteConfigs             19        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0
- users.Authority            users.Authorities              3         0
- users.User                 users.Users                    18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         136
  vat.VatAccountInvoice      vat.Invoices                   19        85
  vat.VatRule                vat.VatRules                   9         11
@@ -123,12 +124,14 @@ Here is the output of
   - PROTECT : finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
 - accounts.Group :
   - PROTECT : accounts.Account.group
+- auth.User :
+  - PROTECT : auth.Authority.authorized, auth.Authority.user, cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, notify.Message.user, outbox.Mail.user, plausibility.Problem.user, rooms.Booking.user, uploads.Upload.user
 - cal.Calendar :
   - PROTECT : cal.Room.calendar, cal.Subscription.calendar, system.SiteConfig.site_calendar
 - cal.Event :
   - CASCADE : cal.Guest.event
 - cal.EventType :
-  - PROTECT : cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, rooms.Booking.event_type, system.SiteConfig.default_event_type, users.User.event_type
+  - PROTECT : auth.User.event_type, cal.Event.event_type, cal.EventPolicy.event_type, cal.RecurrentEvent.event_type, courses.Line.event_type, rooms.Booking.event_type, system.SiteConfig.default_event_type
 - cal.GuestRole :
   - PROTECT : cal.Guest.role, courses.Line.guest_role, system.SiteConfig.pupil_guestrole
 - cal.Priority :
@@ -141,7 +144,7 @@ Here is the output of
   - PROTECT : contacts.Company.type
 - contacts.Partner :
   - CASCADE : contacts.Company.partner_ptr, contacts.Person.partner_ptr, sepa.Account.partner
-  - PROTECT : cal.Guest.partner, contacts.Partner.invoice_recipient, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.VatProductInvoice.partner, users.User.partner, vat.VatAccountInvoice.partner
+  - PROTECT : auth.User.partner, cal.Guest.partner, contacts.Partner.invoice_recipient, finan.BankStatementItem.partner, finan.JournalEntryItem.partner, finan.PaymentOrderItem.partner, invoicing.Item.partner, invoicing.Plan.partner, ledger.Movement.partner, lists.Member.partner, outbox.Recipient.partner, sales.VatProductInvoice.partner, vat.VatAccountInvoice.partner
 - contacts.Person :
   - CASCADE : courses.Pupil.person_ptr, courses.Teacher.person_ptr
   - PROTECT : cal.Room.contact_person, contacts.Role.person, courses.Line.contact_person, excerpts.Excerpt.contact_person, notes.Note.contact_person, rooms.Booking.contact_person
@@ -215,8 +218,6 @@ Here is the output of
   - PROTECT : finan.PaymentOrderItem.bank_account, ledger.Journal.sepa_account
 - uploads.UploadType :
   - PROTECT : uploads.Upload.type
-- users.User :
-  - PROTECT : cal.Event.assigned_to, cal.Event.user, cal.RecurrentEvent.user, cal.Subscription.user, cal.Task.user, changes.Change.user, courses.Course.user, courses.Enrolment.user, excerpts.Excerpt.user, invoicing.Plan.user, ledger.Voucher.user, notes.Note.user, notify.Message.user, outbox.Mail.user, plausibility.Problem.user, rooms.Booking.user, uploads.Upload.user, users.Authority.authorized, users.Authority.user
 - vat.VatAccountInvoice :
   - CASCADE : vat.InvoiceItem.voucher
 <BLANKLINE>

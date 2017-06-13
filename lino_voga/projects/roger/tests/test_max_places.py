@@ -31,7 +31,7 @@ from __future__ import unicode_literals
 
 from lino.api import rt
 from lino.api.shell import courses
-from lino.api.shell import users
+from lino.api.shell import auth
 from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase

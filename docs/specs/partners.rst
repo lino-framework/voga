@@ -58,6 +58,7 @@ No data to display
 >>> url = '/api/lists/Members?'
 >>> url += 'limit=10&start=0&fmt=json&'
 >>> url += "filter=" + urlquote('[{"type":"string","value":"3","field":"list"}]')
+>>> test_client.force_login(rt.login('robin').user)
 >>> res = test_client.get(url, REMOTE_USER='robin')
 >>> print(res.status_code)
 200
