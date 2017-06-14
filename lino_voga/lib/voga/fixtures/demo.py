@@ -26,8 +26,8 @@ from lino.api import dd, rt
 def objects():
     Person = rt.models.contacts.Person
     Teacher = rt.models.courses.Teacher
-    User = rt.models.auth.User
-    from lino.modlib.auth.choicelists import UserTypes
+    User = rt.models.users.User
+    from lino.modlib.users.choicelists import UserTypes
     Place = rt.models.countries.Place
     eupen = Place.objects.get(name__exact='Eupen')
 
