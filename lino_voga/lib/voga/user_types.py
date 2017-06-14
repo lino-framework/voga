@@ -59,7 +59,7 @@ class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
 
 
 from django.utils.translation import ugettext_lazy as _
-from lino.modlib.auth.choicelists import UserTypes
+from lino.modlib.users.choicelists import UserTypes
 UserTypes.clear()
 add = UserTypes.add_item
 add('000', _("Anonymous"), UserRole, name='anonymous', readonly=True)

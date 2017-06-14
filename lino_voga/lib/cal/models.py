@@ -30,7 +30,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from lino_xl.lib.cal.models import *
 
-from lino.modlib.auth.choicelists import UserTypes
+from lino.modlib.users.choicelists import UserTypes
 
 from lino_xl.lib.courses.choicelists import EnrolmentStates
 

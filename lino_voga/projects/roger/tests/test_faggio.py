@@ -30,12 +30,12 @@ from __future__ import unicode_literals
 
 from lino.api.shell import cal
 from lino.api.shell import courses
-from lino.api.shell import auth
+from lino.api.shell import users
 from django.conf import settings
 
 from lino.utils.djangotest import RemoteAuthTestCase
 from lino.utils import i2d
-from lino.modlib.auth.choicelists import UserTypes
+from lino.modlib.users.choicelists import UserTypes
 
 
 def create(model, **kwargs):
@@ -70,7 +70,7 @@ class QuickTest(RemoteAuthTestCase):
         # self.assertEqual(settings.SITE.plugins.extjs, dd.apps.extjs)
 
         settings.SITE.verbose_client_info_message = True
-        auth.User(username="robin",
+        users.User(username="robin",
                    user_type=UserTypes.admin,
                    language="en").save()
         ses = settings.SITE.login('robin')
