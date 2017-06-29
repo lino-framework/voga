@@ -73,11 +73,11 @@ class Site(Site):
         # yield 'lino_xl.lib.accounts'
         # yield 'lino_xl.lib.ledger'
         # yield 'lino_xl.lib.vat'
-        #~ yield 'lino_cosi.lib.declarations'
         #~ yield 'lino_xl.lib.sales'
         # yield 'lino_cosi.lib.auto.sales'
         yield 'lino_xl.lib.finan'
         yield 'lino_xl.lib.sepa'
+        # yield 'lino_xl.lib.declarations'
 
         # yield 'lino_voga.lib.courses'
 
