@@ -113,8 +113,8 @@ class Site(Site):
         """Defines the story to be displayed on the admin main page.
 
         """
-        yield self.actors.courses.MyCoursesGiven
-        yield self.actors.courses.StatusReport
+        yield self.models.courses.MyCoursesGiven
+        yield self.models.courses.StatusReport
 
     def setup_plugins(self):
         """
@@ -130,9 +130,9 @@ class Site(Site):
 
     def setup_quicklinks(self, user, tb):
         super(Site, self).setup_quicklinks(user, tb)
-        tb.add_action(self.actors.courses.Pupils)
+        tb.add_action(self.models.courses.Pupils)
         tb.add_action(
-            self.actors.courses.Pupils.insert_action,
+            self.models.courses.Pupils.insert_action,
             label=_("New {}").format(
                 self.models.courses.Pupil._meta.verbose_name))
 

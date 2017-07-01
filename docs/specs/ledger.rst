@@ -13,6 +13,7 @@ Ledger
     >>> startup('lino_voga.projects.roger.settings.doctests')
     >>> from lino.api.doctest import *
 
+
 Journals
 --------
 
@@ -39,6 +40,7 @@ Journals
  4000             Customers                 Kunden                      Clients                       Commercial receivable(?)
  4400             Suppliers                 Lieferanten                 Fournisseurs                  Commercial receivable(?)
  4510             VAT due                   Geschuldete MWSt            TVA due                       VAT to pay
+ 4511             VAT returnable            Rückzahlbare MWSt           TVA à retourner               VAT to pay
  4512             VAT deductible            Abziehbare MWSt             TVA déductible                VAT to pay
  4513             VAT to declare            MWSt zu deklarieren         TVA à declarer                Running transactions
  5500             Bestbank                  Bestbank                    Bestbank                      Banks
@@ -47,6 +49,7 @@ Journals
  6010             Purchase of services      Dienstleistungen            Services et biens divers      Expenses
  6020             Purchase of investments   Anlagen                     Investissements               Expenses
  6040             Purchase of goods         Wareneinkäufe               Achat de marchandise          Expenses
+ 7000             Sales                     Verkäufe                    Ventes                        Revenues
  7310             Membership fee            Mitgliedsbeitrag            Cotisation                    Revenues
  membership_fee   Membership fee            Mitgliedsbeitrag            Membership fee
 ================ ========================= =========================== ============================= ==========================
