@@ -19,8 +19,8 @@ class Site(Site):
     title = "Lino Voga à la Roger"
     languages = "en de fr"
 
-    demo_fixtures = """std few_countries euvatrates
-    minimal_ledger demo voga demo_bookings payments demo2 checkdata""".split()
+    demo_fixtures = """std few_countries minimal_ledger euvatrates
+    demo voga demo_bookings payments demo2 checkdata""".split()
 
     def setup_plugins(self):
         """

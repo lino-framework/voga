@@ -15,8 +15,8 @@ class Site(Site):
 
     demo_fixtures = """std
     few_countries few_cities
-    euvatrates
-    minimal_ledger demo voga demo2""".split()
+    minimal_ledger euvatrates
+    demo voga demo2""".split()
 
     # ignore_dates_before = None
     the_demo_date = datetime.date(2014, 9, 26)

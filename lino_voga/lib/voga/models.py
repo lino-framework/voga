@@ -48,8 +48,8 @@ else:
 #         """
 #         site_company next_partner_id:10
 #         default_build_method simulate_today
-#         clients_account   sales_account     sales_vat_account
-#         suppliers_account purchases_account purchases_vat_account
+#         clients_account   sales_account
+#         suppliers_account purchases_account
 #         site_calendar default_event_type pupil_guestrole
 #         max_auto_events hide_events_before
 #         """)

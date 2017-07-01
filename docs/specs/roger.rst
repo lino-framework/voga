@@ -170,11 +170,11 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Tarife --> Tarife : 12
 - Konfigurierung --> Tarife --> Tarifkategorien : 6
 - Konfigurierung --> Buchhaltung --> Kontengruppen : 8
-- Konfigurierung --> Buchhaltung --> Konten : 14
+- Konfigurierung --> Buchhaltung --> Konten : 16
 - Konfigurierung --> Buchhaltung --> Journale : 8
 - Konfigurierung --> Buchhaltung --> Buchungsperioden : 18
 - Konfigurierung --> Buchhaltung --> Zahlungsbedingungen : 9
-- Konfigurierung --> MwSt. --> MwSt-Regeln : 12
+- Konfigurierung --> MwSt. --> MwSt-Regeln : 7
 - Konfigurierung --> MwSt. --> Papierarten : 3
 - Konfigurierung --> Aktivitäten --> Aktivitätsarten : 1
 - Konfigurierung --> Aktivitäten --> Kursleiterarten : 5
@@ -208,7 +208,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
 - Explorer --> Buchhaltung --> Handelsarten : 4
 - Explorer --> Buchhaltung --> Journalgruppen : 4
-- Explorer --> MwSt. --> MwSt.-Regimes : 9
+- Explorer --> MwSt. --> MwSt.-Regimes : 11
 - Explorer --> MwSt. --> MwSt.-Klassen : 3
 - Explorer --> MwSt. --> Produktrechnungen : 84
 - Explorer --> MwSt. --> Produktrechnungszeilen : 102

@@ -28,7 +28,7 @@ The database structure
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- accounts.Account           accounts.Accounts              15        13
+ accounts.Account           accounts.Accounts              15        15
  accounts.Group             accounts.Groups                6         7
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
@@ -76,7 +76,7 @@ The database structure
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                20        7
  ledger.MatchRule           ledger.MatchRules              3         11
- ledger.Movement            ledger.Movements               10        697
+ ledger.Movement            ledger.Movements               13        697
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         205
  lists.List                 lists.Lists                    7         8
@@ -98,14 +98,14 @@ The database structure
  sales.VatProductInvoice    sales.Invoices                 24        83
  sepa.Account               sepa.Accounts                  6         18
  sessions.Session           sessions.SessionTable          3         ...
- system.SiteConfig          system.SiteConfigs             19        1
+ system.SiteConfig          system.SiteConfigs             17        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0
  users.Authority            users.Authorities              3         0
  users.User                 users.Users                    18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         136
  vat.VatAccountInvoice      vat.Invoices                   19        85
- vat.VatRule                vat.VatRules                   9         11
+ vat.VatRule                vat.VatRules                   12        6
 ========================== ============================== ========= =======
 <BLANKLINE>
 
@@ -121,7 +121,7 @@ Here is the output of
 >>> print(analyzer.show_foreign_keys())
 ... #doctest: +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - accounts.Account :
-  - PROTECT : finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account
+  - PROTECT : finan.BankStatement.item_account, finan.BankStatementItem.account, finan.JournalEntry.item_account, finan.JournalEntryItem.account, finan.PaymentOrder.item_account, finan.PaymentOrderItem.account, ledger.Journal.account, ledger.MatchRule.account, ledger.Movement.account, vat.InvoiceItem.account, vat.VatRule.vat_account, vat.VatRule.vat_returnable_account
 - accounts.Group :
   - PROTECT : accounts.Account.group
 - cal.Calendar :
