@@ -53,7 +53,7 @@ users.UserTypes.admin:900
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
-  - VAT : VAT regimes, VAT Classes, Product invoices, Product invoice items, Invoicing plans
+  - VAT : VAT regimes, VAT Classes, VAT columns, Invoices, Product invoices, Product invoice items, Invoicing plans
   - Activities : Activities, Enrolments, Enrolment states
   - Financial : Bank Statements, Journal Entries, Payment Orders
   - SEPA : Bank accounts
@@ -92,7 +92,7 @@ Secretary
   - System : content types, Plausibility checkers, Plausibility problems, Changes
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Presences, Event states, Guest states, Task states
-  - VAT : Product invoices
+  - VAT : Invoices, Product invoices
   - Activities : Activities, Enrolments
 - Site : About
 
@@ -121,7 +121,7 @@ User
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
   - Contacts : Partners
-  - VAT : Product invoices
+  - VAT : Invoices, Product invoices
 - Site : About
 
 >>> rt.login('tom').show_menu()

@@ -34,15 +34,15 @@ checkers.
 ================================= ===============================================
  value                             text
 --------------------------------- -----------------------------------------------
- beid.BeIdCardHolderChecker        Check for invalid SSINs
- cal.ConflictingEventsChecker      Check for conflicting calendar entries
- cal.EventGuestChecker             Entries without participants
- cal.LongEntryChecker              Too long-lasting calendar entries
- cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ printing.CachedPrintableChecker   Check for missing target files
  countries.PlaceChecker            Check plausibility of geographical places.
  ledger.VoucherChecker             Check integrity of ledger movements
- printing.CachedPrintableChecker   Check for missing target files
  sepa.BankAccountChecker           Check for partner mismatches in bank accounts
+ beid.BeIdCardHolderChecker        Check for invalid SSINs
+ cal.EventGuestChecker             Entries without participants
+ cal.ConflictingEventsChecker      Check for conflicting calendar entries
+ cal.ObsoleteEventTypeChecker      Obsolete event type of generated entries
+ cal.LongEntryChecker              Too long-lasting calendar entries
 ================================= ===============================================
 <BLANKLINE>
 

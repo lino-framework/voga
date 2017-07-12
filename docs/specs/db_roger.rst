@@ -105,7 +105,7 @@ The database structure
  users.User                 users.Users                    18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         136
  vat.VatAccountInvoice      vat.Invoices                   19        85
- vat.VatRule                vat.VatRules                   12        6
+ vat.VatRule                vat.VatRules                   13        6
 ========================== ============================== ========= =======
 <BLANKLINE>
 
