@@ -207,7 +207,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Buchhaltung --> Bewegungen : 697
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
 - Explorer --> Buchhaltung --> Handelsarten : 4
-- Explorer --> Buchhaltung --> Journalgruppen : 4
+- Explorer --> Buchhaltung --> Journalgruppen : 5
 - Explorer --> MwSt. --> MwSt.-Regimes : 11
 - Explorer --> MwSt. --> MwSt.-Klassen : 3
 - Explorer --> MwSt. --> Produktrechnungen : 84
