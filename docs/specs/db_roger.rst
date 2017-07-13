@@ -28,7 +28,7 @@ The database structure
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- accounts.Account           accounts.Accounts              15        15
+ accounts.Account           accounts.Accounts              16        15
  accounts.Group             accounts.Groups                6         7
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
@@ -74,9 +74,9 @@ The database structure
  invoicing.Item             invoicing.Items                10        6
  invoicing.Plan             invoicing.Plans                7         1
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
- ledger.Journal             ledger.Journals                20        7
+ ledger.Journal             ledger.Journals                21        7
  ledger.MatchRule           ledger.MatchRules              3         11
- ledger.Movement            ledger.Movements               13        697
+ ledger.Movement            ledger.Movements               12        697
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         205
  lists.List                 lists.Lists                    7         8
@@ -105,7 +105,7 @@ The database structure
  users.User                 users.Users                    18        6
  vat.InvoiceItem            vat.InvoiceItemTable           9         136
  vat.VatAccountInvoice      vat.Invoices                   19        85
- vat.VatRule                vat.VatRules                   12        6
+ vat.VatRule                vat.VatRules                   13        6
 ========================== ============================== ========= =======
 <BLANKLINE>
 

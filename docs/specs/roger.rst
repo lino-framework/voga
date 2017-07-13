@@ -201,15 +201,17 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Kalender --> Termin-Zustände : 4
 - Explorer --> Kalender --> Gast-Zustände : 4
 - Explorer --> Kalender --> Aufgaben-Zustände : 5
-- Explorer --> Buchhaltung --> Ausgleichungsregeln : 12
+- Explorer --> Buchhaltung --> Begleichungsregeln : 12
 - Explorer --> Buchhaltung --> Belege : 205
 - Explorer --> Buchhaltung --> Belegarten : 5
 - Explorer --> Buchhaltung --> Bewegungen : 697
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
 - Explorer --> Buchhaltung --> Handelsarten : 4
-- Explorer --> Buchhaltung --> Journalgruppen : 4
+- Explorer --> Buchhaltung --> Journalgruppen : 5
 - Explorer --> MwSt. --> MwSt.-Regimes : 11
 - Explorer --> MwSt. --> MwSt.-Klassen : 3
+- Explorer --> MwSt. --> VAT columns : 10
+- Explorer --> MwSt. --> Rechnungen : 86
 - Explorer --> MwSt. --> Produktrechnungen : 84
 - Explorer --> MwSt. --> Produktrechnungszeilen : 102
 - Explorer --> MwSt. --> Fakturationspläne : 2
