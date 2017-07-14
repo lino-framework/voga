@@ -13,7 +13,7 @@ specifications. One of their goal is to get tested.
    :maxdepth: 1
   
    general
-   profiles
+   usertypes
    voga
    ledger
    courses

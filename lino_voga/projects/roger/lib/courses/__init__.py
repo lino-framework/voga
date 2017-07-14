@@ -37,8 +37,14 @@ class Plugin(Plugin):
     # extends_models = ['Pupil', 'Course', 'Line']
 
     # membership_fee_account = '7100'
-    membership_fee_account = 'membership_fee'
+    # membership_fee_account = 'membership_fee'
+    membership_fee_account = None
     """The reference of the general account where membership fees are
     being booked.  Used by :class:`MemberChecker`.
 
     """
+
+    def on_site_startup(self, site):
+        from lino_xl.lib.ledger.accounts import MEMBERSHIP_FEE_ACCOUNT
+        self.membership_fee_account = MEMBERSHIP_FEE_ACCOUNT
+        super(Plugin, self).on_site_startup(site)

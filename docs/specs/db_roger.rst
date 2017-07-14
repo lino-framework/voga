@@ -28,7 +28,7 @@ The database structure
 ========================== ============================== ========= =======
  Name                       Default table                  #fields   #rows
 -------------------------- ------------------------------ --------- -------
- accounts.Account           accounts.Accounts              16        15
+ accounts.Account           accounts.Accounts              17        16
  accounts.Group             accounts.Groups                6         7
  cal.Calendar               cal.Calendars                  6         8
  cal.Event                  cal.OneEvent                   23        1154
@@ -98,7 +98,7 @@ The database structure
  sales.VatProductInvoice    sales.Invoices                 24        83
  sepa.Account               sepa.Accounts                  6         18
  sessions.Session           sessions.SessionTable          3         ...
- system.SiteConfig          system.SiteConfigs             17        1
+ system.SiteConfig          system.SiteConfigs             18        1
  uploads.Upload             uploads.Uploads                9         0
  uploads.UploadType         uploads.UploadTypes            8         0
  users.Authority            users.Authorities              3         0

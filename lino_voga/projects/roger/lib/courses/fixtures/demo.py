@@ -52,13 +52,19 @@ def objects():
         elif obj.id % 10 != 0:
             obj.member_until = dd.demo_date().replace(month=12, day=31)
         yield obj
-
-    fee_account = rt.models.accounts.Account(
-        ref=dd.plugins.courses.membership_fee_account,
-        type=rt.models.accounts.AccountTypes.incomes,
-        default_amount=15,
-        **dd.str2kw('name', _("Membership fee")))
-    yield fee_account
+    Account = rt.models.accounts.Account
+    try:
+        fee_account = Account.get_by_ref(
+            dd.plugins.courses.membership_fee_account)
+        fee_account.default_amount = 15
+        yield fee_account
+    except Account.DoesNotExist:
+        fee_account = Account(
+            ref=dd.plugins.courses.membership_fee_account,
+            type=rt.models.accounts.AccountTypes.incomes,
+            default_amount=15,
+            **dd.str2kw('name', _("Membership fee")))
+        
 
     Journal = rt.models.ledger.Journal
     USERS = Cycler(rt.models.users.User.objects.all())
