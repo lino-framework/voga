@@ -81,7 +81,7 @@ None
 
 >>> acc = rt.models.accounts.Account.get_by_ref(dd.plugins.courses.membership_fee_account)
 >>> print(acc)
-(membership_fee) Membership fee
+(7310) Membership fee
 
 >>> rt.show(ledger.MovementsByAccount, acc)
 ============ ========= ===================================== ============ ======== ============= =========
@@ -175,7 +175,7 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Tarife --> Tarife : 12
 - Konfigurierung --> Tarife --> Tarifkategorien : 6
 - Konfigurierung --> Buchhaltung --> Kontengruppen : 8
-- Konfigurierung --> Buchhaltung --> Konten : 17
+- Konfigurierung --> Buchhaltung --> Konten : 16
 - Konfigurierung --> Buchhaltung --> Journale : 8
 - Konfigurierung --> Buchhaltung --> Buchungsperioden : 18
 - Konfigurierung --> Buchhaltung --> Zahlungsbedingungen : 9
