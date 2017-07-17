@@ -81,7 +81,7 @@ None
 
 >>> acc = rt.models.accounts.Account.get_by_ref(dd.plugins.courses.membership_fee_account)
 >>> print(acc)
-(membership_fee) Membership fee
+(7310) Membership fee
 
 >>> rt.show(ledger.MovementsByAccount, acc)
 ============ ========= ===================================== ============ ======== ============= =========
@@ -149,9 +149,14 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Aktivitätenreihen : 11
 - Aktivitäten --> Offene Einschreibungsanfragen : 10
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
+- Berichte --> Buchhaltung --> Saldenliste Generalkonten : 10
+- Berichte --> Buchhaltung --> Saldenlisten Lieferanten : 20
+- Berichte --> Buchhaltung --> Saldenliste Lieferanten : 3
 - Berichte --> Buchhaltung --> Schuldner : 0
 - Berichte --> Buchhaltung --> Gläubiger : 14
-- Berichte --> MwSt. --> Offene Rechnungen : 18
+- Berichte --> Buchhaltung --> Purchase journal : 0
+- Berichte --> Buchhaltung --> Offene Rechnungen : 18
+- Berichte --> Buchhaltung --> Sales invoice journal : 0
 - Konfigurierung --> System --> Benutzer : 7
 - Konfigurierung --> System --> Hilfetexte : 3
 - Konfigurierung --> Orte --> Länder : 9
@@ -206,7 +211,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Buchhaltung --> Belegarten : 5
 - Explorer --> Buchhaltung --> Bewegungen : 697
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
-- Explorer --> Buchhaltung --> Handelsarten : 4
+- Explorer --> Buchhaltung --> Handelsarten : 5
 - Explorer --> Buchhaltung --> Journalgruppen : 5
 - Explorer --> MwSt. --> MwSt.-Regimes : 11
 - Explorer --> MwSt. --> MwSt.-Klassen : 3
@@ -229,3 +234,4 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Büro --> Anhänge : 1
 - Explorer --> Büro --> Auszüge : 0
 <BLANKLINE>
+
