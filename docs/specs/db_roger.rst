@@ -51,7 +51,7 @@ The database structure
  contacts.RoleType          contacts.RoleTypes             4         5
  contenttypes.ContentType   gfks.ContentTypes              3         78
  countries.Country          countries.Countries            6         8
- countries.Place            countries.Places               8         78
+ countries.Place            countries.Places               9         78
  courses.Course             courses.Activities             33        25
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        82
@@ -65,7 +65,7 @@ The database structure
  excerpts.Excerpt           excerpts.Excerpts              11        0
  excerpts.ExcerptType       excerpts.ExcerptTypes          17        11
  finan.BankStatement        finan.BankStatements           16        21
- finan.BankStatementItem    finan.BankStatementItemTable   10        193
+ finan.BankStatementItem    finan.BankStatementItemTable   10        123
  finan.JournalEntry         finan.FinancialVouchers        14        0
  finan.JournalEntryItem     finan.JournalEntryItemTable    10        0
  finan.PaymentOrder         finan.PaymentOrders            15        16
@@ -76,7 +76,7 @@ The database structure
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
  ledger.Journal             ledger.Journals                21        7
  ledger.MatchRule           ledger.MatchRules              3         11
- ledger.Movement            ledger.Movements               12        697
+ ledger.Movement            ledger.Movements               12        627
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
  ledger.Voucher             ledger.Vouchers                9         205
  lists.List                 lists.Lists                    7         8

@@ -672,7 +672,7 @@ Pupil #128 ('Edgar Engels (MES)')
 
 >>> rt.show('sales.InvoicesByPartner', p)
 ==================== =========== ========= ================= ================
- Voucher date         Reference   No.       Total incl. VAT   Actions
+ Entry date           Reference   No.       Total incl. VAT   Actions
 -------------------- ----------- --------- ----------------- ----------------
  01/03/2015           SLS         79        48,00             **Registered**
  01/01/2015           SLS         66        48,00             **Registered**
