@@ -150,12 +150,12 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Offene Einschreibungsanfragen : 10
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
 - Berichte --> Buchhaltung --> Saldenliste Generalkonten : 10
-- Berichte --> Buchhaltung --> Saldenlisten Lieferanten : 20
+- Berichte --> Buchhaltung --> Saldenlisten Lieferanten : 14
 - Berichte --> Buchhaltung --> Saldenliste Lieferanten : 3
 - Berichte --> Buchhaltung --> Schuldner : 0
-- Berichte --> Buchhaltung --> Gläubiger : 14
+- Berichte --> Buchhaltung --> Gläubiger : 5
 - Berichte --> Buchhaltung --> Purchase journal : 0
-- Berichte --> Buchhaltung --> Offene Rechnungen : 18
+- Berichte --> Buchhaltung --> Offene Rechnungen : 3
 - Berichte --> Buchhaltung --> Sales invoice journal : 0
 - Konfigurierung --> System --> Benutzer : 7
 - Konfigurierung --> System --> Hilfetexte : 3
@@ -209,7 +209,7 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Buchhaltung --> Begleichungsregeln : 12
 - Explorer --> Buchhaltung --> Belege : 205
 - Explorer --> Buchhaltung --> Belegarten : 5
-- Explorer --> Buchhaltung --> Bewegungen : 697
+- Explorer --> Buchhaltung --> Bewegungen : 627
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
 - Explorer --> Buchhaltung --> Handelsarten : 5
 - Explorer --> Buchhaltung --> Journalgruppen : 5

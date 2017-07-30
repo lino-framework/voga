@@ -202,7 +202,7 @@ class Pupils(contacts.Persons):
     detail_layout = PupilDetail()
     column_names = 'name_column address_column pupil_type *'
     auto_fit_column_widths = True
-    # parameters = mixins.ObservedPeriod()
+    # parameters = mixins.ObservedDateRange()
 
     params_layout = "aged_from aged_to gender"
 
