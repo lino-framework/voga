@@ -25,11 +25,13 @@
 SETUP_INFO = dict(
     name='lino_voga',
     # version='0.0.4',
-    version='2016.12.0',
+    version='2017.7.0',
     install_requires=[
         'lino_xl',
-        #'lino_cosi',
-        #'cairocffi'
+        'lino_cosi',
+        # 'cairocffi',
+        'channels' # TODO: move demo projects to book and then remove
+                   # channels dependency
         ],
     test_suite='tests',
     tests_require=['pytest'],
