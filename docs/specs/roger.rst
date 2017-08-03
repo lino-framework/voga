@@ -150,7 +150,7 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Offene Einschreibungsanfragen : 10
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
 - Berichte --> Buchhaltung --> Saldenliste Generalkonten : 10
-- Berichte --> Buchhaltung --> Saldenlisten Lieferanten : 14
+- Berichte --> Buchhaltung --> Saldenliste Kunden : 14
 - Berichte --> Buchhaltung --> Saldenliste Lieferanten : 3
 - Berichte --> Buchhaltung --> Schuldner : 0
 - Berichte --> Buchhaltung --> Gläubiger : 5
