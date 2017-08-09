@@ -84,26 +84,26 @@ None
 (7310) Membership fee
 
 >>> rt.show(ledger.MovementsByAccount, acc)
-============ ========= ===================================== ============ ======== ============= =========
- Value date   Voucher   Description                           Debit        Credit   Match         Cleared
------------- --------- ------------------------------------- ------------ -------- ------------- ---------
- 22/12/2015   *CSH 5*   *Faymonville Luc*                     15,00                 **CSH 5:1**   Yes
- 22/12/2015   *CSH 5*   *Groteclaes Gregory*                  15,00                 **CSH 5:2**   Yes
- 22/12/2015   *CSH 5*   *Hilgers Hildegard*                   15,00                 **CSH 5:3**   Yes
- 22/12/2015   *CSH 5*   *Jacobs Jacqueline*                   15,00                 **CSH 5:4**   Yes
- 22/12/2015   *CSH 5*   *Jonas Josef*                         15,00                 **CSH 5:5**   Yes
- 22/11/2015   *CSH 4*   *Dobbelstein-Demeulenaere Dorothée*   15,00                 **CSH 4:1**   Yes
- 22/11/2015   *CSH 4*   *Evers Eberhart*                      15,00                 **CSH 4:2**   Yes
- 22/11/2015   *CSH 4*   *Emonts Daniel*                       15,00                 **CSH 4:3**   Yes
- 22/11/2015   *CSH 4*   *Engels Edgar*                        15,00                 **CSH 4:4**   Yes
- 22/10/2015   *CSH 3*   *Dericum Daniel*                      15,00                 **CSH 3:1**   Yes
- 22/10/2015   *CSH 3*   *Demeulenaere Dorothée*               15,00                 **CSH 3:2**   Yes
- 22/02/2015   *CSH 2*   *Charlier Ulrike*                     15,00                 **CSH 2:1**   Yes
- 22/01/2015   *CSH 1*   *Arens Annette*                       15,00                 **CSH 1:1**   Yes
- 22/01/2015   *CSH 1*   *Altenberg Hans*                      15,00                 **CSH 1:2**   Yes
- 22/01/2015   *CSH 1*   *Bastiaensen Laurent*                 15,00                 **CSH 1:3**   Yes
+============ ========= ===================================== ============ ======== =============
+ Value date   Voucher   Description                           Debit        Credit   Match
+------------ --------- ------------------------------------- ------------ -------- -------------
+ 22/12/2015   *CSH 5*   *Faymonville Luc*                     15,00                 **CSH 5:1**
+ 22/12/2015   *CSH 5*   *Groteclaes Gregory*                  15,00                 **CSH 5:2**
+ 22/12/2015   *CSH 5*   *Hilgers Hildegard*                   15,00                 **CSH 5:3**
+ 22/12/2015   *CSH 5*   *Jacobs Jacqueline*                   15,00                 **CSH 5:4**
+ 22/12/2015   *CSH 5*   *Jonas Josef*                         15,00                 **CSH 5:5**
+ 22/11/2015   *CSH 4*   *Dobbelstein-Demeulenaere Dorothée*   15,00                 **CSH 4:1**
+ 22/11/2015   *CSH 4*   *Evers Eberhart*                      15,00                 **CSH 4:2**
+ 22/11/2015   *CSH 4*   *Emonts Daniel*                       15,00                 **CSH 4:3**
+ 22/11/2015   *CSH 4*   *Engels Edgar*                        15,00                 **CSH 4:4**
+ 22/10/2015   *CSH 3*   *Dericum Daniel*                      15,00                 **CSH 3:1**
+ 22/10/2015   *CSH 3*   *Demeulenaere Dorothée*               15,00                 **CSH 3:2**
+ 22/02/2015   *CSH 2*   *Charlier Ulrike*                     15,00                 **CSH 2:1**
+ 22/01/2015   *CSH 1*   *Arens Annette*                       15,00                 **CSH 1:1**
+ 22/01/2015   *CSH 1*   *Altenberg Hans*                      15,00                 **CSH 1:2**
+ 22/01/2015   *CSH 1*   *Bastiaensen Laurent*                 15,00                 **CSH 1:3**
                         **Balance 225.00 (15 movements)**     **225,00**
-============ ========= ===================================== ============ ======== ============= =========
+============ ========= ===================================== ============ ======== =============
 <BLANKLINE>
 
 
@@ -150,7 +150,7 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Offene Einschreibungsanfragen : 10
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
 - Berichte --> Buchhaltung --> Saldenliste Generalkonten : 10
-- Berichte --> Buchhaltung --> Saldenlisten Lieferanten : 14
+- Berichte --> Buchhaltung --> Saldenliste Kunden : 14
 - Berichte --> Buchhaltung --> Saldenliste Lieferanten : 3
 - Berichte --> Buchhaltung --> Schuldner : 0
 - Berichte --> Buchhaltung --> Gläubiger : 5
@@ -213,9 +213,9 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> Buchhaltung --> Geschäftsjahre : 7
 - Explorer --> Buchhaltung --> Handelsarten : 5
 - Explorer --> Buchhaltung --> Journalgruppen : 5
-- Explorer --> MwSt. --> MwSt.-Regimes : 11
+- Explorer --> MwSt. --> MwSt.-Regimes : 3
 - Explorer --> MwSt. --> MwSt.-Klassen : 3
-- Explorer --> MwSt. --> VAT columns : 10
+- Explorer --> MwSt. --> VAT columns : 0
 - Explorer --> MwSt. --> Rechnungen : 86
 - Explorer --> MwSt. --> Produktrechnungen : 84
 - Explorer --> MwSt. --> Produktrechnungszeilen : 102
