@@ -74,7 +74,7 @@ The database structure
  invoicing.Item             invoicing.Items                10        6
  invoicing.Plan             invoicing.Plans                7         1
  ledger.AccountingPeriod    ledger.AccountingPeriods       7         17
- ledger.Journal             ledger.Journals                21        7
+ ledger.Journal             ledger.Journals                22        7
  ledger.MatchRule           ledger.MatchRules              3         11
  ledger.Movement            ledger.Movements               12        627
  ledger.PaymentTerm         ledger.PaymentTerms            11        8
