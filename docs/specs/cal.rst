@@ -58,7 +58,7 @@ The following rooms are defined in the
 >>> ses = rt.login('robin')
 >>> ses.show(cal.Rooms)  #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS -REPORT_NDIFF
 ================== ================== ===================== ================== =================== ============================= =========================
- Designation        Designation (de)   Designation (fr)      Calendar           Tariff              Responsible                   City
+ Designation        Designation (de)   Designation (fr)      Calendar           Tariff              Responsible                   Locality
 ------------------ ------------------ --------------------- ------------------ ------------------- ----------------------------- -------------------------
  Mirrored room      Spiegelsaal        Salle miroîtée        Mirrored room      Spiegelraum Eupen   Lern- und Begegnungszentrum   Eupen
  Computer room      Computersaal       Salle informatique    Computer room      Rent per meeting    Lern- und Begegnungszentrum   Eupen
