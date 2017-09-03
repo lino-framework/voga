@@ -318,7 +318,7 @@ Here is a list of all enrolments:
 >>> rt.show(rt.actors.courses.Enrolments)
 ...     #doctest: +REPORT_UDIFF +ELLIPSIS
 ================= ===================================== ========= ======================================== =============== =================
- Date of request   Activity                              State     Participant                              Actions         Author
+ Date of request   Activity                              State     Participant                              Workflow        Author
 ----------------- ------------------------------------- --------- ---------------------------------------- --------------- -----------------
  14/09/2013        022C MED (Finding your inner peace)   Started   Luc Faymonville (ME)                     **Requested**   Tom Thess
  14/09/2013        022C MED (Finding your inner peace)   Started   Christian Radermacher (ME)               **Confirmed**   Marianne Martin
@@ -512,9 +512,9 @@ information about the last invoicing run.
 
 >>> obj = rt.models.invoicing.Plan.objects.all()[0]
 >>> rt.show('invoicing.ItemsByPlan', obj)  #doctest: +REPORT_UDIFF
-==================== ======================= ====================================================================== ============ ========= =========
- Selected             Partner                 Preview                                                                Amount       Invoice   Actions
--------------------- ----------------------- ---------------------------------------------------------------------- ------------ --------- ---------
+==================== ======================= ====================================================================== ============ ========= ==========
+ Selected             Partner                 Preview                                                                Amount       Invoice   Workflow
+-------------------- ----------------------- ---------------------------------------------------------------------- ------------ --------- ----------
  Yes                  Bastiaensen Laurent     [3] Renewal Enrolment to 010C FG (Functional gymnastics) (50.00 €)     50,00        SLS 78
  Yes                  Engels Edgar            [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 79
  Yes                  Radermacher Christian   [3] Renewal Enrolment to 006C WWW (Internet for beginners) (48.00 €)   48,00        SLS 80
@@ -522,7 +522,7 @@ information about the last invoicing run.
  Yes                  Dupont Jean             Enrolment to 019 SV (Self-defence) (20.00 €)                           20,00        SLS 82
  Yes                  Brecht Bernd            [1] Enrolment to 023C MED (Finding your inner peace) (64.00 €)         64,00        SLS 83
  **Total (6 rows)**                                                                                                  **278,00**
-==================== ======================= ====================================================================== ============ ========= =========
+==================== ======================= ====================================================================== ============ ========= ==========
 <BLANKLINE>
 
 
@@ -638,7 +638,7 @@ Pupil #129 ('Luc Faymonville (ME)')
 
 >>> rt.show('courses.EnrolmentsByPupil', p)
 ==================== ===================================== ============ ============ ============= ======== ============ ===============
- Date of request      Activity                              Start date   End date     Places used   Remark   Amount       Actions
+ Date of request      Activity                              Start date   End date     Places used   Remark   Amount       Workflow
 -------------------- ------------------------------------- ------------ ------------ ------------- -------- ------------ ---------------
  14/09/2013           022C MED (Finding your inner peace)                             1                      64,00        **Requested**
  18/03/2014           003 comp (First Steps)                             08/04/2014   1                      20,00        **Confirmed**
@@ -672,7 +672,7 @@ Pupil #128 ('Edgar Engels (MES)')
 
 >>> rt.show('sales.InvoicesByPartner', p)
 ==================== =========== ========= ================= ================
- Entry date           Reference   No.       Total incl. VAT   Actions
+ Entry date           Reference   No.       Total incl. VAT   Workflow
 -------------------- ----------- --------- ----------------- ----------------
  01/03/2015           SLS         79        48,00             **Registered**
  01/01/2015           SLS         66        48,00             **Registered**

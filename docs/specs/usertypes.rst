@@ -123,5 +123,5 @@ User
 
 >>> rt.login('tom').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Activities : My courses given, -, Courses, Hikes, Journeys, -
+- Activities : My courses given, -
 - Site : About

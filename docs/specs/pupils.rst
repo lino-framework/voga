@@ -59,7 +59,7 @@ Note that above table is not the same as :class:`EnrolmentsByCourse
 
 >>> rt.show('courses.EnrolmentsByCourse', obj)
 ==================== ======================== ============ ============ ============= ======== ========== ============= ============ ===============
- Date of request      Participant              Start date   End date     Places used   Remark   Tariff     Free events   Amount       Actions
+ Date of request      Participant              Start date   End date     Places used   Remark   Tariff     Free events   Amount       Workflow
 -------------------- ------------------------ ------------ ------------ ------------- -------- ---------- ------------- ------------ ---------------
  25/07/2014           Annette Arens (ME)                                 1                      Journeys                 295,00       **Confirmed**
  09/08/2014           Hedi Radermacher (MLS)                18/09/2014   2                      Journeys                 590,00       **Confirmed**

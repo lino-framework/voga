@@ -20,7 +20,7 @@ Here are all our sales invoices:
 >>> jnl = rt.models.ledger.Journal.get_by_ref('SLS')
 >>> rt.show(sales.InvoicesByJournal, jnl)  #doctest: +ELLIPSIS
 ===================== ============ ============ =================================== ================= ============== ================
- No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Actions
+ No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
  83/2015               01/03/2015   30/04/2015   Brecht Bernd                        64,00                            **Registered**
  82/2015               01/03/2015   31/03/2015   Dupont Jean                         20,00                            **Registered**
