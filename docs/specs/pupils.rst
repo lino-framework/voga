@@ -6,7 +6,7 @@ Managing participants in Lino Voga
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_pupils
+    $ doctest docs/specs/pupils.rst
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
@@ -32,7 +32,7 @@ The response to this AJAX request is in JSON:
 
 >>> d = json.loads(res.content)
 >>> d['count']
-24
+23
 
 
 

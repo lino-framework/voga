@@ -6,7 +6,7 @@ User types
 
 .. To run only this test::
 
-    $ python setup.py test -s tests.SpecsTests.test_usertypes
+    $ doctest docs/specs/usertypes.rst
 
     doctest init:
 
@@ -35,7 +35,7 @@ users.UserTypes.admin:900
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Topics, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
-  - Accounting : Situation, General Accounts Balances, Customer Accounts Balances, Supplier Accounts Balances, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
+  - Accounting : Situation, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
   - Activities : Status Report
 - Configure :
   - System : Site Parameters, Users, Help Texts
@@ -77,7 +77,7 @@ Secretary
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -, Pending requested enrolments, Pending confirmed enrolments
 - Reports :
-  - Accounting : Situation, General Accounts Balances, Customer Accounts Balances, Supplier Accounts Balances, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
+  - Accounting : Situation, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
   - Activities : Status Report
 - Configure :
   - System : Site Parameters, Help Texts
@@ -112,7 +112,7 @@ User
   - Create invoices
 - Activities : Participants, Instructors, -, Courses, Hikes, Journeys, -, Activity lines, -
 - Reports :
-  - Accounting : Situation, General Accounts Balances, Customer Accounts Balances, Supplier Accounts Balances, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
+  - Accounting : Situation, General Accounts Balance, Customer Accounts Balance, Supplier Accounts Balance, Debtors, Creditors, Purchase journal, Due invoices, Sales invoice journal
   - Activities : Status Report
 - Configure :
   - Activities : Activity types, Instructor Types, Participant Types

@@ -6,7 +6,7 @@ Specific for Lino Voga à la Roger
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_roger
+    $ doctest docs/specs/roger.rst
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
@@ -116,23 +116,23 @@ Here is the output of :func:`walk_menu_items
 
 >>> walk_menu_items('rolf')
 ... #doctest: -ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
-- Kontakte --> Personen : 73
-- Kontakte --> Organisationen : 30
-- Kontakte --> Partnerlisten : 9
+- Kontakte --> Personen : 72
+- Kontakte --> Organisationen : 29
+- Kontakte --> Partnerlisten : 8
 - Büro --> Meine Datenkontrollliste : 0
 - Büro --> Meine Benachrichtigungen : 2
 - Büro --> Meine Notizen : 34
-- Büro --> Meine Uploads : 1
-- Büro --> Mein E-Mail-Ausgang : 1
+- Büro --> Meine Uploads : 0
+- Büro --> Mein E-Mail-Ausgang : 0
 - Büro --> Meine Auszüge : 0
-- Kalender --> Meine Termine : 58
-- Kalender --> Überfällige Termine : 29
-- Kalender --> Unbestätigte Termine : 5
+- Kalender --> Meine Termine : 57
+- Kalender --> Überfällige Termine : 28
+- Kalender --> Unbestätigte Termine : 4
 - Kalender --> Meine Aufgaben : 1
 - Kalender --> Meine Gäste : 1
 - Kalender --> Meine Anwesenheiten : 1
-- Kalender --> Meine überfälligen Termine : 5
-- Kalender --> Buchungen : 4
+- Kalender --> Meine überfälligen Termine : 4
+- Kalender --> Buchungen : 3
 - Buchhaltung --> Verkauf --> Verkaufsrechnungen (SLS) : 0
 - Buchhaltung --> Verkauf --> Gutschriften Verkauf (SLC) : 0
 - Buchhaltung --> Einkauf --> Einkaufsrechnungen (PRC) : 0
@@ -140,13 +140,13 @@ Here is the output of :func:`walk_menu_items
 - Buchhaltung --> Finanzjournale --> Kasse (CSH) : 0
 - Buchhaltung --> Finanzjournale --> Bestbank (BNK) : 0
 - Buchhaltung --> Finanzjournale --> Diverse Buchungen (MSC) : 0
-- Aktivitäten --> Teilnehmer : 36
-- Aktivitäten --> Kursleiter : 10
-- Aktivitäten --> Kurse : 24
-- Aktivitäten --> Ausfahrten : 1
-- Aktivitäten --> Reisen : 3
-- Aktivitäten --> Themen : 6
-- Aktivitäten --> Aktivitätenreihen : 11
+- Aktivitäten --> Teilnehmer : 35
+- Aktivitäten --> Kursleiter : 9
+- Aktivitäten --> Kurse : 23
+- Aktivitäten --> Ausfahrten : 0
+- Aktivitäten --> Reisen : 2
+- Aktivitäten --> Themen : 5
+- Aktivitäten --> Aktivitätenreihen : 10
 - Aktivitäten --> Offene Einschreibungsanfragen : 10
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
 - Berichte --> Buchhaltung --> Saldenliste Generalkonten : 10
@@ -155,28 +155,28 @@ Here is the output of :func:`walk_menu_items
 - Berichte --> Buchhaltung --> Schuldner : 0
 - Berichte --> Buchhaltung --> Gläubiger : 5
 - Berichte --> Buchhaltung --> Purchase journal : 0
-- Berichte --> Buchhaltung --> Offene Rechnungen : 3
+- Berichte --> Buchhaltung --> Offene Rechnungen : 2
 - Berichte --> Buchhaltung --> Sales invoice journal : 0
-- Konfigurierung --> System --> Benutzer : 7
+- Konfigurierung --> System --> Benutzer : 6
 - Konfigurierung --> System --> Hilfetexte : 3
-- Konfigurierung --> Orte --> Länder : 9
+- Konfigurierung --> Orte --> Länder : 8
 - Konfigurierung --> Orte --> Orte : 79
 - Konfigurierung --> Kontakte --> Organisationsarten : 17
 - Konfigurierung --> Kontakte --> Funktionen : 6
 - Konfigurierung --> Kontakte --> Listenarten : 4
-- Konfigurierung --> Kalender --> Kalenderliste : 9
-- Konfigurierung --> Kalender --> Räume : 8
+- Konfigurierung --> Kalender --> Kalenderliste : 8
+- Konfigurierung --> Kalender --> Räume : 7
 - Konfigurierung --> Kalender --> Prioritäten : 5
-- Konfigurierung --> Kalender --> Regelmäßige Ereignisse : 17
+- Konfigurierung --> Kalender --> Regelmäßige Ereignisse : 16
 - Konfigurierung --> Kalender --> Gastrollen : 4
-- Konfigurierung --> Kalender --> Kalendereintragsarten : 9
+- Konfigurierung --> Kalender --> Kalendereintragsarten : 8
 - Konfigurierung --> Kalender --> Wiederholungsregeln : 7
 - Konfigurierung --> Kalender --> Externe Kalender : 1
-- Konfigurierung --> Tarife --> Tarife : 12
+- Konfigurierung --> Tarife --> Tarife : 11
 - Konfigurierung --> Tarife --> Tarifkategorien : 6
-- Konfigurierung --> Buchhaltung --> Kontengruppen : 8
-- Konfigurierung --> Buchhaltung --> Konten : 16
-- Konfigurierung --> Buchhaltung --> Journale : 8
+- Konfigurierung --> Buchhaltung --> Kontengruppen : 7
+- Konfigurierung --> Buchhaltung --> Konten : 15
+- Konfigurierung --> Buchhaltung --> Journale : 7
 - Konfigurierung --> Buchhaltung --> Buchungsperioden : 18
 - Konfigurierung --> Buchhaltung --> Zahlungsbedingungen : 9
 - Konfigurierung --> MwSt. --> MwSt-Regeln : 7
@@ -184,11 +184,11 @@ Here is the output of :func:`walk_menu_items
 - Konfigurierung --> Aktivitäten --> Aktivitätsarten : 1
 - Konfigurierung --> Aktivitäten --> Kursleiterarten : 5
 - Konfigurierung --> Aktivitäten --> Teilnehmerarten : 4
-- Konfigurierung --> Aktivitäten --> Timetable Slots : 1
-- Konfigurierung --> Büro --> Notizarten : 4
+- Konfigurierung --> Aktivitäten --> Timetable Slots : 0
+- Konfigurierung --> Büro --> Notizarten : 3
 - Konfigurierung --> Büro --> Ereignisarten : 2
-- Konfigurierung --> Büro --> Upload-Arten : 1
-- Konfigurierung --> Büro --> Auszugsarten : 12
+- Konfigurierung --> Büro --> Upload-Arten : 0
+- Konfigurierung --> Büro --> Auszugsarten : 11
 - Explorer --> System --> Vollmachten : 1
 - Explorer --> System --> Benutzerarten : 5
 - Explorer --> System --> Datenbankmodelle : 79
@@ -197,9 +197,9 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> System --> Benachrichtigungen : 7
 - Explorer --> System --> Änderungen : 0
 - Explorer --> Kontakte --> Kontaktpersonen : 1
-- Explorer --> Kontakte --> Partner : 102
+- Explorer --> Kontakte --> Partner : 101
 - Explorer --> Kontakte --> Listenmitgliedschaften : 1
-- Explorer --> Kalender --> Kalendereinträge : 714
+- Explorer --> Kalender --> Kalendereinträge : 713
 - Explorer --> Kalender --> Aufgaben : 1
 - Explorer --> Kalender --> Anwesenheiten : 1
 - Explorer --> Kalender --> Abonnements : 36
@@ -216,21 +216,21 @@ Here is the output of :func:`walk_menu_items
 - Explorer --> MwSt. --> MwSt.-Regimes : 3
 - Explorer --> MwSt. --> MwSt.-Klassen : 3
 - Explorer --> MwSt. --> VAT columns : 0
-- Explorer --> MwSt. --> Rechnungen : 86
-- Explorer --> MwSt. --> Produktrechnungen : 84
+- Explorer --> MwSt. --> Rechnungen : 85
+- Explorer --> MwSt. --> Produktrechnungen : 83
 - Explorer --> MwSt. --> Produktrechnungszeilen : 102
 - Explorer --> MwSt. --> Fakturationspläne : 2
-- Explorer --> Aktivitäten --> Aktivitäten : 26
+- Explorer --> Aktivitäten --> Aktivitäten : 25
 - Explorer --> Aktivitäten --> Einschreibungen : 78
 - Explorer --> Aktivitäten --> Einschreibungs-Zustände : 4
-- Explorer --> Finanzjournale --> Kontoauszüge : 22
-- Explorer --> Finanzjournale --> Diverse Buchungen : 1
-- Explorer --> Finanzjournale --> Zahlungsaufträge : 17
+- Explorer --> Finanzjournale --> Kontoauszüge : 21
+- Explorer --> Finanzjournale --> Diverse Buchungen : 0
+- Explorer --> Finanzjournale --> Zahlungsaufträge : 16
 - Explorer --> SEPA --> Bankkonten : 19
 - Explorer --> Büro --> Notizen : 101
-- Explorer --> Büro --> Uploads : 1
+- Explorer --> Büro --> Uploads : 0
 - Explorer --> Büro --> Upload-Bereiche : 1
-- Explorer --> Büro --> E-Mail-Ausgänge : 1
+- Explorer --> Büro --> E-Mail-Ausgänge : 0
 - Explorer --> Büro --> Anhänge : 1
 - Explorer --> Büro --> Auszüge : 0
 <BLANKLINE>

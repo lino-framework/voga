@@ -6,7 +6,7 @@ Activities in Lino Voga
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.DocsTests.test_courses
+    $ doctest docs/specs/courses.rst
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
@@ -188,7 +188,7 @@ Line #10 ('Yoga')
 >>> kw = dict(fmt='json', limit=10, start=0)
 >>> mt = ContentType.objects.get_for_model(courses.Line).pk
 >>> demo_get('robin',
-...          'api/courses/CoursesByLine', json_fields, 3, 
+...          'api/courses/CoursesByLine', json_fields, 2, 
 ...          mt=mt, mk=obj.pk, **kw)
 
 
@@ -371,13 +371,13 @@ There are 36 pupils (21 men and 15 women) in our database:
 
 >>> json_fields = 'count rows title success no_data_text param_values'
 >>> kwargs = dict(fmt='json', limit=10, start=0)
->>> demo_get('robin', 'api/courses/Pupils', json_fields, 36, **kwargs)
+>>> demo_get('robin', 'api/courses/Pupils', json_fields, 35, **kwargs)
 
 >>> kwargs.update(pv=['', '', 'M', '', '', '', ''])
->>> demo_get('robin', 'api/courses/Pupils', json_fields, 21, **kwargs)
+>>> demo_get('robin', 'api/courses/Pupils', json_fields, 20, **kwargs)
 
 >>> kwargs.update(pv=['', '', 'F', '', '', '', ''])
->>> demo_get('robin', 'api/courses/Pupils', json_fields, 15, **kwargs)
+>>> demo_get('robin', 'api/courses/Pupils', json_fields, 14, **kwargs)
 
 
 >>> json_fields = 'navinfo disable_delete data id title'
