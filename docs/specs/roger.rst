@@ -4,7 +4,7 @@
 Specific for Lino Voga à la Roger
 =================================
 
-.. to test only this doc:
+..  to test only this doc:
 
     $ doctest docs/specs/roger.rst
 
@@ -155,6 +155,8 @@ Here is the output of :func:`walk_menu_items
 - Berichte --> Buchhaltung --> Schuldner : 0
 - Berichte --> Buchhaltung --> Gläubiger : 5
 - Berichte --> Buchhaltung --> Purchase journal : 0
+- Berichte --> Buchhaltung --> Intra-Community purchases : 85
+- Berichte --> Buchhaltung --> Intra-Community sales : 0
 - Berichte --> Buchhaltung --> Offene Rechnungen : 2
 - Berichte --> Buchhaltung --> Sales invoice journal : 0
 - Konfigurierung --> System --> Benutzer : 6
