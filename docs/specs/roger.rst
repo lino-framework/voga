@@ -145,7 +145,7 @@ Here is the output of :func:`walk_menu_items
 - Aktivitäten --> Kurse : 23
 - Aktivitäten --> Ausfahrten : 0
 - Aktivitäten --> Reisen : 2
-- Aktivitäten --> Themen : 5
+- Aktivitäten --> Themen : 6
 - Aktivitäten --> Aktivitätenreihen : 10
 - Aktivitäten --> Offene Einschreibungsanfragen : 10
 - Aktivitäten --> Auszustellende Teilnahmebescheinigungen : 69
