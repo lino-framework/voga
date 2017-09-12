@@ -26,57 +26,57 @@ class PackagesTests(TestCase):
         self.run_packages_test(lino_voga.SETUP_INFO['packages'])
 
 
-class SpecsTests(BaseTestCase):
+# class SpecsTests(BaseTestCase):
 
-    def test_print_labels(self):
-        return self.run_simple_doctests('docs/specs/print_labels.rst')
+#     def test_print_labels(self):
+#         return self.run_simple_doctests('docs/specs/print_labels.rst')
 
-    def test_db_roger(self):
-        return self.run_simple_doctests('docs/specs/db_roger.rst')
+#     def test_db_roger(self):
+#         return self.run_simple_doctests('docs/specs/db_roger.rst')
 
-    def test_partners(self):
-        return self.run_simple_doctests('docs/specs/partners.rst')
+#     def test_partners(self):
+#         return self.run_simple_doctests('docs/specs/partners.rst')
 
-    def test_pupils(self):
-        return self.run_simple_doctests('docs/specs/pupils.rst')
+#     def test_pupils(self):
+#         return self.run_simple_doctests('docs/specs/pupils.rst')
 
-    def test_checkdata(self):
-        return self.run_simple_doctests('docs/specs/checkdata.rst')
+#     def test_checkdata(self):
+#         return self.run_simple_doctests('docs/specs/checkdata.rst')
 
-    def test_usertypes(self):
-        return self.run_simple_doctests('docs/specs/usertypes.rst')
+#     def test_usertypes(self):
+#         return self.run_simple_doctests('docs/specs/usertypes.rst')
 
-    def test_roger(self):
-        return self.run_simple_doctests('docs/specs/roger.rst')
+#     def test_roger(self):
+#         return self.run_simple_doctests('docs/specs/roger.rst')
 
-    def test_invoicing(self):
-        return self.run_simple_doctests('docs/specs/invoicing.rst')
+#     def test_invoicing(self):
+#         return self.run_simple_doctests('docs/specs/invoicing.rst')
 
 
-class DocsTests(BaseTestCase):
-    def test_cal(self):
-        return self.run_simple_doctests('docs/specs/cal.rst')
+# class DocsTests(BaseTestCase):
+#     def test_cal(self):
+#         return self.run_simple_doctests('docs/specs/cal.rst')
 
-    def test_holidays(self):
-        return self.run_simple_doctests('docs/specs/holidays.rst')
+#     def test_holidays(self):
+#         return self.run_simple_doctests('docs/specs/holidays.rst')
 
-    def test_sales(self):
-        return self.run_simple_doctests('docs/specs/sales.rst')
+#     def test_sales(self):
+#         return self.run_simple_doctests('docs/specs/sales.rst')
 
-    def test_ledger(self):
-        return self.run_simple_doctests('docs/specs/ledger.rst')
+#     def test_ledger(self):
+#         return self.run_simple_doctests('docs/specs/ledger.rst')
 
-    def test_courses(self):
-        return self.run_simple_doctests('docs/specs/courses.rst')
+#     def test_courses(self):
+#         return self.run_simple_doctests('docs/specs/courses.rst')
 
-    def test_presences(self):
-        return self.run_simple_doctests('docs/specs/presences.rst')
+#     def test_presences(self):
+#         return self.run_simple_doctests('docs/specs/presences.rst')
 
-    def test_voga(self):
-        return self.run_simple_doctests('docs/specs/voga.rst')
+#     def test_voga(self):
+#         return self.run_simple_doctests('docs/specs/voga.rst')
 
-    def test_general(self):
-        return self.run_simple_doctests('docs/specs/general.rst')
+#     def test_general(self):
+#         return self.run_simple_doctests('docs/specs/general.rst')
 
 
 class DemoTests(BaseTestCase):
