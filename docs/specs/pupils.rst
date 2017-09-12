@@ -32,7 +32,7 @@ The response to this AJAX request is in JSON:
 
 >>> d = json.loads(res.content)
 >>> d['count']
-23
+24
 
 
 
