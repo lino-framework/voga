@@ -6,7 +6,7 @@ Database structure
 
 .. To run only this test::
 
-    $ python setup.py test -s tests.SpecsTests.test_db_roger
+    $ doctest docs/specs/db_roger.rst
 
     doctest init:
 
@@ -45,8 +45,8 @@ The database structure
  changes.Change             changes.Changes                10        0
  contacts.Company           contacts.Companies             27        29
  contacts.CompanyType       contacts.CompanyTypes          7         16
- contacts.Partner           contacts.Partners              24        101
- contacts.Person            contacts.Persons               41        72
+ contacts.Partner           contacts.Partners              25        101
+ contacts.Person            contacts.Persons               42        72
  contacts.Role              contacts.Roles                 4         0
  contacts.RoleType          contacts.RoleTypes             4         5
  contenttypes.ContentType   gfks.ContentTypes              3         78
@@ -56,10 +56,10 @@ The database structure
  courses.CourseType         courses.CourseTypes            5         0
  courses.Enrolment          courses.Enrolments             17        82
  courses.Line               courses.Lines                  25        10
- courses.Pupil              courses.Pupils                 50        35
+ courses.Pupil              courses.Pupils                 51        35
  courses.PupilType          courses.PupilTypes             5         3
  courses.Slot               courses.Slots                  5         0
- courses.Teacher            courses.Teachers               43        9
+ courses.Teacher            courses.Teachers               44        9
  courses.TeacherType        courses.TeacherTypes           5         4
  courses.Topic              courses.Topics                 4         5
  excerpts.Excerpt           excerpts.Excerpts              11        0

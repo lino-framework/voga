@@ -239,12 +239,12 @@ class Pupil(Enrollable, contacts.Person):
             return self.pupil_type.ref
 
     @classmethod
-    def get_parameter_fields(cls, **fields):
+    def setup_parameters(cls, fields):
         fields.update(
             partner_list=dd.ForeignKey(
                 'lists.List', blank=True, null=True))
 
-        return super(Pupil, cls).get_parameter_fields(**fields)
+        super(Pupil, cls).setup_parameters(fields)
 
     @classmethod
     def get_request_queryset(cls, ar):

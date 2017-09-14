@@ -6,8 +6,7 @@ Sales management in Lino Voga
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.DocsTests.test_sales
-    $ pytest -k test_sales
+    $ doctest docs/specs/sales.rst
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
@@ -70,16 +69,17 @@ Here are all our sales invoices:
 <BLANKLINE>
 
 The :class:`lino_cosi.lib.sales.models.DueInvoices` table shows a list
-of due invoices.
+of invoices that aren't (completeley) paid.  The following ones are
+there obviously due to a payment difference.
 
 >>> rt.show(sales.DueInvoices)
-==================== =========== ========= =============== ================= ================ ================
- Due date             Reference   No.       Partner         Total incl. VAT   Balance before   Balance to pay
--------------------- ----------- --------- --------------- ----------------- ---------------- ----------------
- 03/03/2015           SLS         76        Östges Otto     98,00                              -0,03
- 30/05/2015           SLS         81        Arens Annette   48,00             15,00            -0,96
- **Total (2 rows)**               **157**                   **146,00**        **15,00**        **-0,99**
-==================== =========== ========= =============== ================= ================ ================
+==================== =========== ========= ======================= ================= ================ ================
+ Due date             Reference   No.       Partner                 Total incl. VAT   Balance before   Balance to pay
+-------------------- ----------- --------- ----------------------- ----------------- ---------------- ----------------
+ 03/03/2015           SLS         76        Östges Otto             98,00                              -0,03
+ 31/03/2015           SLS         80        Radermacher Christian   48,00                              -0,96
+ **Total (2 rows)**               **156**                           **146,00**                         **-0,99**
+==================== =========== ========= ======================= ================= ================ ================
 <BLANKLINE>
 
 

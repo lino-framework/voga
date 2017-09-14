@@ -6,7 +6,7 @@ How Lino Voga generates invoices
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_invoicing
+    $ doctest docs/specs/invoicing.rst
 
     doctest init:
 

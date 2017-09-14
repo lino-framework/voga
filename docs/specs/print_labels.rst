@@ -7,8 +7,7 @@ Printing addres labels
 
 .. How to test only this document:
 
-    $ python setup.py test -s tests.SpecsTests.test_print_labels
-    $ pytest -k print_labels
+    $ doctest docs/specs/print_labels.rst
     
     doctest init:
 

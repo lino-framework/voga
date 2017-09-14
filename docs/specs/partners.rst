@@ -4,9 +4,9 @@
 Partners in Lino Voga
 =====================
 
-.. to test only this doc:
+..  to test only this doc:
 
-    $ python setup.py test -s tests.SpecsTests.test_partners
+    $ doctest docs/specs/partners.rst
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')
@@ -67,5 +67,5 @@ No data to display
 >>> d['count']
 1
 >>> d['rows'][0]
-[None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+[None, None, None, None, None, None, None, None, None, None, None, None, None]
 

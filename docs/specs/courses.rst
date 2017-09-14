@@ -6,7 +6,7 @@ Activities in Lino Voga
 
 .. to test only this doc:
 
-    $ python setup.py test -s tests.DocsTests.test_courses
+    $ doctest docs/specs/courses.rst
 
     >>> from lino import startup
     >>> startup('lino_voga.projects.roger.settings.doctests')

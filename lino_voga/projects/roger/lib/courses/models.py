@@ -104,7 +104,7 @@ class Pupil(Pupil):
         return "N"
 
     @classmethod
-    def get_parameter_fields(cls, **fields):
+    def setup_parameters(cls, fields):
         fields.update(
             show_members=dd.YesNo.field(
                 _("Members"), blank=True,
@@ -114,7 +114,7 @@ class Pupil(Pupil):
             show_lfv=dd.YesNo.field(_("LFV"), blank=True),
             show_raviva=dd.YesNo.field(_("Raviva"), blank=True))
 
-        return super(Pupil, cls).get_parameter_fields(**fields)
+        super(Pupil, cls).setup_parameters(fields)
 
     @classmethod
     def get_request_queryset(cls, ar):
