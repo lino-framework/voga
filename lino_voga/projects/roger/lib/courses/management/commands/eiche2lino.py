@@ -18,6 +18,8 @@ from __future__ import unicode_literals, print_function
 
 # from optparse import make_option
 
+from builtins import range
+from builtins import str
 import datetime
 
 from dateutil.parser import parse as parse_date

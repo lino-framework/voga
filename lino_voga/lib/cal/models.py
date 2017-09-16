@@ -24,6 +24,7 @@ This module extends :mod:`lino_xl.lib.cal.models`
 
 from __future__ import unicode_literals
 
+from builtins import str
 import six
 
 from django.utils.translation import ugettext_lazy as _
@@ -112,7 +113,7 @@ class Event(Event):
 
     def get_invoiceable_title(self, invoice=None):
         if self.company:
-            return unicode(self.room)
+            return str(self.room)
 
     def get_invoiceable_qty(self):
         return 1
@@ -123,7 +124,7 @@ class Event(Event):
         if self.owner is None:
             return self.summary
         else:
-            return unicode(self.owner)
+            return str(self.owner)
 
     def __str__(self):
         if self.owner is None:

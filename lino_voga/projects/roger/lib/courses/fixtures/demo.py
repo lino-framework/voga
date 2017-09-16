@@ -30,6 +30,7 @@ Adds some demo data specific to Lino Voga à la Roger.
 
 """
 
+from builtins import range
 from lino.api import dd, rt, _
 from lino.utils.cycler import Cycler
 
