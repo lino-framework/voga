@@ -1,4 +1,4 @@
-from lino.invlib.ns import ns
+from atelier.invlib.ns import ns
 ns.setup_from_tasks(
     globals(), "lino_voga",
     languages="en de fr et".split(),
@@ -8,5 +8,5 @@ ns.setup_from_tasks(
     locale_dir= 'lino_voga/lib/voga/locale',
     cleanable_files= ['docs/api/lino_voga.*'],
     demo_projects=[
-        'lino_voga.projects.roger.settings.demo',
-        'lino_voga.projects.edmund.settings.demo'])
+        'lino_voga/projects/roger',
+        'lino_voga/projects/edmund'])
