@@ -28,6 +28,7 @@ To run just this test::
 
 from __future__ import unicode_literals
 
+from builtins import str
 from lino.api.shell import cal
 from lino.api.shell import courses
 from lino.api.shell import users
@@ -62,7 +63,7 @@ class QuickTest(RemoteAuthTestCase):
             monday=True,
             state=courses.CourseStates.active,
             start_date=i2d(20140110))
-        self.assertEqual(unicode(obj), "Activity #1")
+        self.assertEqual(str(obj), "Activity #1")
 
         # self.assertEqual(settings.SITE.kernel.site, settings.SITE)
         # self.assertEqual(settings.SITE, dd.site)

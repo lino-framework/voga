@@ -23,6 +23,8 @@ See also :doc:`/specs/courses`.
 
 from __future__ import unicode_literals
 
+from builtins import range
+from builtins import str
 import logging
 logger = logging.getLogger(__name__)
 
@@ -244,7 +246,7 @@ class Loader1(object):
         COLORS = Cycler(Calendar.COLOR_CHOICES)
 
         for u in Room.objects.all():
-            obj = Calendar(name=unicode(u), color=COLORS.pop())
+            obj = Calendar(name=str(u), color=COLORS.pop())
             yield obj
             #~ logger.info("20131018 %s", obj)
             u.calendar = obj

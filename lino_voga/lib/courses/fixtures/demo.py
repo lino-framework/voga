@@ -18,6 +18,7 @@
 
 from __future__ import unicode_literals
 
+from builtins import range
 import datetime
 
 from lino.api import dd, rt
