@@ -25,7 +25,7 @@
 SETUP_INFO = dict(
     name='lino_voga',
     # version='0.0.4',
-    version='2017.7.0',
+    version='17.10.0',
     install_requires=[
         'lino_xl',
         'lino_cosi',
@@ -60,13 +60,15 @@ for managing courses, participants and meeting rooms.
     classifiers="""\
 Programming Language :: Python
 Programming Language :: Python :: 2
-Development Status :: 1 - Planning
+Development Status :: 5 - Production/Stable
 Environment :: Web Environment
 Framework :: Django
 Intended Audience :: Developers
 Intended Audience :: System Administrators
+Intended Audience :: Education
 License :: OSI Approved :: GNU Affero General Public License v3
 Operating System :: OS Independent
+Topic :: Office/Business :: Financial :: Accounting
 Topic :: Office/Business :: Scheduling
 """.splitlines())
 
