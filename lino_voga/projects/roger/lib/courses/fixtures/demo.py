@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 Luc Saffre
+# Copyright 2016-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -34,6 +34,8 @@ from builtins import range
 from lino.api import dd, rt, _
 from lino.utils.cycler import Cycler
 
+from lino_xl.lib.accounts.choicelists import CommonAccounts
+
 from lino_voga.lib.courses.fixtures.demo import objects as lib_objects
 
 
@@ -53,19 +55,7 @@ def objects():
         elif obj.id % 10 != 0:
             obj.member_until = dd.demo_date().replace(month=12, day=31)
         yield obj
-    Account = rt.models.accounts.Account
-    try:
-        fee_account = Account.get_by_ref(
-            dd.plugins.courses.membership_fee_account)
-        fee_account.default_amount = 15
-        yield fee_account
-    except Account.DoesNotExist:
-        fee_account = Account(
-            ref=dd.plugins.courses.membership_fee_account,
-            type=rt.models.accounts.AccountTypes.incomes,
-            default_amount=15,
-            **dd.str2kw('name', _("Membership fee")))
-        
+    fee_account = CommonAccounts.membership_fees.get_object()
 
     Journal = rt.models.ledger.Journal
     USERS = Cycler(rt.models.users.User.objects.all())

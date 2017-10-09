@@ -13,9 +13,13 @@ class Site(Site):
     title = "Lino Voga à la Edmund"
     languages = "en et"
 
+    # demo_fixtures = """std
+    # few_countries few_cities
+    # minimal_ledger euvatrates
+    # demo voga demo2""".split()
     demo_fixtures = """std
     few_countries few_cities
-    minimal_ledger euvatrates
+    minimal_ledger
     demo voga demo2""".split()
 
     # ignore_dates_before = None

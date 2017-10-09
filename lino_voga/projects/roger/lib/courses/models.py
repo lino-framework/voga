@@ -28,6 +28,7 @@ from django.db.models import Q
 
 from lino.api import dd, rt, _
 
+from lino_xl.lib.accounts.choicelists import CommonAccounts
 
 from lino.modlib.plausibility.choicelists import Checker
 
@@ -170,7 +171,8 @@ class MemberChecker(Checker):
     def get_plausibility_problems(self, obj, fix=False):
         qs = rt.models.ledger.Movement.objects.filter(
             partner=obj,
-            account__ref=dd.plugins.courses.membership_fee_account)
+            account=CommonAccounts.membership_fees.get_object())
+            # account__ref=dd.plugins.courses.membership_fee_account)
         qs = qs.order_by('-value_date')
         until = obj.member_until
         fcu = dd.plugins.ledger.force_cleared_until
