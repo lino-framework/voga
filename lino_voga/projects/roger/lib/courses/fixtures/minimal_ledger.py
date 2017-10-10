@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 Luc Saffre
+# Copyright 2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -16,26 +16,11 @@
 # License along with Lino Voga.  If not, see
 # <http://www.gnu.org/licenses/>.
 
-from __future__ import unicode_literals
-
-from lino.api import dd, rt, _
+from lino_xl.lib.ledger.choicelists import CommonAccounts
 
 def objects():
 
-    ContentType = rt.modules.contenttypes.ContentType
-    ExcerptType = rt.modules.excerpts.ExcerptType
-    Course = rt.models.courses.Course
-
-    yield ExcerptType(
-        template='presence_sheet.wk.html',
-        primary=True,
-        build_method='wkhtmltopdf',
-        content_type=ContentType.objects.get_for_model(Course),
-        **dd.str2kw('name', _("Presence sheet")))
-
-    yield ExcerptType(
-        template='overview.wk.html',
-        build_method='wkhtmltopdf',
-        content_type=ContentType.objects.get_for_model(Course),
-        **dd.str2kw('name', _("Overview")))
-
+    group = CommonAccounts.sales.get_object().group
+    yield CommonAccounts.membership_fees.create_object(
+        default_amount=15, group=group)
+    

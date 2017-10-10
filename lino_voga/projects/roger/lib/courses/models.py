@@ -34,6 +34,9 @@ from lino.modlib.plausibility.choicelists import Checker
 
 from lino_voga.lib.courses.models import *
 
+CommonAccounts.add_item(
+    '7310', _("Membership fees"), 'membership_fees', 'incomes', False)
+
 
 class Sections(dd.ChoiceList):
     verbose_name = _("Section")
