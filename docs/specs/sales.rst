@@ -21,65 +21,59 @@ Here are all our sales invoices:
 ===================== ============ ============ =================================== ================= ============== ================
  No.                   Entry date   Due date     Partner                             Total incl. VAT   Subject line   Workflow
 --------------------- ------------ ------------ ----------------------------------- ----------------- -------------- ----------------
- 83/2015               01/03/2015   30/04/2015   Brecht Bernd                        64,00                            **Registered**
- 82/2015               01/03/2015   31/03/2015   Dupont Jean                         20,00                            **Registered**
- 81/2015               01/03/2015   30/05/2015   Arens Annette                       48,00                            **Registered**
- 80/2015               01/03/2015   31/03/2015   Radermacher Christian               48,00                            **Registered**
- 79/2015               01/03/2015   30/04/2015   Engels Edgar                        48,00                            **Registered**
- 78/2015               01/03/2015   01/03/2015   Bastiaensen Laurent                 50,00                            **Registered**
- 77/2015               01/02/2015   28/02/2015   Radermacher Christian               64,00                            **Registered**
- 76/2015               01/02/2015   03/03/2015   Östges Otto                         98,00                            **Registered**
- 75/2015               01/02/2015   11/02/2015   Laschet Laura                       50,00                            **Registered**
- 74/2015               01/02/2015   01/02/2015   Kaivers Karl                        50,00                            **Registered**
- 73/2015               01/02/2015   01/02/2015   Bastiaensen Laurent                 50,00                            **Registered**
- 72/2015               01/02/2015   28/02/2015   Dupont Jean                         48,00                            **Registered**
- 71/2015               01/02/2015   01/02/2015   Meier Marie-Louise                  96,00                            **Registered**
- 70/2015               01/02/2015   03/03/2015   Groteclaes Gregory                  114,00                           **Registered**
- 69/2015               01/02/2015   11/02/2015   Radermacher Guido                   50,00                            **Registered**
- 68/2015               01/01/2015   02/03/2015   Jacobs Jacqueline                   48,00                            **Registered**
- 67/2015               01/01/2015   31/01/2015   Radermacher Christian               48,00                            **Registered**
- 66/2015               01/01/2015   02/03/2015   Engels Edgar                        48,00                            **Registered**
+ 97/2015               01/03/2015   31/03/2015   Dupont Jean                         64,00                            **Registered**
+ 96/2015               01/03/2015   30/05/2015   Radermacher Hedi                    20,00                            **Registered**
+ 95/2015               01/03/2015   08/03/2015   Bastiaensen Laurent                 48,00                            **Registered**
+ 94/2015               01/03/2015   08/03/2015   Meier Marie-Louise                  48,00                            **Registered**
+ 93/2015               01/03/2015   30/05/2015   Brecht Bernd                        48,00                            **Registered**
+ 92/2015               01/03/2015   30/05/2015   Engels Edgar                        48,00                            **Registered**
+ 91/2015               01/03/2015   31/03/2015   Charlier Ulrike                     50,00                            **Registered**
+ 90/2015               01/02/2015   08/02/2015   Meier Marie-Louise                  64,00                            **Registered**
+ 89/2015               01/02/2015   08/02/2015   Jeanémart Jérôme                    50,00                            **Registered**
+ 88/2015               01/02/2015   03/03/2015   Radermacher Christian               98,00                            **Registered**
+ 87/2015               01/02/2015   03/03/2015   Jonas Josef                         50,00                            **Registered**
+ 86/2015               01/02/2015   02/05/2015   Jacobs Jacqueline                   50,00                            **Registered**
  ...
- 24/2014               01/07/2014   01/07/2014   Meier Marie-Louise                  48,00                            **Registered**
- 23/2014               01/07/2014   29/09/2014   Arens Annette                       64,00                            **Registered**
- 22/2014               01/07/2014   31/07/2014   Östges Otto                         64,00                            **Registered**
- 21/2014               01/07/2014   31/07/2014   Groteclaes Gregory                  50,00                            **Registered**
- 20/2014               01/07/2014   11/07/2014   Radermacher Guido                   50,00                            **Registered**
- 19/2014               01/06/2014   01/07/2014   Groteclaes Gregory                  50,00                            **Registered**
- 18/2014               01/05/2014   30/07/2014   Arens Annette                       64,00                            **Registered**
- 17/2014               01/05/2014   31/05/2014   di Rupo Didier                      20,00                            **Registered**
- 16/2014               01/05/2014   11/05/2014   Radermacher Guido                   50,00                            **Registered**
- 15/2014               01/04/2014   31/05/2014   Jacobs Jacqueline                   20,00                            **Registered**
- 14/2014               01/04/2014   31/05/2014   Engels Edgar                        40,00                            **Registered**
- 13/2014               01/04/2014   08/04/2014   Vandenmeulenbos Marie-Louise        40,00                            **Registered**
- 12/2014               01/04/2014   30/04/2014   Dobbelstein-Demeulenaere Dorothée   20,00                            **Registered**
- 11/2014               01/04/2014   30/06/2014   Arens Annette                       20,00                            **Registered**
- 10/2014               01/04/2014   01/05/2014   Östges Otto                         64,00                            **Registered**
- 9/2014                01/04/2014   01/05/2014   Groteclaes Gregory                  50,00                            **Registered**
- 8/2014                01/04/2014   11/04/2014   Radermacher Guido                   50,00                            **Registered**
- 7/2014                01/03/2014   31/03/2014   Radermacher Christian               20,00                            **Registered**
- 6/2014                01/03/2014   31/03/2014   Groteclaes Gregory                  50,00                            **Registered**
- 5/2014                01/02/2014   03/03/2014   Groteclaes Gregory                  50,00                            **Registered**
- 4/2014                01/02/2014   11/02/2014   Radermacher Guido                   50,00                            **Registered**
- 3/2014                01/01/2014   11/01/2014   Radermacher Guido                   150,00                           **Registered**
- 2/2014                01/01/2014   31/01/2014   Groteclaes Gregory                  100,00                           **Registered**
- 1/2014                01/01/2014   31/01/2014   Radermacher Christian               64,00                            **Registered**
- **Total (83 rows)**                                                                 **5 639,00**
+ 24/2014               01/05/2014   31/05/2014   Charlier Ulrike                     64,00                            **Registered**
+ 23/2014               01/05/2014   31/05/2014   Radermacher Christian               20,00                            **Registered**
+ 22/2014               01/05/2014   30/06/2014   Emonts-Gast Erna                    50,00                            **Registered**
+ 21/2014               01/05/2014   31/05/2014   Dupont Jean                         50,00                            **Registered**
+ 20/2014               01/04/2014   30/06/2014   Radermacher Hedi                    20,00                            **Registered**
+ 19/2014               01/04/2014   30/06/2014   Jacobs Jacqueline                   20,00                            **Registered**
+ 18/2014               01/04/2014   31/05/2014   Emonts Daniel                       40,00                            **Registered**
+ 17/2014               01/04/2014   01/04/2014   di Rupo Didier                      20,00                            **Registered**
+ 16/2014               01/04/2014   01/05/2014   Dobbelstein-Demeulenaere Dorothée   20,00                            **Registered**
+ 15/2014               01/04/2014   08/04/2014   Bastiaensen Laurent                 20,00                            **Registered**
+ 14/2014               01/04/2014   01/05/2014   Radermacher Christian               64,00                            **Registered**
+ 13/2014               01/04/2014   30/06/2014   Engels Edgar                        50,00                            **Registered**
+ 12/2014               01/04/2014   31/05/2014   Emonts-Gast Erna                    50,00                            **Registered**
+ 11/2014               01/04/2014   01/05/2014   Dupont Jean                         50,00                            **Registered**
+ 10/2014               01/03/2014   08/03/2014   Meier Marie-Louise                  20,00                            **Registered**
+ 9/2014                01/03/2014   30/05/2014   Engels Edgar                        50,00                            **Registered**
+ 8/2014                01/03/2014   31/03/2014   Dupont Jean                         50,00                            **Registered**
+ 7/2014                01/02/2014   02/05/2014   Engels Edgar                        50,00                            **Registered**
+ 6/2014                01/02/2014   02/04/2014   Emonts-Gast Erna                    50,00                            **Registered**
+ 5/2014                01/02/2014   03/03/2014   Dupont Jean                         50,00                            **Registered**
+ 4/2014                01/01/2014   02/03/2014   Emonts-Gast Erna                    150,00                           **Registered**
+ 3/2014                01/01/2014   01/04/2014   Engels Edgar                        100,00                           **Registered**
+ 2/2014                01/01/2014   31/01/2014   Dupont Jean                         50,00                            **Registered**
+ 1/2014                01/01/2014   08/01/2014   Meier Marie-Louise                  64,00                            **Registered**
+ **Total (97 rows)**                                                                 **6 828,00**
 ===================== ============ ============ =================================== ================= ============== ================
 <BLANKLINE>
+
 
 The :class:`lino_cosi.lib.sales.models.DueInvoices` table shows a list
 of invoices that aren't (completeley) paid.  The following ones are
 there obviously due to a payment difference.
 
 >>> rt.show(sales.DueInvoices)
-==================== =========== ========= ======================= ================= ================ ================
- Due date             Reference   No.       Partner                 Total incl. VAT   Balance before   Balance to pay
--------------------- ----------- --------- ----------------------- ----------------- ---------------- ----------------
- 03/03/2015           SLS         76        Östges Otto             98,00                              -0,03
- 31/03/2015           SLS         80        Radermacher Christian   48,00                              -0,96
- **Total (2 rows)**               **156**                           **146,00**                         **-0,99**
-==================== =========== ========= ======================= ================= ================ ================
+==================== =========== ======== =============== ================= ================ ================
+ Due date             Reference   No.      Partner         Total incl. VAT   Balance before   Balance to pay
+-------------------- ----------- -------- --------------- ----------------- ---------------- ----------------
+ 03/03/2015           SLS         83       Laschet Laura   96,00                              -0,10
+ **Total (1 rows)**               **83**                   **96,00**                          **-0,10**
+==================== =========== ======== =============== ================= ================ ================
 <BLANKLINE>
 
 
@@ -95,13 +89,13 @@ check whether we get the expected response.
 >>> obj.clear_cache()
 >>> d = ses.run(obj.do_print)
 ... #doctest: +NORMALIZE_WHITESPACE +ELLIPSIS
-appy.pod render .../sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-91.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
+appy.pod render .../sales/config/sales/VatProductInvoice/Default.odt -> .../media/cache/appypdf/sales.VatProductInvoice-125.pdf (language='en',params={'raiseOnError': True, 'ooPort': 8100, 'pythonWithUnoPath': ...}
 
 >>> d['success']
 True
 
 >>> print(d['message'])
-Your printable document (filename sales.VatProductInvoice-91.pdf) should now open in a new browser window. If it doesn't, please consult <a href="http://www.lino-framework.org/help/print.html" target="_blank">the documentation</a> or ask your system administrator.
+Your printable document (filename sales.VatProductInvoice-125.pdf) should now open in a new browser window. If it doesn't, please consult <a href="http://www.lino-framework.org/help/print.html" target="_blank">the documentation</a> or ask your system administrator.
 
 Note that this test should fail if you run the test suite without a 
 LibreOffice server running.
