@@ -23,6 +23,7 @@ configure(globals(), 'lino_voga.projects.roger.settings.doctests')
 # configure(globals(), 'lino.projects.std.settings_test')
 
 extensions += ['atelier.sphinxconf.blog']
+extensions += ['lino.sphinxcontrib.base']
 extensions += ['lino.sphinxcontrib.actordoc']
 extensions += ['lino.sphinxcontrib.logo']
 # extensions += ['sphinxcontrib.taglist']
