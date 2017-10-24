@@ -119,7 +119,7 @@ class Event(Event):
         return 1
 
     def get_event_summary(self, ar):
-        """Overrides :meth:`lino_xl.lib.cal.models.Event.get_event_summary`
+        """Overrides :meth:`lino_xl.lib.cal.Event.get_event_summary`
         """
         if self.owner is None:
             return self.summary
