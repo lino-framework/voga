@@ -82,27 +82,24 @@ class QuickTest(RemoteAuthTestCase):
         def check_update(obj, msg1, msg2):
             res = ses.run(obj.do_update_events)
             self.assertEqual(res['success'], True)
+            print(res['info_message'])
             self.assertEqual(res['info_message'].strip(), msg1.strip())
             ar = ses.spawn(cal.EntriesByController, master_instance=obj)
             s = ar.to_rst(column_names="when_text state summary", nosummary=True)
-            # print s
+            # print(s)
             self.assertEqual(s.strip(), msg2.strip())
             
         # Run do_update_events a first time
         check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
-Update Guests for Activity #1 Lesson 1...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 2...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 3...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 4...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 5...
-0 row(s) have been updated.
-5 row(s) have been updated.""", """
+Update presences for Activity #1 Lesson 1 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 2 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 3 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 4 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
+5 row(s) have been updated.
+""", """
 ================ =========== ===================
  When             State       Short description
 ---------------- ----------- -------------------
@@ -136,10 +133,8 @@ Generating events between 2014-01-13 and 2020-05-22 (max. 3).
         check_update(obj, """
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
-Update Guests for Activity #1 Lesson 4...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 5...
-0 row(s) have been updated.
+Update presences for Activity #1 Lesson 4 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
 2 row(s) have been updated.""", """
 ================ =========== ===================
  When             State       Short description
@@ -217,20 +212,13 @@ Lesson 2 has been moved from 2014-01-20 to 2014-01-27.
 Update Events for National Day...
 Generating events between 2014-02-03 and 2020-05-22 (max. 72).
 Reached upper date limit 2020-05-22
-Update Guests for Recurring event #1 National Day...
-0 row(s) have been updated.
-Update Guests for Recurring event #1 National Day...
-0 row(s) have been updated.
-Update Guests for Recurring event #1 National Day...
-0 row(s) have been updated.
-Update Guests for Recurring event #1 National Day...
-0 row(s) have been updated.
-Update Guests for Recurring event #1 National Day...
-0 row(s) have been updated.
-Update Guests for Recurring event #1 National Day...
-0 row(s) have been updated.
-Update Guests for Recurring event #1 National Day...
-0 row(s) have been updated.
+Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
+Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
+Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
+Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
+Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
+Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
+Update presences for Recurring event #1 National Day : 0 created, 0 unchanged, 0 deleted.
 7 row(s) have been updated."""
         self.assertEqual(res['info_message'], expected)
         ar = ses.spawn(
@@ -278,16 +266,11 @@ Update Guests for Recurring event #1 National Day...
 Update Events for Activity #1...
 Generating events between 2014-01-13 and 2020-05-22 (max. 5).
 Lesson 4 wants 2014-02-03 but conflicts with <QuerySet [Event #8 ('Recurring event #1 National Day')]>, moving to 2014-02-10. 
-Update Guests for Activity #1 Lesson 1...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 2...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 3...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 4...
-0 row(s) have been updated.
-Update Guests for Activity #1 Lesson 5...
-0 row(s) have been updated.
+Update presences for Activity #1 Lesson 1 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 2 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 3 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 4 : 0 created, 0 unchanged, 0 deleted.
+Update presences for Activity #1 Lesson 5 : 0 created, 0 unchanged, 0 deleted.
 5 row(s) have been updated.
 """, """
 ================ =========== ===================
