@@ -15,9 +15,9 @@ import lino_voga
 from lino.utils.pythontest import TestCase
 
 
-class BaseTestCase(TestCase):
-    project_root = ROOTDIR
-    django_settings_module = 'lino_voga.projects.docs.settings.doctests'
+# class BaseTestCase(TestCase):
+#     project_root = ROOTDIR
+#     django_settings_module = 'lino_voga.projects.docs.settings.doctests'
 
 
 class PackagesTests(TestCase):
@@ -79,13 +79,13 @@ class PackagesTests(TestCase):
 #         return self.run_simple_doctests('docs/specs/general.rst')
 
 
-class DemoTests(BaseTestCase):
-    """
-    $ python setup.py test -s tests.DemoTests.test_admin
-    """
+# class DemoTests(BaseTestCase):
+#     """
+#     $ python setup.py test -s tests.DemoTests.test_admin
+#     """
 
-    def test_admin(self):
-        self.run_django_manage_test('lino_voga/projects/roger')
-        self.run_django_manage_test('lino_voga/projects/edmund')
+#     def test_admin(self):
+#         self.run_django_manage_test('lino_voga/projects/roger')
+#         self.run_django_manage_test('lino_voga/projects/edmund')
 
 

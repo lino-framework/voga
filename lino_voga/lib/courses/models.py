@@ -368,7 +368,7 @@ class Course(Referrable, Course):
 
     """
     class Meta(Course.Meta):
-        app_label = 'courses'
+        # app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Course')
         verbose_name = _("Activity")
         verbose_name_plural = _('Activities')
@@ -604,11 +604,13 @@ class Enrolment(Enrolment, Invoiceable):
     invoiceable_date_field = 'request_date'
     _invoicing_info = None
 
-    class Meta:
-        app_label = 'courses'
-        abstract = False  # dd.is_abstract_model(__name__, 'Enrolment')
+    class Meta(Enrolment.Meta):
+        abstract = dd.is_abstract_model(__name__, 'Enrolment')
+        # abstract = False  # dd.is_abstract_model(__name__, 'Enrolment')
         verbose_name = _("Enrolment")
         verbose_name_plural = _("Enrolments")
+        # in Voga it is allowed to enrole several times
+        unique_together = None
 
     amount = dd.PriceField(_("Amount"), blank=True, null=True)
 

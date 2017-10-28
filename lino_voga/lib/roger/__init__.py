@@ -17,7 +17,7 @@
 # <http://www.gnu.org/licenses/>.
 
 """
-Custom plugins for :mod:`lino_voga.projects.roger`.
+Custom plugins for Roger.
 
 .. autosummary::
    :toctree:

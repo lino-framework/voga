@@ -9,6 +9,7 @@ This package contains apps which are specific to :ref:`voga`.
     courses
     invoicing
     rooms
+    roger
     voga
 
 """

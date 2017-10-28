@@ -5,8 +5,4 @@ ns.setup_from_tasks(
     tolerate_sphinx_warnings= False,
     blogref_url='http://luc.lino-framework.org',
     revision_control_system='git',
-    locale_dir= 'lino_voga/lib/voga/locale',
-    cleanable_files= ['docs/api/lino_voga.*'],
-    demo_projects=[
-        'lino_voga/projects/roger',
-        'lino_voga/projects/edmund'])
+    locale_dir= 'lino_voga/lib/voga/locale')

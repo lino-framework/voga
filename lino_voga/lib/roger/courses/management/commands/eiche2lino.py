@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 by Luc Saffre.
+# Copyright 2016-2017 by Luc Saffre.
 """
 
 Defines the :manage:`eiche2lino` management command:
@@ -8,7 +8,7 @@ Defines the :manage:`eiche2lino` management command:
 
 .. py2rst::
 
-  from lino_voga.projects.roger.lib.courses.management.commands.eiche2lino \
+  from lino_voga.lib.roger.courses.management.commands.eiche2lino \
       import Command
   print(Command.help)
 

@@ -78,7 +78,7 @@ def objects():
         TEACHERS = Cycler(Teacher.objects.all())
         SLOTS = Cycler(rt.models.courses.Slot.objects.all())
         #~ SLOTS = Cycler(1,2,3,4)
-        PUPILS = Cycler(courses.Pupil.objects.all())
+        PUPILS = Cycler(Pupil.objects.all())
         #~ Event = settings.SITE.modules.cal.Event
 
         #~ from lino_xl.lib.cal.utils import DurationUnit

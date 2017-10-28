@@ -10,7 +10,7 @@
 
 from importlib import import_module
 intersphinx_mapping = {}
-for n in 'atelier lino_book lino_cosi'.split():
+for n in 'atelier lino_cosi'.split():
     m = import_module(n)
     n = n.replace('_', "")
     intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
@@ -19,12 +19,13 @@ extlinks = {}
 extensions = []
 
 from lino.sphinxcontrib import configure
-configure(globals(), 'lino_voga.projects.roger.settings.doctests')
+# configure(globals(), 'lino_voga.projects.roger.settings.doctests')
 # configure(globals(), 'lino.projects.std.settings_test')
+configure(globals())
 
 extensions += ['atelier.sphinxconf.blog']
 extensions += ['lino.sphinxcontrib.base']
-extensions += ['lino.sphinxcontrib.actordoc']
+# extensions += ['lino.sphinxcontrib.actordoc']
 extensions += ['lino.sphinxcontrib.logo']
 # extensions += ['sphinxcontrib.taglist']
 
@@ -55,14 +56,15 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Lino Voga'
-copyright = u'2012-2016, Luc Saffre'
+copyright = u'2012-2017, Luc Saffre'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The full version, including alpha/beta/rc tags.
-release = settings.SITE.version
+import lino_voga
+release = lino_voga.__version__
 
 # The short X.Y version.
 version = '.'.join(release.split('.')[:2])
@@ -199,11 +201,6 @@ htmlhelp_basename = 'voga'
 
 extlinks = dict()
 extlinks.update(ticket=('http://bugs.saffre-rumma.net/tickets/Ticket/%s', '#'))
-
-extensions += ['lino.sphinxcontrib.help_texts_extractor']
-help_texts_builder_targets = {
-    'lino_voga.': 'lino_voga.lib.voga'
-}
 
 
 

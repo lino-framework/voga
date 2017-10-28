@@ -1,4 +1,4 @@
-# Copyright 2016 Luc Saffre
+# Copyright 2016-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -22,8 +22,6 @@ An extension of :mod:`lino_voga.lib.courses`
    :toctree:
 
     management.commands.eiche2lino
-    models
-    desktop
 
 """
 
