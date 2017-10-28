@@ -31,11 +31,11 @@ from lino_xl.lib.ledger.roles import LedgerUser, VoucherSupervisor, LedgerStaff
 from lino_xl.lib.sepa.roles import SepaStaff
 from lino_xl.lib.products.roles import ProductsStaff
 from lino_xl.lib.courses.roles import CoursesTeacher, CoursesUser
-from lino.modlib.plausibility.roles import PlausibilityUser
+from lino.modlib.checkdata.roles import CheckdataUser
 
 
 class SiteUser(CoursesUser, ContactsUser, OfficeUser, LedgerUser,
-               PlausibilityUser, ExcerptsUser):
+               CheckdataUser, ExcerptsUser):
     pass
 
 
@@ -53,7 +53,7 @@ class Teacher(CoursesTeacher):  # , ExcerptsUser, OfficeUser):
 
 
 class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
-                LedgerStaff, SepaStaff, PlausibilityUser,
+                LedgerStaff, SepaStaff, CheckdataUser,
                 ExcerptsStaff, ProductsStaff, Explorer):
     pass
 

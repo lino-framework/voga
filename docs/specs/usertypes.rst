@@ -26,7 +26,7 @@ users.UserTypes.admin:900
 >>> ses.show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Data problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Overdue appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Bookings, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
@@ -48,7 +48,7 @@ users.UserTypes.admin:900
   - Activities : Activity types, Instructor Types, Participant Types, Timetable Slots
   - Office : Note Types, Event Types, Upload Types, Excerpt Types
 - Explorer :
-  - System : Authorities, User types, content types, Plausibility checkers, Plausibility problems, Notification messages, Changes
+  - System : Authorities, User types, content types, Data checkers, Data problems, Notification messages, Changes
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Tasks, Presences, Subscriptions, Event states, Guest states, Task states
   - Accounting : Match rules, Vouchers, Voucher types, Movements, Fiscal Years, Trade types, Journal groups
@@ -68,7 +68,7 @@ Secretary
 >>> rt.login('monique').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Data problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)
@@ -87,7 +87,7 @@ Secretary
   - Tariffs : Tariffs, Tariff Categories
   - Activities : Activity types, Instructor Types, Participant Types
 - Explorer :
-  - System : content types, Plausibility checkers, Plausibility problems, Changes
+  - System : content types, Data checkers, Data problems, Changes
   - Contacts : Contact Persons, Partners, List memberships
   - Calendar : Calendar entries, Presences, Event states, Guest states, Task states
   - VAT : Invoices, Product invoices
@@ -103,7 +103,7 @@ User
 >>> rt.login('marianne').show_menu()
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 - Contacts : Persons, Organizations, Partner Lists
-- Office : Plausibility problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
+- Office : Data problems assigned to me, My Notification messages, My Notes, My Uploads, My Outbox, My Excerpts
 - Calendar : My appointments, Unconfirmed appointments, My tasks, My guests, My presences, My overdue appointments, Calendar
 - Accounting :
   - Sales : Sales invoices (SLS), Sales credit notes (SLC)

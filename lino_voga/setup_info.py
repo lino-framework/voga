@@ -28,7 +28,7 @@ SETUP_INFO = dict(
     version='17.10.0',
     install_requires=[
         'lino_xl',
-        'lino_cosi',
+        'lino_cosi',  # TODO: remove dependency from cosi
         # 'cairocffi',
         'channels' # TODO: move demo projects to book and then remove
                    # channels dependency

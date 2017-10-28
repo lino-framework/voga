@@ -30,7 +30,7 @@ from lino.api import dd, rt, _
 
 from lino_xl.lib.accounts.choicelists import CommonAccounts
 
-from lino.modlib.plausibility.choicelists import Checker
+from lino.modlib.checkdata.choicelists import Checker
 
 from lino_voga.lib.courses.models import *
 
@@ -171,7 +171,7 @@ class MemberChecker(Checker):
         wrong_until=_("Member until {0} (expected {1})."),
     )
 
-    def get_plausibility_problems(self, obj, fix=False):
+    def get_checkdata_problems(self, obj, fix=False):
         qs = rt.models.ledger.Movement.objects.filter(
             partner=obj,
             account=CommonAccounts.membership_fees.get_object())
@@ -213,4 +213,4 @@ from lino_xl.lib.ledger.utils import on_ledger_movement
 
 @dd.receiver(on_ledger_movement)
 def check_member_until(sender=None, instance=None, **kwargs):
-    MemberChecker.self.get_plausibility_problems(instance, fix=True)
+    MemberChecker.self.get_checkdata_problems(instance, fix=True)

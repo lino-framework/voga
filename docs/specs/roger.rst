@@ -28,7 +28,7 @@ To handle these rules, we have an additional field :attr:`member_until
 <lino_voga.projects.roger.lib.courses.models.Pupil.member_until>` on
 each pupil.
 
-There is a custom plausibility checker
+There is a custom data checker
 :class:`lino_voga.projects.roger.lib.courses.models.MemberChecker`
     
     
@@ -62,7 +62,7 @@ datetime.date(2015, 5, 22)
 >>> print(dd.plugins.ledger.force_cleared_until)
 None
 
->>> rt.show(plausibility.ProblemsByChecker, 'courses.MemberChecker')
+>>> rt.show(checkdata.ProblemsByChecker, 'courses.MemberChecker')
 ============= ===================================== ==========================================
  Responsible   Controlled by                         Message
 ------------- ------------------------------------- ------------------------------------------

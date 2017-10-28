@@ -13,7 +13,7 @@ Checking for data problems in Lino Voga
     >>> from lino.api.doctest import *
 
 
-Lino Voga offers some functionality for managing plausibility
+Lino Voga offers some functionality for managing data
 problems.
 
 See also :ref:`book.specs.checkdata`.
@@ -22,15 +22,15 @@ Data checkers available in Lino Voga
 ====================================
 
 In the web interface you can select :menuselection:`Explorer -->
-System --> Plausibility checkers` to see a table of all available
+System --> Data checkers` to see a table of all available
 checkers.
 
 .. 
-    >>> show_menu_path(plausibility.Checkers)
-    Explorer --> System --> Plausibility checkers
+    >>> show_menu_path(checkdata.Checkers)
+    Explorer --> System --> Data checkers
     
 
->>> rt.show(plausibility.Checkers)
+>>> rt.show(checkdata.Checkers)
 ================================= ===============================================
  value                             text
 --------------------------------- -----------------------------------------------
@@ -51,13 +51,13 @@ Showing all problems
 ====================
 
 In the web interface you can select :menuselection:`Explorer -->
-System --> Plausibility problems` to see them.
+System --> Data problems` to see them.
 
 ..
-    >>> show_menu_path(plausibility.AllProblems)
-    Explorer --> System --> Plausibility problems
+    >>> show_menu_path(checkdata.AllProblems)
+    Explorer --> System --> Data problems
 
 
->>> rt.show(plausibility.AllProblems)
+>>> rt.show(checkdata.AllProblems)
 ... #doctest: +ELLIPSIS +NORMALIZE_WHITESPACE +REPORT_UDIFF
 No data to display
