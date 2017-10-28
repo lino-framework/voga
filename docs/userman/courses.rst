@@ -82,13 +82,3 @@ setzen?"
   Um jegliche manuelle Änderung zu vergessen, löschen Sie den 
   Termin einfach und lassen den Kurs dann seine Termine neu generieren.
 
-
-
-
-Kursserien
-==========
-
-.. django2rst:: rt.show(rt.actors.courses.Lines)
-
-
-

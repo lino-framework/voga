@@ -55,6 +55,9 @@ dd.inject_field('system.SiteConfig', 'pupil_guestrole',
 
 class Room(Room):
 
+    class Meta(Room.Meta):
+        abstract = dd.is_abstract_model(__name__, 'Room')
+        
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
                         # verbose_name=_("Tariff"),
@@ -101,6 +104,9 @@ class Rooms(Rooms):
 @dd.python_2_unicode_compatible
 class Event(Event):
 
+    class Meta(Event.Meta):
+        abstract = dd.is_abstract_model(__name__, 'Event')
+        
     invoiceable_date_field = 'start_date'
     invoiceable_partner_field = 'company'
 

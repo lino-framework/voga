@@ -155,7 +155,7 @@ class PupilDetail(PersonDetail):
     personal = 'pupil_type national_id card_number'
 
     bottom_box = """
-    remarks:50 plausibility.ProblemsByOwner:30
+    remarks:50 checkdata.ProblemsByOwner:30
     """
 
 

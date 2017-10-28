@@ -28,7 +28,7 @@ SETUP_INFO = dict(
     version='17.10.0',
     install_requires=[
         'lino_xl',
-        'lino_cosi',
+        'lino_cosi',  # TODO: remove dependency from cosi
         # 'cairocffi',
         'channels' # TODO: move demo projects to book and then remove
                    # channels dependency
@@ -86,24 +86,16 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.products',
     'lino_voga.lib.invoicing',
     'lino_voga.lib.invoicing.fixtures',
+    'lino_voga.lib.roger',
+    'lino_voga.lib.roger.courses',
+    'lino_voga.lib.roger.courses.fixtures',
+    'lino_voga.lib.roger.courses.management',
+    'lino_voga.lib.roger.courses.management.commands',
+    'lino_voga.lib.rooms',
     'lino_voga.lib.sales',
     'lino_voga.lib.sales.fixtures',
     'lino_voga.lib.voga',
     'lino_voga.lib.voga.fixtures',
-    'lino_voga.lib.rooms',
-    'lino_voga.projects',
-    'lino_voga.projects.edmund',
-    'lino_voga.projects.edmund.settings',
-    'lino_voga.projects.edmund.settings.fixtures',
-    'lino_voga.projects.roger',
-    'lino_voga.projects.roger.lib',
-    'lino_voga.projects.roger.lib.courses',
-    'lino_voga.projects.roger.lib.courses.fixtures',
-    'lino_voga.projects.roger.lib.courses.management',
-    'lino_voga.projects.roger.lib.courses.management.commands',
-    'lino_voga.projects.roger.settings',
-    'lino_voga.projects.roger.settings.fixtures',
-    'lino_voga.projects.roger.tests',
 ])
 
 SETUP_INFO.update(message_extractors={

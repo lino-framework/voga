@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -23,7 +23,6 @@ The main module of :ref:`voga`.
    :toctree:
 
     lib
-    projects
 
 """
 

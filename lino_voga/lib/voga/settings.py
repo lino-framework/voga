@@ -58,7 +58,7 @@ class Site(Site):
         yield 'lino_xl.lib.lists'
         yield 'lino_xl.lib.beid'
 
-        yield 'lino.modlib.plausibility'
+        yield 'lino.modlib.checkdata'
 
         yield 'lino_voga.lib.cal'
         yield 'lino_voga.lib.products'

@@ -4,10 +4,8 @@
 Changes in Lino-Voga
 ========================
 
-See the author's :ref:`Developer Blog <blog>`
-to get detailed news.
-The final truth about what's going on is only 
-`The Source Code <https://github.com/lsaffre/voga>`_.
+See the author's Developer Blog to get detailed news.
+The final truth about what's going on is the source code.
 
 
 Version 0.0.3 (not yet released)
@@ -64,7 +62,7 @@ Version 0.0.2 (released :blogref:`20140206`)
 - Kursserie einfügen: auch Felder "Thema" und "Kursleiter"
 - Neue Partner (Kursleiter, Schüler, Organisationen, sonstige) haben
   jetzt par défaut "Belgien" als Land (genauer gesagt das Land des
-  Site-Besitzers (:ddref:`system.SiteConfig.site_company`)
+  Site-Besitzers (:attr:`lino.modlib.system.SiteConfig.site_company`)
 
 
 

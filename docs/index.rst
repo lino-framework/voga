@@ -19,8 +19,6 @@ Content
    :maxdepth: 1
 
    install
-   specs/index
-   api/index
    todo
    changes
    userman/index

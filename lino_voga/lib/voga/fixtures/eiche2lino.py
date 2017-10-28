@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -18,13 +18,13 @@
 
 """
 
-Loads :mod:`lino_voga.projects.roger.lib.courses.management.commands.eiche2lino`
+Loads :mod:`lino_voga.lib.roger.courses.management.commands.eiche2lino`
 
 
 """
 import os
 from django.conf import settings
-from lino_voga.projects.roger.lib.courses.management.commands.eiche2lino \
+from lino_voga.lib.roger.courses.management.commands.eiche2lino \
     import MyBook2016
 
 

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 Luc Saffre
+# Copyright 2016-2017 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@ from lino.api import dd, rt, _
 
 from lino_xl.lib.accounts.choicelists import CommonAccounts
 
-from lino.modlib.plausibility.choicelists import Checker
+from lino.modlib.checkdata.choicelists import Checker
 
 from lino_voga.lib.courses.models import *
 
@@ -68,11 +68,11 @@ class Pupil(Pupil):
     .. attribute:: member_until
 
     """
-    class Meta:
-        app_label = 'courses'
+    class Meta(Pupil.Meta):
+        # app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Pupil')
-        verbose_name = _("Participant")
-        verbose_name_plural = _('Participants')
+        # verbose_name = _("Participant")
+        # verbose_name_plural = _('Participants')
 
     legacy_id = models.CharField(
         _("Legacy ID"), max_length=12, blank=True)
@@ -152,8 +152,18 @@ class Line(Line):
     # model then you must also extend all other models in your plugin.
 
     class Meta(Line.Meta):
-        app_label = 'courses'
+        # app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Line')
+
+
+class Enrolment(Enrolment):
+    # this is here just because is_abstract_model() does not yet work
+    # as expected: if you subclass a plugin which extends a given
+    # model then you must also extend all other models in your plugin.
+
+    class Meta(Enrolment.Meta):
+        # app_label = 'courses'
+        abstract = dd.is_abstract_model(__name__, 'Enrolment')
 
 
 class MemberChecker(Checker):
@@ -171,7 +181,7 @@ class MemberChecker(Checker):
         wrong_until=_("Member until {0} (expected {1})."),
     )
 
-    def get_plausibility_problems(self, obj, fix=False):
+    def get_checkdata_problems(self, obj, fix=False):
         qs = rt.models.ledger.Movement.objects.filter(
             partner=obj,
             account=CommonAccounts.membership_fees.get_object())
@@ -213,4 +223,4 @@ from lino_xl.lib.ledger.utils import on_ledger_movement
 
 @dd.receiver(on_ledger_movement)
 def check_member_until(sender=None, instance=None, **kwargs):
-    MemberChecker.self.get_plausibility_problems(instance, fix=True)
+    MemberChecker.self.get_checkdata_problems(instance, fix=True)
