@@ -30,11 +30,11 @@ SETUP_INFO = dict(
         'lino_xl',
         'lino_cosi',  # TODO: remove dependency from cosi
         # 'cairocffi',
-        'channels' # TODO: move demo projects to book and then remove
-                   # channels dependency
+        # 'channels' # TODO: move demo projects to book and then remove
+        #            # channels dependency
         ],
     test_suite='tests',
-    tests_require=['pytest'],
+    # tests_require=['pytest'],
     description="A Lino application for managing courses, "
     "participants and meeting rooms",
 

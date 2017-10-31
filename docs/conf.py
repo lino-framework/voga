@@ -29,7 +29,7 @@ extensions += ['lino.sphinxcontrib.base']
 extensions += ['lino.sphinxcontrib.logo']
 # extensions += ['sphinxcontrib.taglist']
 
-from django.conf import settings
+# from django.conf import settings
 
 
 # If your extensions are in another directory, add it here. If the directory
