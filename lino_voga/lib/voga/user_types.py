@@ -23,7 +23,7 @@ See also :attr:`lino.core.site.Site.user_types_module`.
 
 """
 
-from lino.core.roles import UserRole, SiteAdmin, SiteStaff, Explorer
+from lino.core.roles import UserRole, SiteUser, SiteAdmin, SiteStaff, Explorer
 from lino_xl.lib.excerpts.roles import ExcerptsUser, ExcerptsStaff
 from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
 from lino.modlib.office.roles import OfficeStaff, OfficeUser
@@ -34,12 +34,12 @@ from lino_xl.lib.courses.roles import CoursesTeacher, CoursesUser
 from lino.modlib.checkdata.roles import CheckdataUser
 
 
-class SiteUser(CoursesUser, ContactsUser, OfficeUser, LedgerUser,
-               CheckdataUser, ExcerptsUser):
+class Receptor(SiteUser, CoursesUser, ContactsUser, OfficeUser,
+               LedgerUser, CheckdataUser, ExcerptsUser):
     pass
 
 
-class Secretary(SiteUser, SiteStaff, ContactsStaff, ExcerptsUser,
+class Secretary(Receptor, SiteStaff, ContactsStaff, ExcerptsUser,
                 VoucherSupervisor, ProductsStaff, Explorer):
     pass
 
@@ -63,7 +63,7 @@ from lino.modlib.users.choicelists import UserTypes
 UserTypes.clear()
 add = UserTypes.add_item
 add('000', _("Anonymous"), UserRole, name='anonymous', readonly=True)
-add('100', _("User"), SiteUser, name='user')
+add('100', _("User"), Receptor, name='user')
 add('200', _("Secretary"), Secretary, name='secretary')
 add('300', _("Teacher"), Teacher, name='teacher')
 add('900', _("Administrator"), SiteAdmin, name='admin')
