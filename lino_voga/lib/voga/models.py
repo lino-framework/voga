@@ -24,22 +24,22 @@ from lino.api import dd
 from lino_xl.lib.courses import workflows
 
 
-if False:
-    # 20131025 fails because MergeAction.__init__ tries to use _lino_ddh
-    # which hasn't yet been installed
+# if False:
+#     # 20131025 fails because MergeAction.__init__ tries to use _lino_ddh
+#     # which hasn't yet been installed
 
-    @dd.when_prepared('contacts.Person', 'contacts.Company')
-    def add_merge_action(model):
-        model.define_action(merge_row=dd.MergeAction(model))
+#     @dd.when_prepared('contacts.Person', 'contacts.Company')
+#     def add_merge_action(model):
+#         model.define_action(merge_row=dd.MergeAction(model))
 
-else:
+# else:
 
-    @dd.receiver(dd.pre_analyze)
-    def add_merge_action(sender, **kw):
-        apps = sender.modules
-        # for m in (apps.contacts.Person, apps.contacts.Company):
-        for m in (apps.courses.Pupil, apps.contacts.Company):
-            m.define_action(merge_row=dd.MergeAction(m))
+#     @dd.receiver(dd.pre_analyze)
+#     def add_merge_action(sender, **kw):
+#         apps = sender.modules
+#         # for m in (apps.contacts.Person, apps.contacts.Company):
+#         for m in (apps.courses.Pupil, apps.contacts.Company):
+#             m.define_action(merge_row=dd.MergeAction(m))
 
 
 # def site_setup(site):
