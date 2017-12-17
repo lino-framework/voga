@@ -24,9 +24,10 @@ See also :attr:`lino.core.site.Site.user_types_module`.
 """
 
 from lino.core.roles import UserRole, SiteUser, SiteAdmin, SiteStaff, Explorer
+from lino.modlib.office.roles import OfficeStaff, OfficeUser
+from lino.modlib.about.roles import SiteSearcher
 from lino_xl.lib.excerpts.roles import ExcerptsUser, ExcerptsStaff
 from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
-from lino.modlib.office.roles import OfficeStaff, OfficeUser
 from lino_xl.lib.ledger.roles import LedgerUser, VoucherSupervisor, LedgerStaff
 from lino_xl.lib.sepa.roles import SepaStaff
 from lino_xl.lib.products.roles import ProductsStaff
@@ -35,7 +36,7 @@ from lino.modlib.checkdata.roles import CheckdataUser
 
 
 class Receptor(SiteUser, CoursesUser, ContactsUser, OfficeUser,
-               LedgerUser, CheckdataUser, ExcerptsUser):
+               LedgerUser, CheckdataUser, ExcerptsUser, SiteSearcher):
     pass
 
 
@@ -54,7 +55,7 @@ class Teacher(CoursesTeacher):  # , ExcerptsUser, OfficeUser):
 
 class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
                 LedgerStaff, SepaStaff, CheckdataUser,
-                ExcerptsStaff, ProductsStaff, Explorer):
+                ExcerptsStaff, ProductsStaff, Explorer, SiteSearcher):
     pass
 
 
