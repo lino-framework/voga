@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2018 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@ from lino.utils.instantiator import Instantiator
 from lino.api import dd, rt
 
 
-def excerpt_types():
+def objects():
 
     etype = Instantiator('excerpts.ExcerptType').build
     # email_template='Default.eml.html').build
@@ -56,12 +56,3 @@ def excerpt_types():
         **dd.str2kw('name', _("Payment list")))
 
 
-def objects():
-
-    # mailType = Instantiator('notes.NoteType').build
-
-    # yield mailType(**dd.str2kw('name', _("Enrolment")))
-    # yield mailType(**dd.str2kw('name', _("Timetable")))
-    # yield mailType(**dd.str2kw('name', _("Letter")))
-
-    yield excerpt_types()
