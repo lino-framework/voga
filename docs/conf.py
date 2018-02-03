@@ -7,13 +7,17 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-from importlib import import_module
+
 intersphinx_mapping = {}
-for n in 'atelier lino_cosi'.split():
-    m = import_module(n)
-    # p = Path(m.__file__).parent().parent()
-    n = n.replace('_', "")
-    intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
+# from importlib import import_module
+# for n in 'atelier lino_cosi'.split():
+#     m = import_module(n)
+#     # p = Path(m.__file__).parent().parent()
+#     n = n.replace('_', "")
+#     intersphinx_mapping[n] = (m.intersphinx_urls['docs'], None)
+
+from atelier.sphinxconf import interproject
+interproject.configure(globals(), 'atelier lino_cosi')
 
 extlinks = {}
 extensions = []
