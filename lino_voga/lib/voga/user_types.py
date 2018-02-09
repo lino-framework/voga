@@ -1,4 +1,4 @@
-# Copyright 2015-2017 Luc Saffre
+# Copyright 2015-2018 Luc Saffre
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -32,6 +32,7 @@ from lino_xl.lib.ledger.roles import LedgerUser, VoucherSupervisor, LedgerStaff
 from lino_xl.lib.sepa.roles import SepaStaff
 from lino_xl.lib.products.roles import ProductsStaff
 from lino_xl.lib.courses.roles import CoursesTeacher, CoursesUser
+from lino_xl.lib.cal.roles import GuestOperator
 from lino.modlib.checkdata.roles import CheckdataUser
 
 
@@ -41,7 +42,7 @@ class Receptor(SiteUser, CoursesUser, ContactsUser, OfficeUser,
 
 
 class Secretary(Receptor, SiteStaff, ContactsStaff, ExcerptsUser,
-                VoucherSupervisor, ProductsStaff, Explorer):
+                VoucherSupervisor, ProductsStaff, Explorer, GuestOperator):
     pass
 
 
@@ -54,7 +55,7 @@ class Teacher(CoursesTeacher):  # , ExcerptsUser, OfficeUser):
 
 
 class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
-                LedgerStaff, SepaStaff, CheckdataUser,
+                LedgerStaff, SepaStaff, CheckdataUser, GuestOperator,
                 ExcerptsStaff, ProductsStaff, Explorer, SiteSearcher):
     pass
 
