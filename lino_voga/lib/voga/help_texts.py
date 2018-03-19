@@ -13,4 +13,7 @@ ad.Site.migration_class set to
 "lino_voga.migrate.Migrator"."""),
     'lino_voga.lib.voga.user_types.Teacher' : _("""Somebody who can just register presences of participants, i.e. mark
 them as absent or present."""),
+    'lino_voga.lib.cal.Room' : _("""Extends lino_xl.lib.cal.Room by adding one field:"""),
+    'lino_voga.lib.cal.Room.fee' : _("""The default fee to pay when renting this room to an external
+organization."""),
 }
