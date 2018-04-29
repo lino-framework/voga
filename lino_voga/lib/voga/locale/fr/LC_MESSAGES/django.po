@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lino-faggio 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-16 18:40+0200\n"
+"POT-Creation-Date: 2018-04-29 07:24+0300\n"
 "PO-Revision-Date: 2016-05-18 23:28+0300\n"
 "Last-Translator: Luc Saffre <luc.saffre@gmail.com>\n"
 "Language: fr\n"
@@ -354,6 +354,16 @@ msgstr ""
 msgid ""
 "Somebody who can just register presences of participants, i.e. mark\n"
 "them as absent or present."
+msgstr ""
+
+#: lino_voga/lib/voga/help_texts.py:16
+msgid "Extends lino_xl.lib.cal.Room by adding one field:"
+msgstr ""
+
+#: lino_voga/lib/voga/help_texts.py:17
+msgid ""
+"The default fee to pay when renting this room to an external\n"
+"organization."
 msgstr ""
 
 #: lino_voga/lib/voga/settings.py:136

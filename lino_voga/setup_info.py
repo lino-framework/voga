@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2018 Luc Saffre
+# Copyright 2013-2018 Rumma & Ko Ltd
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -23,7 +23,7 @@
 
 
 SETUP_INFO = dict(
-    name='lino_voga',
+    name='lino-voga',
     # version='0.0.4',
     version='17.10.0',
     install_requires=[

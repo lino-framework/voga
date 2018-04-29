@@ -1,5 +1,5 @@
 =========================
-The ``lino_voga`` package
+The ``lino-voga`` package
 =========================
 
 

@@ -1,14 +1,14 @@
-# Translations template for lino_voga.
+# Translations template for lino-voga.
 # Copyright (C) 2018 ORGANIZATION
-# This file is distributed under the same license as the lino_voga project.
+# This file is distributed under the same license as the lino-voga project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: lino_voga 17.10.0\n"
+"Project-Id-Version: lino-voga 17.10.0\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-03-16 18:40+0200\n"
+"POT-Creation-Date: 2018-04-29 07:24+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -349,6 +349,16 @@ msgstr ""
 msgid ""
 "Somebody who can just register presences of participants, i.e. mark\n"
 "them as absent or present."
+msgstr ""
+
+#: lino_voga/lib/voga/help_texts.py:16
+msgid "Extends lino_xl.lib.cal.Room by adding one field:"
+msgstr ""
+
+#: lino_voga/lib/voga/help_texts.py:17
+msgid ""
+"The default fee to pay when renting this room to an external\n"
+"organization."
 msgstr ""
 
 #: lino_voga/lib/voga/settings.py:136
