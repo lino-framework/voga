@@ -217,7 +217,7 @@ class EntriesByCourse(EntriesByController):
     column_names = "start_date auto_type workflow_buttons "\
                    "start_time end_time room summary *"
 
-    slave_grid_format = "summary"
+    display_mode = "summary"
 
 
 class CourseDetail(CourseDetail):
