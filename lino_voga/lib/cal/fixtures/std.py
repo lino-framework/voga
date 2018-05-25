@@ -27,16 +27,16 @@ def objects():
 
     yield lib_objects()
 
-    GuestRole = rt.modules.cal.GuestRole
+    GuestRole = rt.models.cal.GuestRole
 
     yield GuestRole(**dd.str2kw('name', _("Participant")))
     yield GuestRole(**dd.str2kw('name', _("Guide")))
     yield GuestRole(**dd.str2kw('name', _("Teacher")))
 
-    EventType = rt.modules.cal.EventType
-    RecurrentEvent = rt.modules.cal.RecurrentEvent
-    Recurrencies = rt.modules.cal.Recurrencies
-    DEMO_START_YEAR = rt.modules.cal.DEMO_START_YEAR
+    EventType = rt.models.cal.EventType
+    RecurrentEvent = rt.models.cal.RecurrentEvent
+    Recurrencies = rt.models.cal.Recurrencies
+    DEMO_START_YEAR = rt.models.cal.DEMO_START_YEAR
 
     holidays = EventType.objects.get(
         **dd.str2kw('name', _("Holidays")))

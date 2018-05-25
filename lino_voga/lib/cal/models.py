@@ -151,7 +151,7 @@ class Event(Event):
             return
         if not settings.SITE.site_config.pupil_guestrole:
             return
-        Guest = settings.SITE.modules.cal.Guest
+        Guest = settings.SITE.models.cal.Guest
         for obj in self.project.enrolment_set.exclude(
                 state=EnrolmentStates.cancelled):
             if obj.pupil:

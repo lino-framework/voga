@@ -240,8 +240,8 @@ class Migrator(Migrator):
         
         @override(globals_dict)
         def create_users_user(id, modified, created, username, password, user_type, initials, first_name, last_name, email, remarks, language, partner_id, access_class, event_type_id, notifyme_mode):
-            if user_type: user_type = settings.SITE.modules.users.UserTypes.get_by_value(profile)
-            if access_class: access_class = settings.SITE.modules.cal.AccessClasses.get_by_value(access_class)
+            if user_type: user_type = settings.SITE.models.users.UserTypes.get_by_value(profile)
+            if access_class: access_class = settings.SITE.models.cal.AccessClasses.get_by_value(access_class)
             kw = dict()
             kw.update(id=id)
             kw.update(modified=modified)

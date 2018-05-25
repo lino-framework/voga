@@ -22,8 +22,8 @@ from lino.api import dd, rt, _
 
 def objects():
 
-    ContentType = rt.modules.contenttypes.ContentType
-    ExcerptType = rt.modules.excerpts.ExcerptType
+    ContentType = rt.models.contenttypes.ContentType
+    ExcerptType = rt.models.excerpts.ExcerptType
     Course = rt.models.courses.Course
 
     yield ExcerptType(

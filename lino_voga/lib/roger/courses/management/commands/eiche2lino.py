@@ -89,7 +89,7 @@ class MyBook():
         self.filename = filename
 
     def objects(self):
-        Country = rt.modules.countries.Country
+        Country = rt.models.countries.Country
 
         self.country = Country.objects.get(isocode="BE")
         self.book = open_workbook(self.filename)
@@ -126,7 +126,7 @@ class MyBook():
     def row2instance(self, nr, title, last_name, first_name, street,
                      zip_code, city_name, phone, gsm, birth_date, bez, datum,
                      mg, mgnr, email):
-        Place = rt.modules.countries.Place
+        Place = rt.models.countries.Place
         Pupil = rt.models.courses.Pupil
 
         kw = dict(last_name=last_name, first_name=first_name)
@@ -198,7 +198,7 @@ class MyBook2016(MyBook):
                      remark,
                      eiche_mg, sektion, ckk, lfv, raviva,
                      nicht_mitglied, national_id, sex):
-        Place = rt.modules.countries.Place
+        Place = rt.models.countries.Place
         Pupil = rt.models.courses.Pupil
         Sections = rt.models.courses.Sections
         MEMBER_UNTIL = datetime.date(2016, 12, 31)

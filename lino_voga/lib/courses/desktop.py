@@ -297,8 +297,8 @@ if False:
 
         @dd.chooser()
         def city_choices(cls):
-            Place = rt.modules.countries.Place
-            Room = rt.modules.cal.Room
+            Place = rt.models.countries.Place
+            Room = rt.models.cal.Room
             places = set([
                 obj.company.city.id
                 for obj in Room.objects.filter(company__isnull=False)])
