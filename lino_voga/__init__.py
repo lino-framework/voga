@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2017 Luc Saffre
+# Copyright 2013-2018 Rumma & Ko Ltd
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -35,3 +35,4 @@ __version__ = SETUP_INFO['version']
 
 intersphinx_urls = dict(docs="http://voga.lino-framework.org")
 srcref_url = 'https://github.com/lino-framework/voga/blob/master/%s'
+doc_trees = ['docs']

@@ -217,7 +217,7 @@ class EntriesByCourse(EntriesByController):
     column_names = "start_date auto_type workflow_buttons "\
                    "start_time end_time room summary *"
 
-    slave_grid_format = "summary"
+    display_mode = "summary"
 
 
 class CourseDetail(CourseDetail):
@@ -297,8 +297,8 @@ if False:
 
         @dd.chooser()
         def city_choices(cls):
-            Place = rt.modules.countries.Place
-            Room = rt.modules.cal.Room
+            Place = rt.models.countries.Place
+            Room = rt.models.cal.Room
             places = set([
                 obj.company.city.id
                 for obj in Room.objects.filter(company__isnull=False)])

@@ -140,7 +140,7 @@ class CourseToXls(CustomBuildMethod):
             lbl = day_and_month(evt.start_date)
 
             def func(enr):
-                qs = rt.modules.cal.Guest.objects.filter(
+                qs = rt.models.cal.Guest.objects.filter(
                     event=evt, partner=enr.pupil)
                 n = qs.count()
                 if n == 0:
@@ -400,7 +400,7 @@ class Course(Referrable, Course):
 
     @dd.chooser()
     def fee_choices(cls, line):
-        Product = rt.modules.products.Product
+        Product = rt.models.products.Product
         if not line or not line.fees_cat:
             return Product.objects.none()
         return Product.objects.filter(cat=line.fees_cat)
@@ -670,7 +670,7 @@ class Enrolment(Enrolment, Invoiceable):
 
     @dd.chooser()
     def fee_choices(cls, course):
-        Product = rt.modules.products.Product
+        Product = rt.models.products.Product
         if not course or not course.line or not course.line.fees_cat:
             return Product.objects.none()
         return Product.objects.filter(cat=course.line.fees_cat)

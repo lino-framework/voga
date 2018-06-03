@@ -1,7 +1,7 @@
 {% extends "excerpts/base.body.html" %}
 
 {% block body %}
-{{ ar.show(rt.modules.courses.EnrolmentsAndPaymentsByCourse, obj) }}
+{{ ar.show(rt.models.courses.EnrolmentsAndPaymentsByCourse, obj) }}
 
 {{ super() }}
 {% endblock %}

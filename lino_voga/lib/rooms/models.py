@@ -41,7 +41,7 @@ class Booking(Booking, Invoiceable):
             cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
 
         if partner:
-            company = get_child(partner, rt.modules.contacts.Company)
+            company = get_child(partner, rt.models.contacts.Company)
             if company:
                 qs = qs.filter(company=company)
             else:
