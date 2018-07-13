@@ -38,7 +38,7 @@ def objects():
     TeacherType = rt.models.courses.TeacherType
     Pupil = rt.models.courses.Pupil
     Teacher = rt.models.courses.Teacher
-    SalesRule = rt.models.sales.SalesRule
+    SalesRule = rt.models.invoicing.SalesRule
 
     yield PupilType(ref="M", **dd.str2kw('name', _("Member")))
     yield PupilType(ref="H", **dd.str2kw('name', _("Helper")))
