@@ -628,13 +628,17 @@ class Enrolment(Enrolment, Invoiceable):
     # create_invoice = CreateInvoiceForEnrolment()
 
     def get_invoiceable_partner(self):
-        return self.pupil.invoice_recipient or self.pupil
+        if hasattr(self.pupil, 'salesrule'):
+            return self.pupil.salesrule.invoice_recipient or self.pupil
+        return self.pupil
 
     def get_invoiceable_payment_term(self):
         return self.course.payment_term
 
     def get_invoiceable_paper_type(self):
         return self.course.paper_type
+        # if hasattr(self.pupil, 'salesrule'):
+        #     return self.pupil.salesrule.paper_type
 
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):
@@ -655,13 +659,13 @@ class Enrolment(Enrolment, Invoiceable):
             # pupil = partner.get_mti_child('pupil')
             if pupil:  # isinstance(partner, rt.models.courses.Pupil):
                 q1 = models.Q(
-                    pupil__invoice_recipient__isnull=True, pupil=pupil)
-                q2 = models.Q(pupil__invoice_recipient=partner)
+                    pupil__salesrule__invoice_recipient__isnull=True, pupil=pupil)
+                q2 = models.Q(pupil__salesrule__invoice_recipient=partner)
                 qs = cls.objects.filter(models.Q(q1 | q2))
             else:
                 # if the partner is not a pupil, then it might still
                 # be an invoice_recipient
-                qs = cls.objects.filter(pupil__invoice_recipient=partner)
+                qs = cls.objects.filter(pupil__salesrule__invoice_recipient=partner)
                 
         # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
         for obj in qs.order_by(cls.invoiceable_date_field, 'id'):
