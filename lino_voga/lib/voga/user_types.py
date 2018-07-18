@@ -37,6 +37,7 @@ from lino.modlib.checkdata.roles import CheckdataUser
 
 
 class Receptor(SiteUser, CoursesUser, ContactsUser, OfficeUser,
+               NotesUser,
                LedgerUser, CheckdataUser, ExcerptsUser, SiteSearcher):
     pass
 
