@@ -38,6 +38,7 @@ def objects():
     TeacherType = rt.models.courses.TeacherType
     Pupil = rt.models.courses.Pupil
     Teacher = rt.models.courses.Teacher
+    SalesRule = rt.models.invoicing.SalesRule
 
     yield PupilType(ref="M", **dd.str2kw('name', _("Member")))
     yield PupilType(ref="H", **dd.str2kw('name', _("Helper")))
@@ -64,8 +65,10 @@ def objects():
     invoice_recipient = None
     for n, p in enumerate(Pupil.objects.all()):
         if n % 10 == 0:
-            p.invoice_recipient = invoice_recipient
-            yield p
+            yield SalesRule(
+                partner=p, invoice_recipient=invoice_recipient)
+            # p.invoice_recipient = invoice_recipient
+            # yield p
         else:
             invoice_recipient = p
             

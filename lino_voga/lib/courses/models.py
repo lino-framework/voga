@@ -1,20 +1,6 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2017 Luc Saffre
-# This file is part of Lino Voga.
-#
-# Lino Voga is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-#
-# Lino Voga is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public
-# License along with Lino Voga.  If not, see
-# <http://www.gnu.org/licenses/>.
+# Copyright 2013-2018 Rumma & Ko Ltd
+# License: BSD (see file COPYING for details)
 
 """
 Database models for `lino_voga.lib.courses`.
@@ -628,13 +614,17 @@ class Enrolment(Enrolment, Invoiceable):
     # create_invoice = CreateInvoiceForEnrolment()
 
     def get_invoiceable_partner(self):
-        return self.pupil.invoice_recipient or self.pupil
+        if hasattr(self.pupil, 'salesrule'):
+            return self.pupil.salesrule.invoice_recipient or self.pupil
+        return self.pupil
 
     def get_invoiceable_payment_term(self):
         return self.course.payment_term
 
     def get_invoiceable_paper_type(self):
         return self.course.paper_type
+        # if hasattr(self.pupil, 'salesrule'):
+        #     return self.pupil.salesrule.paper_type
 
     @classmethod
     def get_invoiceables_for_plan(cls, plan, partner=None):
@@ -655,13 +645,13 @@ class Enrolment(Enrolment, Invoiceable):
             # pupil = partner.get_mti_child('pupil')
             if pupil:  # isinstance(partner, rt.models.courses.Pupil):
                 q1 = models.Q(
-                    pupil__invoice_recipient__isnull=True, pupil=pupil)
-                q2 = models.Q(pupil__invoice_recipient=partner)
+                    pupil__salesrule__invoice_recipient__isnull=True, pupil=pupil)
+                q2 = models.Q(pupil__salesrule__invoice_recipient=partner)
                 qs = cls.objects.filter(models.Q(q1 | q2))
             else:
                 # if the partner is not a pupil, then it might still
                 # be an invoice_recipient
-                qs = cls.objects.filter(pupil__invoice_recipient=partner)
+                qs = cls.objects.filter(pupil__salesrule__invoice_recipient=partner)
                 
         # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
         for obj in qs.order_by(cls.invoiceable_date_field, 'id'):
