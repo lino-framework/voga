@@ -93,6 +93,14 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.sales.fixtures',
     'lino_voga.lib.voga',
     'lino_voga.lib.voga.fixtures',
+    'lino_voga.lib.voga.config',
+    'lino_voga.lib.voga.config.courses',
+    'lino_voga.lib.voga.config.courses.Course',
+    'lino_voga.lib.voga.config.courses.Enrolment',
+    'lino_voga.lib.voga.config.courses.Topic',
+    'lino_voga.lib.voga.config.excerpts',
+    'lino_voga.lib.voga.config.sales',
+    'lino_voga.lib.voga.config.sales.Invoice',
 ])
 
 SETUP_INFO.update(message_extractors={
