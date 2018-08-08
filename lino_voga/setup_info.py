@@ -29,11 +29,11 @@ SETUP_INFO = dict(
     install_requires=[
         'lino_xl',
         'lino_cosi',  # TODO: remove dependency from cosi
-        ],
+    ],
     test_suite='tests',
     # tests_require=['pytest'],
     description="A Lino application for managing courses, "
-    "participants and meeting rooms",
+                "participants and meeting rooms",
 
     long_description="""\
 
@@ -93,21 +93,13 @@ SETUP_INFO.update(packages=[
     'lino_voga.lib.sales.fixtures',
     'lino_voga.lib.voga',
     'lino_voga.lib.voga.fixtures',
-    'lino_voga.lib.voga.config',
-    'lino_voga.lib.voga.config.courses',
-    'lino_voga.lib.voga.config.courses.Course',
-    'lino_voga.lib.voga.config.courses.Enrolment',
-    'lino_voga.lib.voga.config.courses.Topic',
-    'lino_voga.lib.voga.config.excerpts',
-    'lino_voga.lib.voga.config.sales',
-    'lino_voga.lib.voga.config.sales.Invoice',
 ])
 
 SETUP_INFO.update(message_extractors={
     'lino_voga': [
-        ('**/cache/**',          'ignore', None),
-        ('**.py',                'python', None),
-        ('**.js',                'javascript', None),
+        ('**/cache/**', 'ignore', None),
+        ('**.py', 'python', None),
+        ('**.js', 'javascript', None),
         ('**.html', 'jinja2', None),
         # ('**/config/**.html', 'jinja2', None),
         # ('**/config/**/**.html', 'jinja2', None),
@@ -125,9 +117,16 @@ def add_package_data(package, *patterns):
     l.extend(patterns)
     return l
 
-#~ add_package_data('lino_voga',
-  #~ 'config/patrols/Patrol/*.odt',
-  #~ 'config/patrols/Overview/*.odt')
+
+# ~ add_package_data('lino_voga',
+# ~ 'config/patrols/Patrol/*.odt',
+# ~ 'config/patrols/Overview/*.odt')
+add_package_data('lino_voga.lib.voga', 'config/logo.jpg')
+add_package_data('lino_voga.lib.voga', 'config/courses/Course/*.*')
+add_package_data('lino_voga.lib.voga', 'config/courses/Enrolment/*.*')
+add_package_data('lino_voga.lib.voga', 'config/courses/Topic/*.*')
+add_package_data('lino_voga.lib.voga', 'config/excerpts/*.*')
+add_package_data('lino_voga.lib.voga', 'config/sales/Invoice/*.*')
 
 l = add_package_data('lino_voga')
 for lng in 'de fr'.split():
