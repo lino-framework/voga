@@ -25,15 +25,15 @@
 SETUP_INFO = dict(
     name='lino-voga',
     # version='0.0.4',
-    version='17.10.0',
+    version='18.04.0',
     install_requires=[
         'lino_xl',
         'lino_cosi',  # TODO: remove dependency from cosi
-        ],
+    ],
     test_suite='tests',
     # tests_require=['pytest'],
     description="A Lino application for managing courses, "
-    "participants and meeting rooms",
+                "participants and meeting rooms",
 
     long_description="""\
 
@@ -97,9 +97,9 @@ SETUP_INFO.update(packages=[
 
 SETUP_INFO.update(message_extractors={
     'lino_voga': [
-        ('**/cache/**',          'ignore', None),
-        ('**.py',                'python', None),
-        ('**.js',                'javascript', None),
+        ('**/cache/**', 'ignore', None),
+        ('**.py', 'python', None),
+        ('**.js', 'javascript', None),
         ('**.html', 'jinja2', None),
         # ('**/config/**.html', 'jinja2', None),
         # ('**/config/**/**.html', 'jinja2', None),
@@ -117,9 +117,16 @@ def add_package_data(package, *patterns):
     l.extend(patterns)
     return l
 
-#~ add_package_data('lino_voga',
-  #~ 'config/patrols/Patrol/*.odt',
-  #~ 'config/patrols/Overview/*.odt')
+
+# ~ add_package_data('lino_voga',
+# ~ 'config/patrols/Patrol/*.odt',
+# ~ 'config/patrols/Overview/*.odt')
+add_package_data('lino_voga.lib.voga', 'config/logo.jpg')
+add_package_data('lino_voga.lib.voga', 'config/courses/Course/*.*')
+add_package_data('lino_voga.lib.voga', 'config/courses/Enrolment/*.*')
+add_package_data('lino_voga.lib.voga', 'config/courses/Topic/*.*')
+add_package_data('lino_voga.lib.voga', 'config/excerpts/*.*')
+add_package_data('lino_voga.lib.voga', 'config/sales/Invoice/*.*')
 
 l = add_package_data('lino_voga')
 for lng in 'de fr'.split():
