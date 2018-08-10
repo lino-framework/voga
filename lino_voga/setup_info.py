@@ -109,25 +109,27 @@ SETUP_INFO.update(message_extractors={
     ],
 })
 
-SETUP_INFO.update(package_data=dict())
+SETUP_INFO.update(include_package_data=True)
 
-
-def add_package_data(package, *patterns):
-    l = SETUP_INFO['package_data'].setdefault(package, [])
-    l.extend(patterns)
-    return l
-
-
+# SETUP_INFO.update(package_data=dict())
+#
+#
+# def add_package_data(package, *patterns):
+#     l = SETUP_INFO['package_data'].setdefault(package, [])
+#     l.extend(patterns)
+#     return l
+#
+#
 # ~ add_package_data('lino_voga',
 # ~ 'config/patrols/Patrol/*.odt',
 # ~ 'config/patrols/Overview/*.odt')
-add_package_data('lino_voga.lib.voga', 'config/logo.jpg')
-add_package_data('lino_voga.lib.voga', 'config/courses/Course/*.*')
-add_package_data('lino_voga.lib.voga', 'config/courses/Enrolment/*.*')
-add_package_data('lino_voga.lib.voga', 'config/courses/Topic/*.*')
-add_package_data('lino_voga.lib.voga', 'config/excerpts/*.*')
-add_package_data('lino_voga.lib.voga', 'config/sales/Invoice/*.*')
-
-l = add_package_data('lino_voga')
-for lng in 'de fr'.split():
-    l.append('locale/%s/LC_MESSAGES/*.mo' % lng)
+# add_package_data('lino_voga.lib.voga', 'config/logo.jpg')
+# add_package_data('lino_voga.lib.voga', 'config/courses/Course/*.*')
+# add_package_data('lino_voga.lib.voga', 'config/courses/Enrolment/*.*')
+# add_package_data('lino_voga.lib.voga', 'config/courses/Topic/*.*')
+# add_package_data('lino_voga.lib.voga', 'config/excerpts/*.*')
+# add_package_data('lino_voga.lib.voga', 'config/sales/Invoice/*.*')
+#
+# l = add_package_data('lino_voga')
+# for lng in 'de fr'.split():
+#     l.append('locale/%s/LC_MESSAGES/*.mo' % lng)
