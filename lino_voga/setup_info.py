@@ -101,10 +101,10 @@ SETUP_INFO.update(message_extractors={
         ('**.py', 'python', None),
         ('**.js', 'javascript', None),
         ('**.html', 'jinja2', None),
-        # ('**/config/**.html', 'jinja2', None),
-        # ('**/config/**/**.html', 'jinja2', None),
-        # ('lino_voga/lib/voga/config/courses/Enrolment/**.html',
-        #  'jinja2', None),
+        ('**/config/**.html', 'jinja2', None),
+        ('**/config/**/**.html', 'jinja2', None),
+        ('lino_voga/lib/voga/config/courses/Enrolment/**.html',
+         'jinja2', None),
 
     ],
 })
