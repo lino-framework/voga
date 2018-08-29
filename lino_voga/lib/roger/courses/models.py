@@ -35,7 +35,7 @@ from lino.modlib.checkdata.choicelists import Checker
 from lino_voga.lib.courses.models import *
 
 CommonAccounts.add_item(
-    '7310', _("Membership fees"), 'membership_fees', 'incomes', False)
+    '7310', _("Membership fees"), 'membership_fees', False)
 
 
 class Sections(dd.ChoiceList):

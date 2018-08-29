@@ -1,26 +1,15 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2017 Luc Saffre
-# This file is part of Lino Voga.
-#
-# Lino Voga is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-#
-# Lino Voga is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public
-# License along with Lino Voga.  If not, see
-# <http://www.gnu.org/licenses/>.
+# Copyright 2017-2018 Rumma & Ko Ltd
+# License: BSD (see file COPYING for details)
 
-from lino_xl.lib.ledger.choicelists import CommonAccounts
+from lino.api import dd
+from lino_xl.lib.sheets.choicelists import CommonItems
+from lino_xl.lib.accounts.choicelists import CommonAccounts
 
 def objects():
-
-    group = CommonAccounts.sales.get_object().group
-    yield CommonAccounts.membership_fees.create_object(
-        default_amount=15, group=group)
+    obj = CommonAccounts.membership_fees.get_object()
+    obj.default_amount = 15
+    if dd.is_installed('sheets'):
+        obj.sheet_item = CommonItems.sales.get_object()
+    yield obj
     
