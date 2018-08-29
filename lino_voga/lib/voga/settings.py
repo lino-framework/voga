@@ -56,7 +56,6 @@ class Site(Site):
         # yield 'lino.modlib.blacklist'
 
         # yield 'lino_xl.lib.products'
-        # yield 'lino_xl.lib.accounts'
         # yield 'lino_xl.lib.ledger'
         # yield 'lino_xl.lib.vat'
         #~ yield 'lino_xl.lib.sales'

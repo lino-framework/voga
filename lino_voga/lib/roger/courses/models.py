@@ -28,7 +28,7 @@ from django.db.models import Q
 
 from lino.api import dd, rt, _
 
-from lino_xl.lib.accounts.choicelists import CommonAccounts
+from lino_xl.lib.ledger.choicelists import CommonAccounts
 
 from lino.modlib.checkdata.choicelists import Checker
 
@@ -218,7 +218,7 @@ class MemberChecker(Checker):
 
 MemberChecker.activate()
 
-from lino_xl.lib.ledger.utils import on_ledger_movement
+from lino_xl.lib.ledger.models import on_ledger_movement
 
 
 @dd.receiver(on_ledger_movement)

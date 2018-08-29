@@ -34,8 +34,8 @@ from builtins import range
 from lino.api import dd, rt
 from lino.utils.cycler import Cycler
 
-from lino_xl.lib.accounts.choicelists import CommonAccounts
-from lino_xl.lib.accounts.utils import CREDIT
+from lino_xl.lib.ledger.choicelists import CommonAccounts
+from lino_xl.lib.ledger.utils import CREDIT
 
 from lino_voga.lib.courses.fixtures.demo import objects as lib_objects
 

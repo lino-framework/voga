@@ -27,7 +27,7 @@ from lino.mixins import Referrable
 from lino.modlib.printing.mixins import Printable
 from lino_xl.lib.invoicing.mixins import Invoiceable
 from lino_xl.lib.courses.mixins import Enrollable
-from lino_xl.lib.accounts.utils import DEBIT
+from lino_xl.lib.ledger.utils import DEBIT
 from lino.utils import join_elems
 
 from lino_xl.lib.courses.models import *
