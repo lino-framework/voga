@@ -27,8 +27,8 @@ SETUP_INFO = dict(
     # version='0.0.4',
     version='18.8.0',
     install_requires=[
-        'lino_xl',
-        'lino_cosi',  # TODO: remove dependency from cosi
+        'lino_xl'
+        # 'lino_cosi',  # TODO: remove dependency from cosi
     ],
     test_suite='tests',
     # tests_require=['pytest'],

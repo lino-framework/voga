@@ -23,7 +23,7 @@ The :xfile:`models` module for the :mod:`lino_voga.contacts` app.
 
 from django.utils.translation import ugettext_lazy as _
 
-from lino_cosi.lib.contacts.models import *
+from lino_xl.lib.contacts.models import *
 
 from lino_xl.lib.beid.mixins import BeIdCardHolder
 
