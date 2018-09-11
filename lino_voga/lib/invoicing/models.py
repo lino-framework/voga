@@ -49,6 +49,7 @@ Plans.detail_layout = """user journal today max_date
     """
 
 
+# from lino.modlib.users.mixins import StartPlan
 from lino_xl.lib.invoicing.actions import StartInvoicing
 
 
@@ -59,7 +60,6 @@ class StartInvoicingForCourse(StartInvoicing):
     <lino_voga.lib.courses.models.Course>` model as `start_invoicing`.
 
     """
-    show_in_bbar = True
     select_rows = True
 
     def get_options(self, ar):
