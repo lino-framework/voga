@@ -169,8 +169,8 @@ class Enrolment(Enrolment):
 class MemberChecker(Checker):
     """Check membership payments.
 
-    If :attr:`force_cleared_until
-    <lino_xl.lib.ledger.Plugin.force_cleared_until>` is set, then
+    If :attr:`suppress_movements_until
+    <lino_xl.lib.ledger.Plugin.suppress_movements_until>` is set, then
     :attr:`member_until` dates before that date are tolerated.
 
     """
@@ -188,7 +188,7 @@ class MemberChecker(Checker):
             # account__ref=dd.plugins.courses.membership_fee_account)
         qs = qs.order_by('-value_date')
         until = obj.member_until
-        fcu = dd.plugins.ledger.force_cleared_until
+        fcu = dd.plugins.ledger.suppress_movements_until
         if qs.count() == 0:
             if until:
                 if fcu and until > fcu:
