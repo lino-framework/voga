@@ -459,10 +459,11 @@ class InvoicingInfo(object):
         # history = []
         state_field = dd.plugins.invoicing.voucher_model._meta.get_field(
             'state')
-        vstates = [s for s in state_field.choicelist.objects()
-                   if not s.editable]
+        vstates = state_field.choicelist.get_editable_states()
+        # vstates = [s for s in state_field.choicelist.objects()
+        #            if not s.is_editable]
         # self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
-        self.invoicings = enr.invoicings.filter(voucher__state__in=vstates)
+        self.invoicings = enr.invoicings.exclude(voucher__state__in=vstates)
         if enr.free_events:
             self.invoiced_events += enr.free_events
         for obj in self.invoicings:
@@ -747,7 +748,7 @@ class Enrolment(Enrolment, Invoiceable):
         This also decides whether an invoice should be issued or not.
         """
         # dd.logger.info('20160223 %s', self.course)
-        if not self.course.state.invoiceable:
+        if not self.course.state.is_invoiceable:
             return
         if not self.state.invoiceable:
             return
