@@ -44,9 +44,13 @@ class Plugin(Plugin):
 
     """
     extends_models = ['Enrolment', 'Course', 'Line']
-    needs_plugins = [
-        'lino_xl.lib.cal', 'lino_xl.lib.invoicing', 'lino_xl.lib.sales']
-    # needs_plugins = ['lino_xl.lib.cal', 'lino_cosi.lib.auto.sales']
+    
+    # courses needs invoicing and sales but doesn't declare this to
+    # avoid having them added to the menu before courses:
+    
+    # needs_plugins = [
+    #     'lino_xl.lib.cal', 'lino_voga.lib.invoicing', 'lino_voga.lib.sales']
+    needs_plugins = ['lino_xl.lib.cal']
 
     def setup_main_menu(self, site, user_type, m):
         m = m.add_menu(self.app_label, self.verbose_name)

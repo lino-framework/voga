@@ -25,8 +25,8 @@ class ProductCat(ProductCat):
     class Meta(ProductCat.Meta):
         app_label = 'products'
         abstract = dd.is_abstract_model(__name__, 'ProductCat')
-        verbose_name = _("Tariff Category")
-        verbose_name_plural = _("Tariff Categories")
+        verbose_name = _("Fee category")
+        verbose_name_plural = _("Fee categories")
 
 
 class Product(Product):
@@ -46,24 +46,25 @@ class Product(Product):
     class Meta(Product.Meta):
         app_label = 'products'
         abstract = dd.is_abstract_model(__name__, 'Product')
-        verbose_name = _("Tariff")
-        verbose_name_plural = _("Tariffs")
+        verbose_name = _("Fee")
+        verbose_name_plural = _("Fees")
 
-    number_of_events = models.IntegerField(
-        _("Number of events"), null=True, blank=True,
-        help_text=_("Number of calendar events paid per invoicing."))
+#     number_of_events = models.IntegerField(
+#         _("Number of events"), null=True, blank=True,
+#         help_text=_("Number of calendar events paid per invoicing."))
 
-    min_asset = models.IntegerField(
-        _("Invoice threshold"), blank=True, default=1,
-        help_text=_("Minimum quantity to pay in advance."))
+#     min_asset = models.IntegerField(
+#         _("Invoice threshold"), blank=True, default=1,
+#         help_text=_("Minimum quantity to pay in advance."))
 
 
-class ProductDetail(dd.DetailLayout):
+class ProductDetail(ProductDetail):
 
     main = "general courses"
     
     general = dd.Panel("""
-    id cat sales_price number_of_events:10 min_asset:10
+    id cat sales_price tariff
+    # tariff__number_of_events:10 tariff__min_asset:10
     vat_class delivery_unit
     name
     description
@@ -75,4 +76,3 @@ class ProductDetail(dd.DetailLayout):
     """, _("Enrolments"))
 
 
-Products.detail_layout = ProductDetail()

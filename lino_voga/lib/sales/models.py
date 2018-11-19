@@ -22,13 +22,13 @@ class InvoiceDetail(InvoiceDetail):
     """, label=_("Totals"))
 
 
-class InvoiceItem(InvoiceItem):
+# class InvoiceItem(InvoiceItem):
 
-    class Meta:
-        app_label = 'sales'
-        abstract = dd.is_abstract_model(__name__, 'InvoiceItem')
-        verbose_name = _("Product invoice item")
-        verbose_name_plural = _("Product invoice items")
+#     class Meta:
+#         app_label = 'sales'
+#         abstract = dd.is_abstract_model(__name__, 'InvoiceItem')
+#         verbose_name = _("Product invoice item")
+#         verbose_name_plural = _("Product invoice items")
 
 
 class InvoiceItemDetail(InvoiceItemDetail):

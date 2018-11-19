@@ -82,22 +82,22 @@ Lines.detail_layout = """
 #     request_date user course
 #     pupil places fee option
 #     remark amount workflow_buttons
-#     confirmation_details invoicing.InvoicingsByInvoiceable
+#     confirmation_details invoicing.InvoicingsByGenerator
 #     """
 
 Enrolments.detail_layout = """
 id course pupil request_date user
 start_date end_date places:8 fee free_events:8 #option amount
 remark workflow_buttons printed invoicing_info
-confirmation_details invoicing.InvoicingsByInvoiceable
+confirmation_details invoicing.InvoicingsByGenerator
 """
 
 
-from lino_xl.lib.invoicing.models import InvoicingsByInvoiceable
+from lino_xl.lib.invoicing.models import InvoicingsByGenerator
 
-InvoicingsByInvoiceable.column_names = (
+InvoicingsByGenerator.column_names = (
     "voucher title qty voucher__voucher_date "
-    "voucher__state product__number_of_events *")
+    "voucher__state product__tariff__number_of_events *")
 
 
 class PendingRequestedEnrolments(PendingRequestedEnrolments):
@@ -244,7 +244,7 @@ class CourseDetail(CourseDetail):
     more = dd.Panel("""
     # company contact_person
     state user payment_term paper_type id
-    invoicing.InvoicingsByInvoiceable
+    invoicing.InvoicingsByGenerator
     """, label=_("More"))
 
 

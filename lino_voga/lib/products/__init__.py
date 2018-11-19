@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016 Luc Saffre
+# Copyright 2016-2018 Rumma & Ko Ltd
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -25,7 +25,7 @@ from lino_xl.lib.products import Plugin, _
 
 class Plugin(Plugin):
 
-    verbose_name = _("Tariffs")
+    verbose_name = _("Fees")
     extends_models = ['Product', 'ProductCat']
 
     def setup_main_menu(self, site, user_type, m):

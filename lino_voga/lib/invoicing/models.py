@@ -29,10 +29,11 @@ class Plan(Plan):
     course = dd.ForeignKey('courses.Course', blank=True, null=True)
 
 
-Plans.detail_layout = """user journal today max_date
-    partner course
-    invoicing.ItemsByPlan
-    """
+Plans.detail_layout = """
+user journal today max_date
+partner course
+invoicing.ItemsByPlan
+"""
 
 
 # from lino.modlib.users.mixins import StartPlan

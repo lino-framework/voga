@@ -107,12 +107,12 @@ class Event(Event):
     class Meta(Event.Meta):
         abstract = dd.is_abstract_model(__name__, 'Event')
         
-    invoiceable_date_field = 'start_date'
+    # invoiceable_date_field = 'start_date'
     invoiceable_partner_field = 'company'
 
-    def get_invoiceable_product(self, plan):
-        max_date = plan.max_date or plan.today
-        if self.start_date > max_date:
+    def get_invoiceable_product(self, max_date=None):
+        # max_date = plan.max_date or plan.today
+        if max_date and self.start_date > max_date:
             return
         if self.company and self.room:
             return self.room.fee

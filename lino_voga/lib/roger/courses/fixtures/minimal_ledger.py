@@ -9,6 +9,7 @@ from lino_xl.lib.ledger.choicelists import CommonAccounts
 def objects():
     obj = CommonAccounts.membership_fees.get_object()
     obj.default_amount = 15
+    obj.needs_partner = True
     if dd.is_installed('sheets'):
         obj.sheet_item = CommonItems.sales.get_object()
     yield obj

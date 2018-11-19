@@ -25,7 +25,7 @@ from lino.api import dd, rt
 
 from lino.mixins import Referrable
 from lino.modlib.printing.mixins import Printable
-from lino_xl.lib.invoicing.mixins import Invoiceable
+from lino_xl.lib.invoicing.mixins import InvoiceGenerator
 from lino_xl.lib.courses.mixins import Enrollable
 from lino_xl.lib.ledger.utils import DEBIT
 from lino.utils import join_elems
@@ -35,9 +35,6 @@ from lino_xl.lib.courses.models import *
 contacts = dd.resolve_app('contacts')
 
 from lino_xl.lib.cal.utils import day_and_month
-
-MAX_SHOWN = 3  # maximum number of invoiced events shown in
-               # invoicing_info
 
 # from lino.utils.media import TmpMediaFile
 
@@ -100,7 +97,7 @@ class CourseToXls(CustomBuildMethod):
     def custom_build(self, ar, obj, target):
         from openpyxl.workbook import Workbook
         from openpyxl.styles import Alignment
-        events = obj.events_by_course.order_by('start_date')
+        events = obj.events_by_course().order_by('start_date')
 
         xt = XlsTable()
         
@@ -418,142 +415,7 @@ Course.set_widget_options('ref', preferred_with=6)
 #         return [o.pupil for o in ar.selected_rows]
 
 
-class InvoicingInfo(object):
-    """A volatile object which holds invoicing information about a given
-    enrolment.
-
-    .. attribute:: enrolment
-
-        The enrolment it's all about.
-
-    .. attribute:: max_date
-
-        Don't consider dates after this.
-
-    .. attribute:: invoiceable_fee
-
-        Which fee to apply. If this is None, 
-
-    .. attribute:: invoiced_qty
-
-        
-
-    """
-    invoiceable_fee = None
-    invoiced_qty = ZERO
-    invoiced_events = 0
-    used_events = []
-    invoicings = None
-
-    def __init__(self, enr, max_date=None):
-        self.enrolment = enr
-        self.max_date = max_date or dd.today()
-        fee = enr.fee
-        # fee = enr.course.fee or enr.course.line.fee
-        if not fee:
-            return
-        if fee.min_asset is None:
-            self.invoiceable_fee = fee
-            return
-            
-        # history = []
-        state_field = dd.plugins.invoicing.voucher_model._meta.get_field(
-            'state')
-        vstates = state_field.choicelist.get_editable_states()
-        # vstates = [s for s in state_field.choicelist.objects()
-        #            if not s.is_editable]
-        # self.invoicings = enr.get_invoicings(voucher__state__in=vstates)
-        self.invoicings = enr.invoicings.exclude(voucher__state__in=vstates)
-        if enr.free_events:
-            self.invoiced_events += enr.free_events
-        for obj in self.invoicings:
-            if obj.product is not None:
-                self.invoiced_qty += obj.qty
-                if obj.product.number_of_events:
-                    self.invoiced_events += int(
-                        obj.qty * obj.product.number_of_events)
-            # history.append("".format())
-        # print("20160414", self.invoicings, self.invoiced_qty)
-        start_date = enr.start_date or enr.course.start_date
-        # print("20160414 a", fee.number_of_events)
-        if fee.number_of_events:
-            # print("20160414 b", start_date)
-            if not start_date:
-                return
-            qs = enr.course.events_by_course.filter(
-                start_date__gte=start_date,
-                start_date__lte=self.max_date,
-                state=rt.models.cal.EntryStates.took_place)
-            if enr.end_date:
-                qs = qs.filter(start_date__lte=enr.end_date)
-            # Note that this query works only on the start_date of
-            # events. If we want to filter on end_date, then don't
-            # forget this field can be empty.
-            self.used_events = qs.order_by('start_date')
-            # print("20160414 c", self.used_events)
-            # used_events = qs.count()
-            # paid_events = invoiced_qty * fee.number_of_events
-            asset = self.invoiced_events - self.used_events.count()
-        else:
-            asset = self.invoiced_qty
-        # dd.logger.info("20160223 %s %s %s", enr, asset, fee.min_asset)
-        if self.enrolment.end_date \
-           and self.enrolment.end_date < self.max_date and asset >= 0:
-            # ticket #1040 : a participant who declared to stop before
-            # their asset got negative should not get any invoice for
-            # a next asset
-            return 
-        if asset < fee.min_asset:
-            self.invoiceable_fee = fee
-            # self.invoiced_events = invoiced_events
-
-    def as_html(self, ar):
-        elems = []
-        events = list(self.used_events)
-        invoiced = events[self.invoiced_events:]
-        coming = events[:self.invoiced_events]
-
-        def fmt(ev):
-            txt = day_and_month(ev.start_date)
-            if ar is None:
-                return txt
-            return ar.obj2html(ev, txt)
-        if len(invoiced) > 0:
-            elems.append("{0} : ".format(_("Invoiced")))
-            if len(invoiced) > MAX_SHOWN:
-                elems.append("(...) ")
-                invoiced = invoiced[-MAX_SHOWN:]
-            elems += join_elems(map(fmt, invoiced), sep=', ')
-            # s += ', '.join(map(fmt, invoiced))
-            # elems.append(E.p(s))
-        if len(coming) > 0:
-            if len(elems) > 0:
-                elems.append(E.br())
-            elems.append("{0} : ".format(_("Not invoiced")))
-            elems += join_elems(map(fmt, coming), sep=', ')
-            # s += ', '.join(map(fmt, coming))
-            # elems.append(E.p(s))
-        return E.p(*elems)
-
-        # for i, ev in enumerate(self.used_events):
-        #     txt = day_and_month(ev.start_date)
-        #     if i >= self.invoiced_events:
-        #         txt = E.b(txt)
-        #     elems.append(ar.obj2html(ev, txt))
-        # return E.p(*join_elems(elems, sep=', '))
-
-    def invoice_number(self, voucher):
-        if self.invoicings is None:
-            return 0
-        n = 1
-        for item in self.invoicings:
-            n += 1
-            if voucher and item.voucher.id == voucher.id:
-                break
-        return n
-
-
-class Enrolment(Enrolment, Invoiceable):
+class Enrolment(Enrolment, InvoiceGenerator):
     """Adds
 
     .. attribute:: fee
@@ -588,7 +450,7 @@ class Enrolment(Enrolment, Invoiceable):
 
     """
 
-    invoiceable_date_field = 'request_date'
+    # invoiceable_date_field = 'request_date'
     _invoicing_info = None
 
     class Meta(Enrolment.Meta):
@@ -615,8 +477,8 @@ class Enrolment(Enrolment, Invoiceable):
     # create_invoice = CreateInvoiceForEnrolment()
 
     def get_invoiceable_partner(self):
-        if hasattr(self.pupil, 'salesrule'):
-            return self.pupil.salesrule.invoice_recipient or self.pupil
+        # if hasattr(self.pupil, 'salesrule'):
+        #     return self.pupil.salesrule.invoice_recipient or self.pupil
         return self.pupil
 
     def get_invoiceable_payment_term(self):
@@ -627,18 +489,30 @@ class Enrolment(Enrolment, Invoiceable):
         # if hasattr(self.pupil, 'salesrule'):
         #     return self.pupil.salesrule.paper_type
 
-    @classmethod
-    def get_invoiceables_for_plan(cls, plan, partner=None):
-        """Yield all enrolments for which the given plan and partner should
-        generate an invoice.
+    def get_invoiceable_events(self, start_date, max_date):
+        flt = dict(
+            start_date__lte=max_date,
+            state=rt.models.cal.EntryStates.took_place)
+        if start_date:
+            flt.update(start_date__gte=start_date)
+        return self.course.events_by_course(**flt).order_by('start_date')
+            
+    def get_invoiceable_free_events(self):
+        return self.free_events
 
+    @classmethod
+    def get_generators_for_plan(cls, plan, partner=None):
         """
-        qs = cls.objects.filter(**{
-            cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
-        if plan.course is not None:
-            qs = qs.filter(course__id=plan.course.id)
-        else:
+        Yield all enrolments for which the given plan and partner should
+        generate an invoice.
+        """
+        qs = cls.objects.all()
+        # **{
+        #     cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
+        if plan.course is None:
             qs = qs.filter(course__state=CourseStates.active)
+        else:
+            qs = qs.filter(course__id=plan.course.id)
         if partner is None:
             partner = plan.partner
         if partner:
@@ -648,16 +522,14 @@ class Enrolment(Enrolment, Invoiceable):
                 q1 = models.Q(
                     pupil__salesrule__invoice_recipient__isnull=True, pupil=pupil)
                 q2 = models.Q(pupil__salesrule__invoice_recipient=partner)
-                qs = cls.objects.filter(models.Q(q1 | q2))
+                qs = qs.filter(models.Q(q1 | q2))
             else:
                 # if the partner is not a pupil, then it might still
                 # be an invoice_recipient
-                qs = cls.objects.filter(pupil__salesrule__invoice_recipient=partner)
+                qs = qs.filter(pupil__salesrule__invoice_recipient=partner)
                 
         # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
-        for obj in qs.order_by(cls.invoiceable_date_field, 'id'):
-            # dd.logger.info('20160223 %s', obj)
-            yield obj
+        return qs.order_by('id')
 
     @dd.chooser()
     def fee_choices(cls, course):
@@ -700,6 +572,9 @@ class Enrolment(Enrolment, Invoiceable):
     def get_invoiceable_amount(self):
         return self.amount
 
+    def get_invoiceable_product(self, max_date=None):
+        return self.fee
+    
     def compute_amount(self):
         #~ if self.course is None:
             #~ return
@@ -715,26 +590,24 @@ class Enrolment(Enrolment, Invoiceable):
         except TypeError as e:
             logger.warning("%s * %s -> %s", price, self.places, e)
 
-    def get_invoicing_info(self, max_date=None):
-        if self._invoicing_info is None:
-            self._invoicing_info = InvoicingInfo(self, max_date)
-        # assert self._invoicing_info.max_date == max_date
-        return self._invoicing_info
-
-    def get_invoiceable_title(self, invoice=None):
+    def get_invoiceable_title(self, number=None):
         title = _("{enrolment} to {course}").format(
             enrolment=self.__class__._meta.verbose_name,
             course=self.course)
-        if self.fee.number_of_events:
-            info = self.get_invoicing_info()
-            number = info.invoice_number(invoice)
-            if number > 1:
-                msg = _("[{number}] Renewal {title}")
-            else:
-                msg = _("[{number}] {title}")
-            return msg.format(title=title, number=number)
-        return title
+        # if self.fee.tariff and self.fee.tariff.number_of_events:
+        #     info = self.compute_invoicing_info()
+        #     number = info.invoice_number(invoice)
+        if number is None:
+            return title
+        if number > 1:
+            msg = _("[{number}] Renewal {title}")
+        else:
+            msg = _("[{number}] {title}")
+        return msg.format(title=title, number=number)
 
+    def get_invoiceable_start_date(self, max_date):
+        return self.start_date or self.course.start_date
+    
     def get_invoiceable_qty(self):
         return self.places
 
@@ -743,7 +616,7 @@ class Enrolment(Enrolment, Invoiceable):
             None, 'courses/Enrolment/item_description.html',
             obj=self, item=item)
 
-    def get_invoiceable_product(self, plan):
+    def get_invoiceable_info(self, plan):
         """Return the product to use for the invoice.
         This also decides whether an invoice should be issued or not.
         """
@@ -765,7 +638,7 @@ class Enrolment(Enrolment, Invoiceable):
         if self.request_date and self.request_date > max_date:
             return
 
-        return self.get_invoicing_info(max_date).invoiceable_fee
+        return self.compute_invoicing_info(max_date)
 
     @dd.virtualfield(dd.HtmlBox(_("Participant")))
     def pupil_info(self, ar):
@@ -789,11 +662,6 @@ class Enrolment(Enrolment, Invoiceable):
         if self.pupil.gsm:
             elems += [', ', _("GSM: {0}").format(self.pupil.gsm)]
         return E.p(*elems)
-
-    @dd.displayfield(_("Invoicing info"))
-    def invoicing_info(self, ar):
-        info = self.get_invoicing_info(dd.today())
-        return info.as_html(ar)
 
     @dd.displayfield(_("Payment info"))
     def payment_info(self, ar):

@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2016 Luc Saffre
+# Copyright 2013-2018 Rumma & Ko Ltd
 # This file is part of Lino Voga.
 #
 # Lino Voga is free software: you can redistribute it and/or modify
@@ -26,32 +26,32 @@ from __future__ import unicode_literals
 from lino.utils.mti import get_child
 from lino_xl.lib.rooms.models import *
 from lino.api import rt
-from lino_xl.lib.invoicing.mixins import Invoiceable
+from lino_xl.lib.invoicing.mixins import InvoiceGenerator
 
 # sales = dd.resolve_app('sales')
 
 
-class Booking(Booking, Invoiceable):
+class Booking(Booking, InvoiceGenerator):
 
-    invoiceable_date_field = 'start_date'
+    # invoiceable_date_field = 'start_date'
 
     @classmethod
-    def get_invoiceables_for_plan(cls, plan, partner=None):
-        qs = cls.objects.filter(**{
-            cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
+    def get_generators_for_plan(cls, plan, partner=None):
+        qs = cls.objects.all()
+        # filter(**{
+        #     cls.invoiceable_date_field + '__lte': plan.max_date or plan.today})
 
         if partner:
             company = get_child(partner, rt.models.contacts.Company)
             if company:
                 qs = qs.filter(company=company)
             else:
-                return
-        for obj in qs.order_by(cls.invoiceable_date_field, 'id'):
-            yield obj
+                return cls.objects.none()
+        return qs.order_by('id')
 
-    def get_invoiceable_product(self, plan):
-        max_date = plan.max_date or plan.today
-        if self.start_date > max_date:
+    def get_invoiceable_product(self, max_date=None):
+        # max_date = plan.max_date or plan.today
+        if max_date and self.start_date > max_date:
             return
         if self.company and self.room:
             # if self.get_invoicings().count() > 0:

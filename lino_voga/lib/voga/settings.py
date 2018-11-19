@@ -47,12 +47,12 @@ class Site(Site):
         yield 'lino.modlib.checkdata'
 
         yield 'lino_voga.lib.cal'
+        yield 'lino_voga.lib.courses'
         yield 'lino_voga.lib.products'
         yield 'lino_voga.lib.rooms'
         yield 'lino_voga.lib.sales'
         yield 'lino_voga.lib.invoicing'
 
-        yield 'lino_voga.lib.courses'
         # yield 'lino.modlib.blacklist'
 
         # yield 'lino_xl.lib.products'
