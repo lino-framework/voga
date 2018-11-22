@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016-2017 by Luc Saffre.
+# Copyright 2016-2017 by Rumma & Ko Ltd.
 """
 
 Defines the :manage:`eiche2lino` management command:
