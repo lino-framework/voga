@@ -29,7 +29,7 @@ from lino.modlib.about.roles import SiteSearcher
 from lino_xl.lib.excerpts.roles import ExcerptsUser, ExcerptsStaff
 from lino_xl.lib.contacts.roles import ContactsUser, ContactsStaff
 from lino_xl.lib.ledger.roles import LedgerUser, VoucherSupervisor, LedgerStaff
-from lino_xl.lib.notes.roles import NotesUser
+from lino_xl.lib.notes.roles import NotesUser, NotesStaff
 from lino_xl.lib.sepa.roles import SepaStaff
 from lino_xl.lib.products.roles import ProductsStaff
 from lino_xl.lib.courses.roles import CoursesTeacher, CoursesUser
@@ -57,6 +57,7 @@ class Teacher(CoursesTeacher):  # , ExcerptsUser, OfficeUser):
 
 
 class SiteAdmin(SiteAdmin, CoursesUser, ContactsStaff, OfficeStaff,
+                NotesStaff,
                 LedgerStaff, SepaStaff, CheckdataUser, GuestOperator,
                 ExcerptsStaff, ProductsStaff, Explorer, SiteSearcher):
     pass
