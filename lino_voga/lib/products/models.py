@@ -4,7 +4,7 @@
 
 """The :xfile:`models.py` module for `lino_voga.lib.products`.
 
-In Lino Voga we don't call them "products" but "tariffs".
+In Lino Voga we don't call them "products" but "Fees".
 
 And we make them less visible by moving them from the main menu to the
 configuration menu.
@@ -15,6 +15,10 @@ from __future__ import unicode_literals
 
 from lino_xl.lib.products.models import *
 from lino.api import _
+
+ProductTypes.clear()
+add = ProductTypes.add_item
+add('100', _("Fees"), 'default', table_name="products.Products")
 
 
 class ProductCat(ProductCat):

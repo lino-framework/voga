@@ -111,6 +111,7 @@ class Site(Site):
             self.plugins.extensible.configure(calendar_end_hour=21)
         self.plugins.vat.configure(default_vat_class='exempt')
         self.plugins.ledger.configure(start_year=2015)
+        self.plugins.products.configure(menu_group="sales")
         super(Site, self).setup_plugins()
 
     def setup_quicklinks(self, user, tb):
