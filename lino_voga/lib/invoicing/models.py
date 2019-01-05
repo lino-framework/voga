@@ -47,6 +47,7 @@ class StartInvoicingForCourse(StartInvoicing):
     <lino_voga.lib.courses.models.Course>` model as `start_invoicing`.
 
     """
+    show_in_bbar = True
     select_rows = True
 
     def get_options(self, ar):
