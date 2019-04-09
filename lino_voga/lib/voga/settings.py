@@ -1,3 +1,4 @@
+
 # -*- coding: UTF-8 -*-
 # Copyright 2012-2018 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
@@ -57,7 +58,7 @@ class Site(Site):
 
         # yield 'lino_xl.lib.products'
         # yield 'lino_xl.lib.ledger'
-        # yield 'lino_xl.lib.vat'
+        yield 'lino_xl.lib.vat'
         #~ yield 'lino_xl.lib.sales'
         # yield 'lino_cosi.lib.auto.sales'
         yield 'lino_xl.lib.finan'
@@ -101,18 +102,28 @@ class Site(Site):
         yield self.models.courses.MyCoursesGiven
         yield self.models.courses.StatusReport
 
-    def setup_plugins(self):
-        """
-        Change the default value of certain plugin settings.
-       
-        """
-        if self.is_installed('extensible'):
-            self.plugins.extensible.configure(calendar_start_hour=9)
-            self.plugins.extensible.configure(calendar_end_hour=21)
-        self.plugins.vat.configure(default_vat_class='exempt')
-        self.plugins.ledger.configure(start_year=2015)
-        self.plugins.products.configure(menu_group="sales")
-        super(Site, self).setup_plugins()
+    def get_plugin_configs(self):
+        yield super(Site, self).get_plugin_configs()
+        if True:  # self.is_installed('extensible'):
+            # e.g. in lydia6 there is no extensible
+            yield ('extensible', 'calendar_start_hour', 9)
+            yield ('extensible', 'calendar_end_hour', 21)
+        # yield ('vat', 'default_vat_class', 'exempt')
+        yield ('products', 'menu_group', 'sales')
+        yield ('ledger', 'start_year', 2015)
+
+    # def setup_plugins(self):
+    #     """
+    #     Change the default value of certain plugin settings.
+    #
+    #     """
+    #     if self.is_installed('extensible'):
+    #         self.plugins.extensible.configure(calendar_start_hour=9)
+    #         self.plugins.extensible.configure(calendar_end_hour=21)
+    #     self.plugins.vat.configure(default_vat_class='exempt')
+    #     self.plugins.ledger.configure(start_year=2015)
+    #     self.plugins.products.configure(menu_group="sales")
+    #     super(Site, self).setup_plugins()
 
     def setup_quicklinks(self, user, tb):
         super(Site, self).setup_quicklinks(user, tb)
