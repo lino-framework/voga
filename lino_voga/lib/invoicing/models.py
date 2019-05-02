@@ -30,7 +30,7 @@ class Plan(Plan):
 
 
 Plans.detail_layout = """
-user journal today max_date
+user area today max_date
 partner course
 invoicing.ItemsByPlan
 """
