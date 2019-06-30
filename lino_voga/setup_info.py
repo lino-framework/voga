@@ -1,20 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2018 Rumma & Ko Ltd
-# This file is part of Lino Voga.
-#
-# Lino Voga is free software: you can redistribute it and/or modify
-# it under the terms of the GNU Affero General Public License as
-# published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
-#
-# Lino Voga is distributed in the hope that it will be useful, but
-# WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Affero General Public License for more details.
-#
-# You should have received a copy of the GNU Affero General Public
-# License along with Lino Voga.  If not, see
-# <http://www.gnu.org/licenses/>.
+# Copyright 2013-2019 Rumma & Ko Ltd
 
 # This file may not have a docstring because it is being `exec`ed from
 # the __init__.py file.
@@ -53,7 +38,7 @@ for managing courses, participants and meeting rooms.
     author='Luc Saffre',
     author_email='luc.saffre@gmail.com',
     url="http://voga.lino-framework.org",
-    license='GNU Affero General Public License v3',
+    license='BSD-2-Clause',
     classifiers="""\
 Programming Language :: Python
 Programming Language :: Python :: 2
@@ -63,7 +48,7 @@ Framework :: Django
 Intended Audience :: Developers
 Intended Audience :: System Administrators
 Intended Audience :: Education
-License :: OSI Approved :: GNU Affero General Public License v3
+License :: OSI Approved :: BSD License
 Operating System :: OS Independent
 Topic :: Office/Business :: Financial :: Accounting
 Topic :: Office/Business :: Scheduling
