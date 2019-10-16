@@ -6,7 +6,6 @@
 .. autosummary::
    :toctree:
 
-    models
     management.commands.garble_persons
     fixtures.std
     fixtures.demo

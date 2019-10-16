@@ -1,10 +1,5 @@
 # Copyright 2013-2016 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
-"""
-The :xfile:`models` module for the :mod:`lino_voga.contacts` app.
-
-"""
-
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,7 +14,7 @@ class Person(Person, BeIdCardHolder):
         app_label = 'contacts'
         abstract = dd.is_abstract_model(__name__, 'Person')
 
-    validate_national_id = True        
+    validate_national_id = True
 
 
 class PartnerDetail(PartnerDetail):
@@ -102,7 +97,7 @@ class CompanyDetail(CompanyDetail, PartnerDetail):
     street:25 #street_no street_box
     addr2
     country zip_code:10 city
-    """    
+    """
 
     contact_box = dd.Panel("""
     #mti_navigator
@@ -145,7 +140,7 @@ class PersonDetail(PersonDetail, PartnerDetail):
     """
 
     personal = 'national_id card_number'
-   
+
     bottom_box = """
     remarks:50 checkdata.ProblemsByOwner:30
     """
