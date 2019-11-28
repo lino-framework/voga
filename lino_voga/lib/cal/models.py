@@ -87,7 +87,7 @@ class Rooms(Rooms):
     """
 
 
-@dd.python_2_unicode_compatible
+
 class Event(Event):
 
     class Meta(Event.Meta):

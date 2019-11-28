@@ -160,7 +160,7 @@ class TeacherType(Referrable, mixins.BabelNamed, Printable):
         verbose_name_plural = _("Instructor Types")
 
 
-@dd.python_2_unicode_compatible
+
 class Teacher(contacts.Person):
     """A **teacher** is a person with an additional field
     :attr:`teacher_type`.
@@ -295,7 +295,7 @@ class Line(Line):
     course_type = dd.ForeignKey('courses.CourseType', blank=True, null=True)
 
 
-@dd.python_2_unicode_compatible
+
 class Course(Referrable, Course):
     """Extends the standard model by adding a field :attr:`fee`.
 
