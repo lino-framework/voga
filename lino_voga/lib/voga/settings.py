@@ -40,6 +40,7 @@ class Site(Site):
         # yield 'lino.modlib.gfks'
         # yield 'lino.modlib.system'
         yield 'lino.modlib.users'
+        # yield 'lino_xl.lib.excerpts'
         yield 'lino_xl.lib.countries'
         yield 'lino_voga.lib.contacts'
         yield 'lino_xl.lib.lists'
@@ -58,7 +59,7 @@ class Site(Site):
 
         # yield 'lino_xl.lib.products'
         # yield 'lino_xl.lib.ledger'
-        yield 'lino_xl.lib.vat'
+        # yield 'lino_xl.lib.vat'
         #~ yield 'lino_xl.lib.sales'
         # yield 'lino_cosi.lib.auto.sales'
         yield 'lino_xl.lib.finan'
@@ -73,7 +74,6 @@ class Site(Site):
         #~ yield 'lino_xl.lib.cal'
 
         yield 'lino_xl.lib.outbox'
-        yield 'lino_xl.lib.excerpts'
         #~ yield 'lino_xl.lib.pages'
         #~ yield 'lino_xl.lib.courses'
         yield 'lino_voga.lib.voga'
@@ -132,5 +132,3 @@ class Site(Site):
             self.models.courses.Pupils.insert_action,
             label=_("New {}").format(
                 self.models.courses.Pupil._meta.verbose_name))
-
-        
