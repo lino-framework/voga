@@ -8,7 +8,13 @@ See the author's Developer Blog to get detailed news.
 The final truth about what's going on is the source code.
 
 
-Version 0.0.3 (not yet released)
+2019-12-19
+==========
+
+Released version 19.12.0
+
+
+Version 0.0.3
 ============================================
 
 - Beim Generieren von Terminen (Eingabe der Kurse) waren noch einige
