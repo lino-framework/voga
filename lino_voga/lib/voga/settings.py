@@ -79,7 +79,8 @@ class Site(Site):
         yield 'lino_voga.lib.voga'
 
         yield 'lino.modlib.export_excel'
-        yield 'lino_xl.lib.extensible'
+        yield 'lino_xl.lib.calview'
+        # yield 'lino_xl.lib.extensible'
         yield 'lino.modlib.wkhtmltopdf'  # obsolete
         yield 'lino.modlib.weasyprint'
         yield 'lino_xl.lib.appypod'
