@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2018 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 """
@@ -10,12 +10,6 @@ Database models for `lino_voga.lib.courses`.
      The template used to fill the items description.
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
-
-from builtins import map
-from builtins import str
 
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy as pgettext
@@ -79,7 +73,7 @@ class XlsTable(object):
                 setattr(cell, k, v)
             if col.width is not None:
                 sheet.column_dimensions[cell.column].width = col.width
-            
+
         for row in rows:
             rowno += 1
             for i, col in enumerate(self.columns):
@@ -100,7 +94,7 @@ class CourseToXls(CustomBuildMethod):
         events = obj.events_by_course().order_by('start_date')
 
         xt = XlsTable()
-        
+
         # def func(enr):
         #     # s = ''.join([str(e) for e in enr.pupil_info])
         #     s = enr.pupil_info.text
@@ -129,7 +123,7 @@ class CourseToXls(CustomBuildMethod):
                 if n == 0:
                     return ''
                 return n
-                
+
             xt.add_column(
                 lbl, func, alignment=Alignment(
                     vertical="center", text_rotation=90), width=4)
@@ -252,7 +246,7 @@ class Pupil(Enrollable, contacts.Person):
                     invoiceable=True))
             # qs = qs.filter(
             #     enrolments_by_pupil__state=EnrolmentStates.confirmed)
-            
+
 
         if pv.partner_list:
             qs = qs.filter(list_memberships__list=pv.partner_list)
@@ -320,7 +314,7 @@ class Course(Referrable, Course):
 
 
     .. attribute:: ref
-    
+
         An identifying public course number to be used by both
         external and internal partners for easily referring to a given
         course.
@@ -364,12 +358,12 @@ class Course(Referrable, Course):
     payment_term = dd.ForeignKey(
         'ledger.PaymentTerm',
         related_name="%(app_label)s_%(class)s_set_by_payment_term",
-        blank=True, null=True)    
+        blank=True, null=True)
 
     paper_type = dd.ForeignKey(
         'sales.PaperType',
         related_name="%(app_label)s_%(class)s_set_by_paper_type",
-        blank=True, null=True)    
+        blank=True, null=True)
 
     quick_search_fields = 'name line__name line__topic__name ref'
 
@@ -496,7 +490,7 @@ class Enrolment(Enrolment, InvoiceGenerator):
         if start_date:
             flt.update(start_date__gte=start_date)
         return self.course.events_by_course(**flt).order_by('start_date')
-            
+
     def get_invoiceable_free_events(self):
         return self.free_events
 
@@ -527,7 +521,7 @@ class Enrolment(Enrolment, InvoiceGenerator):
                 # if the partner is not a pupil, then it might still
                 # be an invoice_recipient
                 qs = qs.filter(pupil__salesrule__invoice_recipient=partner)
-                
+
         # dd.logger.info("20160513 %s (%d rows)", qs.query, qs.count())
         return qs.order_by('id')
 
@@ -574,7 +568,7 @@ class Enrolment(Enrolment, InvoiceGenerator):
 
     def get_invoiceable_product(self, max_date=None):
         return self.fee
-    
+
     def compute_amount(self):
         #~ if self.course is None:
             #~ return
@@ -607,7 +601,7 @@ class Enrolment(Enrolment, InvoiceGenerator):
 
     def get_invoiceable_start_date(self, max_date):
         return self.start_date or self.course.start_date
-    
+
     def get_invoiceable_qty(self):
         return self.places
 
@@ -669,7 +663,7 @@ class Enrolment(Enrolment, InvoiceGenerator):
             return ''
         return rt.models.ledger.Movement.balance_info(
             DEBIT, partner=self.pupil, cleared=False)
-        
+
 
 # dd.inject_field(
 #     'products.Product', 'number_of_events',
@@ -682,4 +676,3 @@ class Enrolment(Enrolment, InvoiceGenerator):
 #     models.IntegerField(
 #         _("Invoice threshold"), null=True, blank=True,
 #         help_text=_("Minimum number of events to pay in advance.")))
-
