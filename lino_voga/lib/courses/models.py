@@ -23,6 +23,7 @@ from lino_xl.lib.invoicing.mixins import InvoiceGenerator
 from lino_xl.lib.courses.mixins import Enrollable
 from lino_xl.lib.ledger.utils import DEBIT
 from lino.utils import join_elems
+from lino.modlib.publisher.mixins import Publishable
 
 from lino_xl.lib.courses.models import *
 
@@ -280,11 +281,15 @@ class CourseType(Referrable, mixins.BabelNamed):
         verbose_name_plural = _('Activity types')
 
 
-class Line(Line):
+class Line(Line, Publishable):
 
     class Meta(Line.Meta):
         app_label = 'courses'
         abstract = dd.is_abstract_model(__name__, 'Line')
+
+    publisher_location = "line"
+    listTemplate = "courses/listitem.line.html"
+    publisher_template = "courses/detail.line.html"
 
     course_type = dd.ForeignKey('courses.CourseType', blank=True, null=True)
 

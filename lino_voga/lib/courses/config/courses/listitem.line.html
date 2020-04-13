@@ -1,0 +1,21 @@
+{% extends "publisher/default_list_item.html" %}
+
+
+{% block listItem %}
+    {# Hard to include CSS from this point .... #}
+    <div class="line"
+         style="position: relative; border: #0f74a8 1px solid; border-radius: 7px; padding: 1ch; margin: 1ch; box-shadow: 3px 3px 2px gray;">
+        <div style="height: 3ch; position: relative">
+            <span style="position: absolute; left: 0px">{{ obj.every_unit.text if obj.every_unit.text  else "" }}</span>
+            <strong style="position: absolute; left: 50%; transform: translate(-50%);">{{ obj.name }}</strong>
+            <span style="position: absolute; right: 0px;">Fee: {{ obj.fee }}</span>
+        </div>
+        <div class="content" >
+            {#<img  style="float:right; height:5ch; width:5ch;" src=""/> #}{{ obj.description }}
+        </div>
+        <div class="footer" style="min-height: 3ch; position: relative;" >
+            <a style="position: absolute; right:0px;" href="{{ obj.publisher_url() }}"><div  style="text-align: center; border-radius: 10px; height: 3ch; width: 8ch; border: blue 1px solid; display: flex; flex-direction: column; justify-content: center;" >Details</div></a>
+{#            <span style="float:right;">{{ tostring(ar.obj2html(obj, "edit")) }}</span>#}
+        </div>
+    </div>
+{% endblock %}
