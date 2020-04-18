@@ -43,7 +43,7 @@ class Room(Room):
 
     class Meta(Room.Meta):
         abstract = dd.is_abstract_model(__name__, 'Room')
-        
+
     fee = dd.ForeignKey('products.Product',
                         blank=True, null=True,
                         # verbose_name=_("Tariff"),
@@ -92,7 +92,7 @@ class Event(Event):
 
     class Meta(Event.Meta):
         abstract = dd.is_abstract_model(__name__, 'Event')
-        
+
     # invoiceable_date_field = 'start_date'
     invoiceable_partner_field = 'company'
 
@@ -114,9 +114,9 @@ class Event(Event):
         """Overrides :meth:`lino_xl.lib.cal.Event.get_event_summary`
         """
         if self.owner is None:
-            return self.summary
+            yield self.summary
         else:
-            return str(self.owner)
+            yield str(self.owner)
 
     def __str__(self):
         if self.owner is None:
