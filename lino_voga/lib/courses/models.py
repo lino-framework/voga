@@ -288,7 +288,7 @@ class Line(Line, Publishable):
         abstract = dd.is_abstract_model(__name__, 'Line')
 
     publisher_location = "line"
-    listTemplate = "courses/listitem.line.html"
+    list_template = "courses/listitem.line.html"
     publisher_template = "courses/detail.line.html"
 
     course_type = dd.ForeignKey('courses.CourseType', blank=True, null=True)
