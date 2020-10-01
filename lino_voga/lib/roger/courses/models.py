@@ -1,22 +1,15 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016-2017 Rumma & Ko Ltd
+# Copyright 2016-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 Adds some specific fields for managing the member fee.
 
 """
 
-from __future__ import unicode_literals
-from __future__ import print_function
-
 from django.db.models import Q
-
 from lino.api import dd, rt, _
-
 from lino_xl.lib.ledger.choicelists import CommonAccounts
-
 from lino.modlib.checkdata.choicelists import Checker
-
 from lino_voga.lib.courses.models import *
 
 CommonAccounts.add_item(
@@ -180,7 +173,7 @@ class MemberChecker(Checker):
                     return
                 yield (False, self.messages['no_payment'].format(until))
             return
-        
+
         def expected_until(mvt):
             pd = mvt.value_date
             if pd.month > 8:
