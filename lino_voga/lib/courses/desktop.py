@@ -1,15 +1,10 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2017 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 Desktop design for this plugin.
 
 """
-
-from __future__ import unicode_literals
-from __future__ import print_function
-
-from builtins import str
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -330,7 +325,7 @@ class CoursesByLine(CoursesByLine):
     """Like :class:`lino_xl.lib.courses.CoursesByLine`, but with other
     default values in the filter parameters. In Voga we want to see
     only courses for which new enrolments can happen.
-    
+
     TODO: when Lino gets class-based user roles, move this back to the
     library table and show all courses only for users with user_type
     `courses.CourseManager`.
@@ -363,7 +358,7 @@ class EnrolmentsAndPaymentsByCourse(Enrolments):
 
     This is used by `payment_list.body.html`.
 
-    
+
 
     """
     master_key = 'course'
@@ -412,5 +407,3 @@ class Journeys(Courses):
     detail_layout = JourneyDetail()
     column_names = "ref name start_date end_date enrolments_until line " \
                    "workflow_buttons *"
-
-
