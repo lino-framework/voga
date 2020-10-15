@@ -20,7 +20,7 @@ from lino.api import dd, rt
 from lino.utils.cycler import Cycler
 
 from lino_xl.lib.ledger.choicelists import CommonAccounts
-from lino_xl.lib.ledger.utils import CREDIT
+from lino_xl.lib.ledger.utils import DC
 
 from lino_voga.lib.courses.fixtures.demo import objects as lib_objects
 
@@ -68,8 +68,7 @@ def objects():
             kw = dict(voucher=voucher)
             kw.update(partner=MEMBERS.pop(), date=date, account=fee_account)
             kw.update(
-                amount=fee_account.default_amount, dc=CREDIT)
+                amount=fee_account.default_amount)
             yield M(**kw)
         voucher.register(REQUEST)
         voucher.save()
-
