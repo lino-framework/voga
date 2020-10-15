@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2019 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 
-# This file may not have a docstring because it is being `exec`ed from
+# This file may not have any docstring because it is being `exec`ed from
 # the __init__.py file.
 # How to test just this file:
 #   $ python setup.py test -s tests.PackagesTests
@@ -9,7 +9,7 @@
 
 SETUP_INFO = dict(
     name='lino-voga',
-    version='19.12.0',
+    version='20.10.0',
     install_requires=[
         'lino_xl'
         # 'lino_cosi',  # TODO: remove dependency from cosi
@@ -40,8 +40,8 @@ for managing courses, participants and meeting rooms.
     license='BSD-2-Clause',
     classifiers="""\
 Programming Language :: Python
-Programming Language :: Python :: 2
-Development Status :: 5 - Production/Stable
+Programming Language :: Python :: 3
+Development Status :: 4 - Beta
 Environment :: Web Environment
 Framework :: Django
 Intended Audience :: Developers
