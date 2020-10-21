@@ -193,7 +193,6 @@ class MemberChecker(Checker):
             else:
                 yield (False, msg)
 
-
 MemberChecker.activate()
 
 from lino_xl.lib.ledger.models import on_ledger_movement

@@ -1,12 +1,17 @@
-.. _voga.changes: 
+.. _voga.changes:
 
-========================
-Changes in Lino-Voga
-========================
+====================
+Changes in Lino Voga
+====================
 
 See the author's Developer Blog to get detailed news.
 The final truth about what's going on is the source code.
 
+
+2020-10-20
+==========
+
+Avoid duplicate guests when having overlapping enrolments.
 
 2019-12-19
 ==========

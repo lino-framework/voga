@@ -138,12 +138,16 @@ class Event(Event):
         if not settings.SITE.site_config.pupil_guestrole:
             return
         Guest = settings.SITE.models.cal.Guest
+        found = set()
         for obj in self.project.enrolment_set.exclude(
                 state=EnrolmentStates.cancelled):
             if obj.pupil:
-                yield Guest(event=self,
-                            partner=obj.pupil,
-                            role=settings.SITE.site_config.pupil_guestrole)
+                if obj.pupil.id not in found:
+                    yield Guest(event=self,
+                                partner=obj.pupil,
+                                role=settings.SITE.site_config.pupil_guestrole)
+                else:
+                    found.add(obj.pupil.id)
 
     def get_calendar(self):
         if self.room is not None and self.room.calendar is not None:

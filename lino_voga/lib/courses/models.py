@@ -457,7 +457,7 @@ class Enrolment(Enrolment, InvoiceGenerator):
         # abstract = False  # dd.is_abstract_model(__name__, 'Enrolment')
         verbose_name = _("Enrolment")
         verbose_name_plural = _("Enrolments")
-        # in Voga it is allowed to enrole several times
+        # in Voga it is allowed to enroll several times at different date ranges
         unique_together = None
 
     amount = dd.PriceField(_("Amount"), blank=True, null=True)
