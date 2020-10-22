@@ -65,7 +65,7 @@ class Site(Site):
         # yield 'lino_cosi.lib.auto.sales'
         yield 'lino_xl.lib.finan'
         yield 'lino_xl.lib.sepa'
-        yield 'lino_xl.lib.bevats'
+        # yield 'lino_xl.lib.bevats'
 
         # yield 'lino_voga.lib.courses'
 
