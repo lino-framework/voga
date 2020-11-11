@@ -18,7 +18,7 @@ from lino_xl.lib.notes.roles import NotesUser, NotesStaff
 from lino_xl.lib.sepa.roles import SepaStaff
 from lino_xl.lib.products.roles import ProductsStaff
 from lino_xl.lib.courses.roles import CoursesTeacher, CoursesUser
-from lino_xl.lib.cal.roles import GuestOperator
+from lino_xl.lib.cal.roles import GuestOperator, CalendarGuest
 from lino.modlib.checkdata.roles import CheckdataUser
 
 
@@ -33,9 +33,15 @@ class Secretary(Receptor, SiteStaff, ContactsStaff, ExcerptsUser,
     pass
 
 
-class Teacher(CoursesTeacher):  # , ExcerptsUser, OfficeUser):
-    """Somebody who can just register presences of participants, i.e. mark
-    them as absent or present.
+class Teacher(CoursesTeacher):
+    """Can register presences of participants, i.e. mark them as absent or present.
+
+    """
+    pass
+
+
+class Pupil(CalendarGuest):
+    """Can confirm invitations to calendar events.
 
     """
     pass
@@ -56,4 +62,5 @@ add('000', _("Anonymous"), UserRole, name='anonymous', readonly=True)
 add('100', _("User"), Receptor, name='user')
 add('200', _("Secretary"), Secretary, name='secretary')
 add('300', _("Teacher"), Teacher, name='teacher')
+add('400', _("Pupil"), Pupil, name='pupil')
 add('900', _("Administrator"), SiteAdmin, name='admin')

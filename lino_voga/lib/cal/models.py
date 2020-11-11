@@ -8,9 +8,6 @@ The :xfile:`models.py` module for :mod:`lino_voga.lib.cal`.
 This module extends :mod:`lino_xl.lib.cal.models`
 """
 
-from __future__ import unicode_literals
-
-from builtins import str
 import six
 
 from django.utils.translation import ugettext_lazy as _
@@ -131,8 +128,8 @@ class Event(Event):
 
     def suggest_guests(self):
         # print "20130722 suggest_guests"
-        for g in super(Event, self).suggest_guests():
-            yield g
+        # for g in super(Event, self).suggest_guests():
+        #     yield g
         if self.project is None:
             return
         if not settings.SITE.site_config.pupil_guestrole:
@@ -156,7 +153,7 @@ class Event(Event):
 
 
 class MyEntries(MyEntries):
-    column_names = 'when_text summary room owner workflow_buttons *'
+    column_names = 'when_text detail_link #summary room owner workflow_buttons *'
 
 
 @dd.receiver(dd.post_analyze)

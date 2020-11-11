@@ -1,7 +1,6 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2018 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
-from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 from django.utils.translation import ugettext_lazy as _
@@ -39,5 +38,3 @@ def objects():
         content_type=ContentType.objects.get_for_model(
             rt.models.courses.Course),
         **dd.str2kw('name', _("Payment list")))
-
-

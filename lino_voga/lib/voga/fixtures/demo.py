@@ -1,10 +1,8 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2017 Rumma & Ko Ltd
+# Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
-from __future__ import unicode_literals
 
 from django.conf import settings
-
 from lino.api import dd, rt
 
 
@@ -36,4 +34,3 @@ def objects():
     yield person
     yield User(username=person.first_name.lower(),
                partner=person, user_type=UserTypes.teacher)
-
