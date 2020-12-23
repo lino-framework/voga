@@ -29,10 +29,10 @@ class Plugin(Plugin):
 
     """
     extends_models = ['Enrolment', 'Course', 'Line']
-    
+
     # courses needs invoicing and sales but doesn't declare this to
     # avoid having them added to the menu before courses:
-    
+
     # needs_plugins = [
     #     'lino_xl.lib.cal', 'lino_voga.lib.invoicing', 'lino_voga.lib.sales']
     needs_plugins = ['lino_xl.lib.cal']
@@ -43,17 +43,17 @@ class Plugin(Plugin):
         m.add_action('courses.Pupils')
         m.add_action('courses.Teachers')
         m.add_separator()
-        for ca in site.models.courses.CourseAreas.objects():
+        for ca in site.models.courses.ActivityLayouts.get_list_items():
             m.add_action(ca.courses_table)
         # m.add_action('courses.Courses')
         m.add_separator()
         m.add_action('courses.Topics')
         m.add_action('courses.Lines')
         # m.add_separator()
-        # m.add_action('courses.DraftCourses')
-        # m.add_action('courses.InactiveCourses')
-        # m.add_action('courses.ActiveCourses')
-        # m.add_action('courses.ClosedCourses')
+        # m.add_action('courses.DraftActivities')
+        # m.add_action('courses.InactiveActivities')
+        # m.add_action('courses.ActiveActivities')
+        # m.add_action('courses.ClosedActivities')
         m.add_separator()
         m.add_action('courses.PendingRequestedEnrolments')
         m.add_action('courses.PendingConfirmedEnrolments')
@@ -68,4 +68,3 @@ class Plugin(Plugin):
     def setup_reports_menu(self, site, user_type, m):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action('courses.StatusReport')
-

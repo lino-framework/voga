@@ -8,17 +8,15 @@ Desktop design for this plugin.
 
 from django.utils.translation import ugettext_lazy as _
 
-from lino.api import dd, rt
-
 from lino.utils import join_elems
-
 from lino_xl.lib.courses.desktop import *
 from lino_xl.lib.courses.roles import CoursesUser
 from lino_voga.lib.contacts.models import PersonDetail
+from lino_xl.lib.cal.ui import EntriesByController
+from lino.api import dd, rt, _
 
 contacts = dd.resolve_app('contacts')
 
-from lino_xl.lib.cal.ui import EntriesByController
 
 
 class TeacherTypes(dd.Table):
@@ -54,7 +52,7 @@ Lines.detail_layout = """
     course_type event_type guest_role every_unit every
     description
     excerpt_title
-    courses.CoursesByLine
+    courses.ActivitiesByLine
     """
 
 
@@ -144,7 +142,7 @@ class TeacherDetail(PersonDetail):
 
     courses = dd.Panel("""
     courses.EntriesByTeacher
-    courses.CoursesByTeacher
+    courses.ActivitiesByTeacher
     """, label=dd.plugins.courses.verbose_name)
 
     personal = 'teacher_type national_id'
@@ -153,7 +151,7 @@ class TeacherDetail(PersonDetail):
 # class TeacherDetail(contacts.PersonDetail):
 #     general = dd.Panel(contacts.PersonDetail.main, label=_("General"))
 #     box5 = "remarks"
-#     main = "general courses.CoursesByTeacher \
+#     main = "general courses.ActivitiesByTeacher \
 #     courses.EntriesByTeacher cal.GuestsByPartner"
 
 
@@ -228,11 +226,11 @@ class CourseDetail(CourseDetail):
     """, label=_("More"))
 
 
-Courses.detail_layout = CourseDetail()
-# Courses._course_area = CourseAreas.default
-Courses.order_by = ['ref', '-start_date', '-start_time']
-Courses.column_names = "ref start_date enrolments_until line room teacher " \
-                       "workflow_buttons *"
+# Activities.detail_layout = CourseDetail()
+# Activities._activity_layout = ActivityLayouts.default
+Activities.order_by = ['ref', '-start_date', '-start_time']
+Activities.column_names = "ref start_date enrolments_until line room teacher " \
+                          "workflow_buttons *"
 
 
 # class Courses(Courses):
@@ -249,8 +247,8 @@ Courses.column_names = "ref start_date enrolments_until line room teacher " \
 if False:
 
     # Exception: Cannot reuse detail_layout of <class
-    # 'lino_xl.lib.courses.models.CoursesByTeacher'> for <class
-    # 'lino_xl.lib.courses.models.CoursesBySlot'>
+    # 'lino_xl.lib.courses.models.ActivitiesByTeacher'> for <class
+    # 'lino_xl.lib.courses.models.ActivitiesBySlot'>
 
     class Courses(Courses):
 
@@ -299,7 +297,7 @@ if False:
             return kw
 
 
-class CoursesByTopic(CoursesByTopic):
+class ActivitiesByTopic(ActivitiesByTopic):
     """Shows the courses of a given topic.
 
     This is used both in the detail window of a topic and in
@@ -315,14 +313,14 @@ class CoursesByTopic(CoursesByTopic):
 
     @classmethod
     def param_defaults(self, ar, **kw):
-        kw = super(CoursesByTopic, self).param_defaults(ar, **kw)
+        kw = super(ActivitiesByTopic, self).param_defaults(ar, **kw)
         kw.update(state=CourseStates.active)
         kw.update(can_enroll=dd.YesNo.yes)
         return kw
 
 
-class CoursesByLine(CoursesByLine):
-    """Like :class:`lino_xl.lib.courses.CoursesByLine`, but with other
+class ActivitiesByLine(ActivitiesByLine):
+    """Like :class:`lino_xl.lib.courses.ActivitiesByLine`, but with other
     default values in the filter parameters. In Voga we want to see
     only courses for which new enrolments can happen.
 
@@ -335,7 +333,7 @@ class CoursesByLine(CoursesByLine):
 
     @classmethod
     def param_defaults(self, ar, **kw):
-        kw = super(CoursesByLine, self).param_defaults(ar, **kw)
+        kw = super(ActivitiesByLine, self).param_defaults(ar, **kw)
         kw.update(state=CourseStates.active)
         kw.update(can_enroll=dd.YesNo.yes)
         return kw
@@ -345,7 +343,7 @@ class LinesByType(Lines):
     master_key = 'course_type'
 
 
-# class ActiveCourses(ActiveCourses):
+# class ActiveActivities(ActiveActivities):
 #     column_names = 'info max_places enrolments teacher line room *'
 #     hide_sums = True
 
@@ -363,47 +361,3 @@ class EnrolmentsAndPaymentsByCourse(Enrolments):
     """
     master_key = 'course'
     column_names = "pupil_info start_date invoicing_info payment_info"
-
-
-class EnrolmentsByHike(EnrolmentsByCourse):
-    column_names = 'request_date pupil '\
-                   'places:8 remark fee option amount ' \
-                   'workflow_buttons *'
-    insert_layout = """
-    pupil
-    places option
-    remark
-    request_date user
-    """
-
-
-class EnrolmentsByJourney(EnrolmentsByHike):
-    pass
-
-
-class HikeDetail(CourseDetail):
-    enrolments = dd.Panel("""
-    enrolments_top
-    EnrolmentsByHike
-    """, label=_("Enrolments"))
-
-
-class JourneyDetail(CourseDetail):
-    enrolments = dd.Panel("""
-    enrolments_top
-    EnrolmentsByJourney
-    """, label=_("Enrolments"))
-
-
-class Hikes(Courses):
-    _course_area = CourseAreas.hikes
-    detail_layout = HikeDetail()
-    column_names = "ref name start_date enrolments_until line " \
-                   "workflow_buttons *"
-
-
-class Journeys(Courses):
-    _course_area = CourseAreas.journeys
-    detail_layout = JourneyDetail()
-    column_names = "ref name start_date end_date enrolments_until line " \
-                   "workflow_buttons *"

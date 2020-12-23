@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016-2018 Rumma & Ko Ltd
+# Copyright 2016-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 """
 Adds some demo data specific to Lino Voga à la Roger.
@@ -15,19 +15,16 @@ Adds some demo data specific to Lino Voga à la Roger.
 
 """
 
-from builtins import range
 from lino.api import dd, rt
 from lino.utils.cycler import Cycler
-
 from lino_xl.lib.ledger.choicelists import CommonAccounts
 from lino_xl.lib.ledger.utils import DC
-
-from lino_voga.lib.courses.fixtures.demo import objects as lib_objects
+from lino_voga.lib.courses.fixtures.demo import other_objects
 
 
 def objects():
 
-    yield lib_objects()
+    yield other_objects()
 
     SECTIONS = Cycler(rt.models.courses.Sections.objects())
 

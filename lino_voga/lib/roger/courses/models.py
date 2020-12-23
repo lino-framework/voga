@@ -11,6 +11,23 @@ from lino.api import dd, rt, _
 from lino_xl.lib.ledger.choicelists import CommonAccounts
 from lino.modlib.checkdata.choicelists import Checker
 from lino_voga.lib.courses.models import *
+# from lino_voga.lib.voga.layouts import *
+from lino_voga.lib.courses.desktop import *
+from lino_xl.lib.courses.choicelists import ActivityLayouts
+from lino.api import _
+
+"""The default activity are **courses**.  A **hike** usually includes
+a bus travel. One enrolment can mean several participants (seats).  A
+**journey** also includes a room in a hotel.
+
+"""
+ActivityLayouts.clear()
+add = ActivityLayouts.add_item
+add('C', _("Courses"), 'default', 'courses.Courses')    # one place per enrolment
+add('H', _("Hikes"), 'hikes', 'courses.Hikes')
+add('J', _("Journeys"), 'journeys', 'courses.Journeys')
+
+
 
 CommonAccounts.add_item(
     '7310', _("Membership fees"), 'membership_fees', False)

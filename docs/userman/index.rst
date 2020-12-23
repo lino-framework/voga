@@ -10,9 +10,6 @@ Welcome to the official *Lino Voga* User Manual.
   import lino_voga
   print(lino_voga.SETUP_INFO['long_description'])
 
-See also the `Official Online demo
-<http://voga-demo.lino-framework.org/>`_
-
 Topic guides:
 
 .. toctree::

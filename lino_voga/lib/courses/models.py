@@ -2,15 +2,6 @@
 # Copyright 2013-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
-"""
-Database models for `lino_voga.lib.courses`.
-
-.. xfile:: courses/Enrolment/item_description.html
-
-     The template used to fill the items description.
-
-"""
-
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import pgettext_lazy as pgettext
 
@@ -34,19 +25,6 @@ from lino_xl.lib.cal.utils import day_and_month
 # from lino.utils.media import TmpMediaFile
 
 from lino.modlib.printing.utils import CustomBuildMethod
-
-
-"""The default activity are **courses**.  a **hike** usually includes
-a bus travel. One enrolment can mean several participants (seats).  A
-**journey** also includes a room in a hotel.
-
-"""
-CourseAreas.clear()
-add = CourseAreas.add_item
-add('C', _("Courses"), 'default')    # one place per enrolment
-add('H', _("Hikes"), 'hikes', 'courses.Hikes')
-add('J', _("Journeys"), 'journeys', 'courses.Journeys')
-
 
 class XlsColumn(object):
 

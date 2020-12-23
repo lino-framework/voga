@@ -22,7 +22,7 @@ class Site(Site):
     # userdocs_prefix = 'voga.'
 
     user_types_module = 'lino_voga.lib.voga.user_types'
-    workflows_module = 'lino_xl.lib.cal.workflows.voga'
+    workflows_module = 'lino_voga.lib.voga.workflows'
     custom_layouts_module = 'lino_voga.lib.voga.layouts'
 
     demo_fixtures = """std minimal_ledger
@@ -44,6 +44,7 @@ class Site(Site):
         # yield 'lino_xl.lib.excerpts'
         yield 'lino_xl.lib.countries'
         yield 'lino_voga.lib.contacts'
+        yield 'lino_xl.lib.phones'
         yield 'lino_xl.lib.lists'
         yield 'lino_xl.lib.beid'
 

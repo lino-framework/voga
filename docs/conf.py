@@ -91,7 +91,7 @@ language = 'en'
 # for source files.
 exclude_patterns = [
     '.build/*',
-    'include/*',
+    'shared/*',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all documents.
@@ -190,7 +190,7 @@ htmlhelp_basename = 'voga'
 #~ show_source = True
 
 #~ srcref_base_uri="http://code.google.com/lino"
-#~ srcref_base_uri="http://code.google.com/p/lino/source/browse/#hg" 
+#~ srcref_base_uri="http://code.google.com/p/lino/source/browse/#hg"
 
 
 
@@ -205,6 +205,3 @@ htmlhelp_basename = 'voga'
 
 extlinks = dict()
 extlinks.update(ticket=('http://bugs.saffre-rumma.net/tickets/Ticket/%s', '#'))
-
-
-

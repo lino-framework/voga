@@ -30,8 +30,8 @@ for managing courses, participants and meeting rooms.
   please see `www.saffre-rumma.net
   <http://www.saffre-rumma.net/voga/>`__.
 
-- Online demo site at http://roger.lino-framework.org (English, German, French)
-  and  http://vtp2014.lino-framework.org (English, Estonian)
+- Online demo site at https://voga1e.lino-framework.org
+  and https://voga1r.lino-framework.org
 
 """,
     author='Luc Saffre',

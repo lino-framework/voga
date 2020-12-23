@@ -1,9 +1,7 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2012-2016 Rumma & Ko Ltd
+# Copyright 2012-2020 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
-from __future__ import unicode_literals
 
-from builtins import range
 import datetime
 
 from lino.api import dd, rt
@@ -12,12 +10,15 @@ from django.utils.translation import ugettext_lazy as _
 
 from django.conf import settings
 
+from lino_xl.lib.courses.fixtures import demo
+
 # courses = dd.resolve_app('courses')
 # cal = dd.resolve_app('cal')
 # users = dd.resolve_app('users')
 
 
-def objects():
+def other_objects():
+
     Person = rt.models.contacts.Person
     PupilType = rt.models.courses.PupilType
     TeacherType = rt.models.courses.TeacherType
@@ -56,7 +57,7 @@ def objects():
             # yield p
         else:
             invoice_recipient = p
-            
+
     if False:
 
         #~ PS = Cycler(courses.PresenceStatus.objects.all())
@@ -94,3 +95,8 @@ def objects():
             #~ for j in range(5):
                 #~ yield courses.Event(start_date=settings.SITE.demo_date(j*7),course=c)
                 #~ yield courses.Presence()
+
+
+def objects():
+    yield demo.objects()
+    yield other_objects()
