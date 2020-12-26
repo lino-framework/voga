@@ -9,7 +9,7 @@
 
 SETUP_INFO = dict(
     name='lino-voga',
-    version='20.12.0',
+    version='20.12.1',
     install_requires=[
         'lino_xl'
         # 'lino_cosi',  # TODO: remove dependency from cosi
