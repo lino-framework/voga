@@ -7,4 +7,4 @@
 """
 
 from lino_xl.lib.cal.workflows.voga import *
-from lino_avanti.lib.courses.workflows import *
+from lino_xl.lib.courses.workflows.std import *
