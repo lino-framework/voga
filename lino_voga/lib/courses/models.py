@@ -267,7 +267,7 @@ class Line(Line, Publishable):
 
     publisher_location = "line"
     list_template = "courses/listitem.line.html"
-    publisher_template = "courses/detail.line.html"
+    publisher_page_template = "courses/detail.line.html"
 
     course_type = dd.ForeignKey('courses.CourseType', blank=True, null=True)
 
