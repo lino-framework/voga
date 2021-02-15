@@ -1,7 +1,7 @@
 # Copyright 2013-2016 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from lino_xl.lib.contacts.models import *
 

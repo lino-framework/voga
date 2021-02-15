@@ -6,7 +6,7 @@ import datetime
 
 from lino.api import dd, rt
 from lino.utils import mti, Cycler
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from django.conf import settings
 

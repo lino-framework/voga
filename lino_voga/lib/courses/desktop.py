@@ -6,7 +6,7 @@ Desktop design for this plugin.
 
 """
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from lino.utils import join_elems
 from lino_xl.lib.courses.desktop import *
