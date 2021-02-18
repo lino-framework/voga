@@ -3,10 +3,6 @@
 from django.utils.translation import gettext_lazy as _
 
 help_texts = {
-    'lino_voga.lib.invoicing.Plan' : _("""An extended invoicing plan."""),
-    'lino_voga.lib.invoicing.Plan.course' : _("""If this field is nonempty, select only enrolments of that
-given course."""),
-    'lino_voga.lib.invoicing.StartInvoicingForCourse' : _("""Start an invoicing plan for this course."""),
     'lino_voga.lib.voga.migrate.Migrator' : _("""This class is used because a voga Site has
 ad.Site.migration_class set to
 "lino_voga.migrate.Migrator"."""),

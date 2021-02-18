@@ -1,12 +1,7 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2016-2018 Rumma & Ko Ltd
+# Copyright 2016-2021 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
-"""The :xfile:`models.py` module for :mod:`lino_voga.lib.invoicing`.
-
-"""
-
-from __future__ import unicode_literals
 
 from lino_xl.lib.invoicing.models import *
 from lino.api import _
@@ -59,5 +54,3 @@ class StartInvoicingForCourse(StartInvoicing):
 @dd.receiver(dd.pre_analyze)
 def install_start_action(sender=None, **kwargs):
     rt.models.courses.Course.start_invoicing = StartInvoicingForCourse()
-    
-
