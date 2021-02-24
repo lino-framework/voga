@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-# Copyright 2013-2020 Rumma & Ko Ltd
+# Copyright 2013-2021 Rumma & Ko Ltd
 # License: BSD (see file COPYING for details)
 
 from django.utils.translation import gettext_lazy as _
@@ -25,6 +25,7 @@ from lino_xl.lib.cal.utils import day_and_month
 # from lino.utils.media import TmpMediaFile
 
 from lino.modlib.printing.utils import CustomBuildMethod
+
 
 class XlsColumn(object):
 
@@ -646,6 +647,11 @@ class Enrolment(Enrolment, InvoiceGenerator):
             return ''
         return rt.models.ledger.Movement.balance_info(
             DC.debit, partner=self.pupil, cleared=False)
+
+    def get_guest_role(self):
+        if self.course.line:
+            return self.course.line.guest_role or settings.SITE.site_config.pupil_guestrole
+        return settings.SITE.pupil_guestrole
 
 
 # dd.inject_field(
