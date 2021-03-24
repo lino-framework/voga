@@ -11,7 +11,7 @@ from lino_xl.lib.products import Plugin, _
 class Plugin(Plugin):
 
     verbose_name = _("Fees")
-    extends_models = ['Product', 'ProductCat']
+    extends_models = ['Product', 'Category']
 
     def setup_main_menu(self, site, user_type, m):
         pass
@@ -19,5 +19,5 @@ class Plugin(Plugin):
     def setup_config_menu(self, site, user_type, m):
         m = m.add_menu(self.app_label, self.verbose_name)
         m.add_action('products.Products')
-        m.add_action('products.ProductCats')
+        m.add_action('products.Categories')
 

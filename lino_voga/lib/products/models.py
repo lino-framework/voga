@@ -21,14 +21,14 @@ add = ProductTypes.add_item
 add('100', _("Fees"), 'default', table_name="products.Products")
 
 
-class ProductCat(ProductCat):
+class Category(Category):
     """
     Currently this just changes the `verbose_name`.
 
     """
-    class Meta(ProductCat.Meta):
+    class Meta(Category.Meta):
         app_label = 'products'
-        abstract = dd.is_abstract_model(__name__, 'ProductCat')
+        abstract = dd.is_abstract_model(__name__, 'Category')
         verbose_name = _("Fee category")
         verbose_name_plural = _("Fee categories")
 
@@ -67,7 +67,7 @@ class ProductDetail(ProductDetail):
     main = "general courses"
     
     general = dd.Panel("""
-    id cat sales_price tariff
+    id category sales_price tariff
     # tariff__number_of_events:10 tariff__min_asset:10
     vat_class delivery_unit
     name

@@ -364,7 +364,7 @@ class Course(Referrable, Course):
         Product = rt.models.products.Product
         if not line or not line.fees_cat:
             return Product.objects.none()
-        return Product.objects.filter(cat=line.fees_cat)
+        return Product.objects.filter(category=line.fees_cat)
 
     def __str__(self):
         if self.name:
@@ -514,7 +514,7 @@ class Enrolment(Enrolment, InvoiceGenerator):
         Product = rt.models.products.Product
         if not course or not course.line or not course.line.fees_cat:
             return Product.objects.none()
-        return Product.objects.filter(cat=course.line.fees_cat)
+        return Product.objects.filter(category=course.line.fees_cat)
 
     def full_clean(self, *args, **kwargs):
         if self.fee_id is None and self.course_id is not None:
