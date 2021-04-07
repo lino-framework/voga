@@ -1,5 +1,5 @@
 # Copyright 2013-2016 Rumma & Ko Ltd
-# License: BSD (see file COPYING for details)
+# License: GNU Affero General Public License v3 (see file COPYING for details)
 """
 The :xfile:`models.py` for the :mod:`lino_voga` app.
 """

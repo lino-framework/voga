@@ -1,5 +1,5 @@
 # Copyright 2015-2018 Rumma & Ko Ltd
-# License: BSD (see file COPYING for details)
+# License: GNU Affero General Public License v3 (see file COPYING for details)
 """Defines the standard user roles for Lino Voga.
 
 See also :ref:`voga.specs.profiles`.

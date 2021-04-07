@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 # Copyright 2016-2020 Rumma & Ko Ltd
-# License: BSD (see file COPYING for details)
+# License: GNU Affero General Public License v3 (see file COPYING for details)
 """
 Adds some specific fields for managing the member fee.
 

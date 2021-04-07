@@ -45,8 +45,8 @@ for managing courses, participants and meeting rooms.
 """,
     author='Luc Saffre',
     author_email='luc.saffre@gmail.com',
-    url="http://voga.lino-framework.org",
-    license='BSD-2-Clause',
+    url="https://github.com/lino-framework/voga",
+    license_files=['COPYING'],
     classifiers="""\
 Programming Language :: Python
 Programming Language :: Python :: 3
@@ -56,7 +56,7 @@ Framework :: Django
 Intended Audience :: Developers
 Intended Audience :: System Administrators
 Intended Audience :: Education
-License :: OSI Approved :: BSD License
+License :: OSI Approved :: GNU Affero General Public License v3
 Operating System :: OS Independent
 Topic :: Office/Business :: Financial :: Accounting
 Topic :: Office/Business :: Scheduling
